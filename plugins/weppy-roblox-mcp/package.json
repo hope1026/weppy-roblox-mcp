@@ -1,0 +1,43 @@
+{
+  "name": "weppy-roblox-mcp",
+  "version": "0.0.1",
+  "description": "MCP (Model Context Protocol) server for Roblox Studio integration - enables AI coding agents to interact with Roblox Studio in real-time",
+  "main": "dist/index.js",
+  "type": "module",
+  "bin": {
+    "weppy-roblox-mcp": "./dist/index.js"
+  },
+  "scripts": {
+    "start": "node dist/index.js",
+    "build": "tsc"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "roblox",
+    "roblox-studio",
+    "ai",
+    "coding-agent",
+    "claude",
+    "codex",
+    "gemini",
+    "cursor"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "express": "^4.18.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hope1026/roblox-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hope1026/roblox-mcp/issues"
+  },
+  "homepage": "https://github.com/hope1026/roblox-mcp#readme"
+}

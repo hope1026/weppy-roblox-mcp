@@ -1,0 +1,33 @@
+import type { Vector3, Color3RGB, Color3Normalized, UDim2, CFrameArray } from '../types/index.js';
+export declare function validateVector3(value: unknown): value is Vector3;
+export declare function validateColor3(value: unknown): value is Color3RGB | Color3Normalized;
+export declare function validateCFrame(value: unknown): value is CFrameArray;
+export declare function validateUDim2(value: unknown): value is UDim2;
+export declare function detectRobloxType(value: unknown): string | null;
+export declare function convertVector3(value: Vector3): string;
+export declare function convertColor3(value: Color3RGB | Color3Normalized): string;
+export declare function convertCFrame(value: CFrameArray): string;
+export declare function convertUDim2(value: UDim2): string;
+export declare function convertEnum(value: string): string;
+export declare function convertBrickColor(value: string): string;
+export declare function toRobloxValue(value: unknown, targetType?: string): string;
+export declare function fromRobloxValue(value: unknown): unknown;
+export declare function autoConvert(value: unknown): string;
+declare const _default: {
+    validateVector3: typeof validateVector3;
+    validateColor3: typeof validateColor3;
+    validateCFrame: typeof validateCFrame;
+    validateUDim2: typeof validateUDim2;
+    detectRobloxType: typeof detectRobloxType;
+    convertVector3: typeof convertVector3;
+    convertColor3: typeof convertColor3;
+    convertCFrame: typeof convertCFrame;
+    convertUDim2: typeof convertUDim2;
+    convertEnum: typeof convertEnum;
+    convertBrickColor: typeof convertBrickColor;
+    toRobloxValue: typeof toRobloxValue;
+    fromRobloxValue: typeof fromRobloxValue;
+    autoConvert: typeof autoConvert;
+};
+export default _default;
+//# sourceMappingURL=type-converter.d.ts.map

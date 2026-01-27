@@ -1,0 +1,19 @@
+{
+  "name": "weppy-roblox-mcp",
+  "description": "MCP server for Roblox Studio integration - 70+ tools for AI-powered game development",
+  "version": "0.0.1",
+  "author": {
+    "name": "hope1026"
+  },
+  "repository": "https://github.com/hope1026/roblox-mcp",
+  "homepage": "https://github.com/hope1026/roblox-mcp#readme",
+  "license": "MIT",
+  "keywords": [
+    "mcp",
+    "roblox",
+    "game-development",
+    "ai",
+    "claude",
+    "roblox-studio"
+  ]
+}
