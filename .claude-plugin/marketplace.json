@@ -1,0 +1,44 @@
+{
+  "name": "hope1026-roblox-mcp",
+  "owner": {
+    "name": "hope1026",
+    "email": "hope841026@gmail.com"
+  },
+  "metadata": {
+    "description": "Roblox MCP server and tools for AI-powered game development",
+    "version": "0.1.2",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "weppy-roblox-mcp",
+      "source": "./weppy-roblox-mcp",
+      "description": "MCP server for Roblox Studio integration - 132 tools for AI-powered game development with specialized agents and skills",
+      "version": "0.1.2",
+      "author": {
+        "name": "hope1026"
+      },
+      "homepage": "https://github.com/hope1026/roblox-mcp",
+      "repository": "https://github.com/hope1026/roblox-mcp",
+      "license": "SEE LICENSE IN LICENSE",
+      "keywords": [
+        "mcp",
+        "roblox",
+        "roblox-studio",
+        "game-development",
+        "ai",
+        "claude",
+        "codex",
+        "gemini",
+        "cursor"
+      ],
+      "category": "game-development",
+      "tags": [
+        "roblox",
+        "mcp",
+        "game-dev",
+        "ai-tools"
+      ]
+    }
+  ]
+}
