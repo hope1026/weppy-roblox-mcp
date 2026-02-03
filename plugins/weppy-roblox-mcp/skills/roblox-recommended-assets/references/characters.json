@@ -1,0 +1,14 @@
+{
+  "assets": [
+    {
+      "id": 3375251681,
+      "name": "Zombie",
+      "description": "R15 zombie with full animation set",
+      "animations": ["climb", "fall", "idle", "idle2", "jump", "sit", "swim", "swimidle", "toolnone", "walk"],
+      "focusView": {
+        "distance": 30,
+        "offset": { "x": 20, "y": 10, "z": 20 }
+      }
+    }
+  ]
+}
