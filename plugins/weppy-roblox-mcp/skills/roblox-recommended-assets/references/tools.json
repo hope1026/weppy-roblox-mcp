@@ -1,0 +1,13 @@
+{
+  "assets": [
+    {
+      "id": 2304105204,
+      "name": "Classic Sword (FE)",
+      "description": "FilteringEnabled compatible classic sword with trail effect",
+      "focusView": {
+        "distance": 10,
+        "offset": { "x": 8, "y": 5, "z": 12 }
+      }
+    }
+  ]
+}

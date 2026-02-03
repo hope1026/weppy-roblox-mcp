@@ -1,116 +1,162 @@
-# Weppy Roblox MCP
+# Roblox MCP
 
-[한국어](docs/README.ko.md)
+> Control Roblox Studio with AI. 140 tools to make game development easier.
 
-> AI-powered Roblox Studio integration for Claude Code
+## What can you do?
 
-## What is this?
+Tell AI what you want, and it executes directly in Roblox Studio:
 
-Weppy Roblox MCP enables **Claude Code** to directly interact with Roblox Studio. Create instances, modify properties, write scripts, and build games using natural language.
-
-### Features
-
-- **76+ Tools** - Comprehensive Roblox Studio operations
-- **Real-time Integration** - Direct communication with Studio via SSE
-- **Natural Language** - Describe what you want, AI builds it
-- **Auto-managed** - Server starts automatically with Claude Code
+```
+"Create a red brick"                      → Part creation
+"Change all parts to neon"                → Bulk modification
+"Script that increases jump power on touch" → Auto-generate scripts
+"Make it night and add stars"             → Environment settings
+"Create mountain terrain"                 → Terrain generation
+```
 
 ## Quick Start
 
-### 1. Install Plugin in Claude Code
+### Step 1: Install Roblox Plugin
 
-```bash
-# Add the marketplace
-/plugin marketplace add hope1026/roblox-mcp
+Search for **"W-MCP"** in the **Roblox Creator Store** and install.
 
-# Install the plugin
-/plugin install weppy-roblox-mcp@hope1026-roblox-mcp
-```
+Or download directly:
+- [Install from Creator Store](https://create.roblox.com/store/asset/YOUR_ASSET_ID)
 
-### 2. Install Roblox Studio Plugin
+### Step 2: Configure MCP Server
 
-Download and install the Roblox Studio plugin:
+Choose your AI app:
 
-**Windows:**
-```
-%LOCALAPPDATA%\Roblox\Plugins\WeppyRobloxMCP.rbxm
-```
+| AI App | Installation Guide |
+|--------|-------------------|
+| Claude Desktop | [Setup Guide](docs/en/installation/claude-desktop.md) |
+| Claude Code | [Setup Guide](docs/en/installation/claude-code.md) |
+| Cursor | [Setup Guide](docs/en/installation/cursor.md) |
+| Codex CLI | [Setup Guide](docs/en/installation/codex-cli.md) |
+| Gemini CLI | [Setup Guide](docs/en/installation/gemini-cli.md) |
+| Other MCP Apps | [Setup Guide](docs/en/installation/other-clients.md) |
 
-**macOS:**
-```
-~/Documents/Roblox/Plugins/WeppyRobloxMCP.rbxm
-```
+### Step 3: Connect
 
-Restart Roblox Studio after installation.
+1. Launch Roblox Studio
+2. Go to Plugins tab → Click **W-MCP**
+3. Click **Connect** button
+4. Confirm "Connected" status
+5. Start developing with AI!
 
-### 3. Connect
+## 140 Tools
 
-1. Open Roblox Studio
-2. Open the **Weppy MCP** widget from the Plugins menu
-3. Click **Connect** - you should see "Connected" status
-4. Start chatting with Claude Code about your game!
+### Free Tools (68)
+
+| Category | What you can do | Example Prompt |
+|----------|-----------------|----------------|
+| **Instance** | Create/delete/clone parts, models | "Create a red sphere" |
+| **Script** | Write/edit/search code | "Script that disappears on touch" |
+| **Property** | Change color, size, position | "Double this part's size" |
+| **Selection** | Control selected items in Studio | "Duplicate selected items" |
+| **Tag** | Manage CollectionService tags | "Add 'Enemy' tag to this part" |
+| **Camera** | Move view, focus | "Move camera to this model" |
+| **Log** | Check errors, debugging | "Show recent errors" |
+
+### Pro Tools (72)
+
+| Category | What you can do | Example Prompt |
+|----------|-----------------|----------------|
+| **Bulk Ops** | Create/modify hundreds at once | "Plant 100 trees" |
+| **Asset** | Search/insert models | "Find and insert a free car model" |
+| **Environment** | Lighting, weather, time | "Make it night and add fog" |
+| **Terrain** | Create/modify Terrain | "Create mountain terrain" |
+| **Raycast** | Collision detection, find positions | "Find 5 player spawn positions" |
+| **Visualization** | Show areas, create markers | "Highlight this area in red" |
+
+## Free vs Pro
+
+| Feature | Free | Pro |
+|---------|:----:|:---:|
+| Basic Tools (68) | ✅ | ✅ |
+| Pro Tools (72) | Daily quota | ✅ Unlimited |
+| Bulk Operations | 10 limit | Unlimited |
+| Asset Search/Insert | 5/day | Unlimited |
+| Terrain Generation | 3/day | Unlimited |
 
 ## Example Prompts
 
-Try these prompts with Claude Code:
-
+### Beginner
 ```
-"Create a red brick at position (10, 5, 10)"
-
-"Add a script that makes parts spin when touched"
-
-"Build a simple obstacle course with 5 platforms"
-
-"Change all parts named 'Floor' to use Neon material"
-
-"Create a leaderboard system for tracking player scores"
+"Create a red part at position (0, 5, 0)"
+"Rename this part to 'Floor'"
+"Delete selected parts"
+"What's currently selected?"
 ```
 
-## Available Tools
+### Intermediate
+```
+"Add a script that changes color on touch"
+"Find all parts with 'Platform' tag"
+"Duplicate this model 5 times in a row"
+"Change lighting to evening mood"
+```
 
-| Category | Tools | Examples |
-|----------|-------|----------|
-| **Instance** | 12 | create, delete, clone, move |
-| **Property** | 10 | get/set properties, attributes |
-| **Script** | 10 | create, edit, search scripts |
-| **Search** | 8 | find by name, class, property |
-| **Selection** | 12 | get/set Studio selection |
-| **Bulk** | 8 | mass operations |
-| **Tag** | 5 | CollectionService tags |
-| **Asset** | 6 | insert models, packages |
-| **Environment** | 5 | lighting, atmosphere, sky |
+### Advanced
+```
+"Create 100 tiles in a 10x10 grid"
+"Find empty spaces in Workspace and suggest NPC spawn positions"
+"Replace all 'player' with 'character' in this script"
+"Generate mountain terrain and place 50 trees"
+```
 
 ## Troubleshooting
 
-### "Not Connected" in Studio
+### "Not Connected" displayed
 
-1. Restart Claude Code to ensure the MCP server is running
-2. Check that port 3002 is not blocked by firewall
-3. Restart the Studio plugin
+1. Check if MCP server is running in your AI app
+2. Allow port 3002 in firewall
+3. Restart Studio plugin (Plugins → W-MCP → Reconnect)
 
-### AI can't see my changes
+### AI doesn't see changes
 
-1. Ask Claude to use `get_selection` to refresh
-2. Make sure you've saved your place
+1. Ask AI to "sync current state"
+2. Request `sync_workspace_state` tool usage
+
+### Commands not executing
+
+1. Verify plugin shows "Connected" status in Studio
+2. Break complex commands into smaller steps
 
 ## Security
 
-- Server runs on **localhost only** (127.0.0.1)
+- Server runs on **localhost only** (127.0.0.1:3002)
 - No external network access
-- Protected paths (CoreGui, CorePackages) are blocked
+- Protected paths blocked (CoreGui, CorePackages, etc.)
+- 450 requests per minute limit
+
+## Supported AI Apps
+
+| App | Supported | Localhost |
+|-----|:---------:|:---------:|
+| Claude Desktop | ✅ | ✅ |
+| Claude Code | ✅ | ✅ |
+| Cursor | ✅ | ✅ |
+| Codex CLI | ✅ | ✅ |
+| Gemini CLI | ✅ | ✅ |
+| Windsurf | ✅ | ✅ |
+| Continue | ✅ | ✅ |
+| Cline | ✅ | ✅ |
+| ChatGPT Desktop | ✅ | ❌ (ngrok required) |
 
 ## Links
 
-- [GitHub Repository](https://github.com/hope1026/roblox-mcp)
-- [Issue Tracker](https://github.com/hope1026/roblox-mcp/issues)
+- [GitHub](https://github.com/hope1026/roblox-mcp)
+- [Issue Report](https://github.com/hope1026/roblox-mcp/issues)
+- [Creator Store](https://create.roblox.com/store/asset/YOUR_ASSET_ID)
 
 ## License
 
-This software is provided under a custom license that allows free use for game development but prohibits resale of the software itself. See [LICENSE](LICENSE) for details.
+Free to use for game development.
 
-**Allowed:** Use for game development, commercial games, personal projects
-**Not Allowed:** Reselling the software, creating competing products
+✅ **Allowed**: Game development, commercial games, personal projects
+❌ **Not Allowed**: Software resale, creating competing products
 
 ---
 
-Made with love for the Roblox community
+Made for the Roblox community ❤️

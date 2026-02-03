@@ -1,0 +1,1 @@
+{"version":3,"file":"camera-tools.d.ts","sourceRoot":"","sources":["../../src/tools/camera-tools.ts"],"names":[],"mappings":"AAMA,OAAO,KAAK,EAAE,IAAI,EAAE,MAAM,oCAAoC,CAAC;AAO/D,eAAO,MAAM,iBAAiB,EAAE,IAQ/B,CAAC;AAOF,eAAO,MAAM,mBAAmB,EAAE,IAsCjC,CAAC;AAOF,eAAO,MAAM,uBAAuB,EAAE,IA4CrC,CAAC;AAcF,eAAO,MAAM,0BAA0B,EAAE,IAcxC,CAAC;AAKF,eAAO,MAAM,WAAW,EAAE,IAAI,EAK7B,CAAC"}
