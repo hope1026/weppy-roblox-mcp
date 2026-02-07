@@ -6,8 +6,7 @@
   },
   "metadata": {
     "description": "Roblox MCP server and tools for AI-powered game development",
-    "version": "0.1.5",
-    "pluginRoot": "./plugins"
+    "version": "0.1.5"
   },
   "plugins": [
     {
