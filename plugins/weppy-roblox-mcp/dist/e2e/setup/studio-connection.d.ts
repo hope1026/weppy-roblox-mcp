@@ -23,5 +23,6 @@ export declare function checkStudioConnection(): Promise<{
 export declare function waitForStudioConnection(timeoutMs?: number): Promise<boolean>;
 export declare function getConnectionStatusMessage(): Promise<string>;
 export declare function isStudioConnected(): boolean;
+export declare function isProTier(): boolean;
 export declare function getBridgeUrl(): string;
 //# sourceMappingURL=studio-connection.d.ts.map
