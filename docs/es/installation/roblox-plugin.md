@@ -44,9 +44,6 @@ El servidor MCP debe estar instalado. Completa primero la guia correspondiente a
 1. Abre cualquier proyecto en **Roblox Studio**
 2. Pestana **Plugins** superior → Clic en **W-MCP**
 3. Clic en el boton **Connect** en la ventana del plugin
-
-![Guia de conexion](../../assets/screenshots/connection_guide.png)
-
 4. ¡Conexion completada cuando aparece el estado **"Connected"**!
 
 ![Pantalla principal del plugin](../../assets/screenshots/plugin_main.png)

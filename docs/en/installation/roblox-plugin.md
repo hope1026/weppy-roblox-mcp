@@ -44,9 +44,6 @@ The MCP server must be installed. Complete the guide for your AI app first:
 1. Open any project in **Roblox Studio**
 2. Go to **Plugins** tab → **W-MCP**
 3. Click the **Connect** button in the plugin window
-
-![Connection Guide](../../assets/screenshots/connection_guide.png)
-
 4. Once **"Connected"** status is displayed, you're ready!
 
 ![Plugin Main Screen](../../assets/screenshots/plugin_main.png)
