@@ -4,7 +4,8 @@ Panduan instalasi plugin untuk menghubungkan AI agent di Roblox Studio.
 
 ## 1. Unduh Plugin
 
-Unduh file `WeppyRobloxMCP.rbxm` dari [GitHub Releases](https://github.com/hope1026/roblox-mcp/roblox-plugin).
+1. Unduh `weppy-roblox-mcp-basic.zip` dari [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest)
+2. Ekstrak file ZIP — Anda akan menemukan file `roblox-plugin/WeppyRobloxMCP.rbxm` dan panduan instalasi
 
 ## 2. Instal Plugin
 
@@ -14,7 +15,7 @@ Unduh file `WeppyRobloxMCP.rbxm` dari [GitHub Releases](https://github.com/hope1
 
 ![Buka Plugins Folder](../../assets/screenshots/plugins_menu.png)
 
-4. **Salin** file `.rbxm` yang diunduh ke folder yang terbuka
+4. **Salin** file `WeppyRobloxMCP.rbxm` dari folder yang diekstrak ke folder Plugins yang terbuka
 5. **Restart Roblox Studio**
 
 ## 3. Verifikasi Instalasi
