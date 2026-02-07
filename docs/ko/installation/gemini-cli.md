@@ -1,136 +1,127 @@
 # Gemini CLI 설정
 
-Google Gemini CLI에서 Roblox MCP를 사용하는 방법입니다.
+[Google Gemini CLI](https://github.com/google-gemini/gemini-cli)에서 Roblox MCP를 사용하는 방법입니다.
 
 ## 사전 요구사항
 
-- [Gemini CLI](https://github.com/google-gemini/gemini-cli) 설치됨
-- [Node.js](https://nodejs.org/) 18.0 이상 설치됨
-- [Roblox Studio 플러그인](plugin.md) 설치됨
+1. **Node.js** (v18.0.0 이상)
+   ```bash
+   node --version
+   ```
 
-## 1단계: MCP 서버 설치
+2. **Gemini CLI** 설치됨
+   ```bash
+   npm install -g @google/gemini-cli
+   ```
 
-```bash
-npm install -g @weppy/roblox-mcp
-```
+3. **Roblox Studio 플러그인** 설치 완료
 
-## 2단계: Gemini 설정 파일 편집
+## MCP 서버 등록
 
-### 설정 파일 위치
+### 방법 1: 설정 파일 편집 (권장)
 
-```
-~/.gemini/settings.json
-```
-
-### 설정 추가
+`.gemini/settings.json` 파일에 아래 내용을 추가하세요:
 
 ```json
 {
   "mcpServers": {
-    "roblox-mcp": {
+    "weppy-roblox-mcp": {
       "command": "npx",
-      "args": ["@weppy/roblox-mcp"]
+      "args": ["-y", "@weppy/roblox-mcp"]
     }
   }
 }
 ```
 
-### 기존 설정이 있는 경우
+**설정 파일 위치:**
+| 범위 | 경로 |
+|------|------|
+| 프로젝트 | `<프로젝트>/.gemini/settings.json` |
+| 글로벌 | `~/.gemini/settings.json` |
 
-`mcpServers` 섹션에 추가:
+### 방법 2: 환경 변수 사용
+
+특정 환경 변수가 필요한 경우:
 
 ```json
 {
-  "theme": "dark",
   "mcpServers": {
-    "기존-서버": { ... },
-    "roblox-mcp": {
+    "weppy-roblox-mcp": {
       "command": "npx",
-      "args": ["@weppy/roblox-mcp"]
+      "args": ["-y", "@weppy/roblox-mcp"],
+      "env": {
+        "MCP_PORT": "3002"
+      }
     }
   }
 }
 ```
 
-## 3단계: Gemini CLI 재시작
+## 연결 테스트
+
+1. **Roblox Studio** 실행 → Plugins 탭 → **W-MCP** → **Connect**
+2. **Gemini CLI** 실행 후 다음을 입력:
+   ```
+   Roblox Studio에서 현재 선택된 것을 알려줘
+   ```
+
+## MCP 서버 상태 확인
+
+Gemini CLI 내에서 `/mcp` 명령으로 연결된 서버 상태를 확인할 수 있습니다:
+
+```
+/mcp
+```
+
+## 고급 설정
+
+### 도구 필터링
+
+특정 도구만 사용하거나 제외할 수 있습니다:
+
+```json
+{
+  "mcpServers": {
+    "weppy-roblox-mcp": {
+      "command": "npx",
+      "args": ["-y", "@weppy/roblox-mcp"],
+      "excludeTools": ["execute_script"],
+      "includeTools": ["get_selection", "create_instance", "set_property"]
+    }
+  }
+}
+```
+
+> `excludeTools`가 `includeTools`보다 우선합니다.
+
+### 디버그 모드
+
+연결 문제를 디버깅하려면:
 
 ```bash
-# Gemini CLI 종료 후 다시 시작
-gemini
-```
-
-## 4단계: 연결 테스트
-
-1. Roblox Studio에서 플러그인 연결
-2. Gemini CLI에서 테스트:
-   ```
-   @roblox-mcp Roblox Studio에 보라색 파트 만들어줘
-   ```
-
-## MCP 서버 호출 방법
-
-Gemini CLI에서 MCP 서버의 도구를 호출할 때 `@서버이름` 형식을 사용할 수 있습니다:
-
-```
-@roblox-mcp 파트 5개 만들어줘
-```
-
-또는 자연어로 요청하면 Gemini가 자동으로 적절한 MCP 도구를 선택합니다:
-
-```
-Roblox Studio에서 빨간 벽돌 만들어줘
+gemini --debug
 ```
 
 ## 문제 해결
 
-### 서버를 찾을 수 없음
+### 서버가 시작되지 않을 때
 
-전체 경로 사용:
-
-```json
-{
-  "mcpServers": {
-    "roblox-mcp": {
-      "command": "/usr/local/bin/npx",
-      "args": ["@weppy/roblox-mcp"]
-    }
-  }
-}
+MCP 서버를 직접 실행하여 오류를 확인하세요:
+```bash
+npx -y @weppy/roblox-mcp
 ```
 
-### Windows에서 경로 문제
+### 연결 실패
 
-npx.cmd 사용:
+- Roblox Studio 플러그인이 **Connected** 상태인지 확인
+- 포트 3002가 방화벽에 의해 차단되지 않았는지 확인
+- `/mcp` 명령으로 서버 상태 확인
 
-```json
-{
-  "mcpServers": {
-    "roblox-mcp": {
-      "command": "npx.cmd",
-      "args": ["@weppy/roblox-mcp"]
-    }
-  }
-}
-```
+### 도구 충돌
 
-### 설정이 적용되지 않음
+여러 MCP 서버에서 같은 이름의 도구가 있으면 `serverAlias__toolName` 형식으로 프리픽스가 붙습니다.
 
-1. JSON 문법 확인
-2. 설정 파일 위치 확인: `~/.gemini/settings.json`
-3. Gemini CLI 완전히 재시작
+## 참고 자료
 
-## 리치 콘텐츠 지원
-
-Gemini CLI의 MCP는 텍스트뿐만 아니라 이미지, 오디오 등 다양한 콘텐츠를 지원합니다. 예를 들어:
-
-```
-Workspace 스크린샷 찍어줘
-```
-
-## Google Cloud MCP 서버
-
-Google Cloud의 관리형 MCP 서버와 함께 사용할 수도 있습니다. 이 경우 BigQuery, GCE, GKE 등과 연동이 가능합니다.
-
-## 다음 단계
-
-설정이 완료되면 [예시 프롬프트](../README.md#예시-프롬프트)를 참고하여 게임 개발을 시작하세요!
+- [Gemini CLI MCP 공식 문서](https://geminicli.com/docs/tools/mcp-server/)
+- [Gemini CLI 설정 가이드](https://geminicli.com/docs/get-started/configuration/)

@@ -1,120 +1,67 @@
 # Codex CLI 설정
 
-OpenAI Codex CLI에서 Roblox MCP를 사용하는 방법입니다.
+[OpenAI Codex CLI](https://github.com/openai/codex) (터미널 기반 AI 코딩 도구)에서 Roblox MCP를 사용하는 방법입니다.
 
 ## 사전 요구사항
 
-- [Codex CLI](https://github.com/openai/codex-cli) 설치됨
-- [Node.js](https://nodejs.org/) 18.0 이상 설치됨
-- [Roblox Studio 플러그인](plugin.md) 설치됨
+- **Node.js** (v18.0.0 이상)
+- **Roblox Studio 플러그인** 설치 완료
 
-## 1단계: MCP 서버 설치
+## 설치
 
 ```bash
-npm install -g @weppy/roblox-mcp
+npm install -g @openai/codex
 ```
 
-## 2단계: Codex 설정 파일 편집
+## MCP 서버 등록
 
-Codex는 TOML 형식의 설정 파일을 사용합니다.
+### 방법 1: CLI 명령어 (권장)
 
-### 설정 파일 위치
-
-```
-~/.codex/config.toml
+```bash
+codex mcp add weppy-roblox-mcp -- npx -y @weppy/roblox-mcp
 ```
 
-### 설정 추가
+### 방법 2: 설정 파일 직접 편집
 
-`config.toml` 파일에 다음 내용 추가:
+`~/.codex/config.toml` 파일에 아래 내용을 추가하세요:
 
 ```toml
-[mcp_servers.roblox-mcp]
+[mcp_servers.weppy-roblox-mcp]
 command = "npx"
-args = ["@weppy/roblox-mcp"]
+args = ["-y", "@weppy/roblox-mcp"]
 ```
 
-### 전체 설정 예시
+**설정 파일 위치:**
 
-```toml
-# Codex CLI 설정
-model = "gpt-5.2-codex"
+| OS | 경로 |
+|----|------|
+| macOS/Linux | `~/.codex/config.toml` |
+| Windows | `%USERPROFILE%\.codex\config.toml` |
 
-# MCP 서버 설정
-[mcp_servers.roblox-mcp]
-command = "npx"
-args = ["@weppy/roblox-mcp"]
-env = { MCP_PORT = "3002" }
-```
+## 연결 테스트
 
-## 3단계: 설정 확인
-
-터미널에서 Codex 실행 후 MCP 확인:
-
-```bash
-codex
-```
-
-Codex TUI에서:
-```
-/mcp
-```
-
-`roblox-mcp`가 목록에 있으면 성공입니다.
-
-## 4단계: 연결 테스트
-
-1. Roblox Studio에서 플러그인 연결
-2. Codex에서 테스트:
+1. **Roblox Studio** 실행 → Plugins 탭 → **W-MCP** → **Connect**
+2. **Codex CLI** 실행 후 다음을 입력:
    ```
-   Roblox Studio에 노란 파트 만들어줘
+   Roblox Studio에서 현재 선택된 것을 알려줘
    ```
-
-## MCP 명령어
-
-Codex CLI에서 사용 가능한 MCP 관련 명령어:
-
-```bash
-# MCP 도움말
-codex mcp --help
-
-# 활성 MCP 서버 확인
-/mcp
-
-# MCP 서버 상태 확인
-/mcp status
-```
 
 ## 문제 해결
 
-### 서버를 찾을 수 없음
+### 서버가 시작되지 않을 때
 
-npx 전체 경로 사용:
-
-```toml
-[mcp_servers.roblox-mcp]
-command = "/usr/local/bin/npx"
-args = ["@weppy/roblox-mcp"]
+MCP 서버를 직접 실행하여 오류를 확인하세요:
+```bash
+npx -y @weppy/roblox-mcp
 ```
 
-### Windows에서 경로 문제
+### 연결 실패
 
-```toml
-[mcp_servers.roblox-mcp]
-command = "npx.cmd"
-args = ["@weppy/roblox-mcp"]
-```
+- Roblox Studio 플러그인이 **Connected** 상태인지 확인
+- 포트 3002가 방화벽에 의해 차단되지 않았는지 확인
 
-### 설정이 적용되지 않음
+## 참고 자료
 
-1. TOML 문법 확인 (온라인 TOML 검증기 사용)
-2. Codex 완전히 재시작
-3. 설정 파일 경로 확인: `~/.codex/config.toml`
-
-## Codex와 VSCode Extension 공유
-
-Codex CLI와 VSCode Extension은 동일한 설정 파일을 공유합니다. 한 번 설정하면 둘 다 사용 가능합니다.
-
-## 다음 단계
-
-설정이 완료되면 [예시 프롬프트](../README.md#예시-프롬프트)를 참고하여 게임 개발을 시작하세요!
+- [Codex CLI GitHub](https://github.com/openai/codex)
+- [Codex MCP 공식 문서](https://developers.openai.com/codex/mcp/)
+- [Codex 설정 레퍼런스](https://developers.openai.com/codex/config-reference/)
