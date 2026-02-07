@@ -21,7 +21,8 @@
 
 ### Langkah 1: Beli di Gumroad
 
-1. Kunjungi [Gumroad - Weppy Roblox Plugin](https://sunityplugin.gumroad.com/l/chllph)
+1. Kunjungi [Gumroad - Weppy Roblox Plugin](https://sunityplugin.gumroad.com/l/chllph?utm_source=github&utm_medium=repo&utm_campaign=sunity_plugin
+)
 2. Unduh plugin
 
 ### Langkah 2: Instal Plugin

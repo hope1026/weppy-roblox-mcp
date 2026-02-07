@@ -21,7 +21,8 @@
 
 ### Passo 1: Compre no Gumroad
 
-1. Acesse [Gumroad - Weppy Roblox Plugin](https://sunityplugin.gumroad.com/l/chllph)
+1. Acesse [Gumroad - Weppy Roblox Plugin](https://sunityplugin.gumroad.com/l/chllph?utm_source=github&utm_medium=repo&utm_campaign=sunity_plugin
+)
 2. Baixe o plugin
 
 ### Passo 2: Instale o Plugin
