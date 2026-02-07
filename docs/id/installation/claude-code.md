@@ -24,7 +24,7 @@ Jalankan di terminal Claude Code:
 /plugin marketplace add hope1026/roblox-mcp
 
 # Instal plugin
-/plugin install @weppy/roblox-mcp
+/plugin install weppy-roblox-mcp@hope1026-roblox-mcp
 ```
 
 Verifikasi instalasi:
@@ -77,7 +77,7 @@ Claude Code mengelola MCP server secara otomatis:
 ```bash
 # Bersihkan cache lalu coba lagi
 /plugin cache clear
-/plugin install @weppy/roblox-mcp
+/plugin install weppy-roblox-mcp@hope1026-roblox-mcp
 ```
 
 ### Server tidak dimulai

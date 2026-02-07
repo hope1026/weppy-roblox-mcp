@@ -3,11 +3,11 @@
 All notable changes to this project will be documented in this file.
 
 
-## [0.1.4] - 2026-02-07
+## [0.1.5] - 2026-02-07
 
 ### Other Changes
 
-- update path
+- update guide
 
 
 ## [0.1.3] - 2026-02-07

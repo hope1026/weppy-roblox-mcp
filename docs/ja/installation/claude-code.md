@@ -24,7 +24,7 @@ Claude Codeターミナルで実行:
 /plugin marketplace add hope1026/roblox-mcp
 
 # プラグインをインストール
-/plugin install @weppy/roblox-mcp
+/plugin install weppy-roblox-mcp@hope1026-roblox-mcp
 ```
 
 インストール確認:
@@ -77,7 +77,7 @@ Claude CodeはMCPサーバーを自動的に管理します:
 ```bash
 # キャッシュをクリアして再試行
 /plugin cache clear
-/plugin install @weppy/roblox-mcp
+/plugin install weppy-roblox-mcp@hope1026-roblox-mcp
 ```
 
 ### サーバーが起動しない
