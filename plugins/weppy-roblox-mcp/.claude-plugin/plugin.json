@@ -1,7 +1,7 @@
 {
   "name": "weppy-roblox-mcp",
   "description": "MCP server for Roblox Studio integration - 130+ tools for AI-powered game development with specialized agents and skills",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "author": {
     "name": "hope1026"
   },
@@ -27,10 +27,6 @@
     {
       "name": "roblox-game-dev",
       "description": "Master orchestrator for Roblox game development. Handles sync, planning, development, and re-sync in a unified workflow."
-    },
-    {
-      "name": "roblox-recommended-assets",
-      "description": "Curated Roblox Creator Store assets. Use when inserting models, characters, effects, or referencing asset IDs."
     },
     {
       "name": "roblox-sync",

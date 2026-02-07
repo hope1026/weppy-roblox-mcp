@@ -55,6 +55,9 @@ export interface ServerConfig {
     logLevel: LogLevel;
     requestTimeout: number;
     maxRequestsPerMinute: number;
+    enableHistory?: boolean;
+    enableStatistics?: boolean;
+    dataDir?: string;
 }
 export declare enum LogLevel {
     DEBUG = "debug",

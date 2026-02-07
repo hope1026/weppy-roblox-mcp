@@ -1,4 +1,5 @@
 import type { ServerConfig, Result, ConnectionStatus } from './types/index.js';
+import type { ToolHistoryManager } from './utils/tool-history.js';
 export declare class HTTPBridge {
     private app;
     private server;
@@ -17,12 +18,14 @@ export declare class HTTPBridge {
     private pluginClients;
     private mcpInstances;
     private totalCommandsProcessed;
+    private historyManager;
     constructor(config: ServerConfig);
     private generateSessionId;
     getSessionId(): string;
     private setupMiddleware;
     private checkRateLimit;
     private setupRoutes;
+    setHistoryManager(manager: ToolHistoryManager): void;
     private handleSSEConnection;
     private sendSSEEvent;
     private handleCommandsPoll;

@@ -3,6 +3,9 @@ export interface ToolResult<T = unknown> {
     success: boolean;
     data?: T;
     error?: string;
+    code?: string;
+    alternatives?: string[];
+    proFeature?: boolean;
 }
 export declare function executeTool<T = unknown>(action: string, params?: Record<string, unknown>, timeoutMs?: number): Promise<ToolResult<T>>;
 export declare function executeToolSuccess<T = unknown>(action: string, params?: Record<string, unknown>, timeoutMs?: number): Promise<T>;
