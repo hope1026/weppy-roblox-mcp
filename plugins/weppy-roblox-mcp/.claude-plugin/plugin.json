@@ -17,20 +17,11 @@
     "roblox-studio",
     "skills"
   ],
-  "mcp": {
-    "command": "node",
-    "args": [
-      "dist/index.js"
-    ]
-  },
-  "skills": [
-    {
-      "name": "roblox-game-dev",
-      "description": "Master orchestrator for Roblox game development. Handles sync, planning, development, and re-sync in a unified workflow."
-    },
-    {
-      "name": "roblox-sync",
-      "description": "Studio state synchronization with local cache"
+  "mcpServers": {
+    "weppy-roblox-mcp": {
+      "command": "node",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/dist/index.js"]
     }
-  ]
+  },
+  "skills": "./skills/"
 }
