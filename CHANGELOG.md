@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 
 
+
+## [0.1.6] - 2026-02-07
+
+### Other Changes
+
+- refactor: improve stability
+
 ## [0.1.5] - 2026-02-07
 
 ### Other Changes
