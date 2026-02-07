@@ -44,9 +44,6 @@ MCP server harus sudah terinstal. Selesaikan panduan yang sesuai dengan aplikasi
 1. Buka proyek apa saja di **Roblox Studio**
 2. Tab **Plugins** di atas → Klik **W-MCP**
 3. Klik tombol **Connect** di jendela plugin
-
-![Panduan Koneksi](../../assets/screenshots/connection_guide.png)
-
 4. Jika status **"Connected"** ditampilkan, koneksi berhasil!
 
 ![Layar Utama Plugin](../../assets/screenshots/plugin_main.png)
