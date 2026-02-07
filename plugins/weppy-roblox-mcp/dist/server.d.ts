@@ -3,6 +3,7 @@ export declare class RobloxMCPServer {
     private server;
     private httpBridge;
     private config;
+    private historyManager;
     constructor(config: ServerConfig);
     private setupHandlers;
     private executeTool;

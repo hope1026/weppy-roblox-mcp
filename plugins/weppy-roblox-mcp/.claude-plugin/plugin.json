@@ -29,10 +29,6 @@
       "description": "Master orchestrator for Roblox game development. Handles sync, planning, development, and re-sync in a unified workflow."
     },
     {
-      "name": "roblox-recommended-assets",
-      "description": "Curated Roblox Creator Store assets. Use when inserting models, characters, effects, or referencing asset IDs."
-    },
-    {
       "name": "roblox-sync",
       "description": "Studio state synchronization with local cache"
     }

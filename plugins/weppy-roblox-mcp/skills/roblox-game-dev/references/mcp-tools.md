@@ -67,6 +67,7 @@ For detailed parameters, check MCP tool definitions directly.
 | `get_studio_settings` | Get Studio settings |
 | `run_command` | Run Studio command |
 | `watch_selection` | Watch selection changes |
+| `get_cached_selection` | Get cached selection state |
 
 ## Search
 
@@ -146,12 +147,7 @@ For detailed parameters, check MCP tool definitions directly.
 | `sync_workspace_state` | Sync workspace state |
 | `get_workspace_snapshot` | Get workspace snapshot |
 | `get_recent_changes` | Get recent changes |
-| `clear_change_history` | Clear change history |
 | `get_viewport_info` | Get viewport state info |
-| `get_workspace_metadata` | Get workspace metadata |
-| `get_script_list` | Get list of scripts |
-| `get_selection_info` | Get selection info |
-| `clear_state_cache` | Clear state cache |
 
 ## Environment
 
