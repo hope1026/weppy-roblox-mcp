@@ -3,28 +3,15 @@
 All notable changes to this project will be documented in this file.
 
 
+## [0.1.8] - 2026-02-08
 
-
-## [0.1.7] - 2026-02-07
-
-
-## [0.1.6] - 2026-02-07
-
-### Other Changes
-
-- refactor: improve stability
-
-## [0.1.5] - 2026-02-07
-
-### Other Changes
-
-- update guide
+### Fix
+- improve stability
 
 
 ## [0.1.3] - 2026-02-07
 
 ### Features
-
 - add tool history and statistics tracking system
 - add version info display in plugin UI
 
