@@ -6,7 +6,7 @@
 
 **Juegos mas completos** - Con herramientas de terreno, entorno, assets y espacio, puedes crear mundos de juego terminados, no solo prototipos.
 
-## Herramientas que agrega Pro (72)
+## Herramientas que agrega Pro
 
 | Categoria | Funciones |
 |-----------|-----------|
@@ -36,12 +36,12 @@
 
 1. Abre el plugin W-MCP
 2. Verifica que aparezca la insignia "Pro"
-3. ¡Las 140 herramientas completas estan disponibles!
+3. Todas las herramientas estan disponibles!
 
 ## Comparacion de Funciones
 
-| Funcion | Basic (68) | Pro (140) |
-|---------|:----------:|:---------:|
+| Funcion | Basic | Pro |
+|---------|:-----:|:---:|
 | Instance, Script, Property | ✅ Acceso completo | ✅ Acceso completo |
 | Selection, Tag, Camera, Log | ✅ Acceso completo | ✅ Acceso completo |
 | Operaciones masivas (Bulk) | ― | ✅ Ilimitado |

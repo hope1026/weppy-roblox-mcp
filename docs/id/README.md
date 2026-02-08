@@ -42,7 +42,7 @@ Cari model gratis dan aset dari Creator Store, langsung masuk ke game. "Cari mod
 
 AI bisa cek log error, cari masalahnya, dan memperbaikinya bareng kamu.
 
-> Total **140 alat** tersedia — [Lihat daftar lengkap](tools/overview.md)
+> [Lihat daftar lengkap](tools/overview.md)
 
 ## Mulai
 
