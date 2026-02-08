@@ -1,47 +1,46 @@
 # Roblox MCP
 
-[English](../en/README.md) | [한국어](../ko/README.md) | [日本語](../ja/README.md) | **Español** | [Português](../pt-br/README.md) | [Bahasa Indonesia](../id/README.md)
+> Habla con la IA y se ejecuta directamente en Roblox Studio.
 
-> Controla Roblox Studio con IA.
+[English](../../README.md) | [한국어](../ko/README.md) | [日本語](../ja/README.md) | **Español** | [Português](../pt-br/README.md) | [Bahasa Indonesia](../id/README.md)
 
 [![Demo](https://img.youtube.com/vi/3jrUpBbZPaw/maxresdefault.jpg)](https://youtu.be/3jrUpBbZPaw)
 
-## Instrucciones de Instalacion
+## Qué puedes hacer
 
-### 1. Instalar el Plugin de Roblox
+### Crear juegos completos de una vez
+Puedes pedir cosas como "Crea un juego de supervivencia estilo Minecraft" o "Crea un juego de escape room", y la IA diseñará la estructura del juego, creará mapas, objetos y scripts por ti. Con una simple idea, puedes tener un juego jugable.
+> **Tip**: Pide primero "Haz un plan", revísalo y luego di "Ejecútalo" para obtener mejores resultados.
 
-👉 [Guia de instalacion del plugin](installation/roblox-plugin.md)
+### Crear y colocar objetos
+"Crea una casa de ladrillos rojos", "Planta 10 árboles en línea"
 
-### 2. Configuracion del Servidor MCP
+### Escribir y modificar scripts
+"Haz que salgan partículas cuando el jugador salte", "Encuentra el bug en este script"
 
-Se puede usar con cualquier aplicacion de IA que soporte MCP. Consulta la guia correspondiente a tu aplicacion de IA:
+### Configurar la atmósfera del mapa
+"Cámbialo a ambiente de atardecer", "Hazlo oscuro como un día lluvioso"
 
-| Aplicacion IA | Guia de instalacion |
-|---------------|---------------------|
-| Claude Code | [Como configurar](installation/claude-code.md) |
-| Claude Desktop | [Como configurar](installation/claude-app.md) |
-| Codex CLI | [Como configurar](installation/codex-cli.md) |
-| Codex Desktop | [Como configurar](installation/codex-app.md) |
-| Gemini CLI | [Como configurar](installation/gemini-cli.md) |
-| Cursor, Windsurf, etc. | [Como configurar](installation/antigravity.md) |
+### Generar terrenos
+Crea terrenos naturales como montañas, ríos, llanuras y cuevas solo con conversación
 
-## Lista de Herramientas
+### Buscar e insertar assets
+Busca e inserta modelos gratuitos del Creator Store. "Busca e inserta un modelo de castillo medieval"
 
-👉 [Ver lista completa de herramientas](tools/overview.md)
+### Análisis espacial y colocación
+"Encuentra espacios vacíos en esta área", "Analiza el área donde los monstruos pueden caminar"
 
-## Solucion de Problemas
+### Depuración y análisis
+Revisa logs de errores, encuentra problemas y corrige
 
-- **"Not Connected"**: Presiona el boton Connect nuevamente en el plugin
-- **Puerto**: Usa el puerto 3002 (localhost)
+> Total de **140 herramientas** — [Ver lista completa de funciones](tools/overview.md)
+
+## Comenzar
+1. **Instalar el plugin de Roblox Studio** — Conecta Studio con la IA
+2. **Registrar el servidor MCP en tu app de IA** — Para que la app de IA lo reconozca
+
+Toma solo 5 minutos. 👉 [Ver guía de instalación](installation/README.md)
 
 ## Enlaces
-
 - [GitHub](https://github.com/hope1026/roblox-mcp)
 - [Reportar problemas](https://github.com/hope1026/roblox-mcp/issues)
-
-## Licencia
-
-Uso gratuito para desarrollo de juegos.
-
-✅ **Permitido**: Desarrollo de juegos, juegos comerciales, proyectos personales
-❌ **No permitido**: Reventa de software, desarrollo de productos competidores

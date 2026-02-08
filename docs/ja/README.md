@@ -1,47 +1,59 @@
 # Roblox MCP
 
-[English](../en/README.md) | [한국어](../ko/README.md) | **日本語** | [Español](../es/README.md) | [Português](../pt-br/README.md) | [Bahasa Indonesia](../id/README.md)
+[English](../../README.md) | [한국어](../ko/README.md) | **日本語** | [Español](../es/README.md) | [Português](../pt-br/README.md) | [Bahasa Indonesia](../id/README.md)
 
-> AIでRoblox Studioを操作しましょう。
+> AIに話しかけるだけで、Roblox Studioで実行されます。
 
-[![Demo](https://img.youtube.com/vi/3jrUpBbZPaw/maxresdefault.jpg)](https://youtu.be/3jrUpBbZPaw)
+[![デモ](https://img.youtube.com/vi/3jrUpBbZPaw/maxresdefault.jpg)](https://youtu.be/3jrUpBbZPaw)
 
-## インストール方法
+## できること
 
-### 1. Robloxプラグインのインストール
+### ゲームを一度に作成
 
-👉 [プラグインインストールガイド](installation/roblox-plugin.md)
+「マインクラフト風のサバイバルゲームを作って」「脱出パズルゲームを作って」のようにリクエストすると、AIがゲーム構造を設計し、マップ、オブジェクト、スクリプトまで直接作成してくれます。シンプルなアイデア一つで、プレイ可能なゲームを完成できます。
 
-### 2. MCPサーバーの設定
+> **ヒント**: 「まず計画を立てて」とリクエストしてから、計画を確認して「実行して」と指示すると、より完成度の高い結果が得られます。
 
-MCPをサポートするすべてのAIアプリで使用できます。お使いのAIアプリに合ったガイドをご確認ください:
+### オブジェクトの作成と配置
 
-| AIアプリ | インストールガイド |
-|-------|-------------|
-| Claude Code | [設定方法](installation/claude-code.md) |
-| Claude Desktop | [設定方法](installation/claude-app.md) |
-| Codex CLI | [設定方法](installation/codex-cli.md) |
-| Codex Desktop | [設定方法](installation/codex-app.md) |
-| Gemini CLI | [設定方法](installation/gemini-cli.md) |
-| Cursor, Windsurf など | [設定方法](installation/antigravity.md) |
+「赤いレンガの家を作って」「木を10本一列に植えて」のように言うと、AIがRoblox Studioに直接作成してくれます。一つずつ作ることもできますし、数百個を一度に作ることもできます。
 
-## ツール一覧
+### スクリプトの作成と修正
 
-👉 [全ツール一覧を見る](tools/overview.md)
+「プレイヤーがジャンプしたらパーティクルを出して」「このスクリプトのバグを見つけて」のようにリクエストすると、AIが直接コードを作成・修正します。既存のスクリプトを分析し、依存関係も把握してくれます。
 
-## トラブルシューティング
+### マップの雰囲気設定
 
-- **"Not Connected"**: プラグインでConnectボタンを再度押してください
-- **ポート**: 3002番ポートを使用します (localhost)
+「夕焼けの雰囲気に変えて」「雨の日のように暗くして」の一言で、照明、空、霧を自動的に調整します。
+
+### 地形の生成
+
+山、川、平原、洞窟などの自然地形を会話だけで作成できます。素材、色、サイズも自由に調整できます。
+
+### アセットの検索と挿入
+
+Creator Storeから無料モデルとアセットを検索して、すぐにゲームに追加できます。「中世の城のモデルを探して入れて」のように言うだけです。
+
+### 空間分析と配置
+
+「このエリアの空きスペースを見つけて」「モンスターが歩き回れるエリアを分析して」のような空間関連の作業もAIが処理します。
+
+### デバッグと分析
+
+ゲームのエラーログを確認し、問題を見つけて修正するところまでAIと一緒にできます。
+
+> 合計**140個のツール**をサポート — [全機能リスト](tools/overview.md)
+
+## はじめに
+
+インストールは2つのステップで完了します:
+
+1. **Roblox Studioプラグインのインストール** — StudioとAIを接続する橋渡しの役割をします
+2. **AIアプリにMCPサーバーを登録** — 使用するAIアプリでRoblox MCPを認識できるように設定します
+
+5分で終わります。👉 [インストールガイド](installation/README.md)
 
 ## リンク
 
 - [GitHub](https://github.com/hope1026/roblox-mcp)
 - [Issue報告](https://github.com/hope1026/roblox-mcp/issues)
-
-## ライセンス
-
-ゲーム開発に無料で使用できます。
-
-✅ **許可**: ゲーム開発、商用ゲーム、個人プロジェクト
-❌ **不可**: ソフトウェアの再販売、競合製品の開発

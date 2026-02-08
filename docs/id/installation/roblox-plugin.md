@@ -32,12 +32,12 @@ MCP server harus sudah terinstal. Selesaikan panduan yang sesuai dengan aplikasi
 
 | Aplikasi AI | Panduan Instalasi |
 |-------------|-------------------|
-| Claude Code | [Cara Konfigurasi](claude-code.md) |
-| Claude Desktop | [Cara Konfigurasi](claude-app.md) |
-| Codex CLI | [Cara Konfigurasi](codex-cli.md) |
-| Codex Desktop | [Cara Konfigurasi](codex-app.md) |
-| Gemini CLI | [Cara Konfigurasi](gemini-cli.md) |
-| Cursor, Windsurf, dll | [Cara Konfigurasi](antigravity.md) |
+| Claude Code | [Cara Konfigurasi](ai-apps/claude-code.md) |
+| Claude Desktop | [Cara Konfigurasi](ai-apps/claude-app.md) |
+| Codex CLI | [Cara Konfigurasi](ai-apps/codex-cli.md) |
+| Codex Desktop | [Cara Konfigurasi](ai-apps/codex-app.md) |
+| Gemini CLI | [Cara Konfigurasi](ai-apps/gemini-cli.md) |
+| Antigravity | [Cara Konfigurasi](ai-apps/antigravity.md) |
 
 ### Menghubungkan
 

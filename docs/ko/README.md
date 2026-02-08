@@ -1,47 +1,59 @@
 # Roblox MCP
 
-[English](../en/README.md) | **한국어** | [日本語](../ja/README.md) | [Español](../es/README.md) | [Português](../pt-br/README.md) | [Bahasa Indonesia](../id/README.md)
+[English](../../README.md) | **한국어** | [日本語](../ja/README.md) | [Español](../es/README.md) | [Português](../pt-br/README.md) | [Bahasa Indonesia](../id/README.md)
 
-> AI로 Roblox Studio를 제어하세요.
+> AI에게 말하면, Roblox Studio에서 바로 실행됩니다.
 
 [![Demo](https://img.youtube.com/vi/3jrUpBbZPaw/maxresdefault.jpg)](https://youtu.be/3jrUpBbZPaw)
 
-## 설치 방법
+## 이런 것들을 할 수 있어요
 
-### 1. Roblox 플러그인 설치
+### 게임 한번에 만들기
 
-👉 [플러그인 설치 가이드](installation/roblox-plugin.md)
+"마인크래프트 스타일 서바이벌 게임 만들어줘", "방탈출 퍼즐 게임 만들어줘"처럼 요청하면, AI가 게임 구조를 설계하고 맵, 오브젝트, 스크립트까지 직접 만들어줍니다. 간단한 아이디어 하나로 플레이 가능한 게임을 완성할 수 있어요.
 
-### 2. MCP 서버 설정
+> **Tip**: "먼저 계획을 세워줘"라고 요청한 뒤, 계획을 확인하고 "실행해줘"라고 지시하면 더 완성도 높은 결과를 얻을 수 있습니다.
 
-MCP를 지원하는 모든 AI 앱에서 사용할 수 있습니다. 사용하는 AI 앱에 맞는 가이드를 확인하세요:
+### 오브젝트 만들기와 배치
 
-| AI 앱 | 설치 가이드 |
-|-------|-------------|
-| Claude Code | [설정 방법](installation/claude-code.md) |
-| Claude Desktop | [설정 방법](installation/claude-app.md) |
-| Codex CLI | [설정 방법](installation/codex-cli.md) |
-| Codex Desktop | [설정 방법](installation/codex-app.md) |
-| Gemini CLI | [설정 방법](installation/gemini-cli.md) |
-| Cursor, Windsurf 등 | [설정 방법](installation/antigravity.md) |
+"빨간 벽돌 집을 만들어줘", "나무 10그루를 일렬로 심어줘"처럼 말하면 AI가 Roblox Studio에 직접 만들어줍니다. 하나씩 만들 수도 있고, 수백 개를 한번에 만들 수도 있어요.
 
-## 도구 목록
+### 스크립트 작성과 수정
 
-👉 [전체 도구 목록 보기](tools/overview.md)
+"플레이어가 점프하면 파티클이 나오게 해줘", "이 스크립트에서 버그 찾아줘"처럼 요청하면 AI가 코드를 직접 작성하고 수정합니다. 기존 스크립트를 분석하고, 의존성도 파악해줘요.
 
-## 문제 해결
+### 맵 분위기 설정
 
-- **"Not Connected"**: 플러그인에서 Connect 버튼을 다시 눌러주세요
-- **포트**: 3002번 포트를 사용합니다 (localhost)
+"석양 분위기로 바꿔줘", "비오는 날처럼 어둡게 해줘" 한마디면 조명, 하늘, 안개를 자동으로 조절합니다.
+
+### 지형 생성
+
+산, 강, 평원, 동굴 같은 자연 지형을 대화만으로 만들 수 있습니다. 재질, 색상, 크기도 자유롭게 조절하세요.
+
+### 에셋 검색과 삽입
+
+Creator Store에서 무료 모델과 에셋을 검색해서 바로 게임에 넣을 수 있습니다. "중세 성 모델 찾아서 넣어줘"처럼 말하면 돼요.
+
+### 공간 분석과 배치
+
+"이 영역에 빈 공간 찾아줘", "몬스터가 걸어다닐 수 있는 영역 분석해줘" 같은 공간 관련 작업도 AI가 처리합니다.
+
+### 디버깅과 분석
+
+게임 에러 로그를 확인하고, 문제를 찾아서 수정하는 것까지 AI와 함께할 수 있습니다.
+
+> 총 **140개 도구**를 지원합니다 — [전체 기능 목록 보기](tools/overview.md)
+
+## 시작하기
+
+설치는 두 단계로 완료됩니다:
+
+1. **Roblox Studio 플러그인 설치** — Studio와 AI를 연결하는 다리 역할을 합니다
+2. **AI 앱에 MCP 서버 등록** — 사용하는 AI 앱에서 Roblox MCP를 인식하도록 설정합니다
+
+5분이면 끝나요. 👉 [설치 가이드 보기](installation/README.md)
 
 ## 링크
 
 - [GitHub](https://github.com/hope1026/roblox-mcp)
 - [이슈 리포트](https://github.com/hope1026/roblox-mcp/issues)
-
-## 라이선스
-
-게임 개발에 무료로 사용할 수 있습니다.
-
-✅ **허용**: 게임 개발, 상업용 게임, 개인 프로젝트
-❌ **불가**: 소프트웨어 재판매, 경쟁 제품 개발

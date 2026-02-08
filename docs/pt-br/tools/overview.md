@@ -1,238 +1,281 @@
-# Ferramentas do Roblox MCP
+# Visão Geral das Ferramentas
 
-Para parametros detalhados das ferramentas MCP, consulte diretamente as definicoes das ferramentas MCP.
-
----
-
-## Ferramentas Basic (68)
-
-### Instance (Instancia) - 13
-
-| Ferramenta | Descricao |
-|------------|-----------|
-| `create_instance` | Criar nova instancia |
-| `create_instance_with_properties` | Criar instancia com propriedades |
-| `clone_instance` | Clonar instancia existente |
-| `delete_instance` | Excluir instancia |
-| `move_instance` | Mover instancia para novo pai |
-| `rename_instance` | Renomear instancia |
-| `get_instance` | Obter informacoes da instancia |
-| `get_instance_children` | Obter lista de filhos da instancia |
-| `find_first_child` | Encontrar primeiro filho por nome |
-| `find_first_descendant` | Encontrar primeiro descendente por nome |
-| `get_class_info` | Obter informacoes da classe |
-| `wait_for_child` | Aguardar ate que o filho apareca |
-| `pivot_to` | Definir Pivot CFrame |
-
-### Property (Propriedade) - 10
-
-| Ferramenta | Descricao |
-|------------|-----------|
-| `get_property` | Obter valor da propriedade |
-| `set_property` | Definir valor da propriedade |
-| `get_all_properties` | Obter todas as propriedades |
-| `set_multiple_properties` | Definir multiplas propriedades simultaneamente |
-| `set_calculated_property` | Definir propriedade com valor calculado |
-| `set_relative_property` | Definir propriedade com valor relativo |
-| `get_attribute` | Obter valor do atributo |
-| `set_attribute` | Definir valor do atributo |
-| `get_all_attributes` | Obter todos os atributos |
-| `delete_attribute` | Excluir atributo |
-
-### Script - 9
-
-| Ferramenta | Descricao |
-|------------|-----------|
-| `create_script` | Criar novo script |
-| `get_script_source` | Obter codigo fonte do script |
-| `set_script_source` | Atualizar codigo fonte do script |
-| `delete_script` | Excluir script |
-| `edit_script_lines` | Editar linhas especificas |
-| `insert_script_lines` | Inserir linhas |
-| `delete_script_lines` | Excluir linhas |
-| `search_in_scripts` | Pesquisar em scripts |
-| `get_script_dependencies` | Obter dependencias |
-
-### Selection (Selecao) - 12
-
-| Ferramenta | Descricao |
-|------------|-----------|
-| `get_selection` | Obter instancias selecionadas atualmente |
-| `get_selection_context` | Obter selecao com contexto |
-| `get_selection_details` | Obter detalhes da selecao |
-| `set_selection` | Definir selecao de instancias |
-| `clear_selection` | Limpar selecao |
-| `add_to_selection` | Adicionar a selecao |
-| `remove_from_selection` | Remover da selecao |
-| `get_place_info` | Obter informacoes do Place |
-| `get_services` | Obter lista de servicos do jogo |
-| `get_studio_settings` | Obter configuracoes do Studio |
-| `run_command` | Executar comando do Studio |
-| `watch_selection` | Monitorar alteracoes de selecao |
-
-### Search (Pesquisa) - 2
-
-| Ferramenta | Descricao |
-|------------|-----------|
-| `search_by_name` | Pesquisar instancias por nome |
-| `search_by_class` | Pesquisar instancias por classe |
-
-### Tag - 5
-
-| Ferramenta | Descricao |
-|------------|-----------|
-| `add_tag` | Adicionar tag a instancia |
-| `remove_tag` | Remover tag da instancia |
-| `get_tags` | Obter lista de tags da instancia |
-| `get_tagged` | Obter lista de instancias com tag |
-| `has_tag` | Verificar se instancia possui tag |
-
-### Camera - 4
-
-| Ferramenta | Descricao |
-|------------|-----------|
-| `get_camera_info` | Obter informacoes da camera |
-| `get_suggested_camera_view` | Obter visualizacao de camera sugerida |
-| `focus_camera_path` | Focar camera em instancia por caminho |
-| `focus_camera_position` | Focar camera em posicao do mundo |
-
-### Log - 3
-
-| Ferramenta | Descricao |
-|------------|-----------|
-| `get_output_logs` | Obter logs de saida |
-| `clear_output_logs` | Limpar logs de saida |
-| `get_recent_errors` | Obter erros recentes |
-
-### Connection (Conexao) - 2
-
-| Ferramenta | Descricao |
-|------------|-----------|
-| `get_connection_info` | Obter status da conexao |
-| `get_usage_status` | Obter status de uso/cota |
+O Roblox MCP oferece **140 ferramentas** divididas em duas versões:
 
 ---
 
-## Ferramentas Pro (+72)
-👉 [Guia de Upgrade para Pro](pro-upgrade.md)
+## Ferramentas Basic (68) — Gratuito
 
-### Script - 2
+Ferramentas essenciais para desenvolvimento Roblox. Totalmente gratuitas.
 
-| Ferramenta | Descricao |
+### Gerenciamento de Objetos - 13
+
+Crie, delete, clone, mova e renomeie instâncias no Studio.
+
+| Ferramenta | Descrição |
 |------------|-----------|
-| `replace_in_scripts` | Substituir conteudo em scripts em massa |
-| `execute_script` | Executar codigo Luau diretamente |
+| `create_instance` | Cria uma nova instância |
+| `create_instance_with_properties` | Cria instância com propriedades |
+| `clone_instance` | Clona uma instância existente |
+| `delete_instance` | Deleta uma instância |
+| `move_instance` | Move instância para novo parent |
+| `rename_instance` | Renomeia uma instância |
+| `get_instance` | Obtém informações de uma instância |
+| `get_instance_children` | Lista filhos de uma instância |
+| `find_first_child` | Encontra primeiro filho por nome |
+| `find_first_descendant` | Encontra primeiro descendente por nome |
+| `get_class_info` | Obtém informações sobre uma classe |
+| `wait_for_child` | Aguarda até filho aparecer |
+| `pivot_to` | Define Pivot CFrame |
 
-### Search (Pesquisa) - 6
+### Propriedades - 10
 
-| Ferramenta | Descricao |
+Leia e modifique propriedades e atributos de objetos.
+
+| Ferramenta | Descrição |
 |------------|-----------|
-| `get_file_tree` | Obter arvore de arquivos |
-| `get_project_structure` | Obter arvore de estrutura do projeto |
-| `search_by_property` | Pesquisar por propriedade |
-| `search_by_tag` | Pesquisar por tag |
-| `get_descendants` | Obter todos os descendentes |
-| `get_ancestors` | Obter ancestrais |
+| `get_property` | Obtém valor de propriedade |
+| `set_property` | Define valor de propriedade |
+| `get_all_properties` | Lista todas propriedades |
+| `set_multiple_properties` | Define várias propriedades |
+| `set_calculated_property` | Define propriedade com valor calculado |
+| `set_relative_property` | Define propriedade com valor relativo |
+| `get_attribute` | Obtém atributo customizado |
+| `set_attribute` | Define atributo customizado |
+| `get_all_attributes` | Lista todos atributos |
+| `delete_attribute` | Remove atributo |
 
-### Bulk (Operacoes em Massa) - 8
+### Scripts - 9
 
-| Ferramenta | Descricao |
+Crie, edite e analise scripts Luau.
+
+| Ferramenta | Descrição |
 |------------|-----------|
-| `mass_create_instances` | Criar instancias em massa |
-| `mass_delete_instances` | Excluir instancias em massa |
-| `mass_set_property` | Definir propriedades em massa |
-| `mass_get_property` | Obter propriedades em massa |
-| `mass_duplicate` | Duplicar instancias em massa |
-| `smart_duplicate` | Duplicacao inteligente com offset |
-| `batch_execute` | Executar multiplos comandos em lote |
-| `modify_children` | Modificar todos os filhos |
+| `create_script` | Cria novo script |
+| `get_script_source` | Lê código de um script |
+| `set_script_source` | Substitui código do script |
+| `delete_script` | Deleta script |
+| `edit_script_lines` | Edita linhas específicas |
+| `insert_script_lines` | Insere novas linhas |
+| `delete_script_lines` | Remove linhas |
+| `search_in_scripts` | Busca texto em scripts |
+| `get_script_dependencies` | Obtém dependências |
 
-### Asset (Ativo) - 7
+### Controle do Studio - 12
 
-| Ferramenta | Descricao |
+Gerencie seleção, visualização e estado do Studio.
+
+| Ferramenta | Descrição |
 |------------|-----------|
-| `insert_model` | Inserir modelo da Creator Store |
-| `get_asset_info` | Obter informacoes do ativo |
-| `search_creator_store` | Pesquisar ativos na Creator Store |
-| `search_and_insert_model` | Pesquisar e inserir modelo |
-| `insert_free_model` | Inserir modelo gratuito |
-| `insert_package` | Inserir pacote |
-| `export_selection` | Exportar selecao |
+| `get_selection` | Obtém objetos selecionados |
+| `get_selection_context` | Contexto da seleção atual |
+| `get_selection_details` | Detalhes completos da seleção |
+| `set_selection` | Define seleção |
+| `clear_selection` | Limpa seleção |
+| `add_to_selection` | Adiciona à seleção |
+| `remove_from_selection` | Remove da seleção |
+| `get_place_info` | Informações do place |
+| `get_services` | Lista serviços disponíveis |
+| `get_studio_settings` | Configurações do Studio |
+| `run_command` | Executa comando do Studio |
+| `watch_selection` | Monitora alterações de seleção |
 
-### Environment (Ambiente) - 5
+### Busca - 2
 
-| Ferramenta | Descricao |
+Encontre objetos por nome ou classe.
+
+| Ferramenta | Descrição |
 |------------|-----------|
-| `set_lighting` | Definir propriedades de iluminacao |
-| `set_atmosphere` | Definir propriedades de Atmosphere |
-| `set_sky` | Definir propriedades de Sky |
-| `set_terrain` | Definir propriedades de Terrain |
-| `set_time_of_day` | Definir hora do dia |
+| `search_by_name` | Busca por nome |
+| `search_by_class` | Busca por classe |
 
-### State (Estado) - 9
+### Tags - 5
 
-| Ferramenta | Descricao |
+Gerencie Collection Service tags.
+
+| Ferramenta | Descrição |
 |------------|-----------|
-| `sync_workspace_state` | Sincronizar estado do Workspace |
-| `get_workspace_snapshot` | Obter snapshot do Workspace |
-| `get_recent_changes` | Obter alteracoes recentes |
-| `clear_change_history` | Limpar historico de alteracoes |
-| `get_viewport_info` | Obter informacoes do viewport |
-| `get_workspace_metadata` | Obter metadados do Workspace |
-| `get_script_list` | Obter lista de scripts |
-| `get_selection_info` | Obter informacoes de selecao |
-| `clear_state_cache` | Limpar cache de estado |
+| `add_tag` | Adiciona tag |
+| `remove_tag` | Remove tag |
+| `get_tags` | Lista tags de instância |
+| `get_tagged` | Encontra instâncias com tag |
+| `has_tag` | Verifica se tem tag |
 
-### Spatial (Espacial) - 5
+### Câmera - 4
 
-| Ferramenta | Descricao |
+Controle posição e foco da câmera.
+
+| Ferramenta | Descrição |
 |------------|-----------|
-| `get_spatial_map` | Obter mapa espacial da area |
-| `find_empty_space` | Encontrar espaco vazio na area |
-| `get_bounds` | Obter bounding box da instancia |
-| `snap_to_grid` | Ajustar posicao a grade |
-| `check_collision` | Verificar colisao entre instancias |
+| `get_camera_info` | Informações da câmera |
+| `get_suggested_camera_view` | Sugestão de visão de câmera |
+| `focus_camera_path` | Foca em instância por caminho |
+| `focus_camera_position` | Foca em posição do mundo |
+
+### Logs - 3
+
+Leia mensagens do Output do Studio.
+
+| Ferramenta | Descrição |
+|------------|-----------|
+| `get_output_logs` | Obtém logs do Output |
+| `clear_output_logs` | Limpa logs |
+| `get_recent_errors` | Erros recentes |
+
+### Conexão - 2
+
+Monitore status da conexão.
+
+| Ferramenta | Descrição |
+|------------|-----------|
+| `get_connection_info` | Status da conexão |
+| `get_usage_status` | Estatísticas de uso |
+
+---
+
+## Ferramentas Pro (+72) — Upgrade Necessário
+
+Ferramentas avançadas para desenvolvimento profissional.
+
+👉 [Guia de Upgrade para Pro](../pro-upgrade.md)
+
+### Scripts Avançados - 2
+
+Análise de dependências e execução dinâmica.
+
+| Ferramenta | Descrição |
+|------------|-----------|
+| `replace_in_scripts` | Substitui conteúdo em scripts em massa |
+| `execute_script` | Executa código Luau diretamente |
+
+### Busca Avançada - 6
+
+Busca hierárquica e por propriedades.
+
+| Ferramenta | Descrição |
+|------------|-----------|
+| `get_file_tree` | Árvore completa do projeto |
+| `get_project_structure` | Estrutura do projeto |
+| `search_by_property` | Busca por valor de propriedade |
+| `search_by_tag` | Busca por tag |
+| `get_descendants` | Lista todos descendentes |
+| `get_ancestors` | Lista ancestrais |
+
+### Operações em Massa - 8
+
+Execute ações em centenas de objetos simultaneamente.
+
+| Ferramenta | Descrição |
+|------------|-----------|
+| `mass_create_instances` | Cria múltiplas instâncias |
+| `mass_delete_instances` | Deleta múltiplas instâncias |
+| `mass_set_property` | Define propriedade em massa |
+| `mass_get_property` | Obtém propriedade em massa |
+| `mass_duplicate` | Duplica múltiplos objetos |
+| `smart_duplicate` | Duplicação inteligente com offset |
+| `batch_execute` | Executa múltiplos comandos |
+| `modify_children` | Modifica todos filhos |
+
+### Assets - 7
+
+Busque e insira modelos do Creator Store.
+
+| Ferramenta | Descrição |
+|------------|-----------|
+| `insert_model` | Insere modelo por ID |
+| `get_asset_info` | Informações sobre asset |
+| `search_creator_store` | Busca no marketplace |
+| `search_and_insert_model` | Busca e insere automaticamente |
+| `insert_free_model` | Insere modelo gratuito |
+| `insert_package` | Insere package |
+| `export_selection` | Exporta seleção |
+
+### Ambiente - 5
+
+Configure iluminação, atmosfera e tempo.
+
+| Ferramenta | Descrição |
+|------------|-----------|
+| `set_lighting` | Define propriedades de iluminação |
+| `set_atmosphere` | Define propriedades de Atmosphere |
+| `set_sky` | Define propriedades de Sky |
+| `set_terrain` | Define propriedades de Terrain |
+| `set_time_of_day` | Define horário do dia |
+
+### Gerenciamento de Estado - 9
+
+Snapshots, histórico e sincronização.
+
+| Ferramenta | Descrição |
+|------------|-----------|
+| `sync_workspace_state` | Sincroniza estado do Workspace |
+| `get_workspace_snapshot` | Captura snapshot |
+| `get_recent_changes` | Lista mudanças recentes |
+| `clear_change_history` | Limpa histórico de alterações |
+| `get_viewport_info` | Informações do viewport |
+| `get_workspace_metadata` | Metadados do Workspace |
+| `get_script_list` | Lista de scripts |
+| `get_selection_info` | Informações de seleção |
+| `clear_state_cache` | Limpa cache de estado |
+
+### Análise Espacial - 5
+
+Detecção de colisão e análise geométrica.
+
+| Ferramenta | Descrição |
+|------------|-----------|
+| `get_spatial_map` | Mapa espacial da área |
+| `find_empty_space` | Encontra espaço vazio |
+| `get_bounds` | Limites de objetos |
+| `snap_to_grid` | Ajusta à grade |
+| `check_collision` | Verifica colisão |
 
 ### Raycast - 8
 
-| Ferramenta | Descricao |
+Raycasting avançado e detecção de superfície.
+
+| Ferramenta | Descrição |
 |------------|-----------|
-| `raycast` | Executar raycast e obter informacoes de colisao |
-| `find_ground` | Encontrar posicao do solo naquele ponto |
-| `check_placement` | Verificar se objeto pode ser colocado |
-| `multi_raycast` | Executar multiplos raycasts |
-| `scan_area` | Escanear area e gerar mapa de altura |
-| `find_flat_areas` | Encontrar areas planas para colocacao |
-| `find_spawn_positions` | Encontrar posicoes de spawn validas |
-| `analyze_walkable_area` | Analisar area transitavel |
+| `raycast` | Dispara raio |
+| `find_ground` | Encontra chão |
+| `check_placement` | Verifica posicionamento |
+| `multi_raycast` | Múltiplos raycasts |
+| `scan_area` | Escaneia área |
+| `find_flat_areas` | Áreas planas |
+| `find_spawn_positions` | Posições de spawn |
+| `analyze_walkable_area` | Área navegável |
 
-### Terrain (Terreno) - 14
+### Terreno - 14
 
-| Ferramenta | Descricao |
+Geração e edição procedural de terreno.
+
+| Ferramenta | Descrição |
 |------------|-----------|
-| `terrain_fill_block` | Preencher terreno em forma de bloco |
-| `terrain_fill_ball` | Preencher terreno em forma de esfera |
-| `terrain_fill_cylinder` | Preencher terreno em forma de cilindro |
-| `terrain_fill_wedge` | Preencher terreno em forma de cunha |
-| `terrain_clear` | Limpar terreno (usando objeto Region) |
-| `terrain_clear_region` | Limpar terreno (usando coordenadas min/max) |
-| `terrain_replace_material` | Substituir material do terreno |
-| `terrain_get_material_color` | Obter cor do material do terreno |
-| `terrain_set_material_color` | Definir cor do material do terreno |
-| `terrain_read_voxel` | Ler voxel unico |
-| `terrain_read_voxels` | Ler dados de voxels |
-| `terrain_write_voxels` | Escrever dados de voxels |
-| `terrain_generate` | Gerar terreno proceduralmente |
-| `terrain_smooth` | Suavizar terreno |
+| `terrain_fill_block` | Preenche bloco |
+| `terrain_fill_ball` | Preenche esfera |
+| `terrain_fill_cylinder` | Preenche cilindro |
+| `terrain_fill_wedge` | Preenche cunha |
+| `terrain_clear` | Limpa tudo |
+| `terrain_clear_region` | Limpa região |
+| `terrain_replace_material` | Substitui material |
+| `terrain_get_material_color` | Cor do material |
+| `terrain_set_material_color` | Define cor do material |
+| `terrain_read_voxel` | Lê voxel |
+| `terrain_read_voxels` | Lê voxels |
+| `terrain_write_voxels` | Escreve voxels |
+| `terrain_generate` | Geração procedural |
+| `terrain_smooth` | Suaviza terreno |
 
-### Visualization (Visualizacao) - 7
+### Visualização - 7
 
-| Ferramenta | Descricao |
+Helpers visuais para debug e desenvolvimento.
+
+| Ferramenta | Descrição |
 |------------|-----------|
-| `visualization_create_area` | Criar visualizacao de area |
-| `visualization_create_marker` | Criar visualizacao de marcador (com preview) |
-| `visualization_create_line` | Criar visualizacao de linha |
-| `visualization_remove` | Remover visualizacao |
-| `visualization_clear` | Remover todas as visualizacoes |
-| `visualization_get_status` | Obter status da visualizacao |
-| `visualization_focus` | Focar camera em item de visualizacao |
+| `visualization_create_area` | Cria área visual |
+| `visualization_create_marker` | Cria marcador |
+| `visualization_create_line` | Cria linha |
+| `visualization_remove` | Remove visualização |
+| `visualization_clear` | Limpa tudo |
+| `visualization_get_status` | Status de visualizações |
+| `visualization_focus` | Foca em visualização |

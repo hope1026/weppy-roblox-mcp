@@ -32,12 +32,12 @@ El servidor MCP debe estar instalado. Completa primero la guia correspondiente a
 
 | Aplicacion IA | Guia de instalacion |
 |---------------|---------------------|
-| Claude Code | [Como configurar](claude-code.md) |
-| Claude Desktop | [Como configurar](claude-app.md) |
-| Codex CLI | [Como configurar](codex-cli.md) |
-| Codex Desktop | [Como configurar](codex-app.md) |
-| Gemini CLI | [Como configurar](gemini-cli.md) |
-| Cursor, Windsurf, etc. | [Como configurar](antigravity.md) |
+| Claude Code | [Como configurar](ai-apps/claude-code.md) |
+| Claude Desktop | [Como configurar](ai-apps/claude-app.md) |
+| Codex CLI | [Como configurar](ai-apps/codex-cli.md) |
+| Codex Desktop | [Como configurar](ai-apps/codex-app.md) |
+| Gemini CLI | [Como configurar](ai-apps/gemini-cli.md) |
+| Antigravity | [Como configurar](ai-apps/antigravity.md) |
 
 ### Conectar
 

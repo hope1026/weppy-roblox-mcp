@@ -1,47 +1,59 @@
 # Roblox MCP
 
-[English](../en/README.md) | [한국어](../ko/README.md) | [日本語](../ja/README.md) | [Español](../es/README.md) | [Português](../pt-br/README.md) | **Bahasa Indonesia**
+[English](../../README.md) | [한국어](../ko/README.md) | [日本語](../ja/README.md) | [Español](../es/README.md) | [Português](../pt-br/README.md) | **Bahasa Indonesia**
 
-> Kendalikan Roblox Studio dengan AI.
+> Bicara ke AI, langsung dijalankan di Roblox Studio.
 
 [![Demo](https://img.youtube.com/vi/3jrUpBbZPaw/maxresdefault.jpg)](https://youtu.be/3jrUpBbZPaw)
 
-## Cara Instalasi
+## Yang Bisa Kamu Lakukan
 
-### 1. Instal Plugin Roblox
+### Buat Game Sekaligus
 
-👉 [Panduan Instalasi Plugin](installation/roblox-plugin.md)
+"Buatkan game survival gaya Minecraft", "Buatkan game puzzle escape room" — AI merancang struktur game dan membuat map, objek, dan script langsung di Studio kamu. Dari ide sederhana langsung jadi game yang bisa dimainkan.
 
-### 2. Konfigurasi MCP Server
+> **Tip**: Minta "buat rencana dulu" lalu review dan katakan "jalankan" untuk hasil lebih baik.
 
-Dapat digunakan di semua aplikasi AI yang mendukung MCP. Lihat panduan yang sesuai dengan aplikasi AI yang Anda gunakan:
+### Membuat dan Menempatkan Objek
 
-| Aplikasi AI | Panduan Instalasi |
-|-------------|-------------------|
-| Claude Code | [Cara Konfigurasi](installation/claude-code.md) |
-| Claude Desktop | [Cara Konfigurasi](installation/claude-app.md) |
-| Codex CLI | [Cara Konfigurasi](installation/codex-cli.md) |
-| Codex Desktop | [Cara Konfigurasi](installation/codex-app.md) |
-| Gemini CLI | [Cara Konfigurasi](installation/gemini-cli.md) |
-| Cursor, Windsurf, dll | [Cara Konfigurasi](installation/antigravity.md) |
+"Buatkan rumah dari batu bata merah", "Tanam 10 pohon berjajar rapi" — AI langsung membuatnya di Roblox Studio. Bisa satu-satu, bisa ratusan sekaligus.
 
-## Daftar Tools
+### Menulis dan Mengedit Script
 
-👉 [Lihat Daftar Lengkap Tools](tools/overview.md)
+"Kalau player jump, munculkan efek partikel", "Cariin bug di script ini" — AI menulis dan merevisi kode langsung. AI juga bisa menganalisis script yang sudah ada dan memahami dependencies-nya.
 
-## Pemecahan Masalah
+### Mengatur Suasana Map
 
-- **"Not Connected"**: Klik tombol Connect lagi di plugin
-- **Port**: Menggunakan port 3002 (localhost)
+"Ubah jadi suasana sunset", "Bikin gelap kayak hujan" — satu perintah, AI atur lighting, sky, dan fog otomatis.
 
-## Tautan
+### Membuat Terrain
+
+Gunung, sungai, dataran, gua — semua bisa dibuat lewat chat. Material, warna, ukuran juga bisa diatur sesuka hati.
+
+### Mencari dan Memasukkan Aset
+
+Cari model gratis dan aset dari Creator Store, langsung masuk ke game. "Cari model kastil abad pertengahan terus masukin" — sesimpel itu.
+
+### Analisis Ruang dan Penempatan
+
+"Cari tempat kosong di area ini", "Analisis area yang bisa dilewati monster" — AI menangani semua urusan spasial.
+
+### Debugging dan Analisis
+
+AI bisa cek log error, cari masalahnya, dan memperbaikinya bareng kamu.
+
+> Total **140 alat** tersedia — [Lihat daftar lengkap](tools/overview.md)
+
+## Mulai
+
+Instalasi cuma dua langkah:
+
+1. **Install plugin Roblox Studio** — Jembatan antara Studio dan AI
+2. **Daftarkan MCP server di aplikasi AI** — Biar AI-mu mengenali Roblox MCP
+
+5 menit kelar. 👉 [Lihat panduan instalasi](installation/README.md)
+
+## Link
 
 - [GitHub](https://github.com/hope1026/roblox-mcp)
-- [Laporan Masalah](https://github.com/hope1026/roblox-mcp/issues)
-
-## Lisensi
-
-Dapat digunakan gratis untuk pengembangan game.
-
-✅ **Diizinkan**: Pengembangan game, game komersial, proyek pribadi
-❌ **Tidak diizinkan**: Menjual kembali perangkat lunak, mengembangkan produk pesaing
+- [Laporkan Masalah](https://github.com/hope1026/roblox-mcp/issues)
