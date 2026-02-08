@@ -32,12 +32,12 @@ The MCP server must be installed. Complete the guide for your AI app first:
 
 | AI App | Installation Guide |
 |--------|-------------------|
-| Claude Code | [Setup Guide](claude-code.md) |
-| Claude Desktop | [Setup Guide](claude-app.md) |
-| Codex CLI | [Setup Guide](codex-cli.md) |
-| Codex Desktop | [Setup Guide](codex-app.md) |
-| Gemini CLI | [Setup Guide](gemini-cli.md) |
-| Cursor, Windsurf, etc. | [Setup Guide](antigravity.md) |
+| Claude Code | [Setup Guide](ai-apps/claude-code.md) |
+| Claude Desktop | [Setup Guide](ai-apps/claude-app.md) |
+| Codex CLI | [Setup Guide](ai-apps/codex-cli.md) |
+| Codex Desktop | [Setup Guide](ai-apps/codex-app.md) |
+| Gemini CLI | [Setup Guide](ai-apps/gemini-cli.md) |
+| Antigravity | [Setup Guide](ai-apps/antigravity.md) |
 
 ### Connecting
 

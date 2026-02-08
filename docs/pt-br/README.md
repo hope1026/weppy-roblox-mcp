@@ -1,47 +1,59 @@
 # Roblox MCP
 
-[English](../en/README.md) | [한국어](../ko/README.md) | [日本語](../ja/README.md) | [Español](../es/README.md) | **Português** | [Bahasa Indonesia](../id/README.md)
+[English](../../README.md) | [한국어](../ko/README.md) | [日本語](../ja/README.md) | [Español](../es/README.md) | **Português** | [Bahasa Indonesia](../id/README.md)
 
-> Controle o Roblox Studio com IA.
+> Fale com a IA e ela executa direto no Roblox Studio.
 
 [![Demo](https://img.youtube.com/vi/3jrUpBbZPaw/maxresdefault.jpg)](https://youtu.be/3jrUpBbZPaw)
 
-## Como Instalar
+## O que você pode fazer
 
-### 1. Instalar o Plugin do Roblox
+### Criar jogos completos
 
-👉 [Guia de Instalacao do Plugin](installation/roblox-plugin.md)
+"Cria um jogo de sobrevivência estilo Minecraft", "Cria um jogo de puzzle de escape room" — a IA projeta a estrutura do jogo e cria mapas, objetos e scripts diretamente. Com uma ideia simples você consegue um jogo jogável completo.
 
-### 2. Configurar o Servidor MCP
+> **Dica**: Peça "primeiro faz um plano" depois revise e diga "executa" para melhores resultados.
 
-Pode ser usado com qualquer aplicativo de IA que suporte MCP. Confira o guia correspondente ao seu aplicativo de IA:
+### Criar e posicionar objetos
 
-| Aplicativo de IA | Guia de Instalacao |
-|------------------|---------------------|
-| Claude Code | [Como Configurar](installation/claude-code.md) |
-| Claude Desktop | [Como Configurar](installation/claude-app.md) |
-| Codex CLI | [Como Configurar](installation/codex-cli.md) |
-| Codex Desktop | [Como Configurar](installation/codex-app.md) |
-| Gemini CLI | [Como Configurar](installation/gemini-cli.md) |
-| Cursor, Windsurf, etc. | [Como Configurar](installation/antigravity.md) |
+"Cria uma casa de tijolos vermelhos", "Planta 10 árvores em linha" — a IA cria direto no Roblox Studio. Pode ser um objeto ou centenas de uma vez.
 
-## Lista de Ferramentas
+### Escrever e editar scripts
 
-👉 [Ver Lista Completa de Ferramentas](tools/overview.md)
+"Quando o jogador pular, mostra partículas", "Encontra o bug nesse script" — a IA escreve e edita código diretamente. Também analisa scripts existentes e identifica dependências.
 
-## Solucao de Problemas
+### Configurar atmosfera do mapa
 
-- **"Not Connected"**: Clique novamente no botao Connect no plugin
-- **Porta**: Utiliza a porta 3002 (localhost)
+"Muda pra clima de pôr do sol", "Deixa escuro como dia de chuva" — uma frase e a IA ajusta iluminação, céu e névoa automaticamente.
+
+### Gerar terreno
+
+Crie montanhas, rios, planícies e cavernas só conversando. Material, cor e tamanho, tudo personalizável.
+
+### Buscar e inserir assets
+
+Busca modelos e assets gratuitos no Creator Store e coloca direto no seu jogo. "Procura um modelo de castelo medieval e insere" — simples assim.
+
+### Análise espacial e posicionamento
+
+"Acha espaço vazio nessa área", "Analisa onde os monstros podem andar" — a IA cuida das questões espaciais.
+
+### Depuração e análise
+
+Confira logs de erro do jogo, encontre problemas e corrija com a ajuda da IA.
+
+> Total de **140 ferramentas** — [Ver lista completa](tools/overview.md)
+
+## Começar
+
+A instalação tem dois passos:
+
+1. **Instalar plugin do Roblox Studio** — Faz a ponte entre Studio e IA
+2. **Registrar servidor MCP no app de IA** — Configura seu app de IA para reconhecer o Roblox MCP
+
+Leva 5 minutos. 👉 [Ver guia de instalação](installation/README.md)
 
 ## Links
 
 - [GitHub](https://github.com/hope1026/roblox-mcp)
-- [Relatar Problemas](https://github.com/hope1026/roblox-mcp/issues)
-
-## Licenca
-
-Gratuito para uso em desenvolvimento de jogos.
-
-✅ **Permitido**: Desenvolvimento de jogos, jogos comerciais, projetos pessoais
-❌ **Nao Permitido**: Revenda de software, desenvolvimento de produtos concorrentes
+- [Reportar Problema](https://github.com/hope1026/roblox-mcp/issues)

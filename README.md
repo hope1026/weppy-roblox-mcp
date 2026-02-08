@@ -2,46 +2,58 @@
 
 **English** | [한국어](docs/ko/README.md) | [日本語](docs/ja/README.md) | [Español](docs/es/README.md) | [Português](docs/pt-br/README.md) | [Bahasa Indonesia](docs/id/README.md)
 
-> Control Roblox Studio with AI.
+> Tell AI what you want, and it happens in Roblox Studio.
 
 [![Demo](https://img.youtube.com/vi/3jrUpBbZPaw/maxresdefault.jpg)](https://youtu.be/3jrUpBbZPaw)
 
-## Installation
+## What You Can Do
 
-### 1. Install Roblox Plugin
+### Create Complete Games
 
-👉 [Plugin Installation Guide](docs/en/installation/roblox-plugin.md)
+Just ask "Make a Minecraft-style survival game" or "Create an escape room puzzle game", and AI will design the game structure, build the map, create objects, and write scripts for you. Turn a simple idea into a playable game.
 
-### 2. Configure MCP Server
+> **Tip**: Ask "Make a plan first", review it, then say "Execute it" for better results.
 
-Works with any AI app that supports MCP. Choose your AI app:
+### Create and Place Objects
 
-| AI App | Setup Guide |
-|--------|-------------|
-| Claude Code | [Setup](docs/en/installation/claude-code.md) |
-| Claude Desktop | [Setup](docs/en/installation/claude-app.md) |
-| Codex CLI | [Setup](docs/en/installation/codex-cli.md) |
-| Codex Desktop | [Setup](docs/en/installation/codex-app.md) |
-| Gemini CLI | [Setup](docs/en/installation/gemini-cli.md) |
-| Cursor, Windsurf, etc. | [Setup](docs/en/installation/antigravity.md) |
+Say "Make a red brick house" or "Plant 10 trees in a row" and AI creates them directly in Roblox Studio. Create one object or hundreds at once.
 
-## Tools
+### Write and Modify Scripts
 
-👉 [Full Tools List](docs/en/tools/overview.md)
+Ask "Make particles appear when players jump" or "Find the bug in this script" and AI writes and fixes code for you. It analyzes existing scripts and understands dependencies too.
 
-## Troubleshooting
+### Set Scene Atmosphere
 
-- **"Not Connected"**: Click Connect button in the plugin again
-- **Port**: Uses port 3002 (localhost only)
+Just say "Change to sunset vibes" or "Make it dark like a rainy day" and AI automatically adjusts lighting, sky, and fog.
+
+### Generate Terrain
+
+Create natural landscapes like mountains, rivers, plains, and caves through conversation. Customize materials, colors, and sizes freely.
+
+### Search and Insert Assets
+
+Search the Creator Store for free models and assets, then add them to your game instantly. Just say "Find a medieval castle model and insert it".
+
+### Spatial Analysis and Placement
+
+AI handles spatial tasks like "Find empty space in this area" or "Analyze where monsters can walk".
+
+### Debugging and Analysis
+
+Check game error logs, find problems, and fix them together with AI.
+
+> Supports **140 tools** total — [View all features](docs/en/tools/overview.md)
+
+## Getting Started
+
+Installation is complete in two steps:
+
+1. **Install Roblox Studio Plugin** — Acts as a bridge between Studio and AI
+2. **Register MCP Server with AI App** — Configure your AI app to recognize Roblox MCP
+
+Takes just 5 minutes. 👉 [View Installation Guide](docs/en/installation/README.md)
 
 ## Links
 
 - [GitHub](https://github.com/hope1026/roblox-mcp)
-- [Issue Report](https://github.com/hope1026/roblox-mcp/issues)
-
-## License
-
-Free to use for game development.
-
-✅ **Allowed**: Game development, commercial games, personal projects
-❌ **Not Allowed**: Software resale, creating competing products
+- [Issue Reports](https://github.com/hope1026/roblox-mcp/issues)

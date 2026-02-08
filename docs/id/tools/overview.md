@@ -1,12 +1,14 @@
-# Tools Roblox MCP
+# Alat-alat Roblox MCP
 
-Untuk parameter detail tools MCP, silakan periksa definisi tools MCP secara langsung.
+Untuk detail parameter alat MCP, silakan cek definisi alat MCP langsung.
 
 ---
 
-## Tools Basic (68)
+## Alat Basic (Gratis) — 68 alat
 
-### Instance - 13
+Alat dasar untuk mengelola objek, script, dan Studio. Tersedia gratis untuk semua pengguna.
+
+### Manajemen Objek — 13 alat
 
 | Tool | Deskripsi |
 |------|-----------|
@@ -24,7 +26,7 @@ Untuk parameter detail tools MCP, silakan periksa definisi tools MCP secara lang
 | `wait_for_child` | Tunggu sampai child muncul |
 | `pivot_to` | Atur Pivot CFrame |
 
-### Property - 10
+### Properti — 10 alat
 
 | Tool | Deskripsi |
 |------|-----------|
@@ -39,7 +41,7 @@ Untuk parameter detail tools MCP, silakan periksa definisi tools MCP secara lang
 | `get_all_attributes` | Ambil semua attributes |
 | `delete_attribute` | Hapus attribute |
 
-### Script - 9
+### Script — 9 alat
 
 | Tool | Deskripsi |
 |------|-----------|
@@ -53,7 +55,7 @@ Untuk parameter detail tools MCP, silakan periksa definisi tools MCP secara lang
 | `search_in_scripts` | Cari dalam scripts |
 | `get_script_dependencies` | Ambil dependencies |
 
-### Selection - 12
+### Kontrol Studio — 12 alat
 
 | Tool | Deskripsi |
 |------|-----------|
@@ -70,14 +72,14 @@ Untuk parameter detail tools MCP, silakan periksa definisi tools MCP secara lang
 | `run_command` | Jalankan perintah Studio |
 | `watch_selection` | Pantau perubahan pilihan |
 
-### Search - 2
+### Pencarian — 2 alat
 
 | Tool | Deskripsi |
 |------|-----------|
 | `search_by_name` | Cari instance berdasarkan nama |
 | `search_by_class` | Cari instance berdasarkan class |
 
-### Tag - 5
+### Tag — 5 alat
 
 | Tool | Deskripsi |
 |------|-----------|
@@ -87,7 +89,7 @@ Untuk parameter detail tools MCP, silakan periksa definisi tools MCP secara lang
 | `get_tagged` | Ambil daftar instance dengan tag |
 | `has_tag` | Periksa apakah instance memiliki tag |
 
-### Camera - 4
+### Kamera — 4 alat
 
 | Tool | Deskripsi |
 |------|-----------|
@@ -96,7 +98,7 @@ Untuk parameter detail tools MCP, silakan periksa definisi tools MCP secara lang
 | `focus_camera_path` | Fokuskan camera ke instance berdasarkan path |
 | `focus_camera_position` | Fokuskan camera ke posisi world |
 
-### Log - 3
+### Log — 3 alat
 
 | Tool | Deskripsi |
 |------|-----------|
@@ -104,7 +106,7 @@ Untuk parameter detail tools MCP, silakan periksa definisi tools MCP secara lang
 | `clear_output_logs` | Bersihkan log output |
 | `get_recent_errors` | Ambil error terbaru |
 
-### Connection - 2
+### Koneksi — 2 alat
 
 | Tool | Deskripsi |
 |------|-----------|
@@ -113,17 +115,20 @@ Untuk parameter detail tools MCP, silakan periksa definisi tools MCP secara lang
 
 ---
 
-## Tools Pro (+72)
-👉 [Panduan Upgrade Pro](pro-upgrade.md)
+## Alat Pro — 72 alat tambahan
 
-### Script - 2
+Alat lanjutan untuk operasi massal, terrain, raycast, dan banyak lagi. Upgrade ke Pro untuk akses penuh.
+
+👉 [Panduan Upgrade Pro](../pro-upgrade.md)
+
+### Script Lanjutan — 2 alat
 
 | Tool | Deskripsi |
 |------|-----------|
 | `replace_in_scripts` | Ganti konten script secara massal |
 | `execute_script` | Jalankan kode Luau secara langsung |
 
-### Search - 6
+### Pencarian Lanjutan — 6 alat
 
 | Tool | Deskripsi |
 |------|-----------|
@@ -134,7 +139,7 @@ Untuk parameter detail tools MCP, silakan periksa definisi tools MCP secara lang
 | `get_descendants` | Ambil semua descendants |
 | `get_ancestors` | Ambil ancestors |
 
-### Bulk - 8
+### Operasi Massal — 8 alat
 
 | Tool | Deskripsi |
 |------|-----------|
@@ -147,7 +152,7 @@ Untuk parameter detail tools MCP, silakan periksa definisi tools MCP secara lang
 | `batch_execute` | Eksekusi batch beberapa perintah |
 | `modify_children` | Modifikasi semua children |
 
-### Asset - 7
+### Aset — 7 alat
 
 | Tool | Deskripsi |
 |------|-----------|
@@ -159,7 +164,7 @@ Untuk parameter detail tools MCP, silakan periksa definisi tools MCP secara lang
 | `insert_package` | Sisipkan package |
 | `export_selection` | Ekspor pilihan |
 
-### Environment - 5
+### Lingkungan — 5 alat
 
 | Tool | Deskripsi |
 |------|-----------|
@@ -169,7 +174,7 @@ Untuk parameter detail tools MCP, silakan periksa definisi tools MCP secara lang
 | `set_terrain` | Atur properties Terrain |
 | `set_time_of_day` | Atur waktu hari |
 
-### State - 9
+### Manajemen State — 9 alat
 
 | Tool | Deskripsi |
 |------|-----------|
@@ -183,7 +188,7 @@ Untuk parameter detail tools MCP, silakan periksa definisi tools MCP secara lang
 | `get_selection_info` | Ambil informasi pilihan |
 | `clear_state_cache` | Bersihkan cache state |
 
-### Spatial - 5
+### Analisis Spasial — 5 alat
 
 | Tool | Deskripsi |
 |------|-----------|
@@ -193,7 +198,7 @@ Untuk parameter detail tools MCP, silakan periksa definisi tools MCP secara lang
 | `snap_to_grid` | Snap posisi ke grid |
 | `check_collision` | Periksa tabrakan antar instance |
 
-### Raycast - 8
+### Raycast — 8 alat
 
 | Tool | Deskripsi |
 |------|-----------|
@@ -206,7 +211,7 @@ Untuk parameter detail tools MCP, silakan periksa definisi tools MCP secara lang
 | `find_spawn_positions` | Temukan posisi spawn yang valid |
 | `analyze_walkable_area` | Analisis area yang dapat dilalui |
 
-### Terrain - 14
+### Terrain — 14 alat
 
 | Tool | Deskripsi |
 |------|-----------|
@@ -225,7 +230,7 @@ Untuk parameter detail tools MCP, silakan periksa definisi tools MCP secara lang
 | `terrain_generate` | Hasilkan terrain prosedural |
 | `terrain_smooth` | Haluskan terrain |
 
-### Visualization - 7
+### Visualisasi — 7 alat
 
 | Tool | Deskripsi |
 |------|-----------|

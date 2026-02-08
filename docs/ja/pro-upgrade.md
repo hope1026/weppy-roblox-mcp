@@ -21,8 +21,7 @@
 
 ### ステップ1: Gumroadで購入
 
-1. [Gumroad - Weppy Roblox Plugin](https://sunityplugin.gumroad.com/l/chllph?utm_source=github&utm_medium=repo&utm_campaign=sunity_plugin
-) にアクセス
+1. [Gumroad - Weppy Roblox Plugin](https://gumroad.com/l/chllph?utm_source=github&utm_medium=repo&utm_campaign=sunity_plugin) にアクセス
 2. プラグインをダウンロード
 
 ### ステップ2: プラグインのインストール
