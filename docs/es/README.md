@@ -33,7 +33,7 @@ Busca e inserta modelos gratuitos del Creator Store. "Busca e inserta un modelo 
 ### Depuración y análisis
 Revisa logs de errores, encuentra problemas y corrige
 
-> Total de **140 herramientas** — [Ver lista completa de funciones](tools/overview.md)
+> [Ver lista completa de funciones](tools/overview.md)
 
 ## Comenzar
 1. **Instalar el plugin de Roblox Studio** — Conecta Studio con la IA

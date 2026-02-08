@@ -42,7 +42,7 @@ Busca modelos e assets gratuitos no Creator Store e coloca direto no seu jogo. "
 
 Confira logs de erro do jogo, encontre problemas e corrija com a ajuda da IA.
 
-> Total de **140 ferramentas** — [Ver lista completa](tools/overview.md)
+> [Ver lista completa](tools/overview.md)
 
 ## Começar
 

@@ -42,7 +42,7 @@ AI handles spatial tasks like "Find empty space in this area" or "Analyze where 
 
 Check game error logs, find problems, and fix them together with AI.
 
-> Supports **140 tools** total — [View all features](docs/en/tools/overview.md)
+> [View all features](docs/en/tools/overview.md)
 
 ## Getting Started
 

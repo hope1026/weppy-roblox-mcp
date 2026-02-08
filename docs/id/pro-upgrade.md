@@ -6,7 +6,7 @@
 
 **Game yang Lebih Lengkap** - Dengan tools terrain, environment, asset, dan spatial, Anda dapat membuat dunia game yang lengkap, bukan hanya prototipe.
 
-## Tools yang Ditambahkan Pro (72)
+## Tools yang Ditambahkan Pro
 
 | Kategori | Fungsi |
 |----------|--------|
@@ -36,12 +36,12 @@
 
 1. Buka plugin W-MCP
 2. Periksa apakah badge "Pro" ditampilkan
-3. Semua 140 tools dapat digunakan!
+3. Semua tools dapat digunakan!
 
 ## Perbandingan Fitur
 
-| Fitur | Basic (68) | Pro (140) |
-|-------|:----------:|:---------:|
+| Fitur | Basic | Pro |
+|-------|:-----:|:---:|
 | Instance, Script, Property | ✅ Akses penuh | ✅ Akses penuh |
 | Selection, Tag, Camera, Log | ✅ Akses penuh | ✅ Akses penuh |
 | Operasi Massal (Bulk) | ― | ✅ Tanpa batas |

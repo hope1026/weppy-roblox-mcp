@@ -1,135 +1,95 @@
-# Lista de Herramientas
+# Funciones de Roblox MCP
 
-Roblox MCP ofrece **140 herramientas** para controlar Roblox Studio mediante IA.
+Conecta la IA con Roblox Studio para automatizar diversas tareas. A continuacion se presenta lo que puedes hacer por categoria.
 
-## Básico (Gratis)
+---
 
-**68 herramientas** disponibles gratuitamente.
+## Basic (Gratis)
 
-### Gestión de Objetos (13 herramientas)
-Crear, eliminar, clonar, mover y renombrar objetos en el workspace.
+### Gestion de Objetos
 
-**Herramientas clave**: `create_instance`, `delete_instance`, `clone_instance`, `move_instance`, `rename_instance`, `get_instance`, `get_instance_children`, `find_first_child`, `find_first_descendant`, `wait_for_child`, `pivot_to`, `create_instance_with_properties`, `get_class_info`
+Crea, clona, elimina y mueve objetos del juego como partes, modelos y carpetas. Tareas como "Crea una parte roja" o "Clona este modelo y ponlo al lado" son posibles.
 
-### Propiedades (10 herramientas)
-Obtener y modificar propiedades de objetos (Color, Size, Transparency, etc.), incluyendo atributos.
+### Propiedades
 
-**Herramientas clave**: `get_property`, `set_property`, `get_all_properties`, `set_multiple_properties`, `get_attribute`, `set_attribute`, `get_all_attributes`, `delete_attribute`, `set_calculated_property`, `set_relative_property`
+Lee y cambia todas las propiedades de los objetos como tamano, color, posicion y material. Puedes cambiar varias propiedades a la vez o ajustarlas relativamente segun los valores actuales.
 
-### Scripts (9 herramientas)
-Crear, editar y eliminar scripts. Ver código fuente, modificar líneas, buscar y reemplazar.
+### Scripts
 
-**Herramientas clave**: `create_script`, `get_script_source`, `set_script_source`, `delete_script`, `edit_script_lines`, `insert_script_lines`, `delete_script_lines`, `search_in_scripts`, `replace_in_scripts`
+Crea nuevos scripts, lee el codigo existente y modificalo. Puedes editar lineas especificas, buscar texto dentro de scripts o identificar dependencias para ver que modulos se referencian.
 
-### Control de Studio (12 herramientas)
-Gestionar selección, obtener información del proyecto, ejecutar comandos y monitorear cambios.
+### Seleccion
 
-**Herramientas clave**: `get_selection`, `set_selection`, `add_to_selection`, `remove_from_selection`, `clear_selection`, `get_selection_context`, `get_selection_details`, `get_place_info`, `get_services`, `run_command`, `watch_selection`, `get_cached_selection`
+Verifica los objetos seleccionados, cambia la seleccion y limpia la seleccion. Esencial para entender y controlar con que estas trabajando en Studio.
 
-### Búsqueda (2 herramientas)
-Encontrar objetos por nombre o clase.
+### Busqueda
 
-**Herramientas clave**: `search_by_name`, `search_by_class`
+Encuentra objetos en tu juego por nombre o clase (tipo).
 
-### Etiquetas (5 herramientas)
-Agregar, eliminar y buscar objetos mediante etiquetas.
+### Etiquetas
 
-**Herramientas clave**: `add_tag`, `remove_tag`, `get_tags`, `get_tagged`, `has_tag`
+Agrega o quita etiquetas de objetos y encuentra todos los objetos con una etiqueta especifica de una vez. Util para gestionar grupos de objetos similares.
 
-### Cámara (4 herramientas)
-Controlar la cámara de Studio, enfocar objetos y obtener información de la vista.
+### Camara
 
-**Herramientas clave**: `get_viewport_info`, `get_camera_info`, `focus_camera_path`, `focus_camera_position`
+Mueve la camara a objetos o posiciones especificas. Conveniente para ver rapidamente el area en la que estas trabajando.
 
-### Registros (3 herramientas)
-Ver logs de salida, errores recientes y limpiar registros.
+### Registros
 
-**Herramientas clave**: `get_output_logs`, `clear_output_logs`, `get_recent_errors`
+Consulta logs de salida y errores ocurridos durante la ejecucion del juego. Ayuda a encontrar y corregir bugs.
 
-### Conexión (2 herramientas)
-Verificar estado de conexión y uso del sistema.
+### Conexion
 
-**Herramientas clave**: `get_connection_info`, `get_usage_status`
+Verifica el estado de conexion y uso entre el servidor MCP y Roblox Studio.
 
 ---
 
 ## Pro
 
-**72 herramientas adicionales** disponibles con la versión Pro.
+Si necesitas funciones mas potentes, puedes actualizar a Pro.
 
-👉 [Cómo actualizar a Pro](../pro-upgrade.md)
+### Seleccion Avanzada
 
-### Scripts Avanzados (2 herramientas)
-Analizar dependencias entre scripts y ejecutar código en Studio.
+Obtien el contexto detallado de la seleccion con propiedades y codigo fuente, explora la jerarquia de seleccion, agrega/elimina elementos de la seleccion, y consulta informacion del Place y servicios del juego. Util para flujos de trabajo avanzados y automatizacion.
 
-**Herramientas clave**: `get_script_dependencies`, `execute_script`
+### Scripts Avanzados
 
-### Búsqueda Avanzada (6 herramientas)
-Búsquedas complejas por árbol de archivos, propiedades, etiquetas, descendientes y ancestros.
+Reemplaza contenido en multiples scripts de una vez o ejecuta codigo Luau instantaneamente. Util para modificaciones repetitivas de codigo o pruebas rapidas.
 
-**Herramientas clave**: `get_file_tree`, `get_project_structure`, `search_by_property`, `search_by_tag`, `get_descendants`, `get_ancestors`
+### Busqueda Avanzada
 
-### Operaciones Masivas (8 herramientas)
-Crear, eliminar o modificar múltiples objetos a la vez. Operaciones en lote, duplicación inteligente.
+Explora el arbol de archivos completo o busca objetos por propiedad o etiqueta. Obtien una vista completa de la estructura del proyecto y consulta todos los descendientes o ancestros de objetos especificos.
 
-**Herramientas clave**: `mass_create_instances`, `mass_delete_instances`, `mass_set_property`, `batch_execute`, `smart_duplicate`, `mass_get_property`, `mass_duplicate`, `modify_children`
+### Operaciones Masivas
 
-### Assets (7 herramientas)
-Buscar e insertar modelos del Creator Store, obtener información de assets y trabajar con paquetes.
+Crea, elimina, modifica o duplica cientos de objetos a la vez. Maneja rapidamente tareas a gran escala como plantar arboles en un mapa, cambiar el color de todas las partes o colocar objetos segun patrones.
 
-**Herramientas clave**: `insert_model`, `get_asset_info`, `search_creator_store`, `search_and_insert_model`, `insert_free_model`, `insert_package`, `export_selection`
+### Assets
 
-### Entorno (5 herramientas)
-Configurar iluminación, atmósfera, cielo, hora del día y efectos ambientales.
+Busca modelos gratuitos en Roblox Creator Store e insertarlos instantaneamente. Agrega assets mediante conversacion como "Busca un modelo de castillo medieval" o "Inserta un modelo de arma".
 
-**Herramientas clave**: `set_lighting`, `set_atmosphere`, `set_sky`, `set_terrain`, `set_time_of_day`
+### Entorno
 
-### Gestión de Estado (9 herramientas)
-Sincronizar workspace, obtener snapshots, rastrear cambios recientes, buscar vistas de cámara sugeridas y mapas espaciales.
+Configura iluminacion, cielo, niebla, propiedades del terreno y hora del dia con lenguaje natural. Solicitudes como "Cambia a ambiente de atardecer" o "Pon la hora a medianoche" son posibles.
 
-**Herramientas clave**: `sync_workspace_state`, `get_workspace_snapshot`, `get_recent_changes`, `get_suggested_camera_view`, `get_spatial_map`, `find_empty_space`, `get_bounds`, `snap_to_grid`, `check_collision`
+### Gestion de Estado
 
-### Análisis Espacial (5 herramientas)
-Analizar espacio 3D, encontrar áreas vacías, alinear a grilla, verificar colisiones y obtener límites.
+Guarda el estado actual del Workspace como snapshot y consulta cambios recientes y el estado del viewport. Ayuda a entender el estado actual durante tareas complejas.
 
-**Herramientas clave**: `get_spatial_map`, `find_empty_space`, `get_bounds`, `snap_to_grid`, `check_collision`
+### Analisis Espacial
 
-### Raycast (8 herramientas)
-Lanzar rayos para detección de colisiones, encontrar suelo, verificar ubicaciones de colocación, escanear áreas y analizar zonas transitables.
+Determina con precision el tamano y posicion de objetos, encuentra espacios vacios y verifica colisiones. Tambien puedes alinear objetos a una cuadricula.
 
-**Herramientas clave**: `raycast`, `find_ground`, `check_placement`, `multi_raycast`, `scan_area`, `find_flat_areas`, `find_spawn_positions`, `analyze_walkable_area`
+### Raycast
 
-### Terreno (14 herramientas)
-Crear, modificar y generar terrenos. Formas, materiales, colores, generación procedural y suavizado.
+Lanza rayos invisibles para encontrar puntos de colision con terreno u objetos. Esencial para el diseno de niveles: encontrar posiciones del suelo, verificar si se pueden colocar objetos, buscar ubicaciones de spawn y analizar areas transitables.
 
-**Herramientas clave**: `terrain_fill_block`, `terrain_fill_ball`, `terrain_fill_cylinder`, `terrain_fill_wedge`, `terrain_clear`, `terrain_clear_region`, `terrain_replace_material`, `terrain_get_material_color`, `terrain_set_material_color`, `terrain_read_voxel`, `terrain_read_voxels`, `terrain_write_voxels`, `terrain_generate`, `terrain_smooth`
+### Terreno
 
-### Visualización (7 herramientas)
-Crear marcadores visuales, áreas, líneas y enfocar cámara en visualizaciones para debugging y análisis.
+Rellena, talla y suaviza terreno con diversas formas como bloques, esferas, cilindros y cunas. Cambia materiales y colores, o genera proceduralmente terreno natural con montanas y rios.
 
-**Herramientas clave**: `visualization_create_area`, `visualization_create_marker`, `visualization_create_line`, `visualization_remove`, `visualization_clear`, `visualization_get_status`, `visualization_focus`
+### Visualizacion
 
----
+Muestra areas, marcadores y lineas en pantalla para confirmar visualmente el espacio de trabajo. Util para debugging y revision de diseno de niveles.
 
-## Resumen
-
-| Categoría | Básico | Pro | Total |
-|-----------|--------|-----|-------|
-| Gestión de Objetos | 13 | - | 13 |
-| Propiedades | 10 | - | 10 |
-| Scripts | 9 | 2 | 11 |
-| Control de Studio | 12 | - | 12 |
-| Búsqueda | 2 | 6 | 8 |
-| Etiquetas | 5 | - | 5 |
-| Cámara | 4 | - | 4 |
-| Registros | 3 | - | 3 |
-| Conexión | 2 | - | 2 |
-| Operaciones Masivas | - | 8 | 8 |
-| Assets | - | 7 | 7 |
-| Entorno | - | 5 | 5 |
-| Gestión de Estado | 8 | 1 | 9 |
-| Análisis Espacial | - | 5 | 5 |
-| Raycast | - | 8 | 8 |
-| Terreno | - | 14 | 14 |
-| Visualización | - | 7 | 7 |
-| **TOTAL** | **68** | **72** | **140** |
+👉 [Guia de actualizacion a Pro](../pro-upgrade.md)

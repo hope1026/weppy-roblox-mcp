@@ -51,22 +51,27 @@ For detailed parameters, check MCP tool definitions directly.
 | `get_script_dependencies` | Get dependencies |
 | `execute_script` | Execute script |
 
-## Selection
+## Selection (Basic)
 
 | Tool | Description |
 |------|-------------|
 | `get_selection` | Get currently selected instances |
-| `get_selection_context` | Get selection with context |
-| `get_selection_details` | Get detailed selection info |
 | `set_selection` | Set selection to instances |
 | `clear_selection` | Clear selection |
+
+## Selection (Pro)
+
+| Tool | Description |
+|------|-------------|
+| `get_selection_context` | Get selection with context |
+| `get_selection_details` | Get detailed selection info |
 | `add_to_selection` | Add to selection |
 | `remove_from_selection` | Remove from selection |
+| `watch_selection` | Watch selection changes |
 | `get_place_info` | Get place information |
 | `get_services` | Get game services |
 | `get_studio_settings` | Get Studio settings |
 | `run_command` | Run Studio command |
-| `watch_selection` | Watch selection changes |
 | `get_cached_selection` | Get cached selection state |
 
 ## Search

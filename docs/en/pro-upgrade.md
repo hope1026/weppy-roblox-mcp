@@ -6,7 +6,7 @@
 
 **Build Complete Games** - Terrain, environment, assets, and spatial tools let you create polished game worlds, not just prototypes.
 
-## What Pro Unlocks (72 additional tools)
+## What Pro Unlocks
 
 | Category | What you can do |
 |----------|-----------------|
@@ -36,12 +36,12 @@
 
 1. Open the W-MCP plugin
 2. Check that "Pro" badge is displayed
-3. All 140 tools are now available!
+3. All tools are now available!
 
 ## Feature Comparison
 
-| Feature | Basic (68 tools) | Pro (140 tools) |
-|---------|:----------------:|:---------------:|
+| Feature | Basic | Pro |
+|---------|:-----:|:---:|
 | Instance, Script, Property | ✅ Full access | ✅ Full access |
 | Selection, Tag, Camera, Log | ✅ Full access | ✅ Full access |
 | Bulk Operations | ― | ✅ Unlimited |

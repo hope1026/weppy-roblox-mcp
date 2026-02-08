@@ -6,7 +6,7 @@
 
 **Jogos de Alta Qualidade** - Com ferramentas de terreno, ambiente, ativos e espaciais, voce pode criar mundos de jogo completos, nao apenas prototipos.
 
-## Ferramentas Adicionadas pelo Pro (72)
+## Ferramentas Adicionadas pelo Pro
 
 | Categoria | Funcionalidade |
 |-----------|----------------|
@@ -36,12 +36,12 @@
 
 1. Abra o plugin W-MCP
 2. Verifique se o emblema "Pro" e exibido
-3. Todas as 140 ferramentas disponiveis!
+3. Todas as ferramentas disponiveis!
 
 ## Comparacao de Recursos
 
-| Recurso | Basic (68) | Pro (140) |
-|---------|:----------:|:---------:|
+| Recurso | Basic | Pro |
+|---------|:-----:|:---:|
 | Instance, Script, Property | ✅ Acesso Total | ✅ Acesso Total |
 | Selection, Tag, Camera, Log | ✅ Acesso Total | ✅ Acesso Total |
 | Operacoes em Massa (Bulk) | ― | ✅ Ilimitado |
