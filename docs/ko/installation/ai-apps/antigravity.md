@@ -6,23 +6,21 @@
 
 ## 사전 요구사항
 
-1. **Antigravity** 설치됨 (macOS, Windows, Linux 지원)
-2. **Roblox Studio 플러그인** 설치 완료
+1. **Antigravity** 설치됨 (지원 OS/요구사항은 공식 문서 참고)
+2. **Node.js** (v18.0.0 이상, `npx` 사용 가능)
+3. **Roblox Studio 플러그인** 설치 완료
 
 ## MCP 서버 등록
 
-### 방법 1: MCP Store에서 설치 (권장)
+Antigravity에서는 MCP 서버를 **에이전트 패널(Agent pane)**에서 관리합니다.
 
-1. Antigravity 실행
-2. **Settings** → **MCP** 이동
-3. MCP Store에서 `weppy-roblox-mcp` 검색
-4. **Install** 클릭
+### Raw config로 수동 등록 (권장)
 
-### 방법 2: 설정 파일 직접 편집
+1. 에이전트 패널에서 **⋯** → **MCP Servers** → **Manage MCP Servers** → **View raw config** 클릭
 
-1. Antigravity에서 **⋯** 메뉴 → **MCP Servers** → **Manage MCP Servers** → **View raw config** 클릭
+![MCP Servers 메뉴 열기](../../../assets/screenshots/antigravity/antigravity_mcp_services_menu.png)
 
-2. `mcp_config.json` 파일에 아래 내용을 추가:
+2. 표시되는 설정(JSON)에 아래 내용을 추가/병합:
 
 ```json
 {
@@ -34,27 +32,15 @@
   }
 }
 ```
+![Raw config 수정](../../../assets/screenshots/antigravity/antigravity_mcp_raw.png)
 
-3. 저장 후 **Manage MCP Servers**에서 **Refresh** 클릭
+3. 저장 후 **Refresh**(또는 UI 안내에 따른 재시작/새로고침) 수행
 
-**설정 파일 위치:**
+> 설정 파일의 실제 경로/이름은 OS와 Antigravity 버전에 따라 달라질 수 있으므로, 항상 **View raw config**에서 안내되는 위치를 기준으로 수정하세요.
 
-| OS | 경로 |
-|----|------|
-| macOS/Linux | `~/.gemini/antigravity/mcp_config.json` |
-| Windows | `%USERPROFILE%\.gemini\antigravity\mcp_config.json` |
+### 옵션: 환경 변수로 포트/로그 조정
 
-### 방법 3: Agent에게 요청
-
-Antigravity Agent에게 직접 요청할 수도 있습니다:
-
-```
-Roblox MCP (@weppy/roblox-mcp)를 MCP 서버로 추가해줘
-```
-
-## 중요: 절대 경로 사용
-
-> **주의**: Antigravity는 `${workspaceFolder}` 변수를 지원하지 않습니다. 반드시 **절대 경로**를 사용하세요.
+기본값(HTTP `127.0.0.1:3002`)을 유지하는 것을 권장합니다. 필요 시 아래처럼 환경 변수를 설정할 수 있습니다:
 
 ```json
 {
@@ -63,7 +49,9 @@ Roblox MCP (@weppy/roblox-mcp)를 MCP 서버로 추가해줘
       "command": "npx",
       "args": ["-y", "@weppy/roblox-mcp"],
       "env": {
-        "PROJECT_ROOT": "/Users/username/projects/my-roblox-game"
+        "HTTP_HOST": "127.0.0.1",
+        "HTTP_PORT": "3002",
+        "LOG_LEVEL": "INFO"
       }
     }
   }
@@ -78,24 +66,6 @@ Roblox MCP (@weppy/roblox-mcp)를 MCP 서버로 추가해줘
    Roblox Studio에서 현재 선택된 것을 알려줘
    ```
 
-## Skills 활용
-
-Antigravity의 **Skills** 시스템과 함께 사용하면 더 강력한 워크플로우를 구성할 수 있습니다:
-
-- 프로젝트별 Roblox 개발 워크플로우 정의
-- 자주 사용하는 작업을 Skill로 패키징
-- 에이전트가 자동으로 작업을 계획, 실행, 검증
-
-## 지원 모델
-
-Antigravity에서 Roblox MCP를 사용할 때 다음 모델을 선택할 수 있습니다:
-
-| 모델 | 특징 |
-|------|------|
-| **Gemini 3 Pro** | 기본 모델, 무료 사용 가능 |
-| **Claude Sonnet 4.5** | Anthropic 모델 지원 |
-| **GPT-OSS** | OpenAI 모델 지원 |
-
 ## 문제 해결
 
 ### 서버가 시작되지 않을 때
@@ -108,23 +78,11 @@ npx -y @weppy/roblox-mcp
 ### 연결 실패
 
 - Roblox Studio 플러그인이 **Connected** 상태인지 확인
-- 포트 3002가 방화벽에 의해 차단되지 않았는지 확인
-- Settings → MCP에서 서버 상태 확인
-
-### 절대 경로 오류
-
-`${workspaceFolder}` 사용 시 오류가 발생합니다. 절대 경로로 변경하세요:
-
-```json
-// ❌ 잘못됨
-"args": ["--workspace", "${workspaceFolder}"]
-
-// ✅ 올바름
-"args": ["--workspace", "/absolute/path/to/project"]
-```
+- 포트 **3002**가 방화벽에 의해 차단되지 않았는지 확인
+- 에이전트 패널 **⋯** → **MCP Servers**에서 서버 상태 확인
+- (고급) `HTTP_PORT`를 변경했다면, Roblox Studio 플러그인/브릿지 설정도 동일 포트를 사용하도록 맞춰야 합니다.
 
 ## 참고 자료
 
-- [Antigravity 시작 가이드](https://codelabs.developers.google.com/getting-started-google-antigravity)
-- [Antigravity MCP 연동 가이드](https://composio.dev/blog/howto-mcp-antigravity)
-- [Antigravity Skills 컬렉션](https://github.com/sickn33/antigravity-awesome-skills)
+- [Google Antigravity 소개](https://developers.googleblog.com/build-with-google-antigravity-our-new-agentic-development-platform/)
+- [Antigravity 시작 가이드 (Codelab)](https://codelabs.developers.google.com/getting-started-google-antigravity)

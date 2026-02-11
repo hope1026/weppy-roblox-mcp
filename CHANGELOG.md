@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [0.1.10] - 2026-02-11
+
+### Bug Fixes
+
+- Fix MCP server registration error in Antigravity
+
+
 ## [0.1.9] - 2026-02-08
 
 ### Other Changes

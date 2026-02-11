@@ -9,9 +9,15 @@ hooks:
       hooks:
         - type: command
           command: |
-            if [ -d "roblox-studio-sync" ]; then
+            SYNC_DIR=""
+            if [ -d "roblox-project-sync" ]; then
+              SYNC_DIR="roblox-project-sync"
+            elif [ -d "roblox-studio-sync" ]; then
+              SYNC_DIR="roblox-studio-sync"
+            fi
+            if [ -n "$SYNC_DIR" ]; then
               timestamp=$(date +"%Y-%m-%d %H:%M:%S")
-              echo "[$timestamp] Modified: $TOOL_NAME" >> "roblox-studio-sync/changes.log"
+              echo "[$timestamp] Modified: $TOOL_NAME" >> "$SYNC_DIR/changes.log"
             fi
 ---
 
@@ -19,87 +25,151 @@ hooks:
 
 **CRITICAL: This skill BLOCKS until sync is fully verified. Do NOT return early.**
 
+## Sync Mode Detection
+
+This skill supports two sync modes:
+
+### Project Sync Mode (Automatic, Preferred)
+
+When `.sync-meta.json` exists in `roblox-project-sync/`, the Roblox Studio plugin automatically syncs the instance tree to the local filesystem. **No MCP tool calls needed.**
+
+**Detection:**
+```bash
+if [ -f "roblox-project-sync/.sync-meta.json" ]; then
+  # Project Sync active -- skip MCP calls, just read files
+fi
+```
+
+**When Project Sync is active:**
+1. Skip Steps 2-4 (no MCP tool calls needed)
+2. Read files directly from `roblox-project-sync/explorer/`
+3. Verify sync freshness via `.sync-meta.json` timestamps
+4. All script sources are already on disk as `.luau` files
+
+### Legacy MCP Mode (Fallback)
+
+When Project Sync is NOT active, fall back to MCP tool calls (`get_project_structure`, `get_script_source`) to populate `roblox-project-sync/explorer/`.
+
+---
+
 ## Cache Structure (Roblox Studio Mirror)
 
-The explorer folder mirrors Roblox Studio's hierarchy exactly:
+The explorer folder mirrors Roblox Studio's hierarchy:
 
 ```
-roblox-studio-sync/
-├── last-sync.txt              # ISO timestamp of last successful sync
-├── connection-status.txt      # "connected" or "disconnected"
-├── rojo-detected.txt          # "true" or "false"
-├── changes.log                # MCP tool usage log
-├── activity.log               # All MCP activity
+roblox-project-sync/
+├── .sync-meta.json            # Sync metadata (placeId, timestamps, config)
+├── .sync-index.json           # Per-file hash tracking
+├── changes.log                # Change history (auto-flushed)
 ├── explorer/                  # Mirrors Studio hierarchy
 │   ├── Workspace/
-│   │   ├── _index.json        # Service summary (className, childCount, path)
-│   │   ├── Camera.json        # Instance: { className, properties }
-│   │   ├── Terrain.json       # Instance: { className, properties }
-│   │   └── MyModel/           # Model becomes folder
-│   │       ├── _index.json    # Model summary
-│   │       ├── Part1.json     # Part properties
-│   │       └── MyScript.server.lua  # Script SOURCE (full text)
+│   │   ├── _tree.json         # Service tree summary
+│   │   ├── _props.json        # Service properties
+│   │   ├── MyModel/           # Model becomes folder
+│   │   │   ├── _props.json    # Model properties
+│   │   │   ├── Part1/
+│   │   │   │   └── _props.json
+│   │   │   └── MyScript.server.luau  # Script SOURCE (full text)
+│   │   └── SpawnLocation/
+│   │       └── _props.json
 │   ├── ServerScriptService/
-│   │   ├── _index.json
-│   │   └── GameManager.server.lua   # Script source file
+│   │   ├── _tree.json
+│   │   └── GameManager.server.luau
 │   ├── ReplicatedStorage/
-│   │   ├── _index.json
-│   │   └── Events/
-│   │       └── _index.json
+│   │   ├── _tree.json
+│   │   └── SharedModule.module.luau
 │   ├── ServerStorage/
-│   │   └── _index.json
+│   │   └── _tree.json
 │   ├── StarterGui/
-│   │   └── _index.json
+│   │   └── _tree.json
 │   ├── StarterPlayer/
-│   │   ├── _index.json
+│   │   ├── _tree.json
 │   │   └── StarterPlayerScripts/
-│   │       └── _index.json
+│   │       └── _tree.json
 │   └── Lighting/
-│       ├── _index.json
-│       ├── Atmosphere.json
-│       └── Sky.json
-├── snapshots/                 # Point-in-time snapshots
-└── screenshots/               # Visual captures
+│       ├── _tree.json
+│       └── Atmosphere/
+│           └── _props.json
+└── snapshots/                 # Point-in-time snapshots (.tar.gz)
+    └── _index.json            # Snapshot registry
 ```
 
 ### File Formats
 
-**_index.json (Service/Folder Summary):**
+**_tree.json (Service/Container Tree Summary):**
 ```json
 {
   "name": "Workspace",
   "className": "Workspace",
-  "path": "game.Workspace",
   "childCount": 5,
-  "children": ["Camera", "Terrain", "SpawnLocation", "Monsters", "Bosque"],
-  "syncedAt": "2026-01-28T21:00:00+09:00"
+  "children": [
+    { "name": "SpawnLocation", "className": "SpawnLocation", "childCount": 0 },
+    { "name": "MyModel", "className": "Model", "childCount": 3, "children": [...] }
+  ],
+  "syncedAt": "2026-02-09T12:00:00.000Z"
 }
 ```
 
-**Instance.json (Part, Model, etc.):**
+**_props.json (Instance Properties):**
 ```json
 {
   "name": "SpawnLocation",
   "className": "SpawnLocation",
-  "path": "game.Workspace.SpawnLocation",
   "properties": {
-    "Position": [160, 26, -40],
-    "Size": [6, 1, 6],
+    "Position": { "x": 160, "y": 26, "z": -40 },
+    "Size": { "x": 6, "y": 1, "z": 6 },
     "Anchored": true,
     "Neutral": true
-  }
+  },
+  "attributes": { "SpawnPriority": 1 },
+  "tags": ["PlayerSpawn"]
 }
 ```
 
-**Script Files (.lua):**
-- `Name.server.lua` → Server Script
-- `Name.client.lua` → Local Script
-- `Name.lua` → Module Script
+**.sync-meta.json (Sync Metadata):**
+```json
+{
+  "version": 1,
+  "placeId": 12345,
+  "placeName": "My Game",
+  "lastFullSync": "2026-02-09T12:00:00.000Z",
+  "lastIncrementalSync": "2026-02-09T12:05:30.000Z",
+  "instanceCount": 1234,
+  "scriptCount": 56,
+  "syncMode": "mirror",
+  "excludePatterns": ["*.Terrain", "*.Camera"],
+  "propertyMode": "common"
+}
+```
+
+**Script Files (.luau):**
+- `Name.server.luau` -- Server Script
+- `Name.client.luau` -- Local Script
+- `Name.module.luau` -- Module Script
+- Scripts with children: `Name/init.server.luau` (directory with init file)
+- Scripts without children: `Name.server.luau` (flat file in parent dir)
 - Contains full script source code
 
 ---
 
 ## Mandatory Workflow
+
+### Step 0: Detect Sync Mode
+
+```bash
+# Check for Project Sync first
+if [ -f "roblox-project-sync/.sync-meta.json" ]; then
+  echo "Project Sync active"
+  # Check freshness
+  LAST_SYNC=$(grep -o '"lastFullSync":"[^"]*"' roblox-project-sync/.sync-meta.json | cut -d'"' -f4)
+  if [ -n "$LAST_SYNC" ]; then
+    echo "Last sync: $LAST_SYNC"
+    # Skip to Step 6 (verify only)
+  fi
+fi
+```
+
+If Project Sync is active AND data is fresh (< 30 minutes old), skip directly to verification.
 
 ### Step 1: Run Pre-Check Script (BLOCKING)
 
@@ -115,14 +185,18 @@ roblox-studio-sync/
 | 11 | Studio not connected | Script WAITS for user |
 | 10/12/13 | Error | Report and STOP |
 
-### Step 2: Load MCP Tools
+### Step 2: Load MCP Tools (Legacy Mode Only)
+
+Skip this step if Project Sync is active.
 
 ```
 ToolSearch: "+robloxstudio project structure"
 ToolSearch: "+robloxstudio get_script_source"
 ```
 
-### Step 3: Fetch Service Structures
+### Step 3: Fetch Service Structures (Legacy Mode Only)
+
+Skip this step if Project Sync is active.
 
 Call `get_project_structure` for ALL services in parallel:
 
@@ -136,24 +210,25 @@ get_project_structure({ rootPath: "game.StarterGui", depth: 10 })
 get_project_structure({ rootPath: "game.StarterPlayer", depth: 10 })
 ```
 
-### Step 4: Create Folder Hierarchy
+### Step 4: Create Folder Hierarchy (Legacy Mode Only)
 
-For each service response, create folder structure:
+Skip this step if Project Sync is active.
+
+For each service response, create folder structure under `roblox-project-sync/explorer/`:
 
 ```typescript
 function syncService(serviceName: string, data: any) {
-  const baseDir = `roblox-studio-sync/explorer/${serviceName}`;
-
-  // Create service folder
+  const baseDir = `roblox-project-sync/explorer/${serviceName}`;
   mkdir(baseDir);
 
-  // Write _index.json
-  Write(`${baseDir}/_index.json`, JSON.stringify({
+  // Write _tree.json
+  Write(`${baseDir}/_tree.json`, JSON.stringify({
     name: data.structure.name,
     className: data.structure.className,
-    path: data.structure.path,
     childCount: data.structure.childCount,
-    children: data.structure.children?.map(c => c.name) || [],
+    children: data.structure.children?.map(c => ({
+      name: c.name, className: c.className, childCount: c.childCount
+    })) || [],
     syncedAt: new Date().toISOString()
   }, null, 2));
 
@@ -168,35 +243,33 @@ async function syncInstance(parentDir: string, instance: any) {
   const isContainer = instance.childCount > 0 || ["Folder", "Model"].includes(instance.className);
 
   if (isScript) {
-    // Fetch and save script source
     const source = await get_script_source({ path: instance.path });
-    const ext = instance.className === "Script" ? ".server.lua"
-              : instance.className === "LocalScript" ? ".client.lua"
-              : ".lua";
+    const ext = instance.className === "Script" ? ".server.luau"
+              : instance.className === "LocalScript" ? ".client.luau"
+              : ".module.luau";
     Write(`${parentDir}/${instance.name}${ext}`, source.source);
   } else if (isContainer) {
-    // Create subfolder
     const subDir = `${parentDir}/${instance.name}`;
     mkdir(subDir);
-    Write(`${subDir}/_index.json`, JSON.stringify({
+
+    // Write _props.json for the container
+    Write(`${subDir}/_props.json`, JSON.stringify({
       name: instance.name,
       className: instance.className,
-      path: instance.path,
-      childCount: instance.childCount,
-      children: instance.children?.map(c => c.name) || []
+      properties: instance.properties || {}
     }, null, 2));
 
-    // Recurse into children
     for (const child of instance.children || []) {
       syncInstance(subDir, child);
     }
   } else {
-    // Simple instance - save properties
-    Write(`${parentDir}/${instance.name}.json`, JSON.stringify({
+    // Instance with properties
+    const subDir = `${parentDir}/${instance.name}`;
+    mkdir(subDir);
+    Write(`${subDir}/_props.json`, JSON.stringify({
       name: instance.name,
       className: instance.className,
-      path: instance.path,
-      childCount: instance.childCount
+      properties: instance.properties || {}
     }, null, 2));
   }
 }
@@ -205,7 +278,7 @@ async function syncInstance(parentDir: string, instance: any) {
 ### Step 5: Update Metadata
 
 ```bash
-./.claude/skills/roblox-sync/scripts/update-metadata.sh
+./.claude/skills/roblox-sync/scripts/update-metadata.sh roblox-project-sync
 ```
 
 ### Step 6: Verify Completion (REQUIRED)
@@ -215,19 +288,20 @@ async function syncInstance(parentDir: string, instance: any) {
 ```
 
 **Verification checks:**
-1. ✅ All required service folders exist
-2. ✅ Each folder has valid `_index.json`
-3. ✅ Workspace has children (Camera, Terrain minimum)
-4. ✅ Timestamp is current
+1. All required service folders exist
+2. Each folder has valid `_tree.json`
+3. Workspace has children (in _tree.json)
+4. Timestamp is current (from .sync-meta.json or last-sync.txt)
 
 ### Step 7: Report Success
 
 ```
-✓ Sync Complete
+Sync Complete
+- Mode: Project Sync (automatic) / Legacy (MCP calls)
 - Services: Workspace, Lighting, ReplicatedStorage, ServerStorage, ServerScriptService, StarterGui, StarterPlayer
 - Scripts synced: {count}
-- Timestamp: {last-sync.txt}
-- Rojo mode: {rojo-detected.txt}
+- Instances: {count}
+- Last sync: {timestamp}
 ```
 
 ---
@@ -238,7 +312,7 @@ async function syncInstance(parentDir: string, instance: any) {
 
 | Service | Minimum Children |
 |---------|------------------|
-| Workspace | Camera, Terrain |
+| Workspace | At least 1 child |
 | Lighting | (any) |
 | StarterPlayer | StarterPlayerScripts |
 
@@ -255,27 +329,34 @@ These can be empty for new projects:
 ```typescript
 function validateSync(): boolean {
   const errors: string[] = [];
+  const syncDir = "roblox-project-sync";
 
-  // Check Workspace has children
-  const wsIndex = readJSON("explorer/Workspace/_index.json");
-  if (!wsIndex || wsIndex.childCount < 2) {
-    errors.push("Workspace must have at least Camera and Terrain");
-  }
-
-  // Check all required _index.json files exist
-  const required = ["Workspace", "Lighting", "ReplicatedStorage",
-                    "ServerStorage", "ServerScriptService", "StarterGui", "StarterPlayer"];
-  for (const svc of required) {
-    if (!fileExists(`explorer/${svc}/_index.json`)) {
-      errors.push(`Missing ${svc}/_index.json`);
+  // Check .sync-meta.json for Project Sync mode
+  const metaPath = `${syncDir}/.sync-meta.json`;
+  if (fileExists(metaPath)) {
+    const meta = readJSON(metaPath);
+    // Check freshness via lastFullSync
+    if (meta.lastFullSync) {
+      const syncAge = Date.now() - Date.parse(meta.lastFullSync);
+      if (syncAge > 30 * 60 * 1000) {
+        errors.push("Sync data is stale (>30 minutes old)");
+      }
     }
   }
 
-  // Check timestamp freshness (max 30 minutes)
-  const lastSync = readFile("last-sync.txt");
-  const syncAge = Date.now() - Date.parse(lastSync);
-  if (syncAge > 30 * 60 * 1000) {
-    errors.push("Sync data is stale (>30 minutes old)");
+  // Check Workspace tree
+  const wsTree = readJSON(`${syncDir}/explorer/Workspace/_tree.json`);
+  if (!wsTree || wsTree.childCount < 1) {
+    errors.push("Workspace must have at least 1 child");
+  }
+
+  // Check all required _tree.json files exist
+  const required = ["Workspace", "Lighting", "ReplicatedStorage",
+                    "ServerStorage", "ServerScriptService", "StarterGui", "StarterPlayer"];
+  for (const svc of required) {
+    if (!fileExists(`${syncDir}/explorer/${svc}/_tree.json`)) {
+      errors.push(`Missing ${svc}/_tree.json`);
+    }
   }
 
   return errors.length === 0;
@@ -286,24 +367,46 @@ function validateSync(): boolean {
 
 ## Script Sync Details
 
-When syncing scripts, fetch full source:
+In **Project Sync mode**, scripts are already on disk. Just read them directly:
 
 ```typescript
-// For each Script/LocalScript/ModuleScript found:
+// Scripts are at:
+// - Without children: ParentDir/ScriptName.server.luau
+// - With children:    ScriptName/init.server.luau
+
+// Extension mapping:
+const ext = {
+  "Script": ".server.luau",
+  "LocalScript": ".client.luau",
+  "ModuleScript": ".module.luau"
+}[instance.className];
+```
+
+In **Legacy mode**, fetch via MCP:
+
+```typescript
 const scriptSource = await mcp__robloxstudio__get_script_source({
   path: instance.path
 });
 
-// Determine file extension
 const ext = {
-  "Script": ".server.lua",
-  "LocalScript": ".client.lua",
-  "ModuleScript": ".lua"
+  "Script": ".server.luau",
+  "LocalScript": ".client.luau",
+  "ModuleScript": ".module.luau"
 }[instance.className];
 
-// Save to file
 Write(`${parentDir}/${instance.name}${ext}`, scriptSource.source);
 ```
+
+---
+
+## Migration from roblox-studio-sync
+
+If `roblox-studio-sync/` exists but `roblox-project-sync/` does not:
+1. The old folder uses `_index.json` and `.lua` extensions
+2. Create `roblox-project-sync/` with the new structure
+3. Do NOT delete `roblox-studio-sync/` (user may want to keep it)
+4. Future syncs will use `roblox-project-sync/` exclusively
 
 ---
 
@@ -337,7 +440,7 @@ When the user reports "plugin shows connected but sync doesn't work":
 
 | Argument | Action |
 |----------|--------|
-| `full` | Execute full sync workflow (Steps 1-7) |
+| `full` | Execute full sync workflow (Steps 0-7) |
 | `verify` | Run verification only (Step 6) |
 | (none) | Same as `full` |
 
@@ -347,12 +450,12 @@ When the user reports "plugin shows connected but sync doesn't work":
 
 **This skill is NOT complete until ALL conditions are true:**
 
-1. ✅ MCP connection verified
-2. ✅ All 7 service folders created with `_index.json`
-3. ✅ Workspace has children (childCount >= 2)
-4. ✅ All scripts have `.lua` source files
-5. ✅ `post-verify.sh` returns exit 0
-6. ✅ `last-sync.txt` has current timestamp
+1. MCP connection verified (or Project Sync active)
+2. All 7+ service folders created with `_tree.json`
+3. Workspace has children (childCount >= 1)
+4. All scripts have `.luau` source files
+5. `post-verify.sh` returns exit 0
+6. Timestamps are current
 
 **If ANY fails, DO NOT return success.**
 

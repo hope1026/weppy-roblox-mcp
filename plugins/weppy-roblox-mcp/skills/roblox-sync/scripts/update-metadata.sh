@@ -12,7 +12,7 @@
 
 set -euo pipefail
 
-SYNC_DIR="${1:-roblox-studio-sync}"
+SYNC_DIR="${1:-roblox-project-sync}"
 
 if [ ! -d "$SYNC_DIR" ]; then
   echo "ERROR: Sync directory not found: $SYNC_DIR"

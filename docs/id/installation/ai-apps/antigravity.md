@@ -1,28 +1,26 @@
-# Konfigurasi Antigravity
+# Pengaturan Antigravity
 
-Cara menggunakan Roblox MCP di [Google Antigravity](https://developers.googleblog.com/build-with-google-antigravity-our-new-agentic-development-platform/).
+Cara menggunakan Roblox MCP dengan [Google Antigravity](https://developers.googleblog.com/build-with-google-antigravity-our-new-agentic-development-platform/).
 
-> **Antigravity** adalah platform pengembangan berbasis agent dari Google, di mana AI agent dapat melakukan tugas kompleks secara otonom melintasi editor kode, terminal, dan browser.
+> **Antigravity** adalah platform pengembangan berbasis agen dari Google, di mana agen AI secara otonom berpindah antara pengeditan kode, terminal, dan browser untuk menjalankan tugas yang kompleks.
 
 ## Prasyarat
 
-1. **Antigravity** sudah terinstal (mendukung macOS, Windows, Linux)
-2. **Plugin Roblox Studio** sudah terinstal
+1. **Antigravity** sudah terinstal (lihat dokumentasi resmi untuk OS yang didukung/persyaratan)
+2. **Node.js** (v18.0.0 atau lebih baru, `npx` tersedia)
+3. **Plugin Roblox Studio** sudah terinstal
 
-## Registrasi MCP Server
+## Mendaftarkan server MCP
 
-### Metode 1: Instal dari MCP Store (Disarankan)
+Di Antigravity, server MCP dikelola di **panel agen (Agent pane)**.
 
-1. Jalankan Antigravity
-2. Buka **Settings** → **MCP**
-3. Cari `weppy-roblox-mcp` di MCP Store
-4. Klik **Install**
+### Pendaftaran manual lewat raw config (disarankan)
 
-### Metode 2: Edit File Konfigurasi Langsung
+1. Di panel agen, klik **⋯** → **MCP Servers** → **Manage MCP Servers** → **View raw config**
 
-1. Di Antigravity, klik menu **⋯** → **MCP Servers** → **Manage MCP Servers** → **View raw config**
+![Buka menu MCP Servers](../../../assets/screenshots/antigravity/antigravity_mcp_services_menu.png)
 
-2. Tambahkan konten berikut ke file `mcp_config.json`:
+2. Pada konfigurasi (JSON) yang ditampilkan, tambahkan/gabungkan isi berikut:
 
 ```json
 {
@@ -35,26 +33,15 @@ Cara menggunakan Roblox MCP di [Google Antigravity](https://developers.googleblo
 }
 ```
 
-3. Simpan lalu klik **Refresh** di **Manage MCP Servers**
+![Edit raw config](../../../assets/screenshots/antigravity/antigravity_mcp_raw.png)
 
-**Lokasi file konfigurasi:**
+3. Setelah menyimpan, lakukan **Refresh** (atau restart/refresh sesuai petunjuk UI)
 
-| OS | Path |
-|----|------|
-| macOS/Linux | `~/.gemini/antigravity/mcp_config.json` |
-| Windows | `%USERPROFILE%\.gemini\antigravity\mcp_config.json` |
+> Lokasi/nama file konfigurasi yang sebenarnya bisa berbeda tergantung OS dan versi Antigravity, jadi selalu edit berdasarkan lokasi yang ditunjukkan di **View raw config**.
 
-### Metode 3: Minta Agent
+### Opsi: Atur port/log lewat variabel lingkungan
 
-Anda juga dapat meminta Antigravity Agent langsung:
-
-```
-Tambahkan Roblox MCP (@weppy/roblox-mcp) sebagai MCP server
-```
-
-## Penting: Gunakan Path Absolut
-
-> **Perhatian**: Antigravity tidak mendukung variabel `${workspaceFolder}`. Anda **harus** menggunakan **path absolut**.
+Disarankan untuk mempertahankan nilai default (HTTP `127.0.0.1:3002`). Jika diperlukan, Anda dapat mengatur variabel lingkungan seperti berikut:
 
 ```json
 {
@@ -63,68 +50,40 @@ Tambahkan Roblox MCP (@weppy/roblox-mcp) sebagai MCP server
       "command": "npx",
       "args": ["-y", "@weppy/roblox-mcp"],
       "env": {
-        "PROJECT_ROOT": "/Users/username/projects/my-roblox-game"
+        "HTTP_HOST": "127.0.0.1",
+        "HTTP_PORT": "3002",
+        "LOG_LEVEL": "INFO"
       }
     }
   }
 }
 ```
 
-## Tes Koneksi
+## Uji koneksi
 
-1. Jalankan **Roblox Studio** → Tab Plugins → **W-MCP** → **Connect**
-2. Masukkan di **Antigravity**:
+1. Jalankan **Roblox Studio** → tab Plugins → **W-MCP** → **Connect**
+2. Di **Antigravity**, masukkan:
    ```
-   Beritahu apa yang sedang dipilih di Roblox Studio
+   Beri tahu saya apa yang sedang dipilih di Roblox Studio saat ini
    ```
 
-## Memanfaatkan Skills
+## Pemecahan masalah
 
-Anda dapat membuat workflow yang lebih powerful dengan menggunakan sistem **Skills** Antigravity:
+### Jika server tidak dapat dijalankan
 
-- Definisikan workflow pengembangan Roblox per proyek
-- Paket tugas yang sering digunakan sebagai Skill
-- Agent secara otomatis merencanakan, mengeksekusi, dan memverifikasi tugas
-
-## Model yang Didukung
-
-Anda dapat memilih model berikut saat menggunakan Roblox MCP di Antigravity:
-
-| Model | Karakteristik |
-|-------|---------------|
-| **Gemini 3 Pro** | Model default, tersedia gratis |
-| **Claude Sonnet 4.5** | Dukungan model Anthropic |
-| **GPT-OSS** | Dukungan model OpenAI |
-
-## Pemecahan Masalah
-
-### Saat server tidak dimulai
-
-Jalankan MCP server langsung untuk memeriksa error:
+Jalankan server MCP secara langsung untuk melihat error:
 ```bash
 npx -y @weppy/roblox-mcp
 ```
 
-### Koneksi gagal
+### Gagal terhubung
 
-- Pastikan plugin Roblox Studio dalam status **Connected**
-- Pastikan port 3002 tidak diblokir oleh firewall
-- Periksa status server di Settings → MCP
-
-### Error path absolut
-
-Error terjadi saat menggunakan `${workspaceFolder}`. Ubah ke path absolut:
-
-```json
-// ❌ Salah
-"args": ["--workspace", "${workspaceFolder}"]
-
-// ✅ Benar
-"args": ["--workspace", "/absolute/path/to/project"]
-```
+- Pastikan plugin Roblox Studio berstatus **Connected**
+- Pastikan port **3002** tidak diblokir oleh firewall
+- Cek status server di panel agen **⋯** → **MCP Servers**
+- (Lanjutan) Jika Anda mengubah `HTTP_PORT`, pastikan pengaturan plugin/bridge Roblox Studio juga menggunakan port yang sama.
 
 ## Referensi
 
-- [Panduan Memulai Antigravity](https://codelabs.developers.google.com/getting-started-google-antigravity)
-- [Panduan Integrasi MCP Antigravity](https://composio.dev/blog/howto-mcp-antigravity)
-- [Koleksi Skills Antigravity](https://github.com/sickn33/antigravity-awesome-skills)
+- [Pengenalan Google Antigravity](https://developers.googleblog.com/build-with-google-antigravity-our-new-agentic-development-platform/)
+- [Panduan memulai Antigravity (Codelab)](https://codelabs.developers.google.com/getting-started-google-antigravity)
