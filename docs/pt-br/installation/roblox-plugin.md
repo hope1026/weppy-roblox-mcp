@@ -4,7 +4,7 @@ Como instalar o plugin para conectar com agentes de IA no Roblox Studio.
 
 ## 1. Baixar o Plugin
 
-1. Baixe `weppy-roblox-mcp-basic.zip` em [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest)
+1. Baixe `weppy-roblox-mcp-basic-v{versão}.zip` em [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest)
 2. Extraia o arquivo ZIP — voce encontrara o arquivo `roblox-plugin/WeppyRobloxMCP.rbxm` e guias de instalacao
 
 ## 2. Instalar o Plugin

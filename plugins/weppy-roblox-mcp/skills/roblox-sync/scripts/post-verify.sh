@@ -12,7 +12,7 @@
 
 set -euo pipefail
 
-SYNC_DIR="${SYNC_DIR:-roblox-studio-sync}"
+SYNC_DIR="${SYNC_DIR:-roblox-project-sync}"
 EXPLORER_DIR="$SYNC_DIR/explorer"
 
 # Required service folders
@@ -30,36 +30,38 @@ log_warn() { echo -e "${YELLOW}[WARN]${NC} $1"; }
 verify_service() {
   local service="$1"
   local service_dir="$EXPLORER_DIR/$service"
-  local index_file="$service_dir/_index.json"
-
   # Check folder exists
   if [ ! -d "$service_dir" ]; then
     log_fail "$service: Folder not found"
     return 1
   fi
 
-  # Check _index.json exists
+  # Check _tree.json (new format) or _index.json (legacy) exists
+  local index_file="$service_dir/_tree.json"
   if [ ! -f "$index_file" ]; then
-    log_fail "$service: _index.json not found"
+    index_file="$service_dir/_index.json"
+  fi
+  if [ ! -f "$index_file" ]; then
+    log_fail "$service: _tree.json not found"
     return 1
   fi
 
-  # Check _index.json has content
+  # Check file has content
   local size
   size=$(stat -f %z "$index_file" 2>/dev/null || stat -c %s "$index_file" 2>/dev/null || echo "0")
   if [ "$size" -lt 20 ]; then
-    log_fail "$service: _index.json too small (${size} bytes)"
+    log_fail "$service: $(basename $index_file) too small (${size} bytes)"
     return 1
   fi
 
   # Check JSON has required fields
   if ! grep -q '"name"' "$index_file" 2>/dev/null; then
-    log_fail "$service: _index.json missing 'name' field"
+    log_fail "$service: $(basename $index_file) missing 'name' field"
     return 1
   fi
 
   if ! grep -q '"className"' "$index_file" 2>/dev/null; then
-    log_fail "$service: _index.json missing 'className' field"
+    log_fail "$service: $(basename $index_file) missing 'className' field"
     return 1
   fi
 
@@ -133,7 +135,7 @@ main() {
   # Count total scripts synced
   local script_count=0
   if [ -d "$EXPLORER_DIR" ]; then
-    script_count=$(find "$EXPLORER_DIR" -name "*.lua" -type f 2>/dev/null | wc -l | tr -d ' ')
+    script_count=$(find "$EXPLORER_DIR" \( -name "*.luau" -o -name "*.lua" \) -type f 2>/dev/null | wc -l | tr -d ' ')
   fi
   echo "Scripts synced: $script_count"
 

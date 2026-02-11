@@ -2,27 +2,25 @@
 
 How to use Roblox MCP with [Google Antigravity](https://developers.googleblog.com/build-with-google-antigravity-our-new-agentic-development-platform/).
 
-> **Antigravity** is Google's agentic development platform where AI agents autonomously navigate between code editing, terminal, and browser to perform complex tasks.
+> **Antigravity** is Google's agentic development platform where AI agents autonomously move between code editing, terminal, and browser to carry out complex tasks.
 
 ## Prerequisites
 
-1. **Antigravity** installed (supports macOS, Windows, Linux)
-2. **Roblox Studio Plugin** installed
+1. **Antigravity** installed (see official docs for supported OS/requirements)
+2. **Node.js** (v18.0.0 or later, `npx` available)
+3. **Roblox Studio plugin** installed
 
 ## Register MCP Server
 
-### Method 1: Install from MCP Store (Recommended)
+In Antigravity, MCP servers are managed in the **agent pane (Agent pane)**.
 
-1. Open Antigravity
-2. Go to **Settings** → **MCP**
-3. Search for `weppy-roblox-mcp` in the MCP Store
-4. Click **Install**
+### Manual registration via raw config (recommended)
 
-### Method 2: Edit Configuration File Directly
+1. In the agent pane, click **⋯** → **MCP Servers** → **Manage MCP Servers** → **View raw config**
 
-1. In Antigravity, click **...** menu → **MCP Servers** → **Manage MCP Servers** → **View raw config**
+![Open MCP Servers menu](../../../assets/screenshots/antigravity/antigravity_mcp_services_menu.png)
 
-2. Add the following content to the `mcp_config.json` file:
+2. Add/merge the following into the displayed config (JSON):
 
 ```json
 {
@@ -35,26 +33,15 @@ How to use Roblox MCP with [Google Antigravity](https://developers.googleblog.co
 }
 ```
 
-3. After saving, click **Refresh** in **Manage MCP Servers**
+![Edit raw config](../../../assets/screenshots/antigravity/antigravity_mcp_raw.png)
 
-**Configuration file locations:**
+3. After saving, do **Refresh** (or restart/refresh per the UI guidance)
 
-| OS | Path |
-|----|------|
-| macOS/Linux | `~/.gemini/antigravity/mcp_config.json` |
-| Windows | `%USERPROFILE%\.gemini\antigravity\mcp_config.json` |
+> The actual path/name of the config file can vary by OS and Antigravity version, so always edit based on the location shown in **View raw config**.
 
-### Method 3: Ask the Agent
+### Optional: Adjust port/logs with environment variables
 
-You can also ask the Antigravity Agent directly:
-
-```
-Add Roblox MCP (@weppy/roblox-mcp) as an MCP server
-```
-
-## Important: Use Absolute Paths
-
-> **Note**: Antigravity does not support the `${workspaceFolder}` variable. You must use **absolute paths**.
+We recommend keeping the defaults (HTTP `127.0.0.1:3002`). If needed, you can set environment variables like this:
 
 ```json
 {
@@ -63,7 +50,9 @@ Add Roblox MCP (@weppy/roblox-mcp) as an MCP server
       "command": "npx",
       "args": ["-y", "@weppy/roblox-mcp"],
       "env": {
-        "PROJECT_ROOT": "/Users/username/projects/my-roblox-game"
+        "HTTP_HOST": "127.0.0.1",
+        "HTTP_PORT": "3002",
+        "LOG_LEVEL": "INFO"
       }
     }
   }
@@ -73,32 +62,14 @@ Add Roblox MCP (@weppy/roblox-mcp) as an MCP server
 ## Connection Test
 
 1. Open **Roblox Studio** → Plugins tab → **W-MCP** → **Connect**
-2. Enter in **Antigravity**:
+2. In **Antigravity**, enter:
    ```
    Tell me what's currently selected in Roblox Studio
    ```
 
-## Using Skills
-
-Combined with Antigravity's **Skills** system, you can create more powerful workflows:
-
-- Define Roblox development workflows per project
-- Package frequently used tasks as Skills
-- Agent automatically plans, executes, and verifies tasks
-
-## Supported Models
-
-You can choose from the following models when using Roblox MCP in Antigravity:
-
-| Model | Features |
-|-------|----------|
-| **Gemini 3 Pro** | Default model, free to use |
-| **Claude Sonnet 4.5** | Anthropic model support |
-| **GPT-OSS** | OpenAI model support |
-
 ## Troubleshooting
 
-### Server won't start
+### When the server won't start
 
 Run the MCP server directly to check for errors:
 ```bash
@@ -107,24 +78,12 @@ npx -y @weppy/roblox-mcp
 
 ### Connection failed
 
-- Verify the Roblox Studio plugin is in **Connected** state
-- Check if port 3002 is blocked by a firewall
-- Check server status in Settings → MCP
+- Verify the Roblox Studio plugin is **Connected**
+- Check whether port **3002** is blocked by a firewall
+- Check server status in the agent pane **⋯** → **MCP Servers**
+- (Advanced) If you changed `HTTP_PORT`, the Roblox Studio plugin/bridge must be configured to use the same port.
 
-### Absolute path error
+## References
 
-Using `${workspaceFolder}` will cause errors. Change to absolute paths:
-
-```json
-// Wrong
-"args": ["--workspace", "${workspaceFolder}"]
-
-// Correct
-"args": ["--workspace", "/absolute/path/to/project"]
-```
-
-## Reference
-
-- [Antigravity Getting Started Guide](https://codelabs.developers.google.com/getting-started-google-antigravity)
-- [Antigravity MCP Integration Guide](https://composio.dev/blog/howto-mcp-antigravity)
-- [Antigravity Skills Collection](https://github.com/sickn33/antigravity-awesome-skills)
+- [Google Antigravity introduction](https://developers.googleblog.com/build-with-google-antigravity-our-new-agentic-development-platform/)
+- [Antigravity Getting Started Guide (Codelab)](https://codelabs.developers.google.com/getting-started-google-antigravity)

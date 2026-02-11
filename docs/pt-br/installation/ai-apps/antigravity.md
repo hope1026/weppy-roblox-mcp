@@ -1,28 +1,26 @@
-# Configuracao do Antigravity
+# Configuração do Antigravity
 
-Como usar o Roblox MCP no [Google Antigravity](https://developers.googleblog.com/build-with-google-antigravity-our-new-agentic-development-platform/).
+Como usar o Roblox MCP com o [Google Antigravity](https://developers.googleblog.com/build-with-google-antigravity-our-new-agentic-development-platform/).
 
-> **Antigravity** e a plataforma de desenvolvimento baseada em agentes do Google, onde agentes de IA realizam tarefas complexas de forma autonoma atraves de edicao de codigo, terminal e navegador.
+> **Antigravity** é a plataforma de desenvolvimento baseada em agentes do Google, em que agentes de IA realizam tarefas complexas de forma autônoma alternando entre edição de código, terminal e navegador.
 
-## Pre-requisitos
+## Pré-requisitos
 
-1. **Antigravity** instalado (suporta macOS, Windows, Linux)
-2. **Plugin do Roblox Studio** instalado
+1. **Antigravity** instalado (consulte a documentação oficial para SO suportados/requisitos)
+2. **Node.js** (v18.0.0 ou superior, `npx` disponível)
+3. **Plugin do Roblox Studio** instalado
 
-## Registrar o Servidor MCP
+## Registrar servidor MCP
 
-### Metodo 1: Instalar pela MCP Store (Recomendado)
+No Antigravity, os servidores MCP são gerenciados no **painel do agente (Agent pane)**.
 
-1. Inicie o Antigravity
-2. Va para **Settings** → **MCP**
-3. Pesquise por `weppy-roblox-mcp` na MCP Store
-4. Clique em **Install**
+### Registro manual via raw config (recomendado)
 
-### Metodo 2: Editar Arquivo de Configuracao Diretamente
+1. No painel do agente, clique em **⋯** → **MCP Servers** → **Manage MCP Servers** → **View raw config**
 
-1. No Antigravity, clique no menu **⋯** → **MCP Servers** → **Manage MCP Servers** → **View raw config**
+![Abrir menu MCP Servers](../../../assets/screenshots/antigravity/antigravity_mcp_services_menu.png)
 
-2. Adicione o seguinte conteudo ao arquivo `mcp_config.json`:
+2. No JSON exibido, adicione/mescle o conteúdo abaixo:
 
 ```json
 {
@@ -35,26 +33,15 @@ Como usar o Roblox MCP no [Google Antigravity](https://developers.googleblog.com
 }
 ```
 
-3. Apos salvar, clique em **Refresh** em **Manage MCP Servers**
+![Editar raw config](../../../assets/screenshots/antigravity/antigravity_mcp_raw.png)
 
-**Localizacao do arquivo de configuracao:**
+3. Após salvar, faça **Refresh** (ou reinicie/atualize conforme a UI orientar)
 
-| SO | Caminho |
-|----|---------|
-| macOS/Linux | `~/.gemini/antigravity/mcp_config.json` |
-| Windows | `%USERPROFILE%\.gemini\antigravity\mcp_config.json` |
+> O caminho/nome real do arquivo de configuração pode variar conforme o SO e a versão do Antigravity. Sempre edite com base no local indicado em **View raw config**.
 
-### Metodo 3: Solicitar ao Agente
+### Opção: Ajustar porta/logs via variáveis de ambiente
 
-Voce tambem pode solicitar diretamente ao Agente do Antigravity:
-
-```
-Adicione o Roblox MCP (@weppy/roblox-mcp) como servidor MCP
-```
-
-## Importante: Use Caminhos Absolutos
-
-> **Atencao**: O Antigravity nao suporta a variavel `${workspaceFolder}`. Voce deve usar **caminhos absolutos**.
+Recomendamos manter o padrão (HTTP `127.0.0.1:3002`). Se necessário, você pode definir variáveis de ambiente assim:
 
 ```json
 {
@@ -63,68 +50,40 @@ Adicione o Roblox MCP (@weppy/roblox-mcp) como servidor MCP
       "command": "npx",
       "args": ["-y", "@weppy/roblox-mcp"],
       "env": {
-        "PROJECT_ROOT": "/Users/username/projects/my-roblox-game"
+        "HTTP_HOST": "127.0.0.1",
+        "HTTP_PORT": "3002",
+        "LOG_LEVEL": "INFO"
       }
     }
   }
 }
 ```
 
-## Teste de Conexao
+## Teste de conexão
 
-1. Inicie o **Roblox Studio** → Aba Plugins → **W-MCP** → **Connect**
-2. Digite no **Antigravity**:
+1. Abra o **Roblox Studio** → aba Plugins → **W-MCP** → **Connect**
+2. No **Antigravity**, digite:
    ```
-   Diga-me o que esta selecionado atualmente no Roblox Studio
+   Diga-me o que está selecionado atualmente no Roblox Studio
    ```
 
-## Utilizando Skills
+## Solução de problemas
 
-Ao usar com o sistema de **Skills** do Antigravity, voce pode criar fluxos de trabalho mais poderosos:
+### Se o servidor não iniciar
 
-- Defina fluxos de trabalho de desenvolvimento Roblox por projeto
-- Empacote tarefas frequentes como Skills
-- O agente planeja, executa e verifica tarefas automaticamente
-
-## Modelos Suportados
-
-Ao usar o Roblox MCP no Antigravity, voce pode escolher os seguintes modelos:
-
-| Modelo | Caracteristicas |
-|--------|-----------------|
-| **Gemini 3 Pro** | Modelo padrao, uso gratuito disponivel |
-| **Claude Sonnet 4.5** | Suporte a modelo Anthropic |
-| **GPT-OSS** | Suporte a modelo OpenAI |
-
-## Solucao de Problemas
-
-### O servidor nao inicia
-
-Execute o servidor MCP diretamente para verificar erros:
+Execute o servidor MCP diretamente para verificar o erro:
 ```bash
 npx -y @weppy/roblox-mcp
 ```
 
-### Falha na conexao
+### Falha na conexão
 
-- Verifique se o plugin do Roblox Studio esta no estado **Connected**
-- Verifique se a porta 3002 nao esta bloqueada pelo firewall
-- Verifique o status do servidor em Settings → MCP
+- Verifique se o plugin do Roblox Studio está em **Connected**
+- Verifique se a porta **3002** não está bloqueada pelo firewall
+- Verifique o status do servidor no painel do agente **⋯** → **MCP Servers**
+- (Avançado) Se você alterou `HTTP_PORT`, o plugin/bridge do Roblox Studio também precisa usar a mesma porta.
 
-### Erro de caminho absoluto
+## Materiais de referência
 
-Erros ocorrem ao usar `${workspaceFolder}`. Altere para caminho absoluto:
-
-```json
-// ❌ Incorreto
-"args": ["--workspace", "${workspaceFolder}"]
-
-// ✅ Correto
-"args": ["--workspace", "/absolute/path/to/project"]
-```
-
-## Referencias
-
-- [Guia de Introducao ao Antigravity](https://codelabs.developers.google.com/getting-started-google-antigravity)
-- [Guia de Integracao MCP do Antigravity](https://composio.dev/blog/howto-mcp-antigravity)
-- [Colecao de Skills do Antigravity](https://github.com/sickn33/antigravity-awesome-skills)
+- [Introdução ao Google Antigravity](https://developers.googleblog.com/build-with-google-antigravity-our-new-agentic-development-platform/)
+- [Guia de primeiros passos do Antigravity (Codelab)](https://codelabs.developers.google.com/getting-started-google-antigravity)

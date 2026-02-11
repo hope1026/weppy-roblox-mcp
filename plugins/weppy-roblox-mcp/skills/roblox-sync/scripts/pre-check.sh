@@ -18,7 +18,7 @@
 set -euo pipefail
 
 # Configuration
-SYNC_DIR="${SYNC_DIR:-roblox-studio-sync}"
+SYNC_DIR="${SYNC_DIR:-roblox-project-sync}"
 MCP_PORT="${MCP_PORT:-3002}"
 MAX_RETRIES="${MAX_RETRIES:-60}"  # Max retries for each phase (5 minutes at 5s intervals)
 RETRY_INTERVAL=5
@@ -154,19 +154,22 @@ verify_sync_data() {
   # Check each required service has a folder with _index.json
   for service in "${REQUIRED_SERVICES[@]}"; do
     local service_dir="$explorer_dir/${service}"
-    local index_file="$service_dir/_index.json"
-
     if [ ! -d "$service_dir" ]; then
       missing_services+=("$service")
       continue
     fi
 
+    # Check for _tree.json (new format) or _index.json (legacy)
+    local index_file="$service_dir/_tree.json"
     if [ ! -f "$index_file" ]; then
-      invalid_services+=("$service (missing _index.json)")
+      index_file="$service_dir/_index.json"
+    fi
+    if [ ! -f "$index_file" ]; then
+      invalid_services+=("$service (missing _tree.json)")
       continue
     fi
 
-    # Check _index.json is not empty and has valid structure
+    # Check file is not empty and has valid structure
     local file_size
     file_size=$(stat -f %z "$index_file" 2>/dev/null || stat -c %s "$index_file" 2>/dev/null || echo "0")
     if [ "$file_size" -lt 20 ]; then
