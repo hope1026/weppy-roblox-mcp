@@ -18,7 +18,23 @@ How to use Roblox MCP with [Google Gemini CLI](https://github.com/google-gemini/
 
 ## Register MCP Server
 
-### Method 1: Edit Configuration File (Recommended)
+### Method 1: CLI Command (Recommended)
+
+Register with a single command in your terminal:
+
+```bash
+gemini mcp add weppy-roblox-mcp npx --trust -- -y @weppy/roblox-mcp
+```
+
+> The `--trust` flag skips confirmation prompts for each tool call.
+
+To register globally, add `-s user`:
+
+```bash
+gemini mcp add weppy-roblox-mcp npx -s user --trust -- -y @weppy/roblox-mcp
+```
+
+### Method 2: Edit Configuration File
 
 Add the following content to `.gemini/settings.json`:
 
@@ -39,10 +55,16 @@ Add the following content to `.gemini/settings.json`:
 | Project | `<project>/.gemini/settings.json` |
 | Global | `~/.gemini/settings.json` |
 
-### Method 2: Using Environment Variables
+### Method 3: Using Environment Variables
 
 If specific environment variables are needed:
 
+**CLI:**
+```bash
+gemini mcp add weppy-roblox-mcp npx --trust -e MCP_PORT=3002 -- -y @weppy/roblox-mcp
+```
+
+**Configuration file:**
 ```json
 {
   "mcpServers": {
@@ -71,35 +93,6 @@ You can check connected server status with the `/mcp` command in Gemini CLI:
 
 ```
 /mcp
-```
-
-## Advanced Configuration
-
-### Tool Filtering
-
-You can include or exclude specific tools:
-
-```json
-{
-  "mcpServers": {
-    "weppy-roblox-mcp": {
-      "command": "npx",
-      "args": ["-y", "@weppy/roblox-mcp"],
-      "excludeTools": ["execute_script"],
-      "includeTools": ["get_selection", "create_instance", "set_property"]
-    }
-  }
-}
-```
-
-> `excludeTools` takes precedence over `includeTools`.
-
-### Debug Mode
-
-To debug connection issues:
-
-```bash
-gemini --debug
 ```
 
 ## Troubleshooting

@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+## [0.1.11] - 2026-02-14
+
+### Other Changes
+
+- Improve stability
+
+
 ## [0.1.10] - 2026-02-11
 
 ### Bug Fixes

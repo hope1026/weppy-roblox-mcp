@@ -1,6 +1,6 @@
-# Konfigurasi Gemini CLI
+# Pengaturan Gemini CLI
 
-Cara menggunakan Roblox MCP di [Google Gemini CLI](https://github.com/google-gemini/gemini-cli).
+Cara menggunakan Roblox MCP dengan [Google Gemini CLI](https://github.com/google-gemini/gemini-cli).
 
 ## Prasyarat
 
@@ -9,16 +9,32 @@ Cara menggunakan Roblox MCP di [Google Gemini CLI](https://github.com/google-gem
    node --version
    ```
 
-2. **Gemini CLI** sudah terinstal
+2. **Gemini CLI** terinstal
    ```bash
    npm install -g @google/gemini-cli
    ```
 
-3. **Plugin Roblox Studio** sudah terinstal
+3. **Plugin Roblox Studio** terinstal
 
-## Registrasi MCP Server
+## Mendaftarkan Server MCP
 
-### Metode 1: Edit File Konfigurasi (Disarankan)
+### Metode 1: Perintah CLI (Disarankan)
+
+Daftarkan dengan satu perintah di terminal Anda:
+
+```bash
+gemini mcp add weppy-roblox-mcp npx --trust -- -y @weppy/roblox-mcp
+```
+
+> Flag `--trust` melewati prompt konfirmasi untuk setiap pemanggilan tool.
+
+Untuk mendaftar secara global, tambahkan `-s user`:
+
+```bash
+gemini mcp add weppy-roblox-mcp npx -s user --trust -- -y @weppy/roblox-mcp
+```
+
+### Metode 2: Edit File Konfigurasi
 
 Tambahkan konten berikut ke file `.gemini/settings.json`:
 
@@ -34,15 +50,21 @@ Tambahkan konten berikut ke file `.gemini/settings.json`:
 ```
 
 **Lokasi file konfigurasi:**
-| Cakupan | Path |
+| Lingkup | Path |
 |---------|------|
 | Proyek | `<proyek>/.gemini/settings.json` |
 | Global | `~/.gemini/settings.json` |
 
-### Metode 2: Menggunakan Environment Variable
+### Metode 3: Menggunakan Variabel Lingkungan
 
-Jika diperlukan environment variable tertentu:
+Jika variabel lingkungan tertentu diperlukan:
 
+**CLI:**
+```bash
+gemini mcp add weppy-roblox-mcp npx --trust -e MCP_PORT=3002 -- -y @weppy/roblox-mcp
+```
+
+**File konfigurasi:**
 ```json
 {
   "mcpServers": {
@@ -59,67 +81,38 @@ Jika diperlukan environment variable tertentu:
 
 ## Tes Koneksi
 
-1. Jalankan **Roblox Studio** → Tab Plugins → **W-MCP** → **Connect**
-2. Jalankan **Gemini CLI** lalu masukkan:
+1. Buka **Roblox Studio** → tab Plugins → **W-MCP** → **Connect**
+2. Jalankan **Gemini CLI** dan masukkan:
    ```
-   Beritahu apa yang sedang dipilih di Roblox Studio
+   Beritahu saya apa yang sedang dipilih di Roblox Studio
    ```
 
-## Periksa Status MCP Server
+## Memeriksa Status Server MCP
 
-Anda dapat memeriksa status server yang terhubung dengan perintah `/mcp` di dalam Gemini CLI:
+Anda dapat memeriksa status server yang terhubung dengan perintah `/mcp` di Gemini CLI:
 
 ```
 /mcp
 ```
 
-## Konfigurasi Lanjutan
-
-### Filtering Tools
-
-Anda dapat menggunakan atau mengecualikan tools tertentu:
-
-```json
-{
-  "mcpServers": {
-    "weppy-roblox-mcp": {
-      "command": "npx",
-      "args": ["-y", "@weppy/roblox-mcp"],
-      "excludeTools": ["execute_script"],
-      "includeTools": ["get_selection", "create_instance", "set_property"]
-    }
-  }
-}
-```
-
-> `excludeTools` lebih diprioritaskan daripada `includeTools`.
-
-### Mode Debug
-
-Untuk debugging masalah koneksi:
-
-```bash
-gemini --debug
-```
-
 ## Pemecahan Masalah
 
-### Saat server tidak dimulai
+### Server tidak dapat dimulai
 
-Jalankan MCP server langsung untuk memeriksa error:
+Jalankan server MCP secara langsung untuk memeriksa kesalahan:
 ```bash
 npx -y @weppy/roblox-mcp
 ```
 
 ### Koneksi gagal
 
-- Pastikan plugin Roblox Studio dalam status **Connected**
-- Pastikan port 3002 tidak diblokir oleh firewall
+- Verifikasi bahwa plugin Roblox Studio dalam status **Connected**
+- Periksa apakah port 3002 diblokir oleh firewall
 - Periksa status server dengan perintah `/mcp`
 
-### Konflik tools
+### Konflik tool
 
-Jika ada tools dengan nama yang sama dari beberapa MCP server, akan ditambahkan prefix dalam format `serverAlias__toolName`.
+Jika beberapa server MCP memiliki tool dengan nama yang sama, mereka akan diberi awalan dengan format `serverAlias__toolName`.
 
 ## Referensi
 
