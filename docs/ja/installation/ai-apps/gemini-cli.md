@@ -1,4 +1,4 @@
-# Gemini CLI 設定
+# Gemini CLI セットアップ
 
 [Google Gemini CLI](https://github.com/google-gemini/gemini-cli)でRoblox MCPを使用する方法です。
 
@@ -9,18 +9,34 @@
    node --version
    ```
 
-2. **Gemini CLI** がインストール済み
+2. **Gemini CLI** インストール済み
    ```bash
    npm install -g @google/gemini-cli
    ```
 
-3. **Roblox Studioプラグイン** のインストール完了
+3. **Roblox Studioプラグイン** インストール完了
 
 ## MCPサーバーの登録
 
-### 方法1: 設定ファイルの編集 (推奨)
+### 方法1: CLIコマンド（推奨）
 
-`.gemini/settings.json` ファイルに以下の内容を追加してください:
+ターミナルで1行で登録できます：
+
+```bash
+gemini mcp add weppy-roblox-mcp npx --trust -- -y @weppy/roblox-mcp
+```
+
+> `--trust`フラグは、ツール呼び出し時の確認プロンプトをスキップします。
+
+グローバル設定として登録するには、`-s user`を追加してください：
+
+```bash
+gemini mcp add weppy-roblox-mcp npx -s user --trust -- -y @weppy/roblox-mcp
+```
+
+### 方法2: 設定ファイルの編集
+
+`.gemini/settings.json`ファイルに以下の内容を追加してください：
 
 ```json
 {
@@ -34,15 +50,21 @@
 ```
 
 **設定ファイルの場所:**
-| 範囲 | パス |
-|------|------|
+| スコープ | パス |
+|----------|------|
 | プロジェクト | `<プロジェクト>/.gemini/settings.json` |
 | グローバル | `~/.gemini/settings.json` |
 
-### 方法2: 環境変数の使用
+### 方法3: 環境変数の使用
 
-特定の環境変数が必要な場合:
+特定の環境変数が必要な場合：
 
+**CLI:**
+```bash
+gemini mcp add weppy-roblox-mcp npx --trust -e MCP_PORT=3002 -- -y @weppy/roblox-mcp
+```
+
+**設定ファイル:**
 ```json
 {
   "mcpServers": {
@@ -59,67 +81,38 @@
 
 ## 接続テスト
 
-1. **Roblox Studio** を起動 → Pluginsタブ → **W-MCP** → **Connect**
-2. **Gemini CLI** を起動して以下を入力:
+1. **Roblox Studio**を起動 → Pluginsタブ → **W-MCP** → **Connect**
+2. **Gemini CLI**を実行して次のように入力：
    ```
    Roblox Studioで現在選択されているものを教えて
    ```
 
-## MCPサーバー状態の確認
+## MCPサーバーの状態確認
 
-Gemini CLI内で `/mcp` コマンドを使用して接続されているサーバーの状態を確認できます:
+Gemini CLI内で`/mcp`コマンドを使用して、接続されたサーバーの状態を確認できます：
 
 ```
 /mcp
-```
-
-## 詳細設定
-
-### ツールのフィルタリング
-
-特定のツールのみを使用したり、除外したりできます:
-
-```json
-{
-  "mcpServers": {
-    "weppy-roblox-mcp": {
-      "command": "npx",
-      "args": ["-y", "@weppy/roblox-mcp"],
-      "excludeTools": ["execute_script"],
-      "includeTools": ["get_selection", "create_instance", "set_property"]
-    }
-  }
-}
-```
-
-> `excludeTools` は `includeTools` より優先されます。
-
-### デバッグモード
-
-接続の問題をデバッグするには:
-
-```bash
-gemini --debug
 ```
 
 ## トラブルシューティング
 
 ### サーバーが起動しない場合
 
-MCPサーバーを直接実行してエラーを確認してください:
+MCPサーバーを直接実行してエラーを確認してください：
 ```bash
 npx -y @weppy/roblox-mcp
 ```
 
 ### 接続失敗
 
-- Roblox Studioプラグインが **Connected** 状態か確認
+- Roblox Studioプラグインが**Connected**状態であることを確認
 - ポート3002がファイアウォールでブロックされていないか確認
-- `/mcp` コマンドでサーバー状態を確認
+- `/mcp`コマンドでサーバーの状態を確認
 
 ### ツールの競合
 
-複数のMCPサーバーで同じ名前のツールがある場合、`serverAlias__toolName` 形式でプレフィックスが付きます。
+複数のMCPサーバーに同じ名前のツールがある場合、`serverAlias__toolName`形式でプレフィックスが付けられます。
 
 ## 参考資料
 

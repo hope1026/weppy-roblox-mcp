@@ -1,8 +1,8 @@
-# Configuracao do Gemini CLI
+# Configuração do Gemini CLI
 
-Como usar o Roblox MCP no [Google Gemini CLI](https://github.com/google-gemini/gemini-cli).
+Como usar o Roblox MCP com [Google Gemini CLI](https://github.com/google-gemini/gemini-cli).
 
-## Pre-requisitos
+## Pré-requisitos
 
 1. **Node.js** (v18.0.0 ou superior)
    ```bash
@@ -16,11 +16,27 @@ Como usar o Roblox MCP no [Google Gemini CLI](https://github.com/google-gemini/g
 
 3. **Plugin do Roblox Studio** instalado
 
-## Registrar o Servidor MCP
+## Registrar servidor MCP
 
-### Metodo 1: Editar Arquivo de Configuracao (Recomendado)
+### Método 1: Comando CLI (Recomendado)
 
-Adicione o seguinte conteudo ao arquivo `.gemini/settings.json`:
+Registre com um único comando no terminal:
+
+```bash
+gemini mcp add weppy-roblox-mcp npx --trust -- -y @weppy/roblox-mcp
+```
+
+> A flag `--trust` ignora as solicitações de confirmação para cada chamada de ferramenta.
+
+Para registrar globalmente, adicione `-s user`:
+
+```bash
+gemini mcp add weppy-roblox-mcp npx -s user --trust -- -y @weppy/roblox-mcp
+```
+
+### Método 2: Editar arquivo de configuração
+
+Adicione o seguinte conteúdo ao arquivo `.gemini/settings.json`:
 
 ```json
 {
@@ -33,16 +49,22 @@ Adicione o seguinte conteudo ao arquivo `.gemini/settings.json`:
 }
 ```
 
-**Localizacao do arquivo de configuracao:**
+**Localizações do arquivo de configuração:**
 | Escopo | Caminho |
 |--------|---------|
 | Projeto | `<projeto>/.gemini/settings.json` |
 | Global | `~/.gemini/settings.json` |
 
-### Metodo 2: Usar Variaveis de Ambiente
+### Método 3: Usando variáveis de ambiente
 
-Se variaveis de ambiente especificas forem necessarias:
+Se variáveis de ambiente específicas forem necessárias:
 
+**CLI:**
+```bash
+gemini mcp add weppy-roblox-mcp npx --trust -e MCP_PORT=3002 -- -y @weppy/roblox-mcp
+```
+
+**Arquivo de configuração:**
 ```json
 {
   "mcpServers": {
@@ -57,71 +79,42 @@ Se variaveis de ambiente especificas forem necessarias:
 }
 ```
 
-## Teste de Conexao
+## Teste de conexão
 
-1. Inicie o **Roblox Studio** → Aba Plugins → **W-MCP** → **Connect**
-2. Inicie o **Gemini CLI** e digite:
+1. Abra o **Roblox Studio** → aba Plugins → **W-MCP** → **Connect**
+2. Execute o **Gemini CLI** e digite:
    ```
-   Diga-me o que esta selecionado atualmente no Roblox Studio
+   Me diga o que está selecionado atualmente no Roblox Studio
    ```
 
-## Verificar Status do Servidor MCP
+## Verificar status do servidor MCP
 
-Voce pode verificar o status do servidor conectado com o comando `/mcp` no Gemini CLI:
+Você pode verificar o status dos servidores conectados com o comando `/mcp` no Gemini CLI:
 
 ```
 /mcp
 ```
 
-## Configuracao Avancada
+## Solução de problemas
 
-### Filtragem de Ferramentas
-
-Voce pode usar ou excluir ferramentas especificas:
-
-```json
-{
-  "mcpServers": {
-    "weppy-roblox-mcp": {
-      "command": "npx",
-      "args": ["-y", "@weppy/roblox-mcp"],
-      "excludeTools": ["execute_script"],
-      "includeTools": ["get_selection", "create_instance", "set_property"]
-    }
-  }
-}
-```
-
-> `excludeTools` tem prioridade sobre `includeTools`.
-
-### Modo de Depuracao
-
-Para depurar problemas de conexao:
-
-```bash
-gemini --debug
-```
-
-## Solucao de Problemas
-
-### O servidor nao inicia
+### Servidor não inicia
 
 Execute o servidor MCP diretamente para verificar erros:
 ```bash
 npx -y @weppy/roblox-mcp
 ```
 
-### Falha na conexao
+### Falha na conexão
 
-- Verifique se o plugin do Roblox Studio esta no estado **Connected**
-- Verifique se a porta 3002 nao esta bloqueada pelo firewall
+- Verifique se o plugin do Roblox Studio está no estado **Connected**
+- Verifique se a porta 3002 está bloqueada por um firewall
 - Verifique o status do servidor com o comando `/mcp`
 
-### Conflito de ferramentas
+### Conflitos de ferramentas
 
-Se varios servidores MCP tiverem ferramentas com o mesmo nome, elas serao prefixadas no formato `serverAlias__toolName`.
+Se vários servidores MCP tiverem ferramentas com o mesmo nome, elas receberão o prefixo no formato `serverAlias__toolName`.
 
-## Referencias
+## Referências
 
-- [Documentacao Oficial de MCP do Gemini CLI](https://geminicli.com/docs/tools/mcp-server/)
-- [Guia de Configuracao do Gemini CLI](https://geminicli.com/docs/get-started/configuration/)
+- [Documentação oficial do Gemini CLI MCP](https://geminicli.com/docs/tools/mcp-server/)
+- [Guia de configuração do Gemini CLI](https://geminicli.com/docs/get-started/configuration/)
