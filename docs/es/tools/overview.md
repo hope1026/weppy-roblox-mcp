@@ -2,6 +2,10 @@
 
 Conecta la IA con Roblox Studio para automatizar diversas tareas. A continuacion se presenta lo que puedes hacer por categoria.
 
+Politica de Sync:
+- Basic: Studio -> Local (una via)
+- Pro: Sync bidireccional + funcionalidades avanzadas mas amplias (mejor eficiencia de tokens IA con operaciones masivas)
+
 ---
 
 ## Basic (Gratis)

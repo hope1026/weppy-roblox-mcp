@@ -2,50 +2,56 @@
 
 ## Why Pro?
 
-**Save AI Tokens** - One bulk command replaces dozens of individual operations. Less back-and-forth means lower token usage and faster results.
+### Bidirectional Sync built for real development workflows
 
-**Build Complete Games** - Terrain, environment, assets, and spatial tools let you create polished game worlds, not just prototypes.
+Pro Sync goes beyond one-way export. Edit scripts locally and push them to Studio. Make changes in Studio and pull them back to disk. Pro keeps both sides in sync.
 
-## What Pro Unlocks
+- **Bidirectional Sync** — Changes flow in both directions between Studio and local files.
+- **Per-type Direction** — Set direction independently for Scripts, Values, Containers, Data, and Services.
+- **Per-type Apply Mode** — Choose Auto or Manual per type to balance speed and control.
+- **Full Sync / Resync** — Rebuild clean project state on demand after large changes or reconnects.
+- **Change History** — Track what changed, when, and in which direction before applying.
+- **Multi-place Sync** — Sync up to 3 Roblox Places simultaneously, each with isolated storage and its own change history.
 
-| Category | What you can do |
-|----------|-----------------|
-| **Bulk Operations** | Create 100 trees with one command. Modify all parts at once. |
-| **Terrain Generation** | Generate mountains, caves, and landscapes procedurally. |
-| **Asset Management** | Search Creator Store and insert models directly. |
-| **Raycast & Spatial** | Find spawn positions, detect collisions, analyze walkable areas. |
-| **Environment Control** | Set lighting, atmosphere, sky, and time of day. |
-| **Visualization** | Show areas, create markers, highlight regions. |
+### Save AI tokens with high-leverage workflows
 
-## How to Purchase
+Bulk and advanced actions reduce repetitive round trips — do more per prompt.
 
-### Step 1: Buy on Gumroad
+### Broader advanced capabilities
 
-1. Go to [Gumroad - Weppy Roblox Plugin](https://gumroad.com/l/chllph?utm_source=github&utm_medium=repo&utm_campaign=sunity_plugin)
-2. Download the plugin
+Terrain generation, asset search, spatial analysis, animation, audio, and production-scale automation.
 
-### Step 2: Install Plugin
+## Subscription & Download
 
-1. Open Roblox Studio
-2. Go to Plugins tab → **Plugins Folder**
-3. **Delete** the existing `WeppyRobloxMCP.rbxm` (Basic version)
-4. **Copy** the downloaded `WeppyRobloxMCP-Pro.rbxm` into the folder
-5. Restart Roblox Studio
+### Step 1: Subscribe on Gumroad
+
+1. Go to [Gumroad - Weppy Roblox Plugin](https://gumroad.com/l/faccjs?utm_source=github&utm_medium=repo&utm_campaign=pro_upgrade_md)
+2. Complete your Pro subscription license purchase
+
+### Step 2: Download from GitHub Releases
+
+1. Open [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest)
+2. Download `weppy-roblox-mcp-v{version}.zip`
+3. Extract and copy `roblox-plugin/WeppyRobloxMCP.rbxm` to your Roblox Plugins folder
 
 ### Step 3: Verify
 
-1. Open the W-MCP plugin
-2. Check that "Pro" badge is displayed
-3. All tools are now available!
+1. Open W-MCP in Roblox Studio
+2. Confirm the Pro badge is visible
+3. Run a Pro action (for example: `manage_sync` or bulk operations)
 
 ## Feature Comparison
 
 | Feature | Basic | Pro |
 |---------|:-----:|:---:|
-| Instance, Script, Property | ✅ Full access | ✅ Full access |
+| Script, Instance, Property management | ✅ Full access | ✅ Full access |
 | Selection, Tag, Camera, Log | ✅ Full access | ✅ Full access |
-| Bulk Operations | ― | ✅ Unlimited |
-| Asset Search & Insert | ― | ✅ Unlimited |
-| Terrain Generation | ― | ✅ Unlimited |
-| Environment, Raycast, Spatial | ― | ✅ Unlimited |
-| Visualization Tools | ― | ✅ Unlimited |
+| Sync Direction | Studio → Local (one-way) | Bidirectional |
+| Per-type Sync Direction | ❌ | ✅ Scripts / Values / Containers / Data / Services |
+| Per-type Apply Mode | ❌ | ✅ Auto / Manual |
+| Full Sync | ❌ | ✅ |
+| Resync / Rebuild state | ❌ | ✅ |
+| Change History | ❌ | ✅ |
+| Multi-place Sync | ❌ | ✅ Up to 3 places, each with isolated storage |
+| Advanced tool coverage | Core set | Broader advanced set |
+| AI token efficiency | Standard | Better with bulk / high-leverage actions |

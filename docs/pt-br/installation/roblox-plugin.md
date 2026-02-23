@@ -1,21 +1,26 @@
 # Instalacao do Plugin Roblox
 
-Como instalar o plugin para conectar com agentes de IA no Roblox Studio.
+Como instalar o plugin para conectar agentes de IA no Roblox Studio.
 
 ## 1. Baixar o Plugin
 
-1. Baixe `weppy-roblox-mcp-basic-v{versão}.zip` em [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest)
-2. Extraia o arquivo ZIP — voce encontrara o arquivo `roblox-plugin/WeppyRobloxMCP.rbxm` e guias de instalacao
+1. Abra [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest)
+2. Baixe `weppy-roblox-mcp-v{version}.zip`
+3. Extraia o ZIP - voce encontrara `roblox-plugin/WeppyRobloxMCP.rbxm` e guias de instalacao
+
+Nota:
+- Basic usa o mesmo pacote com politica Basic (Studio -> Local, unidirecional)
+- Com licenca Pro por assinatura, sync bidirecional e recursos avancados mais amplos sao liberados
 
 ## 2. Instalar o Plugin
 
 1. Inicie o **Roblox Studio**
-2. Clique na aba **Plugins** no menu superior
-3. Clique no botao **Plugins Folder**
+2. Clique na aba **Plugins**
+3. Clique em **Plugins Folder**
 
 ![Abrir Plugins Folder](../../assets/screenshots/plugins_menu.png)
 
-4. **Copie** o arquivo `WeppyRobloxMCP.rbxm` da pasta extraida para a pasta de Plugins aberta
+4. **Copie** `WeppyRobloxMCP.rbxm` para a pasta de Plugins
 5. **Reinicie o Roblox Studio**
 
 ## 3. Verificar a Instalacao
@@ -28,7 +33,7 @@ Apos reiniciar, o botao **W-MCP** aparecera na aba Plugins.
 
 ### Pre-requisitos
 
-O servidor MCP deve estar instalado. Complete primeiro o guia correspondente ao seu aplicativo de IA:
+O servidor MCP deve estar instalado. Complete primeiro o guia do seu app de IA:
 
 | Aplicativo de IA | Guia de Instalacao |
 |------------------|---------------------|
@@ -42,38 +47,38 @@ O servidor MCP deve estar instalado. Complete primeiro o guia correspondente ao 
 ### Conectar
 
 1. Abra qualquer projeto no **Roblox Studio**
-2. Aba **Plugins** no topo → Clique em **W-MCP**
-3. Clique no botao **Connect** na janela do plugin
-4. Quando aparecer o status **"Connected"**, a conexao foi estabelecida!
+2. Aba **Plugins** -> **W-MCP**
+3. Clique em **Connect**
+4. Quando aparecer **"Connected"**, esta pronto
 
 ![Tela Principal do Plugin](../../assets/screenshots/plugin_main.png)
 
 ## 5. Configuracoes (Opcional)
 
-Clique no botao de configuracoes no canto superior direito do plugin para modificar varias opcoes.
+Use o botao de configuracoes no canto superior direito.
 
 ![Tela de Configuracoes](../../assets/screenshots/settings.png)
 
-- **Conexao Automatica**: Conecta automaticamente ao servidor MCP ao iniciar o Studio
-- **Reconexao Automatica**: Tenta reconectar automaticamente quando a conexao e perdida
-- **Foco Automatico da Camera**: Move automaticamente a camera para objetos criados
-- **Idioma**: Alterar o idioma da interface do plugin
+- **Conexao Automatica**
+- **Reconexao Automatica**
+- **Foco Automatico da Camera**
+- **Idioma**
 
 ## Solucao de Problemas
 
 ### O plugin nao aparece
 
-- Feche completamente o Roblox Studio e reinicie
-- Verifique se o arquivo foi copiado corretamente para a Plugins Folder
-- Verifique se o arquivo `.rbxm` nao esta corrompido
+- Reinicie o Roblox Studio por completo
+- Verifique se o arquivo foi copiado corretamente
+- Verifique se `.rbxm` nao esta corrompido
 
 ### Nao consigo conectar
 
-- Verifique se o servidor MCP esta em execucao no aplicativo de IA
-- Clique novamente no botao **Connect** no plugin
-- Verifique se a porta 3002 nao esta sendo usada por outro programa
+- Verifique se o servidor MCP esta em execucao
+- Clique em **Connect** novamente
+- Verifique conflito na porta 3002
 
 ### A conexao cai frequentemente
 
-- Ative a opcao **Reconexao Automatica** nas configuracoes
-- Tente reiniciar o aplicativo de IA
+- Ative **Reconexao Automatica**
+- Reinicie o app de IA

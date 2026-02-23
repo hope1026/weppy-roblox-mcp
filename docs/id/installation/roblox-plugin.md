@@ -4,23 +4,28 @@ Panduan instalasi plugin untuk menghubungkan AI agent di Roblox Studio.
 
 ## 1. Unduh Plugin
 
-1. Unduh `weppy-roblox-mcp-basic-v{versi}.zip` dari [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest)
-2. Ekstrak file ZIP — Anda akan menemukan file `roblox-plugin/WeppyRobloxMCP.rbxm` dan panduan instalasi
+1. Buka [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest)
+2. Unduh `weppy-roblox-mcp-v{version}.zip`
+3. Ekstrak ZIP - Anda akan menemukan `roblox-plugin/WeppyRobloxMCP.rbxm` dan panduan instalasi
+
+Catatan:
+- Basic menggunakan paket plugin yang sama dengan kebijakan Basic (Studio -> Local satu arah)
+- Setelah lisensi langganan Pro aktif, sync dua arah dan fitur lanjutan yang lebih luas akan terbuka
 
 ## 2. Instal Plugin
 
 1. Jalankan **Roblox Studio**
-2. Klik tab **Plugins** di menu atas
-3. Klik tombol **Plugins Folder**
+2. Klik tab **Plugins**
+3. Klik **Plugins Folder**
 
 ![Buka Plugins Folder](../../assets/screenshots/plugins_menu.png)
 
-4. **Salin** file `WeppyRobloxMCP.rbxm` dari folder yang diekstrak ke folder Plugins yang terbuka
+4. **Salin** `WeppyRobloxMCP.rbxm` ke folder Plugins
 5. **Restart Roblox Studio**
 
 ## 3. Verifikasi Instalasi
 
-Setelah restart, tombol **W-MCP** akan muncul di tab Plugins.
+Setelah restart, tombol **W-MCP** muncul di tab Plugins.
 
 ![Tombol W-MCP](../../assets/screenshots/weppy_plugin_toolbar.png)
 
@@ -28,7 +33,7 @@ Setelah restart, tombol **W-MCP** akan muncul di tab Plugins.
 
 ### Persiapan
 
-MCP server harus sudah terinstal. Selesaikan panduan yang sesuai dengan aplikasi AI yang Anda gunakan terlebih dahulu:
+MCP server harus sudah terinstal. Selesaikan dulu panduan app AI yang Anda pakai:
 
 | Aplikasi AI | Panduan Instalasi |
 |-------------|-------------------|
@@ -42,38 +47,38 @@ MCP server harus sudah terinstal. Selesaikan panduan yang sesuai dengan aplikasi
 ### Menghubungkan
 
 1. Buka proyek apa saja di **Roblox Studio**
-2. Tab **Plugins** di atas → Klik **W-MCP**
-3. Klik tombol **Connect** di jendela plugin
-4. Jika status **"Connected"** ditampilkan, koneksi berhasil!
+2. Tab **Plugins** -> **W-MCP**
+3. Klik **Connect**
+4. Jika status **"Connected"** tampil, koneksi berhasil
 
 ![Layar Utama Plugin](../../assets/screenshots/plugin_main.png)
 
 ## 5. Pengaturan (Opsional)
 
-Klik tombol pengaturan di kanan atas plugin untuk mengubah berbagai opsi.
+Gunakan tombol pengaturan di kanan atas plugin.
 
 ![Layar Pengaturan](../../assets/screenshots/settings.png)
 
-- **Auto Connect**: Otomatis terhubung ke MCP server saat Studio dimulai
-- **Auto Reconnect**: Otomatis mencoba menghubungkan kembali jika koneksi terputus
-- **Auto Camera Focus**: Kamera otomatis bergerak ke objek yang dibuat
-- **Language**: Ubah bahasa UI plugin
+- **Auto Connect**
+- **Auto Reconnect**
+- **Auto Camera Focus**
+- **Language**
 
 ## Pemecahan Masalah
 
 ### Plugin tidak terlihat
 
-- Tutup Roblox Studio sepenuhnya lalu restart
-- Pastikan file sudah disalin dengan benar ke Plugins Folder
-- Pastikan file `.rbxm` tidak rusak
+- Restart Roblox Studio sepenuhnya
+- Pastikan file sudah disalin benar
+- Pastikan `.rbxm` tidak rusak
 
 ### Tidak dapat terhubung
 
-- Pastikan MCP server berjalan di aplikasi AI
-- Klik tombol **Connect** lagi di plugin
-- Pastikan port 3002 tidak digunakan oleh program lain
+- Pastikan MCP server berjalan
+- Klik **Connect** lagi
+- Cek konflik port 3002
 
 ### Koneksi sering terputus
 
-- Aktifkan opsi **Auto Reconnect** di pengaturan
-- Coba restart aplikasi AI
+- Aktifkan **Auto Reconnect**
+- Restart app AI

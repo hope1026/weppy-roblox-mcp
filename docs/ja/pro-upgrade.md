@@ -1,51 +1,57 @@
 # Proアップグレードガイド
 
-## なぜProなのか？
+## なぜProか？
 
-**AIトークンの節約** - 1つの一括操作コマンドが数十の個別操作を置き換えます。繰り返し作業が減り、トークン使用量が削減され、結果も速くなります。
+### 実際の開発ワークフローのための双方向Sync
 
-**完成度の高いゲーム** - 地形、環境、アセット、空間ツールでプロトタイプではなく完成されたゲームワールドを作成できます。
+Pro Syncは単方向エクスポートを超えます。ローカルでスクリプトを編集してStudioに反映。Studioで変更してローカルに取り込む。Proが両側を常に同期します。
 
-## Proが追加するツール
+- **双方向Sync** — StudioとローカルファイルのSyncが双方向で変更を反映します。
+- **タイプ別Direction** — Scripts、Values、Containers、Data、Servicesをそれぞれ独立して設定。
+- **タイプ別Apply Mode** — タイプごとにAutoまたはManualを選択し、速度と制御のバランスを調整。
+- **Full Sync / Resync** — 大規模変更や再接続後に即座にクリーンなプロジェクト状態を再構築。
+- **変更履歴** — 適用前に何が、いつ、どの方向に変更されたかを追跡。
+- **マルチ Place Sync** — 最大3つのRoblox Placeを同時にSync。各Placeは独立したストレージと変更履歴を持ちます。
 
-| カテゴリ | 機能 |
-|---------|------|
-| **一括操作** | 1つのコマンドで木を100本生成。すべてのパーツを同時に修正。 |
-| **地形生成** | 山、洞窟、風景を手続き的に生成。 |
-| **アセット管理** | Creator Store検索後、モデルを直接挿入。 |
-| **レイキャスト** | スポーン位置の検出、衝突検出、移動可能エリアの分析。 |
-| **環境制御** | ライティング、大気、空、時間帯の設定。 |
-| **可視化** | エリア表示、マーカー作成、ゾーンハイライト。 |
+### 高効率ワークフローでAIトークンを節約
 
-## 購入方法
+一括/高度なアクションで繰り返し呼び出しを削減 — 1プロンプトでより多くの作業を。
 
-### ステップ1: Gumroadで購入
+### より広い高度な機能
 
-1. [Gumroad - Weppy Roblox Plugin](https://gumroad.com/l/chllph?utm_source=github&utm_medium=repo&utm_campaign=sunity_plugin) にアクセス
-2. プラグインをダウンロード
+地形生成、アセット検索、空間解析、アニメーション、オーディオ、大規模自動化。
 
-### ステップ2: プラグインのインストール
+## サブスク購入とダウンロード
 
-1. Roblox Studioを起動
-2. Pluginsタブ → **Plugins Folder** をクリック
-3. 既存の `WeppyRobloxMCP.rbxm` (Basicバージョン) を**削除**
-4. ダウンロードした `WeppyRobloxMCP-Pro.rbxm` をフォルダに**コピー**
-5. Roblox Studioを再起動
+### ステップ1: GumroadでProサブスクライセンスを購入
+
+1. [Gumroad - Weppy Roblox Plugin](https://gumroad.com/l/faccjs?utm_source=github&utm_medium=repo&utm_campaign=pro_upgrade_md) にアクセス
+2. Proサブスクライセンスを購入
+
+### ステップ2: GitHub Releasesからダウンロード
+
+1. [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest) を開く
+2. `weppy-roblox-mcp-v{version}.zip` をダウンロード
+3. 解凍して `roblox-plugin/WeppyRobloxMCP.rbxm` を Roblox Plugins フォルダへコピー
 
 ### ステップ3: 確認
 
-1. W-MCPプラグインを開く
-2. "Pro" バッジが表示されているか確認
-3. すべてのツールが使用可能！
+1. Roblox StudioでW-MCPを開く
+2. Proバッジが表示されることを確認
+3. Proアクション（例: `manage_sync`、一括操作）を実行
 
 ## 機能比較
 
 | 機能 | Basic | Pro |
 |-----|:-----:|:---:|
-| Instance, Script, Property | ✅ 全機能利用可能 | ✅ 全機能利用可能 |
-| Selection, Tag, Camera, Log | ✅ 全機能利用可能 | ✅ 全機能利用可能 |
-| 一括操作 (Bulk) | ― | ✅ 無制限 |
-| アセット検索・挿入 | ― | ✅ 無制限 |
-| 地形生成 (Terrain) | ― | ✅ 無制限 |
-| 環境、レイキャスト、空間 | ― | ✅ 無制限 |
-| 可視化ツール | ― | ✅ 無制限 |
+| Script、Instance、Property管理 | ✅ フル利用可 | ✅ フル利用可 |
+| Selection、Tag、Camera、Log | ✅ フル利用可 | ✅ フル利用可 |
+| Sync方向 | Studio → Local（片方向） | 双方向 |
+| タイプ別Sync Direction | ❌ | ✅ Scripts / Values / Containers / Data / Services |
+| タイプ別Apply Mode | ❌ | ✅ Auto / Manual |
+| Full Sync | ❌ | ✅ |
+| Resync / 状態再構築 | ❌ | ✅ |
+| 変更履歴 | ❌ | ✅ |
+| マルチ Place Sync | ❌ | ✅ 最大3 Place、各Place独立ストレージ |
+| 高度ツール範囲 | コア範囲 | より広い高度範囲 |
+| AIトークン効率 | 標準 | 一括/高効率アクションで有利 |

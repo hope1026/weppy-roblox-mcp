@@ -22,11 +22,12 @@ Configura el servidor MCP en tu app de IA para que pueda comunicarse con Roblox 
 
 | App de IA | Cómo configurar |
 |-----------|----------------|
-| **Claude Code** (Recomendado) | [claude-code.md](ai-apps/claude-code.md) |
-| **Claude Desktop** | [claude-desktop.md](ai-apps/claude-desktop.md) |
-| **Cline** | [cline.md](ai-apps/cline.md) |
-| **Roo Code** | [roo-code.md](ai-apps/roo-code.md) |
-| **Cursor** | [cursor.md](ai-apps/cursor.md) |
+| **Claude Code** | [Instrucciones](ai-apps/claude-code.md) |
+| **Claude Desktop** | [Instrucciones](ai-apps/claude-app.md) |
+| **Codex CLI** | [Instrucciones](ai-apps/codex-cli.md) |
+| **Codex Desktop** | [Instrucciones](ai-apps/codex-app.md) |
+| **Gemini CLI** | [Instrucciones](ai-apps/gemini-cli.md) |
+| **Antigravity** | [Instrucciones](ai-apps/antigravity.md) |
 
 > **Nota**: Funciona con cualquier app compatible con MCP. El comando es:
 > ```bash

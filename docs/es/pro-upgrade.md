@@ -1,51 +1,57 @@
 # Guia de Actualizacion a Pro
 
-## Por que Pro?
+## ¿Por qué Pro?
 
-**Ahorro de tokens de IA** - Un solo comando de operacion masiva reemplaza docenas de operaciones individuales. Menos trabajo repetitivo significa menor uso de tokens y resultados mas rapidos.
+### Sync bidireccional para flujos de desarrollo reales
 
-**Juegos mas completos** - Con herramientas de terreno, entorno, assets y espacio, puedes crear mundos de juego terminados, no solo prototipos.
+Pro Sync va más allá del simple export. Edita scripts localmente y súbelos a Studio. Haz cambios en Studio y tráelos de vuelta al disco. Pro mantiene ambos lados sincronizados.
 
-## Herramientas que agrega Pro
+- **Sync bidireccional** — Los cambios fluyen en ambas direcciones entre Studio y los archivos locales.
+- **Direction por tipo** — Configura la dirección de forma independiente para Scripts, Values, Containers, Data y Services.
+- **Apply Mode por tipo** — Elige Auto o Manual por tipo para equilibrar velocidad y control.
+- **Full Sync / Resync** — Reconstruye el estado limpio del proyecto tras cambios grandes o reconexiones.
+- **Historial de cambios** — Rastrea qué cambió, cuándo y en qué dirección antes de aplicar.
+- **Sync multi-place** — Sincroniza hasta 3 Roblox Places a la vez, cada uno con almacenamiento aislado e historial de cambios propio.
 
-| Categoria | Funciones |
-|-----------|-----------|
-| **Operaciones masivas** | Crea 100 arboles con un solo comando. Modifica todas las partes simultaneamente. |
-| **Generacion de terreno** | Genera montanas, cuevas y paisajes de forma procedural. |
-| **Gestion de assets** | Busca en Creator Store e inserta modelos directamente. |
-| **Raycast** | Encuentra posiciones de spawn, detecta colisiones, analiza areas transitables. |
-| **Control de entorno** | Configura iluminacion, atmosfera, cielo y hora del dia. |
-| **Visualizacion** | Muestra areas, crea marcadores, resalta zonas. |
+### Ahorra tokens de IA con flujos de alto impacto
 
-## Como Comprar
+Las acciones masivas y avanzadas reducen las llamadas repetitivas — haz más por cada prompt.
 
-### Paso 1: Comprar en Gumroad
+### Capacidades avanzadas más amplias
 
-1. Visita [Gumroad - Weppy Roblox Plugin](https://gumroad.com/l/chllph?utm_source=github&utm_medium=repo&utm_campaign=sunity_plugin)
-2. Descarga el plugin
+Generación de terreno, búsqueda de assets, análisis espacial, animación, audio y automatización a escala de producción.
 
-### Paso 2: Instalar el Plugin
+## Suscripcion y descarga
 
-1. Abre Roblox Studio
-2. Pestana Plugins → Clic en **Plugins Folder**
-3. **Elimina** el `WeppyRobloxMCP.rbxm` existente (version Basic)
-4. **Copia** el `WeppyRobloxMCP-Pro.rbxm` descargado a la carpeta
-5. Reinicia Roblox Studio
+### Paso 1: Suscribirte en Gumroad
+
+1. Ve a [Gumroad - Weppy Roblox Plugin](https://gumroad.com/l/faccjs?utm_source=github&utm_medium=repo&utm_campaign=pro_upgrade_md)
+2. Completa la compra de licencia Pro por suscripcion
+
+### Paso 2: Descargar desde GitHub Releases
+
+1. Abre [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest)
+2. Descarga `weppy-roblox-mcp-v{version}.zip`
+3. Extrae y copia `roblox-plugin/WeppyRobloxMCP.rbxm` a tu carpeta de Plugins de Roblox
 
 ### Paso 3: Verificar
 
-1. Abre el plugin W-MCP
-2. Verifica que aparezca la insignia "Pro"
-3. Todas las herramientas estan disponibles!
+1. Abre W-MCP en Roblox Studio
+2. Confirma que aparece la insignia Pro
+3. Ejecuta una accion Pro (por ejemplo: `manage_sync` u operaciones masivas)
 
-## Comparacion de Funciones
+## Comparación de Funciones
 
-| Funcion | Basic | Pro |
+| Función | Basic | Pro |
 |---------|:-----:|:---:|
-| Instance, Script, Property | ✅ Acceso completo | ✅ Acceso completo |
+| Gestión de Script, Instance, Property | ✅ Acceso completo | ✅ Acceso completo |
 | Selection, Tag, Camera, Log | ✅ Acceso completo | ✅ Acceso completo |
-| Operaciones masivas (Bulk) | ― | ✅ Ilimitado |
-| Busqueda e insercion de assets | ― | ✅ Ilimitado |
-| Generacion de terreno (Terrain) | ― | ✅ Ilimitado |
-| Entorno, Raycast, Espacio | ― | ✅ Ilimitado |
-| Herramientas de visualizacion | ― | ✅ Ilimitado |
+| Dirección de Sync | Studio → Local (una vía) | Bidireccional |
+| Sync Direction por tipo | ❌ | ✅ Scripts / Values / Containers / Data / Services |
+| Apply Mode por tipo | ❌ | ✅ Auto / Manual |
+| Full Sync | ❌ | ✅ |
+| Resync / Reconstruir estado | ❌ | ✅ |
+| Historial de cambios | ❌ | ✅ |
+| Sync multi-place | ❌ | ✅ Hasta 3 places con almacenamiento aislado |
+| Cobertura avanzada de tools | Conjunto base | Conjunto avanzado más amplio |
+| Eficiencia de tokens IA | Estándar | Mejor con acciones masivas / de alto impacto |
