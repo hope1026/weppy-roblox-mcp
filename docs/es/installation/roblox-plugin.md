@@ -4,23 +4,28 @@ Instrucciones para instalar el plugin que conecta Roblox Studio con agentes de I
 
 ## 1. Descargar el Plugin
 
-1. Descarga `weppy-roblox-mcp-basic-v{versión}.zip` desde [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest)
-2. Extrae el archivo ZIP — encontraras el archivo `roblox-plugin/WeppyRobloxMCP.rbxm` y guias de instalacion
+1. Abre [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest)
+2. Descarga `weppy-roblox-mcp-v{version}.zip`
+3. Extrae el ZIP - encontraras `roblox-plugin/WeppyRobloxMCP.rbxm` y guias de instalacion
+
+Nota:
+- Basic usa el mismo paquete del plugin con politica Basic (Studio -> Local, una via)
+- Con licencia Pro por suscripcion se habilita sync bidireccional y funciones avanzadas mas amplias
 
 ## 2. Instalar el Plugin
 
 1. Abre **Roblox Studio**
-2. Clic en la pestana **Plugins** en el menu superior
-3. Clic en el boton **Plugins Folder**
+2. Clic en la pestana **Plugins**
+3. Clic en **Plugins Folder**
 
 ![Abrir Plugins Folder](../../assets/screenshots/plugins_menu.png)
 
-4. **Copia** el archivo `WeppyRobloxMCP.rbxm` de la carpeta extraida a la carpeta de Plugins abierta
+4. **Copia** `WeppyRobloxMCP.rbxm` a la carpeta abierta de Plugins
 5. **Reinicia Roblox Studio**
 
 ## 3. Verificar la Instalacion
 
-Despues de reiniciar, aparecera el boton **W-MCP** en la pestana Plugins.
+Despues de reiniciar, aparecera el boton **W-MCP** en Plugins.
 
 ![Boton W-MCP](../../assets/screenshots/weppy_plugin_toolbar.png)
 
@@ -28,7 +33,7 @@ Despues de reiniciar, aparecera el boton **W-MCP** en la pestana Plugins.
 
 ### Requisitos Previos
 
-El servidor MCP debe estar instalado. Completa primero la guia correspondiente a tu aplicacion de IA:
+El servidor MCP debe estar instalado. Completa primero la guia de tu app de IA:
 
 | Aplicacion IA | Guia de instalacion |
 |---------------|---------------------|
@@ -42,38 +47,38 @@ El servidor MCP debe estar instalado. Completa primero la guia correspondiente a
 ### Conectar
 
 1. Abre cualquier proyecto en **Roblox Studio**
-2. Pestana **Plugins** superior → Clic en **W-MCP**
-3. Clic en el boton **Connect** en la ventana del plugin
-4. ¡Conexion completada cuando aparece el estado **"Connected"**!
+2. Pestaña **Plugins** -> **W-MCP**
+3. Clic en **Connect**
+4. Cuando veas **"Connected"**, listo
 
 ![Pantalla principal del plugin](../../assets/screenshots/plugin_main.png)
 
 ## 5. Configuracion (Opcional)
 
-Haz clic en el boton de configuracion en la esquina superior derecha del plugin para cambiar varias opciones.
+Usa el boton de configuracion en la esquina superior derecha.
 
 ![Pantalla de configuracion](../../assets/screenshots/settings.png)
 
-- **Conexion automatica**: Conecta automaticamente al servidor MCP al iniciar Studio
-- **Reconexion automatica**: Intenta reconectar automaticamente si se pierde la conexion
-- **Enfoque automatico de camara**: Mueve la camara automaticamente hacia los objetos creados
-- **Idioma**: Cambia el idioma de la interfaz del plugin
+- **Conexion automatica**
+- **Reconexion automatica**
+- **Enfoque automatico de camara**
+- **Idioma**
 
 ## Solucion de Problemas
 
 ### El plugin no aparece
 
-- Cierra completamente Roblox Studio y reinicia
-- Verifica que el archivo se haya copiado correctamente a la carpeta Plugins
-- Verifica que el archivo `.rbxm` no este danado
+- Reinicia Roblox Studio por completo
+- Verifica que el archivo fue copiado correctamente
+- Verifica que `.rbxm` no este dañado
 
 ### No se puede conectar
 
-- Verifica que el servidor MCP este ejecutandose en la aplicacion de IA
-- Haz clic nuevamente en el boton **Connect** en el plugin
-- Verifica que el puerto 3002 no este siendo usado por otro programa
+- Verifica que el servidor MCP esta en ejecucion
+- Pulsa **Connect** otra vez
+- Verifica conflicto en el puerto 3002
 
-### La conexion se pierde frecuentemente
+### La conexion se corta seguido
 
-- Activa la opcion **Reconexion automatica** en la configuracion
-- Intenta reiniciar la aplicacion de IA
+- Activa **Reconexion automatica**
+- Reinicia tu app de IA

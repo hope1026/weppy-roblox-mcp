@@ -2,50 +2,56 @@
 
 ## 왜 Pro인가?
 
-**AI 토큰 절약** - 하나의 대량 작업 명령이 수십 개의 개별 작업을 대체합니다. 반복 작업이 줄어 토큰 사용량이 감소하고 결과도 빨라집니다.
+### 실제 개발 워크플로우를 위한 양방향 Sync
 
-**완성도 높은 게임** - 지형, 환경, 에셋, 공간 도구로 프로토타입이 아닌 완성된 게임 월드를 만들 수 있습니다.
+Pro Sync는 단방향 내보내기를 넘어섭니다. 로컬에서 스크립트를 편집하고 Studio에 반영하세요. Studio에서 변경하고 로컬로 가져오세요. Pro는 양쪽을 항상 동기화합니다.
 
-## Pro가 추가하는 도구
+- **양방향 Sync** — Studio와 로컬 파일 간 양방향으로 변경사항이 흐릅니다.
+- **타입별 Direction** — Scripts, Values, Containers, Data, Services를 각각 독립적으로 방향 설정.
+- **타입별 Apply Mode** — 타입별로 Auto 또는 Manual을 선택하여 속도와 제어를 균형있게.
+- **Full Sync / Resync** — 대규모 변경이나 재연결 후 즉시 깨끗한 프로젝트 상태를 재구축.
+- **변경 기록** — 적용 전에 무엇이, 언제, 어느 방향으로 변경됐는지 추적.
+- **멀티 Place Sync** — 최대 3개의 Roblox Place를 동시에 Sync하며, 각 Place마다 독립된 저장소와 변경 기록을 유지합니다.
 
-| 카테고리 | 기능 |
-|---------|------|
-| **대량 작업** | 한 번의 명령으로 나무 100개 생성. 모든 파트를 동시에 수정. |
-| **지형 생성** | 산, 동굴, 풍경을 절차적으로 생성. |
-| **에셋 관리** | Creator Store 검색 후 모델 직접 삽입. |
-| **레이캐스트** | 스폰 위치 찾기, 충돌 감지, 이동 가능 영역 분석. |
-| **환경 제어** | 조명, 대기, 하늘, 시간대 설정. |
-| **시각화** | 영역 표시, 마커 생성, 구역 하이라이트. |
+### 고효율 워크플로우로 AI 토큰 절약
 
-## 구매 방법
+대량 및 고급 작업으로 반복 호출을 줄여 프롬프트 한 번에 더 많은 작업을 처리합니다.
 
-### 1단계: Gumroad에서 구매
+### 더 넓은 고급 기능
 
-1. [Gumroad - Weppy Roblox Plugin](https://gumroad.com/l/chllph?utm_source=github&utm_medium=repo&utm_campaign=sunity_plugin) 접속
-2. 플러그인 다운로드
+지형 생성, 에셋 검색, 공간 분석, 애니메이션, 오디오, 대규모 자동화.
 
-### 2단계: 플러그인 설치
+## 구독 및 다운로드
 
-1. Roblox Studio 실행
-2. Plugins 탭 → **Plugins Folder** 클릭
-3. 기존 `WeppyRobloxMCP.rbxm` (Basic 버전) **삭제**
-4. 다운로드한 `WeppyRobloxMCP-Pro.rbxm` 폴더에 **복사**
-5. Roblox Studio 재시작
+### 1단계: Gumroad에서 Pro 구독 라이선스 구매
+
+1. [Gumroad - Weppy Roblox Plugin](https://gumroad.com/l/faccjs?utm_source=github&utm_medium=repo&utm_campaign=pro_upgrade_md) 접속
+2. Pro 구독 라이선스 구매 완료
+
+### 2단계: GitHub Releases에서 다운로드
+
+1. [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest) 열기
+2. `weppy-roblox-mcp-v{version}.zip` 다운로드
+3. 압축 해제 후 `roblox-plugin/WeppyRobloxMCP.rbxm`를 Roblox Plugins 폴더에 복사
 
 ### 3단계: 확인
 
-1. W-MCP 플러그인 열기
-2. "Pro" 배지가 표시되는지 확인
-3. 모든 도구 사용 가능!
+1. Roblox Studio에서 W-MCP 열기
+2. Pro 배지가 표시되는지 확인
+3. Pro action(예: `manage_sync`, 대량 작업) 실행 확인
 
 ## 기능 비교
 
 | 기능 | Basic | Pro |
 |-----|:-----:|:---:|
-| Instance, Script, Property | ✅ 전체 사용 | ✅ 전체 사용 |
+| Script, Instance, Property 관리 | ✅ 전체 사용 | ✅ 전체 사용 |
 | Selection, Tag, Camera, Log | ✅ 전체 사용 | ✅ 전체 사용 |
-| 대량 작업 (Bulk) | ― | ✅ 무제한 |
-| 에셋 검색 및 삽입 | ― | ✅ 무제한 |
-| 지형 생성 (Terrain) | ― | ✅ 무제한 |
-| 환경, 레이캐스트, 공간 | ― | ✅ 무제한 |
-| 시각화 도구 | ― | ✅ 무제한 |
+| Sync 방향 | Studio → Local (단방향) | 양방향 |
+| 타입별 Sync Direction | ❌ | ✅ Scripts / Values / Containers / Data / Services |
+| 타입별 Apply Mode | ❌ | ✅ Auto / Manual |
+| Full Sync | ❌ | ✅ |
+| Resync / 상태 재구축 | ❌ | ✅ |
+| 변경 기록 | ❌ | ✅ |
+| 멀티 Place Sync | ❌ | ✅ 최대 3개 Place, 각각 독립 저장소 |
+| 고급 Tool 범위 | 기본 범위 | 더 넓은 고급 범위 |
+| AI 토큰 효율 | 기본 | 대량/고효율 action으로 더 유리 |

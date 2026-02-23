@@ -5,6 +5,41 @@ All notable changes to this project will be documented in this file.
 
 
 
+## [1.0.0] - 2026-02-23
+
+### Sync
+
+- Implement bidirectional sync between Studio and local files
+- Add per-type sync direction control for Scripts, Values, Containers, Data, and Services
+- Add per-type apply mode (Auto / Manual) per category
+- Add Full Sync and Resync with local file preservation option
+- Add real-time sync progress tracking and place promotion support
+- Add change history with per-change detail view
+- Add multi-place sync with LRU cache (max 3 places) and isolated storage per place
+- Add reverse rescan to detect missed changes on direction switch
+- Add SyncDirectionCard UI with inline descriptions and hover previews
+- Add PreSyncDialog for pre-sync confirmation and local file handling
+- Refactor sync state management with runtime and default config handling
+
+### MCP Tools
+
+- Add `batch_execute` tool for running multiple commands in one call
+- Add `execute_luau` sandbox with stricter service and path blocking
+- Add tree mutation support for instance rename and move operations
+- Add sibling index support for duplicate-named instances
+- Add per-type sync direction and apply mode to `manage_sync` tool
+- Add `trackToolCall` with action and error type tracking
+- Improve path resolution with robust Roblox path utilities and root confinement
+
+### Stability
+
+- Add comprehensive MCP flow tests and E2E sync test suite
+- Enhance dynamic endpoint handling, reconnection logic, and error resilience
+- Fix tooltip positioning in widget-local space
+- Refactor settings UI with categories and tooltips
+- Improve AI client detection and connection info display
+
+
 ## [0.1.11] - 2026-02-14
 
 ### Other Changes
@@ -23,21 +58,21 @@ All notable changes to this project will be documented in this file.
 
 ### Other Changes
 
-- update test
-- refactor: improve stability
+- Improve stability
 
 
 ## [0.1.8] - 2026-02-08
 
 ### Fix
-- improve stability
+- Improve stability
 
 
 ## [0.1.3] - 2026-02-07
 
 ### Features
-- add tool history and statistics tracking system
-- add version info display in plugin UI
+- Add tool history and statistics tracking system
+- Add version info display in plugin UI
+
 
 ## [0.1.2] - 2026-02-03
 
@@ -48,9 +83,8 @@ All notable changes to this project will be documented in this file.
 
 First public release of Roblox MCP - AI-powered Roblox Studio integration.
 
-#### 140 Tools Available
+#### Basic
 
-**Basic (68 tools)**
 - Create, delete, clone, and move parts and models
 - Write and edit scripts with AI assistance
 - Change properties like color, size, and position
@@ -59,7 +93,8 @@ First public release of Roblox MCP - AI-powered Roblox Studio integration.
 - Control camera view and focus
 - View output logs and debug errors
 
-**Pro (72 tools)**
+#### Pro
+
 - Bulk operations - create or modify hundreds of objects at once
 - Search and insert models from Creator Store
 - Environment controls - lighting, weather, time of day
@@ -70,8 +105,8 @@ First public release of Roblox MCP - AI-powered Roblox Studio integration.
 #### Highlights
 
 - **Real-time Studio control** - AI commands execute instantly in Roblox Studio
-- **Works with popular AI apps** - Claude, Cursor, Codex CLI, Gemini CLI, and more
+- **Works with popular AI apps** - Claude, Codex CLI, Gemini CLI, and more
 - **Secure by design** - Localhost only, no external network access
-- **Basic tier included** - 68 essential tools free forever
+- **Basic tier included** - Essential tools, free forever
 
 [0.1.0]: https://github.com/hope1026/roblox-mcp/releases/tag/v0.1.0

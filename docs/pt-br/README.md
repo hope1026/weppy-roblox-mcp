@@ -53,6 +53,12 @@ A instalação tem dois passos:
 
 Leva 5 minutos. 👉 [Ver guia de instalação](installation/README.md)
 
+## Comece com Pro
+
+Crie sem limites. Sync bidirecional, recursos avançados de criação e eficiência de tokens de IA — tudo em uma única atualização.
+
+👉 [Guia de upgrade Pro](pro-upgrade.md)
+
 ## Links
 
 - [GitHub](https://github.com/hope1026/roblox-mcp)

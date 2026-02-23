@@ -2,6 +2,10 @@
 
 Hubungkan AI dengan Roblox Studio dan otomatiskan berbagai pekerjaan. Berikut adalah hal-hal yang bisa kamu lakukan berdasarkan kategori.
 
+Kebijakan Sync:
+- Basic: Studio -> Local (satu arah)
+- Pro: Sync dua arah + cakupan fitur lanjutan lebih luas (efisiensi token AI lebih baik lewat operasi massal)
+
 ---
 
 ## Basic (Gratis)

@@ -53,6 +53,12 @@ Instalasi cuma dua langkah:
 
 5 menit kelar. 👉 [Lihat panduan instalasi](installation/README.md)
 
+## Mulai dengan Pro
+
+Bangun tanpa batas. Sync dua arah, kemampuan kreasi lanjutan, dan efisiensi token AI — semua dalam satu upgrade.
+
+👉 [Panduan Upgrade Pro](pro-upgrade.md)
+
 ## Link
 
 - [GitHub](https://github.com/hope1026/roblox-mcp)

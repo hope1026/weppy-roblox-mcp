@@ -2,50 +2,56 @@
 
 ## Mengapa Pro?
 
-**Hemat Token AI** - Satu perintah operasi massal menggantikan puluhan operasi individual. Penggunaan token berkurang karena tugas berulang diminimalkan dan hasilnya lebih cepat.
+### Sync dua arah untuk alur kerja pengembangan nyata
 
-**Game yang Lebih Lengkap** - Dengan tools terrain, environment, asset, dan spatial, Anda dapat membuat dunia game yang lengkap, bukan hanya prototipe.
+Pro Sync melampaui sekadar export satu arah. Edit script secara lokal dan kirim ke Studio. Buat perubahan di Studio dan tarik kembali ke disk. Pro menjaga keduanya tetap sinkron.
 
-## Tools yang Ditambahkan Pro
+- **Sync dua arah** — Perubahan mengalir dua arah antara Studio dan file lokal.
+- **Direction per tipe** — Atur arah secara independen untuk Scripts, Values, Containers, Data, dan Services.
+- **Apply Mode per tipe** — Pilih Auto atau Manual per tipe untuk menyeimbangkan kecepatan dan kontrol.
+- **Full Sync / Resync** — Bangun ulang state proyek yang bersih setelah perubahan besar atau reconnect.
+- **Riwayat Perubahan** — Lacak apa yang berubah, kapan, dan ke arah mana sebelum menerapkan.
+- **Sync multi-place** — Sync hingga 3 Roblox Place sekaligus, masing-masing dengan penyimpanan terisolasi dan riwayat perubahan sendiri.
 
-| Kategori | Fungsi |
-|----------|--------|
-| **Operasi Massal** | Buat 100 pohon dengan satu perintah. Ubah semua part secara bersamaan. |
-| **Pembuatan Terrain** | Hasilkan gunung, gua, dan lanskap secara prosedural. |
-| **Manajemen Asset** | Cari di Creator Store lalu sisipkan model langsung. |
-| **Raycast** | Temukan posisi spawn, deteksi tabrakan, analisis area yang dapat dilalui. |
-| **Kontrol Environment** | Atur pencahayaan, atmosfer, langit, dan waktu hari. |
-| **Visualisasi** | Tampilkan area, buat marker, sorot zona. |
+### Hemat token AI dengan workflow berdampak tinggi
 
-## Cara Pembelian
+Aksi massal dan lanjutan mengurangi panggilan berulang — lakukan lebih banyak per prompt.
 
-### Langkah 1: Beli di Gumroad
+### Kemampuan lanjutan yang lebih luas
 
-1. Kunjungi [Gumroad - Weppy Roblox Plugin](https://gumroad.com/l/chllph?utm_source=github&utm_medium=repo&utm_campaign=sunity_plugin)
-2. Unduh plugin
+Pembuatan terrain, pencarian aset, analisis spasial, animasi, audio, dan otomasi skala produksi.
 
-### Langkah 2: Instal Plugin
+## Langganan dan unduhan
 
-1. Jalankan Roblox Studio
-2. Tab Plugins → Klik **Plugins Folder**
-3. **Hapus** `WeppyRobloxMCP.rbxm` (versi Basic) yang ada
-4. **Salin** `WeppyRobloxMCP-Pro.rbxm` yang diunduh ke folder
-5. Restart Roblox Studio
+### Langkah 1: Berlangganan di Gumroad
+
+1. Buka [Gumroad - Weppy Roblox Plugin](https://gumroad.com/l/faccjs?utm_source=github&utm_medium=repo&utm_campaign=pro_upgrade_md)
+2. Selesaikan pembelian lisensi langganan Pro
+
+### Langkah 2: Unduh dari GitHub Releases
+
+1. Buka [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest)
+2. Unduh `weppy-roblox-mcp-v{version}.zip`
+3. Ekstrak lalu salin `roblox-plugin/WeppyRobloxMCP.rbxm` ke folder Plugins Roblox
 
 ### Langkah 3: Verifikasi
 
-1. Buka plugin W-MCP
-2. Periksa apakah badge "Pro" ditampilkan
-3. Semua tools dapat digunakan!
+1. Buka W-MCP di Roblox Studio
+2. Pastikan badge Pro terlihat
+3. Jalankan aksi Pro (misalnya: `manage_sync` atau operasi massal)
 
 ## Perbandingan Fitur
 
 | Fitur | Basic | Pro |
 |-------|:-----:|:---:|
-| Instance, Script, Property | ✅ Akses penuh | ✅ Akses penuh |
+| Manajemen Script, Instance, Property | ✅ Akses penuh | ✅ Akses penuh |
 | Selection, Tag, Camera, Log | ✅ Akses penuh | ✅ Akses penuh |
-| Operasi Massal (Bulk) | ― | ✅ Tanpa batas |
-| Pencarian & Penyisipan Asset | ― | ✅ Tanpa batas |
-| Pembuatan Terrain | ― | ✅ Tanpa batas |
-| Environment, Raycast, Spatial | ― | ✅ Tanpa batas |
-| Tools Visualisasi | ― | ✅ Tanpa batas |
+| Arah Sync | Studio → Local (satu arah) | Dua arah |
+| Sync Direction per tipe | ❌ | ✅ Scripts / Values / Containers / Data / Services |
+| Apply Mode per tipe | ❌ | ✅ Auto / Manual |
+| Full Sync | ❌ | ✅ |
+| Resync / Bangun ulang state | ❌ | ✅ |
+| Riwayat Perubahan | ❌ | ✅ |
+| Sync multi-place | ❌ | ✅ Hingga 3 place dengan penyimpanan terisolasi |
+| Cakupan tools lanjutan | Set dasar | Set lanjutan lebih luas |
+| Efisiensi token AI | Standar | Lebih efisien dengan aksi massal / berdampak tinggi |

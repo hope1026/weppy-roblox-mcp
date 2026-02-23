@@ -53,6 +53,12 @@ Installation is complete in two steps:
 
 Takes just 5 minutes. 👉 [View Installation Guide](docs/en/installation/README.md)
 
+## Go Pro
+
+Build without limits. Bidirectional Sync, advanced build capabilities, and AI token efficiency — all in one upgrade.
+
+👉 [Pro Upgrade Guide](docs/en/pro-upgrade.md)
+
 ## Links
 
 - [GitHub](https://github.com/hope1026/roblox-mcp)

@@ -29,11 +29,11 @@ GitHubからプラグインファイルをダウンロードして、Roblox Stud
 | AIアプリ | 設定方法 |
 |---------|---------|
 | Claude Code | [設定手順](ai-apps/claude-code.md) |
-| Cline | [設定手順](ai-apps/cline.md) |
-| Roo Code | [設定手順](ai-apps/roo-code.md) |
-| Cursor | [設定手順](ai-apps/cursor.md) |
-| Zed | [設定手順](ai-apps/zed.md) |
-| その他のMCP対応アプリ | [設定手順](ai-apps/other-mcp-clients.md) |
+| Claude Desktop | [設定手順](ai-apps/claude-app.md) |
+| Codex CLI | [設定手順](ai-apps/codex-cli.md) |
+| Codex Desktop | [設定手順](ai-apps/codex-app.md) |
+| Gemini CLI | [設定手順](ai-apps/gemini-cli.md) |
+| Antigravity | [設定手順](ai-apps/antigravity.md) |
 
 > 上記のリストにないAIアプリでも、MCPをサポートしていれば使用できます。MCPサーバーコマンド: `npx -y @weppy/roblox-mcp`
 

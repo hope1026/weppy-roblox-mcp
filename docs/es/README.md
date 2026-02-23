@@ -41,6 +41,12 @@ Revisa logs de errores, encuentra problemas y corrige
 
 Toma solo 5 minutos. 👉 [Ver guía de instalación](installation/README.md)
 
+## Comienza con Pro
+
+Crea sin límites. Sync bidireccional, capacidades de creación avanzadas y eficiencia de tokens de IA — todo en una sola actualización.
+
+👉 [Guía de actualización Pro](pro-upgrade.md)
+
 ## Enlaces
 - [GitHub](https://github.com/hope1026/roblox-mcp)
 - [Reportar problemas](https://github.com/hope1026/roblox-mcp/issues)

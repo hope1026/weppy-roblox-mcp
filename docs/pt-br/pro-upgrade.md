@@ -2,50 +2,56 @@
 
 ## Por que Pro?
 
-**Economia de Tokens de IA** - Um unico comando de operacao em massa substitui dezenas de operacoes individuais. Menos tarefas repetitivas significam menor consumo de tokens e resultados mais rapidos.
+### Sync bidirecional para fluxos de desenvolvimento reais
 
-**Jogos de Alta Qualidade** - Com ferramentas de terreno, ambiente, ativos e espaciais, voce pode criar mundos de jogo completos, nao apenas prototipos.
+O Sync do Pro vai além do simples export. Edite scripts localmente e envie para o Studio. Faça mudanças no Studio e traga de volta para o disco. Pro mantém os dois lados sincronizados.
 
-## Ferramentas Adicionadas pelo Pro
+- **Sync bidirecional** — Mudanças fluem em ambas as direções entre Studio e arquivos locais.
+- **Direction por tipo** — Configure a direção independentemente para Scripts, Values, Containers, Data e Services.
+- **Apply Mode por tipo** — Escolha Auto ou Manual por tipo para equilibrar velocidade e controle.
+- **Full Sync / Resync** — Reconstrua o estado limpo do projeto após grandes mudanças ou reconexões.
+- **Histórico de mudanças** — Rastreie o que mudou, quando e em qual direção antes de aplicar.
+- **Sync multi-place** — Sincronize até 3 Roblox Places simultaneamente, cada um com armazenamento isolado e histórico próprio.
 
-| Categoria | Funcionalidade |
-|-----------|----------------|
-| **Operacoes em Massa** | Crie 100 arvores com um unico comando. Modifique todas as partes simultaneamente. |
-| **Geracao de Terreno** | Gere montanhas, cavernas e paisagens de forma procedural. |
-| **Gerenciamento de Ativos** | Pesquise na Creator Store e insira modelos diretamente. |
-| **Raycast** | Encontre posicoes de spawn, detecte colisoes, analise areas acessiveis. |
-| **Controle de Ambiente** | Configure iluminacao, atmosfera, ceu e hora do dia. |
-| **Visualizacao** | Exiba areas, crie marcadores, destaque zonas. |
+### Economize tokens de IA com workflows de alto impacto
 
-## Como Comprar
+Ações em massa e avançadas reduzem chamadas repetitivas — faça mais por prompt.
 
-### Passo 1: Compre no Gumroad
+### Capacidades avançadas mais amplas
 
-1. Acesse [Gumroad - Weppy Roblox Plugin](https://gumroad.com/l/chllph?utm_source=github&utm_medium=repo&utm_campaign=sunity_plugin)
-2. Baixe o plugin
+Geração de terrain, busca de assets, análise espacial, animação, áudio e automação em escala de produção.
 
-### Passo 2: Instale o Plugin
+## Assinatura e download
 
-1. Inicie o Roblox Studio
-2. Aba Plugins → Clique em **Plugins Folder**
-3. **Exclua** o `WeppyRobloxMCP.rbxm` existente (versao Basic)
-4. **Copie** o `WeppyRobloxMCP-Pro.rbxm` baixado para a pasta
-5. Reinicie o Roblox Studio
+### Passo 1: Assinar no Gumroad
 
-### Passo 3: Verificacao
+1. Acesse [Gumroad - Weppy Roblox Plugin](https://gumroad.com/l/faccjs?utm_source=github&utm_medium=repo&utm_campaign=pro_upgrade_md)
+2. Conclua a compra da licenca Pro por assinatura
 
-1. Abra o plugin W-MCP
-2. Verifique se o emblema "Pro" e exibido
-3. Todas as ferramentas disponiveis!
+### Passo 2: Baixar no GitHub Releases
 
-## Comparacao de Recursos
+1. Abra [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest)
+2. Baixe `weppy-roblox-mcp-v{version}.zip`
+3. Extraia e copie `roblox-plugin/WeppyRobloxMCP.rbxm` para a pasta de Plugins do Roblox
+
+### Passo 3: Verificar
+
+1. Abra o W-MCP no Roblox Studio
+2. Confirme que o selo Pro aparece
+3. Execute uma acao Pro (por exemplo: `manage_sync` ou operacoes em massa)
+
+## Comparação de Recursos
 
 | Recurso | Basic | Pro |
 |---------|:-----:|:---:|
-| Instance, Script, Property | ✅ Acesso Total | ✅ Acesso Total |
-| Selection, Tag, Camera, Log | ✅ Acesso Total | ✅ Acesso Total |
-| Operacoes em Massa (Bulk) | ― | ✅ Ilimitado |
-| Pesquisa e Insercao de Ativos | ― | ✅ Ilimitado |
-| Geracao de Terreno (Terrain) | ― | ✅ Ilimitado |
-| Ambiente, Raycast, Espacial | ― | ✅ Ilimitado |
-| Ferramentas de Visualizacao | ― | ✅ Ilimitado |
+| Gerenciamento de Script, Instance, Property | ✅ Acesso total | ✅ Acesso total |
+| Selection, Tag, Camera, Log | ✅ Acesso total | ✅ Acesso total |
+| Direção do Sync | Studio → Local (unidirecional) | Bidirecional |
+| Sync Direction por tipo | ❌ | ✅ Scripts / Values / Containers / Data / Services |
+| Apply Mode por tipo | ❌ | ✅ Auto / Manual |
+| Full Sync | ❌ | ✅ |
+| Resync / Reconstruir estado | ❌ | ✅ |
+| Histórico de mudanças | ❌ | ✅ |
+| Sync multi-place | ❌ | ✅ Até 3 places com armazenamento isolado |
+| Cobertura avançada de tools | Conjunto base | Conjunto avançado mais amplo |
+| Eficiência de tokens IA | Padrão | Melhor com ações em massa / de alto impacto |

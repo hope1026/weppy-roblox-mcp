@@ -53,6 +53,12 @@ Creator Store에서 무료 모델과 에셋을 검색해서 바로 게임에 넣
 
 5분이면 끝나요. 👉 [설치 가이드 보기](installation/README.md)
 
+## Pro로 시작하세요
+
+제한 없이 제작하세요. 양방향 Sync, 고급 제작 기능, AI 토큰 효율 — 한 번의 업그레이드로 모두 누리세요.
+
+👉 [Pro 업그레이드 가이드](pro-upgrade.md)
+
 ## 링크
 
 - [GitHub](https://github.com/hope1026/roblox-mcp)
