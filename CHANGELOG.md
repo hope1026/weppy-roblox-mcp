@@ -6,6 +6,26 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [1.0.2] - 2026-02-23
+
+### Bug Fixes
+
+- handle blocked devices and improve graceful fallback for Pro license checks
+
+### Documentation
+
+- add script-based installation instructions to setup guides
+
+### Chores
+
+- update `.mcp.json` to use relative path for `mcp-server` startup script
+
+### Other Changes
+
+- update
+
+
 ## [1.0.1] - 2026-02-23
 
 ### Other Changes
