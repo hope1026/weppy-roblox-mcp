@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [1.0.1] - 2026-02-23
+
+### Other Changes
+
+- refactor: standardize data directory path logic across modules
+
+
 ## [1.0.0] - 2026-02-23
 
 ### Sync
