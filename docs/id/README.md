@@ -8,39 +8,63 @@
 
 ## Yang Bisa Kamu Lakukan
 
-### Buat Game Sekaligus
+### Dari Satu Ide ke Game yang Bisa Dimainkan
 
-"Buatkan game survival gaya Minecraft", "Buatkan game puzzle escape room" — AI merancang struktur game dan membuat map, objek, dan script langsung di Studio kamu. Dari ide sederhana langsung jadi game yang bisa dimainkan.
+"Buatkan game survival gaya Minecraft dengan siklus siang/malam, penambangan, crafting, dan wave defense." — Satu kalimat dan AI merancang struktur game, membangun map, membuat objek, serta menulis semua scriptnya.
 
 > **Tip**: Minta "buat rencana dulu" lalu review dan katakan "jalankan" untuk hasil lebih baik.
 
-### Membuat dan Menempatkan Objek
+### AI yang Sudah Membaca Seluruh Proyekmu
 
-"Buatkan rumah dari batu bata merah", "Tanam 10 pohon berjajar rapi" — AI langsung membuatnya di Roblox Studio. Bisa satu-satu, bisa ratusan sekaligus.
+AI menyinkronkan proyek Roblox kamu ke file lokal dan mempelajari setiap script, objek, dan struktur. Puluhan file dipahami sekaligus, dimodifikasi secara konsisten.
 
-### Menulis dan Mengedit Script
+- "Temukan semua tempat yang menggunakan RemoteEvents dan petakan alur pemanggilannya."
+- "Refaktor semua script AI musuh untuk menggunakan state machine yang terpadu."
+- "Rangkum hanya perubahan berisiko yang terjadi sejak kemarin."
 
-"Kalau player jump, munculkan efek partikel", "Cariin bug di script ini" — AI menulis dan merevisi kode langsung. AI juga bisa menganalisis script yang sudah ada dan memahami dependencies-nya.
+Kelola beberapa Place secara bersamaan. Lacak seluruh riwayat perubahan.
 
-### Mengatur Suasana Map
+### Script: Tulis, Refaktor, Debug — File Terkait Sekaligus
 
-"Ubah jadi suasana sunset", "Bikin gelap kayak hujan" — satu perintah, AI atur lighting, sky, dan fog otomatis.
+Bukan hanya file yang kamu tunjuk. AI menangani seluruh rantai dependensi.
 
-### Membuat Terrain
+- "Saat player jump, tambahkan partikel + suara + cooldown."
+- "Temukan semua koneksi event yang bisa menyebabkan memory leak dan perbaiki dengan aman."
+- "Ubah interface modul ini dan perbarui semua script yang mereferensikannya."
 
-Gunung, sungai, dataran, gua — semua bisa dibuat lewat chat. Material, warna, ukuran juga bisa diatur sesuka hati.
+### Buat dan Tempatkan Objek — Ratusan dengan Satu Perintah
 
-### Mencari dan Memasukkan Aset
+"Jajarkan 50 lampu jalan sepanjang jalan ini", "Tempatkan 20 rumah bata di seluruh distrik dengan rotasi acak" — AI langsung membuatnya di Studio. Perbarui properti di sejumlah objek manapun dengan satu perintah.
 
-Cari model gratis dan aset dari Creator Store, langsung masuk ke game. "Cari model kastil abad pertengahan terus masukin" — sesimpel itu.
+### Pencahayaan, Cuaca, dan Atmosfer dalam Satu Kalimat
 
-### Analisis Ruang dan Penempatan
+"Ubah jadi padang pasir berdebu saat matahari terbenam", "Buat malam badai di mana kilat sesekali menerangi area" — satu kalimat dan pencahayaan, langit, atmosfer, serta fog semuanya berubah sekaligus.
 
-"Cari tempat kosong di area ini", "Analisis area yang bisa dilewati monster" — AI menangani semua urusan spasial.
+### Pahatan Terrain Melalui Percakapan
 
-### Debugging dan Analisis
+"Pegunungan tebing di utara, sungai di tengah, dataran terbuka di selatan" — hasilkan lanskap apapun melalui percakapan. Kontrol material, warna, ketinggian, dan penghalusan. Bangun seluruh map tanpa menyentuh terrain editor.
 
-AI bisa cek log error, cari masalahnya, dan memperbaikinya bareng kamu.
+### Cari di Creator Store dan Langsung Pasang
+
+"Temukan model kastil abad pertengahan, taruh di tengah map, dan perbesar 1.5x" — cari asset gratis dan masukkan langsung ke proyekmu.
+
+### Kecerdasan Spasial untuk Level Design
+
+"Cari ruang kosong untuk arena bos baru", "Tampilkan hanya area yang benar-benar bisa dipatroli monster" — AI menangani penalaran spasial kompleks dan logika penempatan.
+
+### Animasi, Fisika, dan Audio sebagai Sistem yang Terhubung
+
+- "Selama animasi dash diputar, ubah aturan tabrakan player-musuh."
+- "Fade in BGM bos saat ultimate aktif, dan kembali dengan mulus saat selesai."
+
+Karakter, tabrakan, dan suara bekerja bersama sebagai sistem game, bukan alat terpisah.
+
+### Jalankan Kode Roblox Apapun Secara Langsung
+
+Ketika tools bawaan tidak cukup, AI mengeksekusi Luau sembarang di Studio.
+
+- "Temukan semua Part di Workspace dengan Anchored=false dan listkan."
+- "Perbarui objek yang cocok secara massal dan catat setiap perubahan."
 
 > [Lihat daftar lengkap](tools/overview.md)
 
@@ -53,9 +77,9 @@ Instalasi cuma dua langkah:
 
 5 menit kelar. 👉 [Lihat panduan instalasi](installation/README.md)
 
-## Mulai dengan Pro
+## Upgrade Pro
 
-Bangun tanpa batas. Sync dua arah, kemampuan kreasi lanjutan, dan efisiensi token AI — semua dalam satu upgrade.
+Sync dua arah, kemampuan kreasi lanjutan, dan efisiensi token AI — semua dalam satu upgrade.
 
 👉 [Panduan Upgrade Pro](pro-upgrade.md)
 

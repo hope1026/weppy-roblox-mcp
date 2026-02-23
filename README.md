@@ -8,41 +8,65 @@
 
 ## What You Can Do
 
-### Create Complete Games
+### From One Idea to a Playable Game
 
-Just ask "Make a Minecraft-style survival game" or "Create an escape room puzzle game", and AI will design the game structure, build the map, create objects, and write scripts for you. Turn a simple idea into a playable game.
+"Make a Minecraft-style survival game with day/night, crafting, and wave defense." — One sentence and AI designs the game structure, builds the map, creates objects, and writes every script.
 
 > **Tip**: Ask "Make a plan first", review it, then say "Execute it" for better results.
 
-### Create and Place Objects
+### An AI That Has Read Your Entire Project
 
-Say "Make a red brick house" or "Plant 10 trees in a row" and AI creates them directly in Roblox Studio. Create one object or hundreds at once.
+AI syncs your Roblox project to local files, learning every script, object, and structure. Dozens of files understood at once, changed consistently.
 
-### Write and Modify Scripts
+- "Find every place that uses RemoteEvents and map out the call flow."
+- "Refactor all enemy AI scripts to use a unified state machine."
+- "Summarize only the risky changes made since yesterday."
 
-Ask "Make particles appear when players jump" or "Find the bug in this script" and AI writes and fixes code for you. It analyzes existing scripts and understands dependencies too.
+Manage multiple Places simultaneously. Track the full history of changes.
 
-### Set Scene Atmosphere
+### Scripts: Write, Refactor, Debug — Across Related Files
 
-Just say "Change to sunset vibes" or "Make it dark like a rainy day" and AI automatically adjusts lighting, sky, and fog.
+Not just the file you point at. AI handles the whole dependency chain.
 
-### Generate Terrain
+- "When the player jumps, add particles, a sound, and a cooldown."
+- "Find all event connections that could leak memory and fix them safely."
+- "Change this module's interface and update every script that references it."
 
-Create natural landscapes like mountains, rivers, plains, and caves through conversation. Customize materials, colors, and sizes freely.
+### Build and Place Objects — Hundreds at Once
 
-### Search and Insert Assets
+"Line up 50 street lights along this road", "Place 20 brick houses across the district with random rotations" — AI creates them directly in Studio. Batch-update properties across any number of objects with a single command.
 
-Search the Creator Store for free models and assets, then add them to your game instantly. Just say "Find a medieval castle model and insert it".
+### Lighting, Weather, and Atmosphere in One Sentence
 
-### Spatial Analysis and Placement
+"Change to a dusty desert at sunset", "Make it a stormy night where lightning briefly illuminates the area" — one sentence and lighting, sky, atmosphere, and fog all update at once.
 
-AI handles spatial tasks like "Find empty space in this area" or "Analyze where monsters can walk".
+### Sculpt Terrain Through Conversation
 
-### Debugging and Analysis
+"Mountains in the north, a river through the center, open plains in the south" — generate any landscape through conversation. Control material, color, height, and smoothing. Build entire maps without touching the terrain editor.
 
-Check game error logs, find problems, and fix them together with AI.
+### Search Creator Store and Place Instantly
 
-> [View all features](docs/en/tools/overview.md)
+"Find a medieval castle model, place it at the map center, and scale it up 1.5x" — search free assets and insert them directly into your project.
+
+### Spatial Intelligence for Level Design
+
+"Find open space for a new boss arena", "Show only the areas where monsters can actually patrol" — AI handles complex spatial reasoning and placement logic.
+
+### Animations, Physics, and Audio as Connected Systems
+
+- "While the dash animation plays, change the player-enemy collision rules."
+- "Fade in the boss BGM when the ultimate activates, and smoothly return when it ends."
+
+Characters, collision, and sound working together as a game system, not separate tools.
+
+### Run Any Roblox Code Directly
+
+When built-in tools aren't enough, AI executes arbitrary Luau in Studio.
+
+- "Find every Part in the Workspace with Anchored=false and list them."
+- "Batch-update matching objects and log every change."
+
+> [View all tools](docs/en/tools/overview.md)
 
 ## Getting Started
 
@@ -53,9 +77,9 @@ Installation is complete in two steps:
 
 Takes just 5 minutes. 👉 [View Installation Guide](docs/en/installation/README.md)
 
-## Go Pro
+## Pro Upgrade
 
-Build without limits. Bidirectional Sync, advanced build capabilities, and AI token efficiency — all in one upgrade.
+Bidirectional Sync, advanced build capabilities, and AI token efficiency — all in one upgrade.
 
 👉 [Pro Upgrade Guide](docs/en/pro-upgrade.md)
 
