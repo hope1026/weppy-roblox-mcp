@@ -6,67 +6,40 @@
 
 [![Demo](https://img.youtube.com/vi/3jrUpBbZPaw/maxresdefault.jpg)](https://youtu.be/3jrUpBbZPaw)
 
-## Yang Bisa Kamu Lakukan
+## Fitur utama
 
-### Dari Satu Ide ke Game yang Bisa Dimainkan
+### 1) MCP Tool: eksekusi langsung di Studio dari bahasa alami
 
-"Buatkan game survival gaya Minecraft dengan siklus siang/malam, penambangan, crafting, dan wave defense." — Satu kalimat dan AI merancang struktur game, membangun map, membuat objek, serta menulis semua scriptnya.
+Pilar pertama Roblox MCP adalah **eksekusi MCP Tool**.
+AI bisa langsung menangani script, instance, properti, terrain, lighting, asset, audio, dan animasi di dalam Studio.
 
-> **Tip**: Minta "buat rencana dulu" lalu review dan katakan "jalankan" untuk hasil lebih baik.
+- "Tambahkan partikel + suara + cooldown saat player melompat."
+- "Buat arena boss di tengah map dan pasang spawn point yang aman dari tabrakan."
+- "Ubah interface modul ini dan perbarui semua script yang bergantung padanya."
 
-### AI yang Sudah Membaca Seluruh Proyekmu
+Ini bukan sekadar generate kode. Ini adalah **aksi yang benar-benar bisa dieksekusi**.
 
-AI menyinkronkan proyek Roblox kamu ke file lokal dan mempelajari setiap script, objek, dan struktur. Puluhan file dipahami sekaligus, dimodifikasi secara konsisten.
+### 2) Sync: menjaga konteks penuh proyek untuk AI
 
-- "Temukan semua tempat yang menggunakan RemoteEvents dan petakan alur pemanggilannya."
-- "Refaktor semua script AI musuh untuk menggunakan state machine yang terpadu."
-- "Rangkum hanya perubahan berisiko yang terjadi sejak kemarin."
+Pilar kedua adalah **Project Sync**.
+AI bekerja dari mirror lokal yang tersinkron, jadi perubahan lintas banyak file tetap konsisten.
 
-Kelola beberapa Place secara bersamaan. Lacak seluruh riwayat perubahan.
+- Basic: sinkronisasi satu arah (Studio -> Local)
+- Pro: sinkronisasi dua arah + Direction/Apply Mode per tipe + riwayat + multiplace
 
-### Script: Tulis, Refaktor, Debug — File Terkait Sekaligus
+Dengan begitu sumber kebenaran tetap jelas dan konteks perubahan tidak hilang.
 
-Bukan hanya file yang kamu tunjuk. AI menangani seluruh rantai dependensi.
+## Nilai yang langsung terasa
 
-- "Saat player jump, tambahkan partikel + suara + cooldown."
-- "Temukan semua koneksi event yang bisa menyebabkan memory leak dan perbaiki dengan aman."
-- "Ubah interface modul ini dan perbarui semua script yang mereferensikannya."
+- Ringkas pekerjaan berulang: banyak edit manual jadi satu perintah
+- Ubah file terkait sekaligus: bukan hanya satu file target
+- Risiko lebih rendah: putuskan perubahan dari status sync dan riwayat
+- Efisiensi token lebih baik (Pro): kurangi bolak-balik dengan aksi massal
 
-### Buat dan Tempatkan Objek — Ratusan dengan Satu Perintah
+## Dokumen detail
 
-"Jajarkan 50 lampu jalan sepanjang jalan ini", "Tempatkan 20 rumah bata di seluruh distrik dengan rotasi acak" — AI langsung membuatnya di Studio. Perbarui properti di sejumlah objek manapun dengan satu perintah.
-
-### Pencahayaan, Cuaca, dan Atmosfer dalam Satu Kalimat
-
-"Ubah jadi padang pasir berdebu saat matahari terbenam", "Buat malam badai di mana kilat sesekali menerangi area" — satu kalimat dan pencahayaan, langit, atmosfer, serta fog semuanya berubah sekaligus.
-
-### Pahatan Terrain Melalui Percakapan
-
-"Pegunungan tebing di utara, sungai di tengah, dataran terbuka di selatan" — hasilkan lanskap apapun melalui percakapan. Kontrol material, warna, ketinggian, dan penghalusan. Bangun seluruh map tanpa menyentuh terrain editor.
-
-### Cari di Creator Store dan Langsung Pasang
-
-"Temukan model kastil abad pertengahan, taruh di tengah map, dan perbesar 1.5x" — cari asset gratis dan masukkan langsung ke proyekmu.
-
-### Kecerdasan Spasial untuk Level Design
-
-"Cari ruang kosong untuk arena bos baru", "Tampilkan hanya area yang benar-benar bisa dipatroli monster" — AI menangani penalaran spasial kompleks dan logika penempatan.
-
-### Animasi, Fisika, dan Audio sebagai Sistem yang Terhubung
-
-- "Selama animasi dash diputar, ubah aturan tabrakan player-musuh."
-- "Fade in BGM bos saat ultimate aktif, dan kembali dengan mulus saat selesai."
-
-Karakter, tabrakan, dan suara bekerja bersama sebagai sistem game, bukan alat terpisah.
-
-### Jalankan Kode Roblox Apapun Secara Langsung
-
-Ketika tools bawaan tidak cukup, AI mengeksekusi Luau sembarang di Studio.
-
-- "Temukan semua Part di Workspace dengan Anchored=false dan listkan."
-- "Perbarui objek yang cocok secara massal dan catat setiap perubahan."
-
-> [Lihat daftar lengkap](tools/overview.md)
+- [Cakupan tool (Tools Overview)](tools/overview.md)
+- [Panduan detail Sync](sync/overview.md)
 
 ## Mulai
 

@@ -7,6 +7,28 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [1.0.3] - 2026-02-24
+
+### Features
+
+- add restoreToken support for license management
+
+### Documentation
+
+- update tool documentation to clarify sync actions and add `progress`
+
+### Chores
+
+- add initial planning and task documents for manifest-driven codegen architecture
+- remove unused license server deployment workflow and coverage reports
+
+### Other Changes
+
+- refactor: remove FooterCard module and integrate reset/feedback functionality directly into SettingsTab
+- refactor: centralize UI localization handling across MCP tab components
+
+
 ## [1.0.2] - 2026-02-23
 
 ### Bug Fixes
