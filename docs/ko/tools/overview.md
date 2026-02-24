@@ -2,6 +2,9 @@
 
 MCP 도구의 상세 파라미터는 MCP 도구 정의를 직접 확인하세요.
 
+관련 문서:
+- [Sync 기능 상세 가이드](../sync/overview.md)
+
 Sync 정책:
 - Basic: Studio -> Local 단방향 동기화
 - Pro: 양방향 동기화 + 더 넓은 고급 action 범위(대량 작업으로 AI 토큰 효율 개선)
@@ -211,11 +214,12 @@ Sync 정책:
 | 액션 | 설명 | 티어 |
 |------|------|------|
 | `status` | Place의 동기화 상태 가져오기 | Pro |
-| `config` | 동기화 설정 가져오기/설정 | Pro |
+| `config` | 동기화 설정 가져오기 | Pro |
 | `history` | 변경 기록 가져오기 | Pro |
-| `directions` | 타입별 동기화 방향 가져오기/설정 | Pro |
+| `directions` | 타입별 동기화 방향 가져오기 | Pro |
 | `read_file` | 동기화된 파일 읽기 | Pro |
 | `write_file` | 동기화된 파일에 쓰기 | Pro |
+| `progress` | 실시간 동기화 진행률 및 대역폭 가져오기 | Pro |
 
 ## Workspace State (Pro)
 

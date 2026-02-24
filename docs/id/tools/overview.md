@@ -1,99 +1,259 @@
-# Fitur Roblox MCP
+# Alat Roblox MCP
 
-Hubungkan AI dengan Roblox Studio dan otomatiskan berbagai pekerjaan. Berikut adalah hal-hal yang bisa kamu lakukan berdasarkan kategori.
+Untuk parameter detail, periksa definisi alat MCP secara langsung.
+
+Dokumen terkait:
+- [Panduan detail Sync](../sync/overview.md)
 
 Kebijakan Sync:
-- Basic: Studio -> Local (satu arah)
-- Pro: Sync dua arah + cakupan fitur lanjutan lebih luas (efisiensi token AI lebih baik lewat operasi massal)
+- Basic: Studio -> Local sinkronisasi satu arah
+- Pro: Sinkronisasi dua arah + cakupan aksi lanjutan lebih luas (efisiensi token AI lebih baik dengan alur kerja massal)
 
----
+## Query Instances (Campuran)
 
-## Basic (Gratis)
+| Aksi | Deskripsi | Tier |
+|------|-----------|------|
+| `get` | Mendapatkan properti instance berdasarkan path | Basic |
+| `children` | Mendapatkan anak langsung atau semua keturunan | Basic |
+| `find_child` | Mencari anak pertama berdasarkan nama dan filter kelas opsional | Basic |
+| `find_descendant` | Mencari keturunan pertama berdasarkan nama | Basic |
+| `wait_for_child` | Menunggu anak muncul (dengan timeout) | Basic |
+| `class_info` | Mendapatkan informasi kelas dan properti yang valid | Basic |
+| `search_name` | Mencari instance berdasarkan pola nama (mendukung wildcard) | Basic |
+| `search_class` | Mencari instance berdasarkan nama kelas | Basic |
+| `file_tree` | Mendapatkan struktur pohon file dari root | Pro |
+| `project_structure` | Mendapatkan struktur proyek lengkap | Pro |
+| `descendants` | Mendapatkan semua keturunan dari sebuah instance | Pro |
+| `ancestors` | Mendapatkan semua leluhur dari sebuah instance | Pro |
+| `search_property` | Mencari instance berdasarkan nilai properti | Pro |
+| `search_tag` | Mencari instance berdasarkan tag | Pro |
 
-### Manajemen Objek
+## Mutate Instances (Campuran)
 
-Buat, duplikat, hapus, dan pindahkan objek game seperti part, model, dan folder. Pekerjaan seperti "Buatkan part merah" atau "Duplikat model ini dan taruh di sebelahnya" bisa dilakukan.
+| Aksi | Deskripsi | Tier |
+|------|-----------|------|
+| `create` | Membuat instance baru | Basic |
+| `create_with_props` | Membuat instance dengan properti awal | Basic |
+| `delete` | Menghapus instance | Basic |
+| `clone` | Mengkloning instance | Basic |
+| `move` | Memindahkan instance ke parent baru | Basic |
+| `rename` | Mengganti nama instance | Basic |
+| `pivot` | Mengatur posisi pivot atau CFrame | Basic |
+| `create_tree` | Membuat pohon instance hierarkis | Pro |
+| `mass_create` | Membuat beberapa instance sekaligus | Pro |
+| `mass_delete` | Menghapus beberapa instance | Pro |
+| `mass_duplicate` | Menduplikasi beberapa instance | Pro |
+| `smart_duplicate` | Menduplikasi dengan jarak dan jumlah | Pro |
 
-### Properti
+## Manage Properties (Campuran)
 
-Baca dan ubah semua properti objek seperti ukuran, warna, posisi, dan material. Kamu bisa mengubah beberapa properti sekaligus atau menyesuaikan secara relatif berdasarkan nilai saat ini.
+| Aksi | Deskripsi | Tier |
+|------|-----------|------|
+| `get` | Mendapatkan nilai satu properti | Basic |
+| `set` | Mengatur nilai satu properti | Basic |
+| `get_all` | Mendapatkan semua properti dari sebuah instance | Basic |
+| `set_multiple` | Mengatur beberapa properti sekaligus | Basic |
+| `get_attr` | Mendapatkan nilai atribut | Basic |
+| `set_attr` | Mengatur nilai atribut | Basic |
+| `get_all_attrs` | Mendapatkan semua atribut | Basic |
+| `delete_attr` | Menghapus atribut | Basic |
+| `add_tag` | Menambahkan tag ke instance | Basic |
+| `remove_tag` | Menghapus tag dari instance | Basic |
+| `check_tag` | Memeriksa apakah instance memiliki tag | Basic |
+| `get_tags` | Mendapatkan semua tag pada instance | Basic |
+| `get_tagged` | Mendapatkan semua instance dengan tag tertentu | Basic |
+| `set_calculated` | Mengatur properti menggunakan ekspresi matematika | Pro |
+| `set_relative` | Mengatur properti relatif terhadap nilai saat ini | Pro |
+| `mass_set` | Mengatur properti pada beberapa instance | Pro |
+| `mass_get` | Mendapatkan properti dari beberapa instance | Pro |
+| `modify_children` | Memodifikasi semua anak dari sebuah parent | Pro |
 
-### Script
+## Manage Scripts (Campuran)
 
-Buat script baru, baca kode yang ada, dan modifikasi. Kamu bisa mengedit baris tertentu, mencari teks di dalam script, atau mengidentifikasi dependensi untuk melihat modul mana yang direferensikan.
+| Aksi | Deskripsi | Tier |
+|------|-----------|------|
+| `get_source` | Mendapatkan kode sumber script | Basic |
+| `set_source` | Mengatur kode sumber script | Basic |
+| `create` | Membuat script baru | Basic |
+| `delete` | Menghapus script | Basic |
+| `edit_replace` | Mengganti baris tertentu di script | Basic |
+| `edit_insert` | Menyisipkan baris pada posisi | Basic |
+| `edit_delete` | Menghapus baris tertentu | Basic |
+| `search` | Mencari teks di script | Basic |
+| `get_dependencies` | Mendapatkan dependensi script | Basic |
+| `replace` | Penggantian massal di seluruh script | Pro |
 
-### Seleksi
+## Manage Lighting (Pro)
 
-Cek objek yang sedang dipilih, ubah seleksi, dan bersihkan seleksi. Penting untuk memahami dan mengontrol apa yang sedang kamu kerjakan di Studio.
+| Aksi | Deskripsi | Tier |
+|------|-----------|------|
+| `lighting` | Mengatur properti layanan Lighting | Pro |
+| `atmosphere` | Mengatur properti Atmosphere | Pro |
+| `sky` | Mengatur properti Sky | Pro |
+| `terrain_props` | Mengatur properti visual/air Terrain | Pro |
+| `time` | Mengatur waktu hari | Pro |
 
-### Pencarian
+## Manage Selection (Campuran)
 
-Temukan objek di game berdasarkan nama atau kelas (tipe).
+| Aksi | Deskripsi | Tier |
+|------|-----------|------|
+| `get` | Mendapatkan seleksi saat ini | Basic |
+| `set` | Mengganti seleksi saat ini | Basic |
+| `clear` | Menghapus seleksi | Basic |
+| `cached` | Mendapatkan seleksi dari cache tanpa round-trip | Basic |
+| `context` | Mendapatkan konteks detail dengan sumber dan properti | Pro |
+| `details` | Mendapatkan detail hierarkis dengan leluhur/keturunan | Pro |
+| `add` | Menambahkan item ke seleksi | Pro |
+| `remove` | Menghapus item dari seleksi | Pro |
+| `watch` | Memantau perubahan seleksi | Pro |
 
-### Tag
+## Manage Camera (Basic)
 
-Tambah atau hapus tag dari objek dan temukan semua objek dengan tag tertentu sekaligus. Berguna untuk mengelola grup objek sejenis.
+| Aksi | Deskripsi | Tier |
+|------|-----------|------|
+| `info` | Mendapatkan posisi, rotasi, FOV, dan ukuran viewport kamera | Basic |
+| `focus_path` | Memindahkan kamera untuk fokus pada instance | Basic |
+| `focus_position` | Memindahkan kamera untuk fokus pada posisi | Basic |
+| `suggest` | Mendapatkan tampilan kamera yang disarankan untuk target | Basic |
 
-### Kamera
+## Manage Tween (Pro)
 
-Pindahkan kamera ke objek atau posisi tertentu. Praktis untuk melihat area yang sedang kamu kerjakan dengan cepat.
+| Aksi | Deskripsi | Tier |
+|------|-----------|------|
+| `create` | Membuat tween dengan properti target | Pro |
+| `play` | Memutar tween yang dibuat | Pro |
+| `pause` | Menjeda tween yang berjalan | Pro |
+| `cancel` | Membatalkan tween | Pro |
 
-### Log
+## Manage Audio (Pro)
 
-Cek output log dan error yang terjadi saat game berjalan. Membantu menemukan dan memperbaiki bug.
+| Aksi | Deskripsi | Tier |
+|------|-----------|------|
+| `play` | Memutar suara (membuat Sound jika diperlukan) | Pro |
+| `stop` | Menghentikan suara yang diputar | Pro |
+| `pause` | Menjeda suara yang diputar | Pro |
+| `resume` | Melanjutkan suara yang dijeda | Pro |
+| `set_listener` | Mengatur tipe/target listener audio | Pro |
 
-### Koneksi
+## Manage Animation (Pro)
 
-Cek status koneksi dan penggunaan antara server MCP dan Roblox Studio.
+| Aksi | Deskripsi | Tier |
+|------|-----------|------|
+| `load` | Memuat animasi pada Humanoid/AnimationController | Pro |
+| `play` | Memutar track animasi yang dimuat | Pro |
+| `stop` | Menghentikan animasi yang diputar | Pro |
+| `get_tracks` | Mendaftar semua track animasi yang dimuat | Pro |
 
----
+## Manage Physics (Pro)
 
-## Pro
+| Aksi | Deskripsi | Tier |
+|------|-----------|------|
+| `register_group` | Mendaftarkan grup tabrakan | Pro |
+| `set_collidable` | Mengatur apakah dua grup bisa bertabrakan | Pro |
+| `get_groups` | Mendaftar semua grup tabrakan terdaftar | Pro |
 
-Kalau butuh fitur yang lebih kuat, kamu bisa upgrade ke Pro.
+## Manage Effects (Pro)
 
-### Seleksi Lanjutan
+| Aksi | Deskripsi | Tier |
+|------|-----------|------|
+| `emit` | Mengeluarkan partikel dari ParticleEmitter | Pro |
+| `clear` | Menghapus semua partikel | Pro |
+| `toggle` | Mengaktifkan atau menonaktifkan efek | Pro |
 
-Dapatkan konteks seleksi detail dengan properti dan source code, jelajahi hierarki seleksi, tambah/hapus item dari seleksi, dan lihat informasi Place serta service game. Berguna untuk workflow lanjutan dan otomasi.
+## Manage Terrain (Pro)
 
-### Script Lanjutan
+| Aksi | Deskripsi | Tier |
+|------|-----------|------|
+| `fill_block` | Mengisi terrain berbentuk blok | Pro |
+| `fill_ball` | Mengisi terrain berbentuk bola | Pro |
+| `fill_cylinder` | Mengisi terrain berbentuk silinder | Pro |
+| `fill_wedge` | Mengisi terrain berbentuk baji | Pro |
+| `clear_region` | Menghapus terrain di region | Pro |
+| `clear_bounds` | Menghapus terrain di batas | Pro |
+| `replace_material` | Mengganti material di region | Pro |
+| `colors_get` | Mendapatkan warna material | Pro |
+| `colors_set` | Mengatur warna material | Pro |
+| `read_voxel` | Membaca data voxel tunggal | Pro |
+| `read_voxels` | Membaca data voxel massal | Pro |
+| `write_voxels` | Menulis data voxel massal | Pro |
+| `generate` | Menghasilkan terrain prosedural | Pro |
+| `smooth` | Menghaluskan terrain | Pro |
 
-Ganti konten di beberapa script sekaligus atau jalankan kode Luau secara instan. Berguna untuk modifikasi kode berulang atau pengujian cepat.
+## Spatial Query (Pro)
 
-### Pencarian Lanjutan
+| Aksi | Deskripsi | Tier |
+|------|-----------|------|
+| `raycast` | Meluncurkan satu sinar | Pro |
+| `find_ground` | Menemukan posisi tanah di bawah titik | Pro |
+| `check_placement` | Memeriksa apakah penempatan bebas tabrakan | Pro |
+| `multi_raycast` | Meluncurkan beberapa sinar sekaligus | Pro |
+| `scan_area` | Menghasilkan peta ketinggian area | Pro |
+| `find_flat` | Menemukan area datar untuk pembangunan | Pro |
+| `find_spawn` | Menemukan posisi spawn yang sesuai | Pro |
+| `analyze_walkable` | Menganalisis grid kemampuan jalan | Pro |
+| `spatial_map` | Mendapatkan semua posisi BasePart | Pro |
+| `find_space` | Menemukan ruang kosong untuk objek | Pro |
+| `bounds` | Mendapatkan kotak pembatas instance | Pro |
+| `snap_grid` | Menyelaraskan posisi ke grid | Pro |
+| `collision` | Memeriksa tabrakan AABB | Pro |
 
-Jelajahi seluruh file tree atau cari objek berdasarkan properti atau tag. Dapatkan gambaran lengkap struktur proyek dan lihat semua descendant atau ancestor dari objek tertentu.
+## Manage Assets (Pro)
 
-### Operasi Massal
+| Aksi | Deskripsi | Tier |
+|------|-----------|------|
+| `insert` | Menyisipkan model berdasarkan ID aset | Pro |
+| `info` | Mendapatkan metadata aset | Pro |
+| `search` | Mencari di Creator Store | Pro |
+| `search_insert` | Mencari dan menyisipkan kecocokan pertama | Pro |
+| `insert_free` | Menyisipkan model gratis | Pro |
+| `insert_package` | Menyisipkan paket | Pro |
+| `export` | Mengekspor seleksi saat ini | Pro |
 
-Buat, hapus, modifikasi, atau duplikat ratusan objek sekaligus. Tangani pekerjaan skala besar dengan cepat seperti menanam pohon di map, mengubah warna semua part, atau menempatkan objek sesuai pola.
+## Manage Sync (Pro)
 
-### Aset
+| Aksi | Deskripsi | Tier |
+|------|-----------|------|
+| `status` | Mendapatkan status sinkronisasi sebuah Place | Pro |
+| `config` | Mendapatkan konfigurasi sinkronisasi | Pro |
+| `history` | Mendapatkan riwayat perubahan | Pro |
+| `directions` | Mendapatkan arah sinkronisasi per tipe | Pro |
+| `read_file` | Membaca file yang disinkronkan | Pro |
+| `write_file` | Menulis ke file yang disinkronkan | Pro |
+| `progress` | Mendapatkan progres sinkronisasi real-time dan bandwidth | Pro |
 
-Cari model gratis di Roblox Creator Store dan masukkan langsung. Tambahkan aset lewat percakapan seperti "Carikan model kastil abad pertengahan" atau "Masukkan model senjata".
+## Workspace State (Pro)
 
-### Lingkungan
+| Aksi | Deskripsi | Tier |
+|------|-----------|------|
+| `sync` | Mendapatkan state Workspace saat ini | Pro |
+| `snapshot` | Mendapatkan struktur pohon instance lengkap | Pro |
+| `changes` | Mendapatkan perubahan terbaru | Pro |
+| `viewport` | Mendapatkan informasi kamera dan viewport | Pro |
 
-Atur pencahayaan, langit, kabut, properti terrain, dan waktu dengan bahasa alami. Permintaan seperti "Ubah ke suasana senja" atau "Set waktu ke tengah malam" bisa dilakukan.
+## Manage Logs (Basic)
 
-### Manajemen State
+| Aksi | Deskripsi | Tier |
+|------|-----------|------|
+| `get` | Mendapatkan log yang difilter | Basic |
+| `clear` | Menghapus buffer log | Basic |
+| `errors` | Mendapatkan hanya error terbaru | Basic |
 
-Simpan state Workspace saat ini sebagai snapshot dan cek perubahan terbaru serta status viewport. Membantu memahami state saat ini selama pekerjaan kompleks.
+## System Info (Campuran)
 
-### Analisis Spasial
+| Aksi | Deskripsi | Tier |
+|------|-----------|------|
+| `ping` | Menguji koneksi | Basic |
+| `connection` | Mendapatkan info koneksi server/plugin | Basic |
+| `usage` | Mendapatkan tier saat ini (basic/pro) | Basic |
+| `place_info` | Mendapatkan Place ID, nama, kreator | Pro |
+| `services` | Mendaftar semua layanan Roblox | Pro |
+| `studio_settings` | Mendapatkan preferensi Studio | Pro |
+| `run_command` | Menjalankan perintah Studio | Pro |
 
-Tentukan ukuran dan posisi objek secara akurat, temukan ruang kosong, dan cek tabrakan. Kamu juga bisa menyelaraskan objek ke grid.
+## Batch Execute (Pro)
 
-### Raycast
+Menjalankan beberapa perintah dalam satu batch. Setiap perintah menentukan nama alat dan argumen. Perintah dijalankan secara berurutan dengan perilaku opsional lanjut saat terjadi error.
 
-Tembakkan sinar tak terlihat untuk menemukan titik tabrakan dengan terrain atau objek. Penting untuk desain level game: menemukan posisi tanah, mengecek apakah objek bisa ditempatkan, mencari lokasi spawn, dan menganalisis area yang bisa dilalui.
+## Execute Luau (Pro)
 
-### Terrain
-
-Isi, pahat, dan haluskan terrain dengan berbagai bentuk seperti blok, bola, silinder, dan baji. Ubah material dan warna, atau buat terrain alam secara prosedural dengan gunung dan sungai.
-
-### Visualisasi
-
-Tampilkan area, marker, dan garis di layar untuk mengonfirmasi ruang kerja secara visual. Berguna untuk debugging dan review desain level.
-
-👉 [Panduan Upgrade Pro](../pro-upgrade.md)
+Menjalankan kode Luau arbitrer di sandbox Roblox Studio. Layanan yang diblokir: HttpService, DataStoreService, MessagingService. Tidak dapat mengakses CoreGui/CorePackages.

@@ -1,99 +1,259 @@
-# Funcionalidades do Roblox MCP
+# Ferramentas do Roblox MCP
 
-Conecte a IA ao Roblox Studio e automatize diversas tarefas. Veja o que voce pode fazer por categoria.
+Para parametros detalhados, consulte as definicoes de ferramentas MCP diretamente.
+
+Documentacao relacionada:
+- [Guia detalhado de Sync](../sync/overview.md)
 
 Politica de Sync:
-- Basic: Studio -> Local (unidirecional)
-- Pro: Sync bidirecional + funcionalidades avancadas mais amplas (melhor eficiencia de tokens IA com operacoes em massa)
+- Basic: Studio -> Local sincronizacao unidirecional
+- Pro: Sincronizacao bidirecional + cobertura de acoes avancadas mais ampla (melhor eficiencia de tokens IA com fluxos em massa)
 
----
+## Query Instances (Misto)
 
-## Basic (Gratuito)
+| Acao | Descricao | Tier |
+|------|-----------|------|
+| `get` | Obter propriedades da instancia por caminho | Basic |
+| `children` | Obter filhos imediatos ou todos os descendentes | Basic |
+| `find_child` | Encontrar primeiro filho por nome e filtro de classe opcional | Basic |
+| `find_descendant` | Encontrar primeiro descendente por nome | Basic |
+| `wait_for_child` | Aguardar filho aparecer (com timeout) | Basic |
+| `class_info` | Obter informacoes da classe e propriedades validas | Basic |
+| `search_name` | Buscar instancias por padrao de nome (suporta curingas) | Basic |
+| `search_class` | Buscar instancias por nome de classe | Basic |
+| `file_tree` | Obter estrutura de arvore de arquivos a partir da raiz | Pro |
+| `project_structure` | Obter estrutura completa do projeto | Pro |
+| `descendants` | Obter todos os descendentes de uma instancia | Pro |
+| `ancestors` | Obter todos os ancestrais de uma instancia | Pro |
+| `search_property` | Buscar instancias por valor de propriedade | Pro |
+| `search_tag` | Buscar instancias por tag | Pro |
 
-### Gerenciamento de Objetos
+## Mutate Instances (Misto)
 
-Crie, clone, delete e mova objetos do jogo como partes, modelos e pastas. Tarefas como "Crie uma parte vermelha" ou "Clone este modelo e coloque ao lado" sao possiveis.
+| Acao | Descricao | Tier |
+|------|-----------|------|
+| `create` | Criar uma nova instancia | Basic |
+| `create_with_props` | Criar instancia com propriedades iniciais | Basic |
+| `delete` | Excluir uma instancia | Basic |
+| `clone` | Clonar uma instancia | Basic |
+| `move` | Mover instancia para novo pai | Basic |
+| `rename` | Renomear uma instancia | Basic |
+| `pivot` | Definir posicao pivot ou CFrame | Basic |
+| `create_tree` | Criar arvore hierarquica de instancias | Pro |
+| `mass_create` | Criar multiplas instancias de uma vez | Pro |
+| `mass_delete` | Excluir multiplas instancias | Pro |
+| `mass_duplicate` | Duplicar multiplas instancias | Pro |
+| `smart_duplicate` | Duplicar com espacamento e quantidade | Pro |
 
-### Propriedades
+## Manage Properties (Misto)
 
-Leia e altere todas as propriedades dos objetos como tamanho, cor, posicao e material. Voce pode alterar varias propriedades de uma vez ou ajustar relativamente com base nos valores atuais.
+| Acao | Descricao | Tier |
+|------|-----------|------|
+| `get` | Obter valor de uma propriedade | Basic |
+| `set` | Definir valor de uma propriedade | Basic |
+| `get_all` | Obter todas as propriedades de uma instancia | Basic |
+| `set_multiple` | Definir multiplas propriedades de uma vez | Basic |
+| `get_attr` | Obter valor de atributo | Basic |
+| `set_attr` | Definir valor de atributo | Basic |
+| `get_all_attrs` | Obter todos os atributos | Basic |
+| `delete_attr` | Excluir um atributo | Basic |
+| `add_tag` | Adicionar tag a instancia | Basic |
+| `remove_tag` | Remover tag de instancia | Basic |
+| `check_tag` | Verificar se instancia tem uma tag | Basic |
+| `get_tags` | Obter todas as tags de uma instancia | Basic |
+| `get_tagged` | Obter todas as instancias com uma tag especifica | Basic |
+| `set_calculated` | Definir propriedade usando expressao matematica | Pro |
+| `set_relative` | Definir propriedade relativa ao valor atual | Pro |
+| `mass_set` | Definir propriedade em multiplas instancias | Pro |
+| `mass_get` | Obter propriedade de multiplas instancias | Pro |
+| `modify_children` | Modificar todos os filhos de um pai | Pro |
 
-### Scripts
+## Manage Scripts (Misto)
 
-Crie novos scripts, leia o codigo existente e modifique. Voce pode editar linhas especificas, buscar texto dentro de scripts ou identificar dependencias para ver quais modulos sao referenciados.
+| Acao | Descricao | Tier |
+|------|-----------|------|
+| `get_source` | Obter codigo-fonte do script | Basic |
+| `set_source` | Definir codigo-fonte do script | Basic |
+| `create` | Criar um novo script | Basic |
+| `delete` | Excluir um script | Basic |
+| `edit_replace` | Substituir linhas especificas do script | Basic |
+| `edit_insert` | Inserir linhas na posicao | Basic |
+| `edit_delete` | Excluir linhas especificas | Basic |
+| `search` | Buscar texto no script | Basic |
+| `get_dependencies` | Obter dependencias do script | Basic |
+| `replace` | Substituicao em massa em scripts | Pro |
 
-### Selecao
+## Manage Lighting (Pro)
 
-Verifique os objetos selecionados, altere a selecao e limpe a selecao. Essencial para entender e controlar com o que voce esta trabalhando no Studio.
+| Acao | Descricao | Tier |
+|------|-----------|------|
+| `lighting` | Definir propriedades do servico Lighting | Pro |
+| `atmosphere` | Definir propriedades de Atmosphere | Pro |
+| `sky` | Definir propriedades de Sky | Pro |
+| `terrain_props` | Definir propriedades visuais/agua de Terrain | Pro |
+| `time` | Definir hora do dia | Pro |
 
-### Busca
+## Manage Selection (Misto)
 
-Encontre objetos no jogo por nome ou classe (tipo).
+| Acao | Descricao | Tier |
+|------|-----------|------|
+| `get` | Obter selecao atual | Basic |
+| `set` | Substituir selecao atual | Basic |
+| `clear` | Limpar selecao | Basic |
+| `cached` | Obter selecao em cache sem ida e volta | Basic |
+| `context` | Obter contexto detalhado com fonte e propriedades | Pro |
+| `details` | Obter detalhes hierarquicos com ancestrais/descendentes | Pro |
+| `add` | Adicionar itens a selecao | Pro |
+| `remove` | Remover itens da selecao | Pro |
+| `watch` | Monitorar mudancas de selecao | Pro |
 
-### Tags
+## Manage Camera (Basic)
 
-Adicione ou remova tags de objetos e encontre todos os objetos com uma tag especifica de uma vez. Util para gerenciar grupos de objetos semelhantes.
+| Acao | Descricao | Tier |
+|------|-----------|------|
+| `info` | Obter posicao, rotacao, FOV e tamanho do viewport | Basic |
+| `focus_path` | Mover camera para focar em instancia | Basic |
+| `focus_position` | Mover camera para focar em posicao | Basic |
+| `suggest` | Obter visao de camera sugerida para alvo | Basic |
 
-### Camera
+## Manage Tween (Pro)
 
-Mova a camera para objetos ou posicoes especificas. Conveniente para verificar rapidamente a area em que voce esta trabalhando.
+| Acao | Descricao | Tier |
+|------|-----------|------|
+| `create` | Criar tween com propriedades-alvo | Pro |
+| `play` | Reproduzir um tween criado | Pro |
+| `pause` | Pausar um tween em execucao | Pro |
+| `cancel` | Cancelar um tween | Pro |
 
-### Logs
+## Manage Audio (Pro)
 
-Confira logs de saida e erros que ocorreram durante a execucao do jogo. Ajuda a encontrar e corrigir bugs.
+| Acao | Descricao | Tier |
+|------|-----------|------|
+| `play` | Reproduzir som (cria Sound se necessario) | Pro |
+| `stop` | Parar um som em reproducao | Pro |
+| `pause` | Pausar um som em reproducao | Pro |
+| `resume` | Retomar um som pausado | Pro |
+| `set_listener` | Definir tipo/alvo do listener de audio | Pro |
 
-### Conexao
+## Manage Animation (Pro)
 
-Verifique o status de conexao e uso entre o servidor MCP e o Roblox Studio.
+| Acao | Descricao | Tier |
+|------|-----------|------|
+| `load` | Carregar animacao em Humanoid/AnimationController | Pro |
+| `play` | Reproduzir faixa de animacao carregada | Pro |
+| `stop` | Parar animacao em reproducao | Pro |
+| `get_tracks` | Listar todas as faixas de animacao carregadas | Pro |
 
----
+## Manage Physics (Pro)
 
-## Pro
+| Acao | Descricao | Tier |
+|------|-----------|------|
+| `register_group` | Registrar grupo de colisao | Pro |
+| `set_collidable` | Definir se dois grupos podem colidir | Pro |
+| `get_groups` | Listar todos os grupos de colisao registrados | Pro |
 
-Se voce precisa de funcionalidades mais poderosas, pode fazer upgrade para o Pro.
+## Manage Effects (Pro)
 
-### Selecao Avancada
+| Acao | Descricao | Tier |
+|------|-----------|------|
+| `emit` | Emitir particulas do ParticleEmitter | Pro |
+| `clear` | Limpar todas as particulas | Pro |
+| `toggle` | Ativar ou desativar efeito | Pro |
 
-Obtenha o contexto detalhado da selecao com propriedades e codigo-fonte, explore a hierarquia de selecao, adicione/remova itens da selecao, e consulte informacoes do Place e servicos do jogo. Util para fluxos de trabalho avancados e automacao.
+## Manage Terrain (Pro)
 
-### Scripts Avancados
+| Acao | Descricao | Tier |
+|------|-----------|------|
+| `fill_block` | Preencher terreno em forma de bloco | Pro |
+| `fill_ball` | Preencher terreno em forma de esfera | Pro |
+| `fill_cylinder` | Preencher terreno em forma de cilindro | Pro |
+| `fill_wedge` | Preencher terreno em forma de cunha | Pro |
+| `clear_region` | Limpar terreno na regiao | Pro |
+| `clear_bounds` | Limpar terreno nos limites | Pro |
+| `replace_material` | Substituir material na regiao | Pro |
+| `colors_get` | Obter cores de material | Pro |
+| `colors_set` | Definir cores de material | Pro |
+| `read_voxel` | Ler dados de voxel individual | Pro |
+| `read_voxels` | Ler dados de voxels em massa | Pro |
+| `write_voxels` | Escrever dados de voxels em massa | Pro |
+| `generate` | Gerar terreno procedural | Pro |
+| `smooth` | Suavizar terreno | Pro |
 
-Substitua conteudo em multiplos scripts de uma vez ou execute codigo Luau instantaneamente. Util para modificacoes repetitivas de codigo ou testes rapidos.
+## Spatial Query (Pro)
 
-### Busca Avancada
+| Acao | Descricao | Tier |
+|------|-----------|------|
+| `raycast` | Lancar um unico raio | Pro |
+| `find_ground` | Encontrar posicao do chao abaixo do ponto | Pro |
+| `check_placement` | Verificar se a colocacao esta livre de colisoes | Pro |
+| `multi_raycast` | Lancar multiplos raios em lote | Pro |
+| `scan_area` | Gerar mapa de alturas da area | Pro |
+| `find_flat` | Encontrar areas planas para construcao | Pro |
+| `find_spawn` | Encontrar posicoes de spawn adequadas | Pro |
+| `analyze_walkable` | Analisar grade de transitabilidade | Pro |
+| `spatial_map` | Obter todas as posicoes de BasePart | Pro |
+| `find_space` | Encontrar espaco vazio para objeto | Pro |
+| `bounds` | Obter caixa delimitadora de instancias | Pro |
+| `snap_grid` | Ajustar posicao a grade | Pro |
+| `collision` | Verificar colisao AABB | Pro |
 
-Explore a arvore de arquivos completa ou busque objetos por propriedade ou tag. Tenha uma visao completa da estrutura do projeto e consulte todos os descendentes ou ancestrais de objetos especificos.
+## Manage Assets (Pro)
 
-### Operacoes em Massa
+| Acao | Descricao | Tier |
+|------|-----------|------|
+| `insert` | Inserir modelo por ID de asset | Pro |
+| `info` | Obter metadados do asset | Pro |
+| `search` | Buscar na Creator Store | Pro |
+| `search_insert` | Buscar e inserir primeira correspondencia | Pro |
+| `insert_free` | Inserir modelo gratuito | Pro |
+| `insert_package` | Inserir pacote | Pro |
+| `export` | Exportar selecao atual | Pro |
 
-Crie, delete, modifique ou duplique centenas de objetos de uma vez. Lide rapidamente com tarefas em grande escala como plantar arvores no mapa, mudar a cor de todas as partes ou posicionar objetos segundo padroes.
+## Manage Sync (Pro)
 
-### Assets
+| Acao | Descricao | Tier |
+|------|-----------|------|
+| `status` | Obter status de sincronizacao de um Place | Pro |
+| `config` | Obter configuracao de sincronizacao | Pro |
+| `history` | Obter historico de mudancas | Pro |
+| `directions` | Obter direcoes de sincronizacao por tipo | Pro |
+| `read_file` | Ler um arquivo sincronizado | Pro |
+| `write_file` | Escrever em um arquivo sincronizado | Pro |
+| `progress` | Obter progresso de sincronizacao em tempo real e largura de banda | Pro |
 
-Busque modelos gratuitos no Roblox Creator Store e insira instantaneamente. Adicione assets por conversa como "Procure um modelo de castelo medieval" ou "Insira um modelo de arma".
+## Workspace State (Pro)
 
-### Ambiente
+| Acao | Descricao | Tier |
+|------|-----------|------|
+| `sync` | Obter estado atual do Workspace | Pro |
+| `snapshot` | Obter estrutura completa da arvore de instancias | Pro |
+| `changes` | Obter mudancas recentes | Pro |
+| `viewport` | Obter informacoes de camera e viewport | Pro |
 
-Configure iluminacao, ceu, nevoa, propriedades do terreno e hora do dia com linguagem natural. Solicitacoes como "Mude para clima de por do sol" ou "Coloque meia-noite" sao possiveis.
+## Manage Logs (Basic)
 
-### Gerenciamento de Estado
+| Acao | Descricao | Tier |
+|------|-----------|------|
+| `get` | Obter logs filtrados | Basic |
+| `clear` | Limpar buffer de logs | Basic |
+| `errors` | Obter apenas erros recentes | Basic |
 
-Salve o estado atual do Workspace como snapshot e consulte mudancas recentes e o estado do viewport. Ajuda a entender o estado atual durante tarefas complexas.
+## System Info (Misto)
 
-### Analise Espacial
+| Acao | Descricao | Tier |
+|------|-----------|------|
+| `ping` | Testar conexao | Basic |
+| `connection` | Obter info de conexao servidor/plugin | Basic |
+| `usage` | Obter tier atual (basic/pro) | Basic |
+| `place_info` | Obter Place ID, nome, criador | Pro |
+| `services` | Listar todos os servicos Roblox | Pro |
+| `studio_settings` | Obter preferencias do Studio | Pro |
+| `run_command` | Executar comando do Studio | Pro |
 
-Determine com precisao o tamanho e posicao de objetos, encontre espacos vazios e verifique colisoes. Voce tambem pode alinhar objetos a uma grade.
+## Batch Execute (Pro)
 
-### Raycast
+Executa multiplos comandos em um unico lote. Cada comando especifica um nome de ferramenta e argumentos. Os comandos sao executados sequencialmente com comportamento opcional de continuar em caso de erro.
 
-Lance raios invisiveis para encontrar pontos de colisao com terreno ou objetos. Essencial para design de niveis: encontrar posicoes do chao, verificar se objetos podem ser colocados, buscar locais de spawn e analisar areas caminhaveis.
+## Execute Luau (Pro)
 
-### Terreno
-
-Preencha, escave e suavize terreno com diversas formas como blocos, esferas, cilindros e cunhas. Altere materiais e cores, ou gere proceduralmente terreno natural com montanhas e rios.
-
-### Visualizacao
-
-Exiba areas, marcadores e linhas na tela para confirmar visualmente o espaco de trabalho. Util para debugging e revisao de design de niveis.
-
-👉 [Guia de Upgrade para Pro](../pro-upgrade.md)
+Executa codigo Luau arbitrario no sandbox do Roblox Studio. Servicos bloqueados: HttpService, DataStoreService, MessagingService. Nao pode acessar CoreGui/CorePackages.

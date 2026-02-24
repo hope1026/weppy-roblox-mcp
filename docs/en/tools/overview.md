@@ -2,6 +2,9 @@
 
 For detailed parameters, check MCP tool definitions directly.
 
+Related docs:
+- [Sync Deep Dive](../sync/overview.md)
+
 Sync policy:
 - Basic: Studio -> Local one-way sync
 - Pro: Bidirectional sync + broader advanced action coverage (better AI token efficiency with bulk workflows)
@@ -211,11 +214,12 @@ Sync policy:
 | Action | Description | Tier |
 |--------|-------------|------|
 | `status` | Get sync status for a place | Pro |
-| `config` | Get/set sync configuration | Pro |
+| `config` | Get sync configuration | Pro |
 | `history` | Get change history | Pro |
-| `directions` | Get/set per-type sync directions | Pro |
+| `directions` | Get per-type sync directions | Pro |
 | `read_file` | Read a synced file | Pro |
 | `write_file` | Write to a synced file | Pro |
+| `progress` | Get real-time sync progress and bandwidth | Pro |
 
 ## Workspace State (Pro)
 

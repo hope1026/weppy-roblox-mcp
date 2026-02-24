@@ -6,82 +6,55 @@
 
 [![Demo](https://img.youtube.com/vi/3jrUpBbZPaw/maxresdefault.jpg)](https://youtu.be/3jrUpBbZPaw)
 
-## Qué puedes hacer
+## Funciones principales
 
-### De una idea a un juego jugable
+### 1) MCP Tool: ejecuta en Studio desde lenguaje natural
 
-"Crea un juego de supervivencia estilo Minecraft con ciclo día/noche, recolección, crafteo y defensa de oleadas." — Una frase y la IA diseña la estructura, construye el mapa, crea los objetos y escribe todos los scripts.
+El primer eje de Roblox MCP es la **ejecucion de MCP Tool**.
+La IA puede manejar directamente scripts, instancias, propiedades, terreno, iluminacion, assets, audio y animacion dentro de Studio.
 
-> **Tip**: Pide primero "Haz un plan", revísalo y luego di "Ejecútalo" para obtener mejores resultados.
+- "Agrega particulas + sonido + cooldown cuando el jugador salte."
+- "Crea una arena de boss en el centro del mapa y coloca spawns sin colision."
+- "Cambia la interfaz de este modulo y actualiza todos los scripts dependientes."
 
-### Una IA que ha leído todo tu proyecto
+No es solo generacion de codigo. Son **acciones ejecutables orientadas a produccion**.
 
-La IA sincroniza tu proyecto de Roblox en archivos locales y aprende cada script, objeto y estructura. Docenas de archivos entendidos a la vez, modificados de forma consistente.
+### 2) Sync: mantiene el contexto completo del proyecto
 
-- "Encuentra todos los lugares que usan RemoteEvents y mapea el flujo de llamadas."
-- "Refactoriza todos los scripts de IA enemiga para usar una máquina de estados unificada."
-- "Resume solo los cambios peligrosos realizados desde ayer."
+El segundo eje es **Project Sync**.
+La IA trabaja sobre un espejo local sincronizado, asi que los cambios en multiples archivos se mantienen consistentes.
 
-Gestiona múltiples Places simultáneamente. Rastrea el historial completo de cambios.
+- Basic: sincronizacion unidireccional (Studio -> Local)
+- Pro: sincronizacion bidireccional + Direction/Apply Mode por tipo + historial + multiplace
 
-### Scripts: escribir, refactorizar, depurar — en archivos relacionados a la vez
+Asi mantienes claro cual es la fuente de verdad y no pierdes contexto de cambios.
 
-No solo el archivo que señalas. La IA maneja toda la cadena de dependencias.
+## Valor inmediato para el usuario
 
-- "Cuando el jugador salte, agrega partículas, sonido y cooldown."
-- "Encuentra todas las conexiones de eventos que podrían tener memory leaks y corrígelas de forma segura."
-- "Cambia la interfaz de este módulo y actualiza todos los scripts que lo referencian."
+- Comprime trabajo repetitivo: convierte muchas ediciones manuales en una sola instruccion
+- Cambios relacionados en conjunto: no solo un archivo aislado
+- Menor riesgo: decide cambios con estado de sync e historial
+- Mejor eficiencia de tokens (Pro): menos idas y vueltas con acciones masivas
 
-### Crear y colocar objetos — cientos con un solo comando
+## Documentacion detallada
 
-"Alinea 50 farolas a lo largo de esta carretera", "Coloca 20 casas de ladrillo por el distrito con rotaciones aleatorias" — la IA los crea directamente en Studio. Actualiza propiedades en cualquier número de objetos con un solo comando.
-
-### Iluminación, clima y atmósfera en una frase
-
-"Cambia a un desierto polvoriento al atardecer", "Hazlo una noche tormentosa donde los relámpagos iluminen brevemente el área" — una frase y la iluminación, el cielo, la atmósfera y la niebla se actualizan al mismo tiempo.
-
-### Esculpe terreno a través de la conversación
-
-"Montañas al norte, un río en el centro, llanuras abiertas al sur" — genera cualquier paisaje conversando. Controla material, color, altura y suavizado. Construye mapas enteros sin tocar el editor de terreno.
-
-### Busca en Creator Store y coloca al instante
-
-"Encuentra un modelo de castillo medieval, colócalo en el centro del mapa y escálalo 1.5x" — busca assets gratuitos e insértalos directamente en tu proyecto.
-
-### Inteligencia espacial para el diseño de niveles
-
-"Encuentra espacio abierto para una nueva arena del jefe", "Muestra solo las áreas donde los monstruos realmente pueden patrullar" — la IA maneja el razonamiento espacial complejo y la lógica de colocación.
-
-### Animaciones, física y audio como sistemas conectados
-
-- "Mientras se reproduce la animación de dash, cambia las reglas de colisión jugador-enemigo."
-- "Haz fade in del BGM del jefe cuando se activa el ultimate, y vuelve suavemente cuando termina."
-
-Personajes, colisión y sonido trabajando juntos como sistema de juego, no como herramientas separadas.
-
-### Ejecuta cualquier código de Roblox directamente
-
-Cuando las herramientas integradas no son suficientes, la IA ejecuta Luau arbitrario en Studio.
-
-- "Encuentra todas las Parts en el Workspace con Anchored=false y listarlas."
-- "Actualiza en lote los objetos coincidentes y registra cada cambio."
-
-> [Ver todas las herramientas](tools/overview.md)
+- [Cobertura de herramientas (Tools Overview)](tools/overview.md)
+- [Guia detallada de Sync](sync/overview.md)
 
 ## Comenzar
 
-La instalación se completa en dos pasos:
+La instalacion se completa en dos pasos:
 
 1. **Instalar el plugin de Roblox Studio** — Hace de puente entre Studio e IA
 2. **Registrar el servidor MCP en tu app de IA** — Para que la app de IA lo reconozca
 
-Solo toma 5 minutos. 👉 [Ver guía de instalación](installation/README.md)
+Solo toma 5 minutos. 👉 [Ver guia de instalacion](installation/README.md)
 
 ## Upgrade Pro
 
-Sync bidireccional, capacidades de creación avanzadas y eficiencia de tokens de IA — todo en una sola actualización.
+Sync bidireccional, capacidades de creacion avanzadas y eficiencia de tokens de IA — todo en una sola actualizacion.
 
-👉 [Guía de actualización Pro](pro-upgrade.md)
+👉 [Guia de actualizacion Pro](pro-upgrade.md)
 
 ## Enlaces
 
