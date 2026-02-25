@@ -19,10 +19,8 @@
   ],
   "mcpServers": {
     "weppy-roblox-mcp": {
-      "command": "node",
-      "args": [
-        "${CLAUDE_PLUGIN_ROOT}/dist/index.js"
-      ]
+      "command": "${CLAUDE_PLUGIN_ROOT}/bin/run.sh",
+      "args": []
     }
   }
 }
