@@ -25,8 +25,10 @@ CLI 세션 히스토리와 설정이 자동으로 앱에 동기화됩니다.
 
 ```
 Server name: weppy-roblox-mcp
-Command: npx -y @weppy/roblox-mcp
+Command: <path-to>/weppy-roblox-mcp-<os>-<arch>
 ```
+
+> [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest)에서 다운로드
 
 ## 연결 테스트
 
@@ -42,7 +44,7 @@ Command: npx -y @weppy/roblox-mcp
 
 MCP 서버를 직접 실행하여 오류를 확인하세요:
 ```bash
-npx -y @weppy/roblox-mcp
+./weppy-roblox-mcp-<os>-<arch>
 ```
 
 ### 연결 실패

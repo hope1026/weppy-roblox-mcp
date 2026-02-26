@@ -5,7 +5,6 @@ Como usar o Roblox MCP no [Claude Desktop App](https://claude.ai/download).
 ## Pre-requisitos
 
 - **Claude Desktop App** instalado
-- **Node.js** (v18.0.0 ou superior)
 - **Plugin do Roblox Studio** instalado
 
 ## Registrar o Servidor MCP
@@ -22,20 +21,25 @@ Como usar o Roblox MCP no [Claude Desktop App](https://claude.ai/download).
 
 1. Claude Desktop → **Settings** → **Developers** → Clique em **Edit Config**
 
-2. Adicione o seguinte conteudo ao arquivo `claude_desktop_config.json`:
+2. Baixe o binario do servidor MCP para sua plataforma em [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest).
+
+3. Adicione o seguinte conteudo ao arquivo `claude_desktop_config.json`:
 
 ```json
 {
   "mcpServers": {
     "weppy-roblox-mcp": {
-      "command": "npx",
-      "args": ["-y", "@weppy/roblox-mcp"]
+      "command": "<path-to>/weppy-roblox-mcp-<os>-<arch>"
     }
   }
 }
 ```
 
-3. **Feche completamente** o Claude Desktop e reinicie
+> Substitua `<path-to>` pelo diretorio real onde voce baixou o binario.
+> `<os>`: `darwin`, `linux`, `windows` / `<arch>`: `amd64`, `arm64`
+> No Windows, o nome do arquivo termina com `.exe` (ex: `weppy-roblox-mcp-windows-amd64.exe`).
+
+4. **Feche completamente** o Claude Desktop e reinicie
 
 **Localizacao do arquivo de configuracao:**
 
@@ -62,9 +66,9 @@ Como usar o Roblox MCP no [Claude Desktop App](https://claude.ai/download).
 
 ### O servidor nao inicia
 
-Execute o servidor MCP diretamente para verificar erros:
+Execute o binario do servidor MCP diretamente para verificar erros:
 ```bash
-npx -y @weppy/roblox-mcp
+./weppy-roblox-mcp-<os>-<arch>
 ```
 
 ### Falha na conexao

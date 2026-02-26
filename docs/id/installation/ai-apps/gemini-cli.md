@@ -4,17 +4,12 @@ Cara menggunakan Roblox MCP dengan [Google Gemini CLI](https://github.com/google
 
 ## Prasyarat
 
-1. **Node.js** (v18.0.0 atau lebih tinggi)
-   ```bash
-   node --version
-   ```
-
-2. **Gemini CLI** terinstal
+1. **Gemini CLI** terinstal
    ```bash
    npm install -g @google/gemini-cli
    ```
 
-3. **Plugin Roblox Studio** terinstal
+2. **Plugin Roblox Studio** terinstal
 
 ## Mendaftarkan Server MCP
 
@@ -23,15 +18,17 @@ Cara menggunakan Roblox MCP dengan [Google Gemini CLI](https://github.com/google
 Daftarkan dengan satu perintah di terminal Anda:
 
 ```bash
-gemini mcp add weppy-roblox-mcp npx --trust -- -y @weppy/roblox-mcp
+gemini mcp add weppy-roblox-mcp <path-to>/weppy-roblox-mcp-<os>-<arch> --trust
 ```
 
 > Flag `--trust` melewati prompt konfirmasi untuk setiap pemanggilan tool.
+>
+> Download binary dari [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest). `<os>`: darwin, linux, windows / `<arch>`: amd64, arm64
 
 Untuk mendaftar secara global, tambahkan `-s user`:
 
 ```bash
-gemini mcp add weppy-roblox-mcp npx -s user --trust -- -y @weppy/roblox-mcp
+gemini mcp add weppy-roblox-mcp <path-to>/weppy-roblox-mcp-<os>-<arch> -s user --trust
 ```
 
 ### Metode 2: Edit File Konfigurasi
@@ -42,8 +39,7 @@ Tambahkan konten berikut ke file `.gemini/settings.json`:
 {
   "mcpServers": {
     "weppy-roblox-mcp": {
-      "command": "npx",
-      "args": ["-y", "@weppy/roblox-mcp"]
+      "command": "<path-to>/weppy-roblox-mcp-<os>-<arch>"
     }
   }
 }
@@ -61,7 +57,7 @@ Jika variabel lingkungan tertentu diperlukan:
 
 **CLI:**
 ```bash
-gemini mcp add weppy-roblox-mcp npx --trust -e MCP_PORT=3002 -- -y @weppy/roblox-mcp
+gemini mcp add weppy-roblox-mcp <path-to>/weppy-roblox-mcp-<os>-<arch> --trust -e MCP_PORT=3002
 ```
 
 **File konfigurasi:**
@@ -69,8 +65,7 @@ gemini mcp add weppy-roblox-mcp npx --trust -e MCP_PORT=3002 -- -y @weppy/roblox
 {
   "mcpServers": {
     "weppy-roblox-mcp": {
-      "command": "npx",
-      "args": ["-y", "@weppy/roblox-mcp"],
+      "command": "<path-to>/weppy-roblox-mcp-<os>-<arch>",
       "env": {
         "MCP_PORT": "3002"
       }
@@ -101,7 +96,7 @@ Anda dapat memeriksa status server yang terhubung dengan perintah `/mcp` di Gemi
 
 Jalankan server MCP secara langsung untuk memeriksa kesalahan:
 ```bash
-npx -y @weppy/roblox-mcp
+./weppy-roblox-mcp-<os>-<arch>
 ```
 
 ### Koneksi gagal

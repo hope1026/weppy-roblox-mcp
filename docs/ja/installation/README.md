@@ -35,7 +35,7 @@ GitHubからプラグインファイルをダウンロードして、Roblox Stud
 | Gemini CLI | [設定手順](ai-apps/gemini-cli.md) |
 | Antigravity | [設定手順](ai-apps/antigravity.md) |
 
-> 上記のリストにないAIアプリでも、MCPをサポートしていれば使用できます。MCPサーバーコマンド: `npx -y @weppy/roblox-mcp`
+> 上記のリストにないAIアプリでも、MCPをサポートしていれば使用できます。[GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest)から最新リリースをダウンロードし、含まれるGoバイナリをMCPサーバーコマンドとして使用してください。
 
 ---
 
