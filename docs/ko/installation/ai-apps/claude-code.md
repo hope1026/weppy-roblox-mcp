@@ -32,20 +32,24 @@ Claude Code 터미널에서 실행:
 /plugin list
 ```
 
-### 방법 2: 설정 파일 직접 편집
+### 방법 2: 바이너리 다운로드 후 직접 설정
 
-`.mcp.json` 파일 생성:
+1. [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest)에서 최신 릴리즈를 다운로드
+2. ZIP을 압축 해제하고 플랫폼에 맞는 Go 바이너리 경로를 확인
+3. `.mcp.json` 파일 생성:
 
 ```json
 {
   "mcpServers": {
     "weppy-roblox-mcp": {
-      "command": "npx",
-      "args": ["-y", "@weppy/roblox-mcp"]
+      "command": "<path-to>/weppy-roblox-mcp-<os>-<arch>"
     }
   }
 }
 ```
+
+> `<os>`: darwin, linux, windows / `<arch>`: amd64, arm64
+> Windows에서는 파일명이 `.exe`로 끝남
 
 **설정 파일 위치:**
 
@@ -82,15 +86,10 @@ Claude Code는 MCP 서버를 자동으로 관리합니다:
 
 ### 서버가 시작되지 않음
 
-1. Node.js 버전 확인 (18.0 이상 필요):
-   ```bash
-   node --version
-   ```
-
-2. 수동으로 서버 시작 테스트:
-   ```bash
-   npx -y @weppy/roblox-mcp
-   ```
+수동으로 서버 바이너리를 실행하여 오류를 확인하세요:
+```bash
+./weppy-roblox-mcp-<os>-<arch>
+```
 
 ### MCP 도구가 보이지 않음
 

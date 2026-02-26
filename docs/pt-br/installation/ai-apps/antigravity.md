@@ -7,8 +7,7 @@ Como usar o Roblox MCP com o [Google Antigravity](https://developers.googleblog.
 ## Pré-requisitos
 
 1. **Antigravity** instalado (consulte a documentação oficial para SO suportados/requisitos)
-2. **Node.js** (v18.0.0 ou superior, `npx` disponível)
-3. **Plugin do Roblox Studio** instalado
+2. **Plugin do Roblox Studio** instalado
 
 ## Registrar servidor MCP
 
@@ -26,12 +25,13 @@ No Antigravity, os servidores MCP são gerenciados no **painel do agente (Agent 
 {
   "mcpServers": {
     "weppy-roblox-mcp": {
-      "command": "npx",
-      "args": ["-y", "@weppy/roblox-mcp"]
+      "command": "<path-to>/weppy-roblox-mcp-<os>-<arch>"
     }
   }
 }
 ```
+
+> Baixe em [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest). `<os>`: darwin, linux, windows / `<arch>`: amd64, arm64
 
 ![Editar raw config](../../../assets/screenshots/antigravity/antigravity_mcp_raw.png)
 
@@ -47,8 +47,7 @@ Recomendamos manter o padrão (HTTP `127.0.0.1:3002`). Se necessário, você pod
 {
   "mcpServers": {
     "weppy-roblox-mcp": {
-      "command": "npx",
-      "args": ["-y", "@weppy/roblox-mcp"],
+      "command": "<path-to>/weppy-roblox-mcp-<os>-<arch>",
       "env": {
         "HTTP_HOST": "127.0.0.1",
         "HTTP_PORT": "3002",
@@ -73,7 +72,7 @@ Recomendamos manter o padrão (HTTP `127.0.0.1:3002`). Se necessário, você pod
 
 Execute o servidor MCP diretamente para verificar o erro:
 ```bash
-npx -y @weppy/roblox-mcp
+./weppy-roblox-mcp-<os>-<arch>
 ```
 
 ### Falha na conexão

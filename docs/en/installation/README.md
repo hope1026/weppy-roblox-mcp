@@ -35,7 +35,7 @@ Register the MCP server with your AI app. You can use it with any AI app that su
 | Gemini CLI | [Setup Instructions](ai-apps/gemini-cli.md) |
 | Antigravity | [Setup Instructions](ai-apps/antigravity.md) |
 
-> Even if your AI app isn't listed above, you can use it if it supports MCP. The MCP server command is `npx -y @weppy/roblox-mcp`.
+> Even if your AI app isn't listed above, you can use it if it supports MCP. Download the latest release from [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest) and use the included Go binary as the MCP server command.
 
 ---
 

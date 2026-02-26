@@ -4,7 +4,6 @@ How to use Roblox MCP with [OpenAI Codex CLI](https://github.com/openai/codex) (
 
 ## Prerequisites
 
-- **Node.js** (v18.0.0 or higher)
 - **Roblox Studio Plugin** installed
 
 ## Installation
@@ -18,8 +17,11 @@ npm install -g @openai/codex
 ### Method 1: CLI Command (Recommended)
 
 ```bash
-codex mcp add weppy-roblox-mcp -- npx -y @weppy/roblox-mcp
+codex mcp add weppy-roblox-mcp -- <path-to>/weppy-roblox-mcp-<os>-<arch>
 ```
+
+> Download the binary from [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest).
+> `<os>`: darwin, linux, windows / `<arch>`: amd64, arm64
 
 ### Method 2: Edit Configuration File Directly
 
@@ -27,8 +29,7 @@ Add the following content to `~/.codex/config.toml`:
 
 ```toml
 [mcp_servers.weppy-roblox-mcp]
-command = "npx"
-args = ["-y", "@weppy/roblox-mcp"]
+command = "<path-to>/weppy-roblox-mcp-<os>-<arch>"
 ```
 
 **Configuration file locations:**
@@ -52,7 +53,7 @@ args = ["-y", "@weppy/roblox-mcp"]
 
 Run the MCP server directly to check for errors:
 ```bash
-npx -y @weppy/roblox-mcp
+./weppy-roblox-mcp-<os>-<arch>
 ```
 
 ### Connection failed

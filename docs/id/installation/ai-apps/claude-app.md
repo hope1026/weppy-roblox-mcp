@@ -5,7 +5,6 @@ Cara menggunakan Roblox MCP di [Claude Desktop App](https://claude.ai/download).
 ## Prasyarat
 
 - **Claude Desktop App** sudah terinstal
-- **Node.js** (v18.0.0 atau lebih tinggi)
 - **Plugin Roblox Studio** sudah terinstal
 
 ## Registrasi MCP Server
@@ -22,20 +21,25 @@ Cara menggunakan Roblox MCP di [Claude Desktop App](https://claude.ai/download).
 
 1. Claude Desktop → **Settings** → **Developers** → Klik **Edit Config**
 
-2. Tambahkan konten berikut ke file `claude_desktop_config.json`:
+2. Download binary MCP server sesuai platform Anda dari [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest).
+
+3. Tambahkan konten berikut ke file `claude_desktop_config.json`:
 
 ```json
 {
   "mcpServers": {
     "weppy-roblox-mcp": {
-      "command": "npx",
-      "args": ["-y", "@weppy/roblox-mcp"]
+      "command": "<path-to>/weppy-roblox-mcp-<os>-<arch>"
     }
   }
 }
 ```
 
-3. **Tutup sepenuhnya** Claude Desktop lalu restart
+> Ganti `<path-to>` dengan direktori tempat Anda menyimpan binary.
+> `<os>`: `darwin`, `linux`, `windows` / `<arch>`: `amd64`, `arm64`
+> Di Windows, nama file diakhiri `.exe` (contoh: `weppy-roblox-mcp-windows-amd64.exe`).
+
+4. **Tutup sepenuhnya** Claude Desktop lalu restart
 
 **Lokasi file konfigurasi:**
 
@@ -62,9 +66,9 @@ Cara menggunakan Roblox MCP di [Claude Desktop App](https://claude.ai/download).
 
 ### Saat server tidak dimulai
 
-Jalankan MCP server langsung untuk memeriksa error:
+Jalankan binary MCP server langsung untuk memeriksa error:
 ```bash
-npx -y @weppy/roblox-mcp
+./weppy-roblox-mcp-<os>-<arch>
 ```
 
 ### Koneksi gagal

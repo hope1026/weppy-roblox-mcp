@@ -32,20 +32,24 @@ Verifikasi instalasi:
 /plugin list
 ```
 
-### Metode 2: Edit File Konfigurasi Langsung
+### Metode 2: Download Binary dan Konfigurasi Manual
 
-Buat file `.mcp.json`:
+1. Download rilis terbaru dari [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest)
+2. Ekstrak ZIP dan catat path ke binary Go sesuai platform Anda
+3. Buat file `.mcp.json`:
 
 ```json
 {
   "mcpServers": {
     "weppy-roblox-mcp": {
-      "command": "npx",
-      "args": ["-y", "@weppy/roblox-mcp"]
+      "command": "<path-to>/weppy-roblox-mcp-<os>-<arch>"
     }
   }
 }
 ```
+
+> `<os>`: darwin, linux, windows / `<arch>`: amd64, arm64
+> Di Windows, nama file diakhiri `.exe`
 
 **Lokasi file konfigurasi:**
 
@@ -82,15 +86,10 @@ Claude Code mengelola MCP server secara otomatis:
 
 ### Server tidak dimulai
 
-1. Periksa versi Node.js (minimal 18.0):
-   ```bash
-   node --version
-   ```
-
-2. Tes jalankan server secara manual:
-   ```bash
-   npx -y @weppy/roblox-mcp
-   ```
+Tes jalankan binary server secara manual:
+```bash
+./weppy-roblox-mcp-<os>-<arch>
+```
 
 ### Tools MCP tidak terlihat
 
