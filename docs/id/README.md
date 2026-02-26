@@ -24,6 +24,8 @@ Ini bukan sekadar generate kode. Ini adalah **aksi yang benar-benar bisa dieksek
 Pilar kedua adalah **Project Sync**.
 AI bekerja dari mirror lokal yang tersinkron, jadi perubahan lintas banyak file tetap konsisten.
 
+![Alur Sync — Studio dan file lokal tersinkron secara real time](../assets/screenshots/sync.png)
+
 - Basic: sinkronisasi satu arah (Studio -> Local)
 - Pro: sinkronisasi dua arah + Direction/Apply Mode per tipe + riwayat + multiplace
 

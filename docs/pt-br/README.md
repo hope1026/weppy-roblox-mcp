@@ -24,6 +24,8 @@ Nao e apenas geracao de codigo. Sao **acoes executaveis para fluxo real de desen
 O segundo eixo e o **Project Sync**.
 A IA trabalha com um espelho local sincronizado, entao alteracoes em varios arquivos continuam consistentes.
 
+![Fluxo de Sync — Studio e arquivos locais sincronizados em tempo real](../assets/screenshots/sync.png)
+
 - Basic: sincronizacao unidirecional (Studio -> Local)
 - Pro: sincronizacao bidirecional + Direction/Apply Mode por tipo + historico + multiplace
 

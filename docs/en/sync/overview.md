@@ -12,6 +12,8 @@ Without Sync, AI only sees snippets pasted into chat. With Sync enabled, AI work
 
 ## How it works
 
+![Sync workflow — Studio tree mirrored to local files](../../assets/screenshots/sync.png)
+
 1. Full Sync: initial mirror from Studio tree/instances to local files
 2. Incremental Sync: continuous update of new changes
 3. History/Status tracking: inspect what changed, when, and in which direction
@@ -92,7 +94,17 @@ In Pro, Direction and Apply Mode can be controlled per type.
 - "Check sync status, then summarize only risky changes from recent history"
 - "Refactor scripts in `ServerScriptService` first and include history output"
 
-### 3) Recover when needed
+### 3) Resolve conflicts
+
+When changes are detected on both Studio and local sides during bidirectional sync, a conflict resolution dialog appears.
+
+![Local Changes Detected — conflict resolution options (Studio Priority / Local Priority / Per-File)](../../assets/screenshots/sync_conflict.png)
+
+- **Studio Priority**: overwrite with Studio state as the source of truth
+- **Local Priority**: apply local files to Studio
+- **Per-File**: choose which side takes priority for each file individually
+
+### 4) Recover when needed
 
 - Track recent entries with `history`
 - Inspect target file with `read_file`
