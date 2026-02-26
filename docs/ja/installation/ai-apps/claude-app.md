@@ -5,6 +5,7 @@
 ## 前提条件
 
 - **Claude Desktop App** がインストール済み
+- **Node.js** (v18.0.0以上)
 - **Roblox Studioプラグイン** のインストール完了
 
 ## MCPサーバーの登録
@@ -21,25 +22,20 @@
 
 1. Claude Desktop → **Settings** → **Developers** → **Edit Config** をクリック
 
-2. [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest)からお使いのプラットフォーム用のMCPサーバーバイナリをダウンロード
-
-3. `claude_desktop_config.json` ファイルに以下の内容を追加:
+2. `claude_desktop_config.json` ファイルに以下の内容を追加:
 
 ```json
 {
   "mcpServers": {
     "weppy-roblox-mcp": {
-      "command": "<path-to>/weppy-roblox-mcp-<os>-<arch>"
+      "command": "npx",
+      "args": ["-y", "@weppy/roblox-mcp"]
     }
   }
 }
 ```
 
-> `<path-to>` をバイナリをダウンロードした実際のディレクトリに置き換えてください。
-> `<os>`: `darwin`, `linux`, `windows` / `<arch>`: `amd64`, `arm64`
-> Windowsの場合、ファイル名の末尾は `.exe` です（例: `weppy-roblox-mcp-windows-amd64.exe`）。
-
-4. Claude Desktopを**完全に終了**してから再起動
+3. Claude Desktopを**完全に終了**してから再起動
 
 **設定ファイルの場所:**
 
@@ -66,9 +62,9 @@
 
 ### サーバーが起動しない場合
 
-MCPサーバーバイナリを直接実行してエラーを確認してください:
+MCPサーバーを直接実行してエラーを確認してください:
 ```bash
-./weppy-roblox-mcp-<os>-<arch>
+npx -y @weppy/roblox-mcp
 ```
 
 ### 接続失敗

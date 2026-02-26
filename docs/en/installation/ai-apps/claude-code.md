@@ -32,24 +32,20 @@ Verify installation:
 /plugin list
 ```
 
-### Method 2: Download Binary and Configure Manually
+### Method 2: Edit Configuration File Directly
 
-1. Download the latest release from [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest)
-2. Extract the ZIP and note the path to the Go binary for your platform
-3. Create a `.mcp.json` file:
+Create a `.mcp.json` file:
 
 ```json
 {
   "mcpServers": {
     "weppy-roblox-mcp": {
-      "command": "<path-to>/weppy-roblox-mcp-<os>-<arch>"
+      "command": "npx",
+      "args": ["-y", "@weppy/roblox-mcp"]
     }
   }
 }
 ```
-
-> `<os>`: darwin, linux, windows / `<arch>`: amd64, arm64
-> On Windows, the filename ends with `.exe`
 
 **Configuration file locations:**
 
@@ -86,10 +82,15 @@ Claude Code manages MCP servers automatically:
 
 ### Server won't start
 
-Test starting the server binary manually:
-```bash
-./weppy-roblox-mcp-<os>-<arch>
-```
+1. Check Node.js version (18.0 or higher required):
+   ```bash
+   node --version
+   ```
+
+2. Test starting the server manually:
+   ```bash
+   npx -y @weppy/roblox-mcp
+   ```
 
 ### MCP tools not visible
 

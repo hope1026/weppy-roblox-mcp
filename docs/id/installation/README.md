@@ -35,7 +35,7 @@ Daftarkan MCP server ke aplikasi AI yang kamu pakai. Bisa digunakan di semua apl
 | Gemini CLI | [Lihat caranya](ai-apps/gemini-cli.md) |
 | Antigravity | [Lihat caranya](ai-apps/antigravity.md) |
 
-> Aplikasi AI lain yang mendukung MCP juga bisa dipakai. Download rilis terbaru dari [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest) dan gunakan binary Go yang disertakan sebagai command MCP server.
+> Aplikasi AI lain yang mendukung MCP juga bisa dipakai. Command MCP server-nya: `npx -y @weppy/roblox-mcp`
 
 ---
 

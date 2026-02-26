@@ -7,7 +7,8 @@
 ## 사전 요구사항
 
 1. **Antigravity** 설치됨 (지원 OS/요구사항은 공식 문서 참고)
-2. **Roblox Studio 플러그인** 설치 완료
+2. **Node.js** (v18.0.0 이상, `npx` 사용 가능)
+3. **Roblox Studio 플러그인** 설치 완료
 
 ## MCP 서버 등록
 
@@ -25,14 +26,12 @@ Antigravity에서는 MCP 서버를 **에이전트 패널(Agent pane)**에서 관
 {
   "mcpServers": {
     "weppy-roblox-mcp": {
-      "command": "<path-to>/weppy-roblox-mcp-<os>-<arch>"
+      "command": "npx",
+      "args": ["-y", "@weppy/roblox-mcp"]
     }
   }
 }
 ```
-
-> [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest)에서 다운로드하세요. `<os>`: darwin, linux, windows / `<arch>`: amd64, arm64
-
 ![Raw config 수정](../../../assets/screenshots/antigravity/antigravity_mcp_raw.png)
 
 3. 저장 후 **Refresh**(또는 UI 안내에 따른 재시작/새로고침) 수행
@@ -47,7 +46,8 @@ Antigravity에서는 MCP 서버를 **에이전트 패널(Agent pane)**에서 관
 {
   "mcpServers": {
     "weppy-roblox-mcp": {
-      "command": "<path-to>/weppy-roblox-mcp-<os>-<arch>",
+      "command": "npx",
+      "args": ["-y", "@weppy/roblox-mcp"],
       "env": {
         "HTTP_HOST": "127.0.0.1",
         "HTTP_PORT": "3002",
@@ -72,7 +72,7 @@ Antigravity에서는 MCP 서버를 **에이전트 패널(Agent pane)**에서 관
 
 MCP 서버를 직접 실행하여 오류를 확인하세요:
 ```bash
-./weppy-roblox-mcp-<os>-<arch>
+npx -y @weppy/roblox-mcp
 ```
 
 ### 연결 실패
