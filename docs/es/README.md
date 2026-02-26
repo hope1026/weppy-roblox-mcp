@@ -24,6 +24,8 @@ No es solo generacion de codigo. Son **acciones ejecutables orientadas a producc
 El segundo eje es **Project Sync**.
 La IA trabaja sobre un espejo local sincronizado, asi que los cambios en multiples archivos se mantienen consistentes.
 
+![Flujo de Sync — Studio y archivos locales sincronizados en tiempo real](../assets/screenshots/sync.png)
+
 - Basic: sincronizacion unidireccional (Studio -> Local)
 - Pro: sincronizacion bidireccional + Direction/Apply Mode por tipo + historial + multiplace
 

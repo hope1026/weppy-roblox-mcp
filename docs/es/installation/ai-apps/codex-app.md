@@ -25,10 +25,8 @@ Agrega en **Settings** → **MCP Servers** dentro de la aplicacion:
 
 ```
 Server name: weppy-roblox-mcp
-Command: <path-to>/weppy-roblox-mcp-<os>-<arch>
+Command: npx -y @weppy/roblox-mcp
 ```
-
-> Descarga desde [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest)
 
 ## Probar la Conexion
 
@@ -44,7 +42,7 @@ Command: <path-to>/weppy-roblox-mcp-<os>-<arch>
 
 Ejecuta el servidor MCP directamente para ver los errores:
 ```bash
-./weppy-roblox-mcp-<os>-<arch>
+npx -y @weppy/roblox-mcp
 ```
 
 ### Fallo de conexion

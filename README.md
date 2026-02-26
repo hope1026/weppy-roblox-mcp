@@ -24,6 +24,8 @@ This is not just code generation. It is **executable, production-oriented action
 The second pillar is **Project Sync**.
 AI works from a synchronized local mirror, so multi-file updates stay consistent.
 
+![Sync workflow — Studio and local files synchronized in real time](docs/assets/screenshots/sync.png)
+
 - Basic: one-way sync (Studio -> Local)
 - Pro: bidirectional sync + per-type Direction/Apply Mode + history + multi-place
 

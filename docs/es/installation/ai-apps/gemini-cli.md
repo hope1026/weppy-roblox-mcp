@@ -4,12 +4,17 @@ Cómo usar Roblox MCP con [Google Gemini CLI](https://github.com/google-gemini/g
 
 ## Requisitos previos
 
-1. **Gemini CLI** instalado
+1. **Node.js** (v18.0.0 o superior)
+   ```bash
+   node --version
+   ```
+
+2. **Gemini CLI** instalado
    ```bash
    npm install -g @google/gemini-cli
    ```
 
-2. **Plugin de Roblox Studio** instalado
+3. **Plugin de Roblox Studio** instalado
 
 ## Registrar el servidor MCP
 
@@ -18,17 +23,15 @@ Cómo usar Roblox MCP con [Google Gemini CLI](https://github.com/google-gemini/g
 Puede registrarse con un solo comando en su terminal:
 
 ```bash
-gemini mcp add weppy-roblox-mcp <path-to>/weppy-roblox-mcp-<os>-<arch> --trust
+gemini mcp add weppy-roblox-mcp npx --trust -- -y @weppy/roblox-mcp
 ```
 
 > La bandera `--trust` omite las solicitudes de confirmación para cada llamada de herramienta.
->
-> Descarga el binario desde [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest). `<os>`: darwin, linux, windows / `<arch>`: amd64, arm64
 
 Para registrar globalmente, agregue `-s user`:
 
 ```bash
-gemini mcp add weppy-roblox-mcp <path-to>/weppy-roblox-mcp-<os>-<arch> -s user --trust
+gemini mcp add weppy-roblox-mcp npx -s user --trust -- -y @weppy/roblox-mcp
 ```
 
 ### Método 2: Editar archivo de configuración
@@ -39,7 +42,8 @@ Agregue el siguiente contenido al archivo `.gemini/settings.json`:
 {
   "mcpServers": {
     "weppy-roblox-mcp": {
-      "command": "<path-to>/weppy-roblox-mcp-<os>-<arch>"
+      "command": "npx",
+      "args": ["-y", "@weppy/roblox-mcp"]
     }
   }
 }
@@ -57,7 +61,7 @@ Si se necesitan variables de entorno específicas:
 
 **CLI:**
 ```bash
-gemini mcp add weppy-roblox-mcp <path-to>/weppy-roblox-mcp-<os>-<arch> --trust -e MCP_PORT=3002
+gemini mcp add weppy-roblox-mcp npx --trust -e HTTP_PORT=3002 -- -y @weppy/roblox-mcp
 ```
 
 **Archivo de configuración:**
@@ -65,9 +69,10 @@ gemini mcp add weppy-roblox-mcp <path-to>/weppy-roblox-mcp-<os>-<arch> --trust -
 {
   "mcpServers": {
     "weppy-roblox-mcp": {
-      "command": "<path-to>/weppy-roblox-mcp-<os>-<arch>",
+      "command": "npx",
+      "args": ["-y", "@weppy/roblox-mcp"],
       "env": {
-        "MCP_PORT": "3002"
+        "HTTP_PORT": "3002"
       }
     }
   }
@@ -96,7 +101,7 @@ Puede verificar el estado de los servidores conectados con el comando `/mcp` en 
 
 Ejecute el servidor MCP directamente para verificar errores:
 ```bash
-./weppy-roblox-mcp-<os>-<arch>
+npx -y @weppy/roblox-mcp
 ```
 
 ### Conexión fallida

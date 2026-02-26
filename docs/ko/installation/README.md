@@ -35,7 +35,7 @@ GitHub에서 플러그인 파일을 다운로드한 뒤, Roblox Studio의 Plugin
 | Gemini CLI | [설정 방법](ai-apps/gemini-cli.md) |
 | Antigravity | [설정 방법](ai-apps/antigravity.md) |
 
-> 위 목록에 없는 AI 앱이라도 MCP를 지원한다면 사용할 수 있습니다. [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest)에서 최신 릴리즈를 다운로드하고, 포함된 Go 바이너리를 MCP 서버 명령어로 사용하세요.
+> 위 목록에 없는 AI 앱이라도 MCP를 지원한다면 사용할 수 있습니다. MCP 서버 명령어는 `npx -y @weppy/roblox-mcp` 입니다.
 
 ---
 

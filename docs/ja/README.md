@@ -24,6 +24,8 @@ AIがStudio内で、スクリプト、インスタンス、プロパティ、地
 第二の柱は**Project Sync**です。
 同期されたローカルミラーを基準にAIが作業するため、複数ファイルにまたがる変更も一貫して適用できます。
 
+![Syncワークフロー — Studioとローカルファイルがリアルタイムで同期される様子](../assets/screenshots/sync.png)
+
 - Basic: 片方向同期 (Studio -> Local)
 - Pro: 双方向同期 + タイプ別Direction/Apply Mode + 変更履歴 + マルチPlace
 

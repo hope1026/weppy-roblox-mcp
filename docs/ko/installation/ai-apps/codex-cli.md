@@ -4,6 +4,7 @@
 
 ## 사전 요구사항
 
+- **Node.js** (v18.0.0 이상)
 - **Roblox Studio 플러그인** 설치 완료
 
 ## 설치
@@ -17,11 +18,8 @@ npm install -g @openai/codex
 ### 방법 1: CLI 명령어 (권장)
 
 ```bash
-codex mcp add weppy-roblox-mcp -- <path-to>/weppy-roblox-mcp-<os>-<arch>
+codex mcp add weppy-roblox-mcp -- npx -y @weppy/roblox-mcp
 ```
-
-> [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest)에서 바이너리를 다운로드하세요.
-> `<os>`: darwin, linux, windows / `<arch>`: amd64, arm64
 
 ### 방법 2: 설정 파일 직접 편집
 
@@ -29,7 +27,8 @@ codex mcp add weppy-roblox-mcp -- <path-to>/weppy-roblox-mcp-<os>-<arch>
 
 ```toml
 [mcp_servers.weppy-roblox-mcp]
-command = "<path-to>/weppy-roblox-mcp-<os>-<arch>"
+command = "npx"
+args = ["-y", "@weppy/roblox-mcp"]
 ```
 
 **설정 파일 위치:**
@@ -53,7 +52,7 @@ command = "<path-to>/weppy-roblox-mcp-<os>-<arch>"
 
 MCP 서버를 직접 실행하여 오류를 확인하세요:
 ```bash
-./weppy-roblox-mcp-<os>-<arch>
+npx -y @weppy/roblox-mcp
 ```
 
 ### 연결 실패

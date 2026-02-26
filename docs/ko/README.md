@@ -21,8 +21,10 @@ Roblox MCP의 첫 번째 축은 **MCP Tool 실행 능력**입니다.
 
 ### 2) Sync: AI가 프로젝트 전체 문맥을 읽고 유지
 
-두 번째 축은 **Project Sync**입니다.  
+두 번째 축은 **Project Sync**입니다.
 AI가 로컬 동기화된 프로젝트를 기준으로 전체 구조를 이해해, 여러 파일에 걸친 변경을 일관되게 수행합니다.
+
+![Sync 워크플로우 — Studio와 로컬 파일이 실시간으로 동기화되는 모습](../assets/screenshots/sync.png)
 
 - Basic: Studio -> Local 단방향 동기화
 - Pro: 양방향 동기화 + 타입별 Direction/Apply Mode + 변경 기록 + 멀티 Place

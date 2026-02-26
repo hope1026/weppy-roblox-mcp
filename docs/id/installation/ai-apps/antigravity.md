@@ -7,7 +7,8 @@ Cara menggunakan Roblox MCP dengan [Google Antigravity](https://developers.googl
 ## Prasyarat
 
 1. **Antigravity** sudah terinstal (lihat dokumentasi resmi untuk OS yang didukung/persyaratan)
-2. **Plugin Roblox Studio** sudah terinstal
+2. **Node.js** (v18.0.0 atau lebih baru, `npx` tersedia)
+3. **Plugin Roblox Studio** sudah terinstal
 
 ## Mendaftarkan server MCP
 
@@ -25,13 +26,12 @@ Di Antigravity, server MCP dikelola di **panel agen (Agent pane)**.
 {
   "mcpServers": {
     "weppy-roblox-mcp": {
-      "command": "<path-to>/weppy-roblox-mcp-<os>-<arch>"
+      "command": "npx",
+      "args": ["-y", "@weppy/roblox-mcp"]
     }
   }
 }
 ```
-
-> Download dari [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest). `<os>`: darwin, linux, windows / `<arch>`: amd64, arm64
 
 ![Edit raw config](../../../assets/screenshots/antigravity/antigravity_mcp_raw.png)
 
@@ -47,7 +47,8 @@ Disarankan untuk mempertahankan nilai default (HTTP `127.0.0.1:3002`). Jika dipe
 {
   "mcpServers": {
     "weppy-roblox-mcp": {
-      "command": "<path-to>/weppy-roblox-mcp-<os>-<arch>",
+      "command": "npx",
+      "args": ["-y", "@weppy/roblox-mcp"],
       "env": {
         "HTTP_HOST": "127.0.0.1",
         "HTTP_PORT": "3002",
@@ -72,7 +73,7 @@ Disarankan untuk mempertahankan nilai default (HTTP `127.0.0.1:3002`). Jika dipe
 
 Jalankan server MCP secara langsung untuk melihat error:
 ```bash
-./weppy-roblox-mcp-<os>-<arch>
+npx -y @weppy/roblox-mcp
 ```
 
 ### Gagal terhubung
