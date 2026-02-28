@@ -9,6 +9,14 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [1.2.1] - 2026-02-28
+
+### Other Changes
+
+- UI improvements and stability enhancements
+
+
 ## [1.2.0] - 2026-02-26
 
 ### Features
