@@ -248,7 +248,6 @@ Sync policy:
 | `place_info` | Get place ID, name, creator | Pro |
 | `services` | List all Roblox services | Pro |
 | `studio_settings` | Get Studio preferences | Pro |
-| `run_command` | Execute Studio command | Pro |
 
 ## Batch Execute (Pro)
 
