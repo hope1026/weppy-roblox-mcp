@@ -248,7 +248,6 @@ Sync 정책:
 | `place_info` | Place ID, 이름, 제작자 가져오기 | Pro |
 | `services` | 모든 Roblox 서비스 나열 | Pro |
 | `studio_settings` | Studio 환경설정 가져오기 | Pro |
-| `run_command` | Studio 명령 실행 | Pro |
 
 ## Batch Execute (Pro)
 

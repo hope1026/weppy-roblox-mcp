@@ -248,7 +248,6 @@ Kebijakan Sync:
 | `place_info` | Mendapatkan Place ID, nama, kreator | Pro |
 | `services` | Mendaftar semua layanan Roblox | Pro |
 | `studio_settings` | Mendapatkan preferensi Studio | Pro |
-| `run_command` | Menjalankan perintah Studio | Pro |
 
 ## Batch Execute (Pro)
 

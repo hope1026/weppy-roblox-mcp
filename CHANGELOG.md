@@ -10,6 +10,21 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [1.2.2] - 2026-03-01
+
+### Features
+
+- improve sync conflict UI and tier defaults
+- update icon paths to use PNG format and enhance file visibility handling
+- add IconResolver for managing icons based on Roblox class names
+- Add ManualChangesDialog and ManualSyncPopup for handling manual sync changes
+
+### Bug Fixes
+
+- remove dead run_command action from system_info tool
+
+
 ## [1.2.1] - 2026-02-28
 
 ### Other Changes

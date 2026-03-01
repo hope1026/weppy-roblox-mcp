@@ -248,7 +248,6 @@ Politica de Sync:
 | `place_info` | Obtener Place ID, nombre, creador | Pro |
 | `services` | Listar todos los servicios de Roblox | Pro |
 | `studio_settings` | Obtener preferencias de Studio | Pro |
-| `run_command` | Ejecutar comando de Studio | Pro |
 
 ## Batch Execute (Pro)
 

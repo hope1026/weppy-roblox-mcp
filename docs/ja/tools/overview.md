@@ -248,7 +248,6 @@ Syncポリシー:
 | `place_info` | Place ID、名前、クリエイターを取得 | Pro |
 | `services` | 全Robloxサービスを一覧 | Pro |
 | `studio_settings` | Studio設定を取得 | Pro |
-| `run_command` | Studioコマンドを実行 | Pro |
 
 ## Batch Execute（Pro）
 
