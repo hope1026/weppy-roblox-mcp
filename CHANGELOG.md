@@ -11,6 +11,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [1.2.3] - 2026-03-02
+
+Other Changes
+-	improved UI, security, and overall stability
+
+
 ## [1.2.2] - 2026-03-01
 
 ### Features
