@@ -110,6 +110,30 @@ ProではタイプごとにDirection/Apply Modeを細かく制御できます。
 - `read_file` で対象ファイルを確認
 - `write_file` で内容を復元してStudio状態を再確認
 
+## ファイルフォーマット (v2 nested directory)
+
+各Robloxインスタンスは独自のディレクトリとして保存され、ディレクトリ内にメタファイルが配置されます:
+
+```
+explorer/
+├── Workspace/
+│   ├── _tree.json
+│   ├── Part/
+│   │   └── Part.props.json
+│   ├── MyScript/
+│   │   └── MyScript.server.luau
+│   └── Coins/
+│       └── Coins.value.json
+```
+
+命名規則:
+- プロパティ: `{Name}/{Name}.props.json`
+- スクリプト: `{Name}/{Name}.server.luau` / `.client.luau` / `.module.luau`
+- 値: `{Name}/{Name}.value.json`
+
+同名インスタンスはディレクトリ名に `~N` サフィックスを付けて区別します（例: `Part~2/Part.props.json`）。
+名前に `~` が含まれる場合は `~~` にエスケープされます（例: `Part~2` → `Part~~2/`）。Odd-Count Tilde ルール: 末尾の `~+N` でチルダの数が奇数の場合のみ collision suffix として解釈されます。
+
 ## 関連ドキュメント
 
 - [Tool対応範囲 (Tools Overview)](../tools/overview.md)

@@ -4,12 +4,33 @@ All notable changes to this project will be documented in this file.
 
 
 
+## [1.3.0] - 2026-03-06
 
+### Breaking Changes
 
+- Sync file format now uses nested directory structure for all objects — each instance is represented as its own directory (e.g., `Part/Part.props.json` instead of flat files)
+- Duplicate sibling instances are now distinguished using `~N` suffix encoding (Odd-Count Tilde Rule) — e.g., `Part~1/`, `Part~2/`, `Part~3/`
+- Existing sync data will be regenerated automatically (no migration from v1)
 
+### Improvements
 
+- Enhance sync stability and performance for bidirectional file synchronization
+- Improve sync child indexing and collision handling
+- Refine analytics tracking for tool usage
 
+### Bug Fixes
 
+- Improve error handling and resilience during MCP tool execution
+- Fix license token cache and Pro auth flow issues
+- Resolve sync errors on concurrent file changes
+- Fix duplicated instance name handling in sync index
+- Fix various edge cases in sync change processing
+
+### Plugin
+
+- Improve plugin icons and UI refinements
+- Clean up unused files and modules
+- General plugin stability improvements
 
 
 ## [1.2.3] - 2026-03-02
