@@ -110,6 +110,30 @@ Cuando se detectan cambios tanto en Studio como en local durante la sincronizaci
 - Inspecciona archivo objetivo con `read_file`
 - Restaura contenido con `write_file` y verifica en Studio
 
+## Formato de archivos (v2 nested directory)
+
+Cada instancia de Roblox se almacena como su propio directorio con archivos meta dentro:
+
+```
+explorer/
+├── Workspace/
+│   ├── _tree.json
+│   ├── Part/
+│   │   └── Part.props.json
+│   ├── MyScript/
+│   │   └── MyScript.server.luau
+│   └── Coins/
+│       └── Coins.value.json
+```
+
+Convenciones de nombres:
+- Propiedades: `{Name}/{Name}.props.json`
+- Scripts: `{Name}/{Name}.server.luau` / `.client.luau` / `.module.luau`
+- Valores: `{Name}/{Name}.value.json`
+
+Las instancias con nombre duplicado usan el sufijo `~N` en el directorio (ej. `Part~2/Part.props.json`).
+Los nombres que contienen `~` se escapan como `~~` (ej. `Part~2` → `Part~~2/`). Regla Odd-Count Tilde: un `~+N` final se interpreta como sufijo de colisión solo cuando la cantidad de tildes es impar.
+
 ## Documentos relacionados
 
 - [Cobertura de herramientas (Tools Overview)](../tools/overview.md)

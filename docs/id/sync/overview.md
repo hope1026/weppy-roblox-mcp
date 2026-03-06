@@ -110,6 +110,30 @@ Ketika perubahan terdeteksi di sisi Studio maupun lokal selama sinkronisasi dua 
 - Periksa file target dengan `read_file`
 - Pulihkan konten dengan `write_file`, lalu verifikasi status di Studio
 
+## Format file (v2 nested directory)
+
+Setiap instance Roblox disimpan sebagai direktori sendiri dengan file meta di dalamnya:
+
+```
+explorer/
+├── Workspace/
+│   ├── _tree.json
+│   ├── Part/
+│   │   └── Part.props.json
+│   ├── MyScript/
+│   │   └── MyScript.server.luau
+│   └── Coins/
+│       └── Coins.value.json
+```
+
+Konvensi penamaan:
+- Properti: `{Name}/{Name}.props.json`
+- Script: `{Name}/{Name}.server.luau` / `.client.luau` / `.module.luau`
+- Nilai: `{Name}/{Name}.value.json`
+
+Instance dengan nama duplikat menggunakan sufiks `~N` pada direktori (contoh: `Part~2/Part.props.json`).
+Nama yang mengandung `~` di-escape menjadi `~~` (contoh: `Part~2` → `Part~~2/`). Aturan Odd-Count Tilde: `~+N` di akhir ditafsirkan sebagai sufiks collision hanya jika jumlah tilde ganjil.
+
 ## Dokumen terkait
 
 - [Cakupan tool (Tools Overview)](../tools/overview.md)

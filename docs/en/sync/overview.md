@@ -110,6 +110,30 @@ When changes are detected on both Studio and local sides during bidirectional sy
 - Inspect target file with `read_file`
 - Restore content with `write_file`, then verify Studio state
 
+## File format (v2 nested directory)
+
+Each Roblox instance is stored as its own directory containing meta files:
+
+```
+explorer/
+├── Workspace/
+│   ├── _tree.json
+│   ├── Part/
+│   │   └── Part.props.json
+│   ├── MyScript/
+│   │   └── MyScript.server.luau
+│   └── Coins/
+│       └── Coins.value.json
+```
+
+Naming conventions:
+- Props: `{Name}/{Name}.props.json`
+- Scripts: `{Name}/{Name}.server.luau` / `.client.luau` / `.module.luau`
+- Values: `{Name}/{Name}.value.json`
+
+Duplicate instance names use `~N` suffix on the directory (e.g. `Part~2/Part.props.json`).
+Names containing `~` are escaped to `~~` (e.g. `Part~2` becomes `Part~~2/`). The Odd-Count Tilde Rule applies: a trailing `~+N` is a collision suffix only when the tilde count is odd.
+
 ## Related docs
 
 - [Tools Overview](../tools/overview.md)
