@@ -4,6 +4,33 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [1.3.1] - 2026-03-07
+
+### Improvements
+
+- Improve sync robustness during rapid consecutive file changes
+- Enhance incremental change processor to reduce false-positive conflict detection
+- Strengthen sync index integrity checks on startup and reconnect
+- Improve LRU cache eviction to prevent stale place data after session switch
+
+### Bug Fixes
+
+- Fix sync stall when file watcher emits duplicate events for the same path
+- Fix reverse sync occasionally skipping files with identical hashes but different timestamps
+- Fix collision suffix (`~N`) not reindexing correctly after instance rename
+- Fix sync-init phase hanging when workspace contains deeply nested empty containers
+
+### Documentation
+
+- Restructure README for faster install path (Quick Install and compatibility table at top)
+- Add troubleshooting guide
+- Add compatibility matrix (supported clients, system requirements, Basic vs Pro)
+- Add `llms.txt` for AI crawler discovery
+- Add community health files: CONTRIBUTING, CODE_OF_CONDUCT, SECURITY, SUPPORT
+- Add GitHub issue templates (bug report, feature request, install help)
+
+
 ## [1.3.0] - 2026-03-06
 
 ### Breaking Changes

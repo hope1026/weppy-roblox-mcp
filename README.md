@@ -1,16 +1,44 @@
 # Roblox MCP
 
-**English** | [한국어](docs/ko/README.md) | [日本語](docs/ja/README.md) | [Español](docs/es/README.md) | [Português](docs/pt-br/README.md) | [Bahasa Indonesia](docs/id/README.md)
+> MCP server and plugin for Roblox Studio — control scripts, terrain, assets, and lighting with Claude Code, Cursor, Codex, and Gemini.
 
-> Tell AI what you want, and it happens in Roblox Studio.
+**English** | [한국어](docs/ko/README.md) | [日本語](docs/ja/README.md) | [Español](docs/es/README.md) | [Português](docs/pt-br/README.md) | [Bahasa Indonesia](docs/id/README.md)
 
 [![Demo](https://img.youtube.com/vi/3jrUpBbZPaw/maxresdefault.jpg)](https://youtu.be/3jrUpBbZPaw)
 
-## Core Capabilities
+## Quick Install (5 minutes)
+
+**Step 1** — Install the Roblox Studio plugin (bridge between Studio and AI):
+[Plugin Installation Guide](docs/en/installation/roblox-plugin.md)
+
+**Step 2** — Register the MCP server with your AI app:
+
+```bash
+npx -y @weppy/roblox-mcp
+```
+
+| AI App | Guide |
+|--------|-------|
+| Claude Code | [Setup](docs/en/installation/ai-apps/claude-code.md) |
+| Claude Desktop | [Setup](docs/en/installation/ai-apps/claude-app.md) |
+| Codex CLI | [Setup](docs/en/installation/ai-apps/codex-cli.md) |
+| Codex Desktop | [Setup](docs/en/installation/ai-apps/codex-app.md) |
+| Gemini CLI | [Setup](docs/en/installation/ai-apps/gemini-cli.md) |
+
+> Any MCP-compatible AI client works. The server command is `npx -y @weppy/roblox-mcp`.
+
+## Compatibility
+
+| Claude Code | Claude Desktop | Cursor | Codex CLI | Gemini CLI |
+|:-----------:|:--------------:|:------:|:---------:|:----------:|
+| ✅ | ✅ | ✅ | ✅ | ✅ |
+
+**Requirements:** Node.js 18+, Roblox Studio, Windows 10+ or macOS 12+
+
+## What It Does
 
 ### 1) MCP Tools: Direct execution in Studio from natural language
 
-The first pillar of Roblox MCP is **MCP tool execution**.
 AI can directly handle scripts, instances, properties, terrain, lighting, assets, audio, and animation inside Studio.
 
 - "Add particles + sound + cooldown when the player jumps."
@@ -21,7 +49,6 @@ This is not just code generation. It is **executable, production-oriented action
 
 ### 2) Sync: Keep full project context stable for AI
 
-The second pillar is **Project Sync**.
 AI works from a synchronized local mirror, so multi-file updates stay consistent.
 
 ![Sync workflow — Studio and local files synchronized in real time](docs/assets/screenshots/sync.png)
@@ -29,36 +56,27 @@ AI works from a synchronized local mirror, so multi-file updates stay consistent
 - Basic: one-way sync (Studio -> Local)
 - Pro: bidirectional sync + per-type Direction/Apply Mode + history + multi-place
 
-You keep source-of-truth clear and avoid losing change context.
-
-## Immediate Value
+## Why It Matters
 
 - Compress repetitive work: turn many manual edits into one request
 - Change related files together: not just one target file
 - Lower risk: rely on sync state and history before applying changes
 - Better token efficiency (Pro): reduce round trips with bulk actions
 
-## Detailed Docs
+## Docs
 
-- [Tools Overview](docs/en/tools/overview.md)
+- [Installation Guide](docs/en/installation/README.md)
+- [Tools Reference](docs/en/tools/overview.md)
 - [Sync Deep Dive](docs/en/sync/overview.md)
-
-## Getting Started
-
-Installation is complete in two steps:
-
-1. **Install Roblox Studio Plugin** — Acts as a bridge between Studio and AI
-2. **Register MCP Server with AI App** — Configure your AI app to recognize Roblox MCP
-
-Takes just 5 minutes. 👉 [View Installation Guide](docs/en/installation/README.md)
+- [Compatibility](docs/compatibility.md)
+- [Troubleshooting](docs/troubleshooting.md)
 
 ## Pro Upgrade
 
 Bidirectional Sync, advanced build capabilities, and AI token efficiency — all in one upgrade.
 
-👉 [Pro Upgrade Guide](docs/en/pro-upgrade.md)
+[Pro Upgrade Guide](docs/en/pro-upgrade.md)
 
-## Links
+---
 
-- [GitHub](https://github.com/hope1026/roblox-mcp)
-- [Issue Reports](https://github.com/hope1026/roblox-mcp/issues)
+[GitHub Issues](https://github.com/hope1026/roblox-mcp/issues) · [Discussions](https://github.com/hope1026/roblox-mcp/discussions) · [npm](https://www.npmjs.com/package/@weppy/roblox-mcp)

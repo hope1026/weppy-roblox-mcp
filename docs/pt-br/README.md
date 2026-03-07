@@ -1,16 +1,44 @@
 # Roblox MCP
 
+> Servidor MCP e plugin para Roblox Studio — controle scripts, terrain, assets e iluminacao com Claude Code, Cursor, Codex e Gemini.
+
 [English](../../README.md) | [한국어](../ko/README.md) | [日本語](../ja/README.md) | [Español](../es/README.md) | **Português** | [Bahasa Indonesia](../id/README.md)
 
-> Fale com a IA e ela executa direto no Roblox Studio.
-
 [![Demo](https://img.youtube.com/vi/3jrUpBbZPaw/maxresdefault.jpg)](https://youtu.be/3jrUpBbZPaw)
+
+## Instalacao rapida (5 minutos)
+
+**Passo 1** — Instale o plugin do Roblox Studio (ponte entre Studio e IA):
+[Guia de instalacao do plugin](../en/installation/roblox-plugin.md)
+
+**Passo 2** — Registre o servidor MCP no seu app de IA:
+
+```bash
+npx -y @weppy/roblox-mcp
+```
+
+| App de IA | Guia |
+|-----------|------|
+| Claude Code | [Configuracao](../en/installation/ai-apps/claude-code.md) |
+| Claude Desktop | [Configuracao](../en/installation/ai-apps/claude-app.md) |
+| Codex CLI | [Configuracao](../en/installation/ai-apps/codex-cli.md) |
+| Codex Desktop | [Configuracao](../en/installation/ai-apps/codex-app.md) |
+| Gemini CLI | [Configuracao](../en/installation/ai-apps/gemini-cli.md) |
+
+> Funciona com qualquer cliente MCP compativel. O comando do servidor e `npx -y @weppy/roblox-mcp`.
+
+## Compatibilidade
+
+| Claude Code | Claude Desktop | Cursor | Codex CLI | Gemini CLI |
+|:-----------:|:--------------:|:------:|:---------:|:----------:|
+| ✅ | ✅ | ✅ | ✅ | ✅ |
+
+**Requisitos:** Node.js 18+, Roblox Studio, Windows 10+ ou macOS 12+
 
 ## Funcionalidades principais
 
 ### 1) MCP Tool: execucao direta no Studio via linguagem natural
 
-O primeiro eixo do Roblox MCP e a **execucao de MCP Tool**.
 A IA consegue operar diretamente scripts, instancias, propriedades, terreno, iluminacao, assets, audio e animacao dentro do Studio.
 
 - "Adiciona particulas + som + cooldown quando o jogador pular."
@@ -21,15 +49,12 @@ Nao e apenas geracao de codigo. Sao **acoes executaveis para fluxo real de desen
 
 ### 2) Sync: mantem contexto completo do projeto para a IA
 
-O segundo eixo e o **Project Sync**.
 A IA trabalha com um espelho local sincronizado, entao alteracoes em varios arquivos continuam consistentes.
 
 ![Fluxo de Sync — Studio e arquivos locais sincronizados em tempo real](../assets/screenshots/sync.png)
 
 - Basic: sincronizacao unidirecional (Studio -> Local)
 - Pro: sincronizacao bidirecional + Direction/Apply Mode por tipo + historico + multiplace
-
-Assim voce mantem clara a fonte de verdade e evita perder contexto de mudancas.
 
 ## Valor imediato para o usuario
 
@@ -40,25 +65,18 @@ Assim voce mantem clara a fonte de verdade e evita perder contexto de mudancas.
 
 ## Documentacao detalhada
 
-- [Cobertura de ferramentas (Tools Overview)](tools/overview.md)
-- [Guia detalhado de Sync](sync/overview.md)
-
-## Comecar
-
-A instalacao tem dois passos:
-
-1. **Instalar plugin do Roblox Studio** — Faz a ponte entre Studio e IA
-2. **Registrar servidor MCP no app de IA** — Configura seu app de IA para reconhecer o Roblox MCP
-
-Leva 5 minutos. 👉 [Ver guia de instalacao](installation/README.md)
+- [Guia de instalacao](../en/installation/README.md)
+- [Cobertura de ferramentas](../en/tools/overview.md)
+- [Guia detalhado de Sync](../en/sync/overview.md)
+- [Compatibilidade](../compatibility.md)
+- [Solucao de problemas](../troubleshooting.md)
 
 ## Upgrade Pro
 
 Sync bidirecional, recursos avancados de criacao e eficiencia de tokens de IA — tudo em uma unica atualizacao.
 
-👉 [Guia de upgrade Pro](pro-upgrade.md)
+[Guia de upgrade Pro](../en/pro-upgrade.md)
 
-## Links
+---
 
-- [GitHub](https://github.com/hope1026/roblox-mcp)
-- [Reportar Problema](https://github.com/hope1026/roblox-mcp/issues)
+[GitHub Issues](https://github.com/hope1026/roblox-mcp/issues) · [Discussions](https://github.com/hope1026/roblox-mcp/discussions) · [npm](https://www.npmjs.com/package/@weppy/roblox-mcp)

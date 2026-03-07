@@ -1,0 +1,48 @@
+name: Install Help
+description: Having trouble installing or connecting
+labels: ["question", "installation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **First:** check the [Installation Guide](https://github.com/hope1026/roblox-mcp/blob/main/docs/en/installation/README.md)
+        and [Troubleshooting](https://github.com/hope1026/roblox-mcp/blob/main/docs/en/troubleshooting.md).
+        For general questions, use [Discussions](https://github.com/hope1026/roblox-mcp/discussions) instead.
+  - type: dropdown
+    id: ai-client
+    attributes:
+      label: AI client
+      options:
+        - Claude Code
+        - Claude Desktop
+        - Cursor
+        - Codex CLI
+        - Gemini CLI
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: OS
+      placeholder: "macOS 14 / Windows 11"
+    validations:
+      required: true
+  - type: input
+    id: node
+    attributes:
+      label: Node.js version
+      placeholder: "node --version output"
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: What's happening?
+      placeholder: "Describe the problem and any error messages"
+    validations:
+      required: true
+  - type: textarea
+    id: tried
+    attributes:
+      label: What have you tried?
