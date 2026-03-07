@@ -6,6 +6,10 @@
 
 [![Demo](https://img.youtube.com/vi/3jrUpBbZPaw/maxresdefault.jpg)](https://youtu.be/3jrUpBbZPaw)
 
+<a href="https://glama.ai/mcp/servers/@hope1026/roblox-mcp">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@hope1026/roblox-mcp/badge" alt="Roblox MCP server" />
+</a>
+
 ## Quick Install (5 minutes)
 
 **Step 1** — Install the Roblox Studio plugin (bridge between Studio and AI):
