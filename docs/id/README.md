@@ -1,16 +1,44 @@
 # Roblox MCP
 
+> Server MCP dan plugin untuk Roblox Studio — kendalikan script, terrain, asset, dan lighting dengan Claude Code, Cursor, Codex, dan Gemini.
+
 [English](../../README.md) | [한국어](../ko/README.md) | [日本語](../ja/README.md) | [Español](../es/README.md) | [Português](../pt-br/README.md) | **Bahasa Indonesia**
 
-> Bicara ke AI, langsung dijalankan di Roblox Studio.
-
 [![Demo](https://img.youtube.com/vi/3jrUpBbZPaw/maxresdefault.jpg)](https://youtu.be/3jrUpBbZPaw)
+
+## Instalasi Cepat (5 menit)
+
+**Langkah 1** — Install plugin Roblox Studio (jembatan antara Studio dan AI):
+[Panduan instalasi plugin](../en/installation/roblox-plugin.md)
+
+**Langkah 2** — Daftarkan MCP server di aplikasi AI:
+
+```bash
+npx -y @weppy/roblox-mcp
+```
+
+| Aplikasi AI | Panduan |
+|-------------|---------|
+| Claude Code | [Setup](../en/installation/ai-apps/claude-code.md) |
+| Claude Desktop | [Setup](../en/installation/ai-apps/claude-app.md) |
+| Codex CLI | [Setup](../en/installation/ai-apps/codex-cli.md) |
+| Codex Desktop | [Setup](../en/installation/ai-apps/codex-app.md) |
+| Gemini CLI | [Setup](../en/installation/ai-apps/gemini-cli.md) |
+
+> Bekerja dengan semua klien MCP yang kompatibel. Perintah server: `npx -y @weppy/roblox-mcp`
+
+## Kompatibilitas
+
+| Claude Code | Claude Desktop | Cursor | Codex CLI | Gemini CLI |
+|:-----------:|:--------------:|:------:|:---------:|:----------:|
+| ✅ | ✅ | ✅ | ✅ | ✅ |
+
+**Persyaratan:** Node.js 18+, Roblox Studio, Windows 10+ atau macOS 12+
 
 ## Fitur utama
 
 ### 1) MCP Tool: eksekusi langsung di Studio dari bahasa alami
 
-Pilar pertama Roblox MCP adalah **eksekusi MCP Tool**.
 AI bisa langsung menangani script, instance, properti, terrain, lighting, asset, audio, dan animasi di dalam Studio.
 
 - "Tambahkan partikel + suara + cooldown saat player melompat."
@@ -21,15 +49,12 @@ Ini bukan sekadar generate kode. Ini adalah **aksi yang benar-benar bisa dieksek
 
 ### 2) Sync: menjaga konteks penuh proyek untuk AI
 
-Pilar kedua adalah **Project Sync**.
 AI bekerja dari mirror lokal yang tersinkron, jadi perubahan lintas banyak file tetap konsisten.
 
 ![Alur Sync — Studio dan file lokal tersinkron secara real time](../assets/screenshots/sync.png)
 
 - Basic: sinkronisasi satu arah (Studio -> Local)
 - Pro: sinkronisasi dua arah + Direction/Apply Mode per tipe + riwayat + multiplace
-
-Dengan begitu sumber kebenaran tetap jelas dan konteks perubahan tidak hilang.
 
 ## Nilai yang langsung terasa
 
@@ -40,25 +65,18 @@ Dengan begitu sumber kebenaran tetap jelas dan konteks perubahan tidak hilang.
 
 ## Dokumen detail
 
-- [Cakupan tool (Tools Overview)](tools/overview.md)
-- [Panduan detail Sync](sync/overview.md)
-
-## Mulai
-
-Instalasi cuma dua langkah:
-
-1. **Install plugin Roblox Studio** — Jembatan antara Studio dan AI
-2. **Daftarkan MCP server di aplikasi AI** — Biar AI-mu mengenali Roblox MCP
-
-5 menit kelar. 👉 [Lihat panduan instalasi](installation/README.md)
+- [Panduan instalasi](../en/installation/README.md)
+- [Cakupan tool](../en/tools/overview.md)
+- [Panduan detail Sync](../en/sync/overview.md)
+- [Kompatibilitas](../compatibility.md)
+- [Panduan pemecahan masalah](../troubleshooting.md)
 
 ## Upgrade Pro
 
 Sync dua arah, kemampuan kreasi lanjutan, dan efisiensi token AI — semua dalam satu upgrade.
 
-👉 [Panduan Upgrade Pro](pro-upgrade.md)
+[Panduan Upgrade Pro](../en/pro-upgrade.md)
 
-## Link
+---
 
-- [GitHub](https://github.com/hope1026/roblox-mcp)
-- [Laporkan Masalah](https://github.com/hope1026/roblox-mcp/issues)
+[GitHub Issues](https://github.com/hope1026/roblox-mcp/issues) · [Discussions](https://github.com/hope1026/roblox-mcp/discussions) · [npm](https://www.npmjs.com/package/@weppy/roblox-mcp)
