@@ -39,6 +39,14 @@ GitHub에서 플러그인 파일을 다운로드한 뒤, Roblox Studio의 Plugin
 
 ---
 
+## 선택 사항: Roblox Explorer (VSCode 확장) 설치
+
+동기화된 인스턴스 트리를 Roblox 클래스 아이콘과 함께 VSCode에서 탐색할 수 있습니다.
+
+👉 [Roblox Explorer 설치 가이드](roblox-explorer.md)
+
+---
+
 ## 설치 완료 후
 
 1. **Roblox Studio**를 열고, Plugins 탭에서 **W-MCP** → **Connect** 클릭

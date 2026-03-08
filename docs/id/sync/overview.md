@@ -20,6 +20,16 @@ Tanpa Sync, AI hanya melihat potongan kode yang ditempel di chat. Dengan Sync ak
 
 Path lokal default adalah `roblox-project-sync/place_{placeId}/explorer`.
 
+### Jelajahi data sync di VSCode
+
+Instal ekstensi [Weepy Roblox Explorer](../installation/roblox-explorer.md) untuk menjelajahi tree instance yang sudah tersinkron di VSCode, seperti di Roblox Studio.
+
+![Weepy Roblox Explorer — jelajahi tree instance yang tersinkron di VSCode](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
+
+- Tree service/instance dengan ikon kelas Roblox
+- Klik script untuk membukanya dan mengedit
+- Badge status sync menampilkan status modified/conflict
+
 ## Basic vs Pro
 
 | Item | Basic | Pro |

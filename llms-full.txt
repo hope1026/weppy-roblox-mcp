@@ -1,0 +1,599 @@
+# Roblox MCP — Full Documentation
+
+> The MCP server that connects AI coding agents to Roblox Studio — control
+> scripts, terrain, assets, lighting, audio, and animations via natural language.
+
+---
+
+# Installation Guide
+
+To use Roblox MCP, you need to install **two things**.
+
+```
+AI App (Claude, Codex, Gemini, etc.)
+       │
+   MCP Server ← Converts AI commands into a format Roblox understands
+       │
+Roblox Studio Plugin ← Executes commands inside Studio
+```
+
+When an AI app says "Create a blue part", the MCP server converts this request, and the Roblox Studio plugin actually creates the part.
+
+## Step 1: Install Roblox Studio Plugin
+
+Download the plugin file from GitHub, then place it in Roblox Studio's Plugins folder.
+
+### Download Plugin
+
+1. Open [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest)
+2. Download `weppy-roblox-mcp-v{version}.zip`
+3. Extract the ZIP file - you will find `roblox-plugin/WeppyRobloxMCP.rbxm` and setup guides
+
+Note: The same plugin package is used for all tiers.
+
+### Install Plugin
+
+1. Open **Roblox Studio**
+2. Click the **Plugins** tab in the top menu
+3. Click the **Plugins Folder** button
+4. **Copy** the `WeppyRobloxMCP.rbxm` file into the opened Plugins folder
+5. **Restart Roblox Studio**
+
+After restarting, the **W-MCP** button will appear in the Plugins tab.
+
+### Connect to AI Agent
+
+1. Open any project in **Roblox Studio**
+2. Go to **Plugins** tab -> **W-MCP**
+3. Click the **Connect** button in the plugin window
+4. Once **"Connected"** status is displayed, you're ready
+
+### Settings (Optional)
+
+- **Auto Connect**: Automatically connect to MCP server when Studio starts
+- **Auto Reconnect**: Automatically attempt to reconnect when connection is lost
+- **Auto Camera Focus**: Automatically move camera to created objects
+- **Language**: Change the plugin UI language
+
+## Step 2: Register MCP Server with AI App
+
+Register the MCP server with your AI app. You can use it with any AI app that supports MCP.
+
+The MCP server command is: `npx -y @weppy/roblox-mcp`
+
+### Claude Code Setup
+
+**Method 1: Install from Marketplace (Recommended)**
+
+```bash
+/plugin marketplace add hope1026/roblox-mcp
+/plugin install weppy-roblox-mcp@hope1026-roblox-mcp
+```
+
+**Method 2: Edit Configuration File**
+
+Create a `.mcp.json` file (project scope) or `~/.claude/mcp.json` (global):
+
+```json
+{
+  "mcpServers": {
+    "weppy-roblox-mcp": {
+      "command": "npx",
+      "args": ["-y", "@weppy/roblox-mcp"]
+    }
+  }
+}
+```
+
+### Claude Desktop Setup
+
+**Method 1: Desktop Extensions (Recommended)**
+
+Claude Desktop → Settings → Extensions → Search for `weppy-roblox-mcp` → Install
+
+**Method 2: Edit Configuration File**
+
+Add to `claude_desktop_config.json`:
+- macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- Windows: `%APPDATA%\Claude\claude_desktop_config.json`
+
+```json
+{
+  "mcpServers": {
+    "weppy-roblox-mcp": {
+      "command": "npx",
+      "args": ["-y", "@weppy/roblox-mcp"]
+    }
+  }
+}
+```
+
+### Codex CLI Setup
+
+```bash
+codex mcp add weppy-roblox-mcp -- npx -y @weppy/roblox-mcp
+```
+
+Or edit `~/.codex/config.toml`:
+
+```toml
+[mcp_servers.weppy-roblox-mcp]
+command = "npx"
+args = ["-y", "@weppy/roblox-mcp"]
+```
+
+### Codex Desktop Setup
+
+If you've already configured MCP in Codex CLI, settings are automatically synced to the app.
+
+Otherwise, add in the app under Settings → MCP Servers:
+- Server name: weppy-roblox-mcp
+- Command: npx -y @weppy/roblox-mcp
+
+### Gemini CLI Setup
+
+```bash
+gemini mcp add weppy-roblox-mcp npx --trust -- -y @weppy/roblox-mcp
+```
+
+Or edit `.gemini/settings.json`:
+
+```json
+{
+  "mcpServers": {
+    "weppy-roblox-mcp": {
+      "command": "npx",
+      "args": ["-y", "@weppy/roblox-mcp"]
+    }
+  }
+}
+```
+
+### Antigravity Setup
+
+In the agent pane, click ⋯ → MCP Servers → Manage MCP Servers → View raw config, then add:
+
+```json
+{
+  "mcpServers": {
+    "weppy-roblox-mcp": {
+      "command": "npx",
+      "args": ["-y", "@weppy/roblox-mcp"]
+    }
+  }
+}
+```
+
+## Optional: Install Roblox Explorer (VSCode Extension)
+
+Browse synced instance trees inside VSCode with Roblox class icons.
+
+1. Download the latest `weppy-roblox-explorer-*.vsix` from [Releases](https://github.com/hope1026/roblox-mcp/releases)
+2. Open VSCode → Extensions sidebar → ⋯ → Install from VSIX...
+3. Select the downloaded `.vsix` file
+
+Features:
+- Instance tree with Roblox class icons (dark/light theme)
+- Multi-place support with sync status indicators
+- Click-to-open scripts and property files
+- Instance search across all services
+- Auto-refresh when sync files change
+
+## After Installation
+
+1. Open Roblox Studio, go to Plugins tab and click W-MCP → Connect
+2. Test in your AI app: "Create a blue part in Roblox Studio"
+
+---
+
+# Tools Reference
+
+Roblox MCP provides consolidated tools with action-based sub-commands. Each tool uses an `action` field to specify the operation.
+
+## Query Instances
+
+| Action | Description |
+|--------|-------------|
+| `get` | Get instance properties by path |
+| `children` | Get immediate children or all descendants |
+| `find_child` | Find first child by name and optional class filter |
+| `find_descendant` | Find first descendant by name |
+| `wait_for_child` | Wait for child to appear (with timeout) |
+| `class_info` | Get class information and valid properties |
+| `search_name` | Search instances by name pattern (supports wildcards) |
+| `search_class` | Search instances by class name |
+| `file_tree` | Get file tree structure from root |
+| `project_structure` | Get complete project structure |
+| `descendants` | Get all descendants of an instance |
+| `ancestors` | Get all ancestors of an instance |
+| `search_property` | Search instances by property value |
+| `search_tag` | Search instances by tag |
+
+## Mutate Instances
+
+| Action | Description |
+|--------|-------------|
+| `create` | Create a new instance |
+| `create_with_props` | Create instance with initial properties |
+| `delete` | Delete an instance |
+| `clone` | Clone an instance |
+| `move` | Move instance to new parent |
+| `rename` | Rename an instance |
+| `pivot` | Set pivot position or CFrame |
+| `create_tree` | Create hierarchical instance tree |
+| `mass_create` | Create multiple instances at once |
+| `mass_delete` | Delete multiple instances |
+| `mass_duplicate` | Duplicate multiple instances |
+| `smart_duplicate` | Duplicate with spacing and count |
+
+## Manage Properties
+
+| Action | Description |
+|--------|-------------|
+| `get` | Get a single property value |
+| `set` | Set a single property value |
+| `get_all` | Get all properties of an instance |
+| `set_multiple` | Set multiple properties at once |
+| `get_attr` | Get attribute value |
+| `set_attr` | Set attribute value |
+| `get_all_attrs` | Get all attributes |
+| `delete_attr` | Delete an attribute |
+| `add_tag` | Add a tag to instance |
+| `remove_tag` | Remove a tag from instance |
+| `check_tag` | Check if instance has a tag |
+| `get_tags` | Get all tags on an instance |
+| `get_tagged` | Get all instances with a specific tag |
+| `set_calculated` | Set property using mathematical expression |
+| `set_relative` | Set property relative to current value |
+| `mass_set` | Set property on multiple instances |
+| `mass_get` | Get property from multiple instances |
+| `modify_children` | Modify all children of a parent |
+
+## Manage Scripts
+
+| Action | Description |
+|--------|-------------|
+| `get_source` | Get script source code |
+| `set_source` | Set script source code |
+| `create` | Create a new script |
+| `delete` | Delete a script |
+| `edit_replace` | Replace specific lines in script |
+| `edit_insert` | Insert lines at position |
+| `edit_delete` | Delete specific lines |
+| `search` | Search for text in script |
+| `get_dependencies` | Get script dependencies |
+| `replace` | Batch replace across scripts |
+
+## Manage Lighting
+
+| Action | Description |
+|--------|-------------|
+| `lighting` | Set Lighting service properties |
+| `atmosphere` | Set Atmosphere properties |
+| `sky` | Set Sky properties |
+| `terrain_props` | Set Terrain water/visual properties |
+| `time` | Set time of day |
+
+## Manage Selection
+
+| Action | Description |
+|--------|-------------|
+| `get` | Get current selection |
+| `set` | Replace current selection |
+| `clear` | Clear selection |
+| `cached` | Get cached selection without round-trip |
+| `context` | Get detailed context with source and properties |
+| `details` | Get hierarchical details with ancestors/descendants |
+| `add` | Add items to selection |
+| `remove` | Remove items from selection |
+| `watch` | Monitor selection changes |
+
+## Manage Camera
+
+| Action | Description |
+|--------|-------------|
+| `info` | Get camera position, rotation, FOV, viewport size |
+| `focus_path` | Move camera to focus on instance |
+| `focus_position` | Move camera to focus on position |
+| `suggest` | Get suggested camera view for target |
+
+## Manage Tween
+
+| Action | Description |
+|--------|-------------|
+| `create` | Create a tween with target properties |
+| `play` | Play a created tween |
+| `pause` | Pause a running tween |
+| `cancel` | Cancel a tween |
+
+## Manage Audio
+
+| Action | Description |
+|--------|-------------|
+| `play` | Play a sound (creates Sound if needed) |
+| `stop` | Stop a playing sound |
+| `pause` | Pause a playing sound |
+| `resume` | Resume a paused sound |
+| `set_listener` | Set audio listener type/target |
+
+## Manage Animation
+
+| Action | Description |
+|--------|-------------|
+| `load` | Load animation on Humanoid/AnimationController |
+| `play` | Play a loaded animation track |
+| `stop` | Stop a playing animation |
+| `get_tracks` | List all loaded animation tracks |
+
+## Manage Physics
+
+| Action | Description |
+|--------|-------------|
+| `register_group` | Register a collision group |
+| `set_collidable` | Set whether two groups can collide |
+| `get_groups` | List all registered collision groups |
+
+## Manage Effects
+
+| Action | Description |
+|--------|-------------|
+| `emit` | Emit particles from ParticleEmitter |
+| `clear` | Clear all particles |
+| `toggle` | Enable or disable effect |
+
+## Manage Terrain
+
+| Action | Description |
+|--------|-------------|
+| `fill_block` | Fill block-shaped terrain |
+| `fill_ball` | Fill sphere-shaped terrain |
+| `fill_cylinder` | Fill cylinder-shaped terrain |
+| `fill_wedge` | Fill wedge-shaped terrain |
+| `clear_region` | Clear terrain in region |
+| `clear_bounds` | Clear terrain in bounds |
+| `replace_material` | Replace material in region |
+| `colors_get` | Get material colors |
+| `colors_set` | Set material colors |
+| `read_voxel` | Read single voxel data |
+| `read_voxels` | Read bulk voxel data |
+| `write_voxels` | Write bulk voxel data |
+| `generate` | Generate procedural terrain |
+| `smooth` | Smooth terrain |
+
+## Spatial Query
+
+| Action | Description |
+|--------|-------------|
+| `raycast` | Cast a single ray |
+| `find_ground` | Find ground position below point |
+| `check_placement` | Check if placement is collision-free |
+| `multi_raycast` | Cast multiple rays in batch |
+| `scan_area` | Generate heightmap of area |
+| `find_flat` | Find flat areas for building |
+| `find_spawn` | Find suitable spawn positions |
+| `analyze_walkable` | Analyze walkability grid |
+| `spatial_map` | Get all BasePart positions |
+| `find_space` | Find empty space for object |
+| `bounds` | Get bounding box of instances |
+| `snap_grid` | Snap position to grid |
+| `collision` | Check AABB collision |
+
+## Manage Assets
+
+| Action | Description |
+|--------|-------------|
+| `insert` | Insert model by asset ID |
+| `info` | Get asset metadata |
+| `search` | Search Creator Store |
+| `search_insert` | Search and insert first match |
+| `insert_free` | Insert free model |
+| `insert_package` | Insert package |
+| `export` | Export current selection |
+
+## Manage Sync
+
+| Action | Description |
+|--------|-------------|
+| `status` | Get sync status for a place |
+| `config` | Get sync configuration |
+| `history` | Get change history |
+| `directions` | Get per-type sync directions |
+| `read_file` | Read a synced file |
+| `write_file` | Write to a synced file |
+| `progress` | Get real-time sync progress and bandwidth |
+
+## Workspace State
+
+| Action | Description |
+|--------|-------------|
+| `sync` | Fetch current Workspace state |
+| `snapshot` | Get full instance tree structure |
+| `changes` | Get recent changes |
+| `viewport` | Get camera and viewport info |
+
+## Manage Logs
+
+| Action | Description |
+|--------|-------------|
+| `get` | Get filtered logs |
+| `clear` | Clear log buffer |
+| `errors` | Get recent errors only |
+
+## System Info
+
+| Action | Description |
+|--------|-------------|
+| `ping` | Test connection |
+| `connection` | Get server/plugin connection info |
+| `usage` | Get current tier (basic/pro) |
+| `place_info` | Get place ID, name, creator |
+| `services` | List all Roblox services |
+| `studio_settings` | Get Studio preferences |
+
+## Batch Execute
+
+Execute multiple commands in a single batch. Each command specifies a tool name and arguments. Commands execute sequentially with optional continue-on-error behavior.
+
+## Execute Luau
+
+Execute arbitrary Luau code in Roblox Studio sandbox. Blocked services: HttpService, DataStoreService, MessagingService. Cannot access CoreGui/CorePackages.
+
+---
+
+# Sync Deep Dive
+
+Sync connects Roblox Studio state and local files so AI can read and modify the full project context reliably.
+
+## Why Sync matters
+
+Without Sync, AI only sees snippets pasted into chat. With Sync enabled, AI works from the whole project.
+
+- Apply refactors consistently across multiple scripts
+- Review risky changes quickly using history
+- Keep source-of-truth clear between Studio and local files
+
+## How it works
+
+1. Full Sync: initial mirror from Studio tree/instances to local files
+2. Incremental Sync: continuous update of new changes
+3. History/Status tracking: inspect what changed, when, and in which direction
+
+Default local path is `roblox-project-sync/place_{placeId}/explorer`.
+
+## Sync Capabilities
+
+- Sync direction: one-way (Studio -> Local) or bidirectional
+- Per-type Direction: Scripts, Values, Containers, Data, Services can be set independently
+- Per-type Apply Mode: Auto or Manual
+- Status/history APIs: track what changed, when, and in which direction
+- Multi-place sync: up to 3 places simultaneously
+
+## Direction and Apply Mode
+
+### Direction (per-type sync direction)
+- `forward`: Studio -> Local
+- `reverse`: Local -> Studio
+- `bidirectional`: both directions
+
+Types: `scripts`, `values`, `containers`, `data`, `services`.
+
+### Apply Mode
+- `manual`: user confirms before applying to Studio
+- `auto`: detected changes are auto-applied
+
+## Conflict Resolution
+
+When changes are detected on both Studio and local sides during bidirectional sync:
+- **Studio Priority**: overwrite with Studio state as the source of truth
+- **Local Priority**: apply local files to Studio
+- **Per-File**: choose which side takes priority for each file individually
+
+## File format (v2 nested directory)
+
+Each Roblox instance is stored as its own directory:
+
+```
+explorer/
+├── Workspace/
+│   ├── _tree.json
+│   ├── Part/
+│   │   └── Part.props.json
+│   ├── MyScript/
+│   │   └── MyScript.server.luau
+│   └── Coins/
+│       └── Coins.value.json
+```
+
+---
+
+# Compatibility
+
+## Supported AI Clients
+
+Claude Code, Claude Desktop, Cursor, Codex CLI, Codex Desktop, Gemini CLI, Antigravity, and any MCP-compatible client.
+
+## System Requirements
+
+| Requirement | Minimum |
+|-------------|---------|
+| Node.js | 18.0.0+ |
+| Roblox Studio | Latest (keep auto-updated) |
+| OS | Windows 10+ or macOS 12+ |
+| Network | localhost:3002 must be accessible |
+
+## Full Feature List
+
+- MCP tool execution: scripts, instances, properties, terrain, lighting, assets, audio, animation
+- Studio → Local one-way sync
+- Bidirectional sync (Local → Studio)
+- Per-type Direction and Apply Mode
+- Sync history and changelog
+- Multi-place support (up to 3 places)
+- Bulk operations (mass_create, mass_set, mass_get)
+- Advanced spatial queries (raycast, find_ground, find_spawn, analyze_walkable)
+- Terrain generation and fill (procedural, block, ball, cylinder, wedge)
+- Physics group management
+- Tween and animation control
+- Audio control
+- Lighting and atmosphere
+- Batch execution (multiple commands in one call)
+- Execute Luau (arbitrary Luau code in Studio sandbox)
+
+---
+
+# Troubleshooting
+
+## Plugin not connecting
+
+1. Make sure the MCP server is running: `npx -y @weppy/roblox-mcp`
+2. In Roblox Studio: Plugins tab → W-MCP → Connect
+3. Confirm nothing is blocking `localhost:3002` (firewall, antivirus, VPN)
+4. Try restarting both Roblox Studio and the MCP server
+
+## MCP server not found by AI client
+
+1. Verify your AI client config uses the correct command: `npx -y @weppy/roblox-mcp`
+2. Ensure Node.js >= 18 is installed: `node --version`
+3. On Windows, try running your terminal as Administrator if permission errors appear
+
+## "Pro feature required" error
+
+The action you're requesting requires the Pro tier.
+
+## Sync not working
+
+1. Check sync status: ask AI `manage_sync status`
+2. Ensure the plugin is connected before starting sync
+3. For reverse sync (file → Studio), confirm Pro tier is active
+
+## Common error messages
+
+| Error | Cause | Fix |
+|-------|-------|-----|
+| `ECONNREFUSED localhost:3002` | MCP server not running | Run `npx -y @weppy/roblox-mcp` |
+| `Timeout waiting for plugin` | Studio plugin not connected | Click Connect in plugin panel |
+| `Rate limit exceeded` | Over 450 requests/min | Reduce or batch requests |
+| `Forbidden path` | Accessing CoreGui/CorePackages | Use valid instance paths only |
+
+## Still stuck?
+
+[Open a Discussion](https://github.com/hope1026/roblox-mcp/discussions) with your OS, Node.js version, AI client, and error details.
+
+---
+
+# Security
+
+- Localhost only: 127.0.0.1:3002
+- Forbidden paths: CoreGui, CorePackages, RobloxScript
+- Rate limiting: 450 requests/minute
+- Timeout: 30 seconds per operation
+- Blocked in Execute Luau: HttpService, DataStoreService, MessagingService
+
+---
+
+# Links
+
+- GitHub: https://github.com/hope1026/roblox-mcp
+- npm: https://www.npmjs.com/package/@weppy/roblox-mcp
+- Issues: https://github.com/hope1026/roblox-mcp/issues
+- Discussions: https://github.com/hope1026/roblox-mcp/discussions

@@ -1,14 +1,19 @@
 # Roblox MCP
 
-> MCP server and Roblox Studio plugin that lets AI coding agents (Claude Code,
-> Cursor, Codex, Gemini) directly control Roblox Studio via natural language.
+> The MCP server that connects AI coding agents to Roblox Studio — control
+> scripts, terrain, assets, lighting, audio, and animations via natural language.
 
 ## What it does
 
-- Execute MCP tools: create/edit scripts, instances, properties, terrain,
-  lighting, assets, audio, animation inside Roblox Studio
+Roblox MCP provides a real-time bridge between AI agents and the Roblox Studio
+DataModel. It exposes the full Roblox API surface as executable MCP tools, so AI
+can directly create, read, modify, and delete instances, scripts, properties,
+terrain, and more — inside a live Studio session.
+
+- Consolidated MCP tools covering the full Roblox Studio API surface
 - Bidirectional project sync between Roblox Studio and local files
-- 21 consolidated MCP tools covering the full Roblox Studio API surface
+- Roblox Explorer VSCode extension for browsing Studio hierarchy
+- Works with Claude Code, Claude Desktop, Cursor, Codex CLI, Codex Desktop, Gemini CLI, Antigravity
 
 ## Installation
 
@@ -16,26 +21,31 @@ Install in 2 steps:
 1. Install Roblox Studio plugin (bridge between Studio and AI)
 2. Register MCP server: `npx -y @weppy/roblox-mcp`
 
-Supports: Claude Code, Claude Desktop, Cursor, Codex CLI, Gemini CLI
-
 ## Tiers
 
 - Basic (Free): MCP tool execution + one-way Studio -> Local sync
-- Pro: Bidirectional sync, bulk actions, multi-place support, advanced tools
+- Pro: Bidirectional sync, bulk actions, terrain generation, spatial analysis, multi-place support, advanced tools
 
-## Key docs
+## Detailed docs
 
+- Full documentation: [llms-full.txt](https://github.com/hope1026/roblox-mcp/blob/main/llms-full.txt)
 - Installation: https://github.com/hope1026/roblox-mcp/blob/main/docs/en/installation/README.md
 - Tools reference: https://github.com/hope1026/roblox-mcp/blob/main/docs/en/tools/overview.md
 - Sync guide: https://github.com/hope1026/roblox-mcp/blob/main/docs/en/sync/overview.md
-- Troubleshooting: https://github.com/hope1026/roblox-mcp/blob/main/docs/en/troubleshooting.md
-- Compatibility: https://github.com/hope1026/roblox-mcp/blob/main/docs/en/compatibility.md
+- Troubleshooting: https://github.com/hope1026/roblox-mcp/blob/main/docs/troubleshooting.md
+- Compatibility: https://github.com/hope1026/roblox-mcp/blob/main/docs/compatibility.md
+- Pro upgrade: https://github.com/hope1026/roblox-mcp/blob/main/docs/en/pro-upgrade.md
 
 ## Requirements
 
 - Node.js >= 18
 - Roblox Studio (Windows 10+ or macOS 12+)
 - Any MCP-compatible AI client
+
+## Optional
+
+- Roblox Explorer VSCode extension (browse synced instance tree)
+- Pro subscription for bidirectional sync and advanced tools
 
 ## Links
 

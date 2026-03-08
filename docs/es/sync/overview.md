@@ -20,6 +20,16 @@ Sin Sync, la IA solo ve fragmentos pegados en el chat. Con Sync activo, trabaja 
 
 La ruta local por defecto es `roblox-project-sync/place_{placeId}/explorer`.
 
+### Explorar datos sincronizados en VSCode
+
+Instala la extension [Weepy Roblox Explorer](../installation/roblox-explorer.md) para explorar el arbol de instancias sincronizado en VSCode, igual que en Roblox Studio.
+
+![Weepy Roblox Explorer — explorar el arbol de instancias sincronizado en VSCode](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
+
+- Arbol de servicios/instancias con iconos de clases Roblox
+- Haz clic en un script para abrirlo y editarlo
+- Badges de estado de sync muestran el estado modificado/conflicto
+
 ## Basic vs Pro
 
 | Item | Basic | Pro |

@@ -20,6 +20,16 @@ Without Sync, AI only sees snippets pasted into chat. With Sync enabled, AI work
 
 Default local path is `roblox-project-sync/place_{placeId}/explorer`.
 
+### Browse sync data in VSCode
+
+Install the [Weepy Roblox Explorer](../installation/roblox-explorer.md) extension to browse the synced instance tree in VSCode, just like in Roblox Studio.
+
+![Weepy Roblox Explorer — browse synced instance tree in VSCode](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
+
+- Service/instance tree with Roblox class icons
+- Click a script to open it for editing
+- Sync status badges show modified/conflict state
+
 ## Basic vs Pro
 
 | Item | Basic | Pro |

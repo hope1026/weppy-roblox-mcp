@@ -1,0 +1,13 @@
+description: "MCP server for Roblox Studio — AI agents control scripts, terrain, lighting, assets, animations, and project sync via natural language. Works with Claude, Codex, Gemini, and Cursor."
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties: {}
+    required: []
+  commandFunction: |-
+    () => ({
+      command: "npx",
+      args: ["-y", "@weppy/roblox-mcp"]
+    })
+  exampleConfig: {}
