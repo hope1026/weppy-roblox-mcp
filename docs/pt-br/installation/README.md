@@ -39,6 +39,14 @@ Registre o servidor MCP no seu app de IA. Funciona com qualquer app que suporte 
 
 ---
 
+## Opcional: Instalar Roblox Explorer (Extensão VSCode)
+
+Navegue pelas árvores de instâncias sincronizadas dentro do VSCode com ícones de classes Roblox.
+
+👉 [Guia de instalação do Roblox Explorer](roblox-explorer.md)
+
+---
+
 ## Depois da instalação
 
 1. Abra o **Roblox Studio** e na aba Plugins clique em **W-MCP** → **Connect**

@@ -5,6 +5,7 @@
 - [Installation Guide](docs/en/installation/README.md)
 - [Tools Reference](docs/en/tools/overview.md)
 - [Sync Deep Dive](docs/en/sync/overview.md)
+- [Roblox Explorer (VSCode Extension)](docs/en/installation/roblox-explorer.md)
 - [Compatibility](docs/en/compatibility.md)
 - [Troubleshooting](docs/en/troubleshooting.md)
 

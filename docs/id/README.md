@@ -56,6 +56,16 @@ AI bekerja dari mirror lokal yang tersinkron, jadi perubahan lintas banyak file 
 - Basic: sinkronisasi satu arah (Studio -> Local)
 - Pro: sinkronisasi dua arah + Direction/Apply Mode per tipe + riwayat + multiplace
 
+### 3) Roblox Explorer: jelajahi hierarki Studio di VSCode
+
+Lihat seluruh pohon instance dari place Roblox Studio langsung di dalam VSCode. Navigasi service, buka script dan file properti yang tersinkron, dan pantau status sinkronisasi — semua tanpa beralih ke Studio.
+
+![Roblox Explorer — pohon instance Studio ditampilkan di sidebar VSCode](../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
+
+- Ikon class yang sama dengan Studio untuk pengenalan instan
+- Klik untuk membuka script dan file properti yang tersinkron
+- Dukungan multiplace dengan indikator status sinkronisasi
+
 ## Nilai yang langsung terasa
 
 - Ringkas pekerjaan berulang: banyak edit manual jadi satu perintah
@@ -68,6 +78,7 @@ AI bekerja dari mirror lokal yang tersinkron, jadi perubahan lintas banyak file 
 - [Panduan instalasi](../en/installation/README.md)
 - [Cakupan tool](../en/tools/overview.md)
 - [Panduan detail Sync](../en/sync/overview.md)
+- [Roblox Explorer (Ekstensi VSCode)](../en/installation/roblox-explorer.md)
 - [Kompatibilitas](../compatibility.md)
 - [Panduan pemecahan masalah](../troubleshooting.md)
 

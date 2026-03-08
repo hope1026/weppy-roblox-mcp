@@ -34,6 +34,14 @@ Configura el servidor MCP en tu app de IA para que pueda comunicarse con Roblox 
 > npx -y @weppy/roblox-mcp
 > ```
 
+## Opcional: Instalar Roblox Explorer (Extensión VSCode)
+
+Explora los árboles de instancias sincronizados dentro de VSCode con iconos de clases Roblox.
+
+👉 [Guía de instalación de Roblox Explorer](roblox-explorer.md)
+
+---
+
 ## Después de la Instalación
 
 Prueba con un comando simple:

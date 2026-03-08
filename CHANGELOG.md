@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [1.4.0] - 2026-03-08
+
+### New Features
+
+- Add Roblox Explorer VSCode extension — browse Studio instance tree directly in VSCode sidebar
+  - TreeDataProvider for real-time instance hierarchy visualization
+  - Auto-refresh via FileWatcher on sync data changes
+  - Icon mapping for Roblox class names (dark/light theme support)
+  - Copy instance path, open backing file, reveal in explorer commands
+
+### Improvements
+
+- Refactor MCP server deployment pipeline and build configuration
+- Improve camera and terrain sync stability and accuracy
+- Enhance plugin UI icons and visual consistency
+
+
 ## [1.3.1] - 2026-03-07
 
 ### Improvements

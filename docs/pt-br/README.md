@@ -56,6 +56,16 @@ A IA trabalha com um espelho local sincronizado, entao alteracoes em varios arqu
 - Basic: sincronizacao unidirecional (Studio -> Local)
 - Pro: sincronizacao bidirecional + Direction/Apply Mode por tipo + historico + multiplace
 
+### 3) Roblox Explorer: navegue a hierarquia do Studio no VSCode
+
+Visualize a arvore completa de instancias do seu lugar no Roblox Studio diretamente dentro do VSCode. Navegue pelos servicos, abra scripts e arquivos de propriedades sincronizados, e acompanhe o status de sincronizacao — tudo sem trocar para o Studio.
+
+![Roblox Explorer — arvore de instancias do Studio exibida na barra lateral do VSCode](../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
+
+- Icones de classe iguais ao Studio para reconhecimento imediato
+- Clique para abrir scripts e arquivos de propriedades sincronizados
+- Suporte multiplace com indicadores de status de sincronizacao
+
 ## Valor imediato para o usuario
 
 - Comprimir trabalho repetitivo: transformar muitas edicoes manuais em um pedido
@@ -68,6 +78,7 @@ A IA trabalha com um espelho local sincronizado, entao alteracoes em varios arqu
 - [Guia de instalacao](../en/installation/README.md)
 - [Cobertura de ferramentas](../en/tools/overview.md)
 - [Guia detalhado de Sync](../en/sync/overview.md)
+- [Roblox Explorer (Extensao VSCode)](../en/installation/roblox-explorer.md)
 - [Compatibilidade](../compatibility.md)
 - [Solucao de problemas](../troubleshooting.md)
 

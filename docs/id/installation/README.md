@@ -39,6 +39,14 @@ Daftarkan MCP server ke aplikasi AI yang kamu pakai. Bisa digunakan di semua apl
 
 ---
 
+## Opsional: Install Roblox Explorer (Ekstensi VSCode)
+
+Jelajahi tree instance yang sudah disinkronkan di dalam VSCode dengan ikon kelas Roblox.
+
+👉 [Panduan Instalasi Roblox Explorer](roblox-explorer.md)
+
+---
+
 ## Setelah Instalasi Selesai
 
 1. Buka **Roblox Studio**, di tab Plugins klik **W-MCP** → **Connect**

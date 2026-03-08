@@ -56,6 +56,16 @@ AIがStudio内で、スクリプト、インスタンス、プロパティ、地
 - Basic: 片方向同期（Studio -> Local）
 - Pro: 双方向同期 + タイプ別Direction/Apply Mode + 変更履歴 + マルチPlace
 
+### 3) Roblox Explorer: VSCodeでStudioの階層構造を閲覧
+
+Roblox Studioのインスタンスツリー全体をVSCode内で直接確認できます。サービスを探索し、同期されたスクリプトやプロパティファイルを開き、同期状態を追跡 — Studioに切り替える必要はありません。
+
+![Roblox Explorer — VSCodeサイドバーに表示されるStudioインスタンスツリー](../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
+
+- Studio同様のクラスアイコンで直感的に識別
+- クリックで同期済みスクリプトとプロパティファイルを開く
+- 同期状態表示付きのマルチPlaceサポート
+
 ## すぐに実感できる価値
 
 - 反復作業を圧縮: 多数の手作業を1つの指示に集約
@@ -68,6 +78,7 @@ AIがStudio内で、スクリプト、インスタンス、プロパティ、地
 - [インストールガイド](../en/installation/README.md)
 - [Tool対応範囲](../en/tools/overview.md)
 - [Sync機能詳細ガイド](../en/sync/overview.md)
+- [Roblox Explorer (VSCode拡張)](../en/installation/roblox-explorer.md)
 - [互換性](../compatibility.md)
 - [トラブルシューティング](../troubleshooting.md)
 

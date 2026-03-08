@@ -20,6 +20,16 @@ Sem Sync, a IA so enxerga trechos colados no chat. Com Sync ativo, ela trabalha 
 
 O caminho local padrao e `roblox-project-sync/place_{placeId}/explorer`.
 
+### Explorar dados sincronizados no VSCode
+
+Instale a extensao [Weepy Roblox Explorer](../installation/roblox-explorer.md) para explorar a arvore de instancias sincronizada no VSCode, assim como no Roblox Studio.
+
+![Weepy Roblox Explorer — explorar a arvore de instancias sincronizada no VSCode](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
+
+- Arvore de servicos/instancias com icones de classes Roblox
+- Clique em um script para abri-lo e editar
+- Badges de status de sync mostram estado modificado/conflito
+
 ## Basic vs Pro
 
 | Item | Basic | Pro |

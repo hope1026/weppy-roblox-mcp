@@ -39,6 +39,14 @@ Register the MCP server with your AI app. You can use it with any AI app that su
 
 ---
 
+## Optional: Install Roblox Explorer (VSCode Extension)
+
+Browse synced instance trees inside VSCode with Roblox class icons.
+
+👉 [Roblox Explorer Installation Guide](roblox-explorer.md)
+
+---
+
 ## After Installation
 
 1. Open **Roblox Studio**, go to Plugins tab and click **W-MCP** → **Connect**
