@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "Roblox MCP server and tools for AI-powered game development",
-    "version": "1.4.1"
+    "version": "1.4.2"
   },
   "plugins": [
     {
       "name": "weppy-roblox-mcp",
       "source": "./plugins/weppy-roblox-mcp",
       "description": "MCP server for Roblox Studio integration - AI-powered game development with specialized agents and skills",
-      "version": "1.4.1",
+      "version": "1.4.2",
       "author": {
         "name": "hope1026"
       },
