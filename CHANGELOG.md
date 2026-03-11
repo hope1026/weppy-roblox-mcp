@@ -6,6 +6,29 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+
+## [1.4.2] - 2026-03-11
+
+### Improved
+
+- MCP server code refactoring for better maintainability
+- Enhanced license check logic for improved reliability
+- Plugin internal stability improvements
+
+
+## [1.4.1] - 2026-03-10
+
+### Changed
+
+- Simplify authentication flow — legacy auth paths removed for improved connection reliability
+
+### Improved
+
+- MCP server internal stability and observability improvements
+- Plugin internal cleanup and configuration refinements
+
+
 ## [1.4.0] - 2026-03-08
 
 ### New Features
