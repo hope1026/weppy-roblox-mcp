@@ -53,5 +53,6 @@ Pembuatan terrain, pencarian aset, analisis spasial, animasi, audio, dan otomasi
 | Resync / Bangun ulang state | ❌ | ✅ |
 | Riwayat Perubahan | ❌ | ✅ |
 | Sync multi-place | ❌ | ✅ Hingga 3 place dengan penyimpanan terisolasi |
+| Kontrol Playtest (Putar/Hentikan/Jeda/Lanjutkan) | ❌ | ✅ |
 | Cakupan tools lanjutan | Set dasar | Set lanjutan lebih luas |
 | Efisiensi token AI | Standar | Lebih efisien dengan aksi massal / berdampak tinggi |

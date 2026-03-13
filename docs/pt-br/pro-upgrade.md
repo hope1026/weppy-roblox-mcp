@@ -53,5 +53,6 @@ Geração de terrain, busca de assets, análise espacial, animação, áudio e a
 | Resync / Reconstruir estado | ❌ | ✅ |
 | Histórico de mudanças | ❌ | ✅ |
 | Sync multi-place | ❌ | ✅ Até 3 places com armazenamento isolado |
+| Controle de Playtest (Reproduzir/Parar/Pausar/Retomar) | ❌ | ✅ |
 | Cobertura avançada de tools | Conjunto base | Conjunto avançado mais amplo |
 | Eficiência de tokens IA | Padrão | Melhor com ações em massa / de alto impacto |
