@@ -67,7 +67,15 @@ AI works from a synchronized local mirror, so multi-file updates stay consistent
 - Basic: one-way sync (Studio -> Local)
 - Pro: bidirectional sync + per-type Direction/Apply Mode + history + multi-place
 
-### 3) Roblox Explorer: Browse Studio hierarchy in VSCode
+### 3) Playtest: Let AI run and verify tests automatically
+
+AI can control Roblox Studio playtests directly. It can start and stop Play (F5) or Run (F8), inject test scripts, collect logs, and generate local reports automatically.
+
+- "Start a Run-mode playtest and check whether the NPC reaches the target."
+- "Write a test that verifies the SpawnLocation is above the ground and run it."
+- "Validate that the script I just changed runs without errors in playtest."
+
+### 4) Roblox Explorer: Browse Studio hierarchy in VSCode
 
 View the full instance tree of your Roblox Studio place directly inside VSCode. Navigate services, open synced scripts and property files, and track sync status — all without switching to Studio.
 
@@ -100,6 +108,15 @@ View the full instance tree of your Roblox Studio place directly inside VSCode. 
 - [Roblox Explorer (VSCode Extension)](docs/en/installation/roblox-explorer.md)
 - [Compatibility](docs/compatibility.md)
 - [Troubleshooting](docs/troubleshooting.md)
+
+### Workflow Guides
+
+- [Instances & Properties](docs/en/tools/instances-and-properties.md) - search, creation, editing, tags
+- [Scripting & Code Execution](docs/en/tools/scripting.md) - script management and Luau execution
+- [World & Environment](docs/en/tools/world-and-environment.md) - lighting, terrain, camera
+- [Assets & Effects](docs/en/tools/assets-and-effects.md) - asset insertion, tweening, effects
+- [Playtest & Automated Tests](docs/en/tools/playtest.md) - playtest control and automated validation
+- [System & Debugging](docs/en/tools/system-and-debugging.md) - connection, logs, batch execution
 
 ## FAQ
 

@@ -2,6 +2,20 @@
 
 MCP 도구의 상세 파라미터는 MCP 도구 정의를 직접 확인하세요.
 
+## 기능별 가이드
+
+워크플로우 중심의 상세 가이드를 참고하세요:
+
+| 카테고리 | 설명 | 포함 도구 |
+|---------|------|----------|
+| [인스턴스 & 속성](instances-and-properties.md) | 인스턴스 검색, 생성, 수정, 태그 관리 | query_instances, mutate_instances, manage_properties |
+| [스크립트 & 코드 실행](scripting.md) | 스크립트 관리, Luau 코드 실행 | manage_scripts, execute_luau |
+| [월드 환경](world-and-environment.md) | 조명, 지형, 공간 쿼리, 카메라 | manage_lighting, manage_terrain, spatial_query, manage_camera |
+| [에셋 & 오브젝트 연출](assets-and-effects.md) | 에셋 삽입, 트윈, 애니메이션, 오디오, 이펙트 | manage_assets, manage_tween, manage_animation, manage_audio, manage_effects, manage_physics |
+| [플레이테스트 & 자동 테스트](playtest.md) | 플레이테스트 제어, 자동 테스트 실행 | system_info (play/stop/pause/resume/play_status/run_test) |
+| [동기화](../sync/overview.md) | Studio ↔ 로컬 파일 동기화 | manage_sync, workspace_state |
+| [시스템 & 디버깅](system-and-debugging.md) | 연결 확인, 로그, 선택, 배치 실행 | system_info (ping/connection/usage/...), manage_logs, manage_selection, batch_execute |
+
 관련 문서:
 - [Sync 기능 상세 가이드](../sync/overview.md)
 
@@ -248,6 +262,12 @@ Sync 정책:
 | `place_info` | Place ID, 이름, 제작자 가져오기 | Pro |
 | `services` | 모든 Roblox 서비스 나열 | Pro |
 | `studio_settings` | Studio 환경설정 가져오기 | Pro |
+| `play` | Play(F5) 또는 Run(F8) 모드로 플레이테스트 시작 | Pro |
+| `stop` | 현재 플레이테스트 중지 | Pro |
+| `pause` | Run 모드 플레이테스트 일시정지 | Pro |
+| `resume` | 일시정지된 Run 모드 플레이테스트 재개 | Pro |
+| `play_status` | 플레이테스트 상태와 가능한 action 조회 | Pro |
+| `run_test` | 임시 테스트 스크립트를 주입하고 플레이테스트 실행 후 로그와 로컬 리포트 파일 생성 | Pro |
 
 ## Batch Execute (Pro)
 

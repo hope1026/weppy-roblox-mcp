@@ -2,6 +2,20 @@
 
 Para parametros detallados, consulte las definiciones de herramientas MCP directamente.
 
+## Guias por flujo
+
+Consulte estas guias orientadas al flujo de trabajo:
+
+| Categoria | Descripcion | Tools incluidas |
+|-----------|-------------|-----------------|
+| [Instancias y propiedades](instances-and-properties.md) | Busqueda, creacion, edicion y tags de instancias | `query_instances`, `mutate_instances`, `manage_properties` |
+| [Scripting y ejecucion de codigo](scripting.md) | Gestion de scripts y ejecucion de Luau | `manage_scripts`, `execute_luau` |
+| [Mundo y entorno](world-and-environment.md) | Iluminacion, terrain, consultas espaciales y camara | `manage_lighting`, `manage_terrain`, `spatial_query`, `manage_camera` |
+| [Assets y efectos](assets-and-effects.md) | Insercion de assets, tween, animacion, audio y efectos | `manage_assets`, `manage_tween`, `manage_animation`, `manage_audio`, `manage_effects`, `manage_physics` |
+| [Playtest y pruebas automatizadas](playtest.md) | Control de playtest y validacion automatica | `system_info` (`play`, `stop`, `pause`, `resume`, `play_status`, `run_test`) |
+| [Sync](../sync/overview.md) | Sincronizacion entre Studio y archivos locales | `manage_sync`, `workspace_state` |
+| [Sistema y depuracion](system-and-debugging.md) | Conexion, logs, seleccion y ejecucion por lotes | `system_info` (`ping`, `connection`, `usage`, ...), `manage_logs`, `manage_selection`, `batch_execute` |
+
 Documentacion relacionada:
 - [Guia detallada de Sync](../sync/overview.md)
 
@@ -248,6 +262,12 @@ Politica de Sync:
 | `place_info` | Obtener Place ID, nombre, creador | Pro |
 | `services` | Listar todos los servicios de Roblox | Pro |
 | `studio_settings` | Obtener preferencias de Studio | Pro |
+| `play` | Iniciar playtest en modo Play (F5) o Run (F8) | Pro |
+| `stop` | Detener el playtest activo | Pro |
+| `pause` | Pausar el playtest activo en modo Run | Pro |
+| `resume` | Reanudar el playtest pausado en modo Run | Pro |
+| `play_status` | Obtener estado del playtest y acciones disponibles | Pro |
+| `run_test` | Inyectar un script temporal de prueba, ejecutar playtest, recopilar logs y escribir reportes locales | Pro |
 
 ## Batch Execute (Pro)
 
