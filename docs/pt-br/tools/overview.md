@@ -2,6 +2,20 @@
 
 Para parametros detalhados, consulte as definicoes de ferramentas MCP diretamente.
 
+## Guias por fluxo
+
+Consulte estes guias orientados a fluxo de trabalho:
+
+| Categoria | Descricao | Tools incluidas |
+|-----------|-----------|-----------------|
+| [Instancias e propriedades](instances-and-properties.md) | Busca, criacao, edicao e tags de instancias | `query_instances`, `mutate_instances`, `manage_properties` |
+| [Scripts e execucao de codigo](scripting.md) | Gerenciamento de scripts e execucao de Luau | `manage_scripts`, `execute_luau` |
+| [Mundo e ambiente](world-and-environment.md) | Iluminacao, terrain, consultas espaciais e camera | `manage_lighting`, `manage_terrain`, `spatial_query`, `manage_camera` |
+| [Assets e efeitos](assets-and-effects.md) | Insercao de assets, tween, animacao, audio e efeitos | `manage_assets`, `manage_tween`, `manage_animation`, `manage_audio`, `manage_effects`, `manage_physics` |
+| [Playtest e testes automatizados](playtest.md) | Controle de playtest e validacao automatica | `system_info` (`play`, `stop`, `pause`, `resume`, `play_status`, `run_test`) |
+| [Sync](../sync/overview.md) | Sincronizacao entre Studio e arquivos locais | `manage_sync`, `workspace_state` |
+| [Sistema e depuracao](system-and-debugging.md) | Conexao, logs, selecao e execucao em lote | `system_info` (`ping`, `connection`, `usage`, ...), `manage_logs`, `manage_selection`, `batch_execute` |
+
 Documentacao relacionada:
 - [Guia detalhado de Sync](../sync/overview.md)
 
@@ -248,6 +262,12 @@ Politica de Sync:
 | `place_info` | Obter Place ID, nome, criador | Pro |
 | `services` | Listar todos os servicos Roblox | Pro |
 | `studio_settings` | Obter preferencias do Studio | Pro |
+| `play` | Iniciar playtest em modo Play (F5) ou Run (F8) | Pro |
+| `stop` | Parar o playtest ativo | Pro |
+| `pause` | Pausar o playtest ativo em modo Run | Pro |
+| `resume` | Retomar o playtest pausado em modo Run | Pro |
+| `play_status` | Obter estado do playtest e acoes disponiveis | Pro |
+| `run_test` | Injetar um script temporario de teste, executar o playtest, coletar logs e gerar relatorios locais | Pro |
 
 ## Batch Execute (Pro)
 

@@ -56,7 +56,15 @@ AI bekerja dari mirror lokal yang tersinkron, jadi perubahan lintas banyak file 
 - Basic: sinkronisasi satu arah (Studio -> Local)
 - Pro: sinkronisasi dua arah + Direction/Apply Mode per tipe + riwayat + multiplace
 
-### 3) Roblox Explorer: jelajahi hierarki Studio di VSCode
+### 3) Playtest: AI menjalankan dan memverifikasi tes secara otomatis
+
+AI bisa mengontrol playtest Studio secara langsung. AI dapat memulai dan menghentikan Play (F5) atau Run (F8), menyuntikkan script test, mengumpulkan log, dan menghasilkan laporan lokal secara otomatis.
+
+- "Mulai playtest mode Run dan cek apakah NPC mencapai target."
+- "Tulis dan jalankan test untuk memastikan SpawnLocation berada di atas tanah."
+- "Validasi lewat playtest bahwa script yang baru saya ubah berjalan tanpa error."
+
+### 4) Roblox Explorer: jelajahi hierarki Studio di VSCode
 
 Lihat seluruh pohon instance dari place Roblox Studio langsung di dalam VSCode. Navigasi service, buka script dan file properti yang tersinkron, dan pantau status sinkronisasi — semua tanpa beralih ke Studio.
 
@@ -76,11 +84,20 @@ Lihat seluruh pohon instance dari place Roblox Studio langsung di dalam VSCode. 
 ## Dokumen detail
 
 - [Panduan instalasi](../en/installation/README.md)
-- [Cakupan tool](../en/tools/overview.md)
-- [Panduan detail Sync](../en/sync/overview.md)
+- [Daftar tool lengkap](tools/overview.md)
+- [Panduan detail Sync](sync/overview.md)
 - [Roblox Explorer (Ekstensi VSCode)](../en/installation/roblox-explorer.md)
 - [Kompatibilitas](../compatibility.md)
 - [Panduan pemecahan masalah](../troubleshooting.md)
+
+### Panduan per alur kerja
+
+- [Instance & properti](tools/instances-and-properties.md) - pencarian, pembuatan, pengeditan, dan tag
+- [Scripting & eksekusi kode](tools/scripting.md) - pengelolaan script dan eksekusi Luau
+- [Dunia & lingkungan](tools/world-and-environment.md) - lighting, terrain, dan kamera
+- [Asset & efek](tools/assets-and-effects.md) - penyisipan model, tween, dan efek
+- [Playtest & tes otomatis](tools/playtest.md) - kontrol playtest dan validasi otomatis
+- [Sistem & debugging](tools/system-and-debugging.md) - koneksi, log, dan eksekusi batch
 
 ## Upgrade Pro
 

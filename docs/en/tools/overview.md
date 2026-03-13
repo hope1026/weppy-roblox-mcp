@@ -2,6 +2,20 @@
 
 For detailed parameters, check MCP tool definitions directly.
 
+## Workflow Guides
+
+Use these workflow-oriented guides to navigate the toolset:
+
+| Category | Description | Included tools |
+|----------|-------------|----------------|
+| [Instances & Properties](instances-and-properties.md) | Instance search, creation, editing, and tags | `query_instances`, `mutate_instances`, `manage_properties` |
+| [Scripting & Code Execution](scripting.md) | Script management and Luau execution | `manage_scripts`, `execute_luau` |
+| [World & Environment](world-and-environment.md) | Lighting, terrain, spatial queries, and camera | `manage_lighting`, `manage_terrain`, `spatial_query`, `manage_camera` |
+| [Assets & Effects](assets-and-effects.md) | Asset insertion, tweening, animation, audio, and effects | `manage_assets`, `manage_tween`, `manage_animation`, `manage_audio`, `manage_effects`, `manage_physics` |
+| [Playtest & Automated Tests](playtest.md) | Playtest control and automated validation | `system_info` (`play`, `stop`, `pause`, `resume`, `play_status`, `run_test`) |
+| [Sync](../sync/overview.md) | Studio and local file synchronization | `manage_sync`, `workspace_state` |
+| [System & Debugging](system-and-debugging.md) | Connection checks, logs, selection, and batch execution | `system_info` (`ping`, `connection`, `usage`, ...), `manage_logs`, `manage_selection`, `batch_execute` |
+
 Related docs:
 - [Sync Deep Dive](../sync/overview.md)
 
@@ -248,6 +262,12 @@ Sync policy:
 | `place_info` | Get place ID, name, creator | Pro |
 | `services` | List all Roblox services | Pro |
 | `studio_settings` | Get Studio preferences | Pro |
+| `play` | Start playtest in Play (F5) or Run (F8) mode | Pro |
+| `stop` | Stop the active playtest | Pro |
+| `pause` | Pause the active Run-mode playtest | Pro |
+| `resume` | Resume the paused Run-mode playtest | Pro |
+| `play_status` | Get playtest state and available actions | Pro |
+| `run_test` | Inject a temporary test script, run playtest, collect logs, and write local report files | Pro |
 
 ## Batch Execute (Pro)
 

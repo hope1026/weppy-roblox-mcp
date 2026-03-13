@@ -56,7 +56,15 @@ La IA trabaja sobre un espejo local sincronizado, asi que los cambios en multipl
 - Basic: sincronizacion unidireccional (Studio -> Local)
 - Pro: sincronizacion bidireccional + Direction/Apply Mode por tipo + historial + multiplace
 
-### 3) Roblox Explorer: explora la jerarquia de Studio en VSCode
+### 3) Playtest: la IA ejecuta y verifica pruebas automaticamente
+
+La IA puede controlar directamente el playtest de Studio. Puede iniciar y detener Play (F5) o Run (F8), inyectar scripts de prueba, recopilar logs y generar reportes locales automaticamente.
+
+- "Inicia un playtest en modo Run y verifica si el NPC llega al objetivo."
+- "Escribe y ejecuta una prueba para confirmar que el SpawnLocation esta sobre el suelo."
+- "Valida con playtest que el script que acabo de cambiar funciona sin errores."
+
+### 4) Roblox Explorer: explora la jerarquia de Studio en VSCode
 
 Visualiza el arbol completo de instancias de tu lugar en Roblox Studio directamente dentro de VSCode. Navega los servicios, abre scripts y archivos de propiedades sincronizados, y rastrea el estado de sincronizacion — todo sin cambiar a Studio.
 
@@ -76,11 +84,20 @@ Visualiza el arbol completo de instancias de tu lugar en Roblox Studio directame
 ## Documentacion detallada
 
 - [Guia de instalacion](../en/installation/README.md)
-- [Cobertura de herramientas](../en/tools/overview.md)
-- [Guia detallada de Sync](../en/sync/overview.md)
+- [Lista completa de tools](tools/overview.md)
+- [Guia detallada de Sync](sync/overview.md)
 - [Roblox Explorer (Extension VSCode)](../en/installation/roblox-explorer.md)
 - [Compatibilidad](../compatibility.md)
 - [Solucion de problemas](../troubleshooting.md)
+
+### Guias por flujo
+
+- [Instancias y propiedades](tools/instances-and-properties.md) - busqueda, creacion, edicion y tags
+- [Scripting y ejecucion de codigo](tools/scripting.md) - gestion de scripts y ejecucion de Luau
+- [Mundo y entorno](tools/world-and-environment.md) - iluminacion, terrain y camara
+- [Assets y efectos](tools/assets-and-effects.md) - insercion de modelos, tween y efectos
+- [Playtest y pruebas automatizadas](tools/playtest.md) - control de playtest y validacion automatica
+- [Sistema y depuracion](tools/system-and-debugging.md) - conexion, logs y ejecucion por lotes
 
 ## Upgrade Pro
 

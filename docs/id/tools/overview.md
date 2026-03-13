@@ -2,6 +2,20 @@
 
 Untuk parameter detail, periksa definisi alat MCP secara langsung.
 
+## Panduan per alur kerja
+
+Gunakan panduan berbasis alur kerja ini untuk menavigasi kumpulan tool:
+
+| Kategori | Deskripsi | Tool yang termasuk |
+|----------|-----------|--------------------|
+| [Instance & properti](instances-and-properties.md) | Pencarian, pembuatan, pengeditan, dan tag instance | `query_instances`, `mutate_instances`, `manage_properties` |
+| [Scripting & eksekusi kode](scripting.md) | Pengelolaan script dan eksekusi Luau | `manage_scripts`, `execute_luau` |
+| [Dunia & lingkungan](world-and-environment.md) | Lighting, terrain, query spasial, dan kamera | `manage_lighting`, `manage_terrain`, `spatial_query`, `manage_camera` |
+| [Asset & efek](assets-and-effects.md) | Penyisipan asset, tween, animasi, audio, dan efek | `manage_assets`, `manage_tween`, `manage_animation`, `manage_audio`, `manage_effects`, `manage_physics` |
+| [Playtest & tes otomatis](playtest.md) | Kontrol playtest dan validasi otomatis | `system_info` (`play`, `stop`, `pause`, `resume`, `play_status`, `run_test`) |
+| [Sync](../sync/overview.md) | Sinkronisasi Studio dan file lokal | `manage_sync`, `workspace_state` |
+| [Sistem & debugging](system-and-debugging.md) | Koneksi, log, seleksi, dan eksekusi batch | `system_info` (`ping`, `connection`, `usage`, ...), `manage_logs`, `manage_selection`, `batch_execute` |
+
 Dokumen terkait:
 - [Panduan detail Sync](../sync/overview.md)
 
@@ -248,6 +262,12 @@ Kebijakan Sync:
 | `place_info` | Mendapatkan Place ID, nama, kreator | Pro |
 | `services` | Mendaftar semua layanan Roblox | Pro |
 | `studio_settings` | Mendapatkan preferensi Studio | Pro |
+| `play` | Memulai playtest dalam mode Play (F5) atau Run (F8) | Pro |
+| `stop` | Menghentikan playtest yang aktif | Pro |
+| `pause` | Menjeda playtest aktif pada mode Run | Pro |
+| `resume` | Melanjutkan playtest mode Run yang dijeda | Pro |
+| `play_status` | Mendapatkan status playtest dan aksi yang tersedia | Pro |
+| `run_test` | Menyuntikkan script test sementara, menjalankan playtest, mengumpulkan log, dan menulis laporan lokal | Pro |
 
 ## Batch Execute (Pro)
 

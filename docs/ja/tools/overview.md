@@ -2,6 +2,20 @@
 
 MCPツールの詳細パラメータはMCPツール定義を直接確認してください。
 
+## 機能別ガイド
+
+ワークフロー中心の詳細ガイドを参考にしてください。
+
+| カテゴリ | 説明 | 含まれるツール |
+|----------|------|----------------|
+| [インスタンス & プロパティ](instances-and-properties.md) | インスタンス検索、作成、編集、タグ管理 | `query_instances`, `mutate_instances`, `manage_properties` |
+| [スクリプト & コード実行](scripting.md) | スクリプト管理、Luau実行 | `manage_scripts`, `execute_luau` |
+| [ワールド環境](world-and-environment.md) | ライティング、Terrain、空間クエリ、カメラ | `manage_lighting`, `manage_terrain`, `spatial_query`, `manage_camera` |
+| [アセット & オブジェクト演出](assets-and-effects.md) | アセット挿入、トゥイーン、アニメーション、音、エフェクト | `manage_assets`, `manage_tween`, `manage_animation`, `manage_audio`, `manage_effects`, `manage_physics` |
+| [プレイテスト & 自動テスト](playtest.md) | プレイテスト制御と自動検証 | `system_info` (`play`, `stop`, `pause`, `resume`, `play_status`, `run_test`) |
+| [Sync](../sync/overview.md) | Studio とローカルファイルの同期 | `manage_sync`, `workspace_state` |
+| [システム & デバッグ](system-and-debugging.md) | 接続確認、ログ、選択、バッチ実行 | `system_info` (`ping`, `connection`, `usage`, ...), `manage_logs`, `manage_selection`, `batch_execute` |
+
 関連ドキュメント:
 - [Sync機能詳細ガイド](../sync/overview.md)
 
@@ -248,6 +262,12 @@ Syncポリシー:
 | `place_info` | Place ID、名前、クリエイターを取得 | Pro |
 | `services` | 全Robloxサービスを一覧 | Pro |
 | `studio_settings` | Studio設定を取得 | Pro |
+| `play` | Play(F5) または Run(F8) モードでプレイテスト開始 | Pro |
+| `stop` | 現在のプレイテストを停止 | Pro |
+| `pause` | Run モードのプレイテストを一時停止 | Pro |
+| `resume` | 一時停止した Run モードのプレイテストを再開 | Pro |
+| `play_status` | プレイテスト状態と利用可能な action を取得 | Pro |
+| `run_test` | 一時テストスクリプトを注入し、プレイテスト実行後にログ収集とローカルレポート作成 | Pro |
 
 ## Batch Execute（Pro）
 
