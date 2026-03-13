@@ -53,5 +53,6 @@ Terrain generation, asset search, spatial analysis, animation, audio, and produc
 | Resync / Rebuild state | ❌ | ✅ |
 | Change History | ❌ | ✅ |
 | Multi-place Sync | ❌ | ✅ Up to 3 places, each with isolated storage |
+| Playtest Control (Play/Stop/Pause/Resume) | ❌ | ✅ |
 | Advanced tool coverage | Core set | Broader advanced set |
 | AI token efficiency | Standard | Better with bulk / high-leverage actions |

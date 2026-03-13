@@ -8,6 +8,31 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+
+## [1.5.1] - 2026-03-14
+
+### Improved
+
+- Overall stability improvements and internal configuration optimization
+- Restore tier comparison UI overlay
+- Refine telemetry parameters
+
+
+## [1.5.0] - 2026-03-13
+
+### Features
+
+- Play Test support — run, stop, pause, resume play tests and monitor output directly from AI agents
+- Log streaming with incremental cursor-based retrieval (`sinceSeq`)
+
+### Improved
+
+- MCP server stability improvements and license refresh logic refinement
+- Plugin connection handling simplified — removed redundant connect-refresh cycle
+- Enhanced command routing and error handling
+
+
 ## [1.4.2] - 2026-03-11
 
 ### Improved
