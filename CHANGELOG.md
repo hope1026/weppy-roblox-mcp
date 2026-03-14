@@ -10,6 +10,19 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [1.5.2] - 2026-03-14
+
+### Improved
+
+- Improved tool invocation reliability and parameter handling
+- Enhanced file name sanitization for Windows reserved names, trailing dots/spaces, and control characters
+
+### Bug Fixes
+
+- Fixed Explorer view not displaying instances correctly in certain sync scenarios
+
+
 ## [1.5.1] - 2026-03-14
 
 ### Improved
