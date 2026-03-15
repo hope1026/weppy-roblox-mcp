@@ -11,6 +11,14 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [1.5.3] - 2026-03-15
+
+### Bug Fixes
+
+- Fix expected cause of playtest stop not working properly on Windows
+
+
 ## [1.5.2] - 2026-03-14
 
 ### Improved
