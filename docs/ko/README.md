@@ -1,10 +1,12 @@
-# Roblox MCP
+# Roblox MCP — Roblox Studio MCP 서버 | Claude, Codex, Cursor, Gemini로 AI 게임 개발
 
-> Roblox Studio용 MCP 서버 및 플러그인 — Claude Code, Cursor, Codex, Gemini로 스크립트, 지형, 에셋, 조명을 AI로 제어합니다.
+> **Weppy Roblox MCP**는 AI 코딩 에이전트가 라이브 Roblox Studio 세션을 제어할 수 있게 하는 MCP 서버입니다 — 자연어로 스크립트, 인스턴스, 지형, 조명, 에셋, 오디오, 애니메이션을 생성하고 편집합니다.
+
+**21개 통합 도구 · 140+ 액션 · 양방향 Sync · 자동 플레이테스트 · 멀티 Place 지원**
 
 [English](../../README.md) | **한국어** | [日本語](../ja/README.md) | [Español](../es/README.md) | [Português](../pt-br/README.md) | [Bahasa Indonesia](../id/README.md)
 
-[![데모](https://img.youtube.com/vi/3jrUpBbZPaw/maxresdefault.jpg)](https://youtu.be/3jrUpBbZPaw)
+[![데모 — AI가 실시간으로 Roblox 게임을 제작하는 모습](https://img.youtube.com/vi/3jrUpBbZPaw/maxresdefault.jpg)](https://youtu.be/3jrUpBbZPaw)
 
 ## 빠른 설치 (5분)
 
@@ -107,4 +109,4 @@ Roblox Studio의 전체 인스턴스 트리를 VSCode 안에서 바로 확인할
 
 ---
 
-[GitHub 이슈](https://github.com/hope1026/roblox-mcp/issues) · [Discussions](https://github.com/hope1026/roblox-mcp/discussions) · [npm](https://www.npmjs.com/package/@weppy/roblox-mcp)
+[GitHub 이슈](https://github.com/hope1026/weppy-roblox-mcp/issues) · [Discussions](https://github.com/hope1026/weppy-roblox-mcp/discussions) · [npm](https://www.npmjs.com/package/@weppy/roblox-mcp)

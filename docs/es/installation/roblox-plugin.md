@@ -4,7 +4,7 @@ Instrucciones para instalar el plugin que conecta Roblox Studio con agentes de I
 
 ## 1. Descargar el Plugin
 
-1. Abre [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest)
+1. Abre [GitHub Releases](https://github.com/hope1026/weppy-roblox-mcp/releases/latest)
 2. Descarga `weppy-roblox-mcp-v{version}.zip`
 3. Extrae el ZIP - encontraras `roblox-plugin/WeppyRobloxMCP.rbxm` y guias de instalacion
 

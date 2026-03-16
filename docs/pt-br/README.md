@@ -1,10 +1,12 @@
-# Roblox MCP
+# Roblox MCP — Servidor MCP para Roblox Studio | Desenvolvimento de jogos com IA usando Claude, Codex, Cursor e Gemini
 
-> Servidor MCP e plugin para Roblox Studio — controle scripts, terrain, assets e iluminacao com Claude Code, Cursor, Codex e Gemini.
+> **Weppy Roblox MCP** e um servidor MCP que permite agentes de codificacao IA controlarem uma sessao ao vivo do Roblox Studio — crie e edite scripts, instancias, terrain, iluminacao, assets, audio e animacoes com linguagem natural.
+
+**21 ferramentas consolidadas · 140+ acoes · Sync bidirecional · Playtest automatizado · Suporte multi-place**
 
 [English](../../README.md) | [한국어](../ko/README.md) | [日本語](../ja/README.md) | [Español](../es/README.md) | **Português** | [Bahasa Indonesia](../id/README.md)
 
-[![Demo](https://img.youtube.com/vi/3jrUpBbZPaw/maxresdefault.jpg)](https://youtu.be/3jrUpBbZPaw)
+[![Demo — IA criando um jogo Roblox em tempo real](https://img.youtube.com/vi/3jrUpBbZPaw/maxresdefault.jpg)](https://youtu.be/3jrUpBbZPaw)
 
 ## Instalacao rapida (5 minutos)
 
@@ -107,4 +109,4 @@ Sync bidirecional, recursos avancados de criacao e eficiencia de tokens de IA �
 
 ---
 
-[GitHub Issues](https://github.com/hope1026/roblox-mcp/issues) · [Discussions](https://github.com/hope1026/roblox-mcp/discussions) · [npm](https://www.npmjs.com/package/@weppy/roblox-mcp)
+[GitHub Issues](https://github.com/hope1026/weppy-roblox-mcp/issues) · [Discussions](https://github.com/hope1026/weppy-roblox-mcp/discussions) · [npm](https://www.npmjs.com/package/@weppy/roblox-mcp)

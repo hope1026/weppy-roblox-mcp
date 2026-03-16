@@ -40,7 +40,7 @@ See [Pro Upgrade Guide](en/pro-upgrade.md) for details.
 
 ## Still stuck?
 
-[Open a Discussion](https://github.com/hope1026/roblox-mcp/discussions) and include:
+[Open a Discussion](https://github.com/hope1026/weppy-roblox-mcp/discussions) and include:
 - OS and Node.js version
 - AI client and version
 - Error message or logs

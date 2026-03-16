@@ -21,7 +21,7 @@ Run in Claude Code terminal:
 
 ```bash
 # Add marketplace
-/plugin marketplace add hope1026/roblox-mcp
+/plugin marketplace add hope1026/weppy-roblox-mcp
 
 # Install plugin
 /plugin install weppy-roblox-mcp@hope1026-roblox-mcp

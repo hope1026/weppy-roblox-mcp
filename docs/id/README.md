@@ -1,10 +1,12 @@
-# Roblox MCP
+# Roblox MCP — Server MCP untuk Roblox Studio | Pengembangan Game AI dengan Claude, Codex, Cursor & Gemini
 
-> Server MCP dan plugin untuk Roblox Studio — kendalikan script, terrain, asset, dan lighting dengan Claude Code, Cursor, Codex, dan Gemini.
+> **Weppy Roblox MCP** adalah server MCP yang memungkinkan agen pengkodean AI mengontrol sesi Roblox Studio secara langsung — buat dan edit script, instance, terrain, lighting, asset, audio, dan animasi dengan bahasa alami.
+
+**21 alat terkonsolidasi · 140+ aksi · Sync dua arah · Playtest otomatis · Dukungan multi-place**
 
 [English](../../README.md) | [한국어](../ko/README.md) | [日本語](../ja/README.md) | [Español](../es/README.md) | [Português](../pt-br/README.md) | **Bahasa Indonesia**
 
-[![Demo](https://img.youtube.com/vi/3jrUpBbZPaw/maxresdefault.jpg)](https://youtu.be/3jrUpBbZPaw)
+[![Demo — AI membuat game Roblox secara real-time](https://img.youtube.com/vi/3jrUpBbZPaw/maxresdefault.jpg)](https://youtu.be/3jrUpBbZPaw)
 
 ## Instalasi Cepat (5 menit)
 
@@ -107,4 +109,4 @@ Sync dua arah, kemampuan kreasi lanjutan, dan efisiensi token AI — semua dalam
 
 ---
 
-[GitHub Issues](https://github.com/hope1026/roblox-mcp/issues) · [Discussions](https://github.com/hope1026/roblox-mcp/discussions) · [npm](https://www.npmjs.com/package/@weppy/roblox-mcp)
+[GitHub Issues](https://github.com/hope1026/weppy-roblox-mcp/issues) · [Discussions](https://github.com/hope1026/weppy-roblox-mcp/discussions) · [npm](https://www.npmjs.com/package/@weppy/roblox-mcp)

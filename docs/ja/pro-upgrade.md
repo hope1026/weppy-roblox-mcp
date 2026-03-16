@@ -30,7 +30,7 @@ Pro Syncは単方向エクスポートを超えます。ローカルでスクリ
 
 ### ステップ2: GitHub Releasesからダウンロード
 
-1. [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest) を開く
+1. [GitHub Releases](https://github.com/hope1026/weppy-roblox-mcp/releases/latest) を開く
 2. `weppy-roblox-mcp-v{version}.zip` をダウンロード
 3. 解凍して `roblox-plugin/WeppyRobloxMCP.rbxm` を Roblox Plugins フォルダへコピー
 

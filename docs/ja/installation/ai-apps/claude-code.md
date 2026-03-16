@@ -21,7 +21,7 @@ Claude Codeターミナルで実行:
 
 ```bash
 # マーケットプレイスを追加
-/plugin marketplace add hope1026/roblox-mcp
+/plugin marketplace add hope1026/weppy-roblox-mcp
 
 # プラグインをインストール
 /plugin install weppy-roblox-mcp@hope1026-roblox-mcp

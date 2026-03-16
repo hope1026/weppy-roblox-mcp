@@ -30,7 +30,7 @@ Pro Sync는 단방향 내보내기를 넘어섭니다. 로컬에서 스크립트
 
 ### 2단계: GitHub Releases에서 다운로드
 
-1. [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest) 열기
+1. [GitHub Releases](https://github.com/hope1026/weppy-roblox-mcp/releases/latest) 열기
 2. `weppy-roblox-mcp-v{version}.zip` 다운로드
 3. 압축 해제 후 `roblox-plugin/WeppyRobloxMCP.rbxm`를 Roblox Plugins 폴더에 복사
 

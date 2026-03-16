@@ -2,7 +2,7 @@
 
 ## Bug Reports
 
-Use the [Bug Report issue template](https://github.com/hope1026/roblox-mcp/issues/new?template=bug_report.yml).
+Use the [Bug Report issue template](https://github.com/hope1026/weppy-roblox-mcp/issues/new?template=bug_report.yml).
 
 Include:
 - OS and Node.js version (`node --version`)
@@ -14,11 +14,11 @@ Include:
 
 ## Feature Requests
 
-Use the [Feature Request template](https://github.com/hope1026/roblox-mcp/issues/new?template=feature_request.yml).
+Use the [Feature Request template](https://github.com/hope1026/weppy-roblox-mcp/issues/new?template=feature_request.yml).
 
 ## Questions & Install Help
 
-Use [GitHub Discussions](https://github.com/hope1026/roblox-mcp/discussions) — not Issues — for questions and install help.
+Use [GitHub Discussions](https://github.com/hope1026/weppy-roblox-mcp/discussions) — not Issues — for questions and install help.
 
 ## Pull Requests
 

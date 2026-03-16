@@ -5,8 +5,8 @@ body:
   - type: markdown
     attributes:
       value: |
-        Before reporting, check [Troubleshooting](https://github.com/hope1026/roblox-mcp/blob/main/docs/en/troubleshooting.md)
-        and [Discussions](https://github.com/hope1026/roblox-mcp/discussions).
+        Before reporting, check [Troubleshooting](https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/en/troubleshooting.md)
+        and [Discussions](https://github.com/hope1026/weppy-roblox-mcp/discussions).
   - type: input
     id: os
     attributes:

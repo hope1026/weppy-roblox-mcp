@@ -21,7 +21,7 @@ Claude Code 터미널에서 실행:
 
 ```bash
 # 마켓플레이스 추가
-/plugin marketplace add hope1026/roblox-mcp
+/plugin marketplace add hope1026/weppy-roblox-mcp
 
 # 플러그인 설치
 /plugin install weppy-roblox-mcp@hope1026-roblox-mcp

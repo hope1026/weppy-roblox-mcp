@@ -1,7 +1,9 @@
-# Roblox MCP — Full Documentation
+# Weppy Roblox MCP — Full Documentation
 
-> The MCP server that connects AI coding agents to Roblox Studio — control
-> scripts, terrain, assets, lighting, audio, and animations via natural language.
+> Weppy Roblox MCP is an MCP server that lets AI coding agents (Claude, Codex,
+> Cursor, Gemini) control a live Roblox Studio session — create and edit scripts,
+> instances, terrain, lighting, assets, audio, and animations via natural language.
+> 21 consolidated tools · 140+ actions · Bidirectional sync · Multi-place support
 
 ---
 
@@ -25,7 +27,7 @@ Download the plugin file from GitHub, then place it in Roblox Studio's Plugins f
 
 ### Download Plugin
 
-1. Open [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest)
+1. Open [GitHub Releases](https://github.com/hope1026/weppy-roblox-mcp/releases/latest)
 2. Download `weppy-roblox-mcp-v{version}.zip`
 3. Extract the ZIP file - you will find `roblox-plugin/WeppyRobloxMCP.rbxm` and setup guides
 
@@ -66,7 +68,7 @@ The MCP server command is: `npx -y @weppy/roblox-mcp`
 **Method 1: Install from Marketplace (Recommended)**
 
 ```bash
-/plugin marketplace add hope1026/roblox-mcp
+/plugin marketplace add hope1026/weppy-roblox-mcp
 /plugin install weppy-roblox-mcp@hope1026-roblox-mcp
 ```
 
@@ -168,7 +170,7 @@ In the agent pane, click ⋯ → MCP Servers → Manage MCP Servers → View raw
 
 Browse synced instance trees inside VSCode with Roblox class icons.
 
-1. Download the latest `weppy-roblox-explorer-*.vsix` from [Releases](https://github.com/hope1026/roblox-mcp/releases)
+1. Download the latest `weppy-roblox-explorer-*.vsix` from [Releases](https://github.com/hope1026/weppy-roblox-mcp/releases)
 2. Open VSCode → Extensions sidebar → ⋯ → Install from VSIX...
 3. Select the downloaded `.vsix` file
 
@@ -577,7 +579,7 @@ The action you're requesting requires the Pro tier.
 
 ## Still stuck?
 
-[Open a Discussion](https://github.com/hope1026/roblox-mcp/discussions) with your OS, Node.js version, AI client, and error details.
+[Open a Discussion](https://github.com/hope1026/weppy-roblox-mcp/discussions) with your OS, Node.js version, AI client, and error details.
 
 ---
 
@@ -593,7 +595,7 @@ The action you're requesting requires the Pro tier.
 
 # Links
 
-- GitHub: https://github.com/hope1026/roblox-mcp
+- GitHub: https://github.com/hope1026/weppy-roblox-mcp
 - npm: https://www.npmjs.com/package/@weppy/roblox-mcp
-- Issues: https://github.com/hope1026/roblox-mcp/issues
-- Discussions: https://github.com/hope1026/roblox-mcp/discussions
+- Issues: https://github.com/hope1026/weppy-roblox-mcp/issues
+- Discussions: https://github.com/hope1026/weppy-roblox-mcp/discussions
