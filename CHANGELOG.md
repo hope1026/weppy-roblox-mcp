@@ -12,6 +12,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+## [1.5.4] - 2026-03-16
+
+### Improved
+
+- Enhanced build pipeline stability and plugin artifact verification
+- Improved production build process with additional validation gates
+
 ## [1.5.3] - 2026-03-15
 
 ### Bug Fixes
