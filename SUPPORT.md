@@ -11,7 +11,7 @@
 
 ## Community Help
 
-For questions and install issues, use [GitHub Discussions](https://github.com/hope1026/roblox-mcp/discussions).
+For questions and install issues, use [GitHub Discussions](https://github.com/hope1026/weppy-roblox-mcp/discussions).
 
 Please include:
 - Your OS and Node.js version
@@ -20,7 +20,7 @@ Please include:
 
 ## Bug Reports
 
-For confirmed bugs, open an [Issue](https://github.com/hope1026/roblox-mcp/issues/new?template=bug_report.yml).
+For confirmed bugs, open an [Issue](https://github.com/hope1026/weppy-roblox-mcp/issues/new?template=bug_report.yml).
 
 ## Pro Users
 

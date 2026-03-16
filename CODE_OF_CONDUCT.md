@@ -22,7 +22,7 @@ Examples of unacceptable behavior:
 
 ## Enforcement
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by opening an issue or contacting the maintainer via [GitHub Discussions](https://github.com/hope1026/roblox-mcp/discussions). All complaints will be reviewed and investigated and will result in a response that is deemed necessary and appropriate.
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by opening an issue or contacting the maintainer via [GitHub Discussions](https://github.com/hope1026/weppy-roblox-mcp/discussions). All complaints will be reviewed and investigated and will result in a response that is deemed necessary and appropriate.
 
 ## Attribution
 

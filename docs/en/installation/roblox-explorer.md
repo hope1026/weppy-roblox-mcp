@@ -13,7 +13,7 @@ Roblox Studio Explorer-like tree view for VSCode. Browse synced instance trees, 
 
 ### 1. Download VSIX
 
-Go to the [Releases](https://github.com/hope1026/roblox-mcp/releases) page and download the latest `weppy-roblox-explorer-*.vsix` file.
+Go to the [Releases](https://github.com/hope1026/weppy-roblox-mcp/releases) page and download the latest `weppy-roblox-explorer-*.vsix` file.
 
 > The VSIX file is attached as a release asset alongside the plugin ZIP.
 
@@ -60,7 +60,7 @@ Go to the [Releases](https://github.com/hope1026/roblox-mcp/releases) page and d
 
 ## Updating
 
-Download the latest `.vsix` from [Releases](https://github.com/hope1026/roblox-mcp/releases) and repeat the installation steps. VSCode will replace the existing version.
+Download the latest `.vsix` from [Releases](https://github.com/hope1026/weppy-roblox-mcp/releases) and repeat the installation steps. VSCode will replace the existing version.
 
 ## Related
 

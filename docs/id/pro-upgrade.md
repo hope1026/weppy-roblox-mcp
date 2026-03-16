@@ -30,7 +30,7 @@ Pembuatan terrain, pencarian aset, analisis spasial, animasi, audio, dan otomasi
 
 ### Langkah 2: Unduh dari GitHub Releases
 
-1. Buka [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest)
+1. Buka [GitHub Releases](https://github.com/hope1026/weppy-roblox-mcp/releases/latest)
 2. Unduh `weppy-roblox-mcp-v{version}.zip`
 3. Ekstrak lalu salin `roblox-plugin/WeppyRobloxMCP.rbxm` ke folder Plugins Roblox
 

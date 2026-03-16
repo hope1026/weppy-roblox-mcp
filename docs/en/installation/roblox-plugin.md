@@ -4,7 +4,7 @@ How to install the plugin to connect AI agents with Roblox Studio.
 
 ## 1. Download Plugin
 
-1. Open [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest)
+1. Open [GitHub Releases](https://github.com/hope1026/weppy-roblox-mcp/releases/latest)
 2. Download `weppy-roblox-mcp-v{version}.zip`
 3. Extract the ZIP file - you will find `roblox-plugin/WeppyRobloxMCP.rbxm` and setup guides
 

@@ -5,20 +5,20 @@
     "email": "hope841026@gmail.com"
   },
   "metadata": {
-    "description": "Roblox MCP server and tools for AI-powered game development",
-    "version": "1.5.4"
+    "description": "Weppy Roblox MCP — MCP server that lets AI coding agents control a live Roblox Studio session with 21 tools, 140+ actions, bidirectional sync, automated playtest, and multi-place support",
+    "version": "1.5.5"
   },
   "plugins": [
     {
       "name": "weppy-roblox-mcp",
       "source": "./plugins/weppy-roblox-mcp",
-      "description": "MCP server for Roblox Studio integration - AI-powered game development with specialized agents and skills",
-      "version": "1.5.4",
+      "description": "Weppy Roblox MCP — MCP server that lets AI coding agents control a live Roblox Studio session with 21 tools, 140+ actions, bidirectional sync, automated playtest, and multi-place support",
+      "version": "1.5.5",
       "author": {
         "name": "hope1026"
       },
-      "homepage": "https://github.com/hope1026/roblox-mcp",
-      "repository": "https://github.com/hope1026/roblox-mcp",
+      "homepage": "https://github.com/hope1026/weppy-roblox-mcp",
+      "repository": "https://github.com/hope1026/weppy-roblox-mcp",
       "license": "SEE LICENSE IN LICENSE",
       "keywords": [
         "mcp",

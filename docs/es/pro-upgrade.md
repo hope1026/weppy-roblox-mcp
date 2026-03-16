@@ -30,7 +30,7 @@ Generación de terreno, búsqueda de assets, análisis espacial, animación, aud
 
 ### Paso 2: Descargar desde GitHub Releases
 
-1. Abre [GitHub Releases](https://github.com/hope1026/roblox-mcp/releases/latest)
+1. Abre [GitHub Releases](https://github.com/hope1026/weppy-roblox-mcp/releases/latest)
 2. Descarga `weppy-roblox-mcp-v{version}.zip`
 3. Extrae y copia `roblox-plugin/WeppyRobloxMCP.rbxm` a tu carpeta de Plugins de Roblox
 

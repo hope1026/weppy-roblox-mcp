@@ -1,4 +1,4 @@
-description: "Connect AI coding agents to a live Roblox Studio session. Create and edit scripts, instances, terrain, lighting, assets, audio, and animation with natural language, plus project sync for full-context workflows."
+description: "Weppy Roblox MCP — MCP server that lets AI coding agents (Claude, Codex, Cursor, Gemini) control a live Roblox Studio session with 21 tools, 140+ actions, bidirectional sync, automated playtest, and multi-place support."
 startCommand:
   type: stdio
   configSchema:

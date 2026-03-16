@@ -12,6 +12,14 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [1.5.5] - 2026-03-16
+
+### Improved
+
+- Enhanced overall stability and reliability
+
+
 ## [1.5.4] - 2026-03-16
 
 ### Improved
@@ -340,4 +348,4 @@ First public release of Roblox MCP - AI-powered Roblox Studio integration.
 - **Secure by design** - Localhost only, no external network access
 - **Basic tier included** - Essential tools, free forever
 
-[0.1.0]: https://github.com/hope1026/roblox-mcp/releases/tag/v0.1.0
+[0.1.0]: https://github.com/hope1026/weppy-roblox-mcp/releases/tag/v0.1.0

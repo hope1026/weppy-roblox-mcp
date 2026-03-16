@@ -1,17 +1,20 @@
-# Roblox MCP
+# Weppy Roblox MCP — MCP Server for Roblox Studio
 
-> The MCP server that connects AI coding agents to Roblox Studio — control
-> scripts, terrain, assets, lighting, audio, and animations via natural language.
+> Weppy Roblox MCP is an MCP server that lets AI coding agents (Claude, Codex,
+> Cursor, Gemini) control a live Roblox Studio session — create and edit scripts,
+> instances, terrain, lighting, assets, audio, and animations via natural language.
 
 ## What it does
 
-Roblox MCP provides a real-time bridge between AI agents and the Roblox Studio
-DataModel. It exposes the full Roblox API surface as executable MCP tools, so AI
-can directly create, read, modify, and delete instances, scripts, properties,
+Weppy Roblox MCP provides a real-time bridge between AI agents and the Roblox
+Studio DataModel. It exposes the full Roblox API surface as executable MCP tools,
+so AI can directly create, read, modify, and delete instances, scripts, properties,
 terrain, and more — inside a live Studio session.
 
-- Consolidated MCP tools covering the full Roblox Studio API surface
-- Bidirectional project sync between Roblox Studio and local files
+- 21 consolidated tools with 140+ actions covering the full Roblox Studio API surface
+- Bidirectional project sync between Roblox Studio and local files (Pro)
+- Automated playtest: AI starts/stops Play/Run, injects test scripts, collects logs
+- Multi-place support (up to 3 places simultaneously)
 - Roblox Explorer VSCode extension for browsing Studio hierarchy
 - Works with Claude Code, Claude Desktop, Cursor, Codex CLI, Codex Desktop, Gemini CLI, Antigravity
 
@@ -28,13 +31,13 @@ Install in 2 steps:
 
 ## Detailed docs
 
-- Full documentation: [llms-full.txt](https://github.com/hope1026/roblox-mcp/blob/main/llms-full.txt)
-- Installation: https://github.com/hope1026/roblox-mcp/blob/main/docs/en/installation/README.md
-- Tools reference: https://github.com/hope1026/roblox-mcp/blob/main/docs/en/tools/overview.md
-- Sync guide: https://github.com/hope1026/roblox-mcp/blob/main/docs/en/sync/overview.md
-- Troubleshooting: https://github.com/hope1026/roblox-mcp/blob/main/docs/troubleshooting.md
-- Compatibility: https://github.com/hope1026/roblox-mcp/blob/main/docs/compatibility.md
-- Pro upgrade: https://github.com/hope1026/roblox-mcp/blob/main/docs/en/pro-upgrade.md
+- Full documentation: [llms-full.txt](https://github.com/hope1026/weppy-roblox-mcp/blob/main/llms-full.txt)
+- Installation: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/en/installation/README.md
+- Tools reference: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/en/tools/overview.md
+- Sync guide: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/en/sync/overview.md
+- Troubleshooting: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/troubleshooting.md
+- Compatibility: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/compatibility.md
+- Pro upgrade: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/en/pro-upgrade.md
 
 ## Requirements
 
@@ -49,7 +52,7 @@ Install in 2 steps:
 
 ## Links
 
-- GitHub: https://github.com/hope1026/roblox-mcp
+- GitHub: https://github.com/hope1026/weppy-roblox-mcp
 - npm: https://www.npmjs.com/package/@weppy/roblox-mcp
-- Issues: https://github.com/hope1026/roblox-mcp/issues
-- Discussions: https://github.com/hope1026/roblox-mcp/discussions
+- Issues: https://github.com/hope1026/weppy-roblox-mcp/issues
+- Discussions: https://github.com/hope1026/weppy-roblox-mcp/discussions
