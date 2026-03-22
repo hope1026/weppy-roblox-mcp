@@ -14,6 +14,15 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.0.1] - 2026-03-22
+
+### Bug Fixes
+
+- Fix setup scripts (`setup-mcp.sh`, `setup-mcp.bat`) failing to resolve MCP server path on Windows and macOS
+- Fix project sync directory path resolution when multiple MCP instances share the same workspace
+
+
 ## [2.0.0] - 2026-03-22
 
 ### BREAKING CHANGES
