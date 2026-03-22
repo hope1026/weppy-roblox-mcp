@@ -66,7 +66,17 @@ AI bisa mengontrol playtest Studio secara langsung. AI dapat memulai dan menghen
 - "Tulis dan jalankan test untuk memastikan SpawnLocation berada di atas tanah."
 - "Validasi lewat playtest bahwa script yang baru saya ubah berjalan tanpa error."
 
-### 4) Roblox Explorer: jelajahi hierarki Studio di VSCode
+### 4) Dashboard: pantau pekerjaan AI secara real-time
+
+Dashboard berbasis web yang disediakan server MCP memungkinkan Anda melihat status koneksi, riwayat eksekusi alat, status sinkronisasi, dan riwayat perubahan game secara real-time.
+
+![Dashboard Overview — status server, perubahan terbaru, ringkasan sesi](../assets/screenshots/dashboard/dashboard_overview.png)
+
+- Lihat status koneksi server/plugin/agen dalam satu pandangan
+- Bandingkan semua perubahan yang dilakukan AI dengan Before & After di Changelog
+- Analisis alur kerja dengan riwayat dan statistik eksekusi alat
+
+### 5) Roblox Explorer: jelajahi hierarki Studio di VSCode
 
 Lihat seluruh pohon instance dari place Roblox Studio langsung di dalam VSCode. Navigasi service, buka script dan file properti yang tersinkron, dan pantau status sinkronisasi — semua tanpa beralih ke Studio.
 
@@ -88,6 +98,7 @@ Lihat seluruh pohon instance dari place Roblox Studio langsung di dalam VSCode. 
 - [Panduan instalasi](../en/installation/README.md)
 - [Daftar tool lengkap](tools/overview.md)
 - [Panduan detail Sync](sync/overview.md)
+- [Panduan dashboard](dashboard/overview.md)
 - [Roblox Explorer (Ekstensi VSCode)](../en/installation/roblox-explorer.md)
 - [Kompatibilitas](../compatibility.md)
 - [Panduan pemecahan masalah](../troubleshooting.md)
