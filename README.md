@@ -75,7 +75,17 @@ AI can control Roblox Studio playtests directly. It can start and stop Play (F5)
 - "Write a test that verifies the SpawnLocation is above the ground and run it."
 - "Validate that the script I just changed runs without errors in playtest."
 
-### 4) Roblox Explorer: Browse Studio hierarchy in VSCode
+### 4) Dashboard: Monitor AI work in real time
+
+The MCP server provides a web dashboard where you can check connection status, tool execution history, sync state, and game change logs in real time.
+
+![Dashboard Overview — Server status, recent changes, and session summary](docs/assets/screenshots/dashboard/dashboard_overview.png)
+
+- Server/Plugin/Agent connection status at a glance
+- Compare every change the AI made via Before & After in Changelog
+- Analyze workflow with tool execution history and statistics
+
+### 5) Roblox Explorer: Browse Studio hierarchy in VSCode
 
 View the full instance tree of your Roblox Studio place directly inside VSCode. Navigate services, open synced scripts and property files, and track sync status — all without switching to Studio.
 
@@ -105,6 +115,7 @@ View the full instance tree of your Roblox Studio place directly inside VSCode. 
 - [Installation Guide](docs/en/installation/README.md)
 - [Tools Reference](docs/en/tools/overview.md)
 - [Sync Deep Dive](docs/en/sync/overview.md)
+- [Dashboard Guide](docs/en/dashboard/overview.md)
 - [Roblox Explorer (VSCode Extension)](docs/en/installation/roblox-explorer.md)
 - [Compatibility](docs/compatibility.md)
 - [Troubleshooting](docs/troubleshooting.md)

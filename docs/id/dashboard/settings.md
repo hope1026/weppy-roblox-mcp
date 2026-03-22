@@ -1,0 +1,67 @@
+# Settings
+
+> Periksa dan kelola informasi lisensi, pengaturan server, pengaturan sinkronisasi, dan bahasa.
+
+## Ikhtisar
+
+Di halaman Settings, Anda dapat melihat informasi lisensi dan pengaturan server, serta mengubah sebagian pengaturan. Halaman ini selalu dapat diakses selama server terhubung (L1 ke atas).
+
+## License (hanya-baca)
+
+Menampilkan status lisensi saat ini:
+
+| Item | Deskripsi |
+|------|-----------|
+| Status | Badge status (Active/Inactive) |
+| Tier | Tier saat ini (Basic/Pro) |
+| License Key | Kunci lisensi yang disamarkan |
+| Provider | Informasi penyedia lisensi |
+
+## General
+
+| Pengaturan | Deskripsi |
+|------------|-----------|
+| Log Level | Tingkat output log |
+| History Recording | Apakah riwayat eksekusi alat disimpan |
+| Stats Collection | Apakah statistik alat dikumpulkan |
+| Request Timeout | Batas waktu permintaan (detik) |
+
+## Server Environment (hanya-baca)
+
+Menampilkan pengaturan server yang dikonfigurasi melalui variabel lingkungan:
+
+| Variabel Lingkungan | Deskripsi | Nilai Default |
+|---------------------|-----------|---------------|
+| `HTTP_PORT` | Port HTTP | 3002 |
+| `HTTP_HOST` | Host HTTP | 127.0.0.1 |
+| `DASHBOARD_AUTO_OPEN` | Pembukaan otomatis dashboard | true |
+
+## Sync Settings
+
+| Pengaturan | Deskripsi |
+|------------|-----------|
+| Max Depth | Kedalaman maksimum sinkronisasi |
+| Max Instances | Jumlah maksimum instance yang disinkronkan |
+
+## Language
+
+Mengubah bahasa UI dashboard. Mendukung 6 bahasa + Auto (deteksi otomatis bahasa browser).
+
+| Opsi | Bahasa |
+|------|--------|
+| Auto | Deteksi otomatis bahasa browser |
+| English | Inggris |
+| 한국어 | Korea |
+| 日本語 | Jepang |
+| Español | Spanyol |
+| Português | Portugis |
+| Bahasa Indonesia | Indonesia |
+
+## Dokumen Terkait
+
+- [Dashboard Overview](overview.md)
+- [Changelog](changelog.md)
+- [Connection](connection.md)
+- [Sync](sync.md)
+- [Playtest](playtest.md)
+- [Tools](tools.md)

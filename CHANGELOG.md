@@ -13,6 +13,32 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.0.0] - 2026-03-22
+
+### BREAKING CHANGES
+
+- **ZIP users**: Package directory structure has changed. You must re-run `setup-mcp.sh` (or `setup-mcp.bat`). The MCP server path in `.mcp.json` has moved from `mcp-server/index.js` to `plugins/weppy-roblox-mcp/dist/index.js`.
+
+### Highlights
+
+- **Built-in Dashboard**: The MCP server now includes an embedded dashboard. Access it at `http://127.0.0.1:3002/dashboard` — no extra setup required for npm or ZIP installs.
+- **Unified deploy structure**: npm, ZIP, and local dev environments all share the same `plugins/weppy-roblox-mcp/dist/index.js` runtime layout.
+
+### Features
+
+- Built-in dashboard with 7 pages: Overview, Connection, Tools, Sync, Changelog, Playtest, Settings
+- Multi-language support (en, ko) with auto-detection
+- Real-time SSE updates for connection status and license changes
+- Unified tool and sync changelog extraction
+- Sync apply modes (auto/manual per content type)
+
+### Bug Fixes
+
+- Unified MCP server path across all setup scripts and guides (6 languages)
+- Tooltip clipping at viewport edges
+
+
 ## [1.5.5] - 2026-03-16
 
 ### Improved

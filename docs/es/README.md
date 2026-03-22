@@ -66,7 +66,17 @@ La IA puede controlar directamente el playtest de Studio. Puede iniciar y detene
 - "Escribe y ejecuta una prueba para confirmar que el SpawnLocation esta sobre el suelo."
 - "Valida con playtest que el script que acabo de cambiar funciona sin errores."
 
-### 4) Roblox Explorer: explora la jerarquia de Studio en VSCode
+### 4) Dashboard: monitorea el trabajo de la IA en tiempo real
+
+El Dashboard web proporcionado por el servidor MCP permite consultar en tiempo real el estado de conexion, el historial de ejecucion de herramientas, el estado de sincronizacion y el historial de cambios del juego.
+
+![Dashboard Overview — estado del servidor, cambios recientes y resumen de sesion](../assets/screenshots/dashboard/dashboard_overview.png)
+
+- Estado de conexion del servidor/plugin/agente de un vistazo
+- Compara todos los cambios realizados por la IA con Before & After en el Changelog
+- Analiza el flujo de trabajo con el historial de ejecucion de herramientas y estadisticas
+
+### 5) Roblox Explorer: explora la jerarquia de Studio en VSCode
 
 Visualiza el arbol completo de instancias de tu lugar en Roblox Studio directamente dentro de VSCode. Navega los servicios, abre scripts y archivos de propiedades sincronizados, y rastrea el estado de sincronizacion — todo sin cambiar a Studio.
 
@@ -88,6 +98,7 @@ Visualiza el arbol completo de instancias de tu lugar en Roblox Studio directame
 - [Guia de instalacion](../en/installation/README.md)
 - [Lista completa de tools](tools/overview.md)
 - [Guia detallada de Sync](sync/overview.md)
+- [Guia del Dashboard](dashboard/overview.md)
 - [Roblox Explorer (Extension VSCode)](../en/installation/roblox-explorer.md)
 - [Compatibilidad](../compatibility.md)
 - [Solucion de problemas](../troubleshooting.md)
