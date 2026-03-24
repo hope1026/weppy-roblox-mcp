@@ -94,8 +94,7 @@ step "1/3" "Install @weppy/roblox-mcp via npm"
 
 if confirm "  Run npm install -g @weppy/roblox-mcp?"; then
   if npm install -g @weppy/roblox-mcp; then
-    INSTALLED_VERSION=$(npx -y @weppy/roblox-mcp --version 2>/dev/null || echo "unknown")
-    success "Installed @weppy/roblox-mcp (${INSTALLED_VERSION})"
+    success "Installed @weppy/roblox-mcp"
   else
     fail "npm install failed"
     exit 1

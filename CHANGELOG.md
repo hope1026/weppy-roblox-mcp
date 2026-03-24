@@ -16,11 +16,19 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.0.3] - 2026-03-24
+
+### Bug Fixes
+
+- **Fix install script failures on macOS/Linux**: Resolved a path resolution bug in `install.sh` that caused the installer to fail when the Claude or Cursor config directory did not exist yet. The script now creates the config directory automatically before writing the MCP entry.
+
+
 ## [2.0.2] - 2026-03-24
 
 ### Features
 
-- **New one-line installation method**: Install the MCP server and Roblox Studio plugin with a single command. On macOS/Linux run `curl -fsSL https://weppy.dev/install | bash`, on Windows run `irm https://weppy.dev/install.ps1 | iex`. The installer auto-detects the Claude/Cursor config path, injects the MCP entry, and opens the plugin install page in your browser.
+- **New one-line installation method**: Install the MCP server and Roblox Studio plugin with a single command. On macOS/Linux run `curl -fsSL https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.sh | bash`, on Windows run `irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1 | iex`. The installer auto-detects the Claude/Cursor config path, injects the MCP entry, and opens the plugin install page in your browser.
 - **Dashboard data clearing**: Added clear buttons to the web dashboard for connection history, tool execution history, and sync history. Each section can now be reset independently without restarting the server.
 - **Plugin and MCP stability improvements**: Hardened the HTTP polling loop in the Roblox Studio plugin to recover from transient network errors without dropping the connection. The MCP server now retries failed result deliveries and surfaces timeout details in error responses for easier debugging.
 
