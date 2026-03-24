@@ -39,6 +39,7 @@ O servidor MCP deve estar instalado. Complete primeiro o guia do seu app de IA:
 |------------------|---------------------|
 | Claude Code | [Como Configurar](ai-apps/claude-code.md) |
 | Claude Desktop | [Como Configurar](ai-apps/claude-app.md) |
+| Cursor | [Como Configurar](ai-apps/cursor.md) |
 | Codex CLI | [Como Configurar](ai-apps/codex-cli.md) |
 | Codex Desktop | [Como Configurar](ai-apps/codex-app.md) |
 | Gemini CLI | [Como Configurar](ai-apps/gemini-cli.md) |

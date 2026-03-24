@@ -6,7 +6,7 @@
 |--------|:-----:|:---:|-------------|
 | Claude Code | ✅ | ✅ | [Guide](en/installation/ai-apps/claude-code.md) |
 | Claude Desktop | ✅ | ✅ | [Guide](en/installation/ai-apps/claude-app.md) |
-| Cursor | ✅ | ✅ | MCP config: `npx -y @weppy/roblox-mcp` |
+| Cursor | ✅ | ✅ | [Guide](en/installation/ai-apps/cursor.md) |
 | Codex CLI | ✅ | ✅ | [Guide](en/installation/ai-apps/codex-cli.md) |
 | Codex Desktop | ✅ | ✅ | [Guide](en/installation/ai-apps/codex-app.md) |
 | Gemini CLI | ✅ | ✅ | [Guide](en/installation/ai-apps/gemini-cli.md) |

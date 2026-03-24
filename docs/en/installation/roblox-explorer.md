@@ -11,11 +11,11 @@ Roblox Studio Explorer-like tree view for VSCode. Browse synced instance trees, 
 
 ## Installation
 
-### 1. Download VSIX
+### 1. Download Release Package
 
-Go to the [Releases](https://github.com/hope1026/weppy-roblox-mcp/releases) page and download the latest `weppy-roblox-explorer-*.vsix` file.
+Go to the [Releases](https://github.com/hope1026/weppy-roblox-mcp/releases) page and download the latest `weppy-roblox-explorer-v*.zip` file.
 
-> The VSIX file is attached as a release asset alongside the plugin ZIP.
+> The ZIP package contains the `weppy-roblox-explorer-*.vsix` file you will install in VSCode.
 
 ### 2. Install in VSCode
 
@@ -25,7 +25,7 @@ Go to the [Releases](https://github.com/hope1026/weppy-roblox-mcp/releases) page
 
 ![Install from VSIX](../../assets/screenshots/roblox-explorer/install-from-vsix.png)
 
-4. Select the downloaded `.vsix` file
+4. Extract the ZIP package and select the included `.vsix` file
 5. Reload VSCode when prompted
 
 ## Features
@@ -60,7 +60,7 @@ Go to the [Releases](https://github.com/hope1026/weppy-roblox-mcp/releases) page
 
 ## Updating
 
-Download the latest `.vsix` from [Releases](https://github.com/hope1026/weppy-roblox-mcp/releases) and repeat the installation steps. VSCode will replace the existing version.
+Download the latest `weppy-roblox-explorer-v*.zip` from [Releases](https://github.com/hope1026/weppy-roblox-mcp/releases), extract the `.vsix`, and repeat the installation steps. VSCode will replace the existing version.
 
 ## Related
 

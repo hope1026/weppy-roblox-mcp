@@ -14,7 +14,29 @@ When an AI app says "Create a blue part", the MCP server converts this request, 
 
 ---
 
-## Step 1: Install Roblox Studio Plugin
+## One-Line Install (Recommended)
+
+Installs the MCP server, Roblox Studio plugin, and registers with your AI apps in one step:
+
+```bash
+# macOS / Linux
+curl -fsSL https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.sh | bash
+
+# Windows (PowerShell)
+irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1 | iex
+```
+
+Then restart Roblox Studio — done!
+
+If PowerShell execution is blocked on Windows, use the manual install path below. If you're using the ZIP package, you can also run `setup-plugin.bat` and `setup-mcp.bat`.
+
+---
+
+## Manual Install
+
+If the one-line install does not work, or automatic installation is not available in your environment, use the manual install path below as an alternative.
+
+### Step 1: Install Roblox Studio Plugin
 
 Download the plugin file from GitHub, then place it in Roblox Studio's Plugins folder.
 
@@ -22,7 +44,7 @@ Download the plugin file from GitHub, then place it in Roblox Studio's Plugins f
 
 ---
 
-## Step 2: Register MCP Server with AI App
+### Step 2: Register MCP Server with AI App
 
 Register the MCP server with your AI app. You can use it with any AI app that supports MCP.
 
@@ -30,6 +52,7 @@ Register the MCP server with your AI app. You can use it with any AI app that su
 |--------|-------------------|
 | Claude Code | [Setup Instructions](ai-apps/claude-code.md) |
 | Claude Desktop | [Setup Instructions](ai-apps/claude-app.md) |
+| Cursor | [Setup Instructions](ai-apps/cursor.md) |
 | Codex CLI | [Setup Instructions](ai-apps/codex-cli.md) |
 | Codex Desktop | [Setup Instructions](ai-apps/codex-app.md) |
 | Gemini CLI | [Setup Instructions](ai-apps/gemini-cli.md) |

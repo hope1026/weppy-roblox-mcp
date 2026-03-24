@@ -8,10 +8,28 @@
 
 [![Demo — AI membuat game Roblox secara real-time](https://img.youtube.com/vi/3jrUpBbZPaw/maxresdefault.jpg)](https://youtu.be/3jrUpBbZPaw)
 
-## Instalasi Cepat (5 menit)
+## Instalasi Cepat
+
+**Instalasi satu perintah** — Install MCP server, plugin Roblox Studio, dan daftarkan ke aplikasi AI dalam satu langkah:
+
+```bash
+# macOS / Linux
+curl -fsSL https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.sh | bash
+
+# Windows (PowerShell)
+irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1 | iex
+```
+
+Restart Roblox Studio — selesai!
+
+Jika eksekusi PowerShell diblokir di Windows, lanjutkan dengan instalasi manual di bawah. Jika kamu memakai paket ZIP, kamu juga bisa memakai `setup-plugin.bat` dan `setup-mcp.bat`.
+
+### Instalasi Manual
+
+Jika instalasi satu perintah tidak berjalan, atau instalasi otomatis tidak bisa dipakai di lingkunganmu, gunakan instalasi manual di bawah sebagai alternatif.
 
 **Langkah 1** — Install plugin Roblox Studio (jembatan antara Studio dan AI):
-[Panduan instalasi plugin](../en/installation/roblox-plugin.md)
+[Panduan instalasi plugin](installation/roblox-plugin.md)
 
 **Langkah 2** — Daftarkan MCP server di aplikasi AI:
 
@@ -21,11 +39,12 @@ npx -y @weppy/roblox-mcp
 
 | Aplikasi AI | Panduan |
 |-------------|---------|
-| Claude Code | [Setup](../en/installation/ai-apps/claude-code.md) |
-| Claude Desktop | [Setup](../en/installation/ai-apps/claude-app.md) |
-| Codex CLI | [Setup](../en/installation/ai-apps/codex-cli.md) |
-| Codex Desktop | [Setup](../en/installation/ai-apps/codex-app.md) |
-| Gemini CLI | [Setup](../en/installation/ai-apps/gemini-cli.md) |
+| Claude Code | [Setup](installation/ai-apps/claude-code.md) |
+| Claude Desktop | [Setup](installation/ai-apps/claude-app.md) |
+| Cursor | [Setup](installation/ai-apps/cursor.md) |
+| Codex CLI | [Setup](installation/ai-apps/codex-cli.md) |
+| Codex Desktop | [Setup](installation/ai-apps/codex-app.md) |
+| Gemini CLI | [Setup](installation/ai-apps/gemini-cli.md) |
 
 > Bekerja dengan semua klien MCP yang kompatibel. Perintah server: `npx -y @weppy/roblox-mcp`
 
@@ -95,11 +114,11 @@ Lihat seluruh pohon instance dari place Roblox Studio langsung di dalam VSCode. 
 
 ## Dokumen detail
 
-- [Panduan instalasi](../en/installation/README.md)
+- [Panduan instalasi](installation/README.md)
 - [Daftar tool lengkap](tools/overview.md)
 - [Panduan detail Sync](sync/overview.md)
 - [Panduan dashboard](dashboard/overview.md)
-- [Roblox Explorer (Ekstensi VSCode)](../en/installation/roblox-explorer.md)
+- [Roblox Explorer (Ekstensi VSCode)](installation/roblox-explorer.md)
 - [Kompatibilitas](../compatibility.md)
 - [Panduan pemecahan masalah](../troubleshooting.md)
 
@@ -116,7 +135,7 @@ Lihat seluruh pohon instance dari place Roblox Studio langsung di dalam VSCode. 
 
 Sync dua arah, kemampuan kreasi lanjutan, dan efisiensi token AI — semua dalam satu upgrade.
 
-[Panduan Upgrade Pro](../en/pro-upgrade.md)
+[Panduan Upgrade Pro](pro-upgrade.md)
 
 ---
 

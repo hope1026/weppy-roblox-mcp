@@ -17,28 +17,54 @@ Pro Sync goes beyond one-way export. Edit scripts locally and push them to Studi
 
 Bulk and advanced actions reduce repetitive round trips — do more per prompt.
 
+### Let AI run and verify playtests directly
+
+AI can control Roblox Studio playtests directly. It can start and stop Play (F5) or Run (F8), inject test scripts, collect logs, and generate local reports automatically.
+
+- "Start a Run-mode playtest and check whether the NPC reaches the target."
+- "Write a test that verifies the SpawnLocation is above the ground and run it."
+- "Validate that the script I just changed runs without errors in playtest."
+
 ### Broader advanced capabilities
 
 Terrain generation, asset search, spatial analysis, animation, audio, and production-scale automation.
 
-## Subscription & Download
+## Buy and Activate
 
-### Step 1: Subscribe on Gumroad
+### Step 1: Buy a Pro subscription license on Gumroad
 
 1. Go to [Gumroad - Weppy Roblox Plugin](https://gumroad.com/l/faccjs?utm_source=github&utm_medium=repo&utm_campaign=pro_upgrade_md)
 2. Complete your Pro subscription license purchase
+3. Copy the license key you receive after purchase
 
-### Step 2: Download from GitHub Releases
+You only need to activate the license once, either in the plugin or in the dashboard. Both surfaces share the same MCP local license state, so once you activate in one place, the same status appears in the other.
 
-1. Open [GitHub Releases](https://github.com/hope1026/weppy-roblox-mcp/releases/latest)
-2. Download `weppy-roblox-mcp-v{version}.zip`
-3. Extract and copy `roblox-plugin/WeppyRobloxMCP.rbxm` to your Roblox Plugins folder
+### Activate in the plugin
 
-### Step 3: Verify
+1. Open **W-MCP** in Roblox Studio and connect to the MCP server.
+2. Open **Settings > License** in the plugin.
+3. Paste your purchased key into the `License key` field.
+4. Click **Activate** to activate the license.
+5. If the status does not update immediately, click **Refresh**.
+6. When activation succeeds, the status changes from Basic to Pro and Pro features become available.
 
-1. Open W-MCP in Roblox Studio
-2. Confirm the Pro badge is visible
-3. Run a Pro action (for example: `manage_sync` or bulk operations)
+![Plugin license activation screen](../assets/screenshots/license/license-plugin.png)
+
+### Activate in the dashboard
+
+1. Start the MCP server, then open **Settings > License** in the dashboard.
+2. Confirm that the provider is set to `gumroad`.
+3. Paste your purchased key into the `License Key` field.
+4. Click **Activate License** to activate the license.
+5. If needed, use **Refresh License** to fetch the latest status.
+
+![Dashboard license activation screen](../assets/screenshots/license/license-dashboard.png)
+
+### After activation
+
+- If the license status is shown as `active` or `grace`, Pro features are available.
+- The plugin and dashboard share the same license state, so activating in one place is reflected in the other.
+- Use **Refresh** or **Refresh License** whenever you want to check the latest status again.
 
 ## Feature Comparison
 
@@ -49,8 +75,6 @@ Terrain generation, asset search, spatial analysis, animation, audio, and produc
 | Sync Direction | Studio → Local (one-way) | Bidirectional |
 | Per-type Sync Direction | ❌ | ✅ Scripts / Values / Containers / Data / Services |
 | Per-type Apply Mode | ❌ | ✅ Auto / Manual |
-| Full Sync | ❌ | ✅ |
-| Resync / Rebuild state | ❌ | ✅ |
 | Change History | ❌ | ✅ |
 | Multi-place Sync | ❌ | ✅ Up to 3 places, each with isolated storage |
 | Playtest Control (Play/Stop/Pause/Resume) | ❌ | ✅ |

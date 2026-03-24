@@ -8,10 +8,28 @@
 
 [![데모 — AI가 실시간으로 Roblox 게임을 제작하는 모습](https://img.youtube.com/vi/3jrUpBbZPaw/maxresdefault.jpg)](https://youtu.be/3jrUpBbZPaw)
 
-## 빠른 설치 (5분)
+## 빠른 설치
+
+**원라인 설치** — MCP 서버, Roblox Studio 플러그인, AI 앱 등록을 한 번에 진행합니다:
+
+```bash
+# macOS / Linux
+curl -fsSL https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.sh | bash
+
+# Windows (PowerShell)
+irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1 | iex
+```
+
+Roblox Studio를 재시작하면 완료입니다!
+
+Windows에서 PowerShell 실행이 차단되면 아래 수동 설치로 진행하세요. ZIP 패키지를 사용하는 경우 `setup-plugin.bat`, `setup-mcp.bat`도 사용할 수 있습니다.
+
+### 수동 설치
+
+원라인 설치가 동작하지 않거나 환경상 자동 설치를 사용할 수 없는 경우, 아래 수동 설치를 대안으로 진행하세요.
 
 **1단계** — Roblox Studio 플러그인 설치 (Studio와 AI를 연결하는 다리):
-[플러그인 설치 가이드](../en/installation/roblox-plugin.md)
+[플러그인 설치 가이드](installation/roblox-plugin.md)
 
 **2단계** — AI 앱에 MCP 서버 등록:
 
@@ -21,11 +39,12 @@ npx -y @weppy/roblox-mcp
 
 | AI 앱 | 가이드 |
 |-------|--------|
-| Claude Code | [설정](../en/installation/ai-apps/claude-code.md) |
-| Claude Desktop | [설정](../en/installation/ai-apps/claude-app.md) |
-| Codex CLI | [설정](../en/installation/ai-apps/codex-cli.md) |
-| Codex Desktop | [설정](../en/installation/ai-apps/codex-app.md) |
-| Gemini CLI | [설정](../en/installation/ai-apps/gemini-cli.md) |
+| Claude Code | [설정](installation/ai-apps/claude-code.md) |
+| Claude Desktop | [설정](installation/ai-apps/claude-app.md) |
+| Cursor | [설정](installation/ai-apps/cursor.md) |
+| Codex CLI | [설정](installation/ai-apps/codex-cli.md) |
+| Codex Desktop | [설정](installation/ai-apps/codex-app.md) |
+| Gemini CLI | [설정](installation/ai-apps/gemini-cli.md) |
 
 > MCP를 지원하는 모든 AI 앱에서 사용 가능합니다. 서버 명령어: `npx -y @weppy/roblox-mcp`
 
@@ -95,7 +114,7 @@ Roblox Studio의 전체 인스턴스 트리를 VSCode 안에서 바로 확인할
 
 ## 세부 문서
 
-- [설치 가이드](../en/installation/README.md)
+- [설치 가이드](installation/README.md)
 - [Tool 전체 목록](tools/overview.md)
 - [Sync 기능 상세 가이드](sync/overview.md)
 - [대시보드 가이드](dashboard/overview.md)
@@ -116,7 +135,7 @@ Roblox Studio의 전체 인스턴스 트리를 VSCode 안에서 바로 확인할
 
 양방향 Sync, 고급 제작 기능, AI 토큰 효율 — 한 번의 업그레이드로 모두 누리세요.
 
-[Pro 업그레이드 가이드](../en/pro-upgrade.md)
+[Pro 업그레이드 가이드](pro-upgrade.md)
 
 ---
 

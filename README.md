@@ -16,7 +16,25 @@ AI coding agents like Claude, Codex, and Gemini are powerful — but they cannot
 
 This is not just code generation. It is **executable, production-oriented actions** running directly in Studio.
 
-## Quick Install (5 minutes)
+## Quick Install
+
+**One-line install** — installs the MCP server, Roblox Studio plugin, and registers with your AI apps:
+
+```bash
+# macOS / Linux
+curl -fsSL https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.sh | bash
+
+# Windows (PowerShell)
+irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1 | iex
+```
+
+Then restart Roblox Studio — done!
+
+If PowerShell execution is blocked on Windows, use the manual install path below. If you're using the ZIP package, you can also use `setup-plugin.bat` and `setup-mcp.bat`.
+
+### Manual Install
+
+If the one-line install does not work, or automatic installation is not available in your environment, use the manual install path below.
 
 **Step 1** — Install the Roblox Studio plugin (bridge between Studio and AI):
 [Plugin Installation Guide](docs/en/installation/roblox-plugin.md)
@@ -31,6 +49,7 @@ npx -y @weppy/roblox-mcp
 |--------|-------|
 | Claude Code | [Setup](docs/en/installation/ai-apps/claude-code.md) |
 | Claude Desktop | [Setup](docs/en/installation/ai-apps/claude-app.md) |
+| Cursor | [Setup](docs/en/installation/ai-apps/cursor.md) |
 | Codex CLI | [Setup](docs/en/installation/ai-apps/codex-cli.md) |
 | Codex Desktop | [Setup](docs/en/installation/ai-apps/codex-app.md) |
 | Gemini CLI | [Setup](docs/en/installation/ai-apps/gemini-cli.md) |
@@ -138,7 +157,7 @@ Install the Roblox Studio plugin, then register the MCP server (`npx -y @weppy/r
 Install the plugin, then add the MCP server config to Codex CLI. See [Codex CLI Setup](docs/en/installation/ai-apps/codex-cli.md).
 
 ### Does Roblox MCP work with Cursor?
-Yes. Any MCP-compatible AI client works. Setup guides are provided for Claude Code, Claude Desktop, Cursor, Codex CLI, Codex Desktop, Gemini CLI, and Antigravity.
+Yes. See [Cursor Setup](docs/en/installation/ai-apps/cursor.md). Any MCP-compatible AI client works.
 
 ### Can AI build Roblox games with this?
 Yes. AI can create instances, write scripts, generate terrain, set up lighting, insert assets, configure physics, and more — all inside a live Roblox Studio session. It goes beyond code generation to executable actions.
@@ -158,8 +177,18 @@ Bidirectional Sync, advanced build capabilities, and AI token efficiency — all
 
 [Pro Upgrade Guide](docs/en/pro-upgrade.md)
 
+## License
+
+This repository is licensed under `AGPL-3.0`.
+
+Commercial licensing is available separately. See [COMMERCIAL-LICENSE.md](COMMERCIAL-LICENSE.md).
+
+Use of the Weppy name and logos is governed by [TRADEMARKS.md](TRADEMARKS.md).
+
 ---
 
 [![npm version](https://img.shields.io/npm/v/@weppy/roblox-mcp)](https://www.npmjs.com/package/@weppy/roblox-mcp) [![Node.js](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org/) [![Smithery](https://smithery.ai/badge/@hope1026/weppy-roblox-mcp)](https://smithery.ai/server/@hope1026/weppy-roblox-mcp)
+
+[![Roblox MCP on Glama](https://glama.ai/mcp/servers/hope1026/roblox-mcp/badges/card.svg)](https://glama.ai/mcp/servers/hope1026/roblox-mcp)
 
 [GitHub Issues](https://github.com/hope1026/weppy-roblox-mcp/issues) · [Discussions](https://github.com/hope1026/weppy-roblox-mcp/discussions) · [npm](https://www.npmjs.com/package/@weppy/roblox-mcp)

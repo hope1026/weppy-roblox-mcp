@@ -14,7 +14,29 @@ Quando o app de IA diz "cria uma parte azul", o servidor MCP converte o pedido e
 
 ---
 
-## Passo 1: Instalar plugin do Roblox Studio
+## Instalação em um comando (Recomendado)
+
+Instala o servidor MCP, o plugin do Roblox Studio e registra nos apps de IA em um único passo:
+
+```bash
+# macOS / Linux
+curl -fsSL https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.sh | bash
+
+# Windows (PowerShell)
+irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1 | iex
+```
+
+Reinicie o Roblox Studio — pronto!
+
+Se a execução do PowerShell estiver bloqueada no Windows, siga a instalação manual abaixo. Se estiver usando o pacote ZIP, você também pode executar `setup-plugin.bat` e `setup-mcp.bat`.
+
+---
+
+## Instalação manual
+
+Este é o método alternativo para quando a instalação em um comando não funcionar, ou quando a instalação automática não puder ser usada no seu ambiente.
+
+### Passo 1: Instalar plugin do Roblox Studio
 
 Baixe o arquivo do plugin no GitHub e coloque na pasta Plugins do Roblox Studio.
 
@@ -22,7 +44,7 @@ Baixe o arquivo do plugin no GitHub e coloque na pasta Plugins do Roblox Studio.
 
 ---
 
-## Passo 2: Registrar servidor MCP no app de IA
+### Passo 2: Registrar servidor MCP no app de IA
 
 Registre o servidor MCP no seu app de IA. Funciona com qualquer app que suporte MCP.
 
@@ -30,6 +52,7 @@ Registre o servidor MCP no seu app de IA. Funciona com qualquer app que suporte 
 |-----------|-------------------|
 | Claude Code | [Como Configurar](ai-apps/claude-code.md) |
 | Claude Desktop | [Como Configurar](ai-apps/claude-app.md) |
+| Cursor | [Como Configurar](ai-apps/cursor.md) |
 | Codex CLI | [Como Configurar](ai-apps/codex-cli.md) |
 | Codex Desktop | [Como Configurar](ai-apps/codex-app.md) |
 | Gemini CLI | [Como Configurar](ai-apps/gemini-cli.md) |
