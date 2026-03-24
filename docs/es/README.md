@@ -12,15 +12,22 @@
 
 **Instalacion en un solo comando** — Instala el servidor MCP, el plugin de Roblox Studio y registra tus apps de IA en un solo paso:
 
-```bash
-# macOS / Linux
-curl -fsSL https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.sh | bash
+**macOS / Linux**
 
-# Windows (PowerShell)
+```bash
+curl -fsSL https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.sh | bash
+```
+
+**Windows (PowerShell)**
+
+```powershell
 irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1 | iex
 ```
 
 ¡Reinicia Roblox Studio y listo!
+
+El registro automático de MCP actualmente es compatible con **Claude Code, Claude Desktop, Cursor, Codex CLI y Gemini CLI**.
+**Codex App** y **Antigravity** todavía requieren configuración manual después de que termine el script.
 
 Si la ejecución de PowerShell está bloqueada en Windows, continúa con la instalación manual de abajo. Si usas el paquete ZIP, también puedes usar `setup-plugin.bat` y `setup-mcp.bat`.
 

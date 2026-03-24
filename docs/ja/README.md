@@ -12,15 +12,22 @@
 
 **ワンラインインストール** — MCPサーバー、Roblox Studioプラグイン、AIアプリへの登録を一度に完了します：
 
-```bash
-# macOS / Linux
-curl -fsSL https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.sh | bash
+**macOS / Linux**
 
-# Windows (PowerShell)
+```bash
+curl -fsSL https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.sh | bash
+```
+
+**Windows (PowerShell)**
+
+```powershell
 irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1 | iex
 ```
 
 Roblox Studioを再起動したら完了です！
+
+自動でMCP登録できるのは現在 **Claude Code, Claude Desktop, Cursor, Codex CLI, Gemini CLI** です。
+**Codex App** と **Antigravity** はスクリプト完了後に手動設定が必要です。
 
 WindowsでPowerShellの実行がブロックされる場合は、下の手動インストールに進んでください。ZIPパッケージを使う場合は `setup-plugin.bat` と `setup-mcp.bat` も利用できます。
 

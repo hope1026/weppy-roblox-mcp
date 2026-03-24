@@ -18,15 +18,22 @@ AI 앱이 "파란 파트를 만들어줘"라고 하면, MCP 서버가 이 요청
 
 MCP 서버, Roblox Studio 플러그인, AI 앱 등록을 한 번에 진행합니다:
 
-```bash
-# macOS / Linux
-curl -fsSL https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.sh | bash
+**macOS / Linux**
 
-# Windows (PowerShell)
+```bash
+curl -fsSL https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.sh | bash
+```
+
+**Windows (PowerShell)**
+
+```powershell
 irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1 | iex
 ```
 
 Roblox Studio를 재시작하면 완료입니다!
+
+자동 MCP 등록은 현재 **Claude Code, Claude Desktop, Cursor, Codex CLI, Gemini CLI**만 지원합니다.
+**Codex App**과 **Antigravity**는 스크립트 완료 후 수동 설정이 필요합니다.
 
 Windows에서 PowerShell 실행이 차단되면 아래 수동 설치로 진행하세요. ZIP 패키지를 사용하는 경우 `setup-plugin.bat`, `setup-mcp.bat`를 실행할 수 있습니다.
 

@@ -65,6 +65,16 @@ fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + "\n");
 '
 }
 
+is_lfs_pointer() {
+  local file_path="$1"
+
+  if [ ! -f "$file_path" ]; then
+    return 1
+  fi
+
+  grep -q "git-lfs.github.com/spec/v1" "$file_path"
+}
+
 # ── Header ──
 # shellcheck disable=SC2059
 printf "\n${BOLD}Weppy Roblox MCP Installer${NC}\n"
@@ -126,6 +136,12 @@ for search_dir in \
 done
 
 if [ -n "$BUNDLED_PLUGIN" ]; then
+  if is_lfs_pointer "$BUNDLED_PLUGIN"; then
+    fail "Bundled plugin payload is invalid (Git LFS pointer detected)"
+    info "Install the plugin from the GitHub release ZIP instead"
+    exit 1
+  fi
+
   printf "  → %s/%s\n" "$PLUGINS_DIR" "$PLUGIN_NAME"
   if confirm "  Copy plugin to Roblox Plugins folder?"; then
     mkdir -p "$PLUGINS_DIR"
@@ -143,6 +159,8 @@ fi
 # [3/3] Register MCP with AI apps
 # ═══════════════════════════════════
 step "3/3" "Register MCP with AI apps"
+printf "  Automatic registration: Claude Code, Claude Desktop, Cursor, Codex CLI, Gemini CLI\n"
+printf "  Manual setup required: Codex App, Antigravity\n"
 
 MCP_COMMAND='npx -y @weppy/roblox-mcp'
 
@@ -302,5 +320,7 @@ printf "  1. Restart Roblox Studio\n"
 # shellcheck disable=SC2059
 printf "  2. Look for the ${BOLD}W-MCP${NC} button in the Plugins tab\n"
 printf "  3. Click Connect and start building with AI!\n\n"
+printf "  Auto registration: Claude Code, Claude Desktop, Cursor, Codex CLI, Gemini CLI\n"
+printf "  Manual setup required: Codex App, Antigravity\n\n"
 # shellcheck disable=SC2059
 printf "  ${DIM}Docs: https://github.com/hope1026/weppy-roblox-mcp${NC}\n\n"
