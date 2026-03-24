@@ -1,6 +1,6 @@
 {
   "name": "@weppy/roblox-mcp",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "MCP (Model Context Protocol) server for Roblox Studio integration - enables AI coding agents to interact with Roblox Studio in real-time",
   "main": "plugins/weppy-roblox-mcp/dist/index.js",
   "type": "module",
@@ -16,18 +16,29 @@
   },
   "keywords": [
     "mcp",
+    "mcp-server",
     "model-context-protocol",
     "roblox",
     "roblox-studio",
+    "roblox-plugin",
+    "roblox-development",
+    "luau",
     "ai",
+    "ai-agent",
+    "llm",
     "coding-agent",
+    "automation",
+    "game-development",
+    "studio-integration",
     "claude",
+    "claude-code",
     "codex",
     "gemini",
-    "cursor"
+    "cursor",
+    "vscode"
   ],
   "author": "",
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "AGPL-3.0",
   "engines": {
     "node": ">=18.0.0"
   },

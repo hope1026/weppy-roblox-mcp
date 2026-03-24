@@ -39,6 +39,7 @@ MCP server harus sudah terinstal. Selesaikan dulu panduan app AI yang Anda pakai
 |-------------|-------------------|
 | Claude Code | [Cara Konfigurasi](ai-apps/claude-code.md) |
 | Claude Desktop | [Cara Konfigurasi](ai-apps/claude-app.md) |
+| Cursor | [Cara Konfigurasi](ai-apps/cursor.md) |
 | Codex CLI | [Cara Konfigurasi](ai-apps/codex-cli.md) |
 | Codex Desktop | [Cara Konfigurasi](ai-apps/codex-app.md) |
 | Gemini CLI | [Cara Konfigurasi](ai-apps/gemini-cli.md) |

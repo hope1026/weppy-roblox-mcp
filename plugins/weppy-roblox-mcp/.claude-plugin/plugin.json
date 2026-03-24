@@ -1,13 +1,13 @@
 {
   "name": "weppy-roblox-mcp",
   "description": "MCP server for Roblox Studio integration - AI-powered game development with specialized agents and skills",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "author": {
     "name": "hope1026"
   },
   "repository": "https://github.com/hope1026/weppy-roblox-mcp",
   "homepage": "https://github.com/hope1026/weppy-roblox-mcp#readme",
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "AGPL-3.0",
   "keywords": [
     "mcp",
     "roblox",

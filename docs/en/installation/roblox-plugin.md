@@ -39,6 +39,7 @@ The MCP server must be installed. Complete the guide for your AI app first:
 |--------|-------------------|
 | Claude Code | [Setup Guide](ai-apps/claude-code.md) |
 | Claude Desktop | [Setup Guide](ai-apps/claude-app.md) |
+| Cursor | [Setup Guide](ai-apps/cursor.md) |
 | Codex CLI | [Setup Guide](ai-apps/codex-cli.md) |
 | Codex Desktop | [Setup Guide](ai-apps/codex-app.md) |
 | Gemini CLI | [Setup Guide](ai-apps/gemini-cli.md) |

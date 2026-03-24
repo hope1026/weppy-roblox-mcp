@@ -14,7 +14,29 @@ AIアプリが「青いパーツを作って」と言うと、MCPサーバーが
 
 ---
 
-## ステップ1: Roblox Studioプラグインのインストール
+## ワンラインインストール（推奨）
+
+MCPサーバー、Roblox Studioプラグイン、AIアプリへの登録を一度に完了します：
+
+```bash
+# macOS / Linux
+curl -fsSL https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.sh | bash
+
+# Windows (PowerShell)
+irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1 | iex
+```
+
+Roblox Studioを再起動したら完了です！
+
+WindowsでPowerShellの実行がブロックされる場合は、下の手動インストールに進んでください。ZIPパッケージを使う場合は `setup-plugin.bat` と `setup-mcp.bat` を実行できます。
+
+---
+
+## 手動インストール
+
+ワンラインインストールが動作しない場合、または環境上自動インストールを使えない場合に進める代替インストール方法です。
+
+### ステップ1: Roblox Studioプラグインのインストール
 
 GitHubからプラグインファイルをダウンロードして、Roblox StudioのPluginsフォルダに配置します。
 
@@ -22,7 +44,7 @@ GitHubからプラグインファイルをダウンロードして、Roblox Stud
 
 ---
 
-## ステップ2: AIアプリにMCPサーバーを登録
+### ステップ2: AIアプリにMCPサーバーを登録
 
 使用しているAIアプリにMCPサーバーを登録します。MCPをサポートするすべてのAIアプリで使用できます。
 
@@ -30,6 +52,7 @@ GitHubからプラグインファイルをダウンロードして、Roblox Stud
 |---------|---------|
 | Claude Code | [設定手順](ai-apps/claude-code.md) |
 | Claude Desktop | [設定手順](ai-apps/claude-app.md) |
+| Cursor | [設定手順](ai-apps/cursor.md) |
 | Codex CLI | [設定手順](ai-apps/codex-cli.md) |
 | Codex Desktop | [設定手順](ai-apps/codex-app.md) |
 | Gemini CLI | [設定手順](ai-apps/gemini-cli.md) |

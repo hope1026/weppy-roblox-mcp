@@ -14,13 +14,24 @@ terrain, and more — inside a live Studio session.
 - 21 consolidated tools with 140+ actions covering the full Roblox Studio API surface
 - Bidirectional project sync between Roblox Studio and local files (Pro)
 - Automated playtest: AI starts/stops Play/Run, injects test scripts, collects logs
+- Web dashboard: monitor AI actions, tool history, sync state, and changelog in real time at `http://localhost:3002`
 - Multi-place support (up to 3 places simultaneously)
 - Roblox Explorer VSCode extension for browsing Studio hierarchy
 - Works with Claude Code, Claude Desktop, Cursor, Codex CLI, Codex Desktop, Gemini CLI, Antigravity
 
 ## Installation
 
-Install in 2 steps:
+**One-line install** (installs MCP server, Roblox Studio plugin, and registers with AI apps):
+
+```bash
+# macOS / Linux
+curl -fsSL https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.sh | bash
+
+# Windows (PowerShell)
+irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1 | iex
+```
+
+Or manually:
 1. Install Roblox Studio plugin (bridge between Studio and AI)
 2. Register MCP server: `npx -y @weppy/roblox-mcp`
 
@@ -35,6 +46,7 @@ Install in 2 steps:
 - Installation: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/en/installation/README.md
 - Tools reference: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/en/tools/overview.md
 - Sync guide: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/en/sync/overview.md
+- Dashboard guide: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/en/dashboard/overview.md
 - Troubleshooting: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/troubleshooting.md
 - Compatibility: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/compatibility.md
 - Pro upgrade: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/en/pro-upgrade.md

@@ -8,10 +8,28 @@
 
 [![Demo — IA criando um jogo Roblox em tempo real](https://img.youtube.com/vi/3jrUpBbZPaw/maxresdefault.jpg)](https://youtu.be/3jrUpBbZPaw)
 
-## Instalacao rapida (5 minutos)
+## Instalacao rapida
+
+**Instalacao em um comando** — Instala o servidor MCP, o plugin do Roblox Studio e registra nos apps de IA em um único passo:
+
+```bash
+# macOS / Linux
+curl -fsSL https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.sh | bash
+
+# Windows (PowerShell)
+irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1 | iex
+```
+
+Reinicie o Roblox Studio — pronto!
+
+Se a execução do PowerShell estiver bloqueada no Windows, siga a instalação manual abaixo. Se estiver usando o pacote ZIP, você também pode usar `setup-plugin.bat` e `setup-mcp.bat`.
+
+### Instalacao manual
+
+Se a instalação em um comando não funcionar, ou se a instalação automática não puder ser usada no seu ambiente, use a instalação manual abaixo como alternativa.
 
 **Passo 1** — Instale o plugin do Roblox Studio (ponte entre Studio e IA):
-[Guia de instalacao do plugin](../en/installation/roblox-plugin.md)
+[Guia de instalacao do plugin](installation/roblox-plugin.md)
 
 **Passo 2** — Registre o servidor MCP no seu app de IA:
 
@@ -21,11 +39,12 @@ npx -y @weppy/roblox-mcp
 
 | App de IA | Guia |
 |-----------|------|
-| Claude Code | [Configuracao](../en/installation/ai-apps/claude-code.md) |
-| Claude Desktop | [Configuracao](../en/installation/ai-apps/claude-app.md) |
-| Codex CLI | [Configuracao](../en/installation/ai-apps/codex-cli.md) |
-| Codex Desktop | [Configuracao](../en/installation/ai-apps/codex-app.md) |
-| Gemini CLI | [Configuracao](../en/installation/ai-apps/gemini-cli.md) |
+| Claude Code | [Configuracao](installation/ai-apps/claude-code.md) |
+| Claude Desktop | [Configuracao](installation/ai-apps/claude-app.md) |
+| Cursor | [Configuracao](installation/ai-apps/cursor.md) |
+| Codex CLI | [Configuracao](installation/ai-apps/codex-cli.md) |
+| Codex Desktop | [Configuracao](installation/ai-apps/codex-app.md) |
+| Gemini CLI | [Configuracao](installation/ai-apps/gemini-cli.md) |
 
 > Funciona com qualquer cliente MCP compativel. O comando do servidor e `npx -y @weppy/roblox-mcp`.
 
@@ -95,11 +114,11 @@ Visualize a arvore completa de instancias do seu lugar no Roblox Studio diretame
 
 ## Documentacao detalhada
 
-- [Guia de instalacao](../en/installation/README.md)
+- [Guia de instalacao](installation/README.md)
 - [Lista completa de tools](tools/overview.md)
 - [Guia detalhado de Sync](sync/overview.md)
 - [Guia do Dashboard](dashboard/overview.md)
-- [Roblox Explorer (Extensao VSCode)](../en/installation/roblox-explorer.md)
+- [Roblox Explorer (Extensao VSCode)](installation/roblox-explorer.md)
 - [Compatibilidade](../compatibility.md)
 - [Solucao de problemas](../troubleshooting.md)
 
@@ -116,7 +135,7 @@ Visualize a arvore completa de instancias do seu lugar no Roblox Studio diretame
 
 Sync bidirecional, recursos avancados de criacao e eficiencia de tokens de IA — tudo em uma unica atualizacao.
 
-[Guia de upgrade Pro](../en/pro-upgrade.md)
+[Guia de upgrade Pro](pro-upgrade.md)
 
 ---
 

@@ -14,7 +14,29 @@ Ketika aplikasi AI bilang "buatkan part biru", MCP server mengonversi perintah i
 
 ---
 
-## Langkah 1: Install Plugin Roblox Studio
+## Instalasi Satu Perintah (Direkomendasikan)
+
+Install MCP server, plugin Roblox Studio, dan daftarkan ke aplikasi AI dalam satu langkah:
+
+```bash
+# macOS / Linux
+curl -fsSL https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.sh | bash
+
+# Windows (PowerShell)
+irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1 | iex
+```
+
+Restart Roblox Studio — selesai!
+
+Jika eksekusi PowerShell diblokir di Windows, lanjutkan dengan instalasi manual di bawah. Jika kamu memakai paket ZIP, kamu juga bisa menjalankan `setup-plugin.bat` dan `setup-mcp.bat`.
+
+---
+
+## Instalasi Manual
+
+Ini adalah metode alternatif jika instalasi satu perintah tidak berjalan, atau jika instalasi otomatis tidak bisa dipakai di lingkunganmu.
+
+### Langkah 1: Install Plugin Roblox Studio
 
 Download file plugin dari GitHub, lalu taruh di folder Plugins Roblox Studio.
 
@@ -22,7 +44,7 @@ Download file plugin dari GitHub, lalu taruh di folder Plugins Roblox Studio.
 
 ---
 
-## Langkah 2: Daftarkan MCP Server di Aplikasi AI
+### Langkah 2: Daftarkan MCP Server di Aplikasi AI
 
 Daftarkan MCP server ke aplikasi AI yang kamu pakai. Bisa digunakan di semua aplikasi AI yang mendukung MCP.
 
@@ -30,6 +52,7 @@ Daftarkan MCP server ke aplikasi AI yang kamu pakai. Bisa digunakan di semua apl
 |-------------|------------------|
 | Claude Code | [Lihat caranya](ai-apps/claude-code.md) |
 | Claude Desktop | [Lihat caranya](ai-apps/claude-app.md) |
+| Cursor | [Lihat caranya](ai-apps/cursor.md) |
 | Codex CLI | [Lihat caranya](ai-apps/codex-cli.md) |
 | Codex Desktop | [Lihat caranya](ai-apps/codex-app.md) |
 | Gemini CLI | [Lihat caranya](ai-apps/gemini-cli.md) |
