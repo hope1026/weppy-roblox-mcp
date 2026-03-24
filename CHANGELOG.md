@@ -18,6 +18,14 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.0.5] - 2026-03-24
+
+### Bug Fixes
+
+- resolve sync path resolution errors when launched from filesystem root
+
+
 ## [2.0.4] - 2026-03-24
 
 ### Bug Fixes
