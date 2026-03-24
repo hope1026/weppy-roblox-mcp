@@ -18,15 +18,22 @@ When an AI app says "Create a blue part", the MCP server converts this request, 
 
 Installs the MCP server, Roblox Studio plugin, and registers with your AI apps in one step:
 
-```bash
-# macOS / Linux
-curl -fsSL https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.sh | bash
+**macOS / Linux**
 
-# Windows (PowerShell)
+```bash
+curl -fsSL https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.sh | bash
+```
+
+**Windows (PowerShell)**
+
+```powershell
 irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1 | iex
 ```
 
 Then restart Roblox Studio — done!
+
+Automatic MCP registration currently supports **Claude Code, Claude Desktop, Cursor, Codex CLI, and Gemini CLI**.
+**Codex App** and **Antigravity** still require manual setup after the script finishes.
 
 If PowerShell execution is blocked on Windows, use the manual install path below. If you're using the ZIP package, you can also run `setup-plugin.bat` and `setup-mcp.bat`.
 

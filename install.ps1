@@ -45,6 +45,11 @@ fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + '\n');
     }
 }
 
+function Test-LfsPointer($filePath) {
+    if (-not (Test-Path $filePath)) { return $false }
+    return Select-String -Path $filePath -Pattern "git-lfs.github.com/spec/v1" -Quiet
+}
+
 # ── Header ──
 Write-Host ""
 Write-Host "Weppy Roblox MCP Installer" -ForegroundColor White -BackgroundColor DarkCyan
@@ -110,6 +115,12 @@ foreach ($p in $searchPaths) {
 }
 
 if ($bundledPlugin) {
+    if (Test-LfsPointer $bundledPlugin) {
+        Write-Fail "Bundled plugin payload is invalid (Git LFS pointer detected)"
+        Write-Info "Install the plugin from the GitHub release ZIP instead"
+        exit 1
+    }
+
     Write-Host "  → $pluginsDir\$pluginName"
     if (Confirm-Action "  Copy plugin to Roblox Plugins folder?") {
         if (-not (Test-Path $pluginsDir)) {
@@ -131,6 +142,8 @@ else {
 # [3/3] Register MCP with AI apps
 # ═══════════════════════════════════
 Write-Step "3/3" "Register MCP with AI apps"
+Write-Host "  Automatic registration: Claude Code, Claude Desktop, Cursor, Codex CLI, Gemini CLI"
+Write-Host "  Manual setup required: Codex App, Antigravity"
 
 $detectedNames = @()
 $detectedTypes = @()
@@ -272,6 +285,9 @@ Write-Host "  Next steps:"
 Write-Host "  1. Restart Roblox Studio"
 Write-Host "  2. Look for the W-MCP button in the Plugins tab"
 Write-Host "  3. Click Connect and start building with AI!"
+Write-Host ""
+Write-Host "  Auto registration: Claude Code, Claude Desktop, Cursor, Codex CLI, Gemini CLI"
+Write-Host "  Manual setup required: Codex App, Antigravity"
 Write-Host ""
 Write-Host "  Docs: https://github.com/hope1026/weppy-roblox-mcp" -ForegroundColor DarkGray
 Write-Host ""
