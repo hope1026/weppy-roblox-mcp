@@ -76,6 +76,10 @@ This optional extension requires the Roblox MCP setup above, because it reads `r
 
 👉 [Roblox Explorer Installation Guide](roblox-explorer.md)
 
+Direct listings:
+- [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer)
+- [Open VSX](https://open-vsx.org/extension/weppy/weppy-roblox-explorer)
+
 ---
 
 ## After Installation

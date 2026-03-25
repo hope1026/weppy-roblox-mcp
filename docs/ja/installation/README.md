@@ -76,6 +76,10 @@ GitHubからプラグインファイルをダウンロードして、Roblox Stud
 
 👉 [Roblox Explorerインストールガイド](roblox-explorer.md)
 
+直接インストール:
+- [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer)
+- [Open VSX](https://open-vsx.org/extension/weppy/weppy-roblox-explorer)
+
 ---
 
 ## インストール後

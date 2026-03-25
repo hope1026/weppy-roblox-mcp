@@ -71,6 +71,10 @@ Esta extensión opcional requiere completar antes la instalación de Roblox MCP,
 
 👉 [Guía de instalación de Roblox Explorer](roblox-explorer.md)
 
+Instalación directa:
+- [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer)
+- [Open VSX](https://open-vsx.org/extension/weppy/weppy-roblox-explorer)
+
 ---
 
 ## Después de la Instalación

@@ -76,6 +76,10 @@ GitHub에서 플러그인 파일을 다운로드한 뒤, Roblox Studio의 Plugin
 
 👉 [Roblox Explorer 설치 가이드](roblox-explorer.md)
 
+바로 설치:
+- [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer)
+- [Open VSX](https://open-vsx.org/extension/weppy/weppy-roblox-explorer)
+
 ---
 
 ## 설치 완료 후
