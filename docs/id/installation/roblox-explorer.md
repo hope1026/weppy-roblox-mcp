@@ -1,9 +1,9 @@
-# Weepy Roblox Explorer (Ekstensi VSCode)
+# Weppy Roblox Explorer (Ekstensi VSCode)
 
 Tampilan pohon instansi seperti Explorer Roblox Studio, langsung di VSCode. Jelajahi instansi yang tersinkronisasi, buka skrip langsung, dan pantau status sinkronisasi tanpa meninggalkan editor.
 Ini adalah ekstensi pendamping untuk Weppy Roblox MCP, bukan integrasi Roblox yang berdiri sendiri.
 
-![Weepy Roblox Explorer](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
+![Weppy Roblox Explorer](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
 
 ## Persyaratan
 
@@ -13,9 +13,12 @@ Ini adalah ekstensi pendamping untuk Weppy Roblox MCP, bukan integrasi Roblox ya
 
 ## Cara Instalasi
 
-Cari **Weepy Roblox Explorer** di sidebar Ekstensi VSCode (`Ctrl+Shift+X` / `Cmd+Shift+X`) dan klik **Install**.
+Cari **Weppy Roblox Explorer** di sidebar Ekstensi VSCode (`Ctrl+Shift+X` / `Cmd+Shift+X`) dan klik **Install**.
 
-Atau instal langsung dari [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer).
+Atau instal langsung dari marketplace berikut:
+
+- [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer)
+- [Open VSX](https://open-vsx.org/extension/weppy/weppy-roblox-explorer)
 
 Penjelajahan tree dasar bekerja dari file sync di disk. Status sync live, indikator direction, dan pengiriman telemetri Explorer tersedia saat server MCP lokal dapat dijangkau.
 
@@ -43,11 +46,11 @@ Penjelajahan tree dasar bekerja dari file sync di disk. Status sync live, indika
 
 | Perintah | Deskripsi |
 |----------|-----------|
-| `Weepy Roblox Explorer: Refresh` | Perbarui pohon instansi secara manual |
-| `Weepy Roblox Explorer: Search Instances` | Cari instansi di semua layanan |
-| `Weepy Roblox Explorer: Open Backing File` | Buka file pendukung instansi yang dipilih |
-| `Weepy Roblox Explorer: Copy Instance Path` | Salin jalur instansi lengkap (contoh: `game.Workspace.Part`) |
-| `Weepy Roblox Explorer: Reveal in Explorer` | Tampilkan file di explorer VSCode default |
+| `Weppy Roblox Explorer: Refresh` | Perbarui pohon instansi secara manual |
+| `Weppy Roblox Explorer: Search Instances` | Cari instansi di semua layanan |
+| `Weppy Roblox Explorer: Open Backing File` | Buka file pendukung instansi yang dipilih |
+| `Weppy Roblox Explorer: Copy Instance Path` | Salin jalur instansi lengkap (contoh: `game.Workspace.Part`) |
+| `Weppy Roblox Explorer: Reveal in Explorer` | Tampilkan file di explorer VSCode default |
 
 ## Terkait
 

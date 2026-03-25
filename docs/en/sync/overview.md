@@ -22,10 +22,10 @@ Default local path is `roblox-project-sync/place_{placeId}/explorer`.
 
 ### Browse sync data in VSCode
 
-Install the [Weepy Roblox Explorer](../installation/roblox-explorer.md) extension to browse the synced instance tree in VSCode, just like in Roblox Studio.
+Install the [Weppy Roblox Explorer](../installation/roblox-explorer.md) extension to browse the synced instance tree in VSCode, just like in Roblox Studio.
 Explorer reads the sync files generated here, and it can show additional live sync state or direction details when the local MCP server is running.
 
-![Weepy Roblox Explorer — browse synced instance tree in VSCode](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
+![Weppy Roblox Explorer — browse synced instance tree in VSCode](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
 
 - Service/instance tree with Roblox class icons
 - Click a script to open it for editing

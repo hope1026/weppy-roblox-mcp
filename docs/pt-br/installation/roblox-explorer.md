@@ -1,9 +1,9 @@
-# Weepy Roblox Explorer (Extensão VSCode)
+# Weppy Roblox Explorer (Extensão VSCode)
 
 Visualização em árvore de instâncias similar ao Explorer do Roblox Studio, dentro do VSCode. Navegue por instâncias sincronizadas, abra scripts diretamente e acompanhe o status de sincronização sem sair do editor.
 Esta é uma extensao complementar do Weppy Roblox MCP, e não uma integração Roblox independente.
 
-![Weepy Roblox Explorer](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
+![Weppy Roblox Explorer](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
 
 ## Requisitos
 
@@ -13,9 +13,12 @@ Esta é uma extensao complementar do Weppy Roblox MCP, e não uma integração R
 
 ## Instalação
 
-Pesquise **Weepy Roblox Explorer** na barra lateral de Extensões do VSCode (`Ctrl+Shift+X` / `Cmd+Shift+X`) e clique em **Install**.
+Pesquise **Weppy Roblox Explorer** na barra lateral de Extensões do VSCode (`Ctrl+Shift+X` / `Cmd+Shift+X`) e clique em **Install**.
 
-Ou instale diretamente pelo [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer).
+Ou instale diretamente por um destes marketplaces:
+
+- [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer)
+- [Open VSX](https://open-vsx.org/extension/weppy/weppy-roblox-explorer)
 
 A navegação basica da arvore funciona a partir dos arquivos sincronizados em disco. Status sync ao vivo, indicadores de direction e envio de telemetria do Explorer ficam disponiveis quando o servidor MCP local está acessivel.
 
@@ -43,11 +46,11 @@ A navegação basica da arvore funciona a partir dos arquivos sincronizados em d
 
 | Comando | Descrição |
 |---------|-----------|
-| `Weepy Roblox Explorer: Refresh` | Atualizar manualmente a árvore de instâncias |
-| `Weepy Roblox Explorer: Search Instances` | Pesquisar instâncias em todos os serviços |
-| `Weepy Roblox Explorer: Open Backing File` | Abrir o arquivo de suporte de uma instância selecionada |
-| `Weepy Roblox Explorer: Copy Instance Path` | Copiar o caminho completo da instância (ex. `game.Workspace.Part`) |
-| `Weepy Roblox Explorer: Reveal in Explorer` | Mostrar o arquivo no explorador padrão do VSCode |
+| `Weppy Roblox Explorer: Refresh` | Atualizar manualmente a árvore de instâncias |
+| `Weppy Roblox Explorer: Search Instances` | Pesquisar instâncias em todos os serviços |
+| `Weppy Roblox Explorer: Open Backing File` | Abrir o arquivo de suporte de uma instância selecionada |
+| `Weppy Roblox Explorer: Copy Instance Path` | Copiar o caminho completo da instância (ex. `game.Workspace.Part`) |
+| `Weppy Roblox Explorer: Reveal in Explorer` | Mostrar o arquivo no explorador padrão do VSCode |
 
 ## Relacionado
 

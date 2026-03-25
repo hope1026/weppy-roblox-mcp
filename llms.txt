@@ -66,5 +66,7 @@ Or manually:
 
 - GitHub: https://github.com/hope1026/weppy-roblox-mcp
 - npm: https://www.npmjs.com/package/@weppy/roblox-mcp
+- Roblox Explorer (VS Code Marketplace): https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer
+- Roblox Explorer (Open VSX): https://open-vsx.org/extension/weppy/weppy-roblox-explorer
 - Issues: https://github.com/hope1026/weppy-roblox-mcp/issues
 - Discussions: https://github.com/hope1026/weppy-roblox-mcp/discussions

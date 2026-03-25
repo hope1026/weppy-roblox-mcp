@@ -1,9 +1,9 @@
-# Weepy Roblox Explorer (VSCode Extension)
+# Weppy Roblox Explorer (VSCode Extension)
 
 Roblox Studio Explorer-like tree view for VSCode. Browse synced instance trees, open scripts directly, and track sync status — all inside your editor.
 This is a companion extension for Weppy Roblox MCP, not a standalone Roblox integration.
 
-![Weepy Roblox Explorer](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
+![Weppy Roblox Explorer](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
 
 ## Requirements
 
@@ -13,9 +13,12 @@ This is a companion extension for Weppy Roblox MCP, not a standalone Roblox inte
 
 ## Installation
 
-Search for **Weepy Roblox Explorer** in the VSCode Extensions sidebar (`Ctrl+Shift+X` / `Cmd+Shift+X`) and click **Install**.
+Search for **Weppy Roblox Explorer** in the VSCode Extensions sidebar (`Ctrl+Shift+X` / `Cmd+Shift+X`) and click **Install**.
 
-Or install directly from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer).
+Or install directly from:
+
+- [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer)
+- [Open VSX](https://open-vsx.org/extension/weppy/weppy-roblox-explorer)
 
 Core tree browsing works from synced files on disk. Live sync state, direction indicators, and Explorer telemetry forwarding are available when the local MCP server is reachable.
 
@@ -43,11 +46,11 @@ Core tree browsing works from synced files on disk. Live sync state, direction i
 
 | Command | Description |
 |---------|-------------|
-| `Weepy Roblox Explorer: Refresh` | Manually refresh the instance tree |
-| `Weepy Roblox Explorer: Search Instances` | Search instances across all services |
-| `Weepy Roblox Explorer: Open Backing File` | Open the file backing a selected instance |
-| `Weepy Roblox Explorer: Copy Instance Path` | Copy the full instance path (e.g. `game.Workspace.Part`) |
-| `Weepy Roblox Explorer: Reveal in Explorer` | Show the backing file in the default VSCode explorer |
+| `Weppy Roblox Explorer: Refresh` | Manually refresh the instance tree |
+| `Weppy Roblox Explorer: Search Instances` | Search instances across all services |
+| `Weppy Roblox Explorer: Open Backing File` | Open the file backing a selected instance |
+| `Weppy Roblox Explorer: Copy Instance Path` | Copy the full instance path (e.g. `game.Workspace.Part`) |
+| `Weppy Roblox Explorer: Reveal in Explorer` | Show the backing file in the default VSCode explorer |
 
 ## Related
 
