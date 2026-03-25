@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "Weppy Roblox MCP — MCP server that lets AI coding agents control a live Roblox Studio session with 21 tools, 140+ actions, bidirectional sync, automated playtest, and multi-place support",
-    "version": "2.0.5"
+    "version": "2.0.6"
   },
   "plugins": [
     {
       "name": "weppy-roblox-mcp",
       "source": "./plugins/weppy-roblox-mcp",
       "description": "Weppy Roblox MCP — MCP server that lets AI coding agents control a live Roblox Studio session with 21 tools, 140+ actions, bidirectional sync, automated playtest, and multi-place support",
-      "version": "2.0.5",
+      "version": "2.0.6",
       "author": {
         "name": "hope1026"
       },

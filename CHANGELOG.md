@@ -18,6 +18,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+## [2.0.6] - 2026-03-25
+
+### Improved
+
+- Enhanced overall stability and reliability
+
 
 ## [2.0.5] - 2026-03-24
 

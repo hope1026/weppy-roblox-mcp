@@ -72,6 +72,7 @@ Daftarkan MCP server ke aplikasi AI yang kamu pakai. Bisa digunakan di semua apl
 ## Opsional: Install Roblox Explorer (Ekstensi VSCode)
 
 Jelajahi tree instance yang sudah disinkronkan di dalam VSCode dengan ikon kelas Roblox.
+Ekstensi opsional ini mengharuskan setup Roblox MCP di atas sudah selesai lebih dulu, karena Explorer membaca data `roblox-project-sync` yang dihasilkan oleh Sync.
 
 👉 [Panduan Instalasi Roblox Explorer](roblox-explorer.md)
 
