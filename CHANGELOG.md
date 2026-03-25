@@ -19,6 +19,21 @@ All notable changes to this project will be documented in this file.
 
 
 
+## [2.0.7] - 2026-03-25
+
+### What's New
+
+- Published Weppy Roblox Explorer to VS Code Marketplace and Open VSX Registry. Install directly from your editor's extension marketplace.
+- Updated installation guide to reflect new marketplace links for Roblox Explorer.
+
+
+## [2.0.6] - 2026-03-25
+
+### Improved
+
+- Enhanced overall stability and reliability
+
+
 ## [2.0.5] - 2026-03-24
 
 ### Bug Fixes

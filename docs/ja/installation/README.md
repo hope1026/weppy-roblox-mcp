@@ -72,8 +72,13 @@ GitHubからプラグインファイルをダウンロードして、Roblox Stud
 ## オプション: Roblox Explorer (VSCode拡張) のインストール
 
 同期されたインスタンスツリーをRobloxクラスアイコン付きでVSCode内で閲覧できます。
+この拡張を使うには、先に上記のRoblox MCPセットアップを完了している必要があります。ExplorerはSyncが生成した`roblox-project-sync`データを読み取るためです。
 
 👉 [Roblox Explorerインストールガイド](roblox-explorer.md)
+
+直接インストール:
+- [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer)
+- [Open VSX](https://open-vsx.org/extension/weppy/weppy-roblox-explorer)
 
 ---
 

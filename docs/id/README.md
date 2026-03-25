@@ -105,6 +105,8 @@ Dashboard berbasis web yang disediakan server MCP memungkinkan Anda melihat stat
 ### 5) Roblox Explorer: jelajahi hierarki Studio di VSCode
 
 Lihat seluruh pohon instance dari place Roblox Studio langsung di dalam VSCode. Navigasi service, buka script dan file properti yang tersinkron, dan pantau status sinkronisasi — semua tanpa beralih ke Studio.
+Roblox Explorer adalah ekstensi pendamping VSCode untuk data sync yang dihasilkan oleh Weppy Roblox MCP. Penjelajahan tree dasar bekerja dari file yang sudah tersinkron di disk, dan indikator live untuk status sync atau direction menjadi lebih lengkap saat server MCP lokal sedang berjalan.
+Instal dari [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer) atau [Open VSX](https://open-vsx.org/extension/weppy/weppy-roblox-explorer).
 
 ![Roblox Explorer — pohon instance Studio ditampilkan di sidebar VSCode](../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
 

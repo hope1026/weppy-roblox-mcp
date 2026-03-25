@@ -22,9 +22,10 @@ O caminho local padrao e `roblox-project-sync/place_{placeId}/explorer`.
 
 ### Explorar dados sincronizados no VSCode
 
-Instale a extensao [Weepy Roblox Explorer](../installation/roblox-explorer.md) para explorar a arvore de instancias sincronizada no VSCode, assim como no Roblox Studio.
+Instale a extensao [Weppy Roblox Explorer](../installation/roblox-explorer.md) para explorar a arvore de instancias sincronizada no VSCode, assim como no Roblox Studio.
+O Explorer le os arquivos de sync gerados aqui e tambem pode mostrar status sync ao vivo e informacoes de direction quando o servidor MCP local estiver em execucao.
 
-![Weepy Roblox Explorer — explorar a arvore de instancias sincronizada no VSCode](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
+![Weppy Roblox Explorer — explorar a arvore de instancias sincronizada no VSCode](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
 
 - Arvore de servicos/instancias com icones de classes Roblox
 - Clique em um script para abri-lo e editar

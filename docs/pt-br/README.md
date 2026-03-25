@@ -105,6 +105,8 @@ No dashboard web fornecido pelo servidor MCP, acompanhe em tempo real o status d
 ### 5) Roblox Explorer: navegue a hierarquia do Studio no VSCode
 
 Visualize a arvore completa de instancias do seu lugar no Roblox Studio diretamente dentro do VSCode. Navegue pelos servicos, abra scripts e arquivos de propriedades sincronizados, e acompanhe o status de sincronizacao — tudo sem trocar para o Studio.
+Roblox Explorer e uma extensao complementar do VSCode para os dados de sync gerados pelo Weppy Roblox MCP. A navegacao basica da arvore funciona a partir dos arquivos sincronizados em disco, e os indicadores ao vivo de status sync ou direction ficam mais completos quando o servidor MCP local esta em execucao.
+Instale pela [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer) ou pela [Open VSX](https://open-vsx.org/extension/weppy/weppy-roblox-explorer).
 
 ![Roblox Explorer — arvore de instancias do Studio exibida na barra lateral do VSCode](../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
 

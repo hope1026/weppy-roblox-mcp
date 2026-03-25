@@ -72,8 +72,13 @@ GitHub에서 플러그인 파일을 다운로드한 뒤, Roblox Studio의 Plugin
 ## 선택 사항: Roblox Explorer (VSCode 확장) 설치
 
 동기화된 인스턴스 트리를 Roblox 클래스 아이콘과 함께 VSCode에서 탐색할 수 있습니다.
+이 확장은 위의 Roblox MCP 설치를 먼저 완료해야 사용할 수 있습니다. Explorer가 Sync가 생성한 `roblox-project-sync` 데이터를 읽기 때문입니다.
 
 👉 [Roblox Explorer 설치 가이드](roblox-explorer.md)
+
+바로 설치:
+- [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer)
+- [Open VSX](https://open-vsx.org/extension/weppy/weppy-roblox-explorer)
 
 ---
 

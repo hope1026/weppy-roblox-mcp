@@ -67,8 +67,13 @@ Configura el servidor MCP en tu app de IA para que pueda comunicarse con Roblox 
 ## Opcional: Instalar Roblox Explorer (Extensión VSCode)
 
 Explora los árboles de instancias sincronizados dentro de VSCode con iconos de clases Roblox.
+Esta extensión opcional requiere completar antes la instalación de Roblox MCP, porque Explorer lee los datos `roblox-project-sync` generados por Sync.
 
 👉 [Guía de instalación de Roblox Explorer](roblox-explorer.md)
+
+Instalación directa:
+- [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer)
+- [Open VSX](https://open-vsx.org/extension/weppy/weppy-roblox-explorer)
 
 ---
 

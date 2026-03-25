@@ -1,6 +1,6 @@
 {
   "name": "@weppy/roblox-mcp",
-  "version": "2.0.5",
+  "version": "2.0.7",
   "description": "MCP (Model Context Protocol) server for Roblox Studio integration - enables AI coding agents to interact with Roblox Studio in real-time",
   "main": "plugins/weppy-roblox-mcp/dist/index.js",
   "type": "module",

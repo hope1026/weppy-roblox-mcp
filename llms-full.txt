@@ -201,10 +201,7 @@ In the agent pane, click ⋯ → MCP Servers → Manage MCP Servers → View raw
 
 Browse synced instance trees inside VSCode with Roblox class icons.
 
-1. Download the latest `weppy-roblox-explorer-v*.zip` from [Releases](https://github.com/hope1026/weppy-roblox-mcp/releases)
-2. Extract the ZIP package to get `weppy-roblox-explorer-*.vsix`
-3. Open VSCode → Extensions sidebar → ⋯ → Install from VSIX...
-4. Select the extracted `.vsix` file
+Search for **Weppy Roblox Explorer** in the VSCode Extensions sidebar and click Install, or install from [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer) or [Open VSX](https://open-vsx.org/extension/weppy/weppy-roblox-explorer).
 
 Features:
 - Instance tree with Roblox class icons (dark/light theme)
