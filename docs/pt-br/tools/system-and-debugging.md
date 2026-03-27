@@ -74,6 +74,14 @@ Use `batch_execute` para agrupar varios comandos em uma unica solicitacao.
 | `remove` | Remover itens da selecao | Pro |
 | `watch` | Monitorar mudancas de selecao | Pro |
 
+### Manage Context (Basic)
+
+| Acao | Descricao | Tier |
+|------|-----------|------|
+| `begin` | Inicia um contexto de execucao estruturado para o escopo atual de sessao/place | Basic |
+| `update` | Atualiza a intencao, as areas afetadas ou os metadados de replay do contexto ativo | Basic |
+| `end` | Encerra o contexto de execucao ativo e persiste o snapshot final | Basic |
+
 ### Batch Execute (Pro)
 
 Executa varios comandos em um unico lote. Cada comando inclui nome da tool e argumentos, roda em ordem e pode continuar apos erros se configurado.

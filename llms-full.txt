@@ -3,7 +3,7 @@
 > Weppy Roblox MCP is an MCP server that lets AI coding agents (Claude, Codex,
 > Cursor, Gemini) control a live Roblox Studio session — create and edit scripts,
 > instances, terrain, lighting, assets, audio, and animations via natural language.
-> 21 consolidated tools · 140+ actions · Bidirectional sync · Multi-place support
+> Action-based MCP tools · Bidirectional sync · Multi-place support
 
 ---
 

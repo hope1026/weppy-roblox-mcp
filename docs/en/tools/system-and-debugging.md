@@ -74,6 +74,14 @@ Use `batch_execute` to bundle multiple commands into one request.
 | `remove` | Remove items from the selection | Pro |
 | `watch` | Monitor selection changes | Pro |
 
+### Manage Context (Basic)
+
+| Action | Description | Tier |
+|--------|-------------|------|
+| `begin` | Start a structured execution context for the current session/place scope | Basic |
+| `update` | Update intent, affected areas, or replay metadata for the active context | Basic |
+| `end` | Close the active execution context and persist the final snapshot | Basic |
+
 ### Batch Execute (Pro)
 
 Execute multiple commands in one batch. Each command includes a tool name and arguments, runs sequentially, and can optionally continue after errors.

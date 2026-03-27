@@ -2,7 +2,7 @@
 
 > **Weppy Roblox MCP** is an MCP server that lets AI coding agents control a live Roblox Studio session — create and edit scripts, instances, terrain, lighting, assets, audio, and animations via natural language.
 
-**21 consolidated tools · 140+ actions · Bidirectional sync · Automated playtest · Multi-place support**
+**Action-based tool surface · Bidirectional sync · Automated playtest · Multi-place support**
 
 **English** | [한국어](docs/ko/README.md) | [日本語](docs/ja/README.md) | [Español](docs/es/README.md) | [Português](docs/pt-br/README.md) | [Bahasa Indonesia](docs/id/README.md)
 
@@ -175,7 +175,7 @@ Yes. AI can create instances, write scripts, generate terrain, set up lighting, 
 Basic (Free) includes MCP tool execution and one-way sync (Studio -> Local). Pro adds bidirectional sync, bulk operations, terrain generation, spatial analysis, audio/animation control, and multi-place support. See the [Pro Upgrade Guide](docs/en/pro-upgrade.md).
 
 ### How is Weppy different from other Roblox MCP servers?
-Weppy uses 21 consolidated tools with action-based dispatching (140+ actions) instead of separate tools for each function. This reduces AI token consumption significantly. It also provides bidirectional project sync and multi-place support, which most alternatives lack.
+Weppy uses action-based dispatching instead of separate tools for each function. This reduces AI token consumption significantly. It also provides bidirectional project sync and multi-place support, which most alternatives lack.
 
 ### Is it safe? Can AI break my game?
 The server runs on localhost only (127.0.0.1:3002). Forbidden paths (CoreGui, CorePackages) are blocked. Rate limiting (450 req/min) and 30-second timeouts prevent runaway operations. All changes are trackable via sync history.

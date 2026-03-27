@@ -74,6 +74,14 @@
 | `remove` | 選択から項目を削除 | Pro |
 | `watch` | 選択変更を監視 | Pro |
 
+### Manage Context（Basic）
+
+| アクション | 説明 | ティア |
+|------------|------|--------|
+| `begin` | 現在のセッション/Place スコープで構造化された実行コンテキストを開始 | Basic |
+| `update` | アクティブなコンテキストの intent、affected areas、replay metadata を更新 | Basic |
+| `end` | アクティブな実行コンテキストを終了し、最終スナップショットを保存 | Basic |
+
 ### Batch Execute（Pro）
 
 複数コマンドを1つのバッチで実行します。各コマンドはツール名と引数を持ち、順番に実行され、必要に応じてエラー後も継続できます。
