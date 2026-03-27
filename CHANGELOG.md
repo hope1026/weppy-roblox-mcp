@@ -18,11 +18,15 @@ All notable changes to this project will be documented in this file.
 
 
 
-## [2.0.6] - 2026-03-25
+
+
+## [2.0.8] - 2026-03-27
 
 ### Improved
 
-- Enhanced overall stability and reliability
+- Updated dashboard settings toggles to use switches for clearer controls.
+- Improved overall stability across MCP and plugin workflows.
+- Fixed an issue where the MCP server could fail to shut down cleanly.
 
 
 ## [2.0.7] - 2026-03-25

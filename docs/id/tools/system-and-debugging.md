@@ -74,6 +74,14 @@ Gunakan `batch_execute` untuk menggabungkan beberapa command dalam satu perminta
 | `remove` | Menghapus item dari seleksi | Pro |
 | `watch` | Memantau perubahan seleksi | Pro |
 
+### Manage Context (Basic)
+
+| Aksi | Deskripsi | Tier |
+|------|-----------|------|
+| `begin` | Memulai konteks eksekusi terstruktur untuk scope session/place saat ini | Basic |
+| `update` | Memperbarui intent, area terdampak, atau replay metadata untuk konteks aktif | Basic |
+| `end` | Menutup konteks eksekusi aktif dan menyimpan snapshot final | Basic |
+
 ### Batch Execute (Pro)
 
 Menjalankan banyak command dalam satu batch. Setiap command menyertakan nama tool dan argumen, dijalankan berurutan, dan bisa tetap lanjut setelah error jika diatur.

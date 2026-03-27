@@ -74,6 +74,14 @@
 | `remove` | 선택에서 항목 제거 | Pro |
 | `watch` | 선택 변경 모니터링 | Pro |
 
+### Manage Context (Basic)
+
+| 액션 | 설명 | 티어 |
+|------|------|------|
+| `begin` | 현재 세션/Place 범위에서 구조화된 실행 컨텍스트를 시작합니다 | Basic |
+| `update` | 활성 컨텍스트의 intent, affected areas, replay metadata를 갱신합니다 | Basic |
+| `end` | 활성 실행 컨텍스트를 종료하고 최종 스냅샷을 저장합니다 | Basic |
+
 ### Batch Execute (Pro)
 
 여러 명령을 단일 배치로 실행합니다. 각 명령은 도구 이름과 인수를 지정합니다. 명령은 순차적으로 실행되며 오류 시 계속 진행 여부를 선택할 수 있습니다.
