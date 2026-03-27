@@ -69,12 +69,12 @@ Daftarkan MCP server ke aplikasi AI yang kamu pakai. Bisa digunakan di semua apl
 
 ---
 
-## Opsional: Install Roblox Explorer (Ekstensi VSCode)
+## Opsional: Install WROX Roblox Explorer (Ekstensi VSCode)
 
 Jelajahi tree instance yang sudah disinkronkan di dalam VSCode dengan ikon kelas Roblox.
 Ekstensi opsional ini mengharuskan setup Roblox MCP di atas sudah selesai lebih dulu, karena Explorer membaca data `roblox-project-sync` yang dihasilkan oleh Sync.
 
-👉 [Panduan Instalasi Roblox Explorer](roblox-explorer.md)
+👉 [Panduan Instalasi WROX Roblox Explorer](roblox-explorer.md)
 
 Instal langsung:
 - [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer)
@@ -84,7 +84,7 @@ Instal langsung:
 
 ## Setelah Instalasi Selesai
 
-1. Buka **Roblox Studio**, di tab Plugins klik **W-MCP** → **Connect**
+1. Buka **Roblox Studio**, di tab Plugins klik **WROX** → **Connect**
 2. Di **aplikasi AI**, coba test:
 
 ```

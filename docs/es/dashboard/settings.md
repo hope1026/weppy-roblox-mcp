@@ -59,7 +59,7 @@ Cambia el idioma de la interfaz del Dashboard. Soporta 6 idiomas + Auto (detecci
 
 ## Documentos relacionados
 
-- [Dashboard Overview](overview.md)
+- [WROX Dashboard Overview](overview.md)
 - [Changelog](changelog.md)
 - [Connection](connection.md)
 - [Sync](sync.md)

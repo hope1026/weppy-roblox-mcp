@@ -52,7 +52,7 @@ Revisa la marca de tiempo y el Status en el Test History para identificar la ten
 
 ## Documentos relacionados
 
-- [Dashboard Overview](overview.md)
+- [WROX Dashboard Overview](overview.md)
 - [Changelog](changelog.md)
 - [Connection](connection.md)
 - [Sync](sync.md)

@@ -1,9 +1,9 @@
-# Weppy Roblox Explorer (Extensión VSCode)
+# WROX Roblox Explorer (Extensión VSCode)
 
 Vista de árbol de instancias similar al Explorer de Roblox Studio, dentro de VSCode. Navega instancias sincronizadas, abre scripts directamente y consulta el estado de sincronización sin salir del editor.
-Esta es una extensión complementaria para Weppy Roblox MCP, no una integración de Roblox independiente.
+Esta es una extensión complementaria para WROX, no una integración de Roblox independiente.
 
-![Weppy Roblox Explorer](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
+![WROX Roblox Explorer](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
 
 ## Requisitos
 
@@ -13,7 +13,7 @@ Esta es una extensión complementaria para Weppy Roblox MCP, no una integración
 
 ## Instalación
 
-Busca **Weppy Roblox Explorer** en la barra lateral de Extensiones de VSCode (`Ctrl+Shift+X` / `Cmd+Shift+X`) y haz clic en **Install**.
+Busca **WROX Roblox Explorer** en la barra lateral de Extensiones de VSCode (`Ctrl+Shift+X` / `Cmd+Shift+X`) y haz clic en **Install**.
 
 O instala directamente desde estos marketplaces:
 
@@ -46,11 +46,11 @@ La navegación básica del árbol funciona con los archivos sincronizados en dis
 
 | Comando | Descripción |
 |---------|-------------|
-| `Weppy Roblox Explorer: Refresh` | Actualizar manualmente el árbol de instancias |
-| `Weppy Roblox Explorer: Search Instances` | Buscar instancias en todos los servicios |
-| `Weppy Roblox Explorer: Open Backing File` | Abrir el archivo de respaldo de una instancia seleccionada |
-| `Weppy Roblox Explorer: Copy Instance Path` | Copiar la ruta completa de la instancia (ej. `game.Workspace.Part`) |
-| `Weppy Roblox Explorer: Reveal in Explorer` | Mostrar el archivo en el explorador predeterminado de VSCode |
+| `WROX Explorer: Refresh` | Actualizar manualmente el árbol de instancias |
+| `WROX Explorer: Search Instances` | Buscar instancias en todos los servicios |
+| `WROX Explorer: Open Backing File` | Abrir el archivo de respaldo de una instancia seleccionada |
+| `WROX Explorer: Copy Instance Path` | Copiar la ruta completa de la instancia (ej. `game.Workspace.Part`) |
+| `WROX Explorer: Reveal in Explorer` | Mostrar el archivo en el explorador predeterminado de VSCode |
 
 ## Relacionado
 

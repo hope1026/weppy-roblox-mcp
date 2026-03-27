@@ -41,7 +41,7 @@ Studio 플레이테스트를 AI가 실행하고 검증합니다. F5(Play)/F8(Run
 
 ### 플러그인에서 활성화
 
-1. Roblox Studio에서 **W-MCP** 플러그인을 열고 MCP 서버에 연결합니다.
+1. Roblox Studio에서 **WROX** 플러그인을 열고 MCP 서버에 연결합니다.
 2. 플러그인의 **Settings > License** 섹션을 엽니다.
 3. `License key` 입력창에 구매한 키를 붙여넣습니다.
 4. **Activate** 버튼을 눌러 라이선스를 활성화합니다.

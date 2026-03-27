@@ -61,7 +61,7 @@ We recommend keeping the defaults (HTTP `127.0.0.1:3002`). If needed, you can se
 
 ## Connection Test
 
-1. Open **Roblox Studio** → Plugins tab → **W-MCP** → **Connect**
+1. Open **Roblox Studio** → Plugins tab → **WROX** → **Connect**
 2. In **Antigravity**, enter:
    ```
    Tell me what's currently selected in Roblox Studio

@@ -61,7 +61,7 @@ Disarankan untuk mempertahankan nilai default (HTTP `127.0.0.1:3002`). Jika dipe
 
 ## Uji koneksi
 
-1. Jalankan **Roblox Studio** → tab Plugins → **W-MCP** → **Connect**
+1. Jalankan **Roblox Studio** → tab Plugins → **WROX** → **Connect**
 2. Di **Antigravity**, masukkan:
    ```
    Beri tahu saya apa yang sedang dipilih di Roblox Studio saat ini

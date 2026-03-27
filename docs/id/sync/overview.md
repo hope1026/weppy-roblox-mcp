@@ -22,10 +22,10 @@ Path lokal default adalah `roblox-project-sync/place_{placeId}/explorer`.
 
 ### Jelajahi data sync di VSCode
 
-Instal ekstensi [Weppy Roblox Explorer](../installation/roblox-explorer.md) untuk menjelajahi tree instance yang sudah tersinkron di VSCode, seperti di Roblox Studio.
+Instal ekstensi [WROX Roblox Explorer](../installation/roblox-explorer.md) untuk menjelajahi tree instance yang sudah tersinkron di VSCode, seperti di Roblox Studio.
 Explorer membaca file sync yang dihasilkan di sini, dan juga bisa menampilkan status sync live serta informasi direction saat server MCP lokal sedang berjalan.
 
-![Weppy Roblox Explorer — jelajahi tree instance yang tersinkron di VSCode](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
+![WROX Roblox Explorer — jelajahi tree instance yang tersinkron di VSCode](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
 
 - Tree service/instance dengan ikon kelas Roblox
 - Klik script untuk membukanya dan mengedit

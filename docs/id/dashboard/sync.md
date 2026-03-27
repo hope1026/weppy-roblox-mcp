@@ -66,7 +66,7 @@ Periksa Direction dari tipe Scripts di tabel Sync Directions.
 
 ## Dokumen Terkait
 
-- [Dashboard Overview](overview.md)
+- [WROX Dashboard Overview](overview.md)
 - [Changelog](changelog.md)
 - [Connection](connection.md)
 - [Playtest](playtest.md)

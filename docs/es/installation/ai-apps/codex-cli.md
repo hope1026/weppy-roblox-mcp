@@ -40,7 +40,7 @@ args = ["-y", "@weppy/roblox-mcp"]
 
 ## Probar la Conexion
 
-1. Abre **Roblox Studio** → Pestana Plugins → **W-MCP** → **Connect**
+1. Abre **Roblox Studio** → Pestana Plugins → **WROX** → **Connect**
 2. Ejecuta **Codex CLI** e ingresa:
    ```
    Dime que esta seleccionado actualmente en Roblox Studio

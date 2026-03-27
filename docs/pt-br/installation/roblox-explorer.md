@@ -1,9 +1,9 @@
-# Weppy Roblox Explorer (Extensão VSCode)
+# WROX Roblox Explorer (Extensão VSCode)
 
 Visualização em árvore de instâncias similar ao Explorer do Roblox Studio, dentro do VSCode. Navegue por instâncias sincronizadas, abra scripts diretamente e acompanhe o status de sincronização sem sair do editor.
-Esta é uma extensao complementar do Weppy Roblox MCP, e não uma integração Roblox independente.
+Esta é uma extensao complementar do WROX, e não uma integração Roblox independente.
 
-![Weppy Roblox Explorer](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
+![WROX Roblox Explorer](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
 
 ## Requisitos
 
@@ -13,7 +13,7 @@ Esta é uma extensao complementar do Weppy Roblox MCP, e não uma integração R
 
 ## Instalação
 
-Pesquise **Weppy Roblox Explorer** na barra lateral de Extensões do VSCode (`Ctrl+Shift+X` / `Cmd+Shift+X`) e clique em **Install**.
+Pesquise **WROX Roblox Explorer** na barra lateral de Extensões do VSCode (`Ctrl+Shift+X` / `Cmd+Shift+X`) e clique em **Install**.
 
 Ou instale diretamente por um destes marketplaces:
 
@@ -46,11 +46,11 @@ A navegação basica da arvore funciona a partir dos arquivos sincronizados em d
 
 | Comando | Descrição |
 |---------|-----------|
-| `Weppy Roblox Explorer: Refresh` | Atualizar manualmente a árvore de instâncias |
-| `Weppy Roblox Explorer: Search Instances` | Pesquisar instâncias em todos os serviços |
-| `Weppy Roblox Explorer: Open Backing File` | Abrir o arquivo de suporte de uma instância selecionada |
-| `Weppy Roblox Explorer: Copy Instance Path` | Copiar o caminho completo da instância (ex. `game.Workspace.Part`) |
-| `Weppy Roblox Explorer: Reveal in Explorer` | Mostrar o arquivo no explorador padrão do VSCode |
+| `WROX Explorer: Refresh` | Atualizar manualmente a árvore de instâncias |
+| `WROX Explorer: Search Instances` | Pesquisar instâncias em todos os serviços |
+| `WROX Explorer: Open Backing File` | Abrir o arquivo de suporte de uma instância selecionada |
+| `WROX Explorer: Copy Instance Path` | Copiar o caminho completo da instância (ex. `game.Workspace.Part`) |
+| `WROX Explorer: Reveal in Explorer` | Mostrar o arquivo no explorador padrão do VSCode |
 
 ## Relacionado
 

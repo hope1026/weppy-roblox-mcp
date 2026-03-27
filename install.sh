@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Weppy Roblox MCP — One-line install script (macOS/Linux)
+# WROX — One-line install script (macOS/Linux)
 #
 # Usage:
 #   curl -fsSL https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.sh | bash
@@ -23,6 +23,16 @@ DIM='\033[2m'
 BOLD='\033[1m'
 NC='\033[0m'
 
+INSTALL_LOG_FILE="$(mktemp "${TMPDIR:-/tmp}/wrox-install-XXXXXX.log" 2>/dev/null || true)"
+if [ -z "${INSTALL_LOG_FILE:-}" ]; then
+  INSTALL_LOG_FILE="${HOME}/wrox-install-error.log"
+  : > "$INSTALL_LOG_FILE"
+fi
+
+if command -v tee >/dev/null 2>&1; then
+  exec > >(tee -a "$INSTALL_LOG_FILE") 2>&1
+fi
+
 # ── Utilities ──
 # shellcheck disable=SC2059
 info()    { printf "${BLUE}[INFO]${NC} %s\n" "$1"; }
@@ -34,6 +44,31 @@ warn()    { printf "${YELLOW}  ⚠${NC} %s\n" "$1"; }
 fail()    { printf "${RED}  ✗${NC} %s\n" "$1"; }
 # shellcheck disable=SC2059
 step()    { printf "\n${BOLD}${CYAN}[%s]${NC} ${BOLD}%s${NC}\n" "$1" "$2"; }
+
+pause_on_failure_if_interactive() {
+  if [ -t 1 ] && [ -r /dev/tty ]; then
+    printf "\nPress Enter to exit..." >/dev/tty
+    read -r _ </dev/tty || true
+  fi
+}
+
+handle_install_error() {
+  local exit_code=$?
+  local line_no="$1"
+  local failed_command="$2"
+
+  trap - ERR
+
+  printf "\n${RED}Installation failed.${NC}\n"
+  printf "  Command: %s\n" "$failed_command"
+  printf "  Line   : %s\n" "$line_no"
+  printf "  Log    : %s\n" "$INSTALL_LOG_FILE"
+
+  pause_on_failure_if_interactive
+  exit "$exit_code"
+}
+
+trap 'handle_install_error "${LINENO}" "$BASH_COMMAND"' ERR
 
 # Y/n prompt (default Y)
 confirm() {
@@ -77,7 +112,7 @@ is_lfs_pointer() {
 
 # ── Header ──
 # shellcheck disable=SC2059
-printf "\n${BOLD}Weppy Roblox MCP Installer${NC}\n"
+printf "\n${BOLD}WROX Installer${NC}\n"
 # shellcheck disable=SC2059
 printf "${DIM}AI-powered Roblox Studio integration${NC}\n"
 printf "%s\n" "════════════════════════════════════"
@@ -318,7 +353,7 @@ printf "${BOLD}Installation complete!${NC}\n\n"
 printf "  ${BOLD}Next steps:${NC}\n"
 printf "  1. Restart Roblox Studio\n"
 # shellcheck disable=SC2059
-printf "  2. Look for the ${BOLD}W-MCP${NC} button in the Plugins tab\n"
+printf "  2. Look for the ${BOLD}WROX${NC} button in the Plugins tab\n"
 printf "  3. Click Connect and start building with AI!\n\n"
 printf "  Auto registration: Claude Code, Claude Desktop, Cursor, Codex CLI, Gemini CLI\n"
 printf "  Manual setup required: Codex App, Antigravity\n\n"

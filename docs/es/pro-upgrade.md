@@ -41,7 +41,7 @@ Solo necesitas activar la licencia una vez, ya sea en el plugin o en el dashboar
 
 ### Activar en el plugin
 
-1. Abre **W-MCP** en Roblox Studio y conéctalo al servidor MCP.
+1. Abre **WROX** en Roblox Studio y conéctalo al servidor MCP.
 2. Abre la sección **Settings > License** del plugin.
 3. Pega la clave comprada en el campo `License key`.
 4. Haz clic en **Activate** para activar la licencia.

@@ -1,6 +1,6 @@
 # Roblox MCP — Servidor MCP para Roblox Studio | Desenvolvimento de jogos com IA usando Claude, Codex, Cursor e Gemini
 
-> **Weppy Roblox MCP** e um servidor MCP que permite agentes de codificacao IA controlarem uma sessao ao vivo do Roblox Studio — crie e edite scripts, instancias, terrain, iluminacao, assets, audio e animacoes com linguagem natural.
+> **WROX** e um servidor MCP que permite agentes de codificacao IA controlarem uma sessao ao vivo do Roblox Studio — crie e edite scripts, instancias, terrain, iluminacao, assets, audio e animacoes com linguagem natural.
 
 **21 ferramentas consolidadas · 140+ acoes · Sync bidirecional · Playtest automatizado · Suporte multi-place**
 
@@ -92,23 +92,23 @@ A IA pode controlar diretamente o playtest do Studio. Ela pode iniciar e parar P
 - "Escreva e execute um teste para confirmar que o SpawnLocation esta acima do chao."
 - "Valide com playtest se o script que acabei de alterar roda sem erros."
 
-### 4) Dashboard: monitore as operacoes da IA em tempo real
+### 4) WROX Dashboard: monitore as operacoes da IA em tempo real
 
 No dashboard web fornecido pelo servidor MCP, acompanhe em tempo real o status de conexao, historico de execucao de ferramentas, status de sincronizacao e historico de alteracoes do jogo.
 
-![Dashboard Overview — status do servidor, alteracoes recentes e resumo da sessao](../assets/screenshots/dashboard/dashboard_overview.png)
+![WROX WROX Dashboard Overview — status do servidor, alteracoes recentes e resumo da sessao](../assets/screenshots/dashboard/dashboard_overview.png)
 
 - Visualize o status de conexao do servidor/plugin/agente de uma so vez
 - Compare todas as alteracoes feitas pela IA com Before & After no Changelog
 - Analise o fluxo de trabalho com historico e estatisticas de execucao de ferramentas
 
-### 5) Roblox Explorer: navegue a hierarquia do Studio no VSCode
+### 5) WROX Roblox Explorer: navegue a hierarquia do Studio no VSCode
 
 Visualize a arvore completa de instancias do seu lugar no Roblox Studio diretamente dentro do VSCode. Navegue pelos servicos, abra scripts e arquivos de propriedades sincronizados, e acompanhe o status de sincronizacao — tudo sem trocar para o Studio.
-Roblox Explorer e uma extensao complementar do VSCode para os dados de sync gerados pelo Weppy Roblox MCP. A navegacao basica da arvore funciona a partir dos arquivos sincronizados em disco, e os indicadores ao vivo de status sync ou direction ficam mais completos quando o servidor MCP local esta em execucao.
+WROX Roblox Explorer e uma extensao complementar do VSCode para os dados de sync gerados pelo WROX. A navegacao basica da arvore funciona a partir dos arquivos sincronizados em disco, e os indicadores ao vivo de status sync ou direction ficam mais completos quando o servidor MCP local esta em execucao.
 Instale pela [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer) ou pela [Open VSX](https://open-vsx.org/extension/weppy/weppy-roblox-explorer).
 
-![Roblox Explorer — arvore de instancias do Studio exibida na barra lateral do VSCode](../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
+![WROX Roblox Explorer — arvore de instancias do Studio exibida na barra lateral do VSCode](../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
 
 - Icones de classe iguais ao Studio para reconhecimento imediato
 - Clique para abrir scripts e arquivos de propriedades sincronizados
@@ -126,8 +126,8 @@ Instale pela [VS Code Marketplace](https://marketplace.visualstudio.com/items?it
 - [Guia de instalacao](installation/README.md)
 - [Lista completa de tools](tools/overview.md)
 - [Guia detalhado de Sync](sync/overview.md)
-- [Guia do Dashboard](dashboard/overview.md)
-- [Roblox Explorer (Extensao VSCode)](installation/roblox-explorer.md)
+- [Guia do WROX Dashboard](dashboard/overview.md)
+- [WROX Roblox Explorer (Extensao VSCode)](installation/roblox-explorer.md)
 - [Compatibilidade](../compatibility.md)
 - [Solucao de problemas](../troubleshooting.md)
 

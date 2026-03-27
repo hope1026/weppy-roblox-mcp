@@ -52,7 +52,7 @@ Periksa timestamp dan Status di Test History untuk memahami tren hasil pengujian
 
 ## Dokumen Terkait
 
-- [Dashboard Overview](overview.md)
+- [WROX Dashboard Overview](overview.md)
 - [Changelog](changelog.md)
 - [Connection](connection.md)
 - [Sync](sync.md)

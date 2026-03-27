@@ -32,6 +32,8 @@ irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1
 
 Roblox Studio를 재시작하면 완료입니다!
 
+설치 중 오류가 발생하면 임시 로그 파일 경로를 출력하고, 대화형 실행에서는 종료 전에 콘솔을 유지해서 원인을 확인할 수 있습니다.
+
 자동 MCP 등록은 현재 **Claude Code, Claude Desktop, Cursor, Codex CLI, Gemini CLI**만 지원합니다.
 **Codex App**과 **Antigravity**는 스크립트 완료 후 수동 설정이 필요합니다.
 
@@ -69,12 +71,12 @@ GitHub에서 플러그인 파일을 다운로드한 뒤, Roblox Studio의 Plugin
 
 ---
 
-## 선택 사항: Roblox Explorer (VSCode 확장) 설치
+## 선택 사항: WROX Roblox Explorer (VSCode 확장) 설치
 
 동기화된 인스턴스 트리를 Roblox 클래스 아이콘과 함께 VSCode에서 탐색할 수 있습니다.
 이 확장은 위의 Roblox MCP 설치를 먼저 완료해야 사용할 수 있습니다. Explorer가 Sync가 생성한 `roblox-project-sync` 데이터를 읽기 때문입니다.
 
-👉 [Roblox Explorer 설치 가이드](roblox-explorer.md)
+👉 [WROX Roblox Explorer 설치 가이드](roblox-explorer.md)
 
 바로 설치:
 - [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer)
@@ -84,7 +86,7 @@ GitHub에서 플러그인 파일을 다운로드한 뒤, Roblox Studio의 Plugin
 
 ## 설치 완료 후
 
-1. **Roblox Studio**를 열고, Plugins 탭에서 **W-MCP** → **Connect** 클릭
+1. **Roblox Studio**를 열고, Plugins 탭에서 **WROX** → **Connect** 클릭
 2. **AI 앱**에서 다음과 같이 테스트해보세요:
 
 ```

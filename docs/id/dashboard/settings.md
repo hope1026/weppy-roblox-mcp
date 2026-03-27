@@ -59,7 +59,7 @@ Mengubah bahasa UI dashboard. Mendukung 6 bahasa + Auto (deteksi otomatis bahasa
 
 ## Dokumen Terkait
 
-- [Dashboard Overview](overview.md)
+- [WROX Dashboard Overview](overview.md)
 - [Changelog](changelog.md)
 - [Connection](connection.md)
 - [Sync](sync.md)

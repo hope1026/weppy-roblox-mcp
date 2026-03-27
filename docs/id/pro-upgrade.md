@@ -41,7 +41,7 @@ Kamu hanya perlu mengaktifkan lisensi sekali, baik di plugin maupun di dashboard
 
 ### Aktifkan di plugin
 
-1. Buka **W-MCP** di Roblox Studio lalu hubungkan ke MCP server.
+1. Buka **WROX** di Roblox Studio lalu hubungkan ke MCP server.
 2. Buka bagian **Settings > License** di plugin.
 3. Tempel key yang sudah dibeli ke field `License key`.
 4. Klik **Activate** untuk mengaktifkan lisensi.
