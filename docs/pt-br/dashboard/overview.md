@@ -2,7 +2,7 @@
 
 > Monitore e gerencie em tempo real o status, conexoes, sincronizacao, historico de execucao de ferramentas e historico de alteracoes do jogo do servidor MCP diretamente no navegador.
 
-![Dashboard Overview — status do servidor, alteracoes recentes e resumo da sessao em uma unica tela](../../assets/screenshots/dashboard/dashboard_overview.png)
+![WROX Dashboard Overview — status do servidor, alteracoes recentes e resumo da sessao em uma unica tela](../../assets/screenshots/dashboard/dashboard_overview.png)
 
 ## O que e o Dashboard?
 

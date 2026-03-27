@@ -64,7 +64,7 @@ Claude Code manages MCP servers automatically:
 
 ## Connection Test
 
-1. Open **Roblox Studio** → Plugins tab → **W-MCP** → **Connect**
+1. Open **Roblox Studio** → Plugins tab → **WROX** → **Connect**
 2. Test in **Claude Code**:
    ```
    Create a blue part in Roblox Studio

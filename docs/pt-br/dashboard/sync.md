@@ -66,7 +66,7 @@ Verifique a Direction do tipo Scripts na tabela Sync Directions.
 
 ## Documentos relacionados
 
-- [Dashboard Overview](overview.md)
+- [WROX Dashboard Overview](overview.md)
 - [Changelog](changelog.md)
 - [Connection](connection.md)
 - [Playtest](playtest.md)

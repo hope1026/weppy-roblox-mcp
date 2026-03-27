@@ -30,7 +30,7 @@ Command: npx -y @weppy/roblox-mcp
 
 ## Connection Test
 
-1. Open **Roblox Studio** → Plugins tab → **W-MCP** → **Connect**
+1. Open **Roblox Studio** → Plugins tab → **WROX** → **Connect**
 2. Start a new conversation in **Codex App** and test:
    ```
    Tell me what's currently selected in Roblox Studio

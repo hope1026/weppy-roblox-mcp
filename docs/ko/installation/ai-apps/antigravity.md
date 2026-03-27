@@ -60,7 +60,7 @@ Antigravity에서는 MCP 서버를 **에이전트 패널(Agent pane)**에서 관
 
 ## 연결 테스트
 
-1. **Roblox Studio** 실행 → Plugins 탭 → **W-MCP** → **Connect**
+1. **Roblox Studio** 실행 → Plugins 탭 → **WROX** → **Connect**
 2. **Antigravity**에서 다음을 입력:
    ```
    Roblox Studio에서 현재 선택된 것을 알려줘

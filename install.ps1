@@ -1,5 +1,5 @@
 #
-# Weppy Roblox MCP — One-line install script (Windows PowerShell)
+# WROX — One-line install script (Windows PowerShell)
 #
 # Usage:
 #   irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1 | iex
@@ -11,6 +11,8 @@
 #
 
 $ErrorActionPreference = "Stop"
+$script:InstallLogPath = Join-Path ([System.IO.Path]::GetTempPath()) ("wrox-install-{0:yyyyMMdd-HHmmss}.log" -f (Get-Date))
+$script:TranscriptStarted = $false
 
 # ── Utilities ──
 function Write-Step($step, $msg) { Write-Host "`n[$step] $msg" -ForegroundColor Cyan -NoNewline; Write-Host "" }
@@ -18,6 +20,32 @@ function Write-Ok($msg) { Write-Host "  ✓ $msg" -ForegroundColor Green }
 function Write-Warn($msg) { Write-Host "  ⚠ $msg" -ForegroundColor Yellow }
 function Write-Fail($msg) { Write-Host "  ✗ $msg" -ForegroundColor Red }
 function Write-Info($msg) { Write-Host "  [INFO] $msg" -ForegroundColor Blue }
+function Stop-InstallTranscript() {
+    if ($script:TranscriptStarted) {
+        try { Stop-Transcript | Out-Null } catch {}
+        $script:TranscriptStarted = $false
+    }
+}
+function Pause-OnFailureIfInteractive() {
+    if ($Host.Name -match 'ConsoleHost|Visual Studio Code Host') {
+        try { Read-Host "Press Enter to exit" | Out-Null } catch {}
+    }
+}
+function Abort-Install($msg) { throw $msg }
+
+try {
+    Start-Transcript -Path $script:InstallLogPath -Force | Out-Null
+    $script:TranscriptStarted = $true
+} catch {}
+
+trap {
+    $message = if ($_.Exception) { $_.Exception.Message } else { $_.ToString() }
+    Write-Fail "Installation failed: $message"
+    Write-Host "  Log saved to: $script:InstallLogPath" -ForegroundColor Yellow
+    Pause-OnFailureIfInteractive
+    Stop-InstallTranscript
+    exit 1
+}
 
 function Confirm-Action($prompt) {
     $reply = Read-Host "$prompt (Y/n)"
@@ -52,7 +80,7 @@ function Test-LfsPointer($filePath) {
 
 # ── Header ──
 Write-Host ""
-Write-Host "Weppy Roblox MCP Installer" -ForegroundColor White -BackgroundColor DarkCyan
+Write-Host "WROX Installer" -ForegroundColor White -BackgroundColor DarkCyan
 Write-Host "AI-powered Roblox Studio integration" -ForegroundColor DarkGray
 Write-Host ("=" * 40)
 
@@ -61,16 +89,12 @@ try {
     $nodeVersion = (node -v) -replace 'v', ''
     $majorVersion = [int]($nodeVersion.Split('.')[0])
     if ($majorVersion -lt 18) {
-        Write-Fail "Node.js 18 or higher required (current: v$nodeVersion)"
-        Write-Host "  Upgrade: https://nodejs.org"
-        exit 1
+        Abort-Install "Node.js 18 or higher required (current: v$nodeVersion). Upgrade: https://nodejs.org"
     }
     Write-Ok "Node.js v$nodeVersion detected"
 }
 catch {
-    Write-Fail "Node.js is not installed"
-    Write-Host "  Install Node.js 18+: https://nodejs.org"
-    exit 1
+    Abort-Install "Node.js is not installed. Install Node.js 18+: https://nodejs.org"
 }
 
 # ═══════════════════════════════════
@@ -84,8 +108,7 @@ if (Confirm-Action "  Run npm install -g @weppy/roblox-mcp?") {
         Write-Ok "Installed @weppy/roblox-mcp"
     }
     catch {
-        Write-Fail "npm install failed: $_"
-        exit 1
+        Abort-Install "npm install failed: $_"
     }
 }
 else {
@@ -116,9 +139,7 @@ foreach ($p in $searchPaths) {
 
 if ($bundledPlugin) {
     if (Test-LfsPointer $bundledPlugin) {
-        Write-Fail "Bundled plugin payload is invalid (Git LFS pointer detected)"
-        Write-Info "Install the plugin from the GitHub release ZIP instead"
-        exit 1
+        Abort-Install "Bundled plugin payload is invalid (Git LFS pointer detected). Install the plugin from the GitHub release ZIP instead."
     }
 
     Write-Host "  → $pluginsDir\$pluginName"
@@ -283,7 +304,7 @@ Write-Host "Installation complete!" -ForegroundColor Green
 Write-Host ""
 Write-Host "  Next steps:"
 Write-Host "  1. Restart Roblox Studio"
-Write-Host "  2. Look for the W-MCP button in the Plugins tab"
+Write-Host "  2. Look for the WROX button in the Plugins tab"
 Write-Host "  3. Click Connect and start building with AI!"
 Write-Host ""
 Write-Host "  Auto registration: Claude Code, Claude Desktop, Cursor, Codex CLI, Gemini CLI"
@@ -291,3 +312,5 @@ Write-Host "  Manual setup required: Codex App, Antigravity"
 Write-Host ""
 Write-Host "  Docs: https://github.com/hope1026/weppy-roblox-mcp" -ForegroundColor DarkGray
 Write-Host ""
+
+Stop-InstallTranscript

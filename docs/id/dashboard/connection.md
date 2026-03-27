@@ -69,7 +69,7 @@ Periksa nama, PID, dan direktori kerja agen yang sedang terhubung di tabel AI Ag
 
 ## Dokumen Terkait
 
-- [Dashboard Overview](overview.md)
+- [WROX Dashboard Overview](overview.md)
 - [Changelog](changelog.md)
 - [Sync](sync.md)
 - [Playtest](playtest.md)

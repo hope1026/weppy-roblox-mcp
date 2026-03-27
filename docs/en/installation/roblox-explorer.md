@@ -1,9 +1,9 @@
-# Weppy Roblox Explorer (VSCode Extension)
+# WROX Roblox Explorer (VSCode Extension)
 
 Roblox Studio Explorer-like tree view for VSCode. Browse synced instance trees, open scripts directly, and track sync status — all inside your editor.
-This is a companion extension for Weppy Roblox MCP, not a standalone Roblox integration.
+This is a companion extension for WROX, not a standalone Roblox integration.
 
-![Weppy Roblox Explorer](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
+![WROX Roblox Explorer](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
 
 ## Requirements
 
@@ -13,7 +13,7 @@ This is a companion extension for Weppy Roblox MCP, not a standalone Roblox inte
 
 ## Installation
 
-Search for **Weppy Roblox Explorer** in the VSCode Extensions sidebar (`Ctrl+Shift+X` / `Cmd+Shift+X`) and click **Install**.
+Search for **WROX Roblox Explorer** in the VSCode Extensions sidebar (`Ctrl+Shift+X` / `Cmd+Shift+X`) and click **Install**.
 
 Or install directly from:
 
@@ -46,11 +46,11 @@ Core tree browsing works from synced files on disk. Live sync state, direction i
 
 | Command | Description |
 |---------|-------------|
-| `Weppy Roblox Explorer: Refresh` | Manually refresh the instance tree |
-| `Weppy Roblox Explorer: Search Instances` | Search instances across all services |
-| `Weppy Roblox Explorer: Open Backing File` | Open the file backing a selected instance |
-| `Weppy Roblox Explorer: Copy Instance Path` | Copy the full instance path (e.g. `game.Workspace.Part`) |
-| `Weppy Roblox Explorer: Reveal in Explorer` | Show the backing file in the default VSCode explorer |
+| `WROX Explorer: Refresh` | Manually refresh the instance tree |
+| `WROX Explorer: Search Instances` | Search instances across all services |
+| `WROX Explorer: Open Backing File` | Open the file backing a selected instance |
+| `WROX Explorer: Copy Instance Path` | Copy the full instance path (e.g. `game.Workspace.Part`) |
+| `WROX Explorer: Reveal in Explorer` | Show the backing file in the default VSCode explorer |
 
 ## Related
 

@@ -45,7 +45,7 @@
 
 ## 接続テスト
 
-1. **Roblox Studio** を開く → Plugins タブ → **W-MCP** → **Connect**
+1. **Roblox Studio** を開く → Plugins タブ → **WROX** → **Connect**
 2. **Cursor** で次を入力:
    ```
    Tell me what's currently selected in Roblox Studio

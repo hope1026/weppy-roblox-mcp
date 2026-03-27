@@ -41,14 +41,14 @@ You only need to activate the license once, either in the plugin or in the dashb
 
 ### Activate in the plugin
 
-1. Open **W-MCP** in Roblox Studio and connect to the MCP server.
+1. Open **WROX** in Roblox Studio and connect to the MCP server.
 2. Open **Settings > License** in the plugin.
 3. Paste your purchased key into the `License key` field.
 4. Click **Activate** to activate the license.
 5. If the status does not update immediately, click **Refresh**.
 6. When activation succeeds, the status changes from Basic to Pro and Pro features become available.
 
-![Plugin license activation screen](../assets/screenshots/license/license-plugin.png)
+![WROX Plugin license activation screen](../assets/screenshots/license/license-plugin.png)
 
 ### Activate in the dashboard
 
@@ -58,7 +58,7 @@ You only need to activate the license once, either in the plugin or in the dashb
 4. Click **Activate License** to activate the license.
 5. If needed, use **Refresh License** to fetch the latest status.
 
-![Dashboard license activation screen](../assets/screenshots/license/license-dashboard.png)
+![WROX Dashboard license activation screen](../assets/screenshots/license/license-dashboard.png)
 
 ### After activation
 

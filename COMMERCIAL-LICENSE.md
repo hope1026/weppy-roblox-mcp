@@ -1,6 +1,6 @@
 # Commercial Licensing
 
-Weppy Roblox MCP is available under the GNU Affero General Public License v3.0 in this repository.
+WROX is available under the GNU Affero General Public License v3.0 in this repository.
 
 If you need commercial terms that differ from AGPL-3.0, including closed-source distribution or custom contractual support, contact the maintainer to discuss a separate commercial license.
 

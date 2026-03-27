@@ -45,7 +45,7 @@ After editing the config, reload the Cursor window or restart the app.
 
 ## Connection Test
 
-1. Open **Roblox Studio** → Plugins tab → **W-MCP** → **Connect**
+1. Open **Roblox Studio** → Plugins tab → **WROX** → **Connect**
 2. In **Cursor**, enter:
    ```
    Tell me what's currently selected in Roblox Studio

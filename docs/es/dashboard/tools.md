@@ -60,7 +60,7 @@ Busca los elementos con Status Error en la pestana History para ver la informaci
 
 ## Documentos relacionados
 
-- [Dashboard Overview](overview.md)
+- [WROX Dashboard Overview](overview.md)
 - [Changelog](changelog.md)
 - [Connection](connection.md)
 - [Sync](sync.md)

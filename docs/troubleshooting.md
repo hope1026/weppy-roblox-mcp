@@ -5,7 +5,7 @@
 **Symptom:** "Connection failed" or plugin shows disconnected in Roblox Studio.
 
 1. Make sure the MCP server is running: `npx -y @weppy/roblox-mcp`
-2. In Roblox Studio: Plugins tab → W-MCP → Connect
+2. In Roblox Studio: Plugins tab → WROX → Connect
 3. Confirm nothing is blocking `localhost:3002` (firewall, antivirus, VPN)
 4. Try restarting both Roblox Studio and the MCP server
 

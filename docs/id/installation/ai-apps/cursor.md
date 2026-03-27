@@ -45,7 +45,7 @@ Setelah mengubah konfigurasi, muat ulang jendela Cursor atau mulai ulang aplikas
 
 ## Uji koneksi
 
-1. Buka **Roblox Studio** → tab Plugins → **W-MCP** → **Connect**
+1. Buka **Roblox Studio** → tab Plugins → **WROX** → **Connect**
 2. Di **Cursor**, masukkan:
    ```
    Tell me what's currently selected in Roblox Studio

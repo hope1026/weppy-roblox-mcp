@@ -2,7 +2,7 @@
 
 > Monitor and manage the MCP server's status, connections, sync state, tool execution history, and game change log in real time from your web browser.
 
-![Dashboard Overview — Server status, recent changes, and session summary at a glance](../../assets/screenshots/dashboard/dashboard_overview.png)
+![WROX Dashboard Overview — Server status, recent changes, and session summary at a glance](../../assets/screenshots/dashboard/dashboard_overview.png)
 
 ## What Is the Dashboard?
 

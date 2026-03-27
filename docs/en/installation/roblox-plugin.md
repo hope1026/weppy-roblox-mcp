@@ -25,9 +25,9 @@ Note:
 
 ## 3. Verify Installation
 
-After restarting, the **W-MCP** button will appear in the Plugins tab.
+After restarting, the **WROX** button will appear in the Plugins tab.
 
-![W-MCP Button](../../assets/screenshots/weppy_plugin_toolbar.png)
+![WROX Button](../../assets/screenshots/weppy_plugin_toolbar.png)
 
 ## 4. Connect to AI Agent
 
@@ -48,7 +48,7 @@ The MCP server must be installed. Complete the guide for your AI app first:
 ### Connecting
 
 1. Open any project in **Roblox Studio**
-2. Go to **Plugins** tab -> **W-MCP**
+2. Go to **Plugins** tab -> **WROX**
 3. Click the **Connect** button in the plugin window
 4. Once **"Connected"** status is displayed, you're ready
 

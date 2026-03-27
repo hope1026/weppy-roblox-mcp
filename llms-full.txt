@@ -1,6 +1,6 @@
-# Weppy Roblox MCP — Full Documentation
+# WROX — Full Documentation
 
-> Weppy Roblox MCP is an MCP server that lets AI coding agents (Claude, Codex,
+> WROX is an MCP server that lets AI coding agents (Claude, Codex,
 > Cursor, Gemini) control a live Roblox Studio session — create and edit scripts,
 > instances, terrain, lighting, assets, audio, and animations via natural language.
 > Action-based MCP tools · Bidirectional sync · Multi-place support
@@ -57,12 +57,12 @@ Note: The same plugin package is used for all tiers.
 4. **Copy** the `WeppyRobloxMCP.rbxm` file into the opened Plugins folder
 5. **Restart Roblox Studio**
 
-After restarting, the **W-MCP** button will appear in the Plugins tab.
+After restarting, the **WROX** button will appear in the Plugins tab.
 
 ### Connect to AI Agent
 
 1. Open any project in **Roblox Studio**
-2. Go to **Plugins** tab -> **W-MCP**
+2. Go to **Plugins** tab -> **WROX**
 3. Click the **Connect** button in the plugin window
 4. Once **"Connected"** status is displayed, you're ready
 
@@ -201,7 +201,7 @@ In the agent pane, click ⋯ → MCP Servers → Manage MCP Servers → View raw
 
 Browse synced instance trees inside VSCode with Roblox class icons.
 
-Search for **Weppy Roblox Explorer** in the VSCode Extensions sidebar and click Install, or install from [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer) or [Open VSX](https://open-vsx.org/extension/weppy/weppy-roblox-explorer).
+Search for **WROX Explorer** in the VSCode Extensions sidebar and click Install, or install from [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer) or [Open VSX](https://open-vsx.org/extension/weppy/weppy-roblox-explorer).
 
 Features:
 - Instance tree with Roblox class icons (dark/light theme)
@@ -212,7 +212,7 @@ Features:
 
 ## After Installation
 
-1. Open Roblox Studio, go to Plugins tab and click W-MCP → Connect
+1. Open Roblox Studio, go to Plugins tab and click WROX → Connect
 2. Test in your AI app: "Create a blue part in Roblox Studio"
 
 ---
@@ -630,7 +630,7 @@ Claude Code, Claude Desktop, Cursor, Codex CLI, Codex Desktop, Gemini CLI, Antig
 ## Plugin not connecting
 
 1. Make sure the MCP server is running: `npx -y @weppy/roblox-mcp`
-2. In Roblox Studio: Plugins tab → W-MCP → Connect
+2. In Roblox Studio: Plugins tab → WROX → Connect
 3. Confirm nothing is blocking `localhost:3002` (firewall, antivirus, VPN)
 4. Try restarting both Roblox Studio and the MCP server
 

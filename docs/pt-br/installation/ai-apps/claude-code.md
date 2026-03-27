@@ -64,7 +64,7 @@ O Claude Code gerencia o servidor MCP automaticamente:
 
 ## Teste de Conexao
 
-1. Inicie o **Roblox Studio** → Aba Plugins → **W-MCP** → **Connect**
+1. Inicie o **Roblox Studio** → Aba Plugins → **WROX** → **Connect**
 2. Teste no **Claude Code**:
    ```
    Crie uma parte azul no Roblox Studio

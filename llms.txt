@@ -1,12 +1,12 @@
-# Weppy Roblox MCP — MCP Server for Roblox Studio
+# WROX — MCP Server for Roblox Studio
 
-> Weppy Roblox MCP is an MCP server that lets AI coding agents (Claude, Codex,
+> WROX is an MCP server that lets AI coding agents (Claude, Codex,
 > Cursor, Gemini) control a live Roblox Studio session — create and edit scripts,
 > instances, terrain, lighting, assets, audio, and animations via natural language.
 
 ## What it does
 
-Weppy Roblox MCP provides a real-time bridge between AI agents and the Roblox
+WROX provides a real-time bridge between AI agents and the Roblox
 Studio DataModel. It exposes the full Roblox API surface as executable MCP tools,
 so AI can directly create, read, modify, and delete instances, scripts, properties,
 terrain, and more — inside a live Studio session.
@@ -46,7 +46,7 @@ Or manually:
 - Installation: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/en/installation/README.md
 - Tools reference: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/en/tools/overview.md
 - Sync guide: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/en/sync/overview.md
-- Dashboard guide: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/en/dashboard/overview.md
+- WROX Dashboard guide: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/en/dashboard/overview.md
 - Troubleshooting: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/troubleshooting.md
 - Compatibility: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/compatibility.md
 - Pro upgrade: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/en/pro-upgrade.md

@@ -30,7 +30,7 @@ Command: npx -y @weppy/roblox-mcp
 
 ## Probar la Conexion
 
-1. Abre **Roblox Studio** → Pestana Plugins → **W-MCP** → **Connect**
+1. Abre **Roblox Studio** → Pestana Plugins → **WROX** → **Connect**
 2. Inicia una nueva conversacion en **Codex App** y prueba:
    ```
    Dime que esta seleccionado actualmente en Roblox Studio

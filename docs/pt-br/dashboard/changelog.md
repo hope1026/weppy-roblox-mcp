@@ -106,7 +106,7 @@ Filtre a categoria Instance na timeline e rastreie as alteracoes do tipo delete 
 
 ## Documentos relacionados
 
-- [Dashboard Overview](overview.md)
+- [WROX Dashboard Overview](overview.md)
 - [Connection](connection.md)
 - [Sync](sync.md)
 - [Playtest](playtest.md)

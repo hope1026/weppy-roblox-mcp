@@ -2,7 +2,7 @@
 
 > Pantau dan kelola status, koneksi, sinkronisasi, riwayat eksekusi alat, dan riwayat perubahan game dari server MCP secara real-time melalui browser web.
 
-![Dashboard Overview — status server, perubahan terbaru, dan ringkasan sesi dalam satu tampilan](../../assets/screenshots/dashboard/dashboard_overview.png)
+![WROX Dashboard Overview — status server, perubahan terbaru, dan ringkasan sesi dalam satu tampilan](../../assets/screenshots/dashboard/dashboard_overview.png)
 
 ## Apa itu Dashboard?
 

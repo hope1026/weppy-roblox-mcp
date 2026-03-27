@@ -1,9 +1,9 @@
-# Weppy Roblox Explorer (Ekstensi VSCode)
+# WROX Roblox Explorer (Ekstensi VSCode)
 
 Tampilan pohon instansi seperti Explorer Roblox Studio, langsung di VSCode. Jelajahi instansi yang tersinkronisasi, buka skrip langsung, dan pantau status sinkronisasi tanpa meninggalkan editor.
-Ini adalah ekstensi pendamping untuk Weppy Roblox MCP, bukan integrasi Roblox yang berdiri sendiri.
+Ini adalah ekstensi pendamping untuk WROX, bukan integrasi Roblox yang berdiri sendiri.
 
-![Weppy Roblox Explorer](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
+![WROX Roblox Explorer](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
 
 ## Persyaratan
 
@@ -13,7 +13,7 @@ Ini adalah ekstensi pendamping untuk Weppy Roblox MCP, bukan integrasi Roblox ya
 
 ## Cara Instalasi
 
-Cari **Weppy Roblox Explorer** di sidebar Ekstensi VSCode (`Ctrl+Shift+X` / `Cmd+Shift+X`) dan klik **Install**.
+Cari **WROX Roblox Explorer** di sidebar Ekstensi VSCode (`Ctrl+Shift+X` / `Cmd+Shift+X`) dan klik **Install**.
 
 Atau instal langsung dari marketplace berikut:
 
@@ -46,11 +46,11 @@ Penjelajahan tree dasar bekerja dari file sync di disk. Status sync live, indika
 
 | Perintah | Deskripsi |
 |----------|-----------|
-| `Weppy Roblox Explorer: Refresh` | Perbarui pohon instansi secara manual |
-| `Weppy Roblox Explorer: Search Instances` | Cari instansi di semua layanan |
-| `Weppy Roblox Explorer: Open Backing File` | Buka file pendukung instansi yang dipilih |
-| `Weppy Roblox Explorer: Copy Instance Path` | Salin jalur instansi lengkap (contoh: `game.Workspace.Part`) |
-| `Weppy Roblox Explorer: Reveal in Explorer` | Tampilkan file di explorer VSCode default |
+| `WROX Explorer: Refresh` | Perbarui pohon instansi secara manual |
+| `WROX Explorer: Search Instances` | Cari instansi di semua layanan |
+| `WROX Explorer: Open Backing File` | Buka file pendukung instansi yang dipilih |
+| `WROX Explorer: Copy Instance Path` | Salin jalur instansi lengkap (contoh: `game.Workspace.Part`) |
+| `WROX Explorer: Reveal in Explorer` | Tampilkan file di explorer VSCode default |
 
 ## Terkait
 
