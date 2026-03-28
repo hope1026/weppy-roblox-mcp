@@ -12,7 +12,7 @@ Sin Sync, la IA solo ve fragmentos pegados en el chat. Con Sync activo, trabaja 
 
 ## Como funciona
 
-![Flujo de Sync — arbol de Studio reflejado en archivos locales](../../assets/screenshots/sync.png)
+![Flujo de Sync — arbol de Studio reflejado en archivos locales](../../assets/screenshots/plugin/sync/sync-overview.png)
 
 1. Full Sync: espejo inicial del arbol/instancias de Studio a local
 2. Incremental Sync: reflejo continuo de cambios nuevos
@@ -109,7 +109,7 @@ En Pro puedes controlar Direction y Apply Mode por tipo.
 
 Cuando se detectan cambios tanto en Studio como en local durante la sincronizacion bidireccional, aparece un dialogo de resolucion de conflictos.
 
-![Local Changes Detected — opciones de resolucion de conflictos (Studio Priority / Local Priority / Per-File)](../../assets/screenshots/sync_conflict.png)
+![Local Changes Detected — opciones de resolucion de conflictos (Studio Priority / Local Priority / Per-File)](../../assets/screenshots/plugin/sync/sync-conflict.png)
 
 - **Studio Priority**: sobrescribir usando el estado de Studio como fuente de verdad
 - **Local Priority**: aplicar los archivos locales a Studio

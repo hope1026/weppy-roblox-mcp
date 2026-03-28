@@ -48,7 +48,7 @@ Você só precisa ativar a licença uma vez, no plugin ou no dashboard. As duas 
 5. Se o status não atualizar imediatamente, clique em **Refresh**.
 6. Quando a ativação terminar, o status muda de Basic para Pro e os recursos Pro ficam disponíveis.
 
-![Tela de ativação de licença no plugin](../assets/screenshots/license/license-plugin.png)
+![Tela de ativação de licença no plugin](../assets/screenshots/plugin/license/plugin-license-screen.png)
 
 ### Ativar no dashboard
 
@@ -58,7 +58,7 @@ Você só precisa ativar a licença uma vez, no plugin ou no dashboard. As duas 
 4. Clique em **Activate License** para ativar a licença.
 5. Se necessário, use **Refresh License** para buscar o status mais recente.
 
-![Tela de ativação de licença no dashboard](../assets/screenshots/license/license-dashboard.png)
+![Tela de ativação de licença no dashboard](../assets/screenshots/plugin/license/dashboard-license-screen.png)
 
 ### Depois da ativação
 

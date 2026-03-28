@@ -79,7 +79,7 @@ Ini bukan sekadar generate kode. Ini adalah **aksi yang benar-benar bisa dieksek
 
 AI bekerja dari mirror lokal yang tersinkron, jadi perubahan lintas banyak file tetap konsisten.
 
-![Alur Sync — Studio dan file lokal tersinkron secara real time](../assets/screenshots/sync.png)
+![Alur Sync — Studio dan file lokal tersinkron secara real time](../assets/screenshots/plugin/sync/sync-overview.png)
 
 - Basic: sinkronisasi satu arah (Studio -> Local)
 - Pro: sinkronisasi dua arah + Direction/Apply Mode per tipe + riwayat + multiplace
@@ -91,6 +91,8 @@ AI bisa mengontrol playtest Studio secara langsung. AI dapat memulai dan menghen
 - "Mulai playtest mode Run dan cek apakah NPC mencapai target."
 - "Tulis dan jalankan test untuk memastikan SpawnLocation berada di atas tanah."
 - "Validasi lewat playtest bahwa script yang baru saya ubah berjalan tanpa error."
+
+![WROX Playtest Dashboard — riwayat tes dan laporan detail](../assets/screenshots/dashboard/dashboard_playtest.png)
 
 ### 4) WROX Dashboard: pantau pekerjaan AI secara real-time
 
