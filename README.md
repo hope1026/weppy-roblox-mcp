@@ -88,7 +88,7 @@ AI can directly handle scripts, instances, properties, terrain, lighting, assets
 
 AI works from a synchronized local mirror, so multi-file updates stay consistent.
 
-![Sync workflow — Studio and local files synchronized in real time](docs/assets/screenshots/sync.png)
+![Sync workflow — Studio and local files synchronized in real time](docs/assets/screenshots/plugin/sync/sync-overview.png)
 
 - Basic: one-way sync (Studio -> Local)
 - Pro: bidirectional sync + per-type Direction/Apply Mode + history + multi-place
@@ -100,6 +100,8 @@ AI can control Roblox Studio playtests directly. It can start and stop Play (F5)
 - "Start a Run-mode playtest and check whether the NPC reaches the target."
 - "Write a test that verifies the SpawnLocation is above the ground and run it."
 - "Validate that the script I just changed runs without errors in playtest."
+
+![WROX Playtest Dashboard — Test history and detailed report](docs/assets/screenshots/dashboard/dashboard_playtest.png)
 
 ### 4) WROX Dashboard: Monitor AI work in real time
 

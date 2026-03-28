@@ -48,7 +48,7 @@ Solo necesitas activar la licencia una vez, ya sea en el plugin o en el dashboar
 5. Si el estado no se actualiza de inmediato, haz clic en **Refresh**.
 6. Cuando la activación se complete, el estado cambiará de Basic a Pro y las funciones Pro quedarán disponibles.
 
-![Pantalla de activación de licencia en el plugin](../assets/screenshots/license/license-plugin.png)
+![Pantalla de activación de licencia en el plugin](../assets/screenshots/plugin/license/plugin-license-screen.png)
 
 ### Activar en el dashboard
 
@@ -58,7 +58,7 @@ Solo necesitas activar la licencia una vez, ya sea en el plugin o en el dashboar
 4. Haz clic en **Activate License** para activar la licencia.
 5. Si hace falta, usa **Refresh License** para obtener el estado más reciente.
 
-![Pantalla de activación de licencia en el dashboard](../assets/screenshots/license/license-dashboard.png)
+![Pantalla de activación de licencia en el dashboard](../assets/screenshots/plugin/license/dashboard-license-screen.png)
 
 ### Después de activar
 

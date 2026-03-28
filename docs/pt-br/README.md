@@ -79,7 +79,7 @@ Nao e apenas geracao de codigo. Sao **acoes executaveis para fluxo real de desen
 
 A IA trabalha com um espelho local sincronizado, entao alteracoes em varios arquivos continuam consistentes.
 
-![Fluxo de Sync — Studio e arquivos locais sincronizados em tempo real](../assets/screenshots/sync.png)
+![Fluxo de Sync — Studio e arquivos locais sincronizados em tempo real](../assets/screenshots/plugin/sync/sync-overview.png)
 
 - Basic: sincronizacao unidirecional (Studio -> Local)
 - Pro: sincronizacao bidirecional + Direction/Apply Mode por tipo + historico + multiplace
@@ -91,6 +91,8 @@ A IA pode controlar diretamente o playtest do Studio. Ela pode iniciar e parar P
 - "Inicie um playtest em modo Run e verifique se o NPC chega ao objetivo."
 - "Escreva e execute um teste para confirmar que o SpawnLocation esta acima do chao."
 - "Valide com playtest se o script que acabei de alterar roda sem erros."
+
+![WROX Playtest Dashboard — historico de testes e relatorio detalhado](../assets/screenshots/dashboard/dashboard_playtest.png)
 
 ### 4) WROX Dashboard: monitore as operacoes da IA em tempo real
 

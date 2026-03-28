@@ -18,7 +18,7 @@ Nota:
 2. Clique na aba **Plugins**
 3. Clique em **Plugins Folder**
 
-![Abrir Plugins Folder](../../assets/screenshots/plugins_menu.png)
+![Abrir Plugins Folder](../../assets/screenshots/plugin/installation/plugins-menu.png)
 
 4. **Copie** `WeppyRobloxMCP.rbxm` para a pasta de Plugins
 5. **Reinicie o Roblox Studio**
@@ -27,7 +27,7 @@ Nota:
 
 Apos reiniciar, o botao **WROX** aparecera na aba Plugins.
 
-![Botao WROX](../../assets/screenshots/weppy_plugin_toolbar.png)
+![Botao WROX](../../assets/screenshots/plugin/installation/toolbar-button.png)
 
 ## 4. Conectar ao Agente de IA
 
@@ -52,13 +52,13 @@ O servidor MCP deve estar instalado. Complete primeiro o guia do seu app de IA:
 3. Clique em **Connect**
 4. Quando aparecer **"Connected"**, esta pronto
 
-![Tela Principal do Plugin](../../assets/screenshots/plugin_main.png)
+![Tela Principal do Plugin](../../assets/screenshots/plugin/installation/main-screen.png)
 
 ## 5. Configuracoes (Opcional)
 
 Use o botao de configuracoes no canto superior direito.
 
-![Tela de Configuracoes](../../assets/screenshots/settings.png)
+![Tela de Configuracoes](../../assets/screenshots/plugin/installation/settings-screen.png)
 
 - **Conexao Automatica**
 - **Reconexao Automatica**

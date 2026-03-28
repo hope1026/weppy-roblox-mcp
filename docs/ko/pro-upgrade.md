@@ -48,7 +48,7 @@ Studio 플레이테스트를 AI가 실행하고 검증합니다. F5(Play)/F8(Run
 5. 상태가 바로 갱신되지 않으면 **Refresh** 버튼으로 다시 확인합니다.
 6. 활성화가 완료되면 Basic 대신 Pro 상태로 표시되고 Pro 기능을 사용할 수 있습니다.
 
-![플러그인 라이선스 활성화 화면](../assets/screenshots/license/license-plugin.png)
+![플러그인 라이선스 활성화 화면](../assets/screenshots/plugin/license/plugin-license-screen.png)
 
 ### 대시보드에서 활성화
 
@@ -58,7 +58,7 @@ Studio 플레이테스트를 AI가 실행하고 검증합니다. F5(Play)/F8(Run
 4. **Activate License** 버튼을 눌러 라이선스를 활성화합니다.
 5. 필요하면 **Refresh License**로 최신 상태를 다시 조회합니다.
 
-![대시보드 라이선스 활성화 화면](../assets/screenshots/license/license-dashboard.png)
+![대시보드 라이선스 활성화 화면](../assets/screenshots/plugin/license/dashboard-license-screen.png)
 
 ### 활성화 후 확인
 

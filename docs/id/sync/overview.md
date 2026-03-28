@@ -12,7 +12,7 @@ Tanpa Sync, AI hanya melihat potongan kode yang ditempel di chat. Dengan Sync ak
 
 ## Cara kerjanya
 
-![Alur Sync — tree Studio di-mirror ke file lokal](../../assets/screenshots/sync.png)
+![Alur Sync — tree Studio di-mirror ke file lokal](../../assets/screenshots/plugin/sync/sync-overview.png)
 
 1. Full Sync: mirror awal dari tree/instance Studio ke lokal
 2. Incremental Sync: perubahan baru terus disinkronkan
@@ -109,7 +109,7 @@ Di Pro, Direction dan Apply Mode bisa diatur per tipe.
 
 Ketika perubahan terdeteksi di sisi Studio maupun lokal selama sinkronisasi dua arah, dialog resolusi konflik akan muncul.
 
-![Local Changes Detected — opsi resolusi konflik (Studio Priority / Local Priority / Per-File)](../../assets/screenshots/sync_conflict.png)
+![Local Changes Detected — opsi resolusi konflik (Studio Priority / Local Priority / Per-File)](../../assets/screenshots/plugin/sync/sync-conflict.png)
 
 - **Studio Priority**: timpa dengan status Studio sebagai sumber kebenaran
 - **Local Priority**: terapkan file lokal ke Studio

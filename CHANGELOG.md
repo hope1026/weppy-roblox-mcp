@@ -21,6 +21,15 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.0.10] - 2026-03-28
+
+### Improved
+
+- Improved sync logic with play mode detection, suppression, and post-play reconciliation.
+- Enhanced plugin UI for sync collision resolution.
+
+
 ## [2.0.9] - 2026-03-27
 
 ### Improved

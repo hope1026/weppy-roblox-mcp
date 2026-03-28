@@ -79,7 +79,7 @@ AIがStudio内で、スクリプト、インスタンス、プロパティ、地
 
 同期されたローカルミラーを基準にAIが作業するため、複数ファイルにまたがる変更も一貫して適用できます。
 
-![Syncワークフロー — Studioとローカルファイルがリアルタイムで同期される様子](../assets/screenshots/sync.png)
+![Syncワークフロー — Studioとローカルファイルがリアルタイムで同期される様子](../assets/screenshots/plugin/sync/sync-overview.png)
 
 - Basic: 片方向同期（Studio -> Local）
 - Pro: 双方向同期 + タイプ別Direction/Apply Mode + 変更履歴 + マルチPlace
@@ -91,6 +91,8 @@ AIがStudioプレイテストを直接制御します。Play（F5）/Run（F8）
 - 「Runモードでプレイテストを開始して、NPCが目標地点まで移動するか確認して。」
 - 「SpawnLocationが地面の上にあることを確認するテストを書いて実行して。」
 - 「今修正したスクリプトがエラーなしで動くかプレイテストで検証して。」
+
+![WROXプレイテスト ダッシュボード — テスト履歴と詳細レポート](../assets/screenshots/dashboard/dashboard_playtest.png)
 
 ### 4) WROX Dashboard: AI作業をリアルタイムでモニタリング
 

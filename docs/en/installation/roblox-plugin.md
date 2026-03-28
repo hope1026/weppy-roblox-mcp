@@ -18,7 +18,7 @@ Note:
 2. Click the **Plugins** tab in the top menu
 3. Click the **Plugins Folder** button
 
-![Open Plugins Folder](../../assets/screenshots/plugins_menu.png)
+![Open Plugins Folder](../../assets/screenshots/plugin/installation/plugins-menu.png)
 
 4. **Copy** the `WeppyRobloxMCP.rbxm` file from the extracted folder into the opened Plugins folder
 5. **Restart Roblox Studio**
@@ -27,7 +27,7 @@ Note:
 
 After restarting, the **WROX** button will appear in the Plugins tab.
 
-![WROX Button](../../assets/screenshots/weppy_plugin_toolbar.png)
+![WROX Button](../../assets/screenshots/plugin/installation/toolbar-button.png)
 
 ## 4. Connect to AI Agent
 
@@ -52,13 +52,13 @@ The MCP server must be installed. Complete the guide for your AI app first:
 3. Click the **Connect** button in the plugin window
 4. Once **"Connected"** status is displayed, you're ready
 
-![Plugin Main Screen](../../assets/screenshots/plugin_main.png)
+![Plugin Main Screen](../../assets/screenshots/plugin/installation/main-screen.png)
 
 ## 5. Settings (Optional)
 
 Click the settings button in the top right of the plugin to change options.
 
-![Settings Screen](../../assets/screenshots/settings.png)
+![Settings Screen](../../assets/screenshots/plugin/installation/settings-screen.png)
 
 - **Auto Connect**: Automatically connect to MCP server when Studio starts
 - **Auto Reconnect**: Automatically attempt to reconnect when connection is lost

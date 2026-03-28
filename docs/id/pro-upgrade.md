@@ -48,7 +48,7 @@ Kamu hanya perlu mengaktifkan lisensi sekali, baik di plugin maupun di dashboard
 5. Jika status belum langsung diperbarui, klik **Refresh**.
 6. Setelah aktivasi berhasil, status berubah dari Basic ke Pro dan fitur Pro bisa digunakan.
 
-![Layar aktivasi lisensi di plugin](../assets/screenshots/license/license-plugin.png)
+![Layar aktivasi lisensi di plugin](../assets/screenshots/plugin/license/plugin-license-screen.png)
 
 ### Aktifkan di dashboard
 
@@ -58,7 +58,7 @@ Kamu hanya perlu mengaktifkan lisensi sekali, baik di plugin maupun di dashboard
 4. Klik **Activate License** untuk mengaktifkan lisensi.
 5. Jika perlu, gunakan **Refresh License** untuk mengambil status terbaru.
 
-![Layar aktivasi lisensi di dashboard](../assets/screenshots/license/license-dashboard.png)
+![Layar aktivasi lisensi di dashboard](../assets/screenshots/plugin/license/dashboard-license-screen.png)
 
 ### Setelah aktivasi
 

@@ -18,7 +18,7 @@ Catatan:
 2. Klik tab **Plugins**
 3. Klik **Plugins Folder**
 
-![Buka Plugins Folder](../../assets/screenshots/plugins_menu.png)
+![Buka Plugins Folder](../../assets/screenshots/plugin/installation/plugins-menu.png)
 
 4. **Salin** `WeppyRobloxMCP.rbxm` ke folder Plugins
 5. **Restart Roblox Studio**
@@ -27,7 +27,7 @@ Catatan:
 
 Setelah restart, tombol **WROX** muncul di tab Plugins.
 
-![Tombol WROX](../../assets/screenshots/weppy_plugin_toolbar.png)
+![Tombol WROX](../../assets/screenshots/plugin/installation/toolbar-button.png)
 
 ## 4. Hubungkan AI Agent
 
@@ -52,13 +52,13 @@ MCP server harus sudah terinstal. Selesaikan dulu panduan app AI yang Anda pakai
 3. Klik **Connect**
 4. Jika status **"Connected"** tampil, koneksi berhasil
 
-![Layar Utama Plugin](../../assets/screenshots/plugin_main.png)
+![Layar Utama Plugin](../../assets/screenshots/plugin/installation/main-screen.png)
 
 ## 5. Pengaturan (Opsional)
 
 Gunakan tombol pengaturan di kanan atas plugin.
 
-![Layar Pengaturan](../../assets/screenshots/settings.png)
+![Layar Pengaturan](../../assets/screenshots/plugin/installation/settings-screen.png)
 
 - **Auto Connect**
 - **Auto Reconnect**
