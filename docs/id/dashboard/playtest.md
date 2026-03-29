@@ -6,7 +6,7 @@
 
 ## Ikhtisar
 
-Halaman Playtest menampilkan status dan hasil pengujian dari playtest yang dijalankan AI. Halaman ini hanya dapat diakses saat plugin terhubung (L2).
+Halaman Playtest menampilkan status dan hasil pengujian dari playtest yang dijalankan AI. Halaman ini hanya dapat diakses saat dashboard berada dalam status **Studio terhubung**.
 
 ## Playtest Status
 

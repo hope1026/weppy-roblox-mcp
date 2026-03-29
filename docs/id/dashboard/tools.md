@@ -6,7 +6,7 @@
 
 ## Ikhtisar
 
-Halaman Tools menyediakan riwayat eksekusi dan statistik alat MCP yang dijalankan oleh AI. Terdiri dari dua sub-tab: **History** dan **Statistics**. Halaman ini selalu dapat diakses selama server terhubung (L1 ke atas).
+Halaman Tools menyediakan riwayat eksekusi dan statistik alat MCP yang dijalankan oleh AI. Terdiri dari dua sub-tab: **History** dan **Statistics**. Halaman ini selalu dapat diakses saat dashboard berada dalam status **Server terhubung** atau **Studio terhubung**.
 
 ## Tab History
 

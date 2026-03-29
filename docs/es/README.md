@@ -2,11 +2,19 @@
 
 > **WROX** es un servidor MCP que permite a los agentes de codificacion IA controlar una sesion en vivo de Roblox Studio — crea y edita scripts, instancias, terrain, iluminacion, assets, audio y animaciones con lenguaje natural.
 
-**21 herramientas consolidadas · 140+ acciones · Sync bidireccional · Playtest automatizado · Soporte multi-place**
+**Herramientas consolidadas basadas en acciones · Sync bidireccional · Playtest automatizado · Soporte multi-place**
 
 [English](../../README.md) | [한국어](../ko/README.md) | [日本語](../ja/README.md) | **Español** | [Português](../pt-br/README.md) | [Bahasa Indonesia](../id/README.md)
 
 [![Demo — IA creando un juego Roblox en tiempo real](https://img.youtube.com/vi/3jrUpBbZPaw/maxresdefault.jpg)](https://youtu.be/3jrUpBbZPaw)
+
+## ¿Por qué WROX (Weppy Roblox MCP)?
+
+Los agentes de codificación IA como Claude, Codex y Gemini son potentes — pero no pueden ver ni modificar nada dentro de Roblox Studio. El DataModel, los scripts, el terrain y la iluminación son invisibles para las herramientas externas. Sin un puente, la IA solo puede generar fragmentos de código que debes pegar manualmente.
+
+**WROX** es un puente entre los agentes de IA y Roblox Studio. La IA crea y modifica directamente instancias, scripts, propiedades, terrain y más dentro de Studio, y los cambios se reflejan de inmediato en Studio y en el dashboard para que puedas **ver exactamente qué cambió**.
+
+No necesitas copiar ni pegar código. La IA trabaja y tú verificas los resultados.
 
 ## Instalacion rapida
 
@@ -52,14 +60,15 @@ npx -y @weppy/roblox-mcp
 | Codex CLI | [Configuracion](installation/ai-apps/codex-cli.md) |
 | Codex Desktop | [Configuracion](installation/ai-apps/codex-app.md) |
 | Gemini CLI | [Configuracion](installation/ai-apps/gemini-cli.md) |
+| Antigravity | [Configuracion](installation/ai-apps/antigravity.md) |
 
 > Funciona con cualquier cliente MCP compatible. El comando del servidor es `npx -y @weppy/roblox-mcp`.
 
 ## Compatibilidad
 
-| Claude Code | Claude Desktop | Cursor | Codex CLI | Gemini CLI |
-|:-----------:|:--------------:|:------:|:---------:|:----------:|
-| ✅ | ✅ | ✅ | ✅ | ✅ |
+| Claude Code | Claude Desktop | Cursor | Codex CLI | Gemini CLI | Antigravity |
+|:-----------:|:--------------:|:------:|:---------:|:----------:|:-----------:|
+| ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 
 **Requisitos:** Node.js 18+, Roblox Studio, Windows 10+ o macOS 12+
 
@@ -73,16 +82,14 @@ La IA puede manejar directamente scripts, instancias, propiedades, terreno, ilum
 - "Crea una arena de boss en el centro del mapa y coloca spawns sin colision."
 - "Cambia la interfaz de este modulo y actualiza todos los scripts dependientes."
 
-No es solo generacion de codigo. Son **acciones ejecutables orientadas a produccion**.
-
 ### 2) Sync: mantiene el contexto completo del proyecto
 
 La IA trabaja sobre un espejo local sincronizado, asi que los cambios en multiples archivos se mantienen consistentes.
 
-![Flujo de Sync — Studio y archivos locales sincronizados en tiempo real](../assets/screenshots/plugin/sync/sync-overview.png)
-
 - Basic: sincronizacion unidireccional (Studio -> Local)
 - Pro: sincronizacion bidireccional + Direction/Apply Mode por tipo + historial + multiplace
+
+![Flujo de Sync — Studio y archivos locales sincronizados en tiempo real](../assets/screenshots/plugin/sync/sync-overview.png)
 
 ### 3) Playtest: la IA ejecuta y verifica pruebas automaticamente
 
@@ -98,11 +105,11 @@ La IA puede controlar directamente el playtest de Studio. Puede iniciar y detene
 
 El Dashboard web proporcionado por el servidor MCP permite consultar en tiempo real el estado de conexion, el historial de ejecucion de herramientas, el estado de sincronizacion y el historial de cambios del juego.
 
-![WROX WROX Dashboard Overview — estado del servidor, cambios recientes y resumen de sesion](../assets/screenshots/dashboard/dashboard_overview.png)
-
 - Estado de conexion del servidor/plugin/agente de un vistazo
 - Compara todos los cambios realizados por la IA con Before & After en el Changelog
 - Analiza el flujo de trabajo con el historial de ejecucion de herramientas y estadisticas
+
+![WROX WROX Dashboard Overview — estado del servidor, cambios recientes y resumen de sesion](../assets/screenshots/dashboard/dashboard_overview.png)
 
 ### 5) WROX Roblox Explorer: explora la jerarquia de Studio en VSCode
 
@@ -110,11 +117,11 @@ Visualiza el arbol completo de instancias de tu lugar en Roblox Studio directame
 WROX Roblox Explorer es una extension complementaria de VSCode para los datos de sync generados por WROX. El arbol base funciona con los archivos sincronizados en disco, y los indicadores en vivo de estado sync o direction se enriquecen cuando el servidor MCP local esta en ejecucion.
 Instálalo desde [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer) o [Open VSX](https://open-vsx.org/extension/weppy/weppy-roblox-explorer).
 
-![WROX Roblox Explorer — arbol de instancias de Studio mostrado en la barra lateral de VSCode](../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
-
 - Iconos de clase iguales a Studio para reconocimiento inmediato
 - Clic para abrir scripts y archivos de propiedades sincronizados
 - Soporte multiplace con indicadores de estado de sincronizacion
+
+![WROX Roblox Explorer — arbol de instancias de Studio mostrado en la barra lateral de VSCode](../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
 
 ## Valor inmediato para el usuario
 
@@ -122,6 +129,14 @@ Instálalo desde [VS Code Marketplace](https://marketplace.visualstudio.com/item
 - Cambios relacionados en conjunto: no solo un archivo aislado
 - Menor riesgo: decide cambios con estado de sync e historial
 - Mejor eficiencia de tokens (Pro): menos idas y vueltas con acciones masivas
+
+## Casos de uso
+
+- **Prototipado rápido**: Describe una mecánica de juego en lenguaje natural y observa cómo la IA la construye en Studio
+- **Refactorización masiva**: Renombra una interfaz de módulo y actualiza todos los scripts dependientes en una sola solicitud
+- **Terrain y entorno**: Genera terrain procedural, configura iluminación/atmósfera, coloca assets — todo desde un solo prompt
+- **Consistencia multi-archivo**: La IA lee el proyecto completo vía Sync y aplica cambios en scripts relacionados de forma conjunta
+- **Integración de assets**: Busca en el Creator Store, inserta modelos y configura propiedades sin salir de tu editor
 
 ## Documentacion detallada
 
@@ -142,12 +157,47 @@ Instálalo desde [VS Code Marketplace](https://marketplace.visualstudio.com/item
 - [Playtest y pruebas automatizadas](tools/playtest.md) - control de playtest y validacion automatica
 - [Sistema y depuracion](tools/system-and-debugging.md) - conexion, logs y ejecucion por lotes
 
+## FAQ
+
+### ¿Cómo conecto Claude Code a Roblox Studio?
+Instala el plugin de Roblox Studio y luego registra el servidor MCP (`npx -y @weppy/roblox-mcp`) en Claude Code. Claude podrá leer y escribir scripts directamente dentro de Studio. Consulta [Configuración de Claude Code](installation/ai-apps/claude-code.md).
+
+### ¿Cómo uso Codex CLI con Roblox Studio?
+Instala el plugin y agrega la configuración del servidor MCP a Codex CLI. Consulta [Configuración de Codex CLI](installation/ai-apps/codex-cli.md).
+
+### ¿Roblox MCP funciona con Cursor?
+Sí. Consulta [Configuración de Cursor](installation/ai-apps/cursor.md). Cualquier cliente de IA compatible con MCP funciona.
+
+### ¿Puede la IA crear juegos de Roblox con esto?
+Sí. La IA puede crear instancias, escribir scripts, generar terrain, configurar iluminación, insertar assets, configurar física y más — todo dentro de una sesión de Studio en vivo. Va más allá de la generación de código hacia acciones ejecutables.
+
+### ¿Cuál es la diferencia entre Basic y Pro?
+Basic (gratuito) incluye ejecución de herramientas MCP y sincronización unidireccional (Studio -> Local). Pro agrega sincronización bidireccional, operaciones masivas, generación de terrain, análisis espacial, control de audio/animación y soporte multi-place. Consulta la [Guía de actualización Pro](pro-upgrade.md).
+
+### ¿Cómo se diferencia Weppy de otros servidores MCP para Roblox?
+Weppy usa despacho basado en acciones en lugar de herramientas separadas para cada función. Esto reduce significativamente el consumo de tokens de IA. También proporciona sincronización bidireccional de proyecto y soporte multi-place, que la mayoría de las alternativas no tienen.
+
+### ¿Es seguro? ¿Puede la IA romper mi juego?
+El servidor se ejecuta solo en localhost (127.0.0.1:3002). Las rutas prohibidas (CoreGui, CorePackages) están bloqueadas. La limitación de velocidad (450 req/min) y los tiempos de espera de 30 segundos previenen operaciones fuera de control. Todos los cambios son rastreables a través del historial de sincronización.
+
 ## Upgrade Pro
 
 Sync bidireccional, capacidades de creacion avanzadas y eficiencia de tokens de IA — todo en una sola actualizacion.
 
 [Guia de actualizacion Pro](pro-upgrade.md)
 
+## Licencia
+
+Este repositorio está licenciado bajo `AGPL-3.0`.
+
+Las licencias comerciales están disponibles por separado. Consulta [COMMERCIAL-LICENSE.md](../../COMMERCIAL-LICENSE.md).
+
+El uso del nombre y los logotipos de Weppy se rige por [TRADEMARKS.md](../../TRADEMARKS.md).
+
 ---
+
+[![npm version](https://img.shields.io/npm/v/@weppy/roblox-mcp)](https://www.npmjs.com/package/@weppy/roblox-mcp) [![Node.js](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org/) [![Smithery](https://smithery.ai/badge/@hope1026/weppy-roblox-mcp)](https://smithery.ai/server/@hope1026/weppy-roblox-mcp)
+
+[![Roblox MCP on Glama](https://glama.ai/mcp/servers/hope1026/roblox-mcp/badges/card.svg)](https://glama.ai/mcp/servers/hope1026/roblox-mcp)
 
 [GitHub Issues](https://github.com/hope1026/weppy-roblox-mcp/issues) · [Discussions](https://github.com/hope1026/weppy-roblox-mcp/discussions) · [npm](https://www.npmjs.com/package/@weppy/roblox-mcp)

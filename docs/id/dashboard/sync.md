@@ -8,7 +8,7 @@
 
 ## Ikhtisar
 
-Halaman Sync menampilkan status dan pengaturan sinkronisasi Studio <-> file lokal secara visual. Halaman ini hanya dapat diakses saat plugin terhubung (L2).
+Halaman Sync menampilkan status dan pengaturan sinkronisasi Studio <-> file lokal secara visual. Halaman ini hanya dapat diakses saat dashboard berada dalam status **Studio terhubung**.
 
 ## Sync Status
 

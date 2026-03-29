@@ -6,7 +6,7 @@
 
 ## Overview
 
-The Tools page provides the execution history and statistics of MCP tools run by the AI. It consists of two sub-tabs: **History** and **Statistics**. It is accessible whenever the server is connected (L1 or above).
+The Tools page provides the execution history and statistics of MCP tools run by the AI. It consists of two sub-tabs: **History** and **Statistics**. It is accessible whenever the dashboard is in the **Server connected** or **Studio connected** state.
 
 ## History Tab
 

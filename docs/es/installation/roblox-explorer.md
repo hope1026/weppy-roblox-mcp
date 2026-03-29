@@ -9,7 +9,7 @@ Esta es una extensión complementaria para WROX, no una integración de Roblox i
 
 - VSCode 1.85+
 - [Roblox MCP](../../../README.md) instalado con Sync habilitado (Basic o Pro)
-- `roblox-project-sync/place_*/.sync-meta.json` ya generado por Sync
+- Sync ya genero `wrox-project-sync/place_*/.sync-meta.json` dentro de la raiz del proyecto
 
 ## Instalación
 
@@ -37,7 +37,7 @@ La navegación básica del árbol funciona con los archivos sincronizados en dis
 
 | Configuración | Valor por defecto | Descripción |
 |---------------|-------------------|-------------|
-| `robloxExplorer.syncRoot` | `""` | Ruta absoluta a la raíz de `roblox-project-sync`. Se detecta automáticamente si está vacío. |
+| `robloxExplorer.syncRoot` | `""` | Ruta absoluta a la raiz de `wrox-project-sync`. Si esta vacia, se detecta automaticamente. WROX usa `{projectRoot}/wrox-project-sync`. |
 | `robloxExplorer.hidePropsFiles` | `false` | Oculta los archivos de Sync (`.props.json`, `_tree.json`, `.value.json`) en el explorador predeterminado de VSCode. |
 | `robloxExplorer.autoRefresh` | `true` | Actualiza automáticamente el árbol cuando cambian los archivos Sync. |
 | `robloxExplorer.showSyncStatus` | `true` | Muestra decoraciones de estado Sync en los elementos del árbol. |

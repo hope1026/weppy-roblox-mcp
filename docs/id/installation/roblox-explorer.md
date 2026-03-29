@@ -9,7 +9,7 @@ Ini adalah ekstensi pendamping untuk WROX, bukan integrasi Roblox yang berdiri s
 
 - VSCode 1.85+
 - [Roblox MCP](../../../README.md) sudah terpasang dengan Sync aktif (Basic atau Pro)
-- `roblox-project-sync/place_*/.sync-meta.json` sudah dihasilkan oleh Sync
+- Sync sudah menghasilkan `wrox-project-sync/place_*/.sync-meta.json` di bawah root proyek
 
 ## Cara Instalasi
 
@@ -37,7 +37,7 @@ Penjelajahan tree dasar bekerja dari file sync di disk. Status sync live, indika
 
 | Pengaturan | Default | Deskripsi |
 |------------|---------|-----------|
-| `robloxExplorer.syncRoot` | `""` | Jalur absolut ke root `roblox-project-sync`. Terdeteksi otomatis jika kosong. |
+| `robloxExplorer.syncRoot` | `""` | Jalur absolut ke root `wrox-project-sync`. Jika kosong, akan dideteksi otomatis. WROX memakai `{projectRoot}/wrox-project-sync`. |
 | `robloxExplorer.hidePropsFiles` | `false` | Sembunyikan file Sync (`.props.json`, `_tree.json`, `.value.json`) di explorer VSCode default. |
 | `robloxExplorer.autoRefresh` | `true` | Perbarui pohon otomatis saat file Sync berubah. |
 | `robloxExplorer.showSyncStatus` | `true` | Tampilkan dekorasi status Sync pada item pohon. |

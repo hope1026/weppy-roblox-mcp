@@ -81,10 +81,10 @@ Edit ──play──→ Running ──stop──→ Edit
 - 마지막 로그 수집
 
 ### 5. 리포트 생성
-로컬 파일로 리포트와 로그를 저장합니다:
+리포트와 로그는 로컬 `{projectRoot}/wrox-project-sync/place_XXXXX/tests/YYYYMMDD-HHmmss/` 아래에 저장됩니다.
 
 ```
-roblox-project-sync/place_XXXXX/tests/YYYYMMDD-HHmmss/
+{projectRoot}/wrox-project-sync/place_XXXXX/tests/YYYYMMDD-HHmmss/
 ├── test-report.md    # 결과 요약 (상태, 시간, 시그널)
 └── test-log.txt      # 전체 로그 (타임스탬프, 시퀀스, 레벨)
 ```

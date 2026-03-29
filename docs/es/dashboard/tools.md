@@ -6,7 +6,7 @@
 
 ## Descripcion general
 
-La pagina Tools proporciona el historial de ejecucion y las estadisticas de las herramientas MCP ejecutadas por la IA. Se compone de dos sub-pestanas: **History** y **Statistics**. Es accesible siempre que el servidor este conectado (L1 o superior).
+La pagina Tools proporciona el historial de ejecucion y las estadisticas de las herramientas MCP ejecutadas por la IA. Se compone de dos sub-pestanas: **History** y **Statistics**. Es accesible siempre que el dashboard este en estado **Servidor conectado** o **Studio conectado**.
 
 ## Pestana History
 

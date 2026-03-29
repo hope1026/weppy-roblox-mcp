@@ -6,7 +6,7 @@
 
 ## Descripcion general
 
-La pagina Playtest muestra el estado de los playtests ejecutados por la IA y los resultados de las pruebas. Solo es accesible cuando el plugin esta conectado (L2).
+La pagina Playtest muestra el estado de los playtests ejecutados por la IA y los resultados de las pruebas. Solo es accesible cuando el dashboard esta en estado **Studio conectado**.
 
 ## Playtest Status
 

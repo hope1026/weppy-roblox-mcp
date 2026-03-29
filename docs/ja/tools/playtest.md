@@ -86,10 +86,10 @@ Edit --play--> Running --stop--> Edit
 
 ### 5. レポート出力
 
-レポートとログはローカルファイルとして保存されます。
+レポートとログはローカルの `{projectRoot}/wrox-project-sync/place_XXXXX/tests/YYYYMMDD-HHmmss/` 配下に保存されます。
 
 ```text
-roblox-project-sync/place_XXXXX/tests/YYYYMMDD-HHmmss/
+{projectRoot}/wrox-project-sync/place_XXXXX/tests/YYYYMMDD-HHmmss/
 ├── test-report.md
 └── test-log.txt
 ```

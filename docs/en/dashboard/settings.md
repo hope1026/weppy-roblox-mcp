@@ -4,7 +4,7 @@
 
 ## Overview
 
-The Settings page lets you view license information and server settings, and modify some of them. It is accessible whenever the server is connected (L1 or above).
+The Settings page lets you view license information and server settings, and modify some of them. It is accessible whenever the dashboard is in the **Server connected** or **Studio connected** state.
 
 ## License (Read-Only)
 

@@ -6,7 +6,7 @@
 
 ## Visao geral
 
-A pagina Tools fornece o historico e as estatisticas das ferramentas MCP executadas pela IA. E composta por duas sub-abas: **History** e **Statistics**. Esta sempre acessivel quando o servidor esta conectado (L1 ou superior).
+A pagina Tools fornece o historico e as estatisticas das ferramentas MCP executadas pela IA. E composta por duas sub-abas: **History** e **Statistics**. Esta sempre acessivel quando o dashboard esta em estado **Servidor conectado** ou **Studio conectado**.
 
 ## Aba History
 

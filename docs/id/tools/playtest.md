@@ -86,10 +86,10 @@ Edit --play--> Running --stop--> Edit
 
 ### 5. Penulisan laporan
 
-Laporan dan log ditulis ke file lokal:
+Laporan dan log ditulis ke `{projectRoot}/wrox-project-sync/place_XXXXX/tests/YYYYMMDD-HHmmss/`.
 
 ```text
-roblox-project-sync/place_XXXXX/tests/YYYYMMDD-HHmmss/
+{projectRoot}/wrox-project-sync/place_XXXXX/tests/YYYYMMDD-HHmmss/
 ├── test-report.md
 └── test-log.txt
 ```

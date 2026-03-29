@@ -86,10 +86,10 @@ Edit --play--> Running --stop--> Edit
 
 ### 5. Escritura de reportes
 
-Los reportes y logs se escriben en archivos locales:
+Los reportes y logs se escriben en `{projectRoot}/wrox-project-sync/place_XXXXX/tests/YYYYMMDD-HHmmss/`.
 
 ```text
-roblox-project-sync/place_XXXXX/tests/YYYYMMDD-HHmmss/
+{projectRoot}/wrox-project-sync/place_XXXXX/tests/YYYYMMDD-HHmmss/
 ├── test-report.md
 └── test-log.txt
 ```
