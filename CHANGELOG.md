@@ -23,6 +23,14 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.1.1] - 2026-03-29
+
+### Bug Fixes
+
+- fix Windows install script (`install.ps1`) to resolve `npm.cmd` execution policy issues by introducing `Invoke-Npm` wrapper
+
+
 ## [2.1.0] - 2026-03-29
 
 ### ⚠️ BREAKING CHANGES

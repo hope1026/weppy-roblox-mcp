@@ -13,6 +13,7 @@
 $ErrorActionPreference = "Stop"
 $script:InstallLogPath = Join-Path ([System.IO.Path]::GetTempPath()) ("wrox-install-{0:yyyyMMdd-HHmmss}.log" -f (Get-Date))
 $script:TranscriptStarted = $false
+$script:NpmCommandPath = $null
 
 # ── Utilities ──
 function Write-Step($step, $msg) { Write-Host "`n[$step] $msg" -ForegroundColor Cyan -NoNewline; Write-Host "" }
@@ -51,6 +52,35 @@ function Confirm-Action($prompt) {
     $reply = Read-Host "$prompt (Y/n)"
     if ([string]::IsNullOrWhiteSpace($reply)) { $reply = "Y" }
     return $reply -match '^[Yy]'
+}
+
+function Resolve-NpmCommand() {
+    if ($script:NpmCommandPath) {
+        return $script:NpmCommandPath
+    }
+
+    $npmCommand = Get-Command npm.cmd -ErrorAction SilentlyContinue
+    if (-not $npmCommand) {
+        Abort-Install "npm.cmd not found. Check Node.js installation."
+    }
+
+    $script:NpmCommandPath = $npmCommand.Source
+    return $script:NpmCommandPath
+}
+
+function Invoke-Npm {
+    param(
+        [Parameter(ValueFromRemainingArguments = $true)]
+        [string[]]$Args
+    )
+
+    $npmCommandPath = Resolve-NpmCommand
+    $output = & $npmCommandPath @Args
+    if ($LASTEXITCODE -ne 0) {
+        throw "npm $($Args -join ' ') failed with exit code $LASTEXITCODE"
+    }
+
+    return $output
 }
 
 # Add MCP server to JSON config file (PowerShell 5.1 compatible — edits JSON via node)
@@ -104,7 +134,7 @@ Write-Step "1/3" "Install @weppy/roblox-mcp via npm"
 
 if (Confirm-Action "  Run npm install -g @weppy/roblox-mcp?") {
     try {
-        npm install -g "@weppy/roblox-mcp"
+        Invoke-Npm install -g "@weppy/roblox-mcp"
         Write-Ok "Installed @weppy/roblox-mcp"
     }
     catch {
@@ -124,7 +154,7 @@ $pluginsDir = Join-Path $env:LOCALAPPDATA "Roblox\Plugins"
 $pluginName = "WeppyRobloxMCP.rbxm"
 
 # Search for .rbxm in npm global path
-$npmPrefix = (npm prefix -g 2>$null).Trim()
+$npmPrefix = (Invoke-Npm prefix -g 2>$null | Out-String).Trim()
 $bundledPlugin = $null
 $searchPaths = @(
     (Join-Path $npmPrefix "node_modules\@weppy\roblox-mcp\plugins\weppy-roblox-mcp\roblox-plugin\$pluginName"),
