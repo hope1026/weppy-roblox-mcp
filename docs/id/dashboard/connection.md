@@ -6,7 +6,7 @@
 
 ## Ikhtisar
 
-Halaman Connection memantau semua status koneksi sistem MCP di satu tempat. Halaman ini selalu dapat diakses selama server terhubung (L1 ke atas).
+Halaman Connection memantau semua status koneksi sistem MCP di satu tempat. Halaman ini selalu dapat diakses saat dashboard berada dalam status **Server terhubung** atau **Studio terhubung**.
 
 ## Server Status
 

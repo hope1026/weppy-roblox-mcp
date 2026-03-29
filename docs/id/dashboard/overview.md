@@ -34,17 +34,17 @@ http://localhost:3002
 
 > Atur `DASHBOARD_AUTO_OPEN=false` untuk menonaktifkan pembukaan otomatis (lihat halaman [Settings](settings.md)).
 
-## Level Koneksi
+## Status Koneksi
 
 Fitur yang tersedia di dashboard berbeda tergantung pada status koneksi:
 
-| Level | Kondisi | Halaman yang Tersedia |
-|:-----:|---------|----------------------|
-| **L0** | Server tidak terhubung | Hanya menampilkan layar menunggu koneksi ulang |
-| **L1** | Server terhubung, plugin tidak terhubung | Connection, Tools, Settings |
-| **L2** | Server + Plugin keduanya terhubung | Semua halaman |
+| Status | Kondisi | Halaman yang Tersedia |
+|--------|---------|----------------------|
+| **Server terputus** | Server tidak terhubung | Hanya menampilkan layar menunggu koneksi ulang |
+| **Server terhubung** | Server terhubung, plugin tidak terhubung | Connection, Tools, Settings |
+| **Studio terhubung** | Server + Plugin keduanya terhubung | Semua halaman |
 
-Saat plugin belum terhubung (L1), halaman Overview, Changelog, Sync, dan Playtest tidak dapat diakses.
+Saat dashboard berada dalam status **Server terhubung**, halaman Overview, Changelog, Sync, dan Playtest tidak dapat diakses.
 
 ## Overview
 

@@ -8,7 +8,7 @@
 
 ## Visao geral
 
-A pagina Sync exibe visualmente o status atual e as configuracoes da sincronizacao Studio <-> arquivos locais. So fica acessivel quando o plugin esta conectado (L2).
+A pagina Sync exibe visualmente o status atual e as configuracoes da sincronizacao Studio <-> arquivos locais. So fica acessivel quando o dashboard esta em estado **Studio conectado**.
 
 ## Sync Status
 

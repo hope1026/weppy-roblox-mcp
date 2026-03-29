@@ -22,6 +22,36 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.1.0] - 2026-03-29
+
+### ⚠️ BREAKING CHANGES
+
+- **Sync directory renamed**: `roblox-project-sync/` → `wrox-project-sync/`. All existing sync data will be stored under the new directory. The old `roblox-project-sync/` directory is no longer used.
+- **App data directory renamed**: `~/.weppy-roblox-mcp` → `~/.wrox-data`. The old `~/.weppy-roblox-mcp` directory is no longer recognized.
+- **Project sync resets from Studio**: After upgrading, project sync data is re-initialized from Studio as the source of truth. Any local-only changes not yet synced back to Studio will be lost — ensure your Studio state is up to date before upgrading.
+- **License downgrade requires plugin action**: If your license changes from Pro to Basic, you **must** click "Refresh" in the plugin UI or deactivate and reactivate the plugin for the tier change to take effect. Without this step, the plugin may continue to report the previous tier.
+
+### Features
+
+- **Dashboard project root switching**: Added the ability to change the project root directory directly from the Dashboard overview page, with restart and path migration support.
+- **Dashboard Place UI improvements**: Redesigned the Place summary display for better visual clarity and usability.
+- Dashboard place summary API and persistence for active project state
+- Sync root switch flow with configurable overrides and path migration
+
+### Bug Fixes
+
+- Harden sync-root switching with error handling and fallback resolution
+- Preserve and surface dashboard sync-root restart errors
+- Normalize observability sync roots and honor override root in runtime paths
+- Cover remaining wrox runtime paths
+
+### Documentation
+
+- Expand documentation with project rationale, use cases, FAQ, and license details across all locales
+- Update sync data path documentation to reflect project-root-based storage
+
+
 ## [2.0.10] - 2026-03-28
 
 ### Improved

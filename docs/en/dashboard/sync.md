@@ -8,7 +8,7 @@
 
 ## Overview
 
-The Sync page provides a visual overview of the current state and settings for Studio <-> local file synchronization. It is accessible only when the plugin is connected (L2).
+The Sync page provides a visual overview of the current state and settings for Studio <-> local file synchronization. It is accessible only when the dashboard is in the **Studio connected** state.
 
 ## Sync Status
 

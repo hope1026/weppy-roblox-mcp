@@ -4,7 +4,7 @@
 
 ## Ikhtisar
 
-Di halaman Settings, Anda dapat melihat informasi lisensi dan pengaturan server, serta mengubah sebagian pengaturan. Halaman ini selalu dapat diakses selama server terhubung (L1 ke atas).
+Di halaman Settings, Anda dapat melihat informasi lisensi dan pengaturan server, serta mengubah sebagian pengaturan. Halaman ini selalu dapat diakses saat dashboard berada dalam status **Server terhubung** atau **Studio terhubung**.
 
 ## License (hanya-baca)
 

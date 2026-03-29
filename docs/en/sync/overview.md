@@ -18,7 +18,7 @@ Without Sync, AI only sees snippets pasted into chat. With Sync enabled, AI work
 2. Incremental Sync: continuous update of new changes
 3. History/Status tracking: inspect what changed, when, and in which direction
 
-Default local path is `roblox-project-sync/place_{placeId}/explorer`.
+Sync data is stored under `{projectRoot}/wrox-project-sync/place_{placeId}/explorer`.
 
 ### Browse sync data in VSCode
 

@@ -86,10 +86,10 @@ Edit --play--> Running --stop--> Edit
 
 ### 5. Escrita de relatorios
 
-Os relatorios e logs sao gravados em arquivos locais:
+Os relatorios e logs sao gravados em `{projectRoot}/wrox-project-sync/place_XXXXX/tests/YYYYMMDD-HHmmss/`.
 
 ```text
-roblox-project-sync/place_XXXXX/tests/YYYYMMDD-HHmmss/
+{projectRoot}/wrox-project-sync/place_XXXXX/tests/YYYYMMDD-HHmmss/
 ├── test-report.md
 └── test-log.txt
 ```

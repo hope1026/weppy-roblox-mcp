@@ -4,7 +4,7 @@
 
 ## Visao geral
 
-Na pagina Settings, voce pode verificar as informacoes de licenca e as configuracoes do servidor, alem de alterar algumas delas. Esta sempre acessivel quando o servidor esta conectado (L1 ou superior).
+Na pagina Settings, voce pode verificar as informacoes de licenca e as configuracoes do servidor, alem de alterar algumas delas. Esta sempre acessivel quando o dashboard esta em estado **Servidor conectado** ou **Studio conectado**.
 
 ## License (somente leitura)
 

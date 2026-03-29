@@ -6,7 +6,7 @@
 
 ## Overview
 
-The Connection page lets you monitor all connection states of the MCP system in one place. It is accessible whenever the server is connected (L1 or above).
+The Connection page lets you monitor all connection states of the MCP system in one place. It is accessible whenever the dashboard is in the **Server connected** or **Studio connected** state.
 
 ## Server Status
 

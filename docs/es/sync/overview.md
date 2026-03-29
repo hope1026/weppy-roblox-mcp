@@ -18,7 +18,7 @@ Sin Sync, la IA solo ve fragmentos pegados en el chat. Con Sync activo, trabaja 
 2. Incremental Sync: reflejo continuo de cambios nuevos
 3. Seguimiento de History/Status: ver que cambio, cuando y en que direccion
 
-La ruta local por defecto es `roblox-project-sync/place_{placeId}/explorer`.
+Los datos de Sync se guardan en `{projectRoot}/wrox-project-sync/place_{placeId}/explorer`.
 
 ### Explorar datos sincronizados en VSCode
 

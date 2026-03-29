@@ -34,17 +34,17 @@ http://localhost:3002
 
 > Set `DASHBOARD_AUTO_OPEN=false` to disable automatic opening (see the [Settings](settings.md) page).
 
-## Connection Levels
+## Connection States
 
 The features available in the dashboard depend on the connection state:
 
-| Level | Condition | Available Pages |
-|:-----:|-----------|-----------------|
-| **L0** | Server not connected | Only the reconnection waiting screen is displayed |
-| **L1** | Server connected, plugin not connected | Connection, Tools, Settings |
-| **L2** | Both server and plugin connected | All pages |
+| State | Condition | Available Pages |
+|-------|-----------|-----------------|
+| **Server disconnected** | Server not connected | Only the reconnection waiting screen is displayed |
+| **Server connected** | Server connected, plugin not connected | Connection, Tools, Settings |
+| **Studio connected** | Both server and plugin connected | All pages |
 
-When the plugin is not connected (L1), the Overview, Changelog, Sync, and Playtest pages are inaccessible.
+When the dashboard is in the **Server connected** state, the Overview, Changelog, Sync, and Playtest pages are inaccessible.
 
 ## Overview
 

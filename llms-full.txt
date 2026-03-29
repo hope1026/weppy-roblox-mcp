@@ -495,7 +495,7 @@ Without Sync, AI only sees snippets pasted into chat. With Sync enabled, AI work
 2. Incremental Sync: continuous update of new changes
 3. History/Status tracking: inspect what changed, when, and in which direction
 
-Default local path is `roblox-project-sync/place_{placeId}/explorer`.
+Sync data is stored under `{projectRoot}/wrox-project-sync/place_{placeId}/explorer`.
 
 ## Sync Capabilities
 
@@ -565,13 +565,13 @@ Set `DASHBOARD_AUTO_OPEN=false` to disable automatic opening.
 | **Tools** | Tool execution history, statistics, tier distribution |
 | **Settings** | License, log level, sync settings, language |
 
-## Connection Levels
+## Connection States
 
-| Level | Condition | Available Pages |
-|:-----:|-----------|-----------------|
-| **L0** | Server not connected | Reconnection waiting screen only |
-| **L1** | Server connected, plugin not connected | Connection, Tools, Settings |
-| **L2** | Both server and plugin connected | All pages |
+| State | Condition | Available Pages |
+|-------|-----------|-----------------|
+| **Server disconnected** | Server not connected | Reconnection waiting screen only |
+| **Server connected** | Server connected, plugin not connected | Connection, Tools, Settings |
+| **Studio connected** | Both server and plugin connected | All pages |
 
 ## Overview Page
 

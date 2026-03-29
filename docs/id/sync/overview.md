@@ -18,7 +18,7 @@ Tanpa Sync, AI hanya melihat potongan kode yang ditempel di chat. Dengan Sync ak
 2. Incremental Sync: perubahan baru terus disinkronkan
 3. Pelacakan History/Status: cek apa yang berubah, kapan, dan ke arah mana
 
-Path lokal default adalah `roblox-project-sync/place_{placeId}/explorer`.
+Data Sync disimpan di `{projectRoot}/wrox-project-sync/place_{placeId}/explorer`.
 
 ### Jelajahi data sync di VSCode
 

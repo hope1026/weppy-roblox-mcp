@@ -6,7 +6,7 @@
 
 ## Overview
 
-The Playtest page shows the status and test results of playtests run by the AI. It is accessible only when the plugin is connected (L2).
+The Playtest page shows the status and test results of playtests run by the AI. It is accessible only when the dashboard is in the **Studio connected** state.
 
 ## Playtest Status
 
