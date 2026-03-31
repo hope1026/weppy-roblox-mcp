@@ -100,6 +100,48 @@ fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + "\n");
 '
 }
 
+is_json_mcp_configured() {
+  local config_path="$1"
+
+  [ -f "$config_path" ] || return 1
+
+  MCP_CONFIG_PATH="$config_path" node -e '
+const fs = require("fs");
+const configPath = process.env.MCP_CONFIG_PATH;
+try {
+  const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
+  process.exit(config?.mcpServers?.["weppy-roblox-mcp"] ? 0 : 1);
+} catch {
+  process.exit(1);
+}
+' >/dev/null 2>&1
+}
+
+is_codex_config_configured() {
+  local config_path="$1"
+
+  [ -f "$config_path" ] || return 1
+  grep -Eq '^[[:space:]]*\[mcp_servers\.weppy-roblox-mcp\][[:space:]]*$' "$config_path"
+}
+
+resolve_optional_cli_command() {
+  local command_name="$1"
+  local npm_prefix=""
+
+  if command -v "$command_name" >/dev/null 2>&1; then
+    command -v "$command_name"
+    return 0
+  fi
+
+  npm_prefix=$(npm prefix -g 2>/dev/null || true)
+  if [ -n "$npm_prefix" ] && [ -x "$npm_prefix/bin/$command_name" ]; then
+    printf "%s\n" "$npm_prefix/bin/$command_name"
+    return 0
+  fi
+
+  return 1
+}
+
 is_lfs_pointer() {
   local file_path="$1"
 
@@ -204,10 +246,19 @@ declare -a DETECTED_NAMES=()
 declare -a DETECTED_TYPES=()
 declare -a NOT_DETECTED=()
 
-# Claude Code CLI
-if command -v claude &>/dev/null; then
+# Claude Code
+CLAUDE_PROJECT_MCP_CONFIG="$PWD/.mcp.json"
+CLAUDE_GLOBAL_MCP_CONFIG="$HOME/.claude/mcp.json"
+CLAUDE_CLI_COMMAND="$(resolve_optional_cli_command claude 2>/dev/null || true)"
+
+if is_json_mcp_configured "$CLAUDE_PROJECT_MCP_CONFIG" || is_json_mcp_configured "$CLAUDE_GLOBAL_MCP_CONFIG"; then
+  DETECTED_NAMES+=("Claude Code (configured)")
+  DETECTED_TYPES+=("claude-code")
+elif [ -n "$CLAUDE_CLI_COMMAND" ]; then
   DETECTED_NAMES+=("Claude Code (CLI)")
   DETECTED_TYPES+=("claude-code")
+else
+  NOT_DETECTED+=("Claude Code (not found)")
 fi
 
 # Claude Desktop (macOS)
@@ -229,7 +280,12 @@ else
 fi
 
 # Codex CLI
-if command -v codex &>/dev/null; then
+CODEX_CONFIG="$HOME/.codex/config.toml"
+CODEX_CLI_COMMAND="$(resolve_optional_cli_command codex 2>/dev/null || true)"
+if is_codex_config_configured "$CODEX_CONFIG"; then
+  DETECTED_NAMES+=("Codex CLI (configured)")
+  DETECTED_TYPES+=("codex-cli")
+elif [ -n "$CODEX_CLI_COMMAND" ]; then
   DETECTED_NAMES+=("Codex CLI")
   DETECTED_TYPES+=("codex-cli")
 else
@@ -237,7 +293,13 @@ else
 fi
 
 # Gemini CLI
-if command -v gemini &>/dev/null; then
+# Gemini CLI
+GEMINI_CONFIG="$HOME/.gemini/settings.json"
+GEMINI_CLI_COMMAND="$(resolve_optional_cli_command gemini 2>/dev/null || true)"
+if is_json_mcp_configured "$GEMINI_CONFIG"; then
+  DETECTED_NAMES+=("Gemini CLI (configured)")
+  DETECTED_TYPES+=("gemini-cli")
+elif [ -n "$GEMINI_CLI_COMMAND" ]; then
   DETECTED_NAMES+=("Gemini CLI")
   DETECTED_TYPES+=("gemini-cli")
 else
@@ -302,7 +364,9 @@ else
 
     case "$app_type" in
       claude-code)
-        if claude mcp add weppy-roblox-mcp -- npx -y @weppy/roblox-mcp 2>/dev/null; then
+        if is_json_mcp_configured "$CLAUDE_PROJECT_MCP_CONFIG" || is_json_mcp_configured "$CLAUDE_GLOBAL_MCP_CONFIG"; then
+          success "Already configured: $app_name"
+        elif [ -n "$CLAUDE_CLI_COMMAND" ] && "$CLAUDE_CLI_COMMAND" mcp add weppy-roblox-mcp -- npx -y @weppy/roblox-mcp 2>/dev/null; then
           success "Registered: $app_name"
         else
           fail "Failed: $app_name"
@@ -323,16 +387,25 @@ else
         fi
         ;;
       codex-cli)
-        codex mcp remove weppy-roblox-mcp >/dev/null 2>&1 || true
-        if codex mcp add weppy-roblox-mcp -- npx -y @weppy/roblox-mcp 2>/dev/null; then
+        if is_codex_config_configured "$CODEX_CONFIG"; then
+          success "Already configured: $app_name"
+        else
+          [ -n "$CODEX_CLI_COMMAND" ] && "$CODEX_CLI_COMMAND" mcp remove weppy-roblox-mcp >/dev/null 2>&1 || true
+        fi
+        if is_codex_config_configured "$CODEX_CONFIG"; then
+          :
+        elif [ -n "$CODEX_CLI_COMMAND" ] && "$CODEX_CLI_COMMAND" mcp add weppy-roblox-mcp -- npx -y @weppy/roblox-mcp 2>/dev/null; then
           success "Registered: $app_name"
+        elif is_codex_config_configured "$CODEX_CONFIG"; then
+          success "Already configured: $app_name"
         else
           fail "Failed: $app_name"
         fi
         ;;
       gemini-cli)
-        # Config path/format is best-effort — update when CLI stabilizes
-        if add_mcp_to_config "$HOME/.gemini/settings.json"; then
+        if is_json_mcp_configured "$GEMINI_CONFIG"; then
+          success "Already configured: $app_name"
+        elif add_mcp_to_config "$GEMINI_CONFIG"; then
           success "Registered: $app_name"
         else
           fail "Failed: $app_name"
