@@ -14,6 +14,7 @@ $ErrorActionPreference = "Stop"
 $script:InstallLogPath = Join-Path ([System.IO.Path]::GetTempPath()) ("wrox-install-{0:yyyyMMdd-HHmmss}.log" -f (Get-Date))
 $script:TranscriptStarted = $false
 $script:NpmCommandPath = $null
+$script:NpmGlobalPrefix = $null
 
 # ── Utilities ──
 function Write-Step($step, $msg) { Write-Host "`n[$step] $msg" -ForegroundColor Cyan -NoNewline; Write-Host "" }
@@ -68,6 +69,15 @@ function Resolve-NpmCommand() {
     return $script:NpmCommandPath
 }
 
+function Get-NpmGlobalPrefix() {
+    if ($script:NpmGlobalPrefix) {
+        return $script:NpmGlobalPrefix
+    }
+
+    $script:NpmGlobalPrefix = (Invoke-Npm prefix -g 2>$null | Out-String).Trim()
+    return $script:NpmGlobalPrefix
+}
+
 function Invoke-Npm {
     param(
         [Parameter(ValueFromRemainingArguments = $true)]
@@ -81,6 +91,60 @@ function Invoke-Npm {
     }
 
     return $output
+}
+
+function Resolve-OptionalCliCommand($commandName) {
+    $resolvedCommand = Get-Command $commandName -ErrorAction SilentlyContinue
+    if ($resolvedCommand) {
+        return $resolvedCommand.Source
+    }
+
+    $candidatePaths = @()
+    $npmPrefix = Get-NpmGlobalPrefix
+    if ($npmPrefix) {
+        $candidatePaths += (Join-Path $npmPrefix "$commandName.cmd")
+        $candidatePaths += (Join-Path $npmPrefix $commandName)
+    }
+
+    if ($env:APPDATA) {
+        $appDataNpmDir = Join-Path $env:APPDATA 'npm'
+        $candidatePaths += (Join-Path $appDataNpmDir "$commandName.cmd")
+        $candidatePaths += (Join-Path $appDataNpmDir $commandName)
+    }
+
+    foreach ($candidatePath in $candidatePaths) {
+        if ([string]::IsNullOrWhiteSpace($candidatePath)) {
+            continue
+        }
+
+        if (Test-Path $candidatePath) {
+            return $candidatePath
+        }
+    }
+
+    return $null
+}
+
+function Test-McpJsonConfigured($configPath) {
+    if (-not (Test-Path $configPath)) {
+        return $false
+    }
+
+    try {
+        $config = Get-Content -Path $configPath -Raw | ConvertFrom-Json
+        return $null -ne $config.mcpServers.'weppy-roblox-mcp'
+    }
+    catch {
+        return $false
+    }
+}
+
+function Test-CodexConfigConfigured($configPath) {
+    if (-not (Test-Path $configPath)) {
+        return $false
+    }
+
+    return Select-String -Path $configPath -Pattern '^\s*\[mcp_servers\.weppy-roblox-mcp\]\s*$' -Quiet
 }
 
 # Add MCP server to JSON config file (PowerShell 5.1 compatible — edits JSON via node)
@@ -154,7 +218,7 @@ $pluginsDir = Join-Path $env:LOCALAPPDATA "Roblox\Plugins"
 $pluginName = "WeppyRobloxMCP.rbxm"
 
 # Search for .rbxm in npm global path
-$npmPrefix = (Invoke-Npm prefix -g 2>$null | Out-String).Trim()
+$npmPrefix = Get-NpmGlobalPrefix
 $bundledPlugin = $null
 $searchPaths = @(
     (Join-Path $npmPrefix "node_modules\@weppy\roblox-mcp\plugins\weppy-roblox-mcp\roblox-plugin\$pluginName"),
@@ -200,13 +264,21 @@ $detectedNames = @()
 $detectedTypes = @()
 $notDetected = @()
 
-# Claude Code CLI
-if (Get-Command claude -ErrorAction SilentlyContinue) {
-    $detectedNames += "Claude Code (CLI)"
-    $detectedTypes += "claude-code"
+$claudeProjectConfig = Join-Path (Get-Location).Path '.mcp.json'
+$claudeGlobalConfig = Join-Path $env:USERPROFILE '.claude\mcp.json'
+$claudeCodeConfigured = (Test-McpJsonConfigured $claudeProjectConfig) -or (Test-McpJsonConfigured $claudeGlobalConfig)
+$claudeCodeCliCommand = Resolve-OptionalCliCommand 'claude'
+
+if ($claudeCodeConfigured) {
+    $detectedNames += 'Claude Code (configured)'
+    $detectedTypes += 'claude-code'
+}
+elseif ($claudeCodeCliCommand) {
+    $detectedNames += 'Claude Code (CLI)'
+    $detectedTypes += 'claude-code'
 }
 else {
-    $notDetected += "Claude Code CLI (not found)"
+    $notDetected += 'Claude Code (not found)'
 }
 
 # Claude Desktop
@@ -229,17 +301,32 @@ else {
     $notDetected += "Cursor (not found)"
 }
 
-# Codex CLI
-if (Get-Command codex -ErrorAction SilentlyContinue) {
-    $detectedNames += "Codex CLI"
-    $detectedTypes += "codex-cli"
+$codexConfig = Join-Path $env:USERPROFILE '.codex\config.toml'
+$codexConfigured = Test-CodexConfigConfigured $codexConfig
+$codexCliCommand = Resolve-OptionalCliCommand 'codex'
+
+if ($codexConfigured) {
+    $detectedNames += 'Codex CLI (configured)'
+    $detectedTypes += 'codex-cli'
+}
+elseif ($codexCliCommand) {
+    $detectedNames += 'Codex CLI'
+    $detectedTypes += 'codex-cli'
 }
 else {
-    $notDetected += "Codex CLI (not found)"
+    $notDetected += 'Codex CLI (not found)'
 }
 
 # Gemini CLI
-if (Get-Command gemini -ErrorAction SilentlyContinue) {
+$geminiConfig = Join-Path $env:USERPROFILE '.gemini\settings.json'
+$geminiConfigured = Test-McpJsonConfigured $geminiConfig
+$geminiCliCommand = Resolve-OptionalCliCommand 'gemini'
+
+if ($geminiConfigured) {
+    $detectedNames += 'Gemini CLI (configured)'
+    $detectedTypes += "gemini-cli"
+}
+elseif ($geminiCliCommand) {
     $detectedNames += "Gemini CLI"
     $detectedTypes += "gemini-cli"
 }
@@ -294,8 +381,19 @@ else {
         try {
             switch ($appType) {
                 "claude-code" {
-                    claude mcp add weppy-roblox-mcp -- npx -y "@weppy/roblox-mcp"
-                    Write-Ok "Registered: $appName"
+                    if ($claudeCodeConfigured) {
+                        Write-Ok "Already configured: $appName"
+                    }
+                    elseif ($claudeCodeCliCommand) {
+                        & $claudeCodeCliCommand mcp add weppy-roblox-mcp -- npx -y "@weppy/roblox-mcp"
+                        if ($LASTEXITCODE -ne 0) {
+                            throw 'claude mcp add failed'
+                        }
+                        Write-Ok "Registered: $appName"
+                    }
+                    else {
+                        Write-Fail "Failed: $appName (CLI/config unavailable)"
+                    }
                 }
                 "claude-desktop" {
                     Add-McpToConfig $claudeDesktopConfig
@@ -307,15 +405,29 @@ else {
                     Write-Ok "Registered: $appName"
                 }
                 "codex-cli" {
-                    try { codex mcp remove weppy-roblox-mcp *> $null } catch {}
-                    codex mcp add weppy-roblox-mcp -- npx -y "@weppy/roblox-mcp"
-                    Write-Ok "Registered: $appName"
+                    if ($codexConfigured) {
+                        Write-Ok "Already configured: $appName"
+                    }
+                    elseif ($codexCliCommand) {
+                        try { & $codexCliCommand mcp remove weppy-roblox-mcp *> $null } catch {}
+                        & $codexCliCommand mcp add weppy-roblox-mcp -- npx -y "@weppy/roblox-mcp"
+                        if ($LASTEXITCODE -ne 0) {
+                            throw 'codex mcp add failed'
+                        }
+                        Write-Ok "Registered: $appName"
+                    }
+                    else {
+                        Write-Fail "Failed: $appName (CLI/config unavailable)"
+                    }
                 }
                 "gemini-cli" {
-                    # Config path/format is best-effort — update when CLI stabilizes
-                    $geminiConfig = Join-Path $env:USERPROFILE ".gemini\settings.json"
-                    Add-McpToConfig $geminiConfig
-                    Write-Ok "Registered: $appName"
+                    if ($geminiConfigured) {
+                        Write-Ok "Already configured: $appName"
+                    }
+                    else {
+                        Add-McpToConfig $geminiConfig
+                        Write-Ok "Registered: $appName"
+                    }
                 }
             }
         }
