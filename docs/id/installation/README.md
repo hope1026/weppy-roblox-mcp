@@ -32,8 +32,7 @@ irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1
 
 Restart Roblox Studio — selesai!
 
-Pendaftaran MCP otomatis saat ini mendukung **Claude Code, Claude Desktop, Cursor, Codex CLI, dan Gemini CLI**.
-**Codex App** dan **Antigravity** masih memerlukan pengaturan manual setelah skrip selesai.
+Pendaftaran MCP otomatis mendukung **Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, dan Antigravity**.
 
 Jika eksekusi PowerShell diblokir di Windows, lanjutkan dengan instalasi manual di bawah. Jika kamu memakai paket ZIP, kamu juga bisa menjalankan `setup-plugin.bat` dan `setup-mcp.bat`.
 
