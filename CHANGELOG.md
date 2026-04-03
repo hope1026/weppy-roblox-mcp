@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 
 
+
+## [2.2.1] - 2026-04-03
+
+### Features
+
+- implement command acknowledgment and in-flight request tracking to ensure reliable command delivery and timeout handling
+
+
 ## [2.2.0] - 2026-04-03
 
 ### Sync Stability
