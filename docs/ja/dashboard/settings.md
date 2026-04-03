@@ -1,6 +1,6 @@
 # Settings
 
-> ライセンス情報、サーバー設定、同期設定、言語を確認・管理します。
+> ライセンス情報、サーバー設定、言語を確認・管理します。
 
 ## 概要
 
@@ -35,13 +35,6 @@ Settingsページではライセンス情報とサーバー設定を確認し、
 | `HTTP_PORT` | HTTPポート | 3002 |
 | `HTTP_HOST` | HTTPホスト | 127.0.0.1 |
 | `DASHBOARD_AUTO_OPEN` | ダッシュボード自動オープン | true |
-
-## Sync Settings
-
-| 設定 | 説明 |
-|------|------|
-| Max Depth | 同期最大深度 |
-| Max Instances | 同期最大インスタンス数 |
 
 ## Language
 

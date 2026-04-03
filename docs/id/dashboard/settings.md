@@ -1,6 +1,6 @@
 # Settings
 
-> Periksa dan kelola informasi lisensi, pengaturan server, pengaturan sinkronisasi, dan bahasa.
+> Periksa dan kelola informasi lisensi, pengaturan server, dan bahasa.
 
 ## Ikhtisar
 
@@ -35,13 +35,6 @@ Menampilkan pengaturan server yang dikonfigurasi melalui variabel lingkungan:
 | `HTTP_PORT` | Port HTTP | 3002 |
 | `HTTP_HOST` | Host HTTP | 127.0.0.1 |
 | `DASHBOARD_AUTO_OPEN` | Pembukaan otomatis dashboard | true |
-
-## Sync Settings
-
-| Pengaturan | Deskripsi |
-|------------|-----------|
-| Max Depth | Kedalaman maksimum sinkronisasi |
-| Max Instances | Jumlah maksimum instance yang disinkronkan |
 
 ## Language
 

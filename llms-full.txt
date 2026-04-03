@@ -426,7 +426,6 @@ Roblox MCP provides consolidated tools with action-based sub-commands. Each tool
 | Action | Description |
 |--------|-------------|
 | `status` | Get sync status for a place |
-| `config` | Get sync configuration |
 | `history` | Get change history |
 | `directions` | Get per-type sync directions |
 | `read_file` | Read a synced file |
@@ -563,7 +562,7 @@ Set `DASHBOARD_AUTO_OPEN=false` to disable automatic opening.
 | **Sync** | Sync status, direction settings, logs |
 | **Playtest** | Playtest status and test history |
 | **Tools** | Tool execution history, statistics, tier distribution |
-| **Settings** | License, log level, sync settings, language |
+| **Settings** | License, log level, language |
 
 ## Connection States
 

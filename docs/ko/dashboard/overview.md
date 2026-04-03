@@ -22,7 +22,7 @@
 | [Sync](sync.md) | 동기화 상태, 방향 설정, 로그 | [상세 가이드](sync.md) |
 | [Playtest](playtest.md) | 플레이테스트 상태, 테스트 기록 | [상세 가이드](playtest.md) |
 | [Tools](tools.md) | 도구 실행 기록, 통계, 티어 분포 | [상세 가이드](tools.md) |
-| [Settings](settings.md) | 라이선스, 로그 레벨, Sync 설정, 언어 | [상세 가이드](settings.md) |
+| [Settings](settings.md) | 라이선스, 로그 레벨, 언어 | [상세 가이드](settings.md) |
 
 ## 접속 방법
 

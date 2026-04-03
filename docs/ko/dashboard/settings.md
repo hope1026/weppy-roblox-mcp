@@ -1,6 +1,6 @@
 # Settings
 
-> 라이선스 정보, 서버 설정, 동기화 설정, 언어를 확인하고 관리합니다.
+> 라이선스 정보, 서버 설정, 언어를 확인하고 관리합니다.
 
 ## 개요
 
@@ -35,13 +35,6 @@ Settings 페이지에서는 라이선스 정보와 서버 설정을 확인하고
 | `HTTP_PORT` | HTTP 포트 | 3002 |
 | `HTTP_HOST` | HTTP 호스트 | 127.0.0.1 |
 | `DASHBOARD_AUTO_OPEN` | 대시보드 자동 열림 | true |
-
-## Sync Settings
-
-| 설정 | 설명 |
-|------|------|
-| Max Depth | 동기화 최대 깊이 |
-| Max Instances | 동기화 최대 인스턴스 수 |
 
 ## Language
 

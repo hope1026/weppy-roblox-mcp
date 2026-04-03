@@ -22,7 +22,7 @@ O Dashboard e uma interface de monitoramento baseada na web fornecida pelo servi
 | [Sync](sync.md) | Status de sincronizacao, configuracao de direcao, logs | [Guia detalhado](sync.md) |
 | [Playtest](playtest.md) | Status do playtest, historico de testes | [Guia detalhado](playtest.md) |
 | [Tools](tools.md) | Historico de execucao de ferramentas, estatisticas, distribuicao por tier | [Guia detalhado](tools.md) |
-| [Settings](settings.md) | Licenca, nivel de log, configuracoes de Sync, idioma | [Guia detalhado](settings.md) |
+| [Settings](settings.md) | Licenca, nivel de log, idioma | [Guia detalhado](settings.md) |
 
 ## Como acessar
 

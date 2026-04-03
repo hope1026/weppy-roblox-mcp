@@ -35,13 +35,6 @@ Exibe em tabela a direcao de sincronizacao por tipo:
 
 Verifique a direcao de sincronizacao de cada tipo para entender em qual sentido as alteracoes sao refletidas.
 
-## Sync Config
-
-Exibe os valores de configuracao da sincronizacao:
-- Max Depth — Profundidade maxima de sincronizacao
-- Max Instances — Numero maximo de instancias sincronizadas
-- Interval — Intervalo de sincronizacao
-
 ## Sync Log
 
 Exibe os eventos de sincronizacao em ordem cronologica. Cada entrada de log inclui uma tag de tipo de alteracao (create, update, delete, etc.) e o caminho do alvo.

@@ -1,6 +1,6 @@
 # Settings
 
-> Verifique e gerencie informacoes de licenca, configuracoes do servidor, configuracoes de sincronizacao e idioma.
+> Verifique e gerencie informacoes de licenca, configuracoes do servidor e idioma.
 
 ## Visao geral
 
@@ -35,13 +35,6 @@ Exibe as configuracoes do servidor definidas por variaveis de ambiente:
 | `HTTP_PORT` | Porta HTTP | 3002 |
 | `HTTP_HOST` | Host HTTP | 127.0.0.1 |
 | `DASHBOARD_AUTO_OPEN` | Abertura automatica do Dashboard | true |
-
-## Sync Settings
-
-| Configuracao | Descricao |
-|--------------|-----------|
-| Max Depth | Profundidade maxima de sincronizacao |
-| Max Instances | Numero maximo de instancias sincronizadas |
 
 ## Language
 

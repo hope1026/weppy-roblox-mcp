@@ -3,27 +3,26 @@
 All notable changes to this project will be documented in this file.
 
 
+## [2.2.0] - 2026-04-03
 
+### Sync Stability
 
+- Redesign sync algorithm for large-scale instances — snapshot-based scanner replaces legacy chokidar detector for improved reliability
+- Add throttled sync initialization with retry logic and session cleanup
+- Harden scanner lifecycle transitions: startup cancellation, resume, finalize, and queue ordering
+- Close full-sync detector lifecycle races and preserve snapshot kind transitions
+- Improve reverse sync path resolution with snapshot-based scanning
 
+### Features
 
+- Add client-mode idle watchdog with configurable timeout for automatic shutdown
+- Separate health check and polling failure thresholds for better connection state management
+- Add upstream permanent failure detection with graceful shutdown callback
 
+### Bug Fixes
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- Fix cancel-pending license state incorrectly treated as inactive
+- Fix detector activity reporting and status exposure in idle responses
 
 
 ## [2.1.3] - 2026-03-31

@@ -86,7 +86,6 @@ In Pro, Direction and Apply Mode can be controlled per type.
 | Action | Description | Key params |
 |------|------|-----------|
 | `status` | Check current sync state for a place | `placeId` |
-| `config` | Get sync configuration | `placeId` |
 | `history` | Query change history | `placeId`, `query.limit`, `query.offset` |
 | `directions` | Get per-type direction settings | `placeId` |
 | `read_file` | Read a synced file | `placeId`, `instancePath` |

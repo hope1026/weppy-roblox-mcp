@@ -22,7 +22,7 @@ Dashboard adalah antarmuka pemantauan berbasis web yang disediakan oleh server M
 | [Sync](sync.md) | Status sinkronisasi, pengaturan arah, log | [Panduan detail](sync.md) |
 | [Playtest](playtest.md) | Status playtest, riwayat pengujian | [Panduan detail](playtest.md) |
 | [Tools](tools.md) | Riwayat eksekusi alat, statistik, distribusi tier | [Panduan detail](tools.md) |
-| [Settings](settings.md) | Lisensi, level log, pengaturan Sync, bahasa | [Panduan detail](settings.md) |
+| [Settings](settings.md) | Lisensi, level log, bahasa | [Panduan detail](settings.md) |
 
 ## Cara Mengakses
 

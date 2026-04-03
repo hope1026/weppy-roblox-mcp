@@ -86,7 +86,6 @@ Di Pro, Direction dan Apply Mode bisa diatur per tipe.
 | Aksi | Deskripsi | Parameter utama |
 |------|------|-----------|
 | `status` | Cek status sync saat ini untuk place | `placeId` |
-| `config` | Ambil konfigurasi sync | `placeId` |
 | `history` | Ambil riwayat perubahan | `placeId`, `query.limit`, `query.offset` |
 | `directions` | Ambil Direction per tipe | `placeId` |
 | `read_file` | Baca file yang sudah tersinkron | `placeId`, `instancePath` |

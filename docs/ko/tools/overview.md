@@ -228,7 +228,6 @@ Sync 정책:
 | 액션 | 설명 | 티어 |
 |------|------|------|
 | `status` | Place의 동기화 상태 가져오기 | Pro |
-| `config` | 동기화 설정 가져오기 | Pro |
 | `history` | 변경 기록 가져오기 | Pro |
 | `directions` | 타입별 동기화 방향 가져오기 | Pro |
 | `read_file` | 동기화된 파일 읽기 | Pro |
