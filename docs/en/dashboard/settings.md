@@ -1,6 +1,6 @@
 # Settings
 
-> View and manage license information, server settings, sync settings, and language.
+> View and manage license information, server settings, and language.
 
 ## Overview
 
@@ -35,13 +35,6 @@ Displays server settings configured via environment variables:
 | `HTTP_PORT` | HTTP port | 3002 |
 | `HTTP_HOST` | HTTP host | 127.0.0.1 |
 | `DASHBOARD_AUTO_OPEN` | Auto-open dashboard | true |
-
-## Sync Settings
-
-| Setting | Description |
-|---------|-------------|
-| Max Depth | Maximum sync depth |
-| Max Instances | Maximum number of synced instances |
 
 ## Language
 

@@ -22,7 +22,7 @@
 | [Sync](sync.md) | 同期状態、方向設定、ログ | [詳細ガイド](sync.md) |
 | [Playtest](playtest.md) | プレイテスト状態、テスト記録 | [詳細ガイド](playtest.md) |
 | [Tools](tools.md) | ツール実行履歴、統計、ティア分布 | [詳細ガイド](tools.md) |
-| [Settings](settings.md) | ライセンス、ログレベル、Sync設定、言語 | [詳細ガイド](settings.md) |
+| [Settings](settings.md) | ライセンス、ログレベル、言語 | [詳細ガイド](settings.md) |
 
 ## アクセス方法
 

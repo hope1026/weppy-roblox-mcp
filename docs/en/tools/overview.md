@@ -228,7 +228,6 @@ Sync policy:
 | Action | Description | Tier |
 |--------|-------------|------|
 | `status` | Get sync status for a place | Pro |
-| `config` | Get sync configuration | Pro |
 | `history` | Get change history | Pro |
 | `directions` | Get per-type sync directions | Pro |
 | `read_file` | Read a synced file | Pro |

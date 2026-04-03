@@ -35,13 +35,6 @@ Menampilkan arah sinkronisasi per tipe dalam bentuk tabel:
 
 Periksa arah sinkronisasi setiap tipe untuk memahami perubahan mana yang direfleksikan ke arah mana.
 
-## Sync Config
-
-Menampilkan nilai pengaturan sinkronisasi:
-- Max Depth — kedalaman maksimum sinkronisasi
-- Max Instances — jumlah maksimum instance yang disinkronkan
-- Interval — interval sinkronisasi
-
 ## Sync Log
 
 Menampilkan event sinkronisasi secara kronologis. Setiap item log mencakup tag jenis perubahan (create, update, delete, dll.) dan path target.

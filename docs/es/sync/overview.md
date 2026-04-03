@@ -86,7 +86,6 @@ En Pro puedes controlar Direction y Apply Mode por tipo.
 | Accion | Descripcion | Parametros clave |
 |------|------|-----------|
 | `status` | Consultar estado actual de sync de un place | `placeId` |
-| `config` | Obtener configuracion de sync | `placeId` |
 | `history` | Consultar historial de cambios | `placeId`, `query.limit`, `query.offset` |
 | `directions` | Obtener direcciones por tipo | `placeId` |
 | `read_file` | Leer archivo sincronizado | `placeId`, `instancePath` |

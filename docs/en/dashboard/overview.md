@@ -22,7 +22,7 @@ The dashboard is a web-based monitoring interface provided by the MCP server. It
 | [Sync](sync.md) | Sync status, direction settings, logs | [Detailed Guide](sync.md) |
 | [Playtest](playtest.md) | Playtest status, test history | [Detailed Guide](playtest.md) |
 | [Tools](tools.md) | Tool execution history, statistics, tier distribution | [Detailed Guide](tools.md) |
-| [Settings](settings.md) | License, log level, sync settings, language | [Detailed Guide](settings.md) |
+| [Settings](settings.md) | License, log level, language | [Detailed Guide](settings.md) |
 
 ## How to Access
 

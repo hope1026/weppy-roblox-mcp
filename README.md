@@ -37,7 +37,7 @@ Then restart Roblox Studio — done!
 Automatic MCP registration currently supports **Claude Code, Claude Desktop, Cursor, Codex CLI, and Gemini CLI**.
 **Codex App** and **Antigravity** still require manual setup after the script finishes.
 
-If PowerShell execution is blocked on Windows, use the manual install path below. If you're using the ZIP package, you can also use `setup-plugin.bat` and `setup-mcp.bat`.
+If PowerShell execution is blocked on Windows, use the manual install path below. If you're using the ZIP package, you can run `setup-plugin.sh` / `setup-mcp.sh` on macOS or Linux, or `setup-plugin.bat` / `setup-mcp.bat` on Windows.
 
 ### Manual Install
 

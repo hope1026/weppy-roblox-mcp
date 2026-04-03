@@ -228,7 +228,6 @@ Politica de Sync:
 | Accion | Descripcion | Tier |
 |--------|-------------|------|
 | `status` | Obtener estado de sincronizacion de un Place | Pro |
-| `config` | Obtener configuracion de sincronizacion | Pro |
 | `history` | Obtener historial de cambios | Pro |
 | `directions` | Obtener direcciones de sincronizacion por tipo | Pro |
 | `read_file` | Leer un archivo sincronizado | Pro |

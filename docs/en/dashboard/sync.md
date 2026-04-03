@@ -35,13 +35,6 @@ Shows sync directions by type in a table:
 
 Check each type's sync direction to understand which changes are reflected in which direction.
 
-## Sync Config
-
-Displays sync configuration values:
-- Max Depth — Maximum sync depth
-- Max Instances — Maximum number of synced instances
-- Interval — Sync interval
-
 ## Sync Log
 
 Displays sync events in chronological order. Each log entry includes a change type tag (create, update, delete, etc.) and the target path.

@@ -86,7 +86,6 @@ ProではタイプごとにDirection/Apply Modeを細かく制御できます。
 | アクション | 説明 | 主な引数 |
 |------|------|-----------|
 | `status` | Placeの現在の同期状態を確認 | `placeId` |
-| `config` | 同期設定を取得 | `placeId` |
 | `history` | 変更履歴を取得 | `placeId`, `query.limit`, `query.offset` |
 | `directions` | タイプ別Directionを取得 | `placeId` |
 | `read_file` | 同期ファイルを読み取り | `placeId`, `instancePath` |
