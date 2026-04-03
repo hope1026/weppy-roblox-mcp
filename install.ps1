@@ -139,6 +139,39 @@ function Test-McpJsonConfigured($configPath) {
     }
 }
 
+# Add MCP server to Antigravity config (flat top-level keys, no mcpServers wrapper)
+function Add-AntigravityMcpConfig($configPath) {
+    $parentDir = Split-Path $configPath -Parent
+    if (-not (Test-Path $parentDir)) { New-Item -ItemType Directory -Path $parentDir -Force | Out-Null }
+    $env:MCP_CONFIG_PATH = $configPath
+    try {
+        node -e @"
+const fs = require('fs');
+const configPath = process.env.MCP_CONFIG_PATH;
+let config = {};
+try { config = JSON.parse(fs.readFileSync(configPath, 'utf8')); } catch {}
+config['weppy-roblox-mcp'] = { command: 'npx', args: ['-y', '@weppy/roblox-mcp'] };
+fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + '\n');
+"@
+    } finally {
+        Remove-Item Env:\MCP_CONFIG_PATH -ErrorAction SilentlyContinue
+    }
+}
+
+function Test-AntigravityMcpConfigured($configPath) {
+    if (-not (Test-Path $configPath)) {
+        return $false
+    }
+
+    try {
+        $config = Get-Content -Path $configPath -Raw | ConvertFrom-Json
+        return $null -ne $config.'weppy-roblox-mcp'
+    }
+    catch {
+        return $false
+    }
+}
+
 function Test-CodexConfigConfigured($configPath) {
     if (-not (Test-Path $configPath)) {
         return $false
@@ -257,8 +290,7 @@ else {
 # [3/3] Register MCP with AI apps
 # ═══════════════════════════════════
 Write-Step "3/3" "Register MCP with AI apps"
-Write-Host "  Automatic registration: Claude Code, Claude Desktop, Cursor, Codex CLI, Gemini CLI"
-Write-Host "  Manual setup required: Codex App, Antigravity"
+Write-Host "  Automatic registration: Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, Antigravity"
 
 $detectedNames = @()
 $detectedTypes = @()
@@ -306,15 +338,15 @@ $codexConfigured = Test-CodexConfigConfigured $codexConfig
 $codexCliCommand = Resolve-OptionalCliCommand 'codex'
 
 if ($codexConfigured) {
-    $detectedNames += 'Codex CLI (configured)'
+    $detectedNames += 'Codex CLI/App (configured)'
     $detectedTypes += 'codex-cli'
 }
 elseif ($codexCliCommand) {
-    $detectedNames += 'Codex CLI'
+    $detectedNames += 'Codex CLI/App'
     $detectedTypes += 'codex-cli'
 }
 else {
-    $notDetected += 'Codex CLI (not found)'
+    $notDetected += 'Codex CLI/App (not found)'
 }
 
 # Gemini CLI
@@ -332,6 +364,23 @@ elseif ($geminiCliCommand) {
 }
 else {
     $notDetected += "Gemini CLI (not found)"
+}
+
+# Antigravity (unofficial path, auto-register if found)
+$antigravityConfig = Join-Path $env:USERPROFILE '.gemini\antigravity\mcp_config.json'
+$antigravityConfigured = Test-AntigravityMcpConfigured $antigravityConfig
+$antigravityDirExists = Test-Path (Join-Path $env:USERPROFILE '.gemini\antigravity')
+
+if ($antigravityConfigured) {
+    $detectedNames += 'Antigravity (configured)'
+    $detectedTypes += 'antigravity'
+}
+elseif ((Test-Path $antigravityConfig) -or $antigravityDirExists) {
+    $detectedNames += 'Antigravity'
+    $detectedTypes += 'antigravity'
+}
+else {
+    $notDetected += 'Antigravity (not found)'
 }
 
 if ($detectedNames.Count -eq 0) {
@@ -429,6 +478,15 @@ else {
                         Write-Ok "Registered: $appName"
                     }
                 }
+                "antigravity" {
+                    if ($antigravityConfigured) {
+                        Write-Ok "Already configured: $appName"
+                    }
+                    else {
+                        Add-AntigravityMcpConfig $antigravityConfig
+                        Write-Ok "Registered: $appName"
+                    }
+                }
             }
         }
         catch {
@@ -449,8 +507,7 @@ Write-Host "  1. Restart Roblox Studio"
 Write-Host "  2. Look for the WROX button in the Plugins tab"
 Write-Host "  3. Click Connect and start building with AI!"
 Write-Host ""
-Write-Host "  Auto registration: Claude Code, Claude Desktop, Cursor, Codex CLI, Gemini CLI"
-Write-Host "  Manual setup required: Codex App, Antigravity"
+Write-Host "  Auto registration: Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, Antigravity"
 Write-Host ""
 Write-Host "  Docs: https://github.com/hope1026/weppy-roblox-mcp" -ForegroundColor DarkGray
 Write-Host ""

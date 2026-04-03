@@ -34,8 +34,7 @@ Then restart Roblox Studio — done!
 
 If the installer fails, it writes an error log to a temporary file and keeps the console open in interactive runs so you can read the reason before exiting.
 
-Automatic MCP registration currently supports **Claude Code, Claude Desktop, Cursor, Codex CLI, and Gemini CLI**.
-**Codex App** and **Antigravity** still require manual setup after the script finishes.
+Automatic MCP registration supports **Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, and Antigravity**.
 
 If PowerShell execution is blocked on Windows, use the manual install path below. If you're using the ZIP package, you can also run `setup-plugin.bat` and `setup-mcp.bat`.
 

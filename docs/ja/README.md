@@ -34,8 +34,7 @@ irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1
 
 Roblox Studioを再起動したら完了です！
 
-自動でMCP登録できるのは現在 **Claude Code, Claude Desktop, Cursor, Codex CLI, Gemini CLI** です。
-**Codex App** と **Antigravity** はスクリプト完了後に手動設定が必要です。
+自動MCP登録は **Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, Antigravity** に対応しています。
 
 WindowsでPowerShellの実行がブロックされる場合は、下の手動インストールに進んでください。ZIPパッケージを使う場合は `setup-plugin.bat` と `setup-mcp.bat` も利用できます。
 

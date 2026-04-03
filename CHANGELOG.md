@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.2.2] - 2026-04-03
+
+### Features
+
+- add configurable MCP message polling interval and related options to plugin UI
+
+
 ## [2.2.1] - 2026-04-03
 
 ### Features

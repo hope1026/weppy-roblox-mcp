@@ -117,6 +117,39 @@ try {
 ' >/dev/null 2>&1
 }
 
+# Add MCP server to Antigravity config (flat top-level keys, no mcpServers wrapper)
+add_antigravity_mcp_config() {
+  local config_path="$1"
+  local parent_dir
+  parent_dir=$(dirname "$config_path")
+  mkdir -p "$parent_dir"
+  MCP_CONFIG_PATH="$config_path" node -e '
+const fs = require("fs");
+const configPath = process.env.MCP_CONFIG_PATH;
+let config = {};
+try { config = JSON.parse(fs.readFileSync(configPath, "utf8")); } catch {}
+config["weppy-roblox-mcp"] = { command: "npx", args: ["-y", "@weppy/roblox-mcp"] };
+fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + "\n");
+'
+}
+
+is_antigravity_mcp_configured() {
+  local config_path="$1"
+
+  [ -f "$config_path" ] || return 1
+
+  MCP_CONFIG_PATH="$config_path" node -e '
+const fs = require("fs");
+const configPath = process.env.MCP_CONFIG_PATH;
+try {
+  const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
+  process.exit(config?.["weppy-roblox-mcp"] ? 0 : 1);
+} catch {
+  process.exit(1);
+}
+' >/dev/null 2>&1
+}
+
 is_codex_config_configured() {
   local config_path="$1"
 
@@ -236,8 +269,7 @@ fi
 # [3/3] Register MCP with AI apps
 # ═══════════════════════════════════
 step "3/3" "Register MCP with AI apps"
-printf "  Automatic registration: Claude Code, Claude Desktop, Cursor, Codex CLI, Gemini CLI\n"
-printf "  Manual setup required: Codex App, Antigravity\n"
+printf "  Automatic registration: Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, Antigravity\n"
 
 MCP_COMMAND='npx -y @weppy/roblox-mcp'
 
@@ -279,17 +311,17 @@ else
   NOT_DETECTED+=("Cursor (not found)")
 fi
 
-# Codex CLI
+# Codex CLI / Codex App (share the same ~/.codex/config.toml)
 CODEX_CONFIG="$HOME/.codex/config.toml"
 CODEX_CLI_COMMAND="$(resolve_optional_cli_command codex 2>/dev/null || true)"
 if is_codex_config_configured "$CODEX_CONFIG"; then
-  DETECTED_NAMES+=("Codex CLI (configured)")
+  DETECTED_NAMES+=("Codex CLI/App (configured)")
   DETECTED_TYPES+=("codex-cli")
 elif [ -n "$CODEX_CLI_COMMAND" ]; then
-  DETECTED_NAMES+=("Codex CLI")
+  DETECTED_NAMES+=("Codex CLI/App")
   DETECTED_TYPES+=("codex-cli")
 else
-  NOT_DETECTED+=("Codex CLI (not found)")
+  NOT_DETECTED+=("Codex CLI/App (not found)")
 fi
 
 # Gemini CLI
@@ -304,6 +336,21 @@ elif [ -n "$GEMINI_CLI_COMMAND" ]; then
   DETECTED_TYPES+=("gemini-cli")
 else
   NOT_DETECTED+=("Gemini CLI (not found)")
+fi
+
+# Antigravity (unofficial path, auto-register if found)
+ANTIGRAVITY_CONFIG="$HOME/.gemini/antigravity/mcp_config.json"
+if is_antigravity_mcp_configured "$ANTIGRAVITY_CONFIG"; then
+  DETECTED_NAMES+=("Antigravity (configured)")
+  DETECTED_TYPES+=("antigravity")
+elif [ -f "$ANTIGRAVITY_CONFIG" ]; then
+  DETECTED_NAMES+=("Antigravity")
+  DETECTED_TYPES+=("antigravity")
+elif [ -d "$HOME/.gemini/antigravity" ]; then
+  DETECTED_NAMES+=("Antigravity")
+  DETECTED_TYPES+=("antigravity")
+else
+  NOT_DETECTED+=("Antigravity (not found)")
 fi
 
 if [ ${#DETECTED_NAMES[@]} -eq 0 ]; then
@@ -411,6 +458,15 @@ else
           fail "Failed: $app_name"
         fi
         ;;
+      antigravity)
+        if is_antigravity_mcp_configured "$ANTIGRAVITY_CONFIG"; then
+          success "Already configured: $app_name"
+        elif add_antigravity_mcp_config "$ANTIGRAVITY_CONFIG"; then
+          success "Registered: $app_name"
+        else
+          fail "Failed: $app_name"
+        fi
+        ;;
     esac
   done
 fi
@@ -428,7 +484,6 @@ printf "  1. Restart Roblox Studio\n"
 # shellcheck disable=SC2059
 printf "  2. Look for the ${BOLD}WROX${NC} button in the Plugins tab\n"
 printf "  3. Click Connect and start building with AI!\n\n"
-printf "  Auto registration: Claude Code, Claude Desktop, Cursor, Codex CLI, Gemini CLI\n"
-printf "  Manual setup required: Codex App, Antigravity\n\n"
+printf "  Auto registration: Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, Antigravity\n\n"
 # shellcheck disable=SC2059
 printf "  ${DIM}Docs: https://github.com/hope1026/weppy-roblox-mcp${NC}\n\n"
