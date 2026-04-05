@@ -16,7 +16,7 @@ AI 앱이 "파란 파트를 만들어줘"라고 하면, MCP 서버가 이 요청
 
 ## 원라인 설치 (권장)
 
-MCP 서버, Roblox Studio 플러그인, AI 앱 등록을 한 번에 진행합니다:
+아래 명령어 한 줄로 MCP 서버와 플러그인을 한 번에 설치합니다:
 
 **macOS / Linux**
 
@@ -30,7 +30,7 @@ curl -fsSL https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/inst
 irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1 | iex
 ```
 
-Roblox Studio를 재시작하면 완료입니다!
+AI 앱을 다시 열고 Roblox Studio를 재시작하세요.
 
 설치 중 오류가 발생하면 임시 로그 파일 경로를 출력하고, 대화형 실행에서는 종료 전에 콘솔을 유지해서 원인을 확인할 수 있습니다.
 

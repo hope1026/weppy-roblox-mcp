@@ -21,7 +21,11 @@ terrain, and more — inside a live Studio session.
 
 ## Installation
 
-**One-line install** (installs MCP server, Roblox Studio plugin, and registers with AI apps):
+**Web installer** (recommended one-click setup for Chrome, Edge, and Arc):
+
+https://hope1026.github.io/weppy-roblox-mcp/installer/
+
+**One-line install** (advanced fallback):
 
 ```bash
 # macOS / Linux
@@ -31,8 +35,10 @@ curl -fsSL https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/inst
 irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1 | iex
 ```
 
-Or manually:
-1. Install Roblox Studio plugin (bridge between Studio and AI)
+Safari / Firefox users should follow the installer page guide or open the installation docs.
+
+Manual alternative:
+1. Install Roblox Studio plugin via the installation guide
 2. Register MCP server: `npx -y @weppy/roblox-mcp`
 
 ## Tiers

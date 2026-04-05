@@ -18,8 +18,6 @@ Claude, Codex, Gemini 같은 AI 코딩 에이전트는 강력하지만 — Roblo
 
 ## 빠른 설치
 
-**원라인 설치** — MCP 서버, Roblox Studio 플러그인, AI 앱 등록을 한 번에 진행합니다:
-
 **macOS / Linux**
 
 ```bash
@@ -32,15 +30,15 @@ curl -fsSL https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/inst
 irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1 | iex
 ```
 
-Roblox Studio를 재시작하면 완료입니다!
+AI 앱을 다시 열고 Roblox Studio를 재시작하세요.
 
 자동 MCP 등록은 **Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, Antigravity**를 지원합니다.
 
-Windows에서 PowerShell 실행이 차단되면 아래 수동 설치로 진행하세요. ZIP 패키지를 사용하는 경우 `setup-plugin.bat`, `setup-mcp.bat`도 사용할 수 있습니다.
+Windows에서 PowerShell 실행이 차단되면 아래 설치 가이드를 사용하세요. ZIP 패키지를 사용하는 경우 `setup-plugin.bat`, `setup-mcp.bat`도 사용할 수 있습니다.
 
 ### 수동 설치
 
-원라인 설치가 동작하지 않거나 환경상 자동 설치를 사용할 수 없는 경우, 아래 수동 설치를 대안으로 진행하세요.
+원라인 설치가 동작하지 않거나 환경상 자동 설치를 사용할 수 없는 경우, 아래 설치 가이드를 대안으로 진행하세요.
 
 **1단계** — Roblox Studio 플러그인 설치 (Studio와 AI를 연결하는 다리):
 [플러그인 설치 가이드](installation/roblox-plugin.md)

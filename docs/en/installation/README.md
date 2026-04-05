@@ -16,7 +16,7 @@ When an AI app says "Create a blue part", the MCP server converts this request, 
 
 ## One-Line Install (Recommended)
 
-Installs the MCP server, Roblox Studio plugin, and registers with your AI apps in one step:
+Install everything in one command:
 
 **macOS / Linux**
 
@@ -30,7 +30,7 @@ curl -fsSL https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/inst
 irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1 | iex
 ```
 
-Then restart Roblox Studio — done!
+Then reopen your AI app and restart Roblox Studio.
 
 If the installer fails, it writes an error log to a temporary file and keeps the console open in interactive runs so you can read the reason before exiting.
 

@@ -18,8 +18,6 @@ Tidak perlu copy-paste kode. AI bekerja dan kamu memverifikasi hasilnya.
 
 ## Instalasi Cepat
 
-**Instalasi satu perintah** — Install MCP server, plugin Roblox Studio, dan daftarkan ke aplikasi AI dalam satu langkah:
-
 **macOS / Linux**
 
 ```bash

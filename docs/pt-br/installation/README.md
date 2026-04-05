@@ -16,7 +16,7 @@ Quando o app de IA diz "cria uma parte azul", o servidor MCP converte o pedido e
 
 ## Instalação em um comando (Recomendado)
 
-Instala o servidor MCP, o plugin do Roblox Studio e registra nos apps de IA em um único passo:
+Instale tudo com um único comando:
 
 **macOS / Linux**
 
@@ -40,7 +40,7 @@ Se a execução do PowerShell estiver bloqueada no Windows, siga a instalação 
 
 ## Instalação manual
 
-Este é o método alternativo para quando a instalação em um comando não funcionar, ou quando a instalação automática não puder ser usada no seu ambiente.
+Se a instalacao em um comando nao funcionar, ou quando a instalacao automatica nao puder ser usada no seu ambiente, use a instalacao manual abaixo como alternativa.
 
 ### Passo 1: Instalar plugin do Roblox Studio
 
