@@ -195,7 +195,7 @@ function Test-CodexConfigConfigured($configPath) {
 
     $env:MCP_CODEX_CONFIG_PATH = $configPath
     try {
-        node -e @"
+        node -e @'
 const fs = require('fs');
 
 const configPath = process.env.MCP_CODEX_CONFIG_PATH;
@@ -602,7 +602,7 @@ try {
 } catch {
   process.exit(1);
 }
-"@
+'@
         return $LASTEXITCODE -eq 0
     }
     finally {
