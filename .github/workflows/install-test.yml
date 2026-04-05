@@ -44,20 +44,13 @@ jobs:
 
       - name: Verify — Claude Code config registered
         run: |
-          CONFIG="$HOME/.claude/mcp.json"
-          if [ ! -f "$CONFIG" ]; then
-            echo "❌ Config file not found: $CONFIG"
+          result=$(claude mcp list 2>&1)
+          if ! echo "$result" | grep -q 'weppy-roblox-mcp'; then
+            echo "❌ weppy-roblox-mcp not found in claude mcp list"
+            echo "Output: $result"
             exit 1
           fi
-          CONFIG_PATH="$CONFIG" node -e "
-            const p = process.env.CONFIG_PATH;
-            const c = JSON.parse(require('fs').readFileSync(p, 'utf8'));
-            if (!c.mcpServers || !c.mcpServers['weppy-roblox-mcp']) {
-              console.error('❌ weppy-roblox-mcp not found in', p);
-              process.exit(1);
-            }
-            console.log('✓ weppy-roblox-mcp registered in', p);
-          "
+          echo "✓ weppy-roblox-mcp registered"
 
   test-powershell:
     name: E2E — install.ps1 (windows)
@@ -82,7 +75,7 @@ jobs:
         shell: pwsh
         run: |
           $result = npm list -g @weppy/roblox-mcp --depth=0 2>&1
-          if ($result -notmatch '@weppy/roblox-mcp') {
+          if (-not ($result -match '@weppy/roblox-mcp')) {
             Write-Error "❌ @weppy/roblox-mcp not installed globally"
             exit 1
           }
@@ -101,14 +94,10 @@ jobs:
       - name: Verify — Claude Code config registered
         shell: pwsh
         run: |
-          $configPath = Join-Path $env:USERPROFILE ".claude\mcp.json"
-          if (-not (Test-Path $configPath)) {
-            Write-Error "❌ Config file not found: $configPath"
+          $result = claude mcp list 2>&1
+          if (-not ($result -match 'weppy-roblox-mcp')) {
+            Write-Error "❌ weppy-roblox-mcp not found in claude mcp list"
+            Write-Host "Output: $result"
             exit 1
           }
-          $config = Get-Content $configPath -Raw | ConvertFrom-Json
-          if ($null -eq $config.mcpServers.'weppy-roblox-mcp') {
-            Write-Error "❌ weppy-roblox-mcp not found in $configPath"
-            exit 1
-          }
-          Write-Host "✓ weppy-roblox-mcp registered in $configPath"
+          Write-Host "✓ weppy-roblox-mcp registered"
