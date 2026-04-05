@@ -94,10 +94,15 @@ jobs:
       - name: Verify — Claude Code config registered
         shell: pwsh
         run: |
-          $result = claude mcp list 2>&1
-          if (-not ($result -match 'weppy-roblox-mcp')) {
-            Write-Error "❌ weppy-roblox-mcp not found in claude mcp list"
-            Write-Host "Output: $result"
+          # claude mcp add는 ~/.claude.json에, 폴백은 ~/.claude/mcp.json에 씁니다
+          $found = $false
+          @("$env:USERPROFILE\.claude.json", "$env:USERPROFILE\.claude\mcp.json") | ForEach-Object {
+            if ((Test-Path $_) -and ((Get-Content $_ -Raw) -match 'weppy-roblox-mcp')) {
+              $found = $true
+            }
+          }
+          if (-not $found) {
+            Write-Error "❌ weppy-roblox-mcp not found in claude config files"
             exit 1
           }
           Write-Host "✓ weppy-roblox-mcp registered"

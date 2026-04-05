@@ -875,7 +875,8 @@ else {
                     elseif ($claudeCodeCliCommand) {
                         & $claudeCodeCliCommand mcp add weppy-roblox-mcp -- npx -y "@weppy/roblox-mcp"
                         if ($LASTEXITCODE -ne 0) {
-                            throw 'claude mcp add failed'
+                            # CLI 실패 시 (Windows에서 -- 파싱 문제 등) JSON config에 직접 쓰기로 폴백
+                            Add-McpToConfig $claudeGlobalConfig
                         }
                         Write-Ok "Registered: $appName"
                     }
