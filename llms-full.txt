@@ -21,9 +21,21 @@ Roblox Studio Plugin ← Executes commands inside Studio
 
 When an AI app says "Create a blue part", the MCP server converts this request, and the Roblox Studio plugin actually creates the part.
 
-## One-Line Install (Recommended)
+## Web Installer (Recommended)
 
-Installs the MCP server, Roblox Studio plugin, and registers with your AI apps in one step:
+Open the installer page in Chrome, Edge, or Arc for one-click setup:
+
+https://hope1026.github.io/weppy-roblox-mcp/installer/
+
+It writes the supported AI app config for `npx -y @weppy/roblox-mcp` first.
+
+After you reopen the AI app, the first MCP run fetches the package through `npx` and auto-installs the Roblox Studio plugin.
+
+For Safari or Firefox, use the installer page as a guide or continue with the manual install below.
+
+## One-Line Install (Fallback)
+
+Advanced users can install everything in one command:
 
 ```bash
 # macOS / Linux

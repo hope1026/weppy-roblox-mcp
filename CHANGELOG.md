@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.3.0] - 2026-04-05
+
+### Performance
+
+- **Dramatically faster tool action execution** — Switched MCP ↔ Plugin communication from polling to streaming, eliminating round-trip latency and significantly improving response throughput
+
+### Stability
+
+- **Hardened connection management** — Streaming-based transport replaces polling with a real-time bidirectional channel, reducing dropped connections and improving reconnect resilience
+
+### Bug Fixes
+
+- **Prevent OOM on large history files** — Tool history and sync changelog reads now use reverse-chunk tail scanning instead of loading the full file into memory, preventing out-of-memory crashes on long-running sessions
+- **Auto-trim history files** — History files are now automatically trimmed when they exceed 2 MB, keeping disk usage bounded without manual cleanup
+
+
 ## [2.2.2] - 2026-04-03
 
 ### Features

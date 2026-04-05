@@ -18,8 +18,6 @@ Sem necessidade de copiar e colar código. A IA trabalha e você confere os resu
 
 ## Instalacao rapida
 
-**Instalacao em um comando** — Instala o servidor MCP, o plugin do Roblox Studio e registra nos apps de IA em um único passo:
-
 **macOS / Linux**
 
 ```bash
@@ -40,7 +38,7 @@ Se a execução do PowerShell estiver bloqueada no Windows, siga a instalação 
 
 ### Instalacao manual
 
-Se a instalação em um comando não funcionar, ou se a instalação automática não puder ser usada no seu ambiente, use a instalação manual abaixo como alternativa.
+Se a instalacao em um comando nao funcionar, ou se a instalacao automatica nao puder ser usada no seu ambiente, use a instalacao manual abaixo como alternativa.
 
 **Passo 1** — Instale o plugin do Roblox Studio (ponte entre Studio e IA):
 [Guia de instalacao do plugin](installation/roblox-plugin.md)

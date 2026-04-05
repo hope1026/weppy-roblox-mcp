@@ -16,7 +16,7 @@ Ketika aplikasi AI bilang "buatkan part biru", MCP server mengonversi perintah i
 
 ## Instalasi Satu Perintah (Direkomendasikan)
 
-Install MCP server, plugin Roblox Studio, dan daftarkan ke aplikasi AI dalam satu langkah:
+Install semuanya dengan satu perintah:
 
 **macOS / Linux**
 
@@ -40,7 +40,7 @@ Jika eksekusi PowerShell diblokir di Windows, lanjutkan dengan instalasi manual 
 
 ## Instalasi Manual
 
-Ini adalah metode alternatif jika instalasi satu perintah tidak berjalan, atau jika instalasi otomatis tidak bisa dipakai di lingkunganmu.
+Jika instalasi satu perintah tidak berjalan, atau jika instalasi otomatis tidak bisa dipakai di lingkunganmu, gunakan instalasi manual di bawah sebagai alternatif.
 
 ### Langkah 1: Install Plugin Roblox Studio
 

@@ -18,8 +18,6 @@ No copy-pasting code. AI does the work, you review the results.
 
 ## Quick Install
 
-**One-line install** — installs the MCP server, Roblox Studio plugin, and registers with your AI apps:
-
 **macOS / Linux**
 
 ```bash
@@ -32,15 +30,15 @@ curl -fsSL https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/inst
 irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1 | iex
 ```
 
-Then restart Roblox Studio — done!
+Then reopen your AI app and restart Roblox Studio.
 
 Automatic MCP registration supports **Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, and Antigravity**.
 
-If PowerShell execution is blocked on Windows, use the manual install path below. If you're using the ZIP package, you can run `setup-plugin.sh` / `setup-mcp.sh` on macOS or Linux, or `setup-plugin.bat` / `setup-mcp.bat` on Windows.
+If PowerShell execution is blocked on Windows, use the installation guide below. If you're using the ZIP package, you can run `setup-plugin.sh` / `setup-mcp.sh` on macOS or Linux, or `setup-plugin.bat` / `setup-mcp.bat` on Windows.
 
 ### Manual Install
 
-If the one-line install does not work, or automatic installation is not available in your environment, use the manual install path below.
+If the one-line install does not work, or automatic installation is not available in your environment, use the installation guide below.
 
 **Step 1** — Install the Roblox Studio plugin (bridge between Studio and AI):
 [Plugin Installation Guide](docs/en/installation/roblox-plugin.md)
