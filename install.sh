@@ -74,6 +74,10 @@ trap 'handle_install_error "${LINENO}" "$BASH_COMMAND"' ERR
 confirm() {
   local prompt="$1"
   local reply
+  if [ "${CI:-}" = "true" ]; then
+    printf "%s (Y/n): Y\n" "$prompt"
+    return 0
+  fi
   printf "%s (Y/n): " "$prompt"
   read -r reply </dev/tty
   reply="${reply:-Y}"
@@ -811,7 +815,12 @@ else
   # shellcheck disable=SC2059
   printf "\n  Select apps to register ${DIM}(comma-separated, 'a' for all, 'n' to skip)${NC}\n"
   printf "  → "
-  read -r selection </dev/tty
+  if [ "${CI:-}" = "true" ]; then
+    selection="a"
+    printf "a\n"
+  else
+    read -r selection </dev/tty
+  fi
   selection="${selection:-n}"
 
   # Parse selection
