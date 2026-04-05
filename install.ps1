@@ -50,6 +50,10 @@ trap {
 }
 
 function Confirm-Action($prompt) {
+    if ($env:CI -eq 'true') {
+        Write-Host "$prompt (Y/n): Y"
+        return $true
+    }
     $reply = Read-Host "$prompt (Y/n)"
     if ([string]::IsNullOrWhiteSpace($reply)) { $reply = "Y" }
     return $reply -match '^[Yy]'
@@ -833,7 +837,12 @@ else {
     }
 
     Write-Host ""
-    $selection = Read-Host "  Select apps to register (comma-separated, 'a' for all, 'n' to skip)"
+    if ($env:CI -eq 'true') {
+        Write-Host "  Select apps to register (comma-separated, 'a' for all, 'n' to skip): a"
+        $selection = 'a'
+    } else {
+        $selection = Read-Host "  Select apps to register (comma-separated, 'a' for all, 'n' to skip)"
+    }
     if ([string]::IsNullOrWhiteSpace($selection)) { $selection = "n" }
 
     $selectedIndices = @()

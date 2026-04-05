@@ -1,0 +1,114 @@
+name: Install Script E2E Test
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  test-bash:
+    name: E2E — install.sh (ubuntu)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Claude Code CLI (app detection용)
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Run install.sh (CI mode)
+        env:
+          CI: true
+        run: bash install.sh
+
+      - name: Verify — npm global install
+        run: |
+          result=$(npm list -g @weppy/roblox-mcp --depth=0 2>&1)
+          if ! echo "$result" | grep -q '@weppy/roblox-mcp'; then
+            echo "❌ @weppy/roblox-mcp not installed globally"
+            exit 1
+          fi
+          echo "✓ @weppy/roblox-mcp installed"
+
+      - name: Verify — plugin file exists
+        run: |
+          PLUGIN_PATH="$HOME/Documents/Roblox/Plugins/WeppyRobloxMCP.rbxm"
+          if [ ! -f "$PLUGIN_PATH" ]; then
+            echo "❌ Plugin not found: $PLUGIN_PATH"
+            exit 1
+          fi
+          echo "✓ Plugin found: $PLUGIN_PATH"
+
+      - name: Verify — Claude Code config registered
+        run: |
+          CONFIG="$HOME/.claude/mcp.json"
+          if [ ! -f "$CONFIG" ]; then
+            echo "❌ Config file not found: $CONFIG"
+            exit 1
+          fi
+          CONFIG_PATH="$CONFIG" node -e "
+            const p = process.env.CONFIG_PATH;
+            const c = JSON.parse(require('fs').readFileSync(p, 'utf8'));
+            if (!c.mcpServers || !c.mcpServers['weppy-roblox-mcp']) {
+              console.error('❌ weppy-roblox-mcp not found in', p);
+              process.exit(1);
+            }
+            console.log('✓ weppy-roblox-mcp registered in', p);
+          "
+
+  test-powershell:
+    name: E2E — install.ps1 (windows)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Claude Code CLI (app detection용)
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Run install.ps1 (CI mode)
+        env:
+          CI: true
+        shell: pwsh
+        run: pwsh install.ps1
+
+      - name: Verify — npm global install
+        shell: pwsh
+        run: |
+          $result = npm list -g @weppy/roblox-mcp --depth=0 2>&1
+          if ($result -notmatch '@weppy/roblox-mcp') {
+            Write-Error "❌ @weppy/roblox-mcp not installed globally"
+            exit 1
+          }
+          Write-Host "✓ @weppy/roblox-mcp installed"
+
+      - name: Verify — plugin file exists
+        shell: pwsh
+        run: |
+          $pluginPath = Join-Path $env:LOCALAPPDATA "Roblox\Plugins\WeppyRobloxMCP.rbxm"
+          if (-not (Test-Path $pluginPath)) {
+            Write-Error "❌ Plugin not found: $pluginPath"
+            exit 1
+          }
+          Write-Host "✓ Plugin found: $pluginPath"
+
+      - name: Verify — Claude Code config registered
+        shell: pwsh
+        run: |
+          $configPath = Join-Path $env:USERPROFILE ".claude\mcp.json"
+          if (-not (Test-Path $configPath)) {
+            Write-Error "❌ Config file not found: $configPath"
+            exit 1
+          }
+          $config = Get-Content $configPath -Raw | ConvertFrom-Json
+          if ($null -eq $config.mcpServers.'weppy-roblox-mcp') {
+            Write-Error "❌ weppy-roblox-mcp not found in $configPath"
+            exit 1
+          }
+          Write-Host "✓ weppy-roblox-mcp registered in $configPath"
