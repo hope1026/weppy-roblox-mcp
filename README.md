@@ -6,7 +6,7 @@
 
 **English** | [한국어](docs/ko/README.md) | [日本語](docs/ja/README.md) | [Español](docs/es/README.md) | [Português](docs/pt-br/README.md) | [Bahasa Indonesia](docs/id/README.md)
 
-[![Demo — AI building a Roblox game in real time](https://img.youtube.com/vi/3jrUpBbZPaw/maxresdefault.jpg)](https://youtu.be/3jrUpBbZPaw)
+[![Demo — AI building a Roblox game in real time](https://img.youtube.com/vi/puQB4u1VlMw/maxresdefault.jpg)](https://youtu.be/puQB4u1VlMw)
 
 ## Why WROX (Weppy Roblox MCP)?
 
@@ -17,6 +17,14 @@ AI coding agents like Claude, Codex, and Gemini are powerful — but they cannot
 No copy-pasting code. AI does the work, you review the results.
 
 ## Quick Install
+
+Install with the guided web page.
+
+👉 **[Install Page](https://weppy-web.pages.dev/en/install)**
+
+### Terminal One-Line Install
+
+If you're comfortable with the terminal, install everything in one line.
 
 **macOS / Linux**
 
@@ -34,14 +42,12 @@ Then reopen your AI app and restart Roblox Studio.
 
 Automatic MCP registration supports **Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, and Antigravity**.
 
-If PowerShell execution is blocked on Windows, use the installation guide below. If you're using the ZIP package, you can run `setup-plugin.sh` / `setup-mcp.sh` on macOS or Linux, or `setup-plugin.bat` / `setup-mcp.bat` on Windows.
-
 ### Manual Install
 
-If the one-line install does not work, or automatic installation is not available in your environment, use the installation guide below.
+If the one-line install does not work, or automatic installation is not available in your environment:
 
-**Step 1** — Install the Roblox Studio plugin (bridge between Studio and AI):
-[Plugin Installation Guide](docs/en/installation/roblox-plugin.md)
+**Step 1** — Install the Roblox Studio plugin:
+[Plugin Installation Guide](https://weppy-web.pages.dev/en/install#plugin)
 
 **Step 2** — Register the MCP server with your AI app:
 
@@ -171,7 +177,7 @@ Yes. See [Cursor Setup](docs/en/installation/ai-apps/cursor.md). Any MCP-compati
 Yes. AI can create instances, write scripts, generate terrain, set up lighting, insert assets, configure physics, and more — all inside a live Roblox Studio session. It goes beyond code generation to executable actions.
 
 ### What is the difference between Basic and Pro?
-Basic (Free) includes MCP tool execution and one-way sync (Studio -> Local). Pro adds bidirectional sync, bulk operations, terrain generation, spatial analysis, audio/animation control, and multi-place support. See the [Pro Upgrade Guide](docs/en/pro-upgrade.md).
+Basic (Free) includes MCP tool execution and one-way sync (Studio -> Local). Pro adds bidirectional sync, bulk operations, terrain generation, spatial analysis, audio/animation control, and multi-place support. See the [Pro Upgrade Guide](https://weppy-web.pages.dev/en/plans).
 
 ### How is Weppy different from other Roblox MCP servers?
 Weppy uses action-based dispatching instead of separate tools for each function. This reduces AI token consumption significantly. It also provides bidirectional project sync and multi-place support, which most alternatives lack.
@@ -183,7 +189,7 @@ The server runs on localhost only (127.0.0.1:3002). Forbidden paths (CoreGui, Co
 
 Bidirectional Sync, advanced build capabilities, and AI token efficiency — all in one upgrade.
 
-[Pro Upgrade Guide](docs/en/pro-upgrade.md)
+[Pro Upgrade Guide](https://weppy-web.pages.dev/en/plans)
 
 ## License
 

@@ -55,7 +55,7 @@ Manual alternative:
 - WROX Dashboard guide: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/en/dashboard/overview.md
 - Troubleshooting: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/troubleshooting.md
 - Compatibility: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/compatibility.md
-- Pro upgrade: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/en/pro-upgrade.md
+- Pro upgrade: https://weppy-web.pages.dev/en/plans
 
 ## Requirements
 

@@ -6,7 +6,7 @@
 
 [English](../../README.md) | [한국어](../ko/README.md) | [日本語](../ja/README.md) | [Español](../es/README.md) | **Português** | [Bahasa Indonesia](../id/README.md)
 
-[![Demo — IA criando um jogo Roblox em tempo real](https://img.youtube.com/vi/3jrUpBbZPaw/maxresdefault.jpg)](https://youtu.be/3jrUpBbZPaw)
+[![Demo — IA criando um jogo Roblox em tempo real](https://img.youtube.com/vi/puQB4u1VlMw/maxresdefault.jpg)](https://youtu.be/puQB4u1VlMw)
 
 ## Por que WROX (Weppy Roblox MCP)?
 
@@ -17,6 +17,14 @@ Agentes de codificação IA como Claude, Codex e Gemini são poderosos — mas n
 Sem necessidade de copiar e colar código. A IA trabalha e você confere os resultados.
 
 ## Instalacao rapida
+
+Instale seguindo o guia na pagina web.
+
+👉 **[Pagina de instalacao](https://weppy-web.pages.dev/en/install)**
+
+### Instalacao por terminal
+
+Se voce esta confortavel com o terminal, instale tudo em uma linha.
 
 **macOS / Linux**
 
@@ -40,8 +48,8 @@ Se a execução do PowerShell estiver bloqueada no Windows, siga a instalação 
 
 Se a instalacao em um comando nao funcionar, ou se a instalacao automatica nao puder ser usada no seu ambiente, use a instalacao manual abaixo como alternativa.
 
-**Passo 1** — Instale o plugin do Roblox Studio (ponte entre Studio e IA):
-[Guia de instalacao do plugin](installation/roblox-plugin.md)
+**Passo 1** — Instale o plugin do Roblox Studio:
+[Guia de instalacao do plugin](https://weppy-web.pages.dev/en/install#plugin)
 
 **Passo 2** — Registre o servidor MCP no seu app de IA:
 
@@ -169,7 +177,7 @@ Sim. Consulte [Configuração do Cursor](installation/ai-apps/cursor.md). Qualqu
 Sim. A IA pode criar instâncias, escrever scripts, gerar terrain, configurar iluminação, inserir assets, configurar física e mais — tudo dentro de uma sessão de Studio ao vivo. Vai além da geração de código para ações executáveis.
 
 ### Qual é a diferença entre Basic e Pro?
-Basic (gratuito) inclui execução de ferramentas MCP e sincronização unidirecional (Studio -> Local). Pro adiciona sincronização bidirecional, operações em massa, geração de terrain, análise espacial, controle de áudio/animação e suporte multi-place. Consulte o [Guia de upgrade Pro](pro-upgrade.md).
+Basic (gratuito) inclui execução de ferramentas MCP e sincronização unidirecional (Studio -> Local). Pro adiciona sincronização bidirecional, operações em massa, geração de terrain, análise espacial, controle de áudio/animação e suporte multi-place. Consulte o [Guia de upgrade Pro](https://weppy-web.pages.dev/en/plans).
 
 ### Como o Weppy se diferencia de outros servidores MCP para Roblox?
 O Weppy usa despacho baseado em ações em vez de ferramentas separadas para cada função. Isso reduz significativamente o consumo de tokens de IA. Também fornece sincronização bidirecional de projeto e suporte multi-place, que a maioria das alternativas não possui.
@@ -181,7 +189,7 @@ O servidor roda apenas em localhost (127.0.0.1:3002). Caminhos proibidos (CoreGu
 
 Sync bidirecional, recursos avancados de criacao e eficiencia de tokens de IA — tudo em uma unica atualizacao.
 
-[Guia de upgrade Pro](pro-upgrade.md)
+[Guia de upgrade Pro](https://weppy-web.pages.dev/en/plans)
 
 ## Licença
 

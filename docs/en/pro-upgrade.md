@@ -25,9 +25,16 @@ AI can control Roblox Studio playtests directly. It can start and stop Play (F5)
 - "Write a test that verifies the SpawnLocation is above the ground and run it."
 - "Validate that the script I just changed runs without errors in playtest."
 
-### Broader advanced capabilities
+### More Pro-only features
 
-Terrain generation, asset search, spatial analysis, animation, audio, and production-scale automation.
+Pro unlocks additional features beyond the core workflow.
+
+- **Bulk operations** — Create, modify, or delete multiple instances in a single request
+- **Terrain generation** — Fill with block, ball, cylinder, wedge, and replace materials
+- **Asset search/insert** — Search the Roblox marketplace and insert assets directly
+- **Spatial analysis** — Raycast, find ground, flat area search, collision checks
+- **Environment control** — Lighting, atmosphere, sky, and time-of-day settings
+- **Audio/Animation** — Sound playback and animation load/play
 
 ## Buy and Activate
 
@@ -70,13 +77,20 @@ You only need to activate the license once, either in the plugin or in the dashb
 
 | Feature | Basic | Pro |
 |---------|:-----:|:---:|
-| Script, Instance, Property management | ✅ Full access | ✅ Full access |
-| Selection, Tag, Camera, Log | ✅ Full access | ✅ Full access |
-| Sync Direction | Studio → Local (one-way) | Bidirectional |
-| Per-type Sync Direction | ❌ | ✅ Scripts / Values / Containers / Data / Services |
-| Per-type Apply Mode | ❌ | ✅ Auto / Manual |
-| Change History | ❌ | ✅ |
-| Multi-place Sync | ❌ | ✅ Up to 3 places, each with isolated storage |
-| Playtest Control (Play/Stop/Pause/Resume) | ❌ | ✅ |
-| Advanced tool coverage | Core set | Broader advanced set |
-| AI token efficiency | Standard | Better with bulk / high-leverage actions |
+| Script create/edit | ✅ | ✅ |
+| Instance create/delete/move | ✅ | ✅ + bulk operations |
+| Property read/write | ✅ | ✅ + bulk changes |
+| Selection, tags, search | ✅ | ✅ |
+| Camera control | ✅ | ✅ |
+| Log monitoring | ✅ | ✅ |
+| Luau code execution | ✅ | ✅ |
+| Project sync | Studio → Local one-way | Bidirectional + per-type direction/mode |
+| Multi-place sync | — | Up to 3 Places simultaneously |
+| Change history | — | Track changes before applying |
+| Playtest control | — | Play / stop / pause / resume + automated tests |
+| Terrain generation/editing | — | Block, ball, cylinder, wedge, material replace |
+| Asset search/insert | — | Search Roblox marketplace and insert directly |
+| Spatial analysis | — | Raycast, find ground, collision checks |
+| Environment control | — | Lighting, atmosphere, sky, time of day |
+| Audio / Animation | — | Sound playback, animation load/play |
+| AI token efficiency | Per-action calls | Fewer calls with bulk actions |

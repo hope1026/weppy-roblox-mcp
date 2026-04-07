@@ -4,17 +4,15 @@
 # Usage:
 #   irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1 | iex
 #
-# Interactive 3 steps:
-#   [1/3] MCP server install (npm)
-#   [2/3] Roblox Studio Plugin install (.rbxm)
-#   [3/3] Register MCP with AI apps (user selection)
+# Interactive 2 steps:
+#   [1/2] Setup — install Roblox Studio Plugin via npx
+#   [2/2] Register MCP with AI apps (user selection)
 #
 
 $ErrorActionPreference = "Stop"
 $script:InstallLogPath = Join-Path ([System.IO.Path]::GetTempPath()) ("wrox-install-{0:yyyyMMdd-HHmmss}.log" -f (Get-Date))
 $script:TranscriptStarted = $false
 $script:NpmCommandPath = $null
-$script:NpmGlobalPrefix = $null
 
 # ── Utilities ──
 function Write-Step($step, $msg) { Write-Host "`n[$step] $msg" -ForegroundColor Cyan -NoNewline; Write-Host "" }
@@ -73,30 +71,6 @@ function Resolve-NpmCommand() {
     return $script:NpmCommandPath
 }
 
-function Get-NpmGlobalPrefix() {
-    if ($script:NpmGlobalPrefix) {
-        return $script:NpmGlobalPrefix
-    }
-
-    $script:NpmGlobalPrefix = (Invoke-Npm prefix -g 2>$null | Out-String).Trim()
-    return $script:NpmGlobalPrefix
-}
-
-function Invoke-Npm {
-    param(
-        [Parameter(ValueFromRemainingArguments = $true)]
-        [string[]]$Args
-    )
-
-    $npmCommandPath = Resolve-NpmCommand
-    $output = & $npmCommandPath @Args
-    if ($LASTEXITCODE -ne 0) {
-        throw "npm $($Args -join ' ') failed with exit code $LASTEXITCODE"
-    }
-
-    return $output
-}
-
 function Resolve-OptionalCliCommand($commandName) {
     $resolvedCommand = Get-Command $commandName -ErrorAction SilentlyContinue
     if ($resolvedCommand) {
@@ -104,11 +78,6 @@ function Resolve-OptionalCliCommand($commandName) {
     }
 
     $candidatePaths = @()
-    $npmPrefix = Get-NpmGlobalPrefix
-    if ($npmPrefix) {
-        $candidatePaths += (Join-Path $npmPrefix "$commandName.cmd")
-        $candidatePaths += (Join-Path $npmPrefix $commandName)
-    }
 
     if ($env:APPDATA) {
         $appDataNpmDir = Join-Path $env:APPDATA 'npm'
@@ -634,11 +603,6 @@ fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + '\n');
     }
 }
 
-function Test-LfsPointer($filePath) {
-    if (-not (Test-Path $filePath)) { return $false }
-    return Select-String -Path $filePath -Pattern "git-lfs.github.com/spec/v1" -Quiet
-}
-
 # ── Header ──
 Write-Host ""
 Write-Host "WROX Installer" -ForegroundColor White -BackgroundColor DarkCyan
@@ -659,71 +623,37 @@ catch {
 }
 
 # ═══════════════════════════════════
-# [1/3] MCP server install
+# [1/2] Setup — Roblox Studio Plugin
 # ═══════════════════════════════════
-Write-Step "1/3" "Install @weppy/roblox-mcp via npm"
+Write-Step "1/2" "Setup Roblox Studio Plugin"
 
-if (Confirm-Action "  Run npm install -g @weppy/roblox-mcp?") {
+if (Confirm-Action "  Run npx -y @weppy/roblox-mcp --setup?") {
     try {
-        Invoke-Npm install -g "@weppy/roblox-mcp"
-        Write-Ok "Installed @weppy/roblox-mcp"
+        $npmCommandPath = Resolve-NpmCommand
+        $npmDir = Split-Path $npmCommandPath -Parent
+        $npxPath = Join-Path $npmDir "npx.cmd"
+        if (-not (Test-Path $npxPath)) {
+            $npxPath = "npx"
+        }
+        & $npxPath -y "@weppy/roblox-mcp" --setup
+        if ($LASTEXITCODE -ne 0) {
+            Write-Warn "Setup encountered a warning (non-blocking)"
+        } else {
+            Write-Ok "Setup complete"
+        }
     }
     catch {
-        Abort-Install "npm install failed: $_"
+        Write-Warn "Setup encountered a warning: $_"
     }
 }
 else {
-    Write-Warn "MCP server install skipped"
+    Write-Warn "Setup skipped"
 }
 
 # ═══════════════════════════════════
-# [2/3] Roblox Studio Plugin install
+# [2/2] Register MCP with AI apps
 # ═══════════════════════════════════
-Write-Step "2/3" "Install Roblox Studio Plugin"
-
-$pluginsDir = Join-Path $env:LOCALAPPDATA "Roblox\Plugins"
-$pluginName = "WeppyRobloxMCP.rbxm"
-
-# Search for .rbxm in npm global path
-$npmPrefix = Get-NpmGlobalPrefix
-$bundledPlugin = $null
-$searchPaths = @(
-    (Join-Path $npmPrefix "node_modules\@weppy\roblox-mcp\plugins\weppy-roblox-mcp\roblox-plugin\$pluginName"),
-    (Join-Path $npmPrefix "node_modules\@weppy\roblox-mcp\roblox-plugin\$pluginName")
-)
-foreach ($p in $searchPaths) {
-    if (Test-Path $p) {
-        $bundledPlugin = $p
-        break
-    }
-}
-
-if ($bundledPlugin) {
-    if (Test-LfsPointer $bundledPlugin) {
-        Abort-Install "Bundled plugin payload is invalid (Git LFS pointer detected). Install the plugin from the GitHub release ZIP instead."
-    }
-
-    Write-Host "  → $pluginsDir\$pluginName"
-    if (Confirm-Action "  Copy plugin to Roblox Plugins folder?") {
-        if (-not (Test-Path $pluginsDir)) {
-            New-Item -ItemType Directory -Path $pluginsDir -Force | Out-Null
-        }
-        Copy-Item $bundledPlugin -Destination (Join-Path $pluginsDir $pluginName) -Force
-        Write-Ok "Plugin installed → $pluginsDir\$pluginName"
-    }
-    else {
-        Write-Warn "Plugin install skipped"
-    }
-}
-else {
-    Write-Warn "Bundled plugin file not found"
-    Write-Info "Will be installed automatically on first MCP server run"
-}
-
-# ═══════════════════════════════════
-# [3/3] Register MCP with AI apps
-# ═══════════════════════════════════
-Write-Step "3/3" "Register MCP with AI apps"
+Write-Step "2/2" "Register MCP with AI apps"
 Write-Host "  Automatic registration: Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, Antigravity"
 
 $detectedNames = @()

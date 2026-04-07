@@ -46,7 +46,7 @@ WindowsでPowerShellの実行がブロックされる場合は、下の手動イ
 
 GitHubからプラグインファイルをダウンロードして、Roblox StudioのPluginsフォルダに配置します。
 
-👉 [プラグインインストールガイド](roblox-plugin.md)
+👉 [プラグインインストールガイド](https://weppy-web.pages.dev/ja/install#plugin)
 
 ---
 
@@ -73,7 +73,7 @@ GitHubからプラグインファイルをダウンロードして、Roblox Stud
 同期されたインスタンスツリーをRobloxクラスアイコン付きでVSCode内で閲覧できます。
 この拡張を使うには、先に上記のRoblox MCPセットアップを完了している必要があります。Explorer はプロジェクトルート配下の `wrox-project-sync` にある Sync データを読み取るためです。
 
-👉 [WROX Roblox Explorerインストールガイド](roblox-explorer.md)
+👉 [WROX Roblox Explorerインストールガイド](https://weppy-web.pages.dev/ja/install#explorer)
 
 直接インストール:
 - [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer)

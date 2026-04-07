@@ -25,9 +25,16 @@ A IA pode controlar os playtests do Roblox Studio diretamente. Ela pode iniciar 
 - "Escreve um teste que verifica se o SpawnLocation está acima do chão e executa."
 - "Valida que o script que acabei de mudar funciona sem erros no playtest."
 
-### Capacidades avançadas mais amplas
+### Mais recursos exclusivos do Pro
 
-Geração de terrain, busca de assets, análise espacial, animação, áudio e automação em escala de produção.
+O Pro desbloqueia recursos adicionais além do fluxo de trabalho principal.
+
+- **Operações em massa** — Criar, modificar ou excluir múltiplas instâncias em uma única solicitação
+- **Geração de terrain** — Preencher com bloco, esfera, cilindro, cunha e substituir materiais
+- **Busca/inserção de assets** — Pesquisar no marketplace do Roblox e inserir assets diretamente
+- **Análise espacial** — Raycast, encontrar chão, busca de área plana, detecção de colisão
+- **Controle de ambiente** — Iluminação, atmosfera, céu e hora do dia
+- **Áudio/Animação** — Reprodução de som e carregar/reproduzir animações
 
 ## Comprar e ativar
 
@@ -70,13 +77,20 @@ Você só precisa ativar a licença uma vez, no plugin ou no dashboard. As duas 
 
 | Recurso | Basic | Pro |
 |---------|:-----:|:---:|
-| Gerenciamento de Script, Instance, Property | ✅ Acesso total | ✅ Acesso total |
-| Selection, Tag, Camera, Log | ✅ Acesso total | ✅ Acesso total |
-| Direção do Sync | Studio → Local (unidirecional) | Bidirecional |
-| Sync Direction por tipo | ❌ | ✅ Scripts / Values / Containers / Data / Services |
-| Apply Mode por tipo | ❌ | ✅ Auto / Manual |
-| Histórico de mudanças | ❌ | ✅ |
-| Sync multi-place | ❌ | ✅ Até 3 places com armazenamento isolado |
-| Controle de Playtest (Reproduzir/Parar/Pausar/Retomar) | ❌ | ✅ |
-| Cobertura avançada de tools | Conjunto base | Conjunto avançado mais amplo |
-| Eficiência de tokens IA | Padrão | Melhor com ações em massa / de alto impacto |
+| Criação/edição de scripts | ✅ | ✅ |
+| Criar/excluir/mover instâncias | ✅ | ✅ + operações em massa |
+| Ler/modificar propriedades | ✅ | ✅ + alterações em massa |
+| Seleção, tags, busca | ✅ | ✅ |
+| Controle de câmera | ✅ | ✅ |
+| Monitoramento de logs | ✅ | ✅ |
+| Execução de código Luau | ✅ | ✅ |
+| Sincronização de projeto | Studio → Local unidirecional | Bidirecional + direção/modo por tipo |
+| Sync multi-place | — | Até 3 Places simultaneamente |
+| Histórico de mudanças | — | Rastrear mudanças antes de aplicar |
+| Controle de playtest | — | Reproduzir / parar / pausar / retomar + testes automáticos |
+| Geração/edição de terrain | — | Bloco, esfera, cilindro, cunha, substituição de material |
+| Busca/inserção de assets | — | Pesquisar no marketplace do Roblox e inserir diretamente |
+| Análise espacial | — | Raycast, encontrar chão, detecção de colisão |
+| Controle de ambiente | — | Iluminação, atmosfera, céu, hora do dia |
+| Áudio / Animação | — | Reprodução de som, carregar/reproduzir animações |
+| Eficiência de tokens IA | Ações individuais | Menos chamadas com ações em massa |

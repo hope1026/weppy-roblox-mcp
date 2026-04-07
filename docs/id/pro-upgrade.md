@@ -25,9 +25,16 @@ AI dapat mengontrol playtest Roblox Studio secara langsung. AI bisa memulai dan 
 - "Tulis test yang memverifikasi SpawnLocation berada di atas tanah lalu jalankan."
 - "Validasi bahwa script yang baru aku ubah berjalan tanpa error di playtest."
 
-### Kemampuan lanjutan yang lebih luas
+### Lebih banyak fitur eksklusif Pro
 
-Pembuatan terrain, pencarian aset, analisis spasial, animasi, audio, dan otomasi skala produksi.
+Pro membuka fitur tambahan di luar alur kerja inti.
+
+- **Operasi massal** — Buat, ubah, atau hapus beberapa instance dalam satu permintaan
+- **Pembuatan terrain** — Isi dengan blok, bola, silinder, wedge, dan ganti material
+- **Pencarian/penyisipan aset** — Cari di marketplace Roblox dan sisipkan aset langsung
+- **Analisis spasial** — Raycast, temukan tanah, pencarian area datar, deteksi tabrakan
+- **Kontrol lingkungan** — Pencahayaan, atmosfer, langit, dan pengaturan waktu
+- **Audio/Animasi** — Pemutaran suara dan muat/putar animasi
 
 ## Beli lalu aktifkan
 
@@ -70,13 +77,20 @@ Kamu hanya perlu mengaktifkan lisensi sekali, baik di plugin maupun di dashboard
 
 | Fitur | Basic | Pro |
 |-------|:-----:|:---:|
-| Manajemen Script, Instance, Property | ✅ Akses penuh | ✅ Akses penuh |
-| Selection, Tag, Camera, Log | ✅ Akses penuh | ✅ Akses penuh |
-| Arah Sync | Studio → Local (satu arah) | Dua arah |
-| Sync Direction per tipe | ❌ | ✅ Scripts / Values / Containers / Data / Services |
-| Apply Mode per tipe | ❌ | ✅ Auto / Manual |
-| Riwayat Perubahan | ❌ | ✅ |
-| Sync multi-place | ❌ | ✅ Hingga 3 place dengan penyimpanan terisolasi |
-| Kontrol Playtest (Putar/Hentikan/Jeda/Lanjutkan) | ❌ | ✅ |
-| Cakupan tools lanjutan | Set dasar | Set lanjutan lebih luas |
-| Efisiensi token AI | Standar | Lebih efisien dengan aksi massal / berdampak tinggi |
+| Buat/edit script | ✅ | ✅ |
+| Buat/hapus/pindah instance | ✅ | ✅ + operasi massal |
+| Baca/ubah properti | ✅ | ✅ + perubahan massal |
+| Seleksi, tag, pencarian | ✅ | ✅ |
+| Kontrol kamera | ✅ | ✅ |
+| Pemantauan log | ✅ | ✅ |
+| Eksekusi kode Luau | ✅ | ✅ |
+| Sinkronisasi proyek | Studio → Local satu arah | Dua arah + arah/mode per tipe |
+| Sync multi-place | — | Hingga 3 Place secara bersamaan |
+| Riwayat perubahan | — | Lacak perubahan sebelum diterapkan |
+| Kontrol playtest | — | Putar / hentikan / jeda / lanjutkan + tes otomatis |
+| Pembuatan/pengeditan terrain | — | Blok, bola, silinder, wedge, penggantian material |
+| Pencarian/penyisipan aset | — | Cari di marketplace Roblox dan sisipkan langsung |
+| Analisis spasial | — | Raycast, temukan tanah, deteksi tabrakan |
+| Kontrol lingkungan | — | Pencahayaan, atmosfer, langit, waktu |
+| Audio / Animasi | — | Pemutaran suara, muat/putar animasi |
+| Efisiensi token AI | Aksi per-item | Lebih sedikit panggilan dengan aksi massal |

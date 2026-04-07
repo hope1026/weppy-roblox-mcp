@@ -19,6 +19,8 @@ Sin Sync, la IA solo ve fragmentos pegados en el chat. Con Sync activo, trabaja 
 3. Seguimiento de History/Status: ver que cambio, cuando y en que direccion
 
 Los datos de Sync se guardan en `{projectRoot}/wrox-project-sync/place_{placeId}/explorer`.
+Ademas, WROX escribe un sourcemap por place en `{projectRoot}/wrox-project-sync/place_{placeId}/sourcemap.json` y mantiene el archivo representante recomendado en la raiz en `{projectRoot}/wrox-project-sync/sourcemap.json`.
+Para integraciones de editor como `luau-lsp`, se recomienda usar la ruta de la raiz. Los pasos de configuracion estan en [Usar `luau-lsp` con WROX Sync](./luau-lsp.md).
 
 ### Explorar datos sincronizados en VSCode
 
@@ -146,5 +148,6 @@ Los nombres que contienen `~` se escapan como `~~` (ej. `Part~2` → `Part~~2/`)
 
 ## Documentos relacionados
 
+- [Usar `luau-lsp` con WROX Sync](./luau-lsp.md)
 - [Cobertura de herramientas (Tools Overview)](../tools/overview.md)
-- [Guia de upgrade Pro](../pro-upgrade.md)
+- [Guia de upgrade Pro](https://weppy-web.pages.dev/en/plans)
