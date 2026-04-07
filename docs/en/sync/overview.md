@@ -19,6 +19,8 @@ Without Sync, AI only sees snippets pasted into chat. With Sync enabled, AI work
 3. History/Status tracking: inspect what changed, when, and in which direction
 
 Sync data is stored under `{projectRoot}/wrox-project-sync/place_{placeId}/explorer`.
+WROX also writes a place sourcemap to `{projectRoot}/wrox-project-sync/place_{placeId}/sourcemap.json` and keeps the recommended root representative file at `{projectRoot}/wrox-project-sync/sourcemap.json`.
+Use the root path for editor integrations such as `luau-lsp`. Setup steps are covered in [Use `luau-lsp` with WROX Sync](./luau-lsp.md).
 
 ### Browse sync data in VSCode
 
@@ -146,5 +148,6 @@ Names containing `~` are escaped to `~~` (e.g. `Part~2` becomes `Part~~2/`). The
 
 ## Related docs
 
+- [Use `luau-lsp` with WROX Sync](./luau-lsp.md)
 - [Tools Overview](../tools/overview.md)
-- [Pro Upgrade Guide](../pro-upgrade.md)
+- [Pro Upgrade Guide](https://weppy-web.pages.dev/en/plans)

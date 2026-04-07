@@ -6,6 +6,20 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.3.1] - 2026-04-07
+
+### Features
+
+- **WROX Sourcemap support** — Added sourcemap builder that generates and refreshes sourcemaps automatically after sync, enabling luau-lsp integration for WROX users
+- **Dashboard improvements** — Added agent activity indicators, last-seen/last-command columns, process termination, and active place path display to the connection and sync dashboards
+
+### Stability
+
+- **Sourcemap generation hardened** — Fixed multiple edge cases around sourcemap refresh timing, redundant rebuilds, and state persistence to ensure reliable sourcemap output
+- **Sync reliability improvements** — Improved sync history diff recording, collision index mapping, and error handling across sync and camera operations
+
+
 ## [2.3.0] - 2026-04-05
 
 ### Performance

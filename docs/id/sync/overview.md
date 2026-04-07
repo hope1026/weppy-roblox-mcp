@@ -19,6 +19,8 @@ Tanpa Sync, AI hanya melihat potongan kode yang ditempel di chat. Dengan Sync ak
 3. Pelacakan History/Status: cek apa yang berubah, kapan, dan ke arah mana
 
 Data Sync disimpan di `{projectRoot}/wrox-project-sync/place_{placeId}/explorer`.
+Selain itu, WROX menulis sourcemap per place ke `{projectRoot}/wrox-project-sync/place_{placeId}/sourcemap.json` dan menjaga file perwakilan root yang direkomendasikan di `{projectRoot}/wrox-project-sync/sourcemap.json`.
+Untuk integrasi editor seperti `luau-lsp`, sebaiknya gunakan path root. Langkah setup dijelaskan di [Menggunakan `luau-lsp` dengan WROX Sync](./luau-lsp.md).
 
 ### Jelajahi data sync di VSCode
 
@@ -146,5 +148,6 @@ Nama yang mengandung `~` di-escape menjadi `~~` (contoh: `Part~2` → `Part~~2/`
 
 ## Dokumen terkait
 
+- [Menggunakan `luau-lsp` dengan WROX Sync](./luau-lsp.md)
 - [Cakupan tool (Tools Overview)](../tools/overview.md)
-- [Panduan Upgrade Pro](../pro-upgrade.md)
+- [Panduan Upgrade Pro](https://weppy-web.pages.dev/en/plans)

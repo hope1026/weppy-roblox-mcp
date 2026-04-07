@@ -2,17 +2,42 @@
 
 How to install the plugin to connect AI agents with Roblox Studio.
 
-## 1. Download Plugin
+## Automatic Installation (Recommended)
+
+If the MCP server setup is complete, the plugin is **installed automatically**. No manual download or file copy is needed.
+
+### How it works
+
+1. When the MCP server runs for the first time, it places the plugin file (`WeppyRobloxMCP.rbxm`) into the Roblox Studio Plugins folder automatically.
+2. When you start Roblox Studio, the **WROX** button appears in the Plugins tab.
+
+### Connecting
+
+1. Open any project in **Roblox Studio**
+2. Go to **Plugins** tab → **WROX**
+
+![WROX Button](../../assets/screenshots/plugin/installation/toolbar-button.png)
+
+3. Click the **Connect** button in the plugin window
+4. Once **"Connected"** status is displayed, you're ready
+
+![Plugin Main Screen](../../assets/screenshots/plugin/installation/main-screen.png)
+
+> If automatic installation did not work, follow the manual installation below.
+
+---
+
+## Manual Installation
+
+Use this if automatic installation didn't work or you need to install a specific version.
+
+### 1. Download Plugin
 
 1. Open [GitHub Releases](https://github.com/hope1026/weppy-roblox-mcp/releases/latest)
 2. Download `weppy-roblox-mcp-v{version}.zip`
-3. Extract the ZIP file - you will find `roblox-plugin/WeppyRobloxMCP.rbxm` and setup guides
+3. Extract the ZIP file — you will find `roblox-plugin/WeppyRobloxMCP.rbxm`
 
-Note:
-- Basic users install the same plugin package and use Basic policy (Studio -> Local one-way sync)
-- Pro subscribers unlock bidirectional sync and broader advanced tools after license activation
-
-## 2. Install Plugin
+### 2. Install Plugin
 
 1. Open **Roblox Studio**
 2. Click the **Plugins** tab in the top menu
@@ -23,38 +48,19 @@ Note:
 4. **Copy** the `WeppyRobloxMCP.rbxm` file from the extracted folder into the opened Plugins folder
 5. **Restart Roblox Studio**
 
-## 3. Verify Installation
+### 3. Verify Installation
 
 After restarting, the **WROX** button will appear in the Plugins tab.
 
 ![WROX Button](../../assets/screenshots/plugin/installation/toolbar-button.png)
 
-## 4. Connect to AI Agent
+### 4. Connect
 
-### Prerequisites
+Follow the same "Connecting" steps above — click Connect in the plugin.
 
-The MCP server must be installed. Complete the guide for your AI app first:
+---
 
-| AI App | Installation Guide |
-|--------|-------------------|
-| Claude Code | [Setup Guide](ai-apps/claude-code.md) |
-| Claude Desktop | [Setup Guide](ai-apps/claude-app.md) |
-| Cursor | [Setup Guide](ai-apps/cursor.md) |
-| Codex CLI | [Setup Guide](ai-apps/codex-cli.md) |
-| Codex Desktop | [Setup Guide](ai-apps/codex-app.md) |
-| Gemini CLI | [Setup Guide](ai-apps/gemini-cli.md) |
-| Antigravity | [Setup Guide](ai-apps/antigravity.md) |
-
-### Connecting
-
-1. Open any project in **Roblox Studio**
-2. Go to **Plugins** tab -> **WROX**
-3. Click the **Connect** button in the plugin window
-4. Once **"Connected"** status is displayed, you're ready
-
-![Plugin Main Screen](../../assets/screenshots/plugin/installation/main-screen.png)
-
-## 5. Settings (Optional)
+## Settings (Optional)
 
 Click the settings button in the top right of the plugin to change options.
 
@@ -64,6 +70,11 @@ Click the settings button in the top right of the plugin to change options.
 - **Auto Reconnect**: Automatically attempt to reconnect when connection is lost
 - **Auto Camera Focus**: Automatically move camera to created objects
 - **Language**: Change the plugin UI language
+
+## Tier Information
+
+- Basic users install the same plugin package and use Basic policy (Studio → Local one-way sync).
+- Pro subscribers unlock bidirectional sync and broader advanced tools after license activation.
 
 ## Troubleshooting
 

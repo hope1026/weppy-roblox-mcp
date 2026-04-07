@@ -5,10 +5,9 @@
 # Usage:
 #   curl -fsSL https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.sh | bash
 #
-# Interactive 3 steps:
-#   [1/3] MCP server install (npm)
-#   [2/3] Roblox Studio Plugin install (.rbxm)
-#   [3/3] Register MCP with AI apps (user selection)
+# Interactive 2 steps:
+#   [1/2] Setup — install Roblox Studio Plugin via npx
+#   [2/2] Register MCP with AI apps (user selection)
 #
 
 set -euo pipefail
@@ -614,16 +613,6 @@ resolve_optional_cli_command() {
   return 1
 }
 
-is_lfs_pointer() {
-  local file_path="$1"
-
-  if [ ! -f "$file_path" ]; then
-    return 1
-  fi
-
-  grep -q "git-lfs.github.com/spec/v1" "$file_path"
-}
-
 # ── Header ──
 # shellcheck disable=SC2059
 printf "\n${BOLD}WROX Installer${NC}\n"
@@ -647,67 +636,24 @@ fi
 success "Node.js $(node -v) detected"
 
 # ═══════════════════════════════════
-# [1/3] MCP server install
+# [1/2] Setup — Roblox Studio Plugin
 # ═══════════════════════════════════
-step "1/3" "Install @weppy/roblox-mcp via npm"
+step "1/2" "Setup Roblox Studio Plugin"
 
-if confirm "  Run npm install -g @weppy/roblox-mcp?"; then
-  if npm install -g @weppy/roblox-mcp; then
-    success "Installed @weppy/roblox-mcp"
+if confirm "  Run npx -y @weppy/roblox-mcp --setup?"; then
+  if npx -y @weppy/roblox-mcp --setup; then
+    success "Setup complete"
   else
-    fail "npm install failed"
-    exit 1
+    warn "Setup encountered a warning (non-blocking)"
   fi
 else
-  warn "MCP server install skipped"
+  warn "Setup skipped"
 fi
 
 # ═══════════════════════════════════
-# [2/3] Roblox Studio Plugin install
+# [2/2] Register MCP with AI apps
 # ═══════════════════════════════════
-step "2/3" "Install Roblox Studio Plugin"
-
-PLUGINS_DIR="$HOME/Documents/Roblox/Plugins"
-PLUGIN_NAME="WeppyRobloxMCP.rbxm"
-
-# Search for .rbxm in npm global prefix
-NPM_PREFIX=$(npm prefix -g 2>/dev/null)
-BUNDLED_PLUGIN=""
-
-# Search for .rbxm in npm global path
-for search_dir in \
-  "${NPM_PREFIX}/lib/node_modules/@weppy/roblox-mcp/plugins/weppy-roblox-mcp/roblox-plugin" \
-  "${NPM_PREFIX}/lib/node_modules/@weppy/roblox-mcp/roblox-plugin"; do
-  if [ -f "${search_dir}/${PLUGIN_NAME}" ]; then
-    BUNDLED_PLUGIN="${search_dir}/${PLUGIN_NAME}"
-    break
-  fi
-done
-
-if [ -n "$BUNDLED_PLUGIN" ]; then
-  if is_lfs_pointer "$BUNDLED_PLUGIN"; then
-    fail "Bundled plugin payload is invalid (Git LFS pointer detected)"
-    info "Install the plugin from the GitHub release ZIP instead"
-    exit 1
-  fi
-
-  printf "  → %s/%s\n" "$PLUGINS_DIR" "$PLUGIN_NAME"
-  if confirm "  Copy plugin to Roblox Plugins folder?"; then
-    mkdir -p "$PLUGINS_DIR"
-    cp "$BUNDLED_PLUGIN" "$PLUGINS_DIR/$PLUGIN_NAME"
-    success "Plugin installed → $PLUGINS_DIR/$PLUGIN_NAME"
-  else
-    warn "Plugin install skipped"
-  fi
-else
-  warn "Bundled plugin file not found"
-  info "Will be installed automatically on first MCP server run"
-fi
-
-# ═══════════════════════════════════
-# [3/3] Register MCP with AI apps
-# ═══════════════════════════════════
-step "3/3" "Register MCP with AI apps"
+step "2/2" "Register MCP with AI apps"
 printf "  Automatic registration: Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, Antigravity\n"
 
 MCP_COMMAND='npx -y @weppy/roblox-mcp'

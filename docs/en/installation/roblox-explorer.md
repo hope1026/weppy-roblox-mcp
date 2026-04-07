@@ -1,17 +1,21 @@
-# WROX Roblox Explorer (VSCode Extension)
+# WROX Roblox Explorer (VSCode · Antigravity Extension)
 
-Roblox Studio Explorer-like tree view for VSCode. Browse synced instance trees, open scripts directly, and track sync status — all inside your editor.
+> **Optional** — Explorer is not required. All core features work with just MCP and the plugin. Install it when you want to browse the project structure in your editor.
+
+Roblox Studio Explorer-like tree view for your editor. Browse synced instance trees, open scripts directly, and track sync status — all inside your editor.
 This is a companion extension for WROX, not a standalone Roblox integration.
 
 ![WROX Roblox Explorer](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
 
 ## Requirements
 
-- VSCode 1.85+
+- VSCode 1.85+ or Antigravity
 - [Roblox MCP](../../../README.md) installed with Sync enabled (Basic or Pro)
 - Sync has already generated `wrox-project-sync/place_*/.sync-meta.json` under your project root
 
 ## Installation
+
+### VSCode
 
 Search for **WROX Roblox Explorer** in the VSCode Extensions sidebar (`Ctrl+Shift+X` / `Cmd+Shift+X`) and click **Install**.
 
@@ -19,6 +23,12 @@ Or install directly from:
 
 - [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer)
 - [Open VSX](https://open-vsx.org/extension/weppy/weppy-roblox-explorer)
+
+### Antigravity
+
+Antigravity is VSCode-based, so the same extension works. Search for **WROX Roblox Explorer** in the Antigravity Extensions tab and click **Install**.
+
+---
 
 Core tree browsing works from synced files on disk. Live sync state, direction indicators, and Explorer telemetry forwarding are available when the local MCP server is reachable.
 
