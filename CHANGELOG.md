@@ -8,6 +8,14 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.4.1] - 2026-04-10
+
+### Bug Fixes
+
+- **Fix playtest commands not working** — Resolved an issue where Play, Stop, Pause, and Resume commands in system_info tool failed due to inconsistent command string handling.
+
+
 ## [2.4.0] - 2026-04-10
 
 ### ⚠️ BREAKING CHANGES
