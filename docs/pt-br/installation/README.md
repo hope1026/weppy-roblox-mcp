@@ -46,7 +46,7 @@ Se a instalacao em um comando nao funcionar, ou quando a instalacao automatica n
 
 Baixe o arquivo do plugin no GitHub e coloque na pasta Plugins do Roblox Studio.
 
-👉 [Guia de instalação do plugin](https://weppy-web.pages.dev/en/install#plugin)
+👉 [Guia de instalação do plugin](https://weppyai.com/en/install#plugin)
 
 ---
 
@@ -73,7 +73,7 @@ Registre o servidor MCP no seu app de IA. Funciona com qualquer app que suporte 
 Navegue pelas árvores de instâncias sincronizadas dentro do VSCode com ícones de classes Roblox.
 Esta extensao opcional exige que a instalacao do Roblox MCP acima ja esteja concluida, porque o Explorer le os dados de Sync em `wrox-project-sync` dentro da raiz do projeto.
 
-👉 [Guia de instalação do WROX Roblox Explorer](https://weppy-web.pages.dev/en/install#explorer)
+👉 [Guia de instalação do WROX Roblox Explorer](https://weppyai.com/en/install#explorer)
 
 Instalação direta:
 - [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer)

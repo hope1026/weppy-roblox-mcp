@@ -46,7 +46,7 @@ Jika instalasi satu perintah tidak berjalan, atau jika instalasi otomatis tidak 
 
 Download file plugin dari GitHub, lalu taruh di folder Plugins Roblox Studio.
 
-👉 [Panduan Instalasi Plugin](https://weppy-web.pages.dev/en/install#plugin)
+👉 [Panduan Instalasi Plugin](https://weppyai.com/en/install#plugin)
 
 ---
 
@@ -73,7 +73,7 @@ Daftarkan MCP server ke aplikasi AI yang kamu pakai. Bisa digunakan di semua apl
 Jelajahi tree instance yang sudah disinkronkan di dalam VSCode dengan ikon kelas Roblox.
 Ekstensi opsional ini mengharuskan setup Roblox MCP di atas sudah selesai lebih dulu, karena Explorer membaca data Sync dari `wrox-project-sync` di bawah root proyek.
 
-👉 [Panduan Instalasi WROX Roblox Explorer](https://weppy-web.pages.dev/en/install#explorer)
+👉 [Panduan Instalasi WROX Roblox Explorer](https://weppyai.com/en/install#explorer)
 
 Instal langsung:
 - [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer)

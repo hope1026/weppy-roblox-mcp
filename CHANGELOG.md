@@ -7,6 +7,24 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.4.0] - 2026-04-10
+
+### ⚠️ BREAKING CHANGES
+
+- **Tool statistics and changelog history format updated** — The internal storage format for tool execution statistics (`tool-stats.json`) and changelog history has changed. Existing data will be automatically reset on first launch after upgrading. You will start with fresh statistics — previous history is not migrated.
+
+### Features
+
+- **Dashboard "What's New" page** — A new announcements page in the dashboard keeps you informed about important changes, breaking updates, and tips. Accessible via the bell icon in the sidebar, with unread indicators for new announcements.
+- **Improved blocked-tool feedback** — When a Pro-only tool is used on Basic tier, the dashboard and plugin now show clearer outcome details (fallback, unsupported, failed) instead of generic error labels.
+- **Connection stability improvements** — Added handshake timeout, connection cancel button, and license reconnect race condition fixes for more reliable Studio connections.
+
+### Bug Fixes
+
+- **Fix `ws` module not found on install** — Replaced dynamic `require("ws")` with a static import, resolving installation failures where the `ws` dependency could not be located by the bundler.
+
+
 ## [2.3.1] - 2026-04-07
 
 ### Features

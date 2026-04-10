@@ -150,4 +150,4 @@ Nomes que contem `~` sao escapados como `~~` (ex: `Part~2` → `Part~~2/`). Regr
 
 - [Usar `luau-lsp` com WROX Sync](./luau-lsp.md)
 - [Cobertura de ferramentas (Tools Overview)](../tools/overview.md)
-- [Guia de upgrade Pro](https://weppy-web.pages.dev/en/plans)
+- [Guia de upgrade Pro](https://weppyai.com/en/plans)

@@ -150,4 +150,4 @@ Nama yang mengandung `~` di-escape menjadi `~~` (contoh: `Part~2` → `Part~~2/`
 
 - [Menggunakan `luau-lsp` dengan WROX Sync](./luau-lsp.md)
 - [Cakupan tool (Tools Overview)](../tools/overview.md)
-- [Panduan Upgrade Pro](https://weppy-web.pages.dev/en/plans)
+- [Panduan Upgrade Pro](https://weppyai.com/en/plans)

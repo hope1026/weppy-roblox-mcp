@@ -20,7 +20,7 @@ No necesitas copiar ni pegar código. La IA trabaja y tú verificas los resultad
 
 Instala siguiendo la guia en la pagina web.
 
-👉 **[Pagina de instalacion](https://weppy-web.pages.dev/en/install)**
+👉 **[Pagina de instalacion](https://weppyai.com/en/install)**
 
 ### Instalacion por terminal
 
@@ -49,7 +49,7 @@ Si la ejecución de PowerShell está bloqueada en Windows, continúa con la inst
 Si la instalacion en un solo comando no funciona, o si no puedes usar la instalacion automatica en tu entorno, usa la instalacion manual de abajo como alternativa.
 
 **Paso 1** — Instala el plugin de Roblox Studio:
-[Guia de instalacion del plugin](https://weppy-web.pages.dev/en/install#plugin)
+[Guia de instalacion del plugin](installation/roblox-plugin.md)
 
 **Paso 2** — Registra el servidor MCP en tu app de IA:
 
@@ -177,7 +177,7 @@ Sí. Consulta [Configuración de Cursor](installation/ai-apps/cursor.md). Cualqu
 Sí. La IA puede crear instancias, escribir scripts, generar terrain, configurar iluminación, insertar assets, configurar física y más — todo dentro de una sesión de Studio en vivo. Va más allá de la generación de código hacia acciones ejecutables.
 
 ### ¿Cuál es la diferencia entre Basic y Pro?
-Basic (gratuito) incluye ejecución de herramientas MCP y sincronización unidireccional (Studio -> Local). Pro agrega sincronización bidireccional, operaciones masivas, generación de terrain, análisis espacial, control de audio/animación y soporte multi-place. Consulta la [Guía de actualización Pro](https://weppy-web.pages.dev/en/plans).
+Basic (gratuito) incluye ejecución de herramientas MCP y sincronización unidireccional (Studio -> Local). Pro agrega sincronización bidireccional, operaciones masivas, generación de terrain, análisis espacial, control de audio/animación y soporte multi-place. Consulta la [Guía de actualización Pro](https://weppyai.com/en/plans).
 
 ### ¿Cómo se diferencia Weppy de otros servidores MCP para Roblox?
 Weppy usa despacho basado en acciones en lugar de herramientas separadas para cada función. Esto reduce significativamente el consumo de tokens de IA. También proporciona sincronización bidireccional de proyecto y soporte multi-place, que la mayoría de las alternativas no tienen.
@@ -189,7 +189,7 @@ El servidor se ejecuta solo en localhost (127.0.0.1:3002). Las rutas prohibidas 
 
 Sync bidireccional, capacidades de creacion avanzadas y eficiencia de tokens de IA — todo en una sola actualizacion.
 
-[Guia de actualizacion Pro](https://weppy-web.pages.dev/en/plans)
+[Guia de actualizacion Pro](https://weppyai.com/en/plans)
 
 ## Licencia
 
