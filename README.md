@@ -20,7 +20,7 @@ No copy-pasting code. AI does the work, you review the results.
 
 Install with the guided web page.
 
-👉 **[Install Page](https://weppy-web.pages.dev/en/install)**
+👉 **[Install Page](https://weppyai.com/en/install)**
 
 ### Terminal One-Line Install
 
@@ -47,7 +47,7 @@ Automatic MCP registration supports **Claude Code, Claude Desktop, Cursor, Codex
 If the one-line install does not work, or automatic installation is not available in your environment:
 
 **Step 1** — Install the Roblox Studio plugin:
-[Plugin Installation Guide](https://weppy-web.pages.dev/en/install#plugin)
+[Plugin Installation Guide](docs/en/installation/roblox-plugin.md)
 
 **Step 2** — Register the MCP server with your AI app:
 
@@ -177,7 +177,7 @@ Yes. See [Cursor Setup](docs/en/installation/ai-apps/cursor.md). Any MCP-compati
 Yes. AI can create instances, write scripts, generate terrain, set up lighting, insert assets, configure physics, and more — all inside a live Roblox Studio session. It goes beyond code generation to executable actions.
 
 ### What is the difference between Basic and Pro?
-Basic (Free) includes MCP tool execution and one-way sync (Studio -> Local). Pro adds bidirectional sync, bulk operations, terrain generation, spatial analysis, audio/animation control, and multi-place support. See the [Pro Upgrade Guide](https://weppy-web.pages.dev/en/plans).
+Basic (Free) includes MCP tool execution and one-way sync (Studio -> Local). Pro adds bidirectional sync, bulk operations, terrain generation, spatial analysis, audio/animation control, and multi-place support. See the [Pro Upgrade Guide](https://weppyai.com/en/plans).
 
 ### How is Weppy different from other Roblox MCP servers?
 Weppy uses action-based dispatching instead of separate tools for each function. This reduces AI token consumption significantly. It also provides bidirectional project sync and multi-place support, which most alternatives lack.
@@ -189,7 +189,7 @@ The server runs on localhost only (127.0.0.1:3002). Forbidden paths (CoreGui, Co
 
 Bidirectional Sync, advanced build capabilities, and AI token efficiency — all in one upgrade.
 
-[Pro Upgrade Guide](https://weppy-web.pages.dev/en/plans)
+[Pro Upgrade Guide](https://weppyai.com/en/plans)
 
 ## License
 

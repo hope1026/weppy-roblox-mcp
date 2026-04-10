@@ -150,4 +150,4 @@ explorer/
 
 - [WROX Sync で `luau-lsp` を使う](./luau-lsp.md)
 - [Tool対応範囲 (Tools Overview)](../tools/overview.md)
-- [Proアップグレードガイド](https://weppy-web.pages.dev/ja/plans)
+- [Proアップグレードガイド](https://weppyai.com/ja/plans)

@@ -150,4 +150,4 @@ Names containing `~` are escaped to `~~` (e.g. `Part~2` becomes `Part~~2/`). The
 
 - [Use `luau-lsp` with WROX Sync](./luau-lsp.md)
 - [Tools Overview](../tools/overview.md)
-- [Pro Upgrade Guide](https://weppy-web.pages.dev/en/plans)
+- [Pro Upgrade Guide](https://weppyai.com/en/plans)

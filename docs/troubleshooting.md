@@ -19,7 +19,7 @@
 ## "Pro feature required" error
 
 The action you're requesting requires the Pro tier.
-See [Pro Upgrade Guide](https://weppy-web.pages.dev/en/plans) for details.
+See [Pro Upgrade Guide](https://weppyai.com/en/plans) for details.
 
 ## Sync not working
 

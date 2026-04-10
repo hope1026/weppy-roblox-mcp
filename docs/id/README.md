@@ -20,7 +20,7 @@ Tidak perlu copy-paste kode. AI bekerja dan kamu memverifikasi hasilnya.
 
 Install mengikuti panduan di halaman web.
 
-👉 **[Halaman Instalasi](https://weppy-web.pages.dev/en/install)**
+👉 **[Halaman Instalasi](https://weppyai.com/en/install)**
 
 ### Instalasi Terminal
 
@@ -49,7 +49,7 @@ Jika eksekusi PowerShell diblokir di Windows, lanjutkan dengan instalasi manual 
 Jika instalasi satu perintah tidak berjalan, atau instalasi otomatis tidak bisa dipakai di lingkunganmu, gunakan instalasi manual di bawah sebagai alternatif.
 
 **Langkah 1** — Install plugin Roblox Studio:
-[Panduan instalasi plugin](https://weppy-web.pages.dev/en/install#plugin)
+[Panduan instalasi plugin](installation/roblox-plugin.md)
 
 **Langkah 2** — Daftarkan MCP server di aplikasi AI:
 
@@ -177,7 +177,7 @@ Ya. Lihat [Setup Cursor](installation/ai-apps/cursor.md). Semua klien AI yang ko
 Ya. AI dapat membuat instance, menulis script, menghasilkan terrain, mengatur lighting, menyisipkan asset, mengkonfigurasi fisika, dan lainnya — semua di dalam sesi Studio yang sedang berjalan. Ini melampaui pembuatan kode menuju aksi yang dapat dieksekusi.
 
 ### Apa perbedaan antara Basic dan Pro?
-Basic (gratis) mencakup eksekusi alat MCP dan sinkronisasi satu arah (Studio -> Local). Pro menambahkan sinkronisasi dua arah, operasi massal, pembuatan terrain, analisis spasial, kontrol audio/animasi, dan dukungan multi-place. Lihat [Panduan Upgrade Pro](https://weppy-web.pages.dev/en/plans).
+Basic (gratis) mencakup eksekusi alat MCP dan sinkronisasi satu arah (Studio -> Local). Pro menambahkan sinkronisasi dua arah, operasi massal, pembuatan terrain, analisis spasial, kontrol audio/animasi, dan dukungan multi-place. Lihat [Panduan Upgrade Pro](https://weppyai.com/en/plans).
 
 ### Apa bedanya Weppy dengan server MCP Roblox lainnya?
 Weppy menggunakan dispatching berbasis aksi alih-alih alat terpisah untuk setiap fungsi. Ini mengurangi konsumsi token AI secara signifikan. Weppy juga menyediakan sinkronisasi proyek dua arah dan dukungan multi-place, yang tidak dimiliki kebanyakan alternatif lain.
@@ -189,7 +189,7 @@ Server hanya berjalan di localhost (127.0.0.1:3002). Path terlarang (CoreGui, Co
 
 Sync dua arah, kemampuan kreasi lanjutan, dan efisiensi token AI — semua dalam satu upgrade.
 
-[Panduan Upgrade Pro](https://weppy-web.pages.dev/en/plans)
+[Panduan Upgrade Pro](https://weppyai.com/en/plans)
 
 ## Lisensi
 
