@@ -106,7 +106,7 @@ Filter the timeline by the Instance category and trace delete-type changes chron
 
 ## Related Documents
 
-- [WROX Dashboard Overview](overview.md)
+- [WEPPY Dashboard Overview](overview.md)
 - [Connection](connection.md)
 - [Sync](sync.md)
 - [Playtest](playtest.md)

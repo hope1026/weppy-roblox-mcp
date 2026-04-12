@@ -1,19 +1,19 @@
-# WROX Roblox Explorer (Ekstensi VSCode)
+# WEPPY Roblox Explorer (Ekstensi VSCode)
 
 Tampilan pohon instansi seperti Explorer Roblox Studio, langsung di VSCode. Jelajahi instansi yang tersinkronisasi, buka skrip langsung, dan pantau status sinkronisasi tanpa meninggalkan editor.
-Ini adalah ekstensi pendamping untuk WROX, bukan integrasi Roblox yang berdiri sendiri.
+Ini adalah ekstensi pendamping untuk WEPPY, bukan integrasi Roblox yang berdiri sendiri.
 
-![WROX Roblox Explorer](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
+![WEPPY Roblox Explorer](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
 
 ## Persyaratan
 
 - VSCode 1.85+
 - [Roblox MCP](../../../README.md) sudah terpasang dengan Sync aktif (Basic atau Pro)
-- Sync sudah menghasilkan `wrox-project-sync/place_*/.sync-meta.json` di bawah root proyek
+- Sync sudah menghasilkan `weppy-project-sync/place_*/.sync-meta.json` di bawah root proyek
 
 ## Cara Instalasi
 
-Cari **WROX Roblox Explorer** di sidebar Ekstensi VSCode (`Ctrl+Shift+X` / `Cmd+Shift+X`) dan klik **Install**.
+Cari **WEPPY Roblox Explorer** di sidebar Ekstensi VSCode (`Ctrl+Shift+X` / `Cmd+Shift+X`) dan klik **Install**.
 
 Atau instal langsung dari marketplace berikut:
 
@@ -37,7 +37,7 @@ Penjelajahan tree dasar bekerja dari file sync di disk. Status sync live, indika
 
 | Pengaturan | Default | Deskripsi |
 |------------|---------|-----------|
-| `robloxExplorer.syncRoot` | `""` | Jalur absolut ke root `wrox-project-sync`. Jika kosong, akan dideteksi otomatis. WROX memakai `{projectRoot}/wrox-project-sync`. |
+| `robloxExplorer.syncRoot` | `""` | Jalur absolut ke root `weppy-project-sync`. Jika kosong, akan dideteksi otomatis. WEPPY memakai `{projectRoot}/weppy-project-sync`. |
 | `robloxExplorer.hidePropsFiles` | `false` | Sembunyikan file Sync (`.props.json`, `_tree.json`, `.value.json`) di explorer VSCode default. |
 | `robloxExplorer.autoRefresh` | `true` | Perbarui pohon otomatis saat file Sync berubah. |
 | `robloxExplorer.showSyncStatus` | `true` | Tampilkan dekorasi status Sync pada item pohon. |
@@ -46,11 +46,11 @@ Penjelajahan tree dasar bekerja dari file sync di disk. Status sync live, indika
 
 | Perintah | Deskripsi |
 |----------|-----------|
-| `WROX Explorer: Refresh` | Perbarui pohon instansi secara manual |
-| `WROX Explorer: Search Instances` | Cari instansi di semua layanan |
-| `WROX Explorer: Open Backing File` | Buka file pendukung instansi yang dipilih |
-| `WROX Explorer: Copy Instance Path` | Salin jalur instansi lengkap (contoh: `game.Workspace.Part`) |
-| `WROX Explorer: Reveal in Explorer` | Tampilkan file di explorer VSCode default |
+| `WEPPY Explorer: Refresh` | Perbarui pohon instansi secara manual |
+| `WEPPY Explorer: Search Instances` | Cari instansi di semua layanan |
+| `WEPPY Explorer: Open Backing File` | Buka file pendukung instansi yang dipilih |
+| `WEPPY Explorer: Copy Instance Path` | Salin jalur instansi lengkap (contoh: `game.Workspace.Part`) |
+| `WEPPY Explorer: Reveal in Explorer` | Tampilkan file di explorer VSCode default |
 
 ## Terkait
 

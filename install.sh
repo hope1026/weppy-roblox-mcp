@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# WROX — One-line install script (macOS/Linux)
+# WEPPY — One-line install script (macOS/Linux)
 #
 # Usage:
 #   curl -fsSL https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.sh | bash
@@ -22,9 +22,9 @@ DIM='\033[2m'
 BOLD='\033[1m'
 NC='\033[0m'
 
-INSTALL_LOG_FILE="$(mktemp "${TMPDIR:-/tmp}/wrox-install-XXXXXX.log" 2>/dev/null || true)"
+INSTALL_LOG_FILE="$(mktemp "${TMPDIR:-/tmp}/weppy-install-XXXXXX.log" 2>/dev/null || true)"
 if [ -z "${INSTALL_LOG_FILE:-}" ]; then
-  INSTALL_LOG_FILE="${HOME}/wrox-install-error.log"
+  INSTALL_LOG_FILE="${HOME}/weppy-install-error.log"
   : > "$INSTALL_LOG_FILE"
 fi
 
@@ -92,7 +92,7 @@ add_mcp_to_config() {
   local parent_dir
   parent_dir=$(dirname "$config_path")
   mkdir -p "$parent_dir"
-  MCP_CONFIG_PATH="$config_path" node -e '
+  MCP_CONFIG_PATH="$config_path" node --input-type=commonjs -e '
 const fs = require("fs");
 const configPath = process.env.MCP_CONFIG_PATH;
 let config = {};
@@ -108,7 +108,7 @@ is_json_mcp_configured() {
 
   [ -f "$config_path" ] || return 1
 
-  MCP_CONFIG_PATH="$config_path" node -e '
+  MCP_CONFIG_PATH="$config_path" node --input-type=commonjs -e '
 const fs = require("fs");
 const configPath = process.env.MCP_CONFIG_PATH;
 try {
@@ -126,7 +126,7 @@ add_antigravity_mcp_config() {
   local parent_dir
   parent_dir=$(dirname "$config_path")
   mkdir -p "$parent_dir"
-  MCP_CONFIG_PATH="$config_path" node -e '
+  MCP_CONFIG_PATH="$config_path" node --input-type=commonjs -e '
 const fs = require("fs");
 const configPath = process.env.MCP_CONFIG_PATH;
 let config = {};
@@ -154,7 +154,7 @@ is_antigravity_mcp_configured() {
 
   [ -f "$config_path" ] || return 1
 
-  MCP_CONFIG_PATH="$config_path" node -e '
+  MCP_CONFIG_PATH="$config_path" node --input-type=commonjs -e '
 const fs = require("fs");
 const configPath = process.env.MCP_CONFIG_PATH;
 function isJsonObject(value) {
@@ -185,7 +185,7 @@ is_codex_config_configured() {
   local config_path="$1"
 
   [ -f "$config_path" ] || return 1
-  MCP_CODEX_CONFIG_PATH="$config_path" node <<'NODE' >/dev/null 2>&1
+  MCP_CODEX_CONFIG_PATH="$config_path" node --input-type=commonjs <<'NODE' >/dev/null 2>&1
 const fs = require("fs");
 
 const configPath = process.env.MCP_CODEX_CONFIG_PATH;
@@ -615,7 +615,7 @@ resolve_optional_cli_command() {
 
 # ── Header ──
 # shellcheck disable=SC2059
-printf "\n${BOLD}WROX Installer${NC}\n"
+printf "\n${BOLD}WEPPY Installer${NC}\n"
 # shellcheck disable=SC2059
 printf "${DIM}AI-powered Roblox Studio integration${NC}\n"
 printf "%s\n" "════════════════════════════════════"
@@ -641,7 +641,7 @@ success "Node.js $(node -v) detected"
 step "1/2" "Setup Roblox Studio Plugin"
 
 if confirm "  Run npx -y @weppy/roblox-mcp --setup?"; then
-  if npx -y @weppy/roblox-mcp --setup; then
+  if npx -y --package=@weppy/roblox-mcp weppy-roblox-mcp --setup; then
     success "Setup complete"
   else
     warn "Setup encountered a warning (non-blocking)"
@@ -872,7 +872,7 @@ printf "${BOLD}Installation complete!${NC}\n\n"
 printf "  ${BOLD}Next steps:${NC}\n"
 printf "  1. Restart Roblox Studio\n"
 # shellcheck disable=SC2059
-printf "  2. Look for the ${BOLD}WROX${NC} button in the Plugins tab\n"
+printf "  2. Look for the ${BOLD}WEPPY${NC} button in the Plugins tab\n"
 printf "  3. Click Connect and start building with AI!\n\n"
 printf "  Auto registration: Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, Antigravity\n\n"
 # shellcheck disable=SC2059

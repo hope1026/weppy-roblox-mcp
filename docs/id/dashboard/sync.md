@@ -59,7 +59,7 @@ Periksa Direction dari tipe Scripts di tabel Sync Directions.
 
 ## Dokumen Terkait
 
-- [WROX Dashboard Overview](overview.md)
+- [WEPPY Dashboard Overview](overview.md)
 - [Changelog](changelog.md)
 - [Connection](connection.md)
 - [Playtest](playtest.md)

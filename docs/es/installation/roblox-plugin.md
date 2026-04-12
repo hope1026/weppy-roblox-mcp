@@ -25,9 +25,9 @@ Nota:
 
 ## 3. Verificar la Instalacion
 
-Despues de reiniciar, aparecera el boton **WROX** en Plugins.
+Despues de reiniciar, aparecera el boton **WEPPY** en Plugins.
 
-![Boton WROX](../../assets/screenshots/plugin/installation/toolbar-button.png)
+![Boton WEPPY](../../assets/screenshots/plugin/installation/toolbar-button.png)
 
 ## 4. Conectar con el Agente de IA
 
@@ -48,7 +48,7 @@ El servidor MCP debe estar instalado. Completa primero la guia de tu app de IA:
 ### Conectar
 
 1. Abre cualquier proyecto en **Roblox Studio**
-2. Pestaña **Plugins** -> **WROX**
+2. Pestaña **Plugins** -> **WEPPY**
 3. Clic en **Connect**
 4. Cuando veas **"Connected"**, listo
 

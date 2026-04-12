@@ -1,19 +1,19 @@
-# WROX Roblox Explorer (Extensión VSCode)
+# WEPPY Roblox Explorer (Extensión VSCode)
 
 Vista de árbol de instancias similar al Explorer de Roblox Studio, dentro de VSCode. Navega instancias sincronizadas, abre scripts directamente y consulta el estado de sincronización sin salir del editor.
-Esta es una extensión complementaria para WROX, no una integración de Roblox independiente.
+Esta es una extensión complementaria para WEPPY, no una integración de Roblox independiente.
 
-![WROX Roblox Explorer](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
+![WEPPY Roblox Explorer](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
 
 ## Requisitos
 
 - VSCode 1.85+
 - [Roblox MCP](../../../README.md) instalado con Sync habilitado (Basic o Pro)
-- Sync ya genero `wrox-project-sync/place_*/.sync-meta.json` dentro de la raiz del proyecto
+- Sync ya genero `weppy-project-sync/place_*/.sync-meta.json` dentro de la raiz del proyecto
 
 ## Instalación
 
-Busca **WROX Roblox Explorer** en la barra lateral de Extensiones de VSCode (`Ctrl+Shift+X` / `Cmd+Shift+X`) y haz clic en **Install**.
+Busca **WEPPY Roblox Explorer** en la barra lateral de Extensiones de VSCode (`Ctrl+Shift+X` / `Cmd+Shift+X`) y haz clic en **Install**.
 
 O instala directamente desde estos marketplaces:
 
@@ -37,7 +37,7 @@ La navegación básica del árbol funciona con los archivos sincronizados en dis
 
 | Configuración | Valor por defecto | Descripción |
 |---------------|-------------------|-------------|
-| `robloxExplorer.syncRoot` | `""` | Ruta absoluta a la raiz de `wrox-project-sync`. Si esta vacia, se detecta automaticamente. WROX usa `{projectRoot}/wrox-project-sync`. |
+| `robloxExplorer.syncRoot` | `""` | Ruta absoluta a la raiz de `weppy-project-sync`. Si esta vacia, se detecta automaticamente. WEPPY usa `{projectRoot}/weppy-project-sync`. |
 | `robloxExplorer.hidePropsFiles` | `false` | Oculta los archivos de Sync (`.props.json`, `_tree.json`, `.value.json`) en el explorador predeterminado de VSCode. |
 | `robloxExplorer.autoRefresh` | `true` | Actualiza automáticamente el árbol cuando cambian los archivos Sync. |
 | `robloxExplorer.showSyncStatus` | `true` | Muestra decoraciones de estado Sync en los elementos del árbol. |
@@ -46,11 +46,11 @@ La navegación básica del árbol funciona con los archivos sincronizados en dis
 
 | Comando | Descripción |
 |---------|-------------|
-| `WROX Explorer: Refresh` | Actualizar manualmente el árbol de instancias |
-| `WROX Explorer: Search Instances` | Buscar instancias en todos los servicios |
-| `WROX Explorer: Open Backing File` | Abrir el archivo de respaldo de una instancia seleccionada |
-| `WROX Explorer: Copy Instance Path` | Copiar la ruta completa de la instancia (ej. `game.Workspace.Part`) |
-| `WROX Explorer: Reveal in Explorer` | Mostrar el archivo en el explorador predeterminado de VSCode |
+| `WEPPY Explorer: Refresh` | Actualizar manualmente el árbol de instancias |
+| `WEPPY Explorer: Search Instances` | Buscar instancias en todos los servicios |
+| `WEPPY Explorer: Open Backing File` | Abrir el archivo de respaldo de una instancia seleccionada |
+| `WEPPY Explorer: Copy Instance Path` | Copiar la ruta completa de la instancia (ej. `game.Workspace.Part`) |
+| `WEPPY Explorer: Reveal in Explorer` | Mostrar el archivo en el explorador predeterminado de VSCode |
 
 ## Relacionado
 

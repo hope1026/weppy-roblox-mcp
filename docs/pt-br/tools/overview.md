@@ -227,7 +227,7 @@ Politica de Sync:
 
 | Acao | Descricao | Tier |
 |------|-----------|------|
-| `status` | Obter status de sincronizacao de um Place | Pro |
+| `status_current_place` | Obter o status de sincronizacao do Place conectado no momento | Pro |
 | `history` | Obter historico de mudancas | Pro |
 | `directions` | Obter direcoes de sincronizacao por tipo | Pro |
 | `read_file` | Ler um arquivo sincronizado | Pro |

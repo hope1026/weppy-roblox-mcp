@@ -227,7 +227,7 @@ Syncポリシー:
 
 | アクション | 説明 | ティア |
 |------------|------|--------|
-| `status` | Placeの同期ステータスを取得 | Pro |
+| `status_current_place` | 現在接続中のPlaceの同期状態を取得 | Pro |
 | `history` | 変更履歴を取得 | Pro |
 | `directions` | タイプ別同期方向を取得 | Pro |
 | `read_file` | 同期済みファイルを読み取り | Pro |

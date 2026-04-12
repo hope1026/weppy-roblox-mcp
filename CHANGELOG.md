@@ -9,6 +9,23 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.5.0] - 2026-04-12
+
+### ⚠️ BREAKING CHANGES
+
+- **Project sync folder renamed (`wrox-project-sync` → `weppy-project-sync`)** — As part of the `wrox` → `weppy` rebrand, the default project sync root and the app data directory have been renamed (`.wrox-data` → `.weppy-data`). Existing folders are **automatically copied** to the new location on first launch — no manual migration is required, and your synced files are preserved. The legacy folder is left in place with a `.weppy-legacy-path.json` marker so you can clean it up at your convenience.
+
+### Features
+
+- **Property Panel for VSCode Explorer** — A new dedicated property panel inside the WEPPY Explorer lets you inspect and edit Roblox instance properties directly from VSCode, without switching back to Studio. Open any instance and you get a Studio-style editor with grouped categories, dropdowns for enum properties, an expandable CFrame editor for position and orientation, per-property tooltips, and dedicated Tags and Attributes sections. Property values stay live with Studio, so edits in VSCode are reflected immediately and vice versa.
+
+### Bug Fixes
+
+- **Fix installer failing on Node.js 24** — Running the install script (`install.sh` / `install.ps1`) on Node.js 24 previously failed with module-type errors and never finished setup. The installer now works correctly across Node 18, 20, 22, and 24, so users on the latest Node.js can install WEPPY without downgrading.
+- **Fix Property Panel appearing blank in the published Explorer extension** — The Property Panel rendered correctly in development but showed up blank when the WEPPY Explorer extension was installed from the VSCode Marketplace. The panel now displays properly in the published extension.
+
+
 ## [2.4.1] - 2026-04-10
 
 ### Bug Fixes
@@ -37,7 +54,7 @@ All notable changes to this project will be documented in this file.
 
 ### Features
 
-- **WROX Sourcemap support** — Added sourcemap builder that generates and refreshes sourcemaps automatically after sync, enabling luau-lsp integration for WROX users
+- **WEPPY Sourcemap support** — Added sourcemap builder that generates and refreshes sourcemaps automatically after sync, enabling luau-lsp integration for WEPPY users
 - **Dashboard improvements** — Added agent activity indicators, last-seen/last-command columns, process termination, and active place path display to the connection and sync dashboards
 
 ### Stability
@@ -122,8 +139,8 @@ All notable changes to this project will be documented in this file.
 
 ### ⚠️ BREAKING CHANGES
 
-- **Sync directory renamed**: `roblox-project-sync/` → `wrox-project-sync/`. All existing sync data will be stored under the new directory. The old `roblox-project-sync/` directory is no longer used.
-- **App data directory renamed**: `~/.weppy-roblox-mcp` → `~/.wrox-data`. The old `~/.weppy-roblox-mcp` directory is no longer recognized.
+- **Sync directory renamed**: `roblox-project-sync/` → `weppy-project-sync/`. All existing sync data will be stored under the new directory. The old `roblox-project-sync/` directory is no longer used.
+- **App data directory renamed**: `~/.weppy-roblox-mcp` → `~/.weppy-data`. The old `~/.weppy-roblox-mcp` directory is no longer recognized.
 - **Project sync resets from Studio**: After upgrading, project sync data is re-initialized from Studio as the source of truth. Any local-only changes not yet synced back to Studio will be lost — ensure your Studio state is up to date before upgrading.
 - **License downgrade requires plugin action**: If your license changes from Pro to Basic, you **must** click "Refresh" in the plugin UI or deactivate and reactivate the plugin for the tier change to take effect. Without this step, the plugin may continue to report the previous tier.
 
@@ -139,7 +156,7 @@ All notable changes to this project will be documented in this file.
 - Harden sync-root switching with error handling and fallback resolution
 - Preserve and surface dashboard sync-root restart errors
 - Normalize observability sync roots and honor override root in runtime paths
-- Cover remaining wrox runtime paths
+- Cover remaining legacy runtime paths
 
 ### Documentation
 
@@ -175,7 +192,7 @@ All notable changes to this project will be documented in this file.
 
 ### What's New
 
-- Published WROX Explorer to VS Code Marketplace and Open VSX Registry. Install directly from your editor's extension marketplace.
+- Published WEPPY Explorer to VS Code Marketplace and Open VSX Registry. Install directly from your editor's extension marketplace.
 - Updated installation guide to reflect new marketplace links for Roblox Explorer.
 
 

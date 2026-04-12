@@ -52,7 +52,7 @@ Altere o idioma da interface do Dashboard. Suporta 6 idiomas + Auto (deteccao au
 
 ## Documentos relacionados
 
-- [WROX Dashboard Overview](overview.md)
+- [WEPPY Dashboard Overview](overview.md)
 - [Changelog](changelog.md)
 - [Connection](connection.md)
 - [Sync](sync.md)

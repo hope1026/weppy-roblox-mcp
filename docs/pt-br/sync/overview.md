@@ -18,16 +18,16 @@ Sem Sync, a IA so enxerga trechos colados no chat. Com Sync ativo, ela trabalha 
 2. Incremental Sync: atualizacao continua das mudancas novas
 3. Rastreamento de History/Status: ver o que mudou, quando e em qual direcao
 
-Os dados de Sync ficam em `{projectRoot}/wrox-project-sync/place_{placeId}/explorer`.
-Alem disso, o WROX grava um sourcemap por place em `{projectRoot}/wrox-project-sync/place_{placeId}/sourcemap.json` e mantem o arquivo representativo recomendado na raiz em `{projectRoot}/wrox-project-sync/sourcemap.json`.
-Para integracoes de editor como `luau-lsp`, o caminho da raiz e o recomendado. Os passos de configuracao estao em [Usar `luau-lsp` com WROX Sync](./luau-lsp.md).
+Os dados de Sync ficam em `{projectRoot}/weppy-project-sync/place_{placeId}/explorer`.
+Alem disso, o WEPPY grava um sourcemap por place em `{projectRoot}/weppy-project-sync/place_{placeId}/sourcemap.json` e mantem o arquivo representativo recomendado na raiz em `{projectRoot}/weppy-project-sync/sourcemap.json`.
+Para integracoes de editor como `luau-lsp`, o caminho da raiz e o recomendado. Os passos de configuracao estao em [Usar `luau-lsp` com WEPPY Sync](./luau-lsp.md).
 
 ### Explorar dados sincronizados no VSCode
 
-Instale a extensao [WROX Roblox Explorer](../installation/roblox-explorer.md) para explorar a arvore de instancias sincronizada no VSCode, assim como no Roblox Studio.
+Instale a extensao [WEPPY Roblox Explorer](../installation/roblox-explorer.md) para explorar a arvore de instancias sincronizada no VSCode, assim como no Roblox Studio.
 O Explorer le os arquivos de sync gerados aqui e tambem pode mostrar status sync ao vivo e informacoes de direction quando o servidor MCP local estiver em execucao.
 
-![WROX Roblox Explorer — explorar a arvore de instancias sincronizada no VSCode](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
+![WEPPY Roblox Explorer — explorar a arvore de instancias sincronizada no VSCode](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
 
 - Arvore de servicos/instancias com icones de classes Roblox
 - Clique em um script para abri-lo e editar
@@ -40,7 +40,7 @@ O Explorer le os arquivos de sync gerados aqui e tambem pode mostrar status sync
 | Direcao de sync | Studio -> Local | Bidirecional |
 | Direction por tipo | Nao suportado | Suportado (Scripts / Values / Containers / Data / Services) |
 | Apply Mode por tipo | Nao suportado | Suportado (Auto / Manual) |
-| APIs de status/historico | Nao suportado | Suportado (`status`, `history`, `progress`) |
+| APIs de status/historico | Nao suportado | Suportado (`status_current_place`, `history`, `progress`) |
 | Ferramenta `manage_sync` | Nao suportado | Suportado |
 | Sync multiplace | Nao suportado | Suportado (ate 3 places) |
 
@@ -87,7 +87,7 @@ No Pro, voce controla Direction e Apply Mode por tipo.
 
 | Acao | Descricao | Parametros principais |
 |------|------|-----------|
-| `status` | Consultar estado atual de sync de um place | `placeId` |
+| `status_current_place` | Consultar o estado atual de sync do Place conectado | `-` |
 | `history` | Consultar historico de mudancas | `placeId`, `query.limit`, `query.offset` |
 | `directions` | Obter direcoes por tipo | `placeId` |
 | `read_file` | Ler arquivo sincronizado | `placeId`, `instancePath` |
@@ -148,6 +148,6 @@ Nomes que contem `~` sao escapados como `~~` (ex: `Part~2` → `Part~~2/`). Regr
 
 ## Documentos relacionados
 
-- [Usar `luau-lsp` com WROX Sync](./luau-lsp.md)
+- [Usar `luau-lsp` com WEPPY Sync](./luau-lsp.md)
 - [Cobertura de ferramentas (Tools Overview)](../tools/overview.md)
 - [Guia de upgrade Pro](https://weppyai.com/en/plans)

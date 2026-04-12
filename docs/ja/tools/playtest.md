@@ -86,10 +86,10 @@ Edit --play--> Running --stop--> Edit
 
 ### 5. レポート出力
 
-レポートとログはローカルの `{projectRoot}/wrox-project-sync/place_XXXXX/tests/YYYYMMDD-HHmmss/` 配下に保存されます。
+レポートとログはローカルの `{projectRoot}/weppy-project-sync/place_XXXXX/tests/YYYYMMDD-HHmmss/` 配下に保存されます。
 
 ```text
-{projectRoot}/wrox-project-sync/place_XXXXX/tests/YYYYMMDD-HHmmss/
+{projectRoot}/weppy-project-sync/place_XXXXX/tests/YYYYMMDD-HHmmss/
 ├── test-report.md
 └── test-log.txt
 ```

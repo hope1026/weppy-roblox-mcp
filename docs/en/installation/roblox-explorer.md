@@ -1,23 +1,23 @@
-# WROX Roblox Explorer (VSCode · Antigravity Extension)
+# WEPPY Roblox Explorer (VSCode · Antigravity Extension)
 
 > **Optional** — Explorer is not required. All core features work with just MCP and the plugin. Install it when you want to browse the project structure in your editor.
 
 Roblox Studio Explorer-like tree view for your editor. Browse synced instance trees, open scripts directly, and track sync status — all inside your editor.
-This is a companion extension for WROX, not a standalone Roblox integration.
+This is a companion extension for WEPPY, not a standalone Roblox integration.
 
-![WROX Roblox Explorer](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
+![WEPPY Roblox Explorer](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
 
 ## Requirements
 
 - VSCode 1.85+ or Antigravity
 - [Roblox MCP](../../../README.md) installed with Sync enabled (Basic or Pro)
-- Sync has already generated `wrox-project-sync/place_*/.sync-meta.json` under your project root
+- Sync has already generated `weppy-project-sync/place_*/.sync-meta.json` under your project root
 
 ## Installation
 
 ### VSCode
 
-Search for **WROX Roblox Explorer** in the VSCode Extensions sidebar (`Ctrl+Shift+X` / `Cmd+Shift+X`) and click **Install**.
+Search for **WEPPY Roblox Explorer** in the VSCode Extensions sidebar (`Ctrl+Shift+X` / `Cmd+Shift+X`) and click **Install**.
 
 Or install directly from:
 
@@ -26,7 +26,7 @@ Or install directly from:
 
 ### Antigravity
 
-Antigravity is VSCode-based, so the same extension works. Search for **WROX Roblox Explorer** in the Antigravity Extensions tab and click **Install**.
+Antigravity is VSCode-based, so the same extension works. Search for **WEPPY Roblox Explorer** in the Antigravity Extensions tab and click **Install**.
 
 ---
 
@@ -47,7 +47,7 @@ Core tree browsing works from synced files on disk. Live sync state, direction i
 
 | Setting | Default | Description |
 |---------|---------|-------------|
-| `robloxExplorer.syncRoot` | `""` | Absolute path to the `wrox-project-sync` root. If empty, it is auto-discovered. WROX uses `{projectRoot}/wrox-project-sync`. |
+| `robloxExplorer.syncRoot` | `""` | Absolute path to the `weppy-project-sync` root. If empty, it is auto-discovered. WEPPY uses `{projectRoot}/weppy-project-sync`. |
 | `robloxExplorer.hidePropsFiles` | `false` | Hide sync artifact files (`.props.json`, `_tree.json`, `.value.json`) in the default VSCode explorer. |
 | `robloxExplorer.autoRefresh` | `true` | Auto-refresh tree when sync files change. |
 | `robloxExplorer.showSyncStatus` | `true` | Show sync status decorations on tree items. |
@@ -56,11 +56,11 @@ Core tree browsing works from synced files on disk. Live sync state, direction i
 
 | Command | Description |
 |---------|-------------|
-| `WROX Explorer: Refresh` | Manually refresh the instance tree |
-| `WROX Explorer: Search Instances` | Search instances across all services |
-| `WROX Explorer: Open Backing File` | Open the file backing a selected instance |
-| `WROX Explorer: Copy Instance Path` | Copy the full instance path (e.g. `game.Workspace.Part`) |
-| `WROX Explorer: Reveal in Explorer` | Show the backing file in the default VSCode explorer |
+| `WEPPY Explorer: Refresh` | Manually refresh the instance tree |
+| `WEPPY Explorer: Search Instances` | Search instances across all services |
+| `WEPPY Explorer: Open Backing File` | Open the file backing a selected instance |
+| `WEPPY Explorer: Copy Instance Path` | Copy the full instance path (e.g. `game.Workspace.Part`) |
+| `WEPPY Explorer: Reveal in Explorer` | Show the backing file in the default VSCode explorer |
 
 ## Related
 

@@ -227,7 +227,7 @@ Kebijakan Sync:
 
 | Aksi | Deskripsi | Tier |
 |------|-----------|------|
-| `status` | Mendapatkan status sinkronisasi sebuah Place | Pro |
+| `status_current_place` | Mendapatkan status sinkronisasi Place yang saat ini terhubung | Pro |
 | `history` | Mendapatkan riwayat perubahan | Pro |
 | `directions` | Mendapatkan arah sinkronisasi per tipe | Pro |
 | `read_file` | Membaca file yang disinkronkan | Pro |

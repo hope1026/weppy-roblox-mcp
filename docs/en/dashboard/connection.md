@@ -69,7 +69,7 @@ Check the name, PID, and working directory of connected agents in the AI Agents 
 
 ## Related Documents
 
-- [WROX Dashboard Overview](overview.md)
+- [WEPPY Dashboard Overview](overview.md)
 - [Changelog](changelog.md)
 - [Sync](sync.md)
 - [Playtest](playtest.md)

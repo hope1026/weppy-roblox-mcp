@@ -1,6 +1,6 @@
 # Roblox MCP — Server MCP untuk Roblox Studio | Pengembangan Game AI dengan Claude, Codex, Cursor & Gemini
 
-> **WROX** adalah server MCP yang memungkinkan agen pengkodean AI mengontrol sesi Roblox Studio secara langsung — buat dan edit script, instance, terrain, lighting, asset, audio, dan animasi dengan bahasa alami.
+> **WEPPY** adalah server MCP yang memungkinkan agen pengkodean AI mengontrol sesi Roblox Studio secara langsung — buat dan edit script, instance, terrain, lighting, asset, audio, dan animasi dengan bahasa alami.
 
 **Alat terkonsolidasi berbasis aksi · Sync dua arah · Playtest otomatis · Dukungan multi-place**
 
@@ -8,11 +8,11 @@
 
 [![Demo — AI membuat game Roblox secara real-time](https://img.youtube.com/vi/puQB4u1VlMw/maxresdefault.jpg)](https://youtu.be/puQB4u1VlMw)
 
-## Mengapa WROX (Weppy Roblox MCP)?
+## Mengapa WEPPY (Weppy Roblox MCP)?
 
 Agen pengkodean AI seperti Claude, Codex, dan Gemini sangat kuat — tetapi tidak bisa melihat atau mengubah apa pun di dalam Roblox Studio. DataModel, script, terrain, dan lighting semuanya tidak terlihat oleh alat eksternal. Tanpa jembatan, AI hanya bisa menghasilkan potongan kode yang harus kamu tempelkan secara manual.
 
-**WROX** adalah jembatan antara agen AI dan Roblox Studio. AI langsung membuat dan memodifikasi instance, script, properti, terrain, dan lainnya di dalam Studio, dan perubahan langsung tercermin di Studio dan dashboard sehingga kamu bisa **melihat persis apa yang berubah**.
+**WEPPY** adalah jembatan antara agen AI dan Roblox Studio. AI langsung membuat dan memodifikasi instance, script, properti, terrain, dan lainnya di dalam Studio, dan perubahan langsung tercermin di Studio dan dashboard sehingga kamu bisa **melihat persis apa yang berubah**.
 
 Tidak perlu copy-paste kode. AI bekerja dan kamu memverifikasi hasilnya.
 
@@ -104,9 +104,9 @@ AI bisa mengontrol playtest Studio secara langsung. AI dapat memulai dan menghen
 - "Tulis dan jalankan test untuk memastikan SpawnLocation berada di atas tanah."
 - "Validasi lewat playtest bahwa script yang baru saya ubah berjalan tanpa error."
 
-![WROX Playtest Dashboard — riwayat tes dan laporan detail](../assets/screenshots/dashboard/dashboard_playtest.png)
+![WEPPY Playtest Dashboard — riwayat tes dan laporan detail](../assets/screenshots/dashboard/dashboard_playtest.png)
 
-### 4) WROX Dashboard: pantau pekerjaan AI secara real-time
+### 4) WEPPY Dashboard: pantau pekerjaan AI secara real-time
 
 Dashboard berbasis web yang disediakan server MCP memungkinkan Anda melihat status koneksi, riwayat eksekusi alat, status sinkronisasi, dan riwayat perubahan game secara real-time.
 
@@ -114,19 +114,19 @@ Dashboard berbasis web yang disediakan server MCP memungkinkan Anda melihat stat
 - Bandingkan semua perubahan yang dilakukan AI dengan Before & After di Changelog
 - Analisis alur kerja dengan riwayat dan statistik eksekusi alat
 
-![WROX WROX Dashboard Overview — status server, perubahan terbaru, ringkasan sesi](../assets/screenshots/dashboard/dashboard_overview.png)
+![WEPPY WEPPY Dashboard Overview — status server, perubahan terbaru, ringkasan sesi](../assets/screenshots/dashboard/dashboard_overview.png)
 
-### 5) WROX Roblox Explorer: jelajahi hierarki Studio di VSCode
+### 5) WEPPY Roblox Explorer: jelajahi hierarki Studio di VSCode
 
 Lihat seluruh pohon instance dari place Roblox Studio langsung di dalam VSCode. Navigasi service, buka script dan file properti yang tersinkron, dan pantau status sinkronisasi — semua tanpa beralih ke Studio.
-WROX Roblox Explorer adalah ekstensi pendamping VSCode untuk data sync yang dihasilkan oleh WROX. Penjelajahan tree dasar bekerja dari file yang sudah tersinkron di disk, dan indikator live untuk status sync atau direction menjadi lebih lengkap saat server MCP lokal sedang berjalan.
+WEPPY Roblox Explorer adalah ekstensi pendamping VSCode untuk data sync yang dihasilkan oleh WEPPY. Penjelajahan tree dasar bekerja dari file yang sudah tersinkron di disk, dan indikator live untuk status sync atau direction menjadi lebih lengkap saat server MCP lokal sedang berjalan.
 Instal dari [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer) atau [Open VSX](https://open-vsx.org/extension/weppy/weppy-roblox-explorer).
 
 - Ikon class yang sama dengan Studio untuk pengenalan instan
 - Klik untuk membuka script dan file properti yang tersinkron
 - Dukungan multiplace dengan indikator status sinkronisasi
 
-![WROX Roblox Explorer — pohon instance Studio ditampilkan di sidebar VSCode](../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
+![WEPPY Roblox Explorer — pohon instance Studio ditampilkan di sidebar VSCode](../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
 
 ## Nilai yang langsung terasa
 
@@ -149,7 +149,7 @@ Instal dari [VS Code Marketplace](https://marketplace.visualstudio.com/items?ite
 - [Daftar tool lengkap](tools/overview.md)
 - [Panduan detail Sync](sync/overview.md)
 - [Panduan dashboard](dashboard/overview.md)
-- [WROX Roblox Explorer (Ekstensi VSCode)](installation/roblox-explorer.md)
+- [WEPPY Roblox Explorer (Ekstensi VSCode)](installation/roblox-explorer.md)
 - [Kompatibilitas](../compatibility.md)
 - [Panduan pemecahan masalah](../troubleshooting.md)
 

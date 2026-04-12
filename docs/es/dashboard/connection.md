@@ -69,7 +69,7 @@ Consulta el nombre, PID y directorio de trabajo del agente actualmente conectado
 
 ## Documentos relacionados
 
-- [WROX Dashboard Overview](overview.md)
+- [WEPPY Dashboard Overview](overview.md)
 - [Changelog](changelog.md)
 - [Sync](sync.md)
 - [Playtest](playtest.md)

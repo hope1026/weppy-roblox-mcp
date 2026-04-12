@@ -60,7 +60,7 @@ Cari item dengan Status Error di tab History untuk melihat informasi detail.
 
 ## Dokumen Terkait
 
-- [WROX Dashboard Overview](overview.md)
+- [WEPPY Dashboard Overview](overview.md)
 - [Changelog](changelog.md)
 - [Connection](connection.md)
 - [Sync](sync.md)

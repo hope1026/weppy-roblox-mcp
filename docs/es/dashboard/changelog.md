@@ -106,7 +106,7 @@ Filtra por la categoria Instance en la linea de tiempo y rastrea los cambios de 
 
 ## Documentos relacionados
 
-- [WROX Dashboard Overview](overview.md)
+- [WEPPY Dashboard Overview](overview.md)
 - [Connection](connection.md)
 - [Sync](sync.md)
 - [Playtest](playtest.md)

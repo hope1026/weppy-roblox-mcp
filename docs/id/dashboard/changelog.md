@@ -106,7 +106,7 @@ Filter kategori Instance di timeline dan lacak perubahan tipe delete secara kron
 
 ## Dokumen Terkait
 
-- [WROX Dashboard Overview](overview.md)
+- [WEPPY Dashboard Overview](overview.md)
 - [Connection](connection.md)
 - [Sync](sync.md)
 - [Playtest](playtest.md)

@@ -18,16 +18,16 @@ Tanpa Sync, AI hanya melihat potongan kode yang ditempel di chat. Dengan Sync ak
 2. Incremental Sync: perubahan baru terus disinkronkan
 3. Pelacakan History/Status: cek apa yang berubah, kapan, dan ke arah mana
 
-Data Sync disimpan di `{projectRoot}/wrox-project-sync/place_{placeId}/explorer`.
-Selain itu, WROX menulis sourcemap per place ke `{projectRoot}/wrox-project-sync/place_{placeId}/sourcemap.json` dan menjaga file perwakilan root yang direkomendasikan di `{projectRoot}/wrox-project-sync/sourcemap.json`.
-Untuk integrasi editor seperti `luau-lsp`, sebaiknya gunakan path root. Langkah setup dijelaskan di [Menggunakan `luau-lsp` dengan WROX Sync](./luau-lsp.md).
+Data Sync disimpan di `{projectRoot}/weppy-project-sync/place_{placeId}/explorer`.
+Selain itu, WEPPY menulis sourcemap per place ke `{projectRoot}/weppy-project-sync/place_{placeId}/sourcemap.json` dan menjaga file perwakilan root yang direkomendasikan di `{projectRoot}/weppy-project-sync/sourcemap.json`.
+Untuk integrasi editor seperti `luau-lsp`, sebaiknya gunakan path root. Langkah setup dijelaskan di [Menggunakan `luau-lsp` dengan WEPPY Sync](./luau-lsp.md).
 
 ### Jelajahi data sync di VSCode
 
-Instal ekstensi [WROX Roblox Explorer](../installation/roblox-explorer.md) untuk menjelajahi tree instance yang sudah tersinkron di VSCode, seperti di Roblox Studio.
+Instal ekstensi [WEPPY Roblox Explorer](../installation/roblox-explorer.md) untuk menjelajahi tree instance yang sudah tersinkron di VSCode, seperti di Roblox Studio.
 Explorer membaca file sync yang dihasilkan di sini, dan juga bisa menampilkan status sync live serta informasi direction saat server MCP lokal sedang berjalan.
 
-![WROX Roblox Explorer — jelajahi tree instance yang tersinkron di VSCode](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
+![WEPPY Roblox Explorer — jelajahi tree instance yang tersinkron di VSCode](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
 
 - Tree service/instance dengan ikon kelas Roblox
 - Klik script untuk membukanya dan mengedit
@@ -40,7 +40,7 @@ Explorer membaca file sync yang dihasilkan di sini, dan juga bisa menampilkan st
 | Arah sync | Studio -> Local | Dua arah |
 | Direction per tipe | Tidak didukung | Didukung (Scripts / Values / Containers / Data / Services) |
 | Apply Mode per tipe | Tidak didukung | Didukung (Auto / Manual) |
-| API status/riwayat | Tidak didukung | Didukung (`status`, `history`, `progress`) |
+| API status/riwayat | Tidak didukung | Didukung (`status_current_place`, `history`, `progress`) |
 | Tool `manage_sync` | Tidak didukung | Didukung |
 | Sync multiplace | Tidak didukung | Didukung (hingga 3 place) |
 
@@ -87,7 +87,7 @@ Di Pro, Direction dan Apply Mode bisa diatur per tipe.
 
 | Aksi | Deskripsi | Parameter utama |
 |------|------|-----------|
-| `status` | Cek status sync saat ini untuk place | `placeId` |
+| `status_current_place` | Cek status sync saat ini untuk Place yang terhubung | `-` |
 | `history` | Ambil riwayat perubahan | `placeId`, `query.limit`, `query.offset` |
 | `directions` | Ambil Direction per tipe | `placeId` |
 | `read_file` | Baca file yang sudah tersinkron | `placeId`, `instancePath` |
@@ -148,6 +148,6 @@ Nama yang mengandung `~` di-escape menjadi `~~` (contoh: `Part~2` → `Part~~2/`
 
 ## Dokumen terkait
 
-- [Menggunakan `luau-lsp` dengan WROX Sync](./luau-lsp.md)
+- [Menggunakan `luau-lsp` dengan WEPPY Sync](./luau-lsp.md)
 - [Cakupan tool (Tools Overview)](../tools/overview.md)
 - [Panduan Upgrade Pro](https://weppyai.com/en/plans)

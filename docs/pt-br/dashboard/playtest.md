@@ -52,7 +52,7 @@ Verifique o timestamp e o Status no Test History para acompanhar a tendencia dos
 
 ## Documentos relacionados
 
-- [WROX Dashboard Overview](overview.md)
+- [WEPPY Dashboard Overview](overview.md)
 - [Changelog](changelog.md)
 - [Connection](connection.md)
 - [Sync](sync.md)

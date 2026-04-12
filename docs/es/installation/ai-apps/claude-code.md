@@ -64,7 +64,7 @@ Claude Code gestiona el servidor MCP automaticamente:
 
 ## Probar la Conexion
 
-1. Abre **Roblox Studio** → Pestana Plugins → **WROX** → **Connect**
+1. Abre **Roblox Studio** → Pestana Plugins → **WEPPY** → **Connect**
 2. Prueba en **Claude Code**:
    ```
    Crea una parte azul en Roblox Studio
