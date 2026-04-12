@@ -641,7 +641,9 @@ if (Confirm-Action "  Run npx -y @weppy/roblox-mcp --setup?") {
         try {
             New-Item -ItemType Directory -Path $setupWorkingDir -Force | Out-Null
             Set-Location $setupWorkingDir
-            & $npxPath -y @weppy/roblox-mcp --setup
+            # stdin을 빈 파이프로 격리: irm|iex 대화형 모드에서 stdio MCP 서버가
+            # pwsh의 터미널 stdin을 상속받아 hang되는 문제를 방지한다
+            $null | & $npxPath -y @weppy/roblox-mcp --setup
             if ($LASTEXITCODE -ne 0) {
                 Write-Warn "Setup encountered a warning (non-blocking)"
             } else {

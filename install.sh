@@ -649,7 +649,9 @@ if confirm "  Run npx -y @weppy/roblox-mcp --setup?"; then
   fi
 
   if [ -n "${setup_tmp_dir:-}" ] && [ -d "$setup_tmp_dir" ]; then
-    if (cd "$setup_tmp_dir" && npx -y @weppy/roblox-mcp --setup); then
+    # stdin을 /dev/null로 격리: curl|bash 파이프 모드에서 stdio MCP 서버가
+    # bash의 남은 스크립트 바이트를 소비해버리는 문제를 방지한다
+    if (cd "$setup_tmp_dir" && npx -y @weppy/roblox-mcp --setup </dev/null); then
       success "Setup complete"
     else
       warn "Setup encountered a warning (non-blocking)"
