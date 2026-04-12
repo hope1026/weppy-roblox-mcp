@@ -168,7 +168,7 @@ function Test-CodexConfigConfigured($configPath) {
 
     $env:MCP_CODEX_CONFIG_PATH = $configPath
     try {
-        node --input-type=commonjs -e @'
+        @'
 const fs = require('fs');
 
 const configPath = process.env.MCP_CODEX_CONFIG_PATH;
@@ -301,7 +301,7 @@ function findAllCodexBlocks(source) {
 }
 
 function parseStringAssignment(value, key) {
-  const match = new RegExp('^\\s*' + key + '\\s*=\\s*(["\\'])([^"\\']+)\\1\\s*$').exec(value);
+  const match = new RegExp('^\\s*' + key + '\\s*=\\s*(["\'])([^"\']+)\\1\\s*$').exec(value);
   return match ? match[2] : null;
 }
 
@@ -575,7 +575,7 @@ try {
 } catch {
   process.exit(1);
 }
-'@
+'@ | node --input-type=commonjs
         return $LASTEXITCODE -eq 0
     }
     finally {

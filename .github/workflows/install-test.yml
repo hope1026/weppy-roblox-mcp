@@ -19,10 +19,24 @@ jobs:
       - name: Install Claude Code CLI (app detection용)
         run: npm install -g @anthropic-ai/claude-code
 
-      - name: Run install.sh (CI mode)
+      - name: Pre-seed Codex config (force is_codex_config_configured node path)
+        run: |
+          mkdir -p "$HOME/.codex"
+          cat > "$HOME/.codex/config.toml" <<'EOF'
+          [mcp_servers.dummy-server]
+          command = "echo"
+          args = ["hello"]
+          EOF
+
+      - name: Run install.sh (CI mode, pipe — simulates curl | bash)
         env:
           CI: true
-        run: bash install.sh
+        run: |
+          cat install.sh | bash 2>&1 | tee install-output.log
+          if grep -q 'SyntaxError' install-output.log; then
+            echo "❌ SyntaxError detected in install output"
+            exit 1
+          fi
 
       - name: Verify — plugin file exists
         run: |
@@ -43,6 +57,15 @@ jobs:
           fi
           echo "✓ weppy-roblox-mcp registered"
 
+      - name: Verify — Codex config registered
+        run: |
+          if ! grep -q '\[mcp_servers.weppy-roblox-mcp\]' "$HOME/.codex/config.toml"; then
+            echo "❌ weppy-roblox-mcp not found in ~/.codex/config.toml"
+            cat "$HOME/.codex/config.toml"
+            exit 1
+          fi
+          echo "✓ weppy-roblox-mcp registered in Codex config"
+
   test-powershell:
     name: E2E — install.ps1 (windows)
     runs-on: windows-latest
@@ -56,11 +79,28 @@ jobs:
       - name: Install Claude Code CLI (app detection용)
         run: npm install -g @anthropic-ai/claude-code
 
-      - name: Run install.ps1 (CI mode)
+      - name: Pre-seed Codex config (force Test-CodexConfigConfigured node path)
+        shell: pwsh
+        run: |
+          $codexDir = Join-Path $env:USERPROFILE '.codex'
+          New-Item -ItemType Directory -Path $codexDir -Force | Out-Null
+          @'
+          [mcp_servers.dummy-server]
+          command = "echo"
+          args = ["hello"]
+          '@ | Set-Content -Path (Join-Path $codexDir 'config.toml') -Encoding UTF8
+
+      - name: Run install.ps1 (CI mode, pipe — simulates irm | iex)
         env:
           CI: true
         shell: pwsh
-        run: pwsh install.ps1
+        run: |
+          $log = Join-Path $env:RUNNER_TEMP 'install-output.log'
+          Get-Content install.ps1 -Raw | Invoke-Expression *>&1 | Tee-Object -FilePath $log
+          if (Select-String -Path $log -Pattern 'SyntaxError' -Quiet) {
+            Write-Error "❌ SyntaxError detected in install output"
+            exit 1
+          }
 
       - name: Verify — plugin file exists
         shell: pwsh
@@ -87,3 +127,14 @@ jobs:
             exit 1
           }
           Write-Host "✓ weppy-roblox-mcp registered"
+
+      - name: Verify — Codex config registered
+        shell: pwsh
+        run: |
+          $codexConfig = Join-Path $env:USERPROFILE '.codex\config.toml'
+          if (-not ((Get-Content $codexConfig -Raw) -match '\[mcp_servers\.weppy-roblox-mcp\]')) {
+            Write-Error "❌ weppy-roblox-mcp not found in ~/.codex/config.toml"
+            Get-Content $codexConfig
+            exit 1
+          }
+          Write-Host "✓ weppy-roblox-mcp registered in Codex config"
