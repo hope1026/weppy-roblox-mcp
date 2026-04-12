@@ -64,7 +64,7 @@ Claude Code는 MCP 서버를 자동으로 관리합니다:
 
 ## 연결 테스트
 
-1. **Roblox Studio** 실행 → Plugins 탭 → **WROX** → **Connect**
+1. **Roblox Studio** 실행 → Plugins 탭 → **WEPPY** → **Connect**
 2. **Claude Code**에서 테스트:
    ```
    Roblox Studio에 파란 파트 만들어줘

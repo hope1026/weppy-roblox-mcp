@@ -9,14 +9,14 @@ If the MCP server setup is complete, the plugin is **installed automatically**. 
 ### How it works
 
 1. When the MCP server runs for the first time, it places the plugin file (`WeppyRobloxMCP.rbxm`) into the Roblox Studio Plugins folder automatically.
-2. When you start Roblox Studio, the **WROX** button appears in the Plugins tab.
+2. When you start Roblox Studio, the **WEPPY** button appears in the Plugins tab.
 
 ### Connecting
 
 1. Open any project in **Roblox Studio**
-2. Go to **Plugins** tab → **WROX**
+2. Go to **Plugins** tab → **WEPPY**
 
-![WROX Button](../../assets/screenshots/plugin/installation/toolbar-button.png)
+![WEPPY Button](../../assets/screenshots/plugin/installation/toolbar-button.png)
 
 3. Click the **Connect** button in the plugin window
 4. Once **"Connected"** status is displayed, you're ready
@@ -50,9 +50,9 @@ Use this if automatic installation didn't work or you need to install a specific
 
 ### 3. Verify Installation
 
-After restarting, the **WROX** button will appear in the Plugins tab.
+After restarting, the **WEPPY** button will appear in the Plugins tab.
 
-![WROX Button](../../assets/screenshots/plugin/installation/toolbar-button.png)
+![WEPPY Button](../../assets/screenshots/plugin/installation/toolbar-button.png)
 
 ### 4. Connect
 

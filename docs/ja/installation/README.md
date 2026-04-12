@@ -68,12 +68,12 @@ GitHubからプラグインファイルをダウンロードして、Roblox Stud
 
 ---
 
-## オプション: WROX Roblox Explorer (VSCode拡張) のインストール
+## オプション: WEPPY Roblox Explorer (VSCode拡張) のインストール
 
 同期されたインスタンスツリーをRobloxクラスアイコン付きでVSCode内で閲覧できます。
-この拡張を使うには、先に上記のRoblox MCPセットアップを完了している必要があります。Explorer はプロジェクトルート配下の `wrox-project-sync` にある Sync データを読み取るためです。
+この拡張を使うには、先に上記のRoblox MCPセットアップを完了している必要があります。Explorer はプロジェクトルート配下の `weppy-project-sync` にある Sync データを読み取るためです。
 
-👉 [WROX Roblox Explorerインストールガイド](https://weppyai.com/ja/install#explorer)
+👉 [WEPPY Roblox Explorerインストールガイド](https://weppyai.com/ja/install#explorer)
 
 直接インストール:
 - [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer)
@@ -83,7 +83,7 @@ GitHubからプラグインファイルをダウンロードして、Roblox Stud
 
 ## インストール後
 
-1. **Roblox Studio**を開き、Pluginsタブから **WROX** → **Connect** をクリック
+1. **Roblox Studio**を開き、Pluginsタブから **WEPPY** → **Connect** をクリック
 2. **AIアプリ**で次のようにテストしてみてください:
 
 ```

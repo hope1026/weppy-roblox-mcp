@@ -86,10 +86,10 @@ Edit --play--> Running --stop--> Edit
 
 ### 5. Escrita de relatorios
 
-Os relatorios e logs sao gravados em `{projectRoot}/wrox-project-sync/place_XXXXX/tests/YYYYMMDD-HHmmss/`.
+Os relatorios e logs sao gravados em `{projectRoot}/weppy-project-sync/place_XXXXX/tests/YYYYMMDD-HHmmss/`.
 
 ```text
-{projectRoot}/wrox-project-sync/place_XXXXX/tests/YYYYMMDD-HHmmss/
+{projectRoot}/weppy-project-sync/place_XXXXX/tests/YYYYMMDD-HHmmss/
 ├── test-report.md
 └── test-log.txt
 ```

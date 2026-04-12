@@ -60,7 +60,7 @@ Encontre o item com Status Error na aba History para verificar as informacoes de
 
 ## Documentos relacionados
 
-- [WROX Dashboard Overview](overview.md)
+- [WEPPY Dashboard Overview](overview.md)
 - [Changelog](changelog.md)
 - [Connection](connection.md)
 - [Sync](sync.md)

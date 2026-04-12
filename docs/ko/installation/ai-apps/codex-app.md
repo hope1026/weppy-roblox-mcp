@@ -30,7 +30,7 @@ Command: npx -y @weppy/roblox-mcp
 
 ## 연결 테스트
 
-1. **Roblox Studio** 실행 → Plugins 탭 → **WROX** → **Connect**
+1. **Roblox Studio** 실행 → Plugins 탭 → **WEPPY** → **Connect**
 2. **Codex App**에서 새 대화 시작 후 테스트:
    ```
    Roblox Studio에서 현재 선택된 것을 알려줘

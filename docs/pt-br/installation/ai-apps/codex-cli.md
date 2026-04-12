@@ -40,7 +40,7 @@ args = ["-y", "@weppy/roblox-mcp"]
 
 ## Teste de Conexao
 
-1. Inicie o **Roblox Studio** → Aba Plugins → **WROX** → **Connect**
+1. Inicie o **Roblox Studio** → Aba Plugins → **WEPPY** → **Connect**
 2. Inicie o **Codex CLI** e digite:
    ```
    Diga-me o que esta selecionado atualmente no Roblox Studio

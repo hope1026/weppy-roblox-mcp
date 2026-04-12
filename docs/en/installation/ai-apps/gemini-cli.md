@@ -81,7 +81,7 @@ gemini mcp add weppy-roblox-mcp npx --trust -e HTTP_PORT=3002 -- -y @weppy/roblo
 
 ## Connection Test
 
-1. Open **Roblox Studio** → Plugins tab → **WROX** → **Connect**
+1. Open **Roblox Studio** → Plugins tab → **WEPPY** → **Connect**
 2. Run **Gemini CLI** and enter:
    ```
    Tell me what's currently selected in Roblox Studio

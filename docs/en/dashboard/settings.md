@@ -52,7 +52,7 @@ Change the dashboard UI language. 6 languages + Auto (automatic browser language
 
 ## Related Documents
 
-- [WROX Dashboard Overview](overview.md)
+- [WEPPY Dashboard Overview](overview.md)
 - [Changelog](changelog.md)
 - [Connection](connection.md)
 - [Sync](sync.md)

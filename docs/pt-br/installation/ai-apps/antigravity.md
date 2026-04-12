@@ -61,7 +61,7 @@ Recomendamos manter o padrão (HTTP `127.0.0.1:3002`). Se necessário, você pod
 
 ## Teste de conexão
 
-1. Abra o **Roblox Studio** → aba Plugins → **WROX** → **Connect**
+1. Abra o **Roblox Studio** → aba Plugins → **WEPPY** → **Connect**
 2. No **Antigravity**, digite:
    ```
    Diga-me o que está selecionado atualmente no Roblox Studio

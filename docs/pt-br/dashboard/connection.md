@@ -69,7 +69,7 @@ Confira o nome, PID e diretorio de trabalho do agente conectado na tabela AI Age
 
 ## Documentos relacionados
 
-- [WROX Dashboard Overview](overview.md)
+- [WEPPY Dashboard Overview](overview.md)
 - [Changelog](changelog.md)
 - [Sync](sync.md)
 - [Playtest](playtest.md)

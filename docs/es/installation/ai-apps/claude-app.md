@@ -46,7 +46,7 @@ Como usar Roblox MCP en [Claude Desktop App](https://claude.ai/download).
 
 ## Probar la Conexion
 
-1. Abre **Roblox Studio** → Pestana Plugins → **WROX** → **Connect**
+1. Abre **Roblox Studio** → Pestana Plugins → **WEPPY** → **Connect**
 2. Inicia una nueva conversacion en **Claude Desktop** y prueba:
    ```
    Crea una parte azul en Roblox Studio

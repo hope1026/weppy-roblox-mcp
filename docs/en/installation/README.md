@@ -70,12 +70,12 @@ Register the MCP server with your AI app. You can use it with any AI app that su
 
 ---
 
-## Optional: Install WROX Roblox Explorer (VSCode Extension)
+## Optional: Install WEPPY Roblox Explorer (VSCode Extension)
 
 Browse synced instance trees inside VSCode with Roblox class icons.
-This optional extension requires the Roblox MCP setup above, because it reads sync data from `wrox-project-sync` under your project root.
+This optional extension requires the Roblox MCP setup above, because it reads sync data from `weppy-project-sync` under your project root.
 
-👉 [WROX Roblox Explorer Installation Guide](https://weppyai.com/en/install#explorer)
+👉 [WEPPY Roblox Explorer Installation Guide](https://weppyai.com/en/install#explorer)
 
 Direct listings:
 - [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer)
@@ -85,7 +85,7 @@ Direct listings:
 
 ## After Installation
 
-1. Open **Roblox Studio**, go to Plugins tab and click **WROX** → **Connect**
+1. Open **Roblox Studio**, go to Plugins tab and click **WEPPY** → **Connect**
 2. Test in your **AI app** with:
 
 ```

@@ -48,7 +48,7 @@ Você só precisa ativar a licença uma vez, no plugin ou no dashboard. As duas 
 
 ### Ativar no plugin
 
-1. Abra o **WROX** no Roblox Studio e conecte ao servidor MCP.
+1. Abra o **WEPPY** no Roblox Studio e conecte ao servidor MCP.
 2. Abra a seção **Settings > License** no plugin.
 3. Cole a chave comprada no campo `License key`.
 4. Clique em **Activate** para ativar a licença.

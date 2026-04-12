@@ -63,12 +63,12 @@ Configura el servidor MCP en tu app de IA para que pueda comunicarse con Roblox 
 > npx -y @weppy/roblox-mcp
 > ```
 
-## Opcional: Instalar WROX Roblox Explorer (Extensión VSCode)
+## Opcional: Instalar WEPPY Roblox Explorer (Extensión VSCode)
 
 Explora los árboles de instancias sincronizados dentro de VSCode con iconos de clases Roblox.
-Esta extension opcional requiere completar antes la instalacion de Roblox MCP, porque Explorer lee los datos de Sync desde `wrox-project-sync` dentro de la raiz del proyecto.
+Esta extension opcional requiere completar antes la instalacion de Roblox MCP, porque Explorer lee los datos de Sync desde `weppy-project-sync` dentro de la raiz del proyecto.
 
-👉 [Guía de instalación de WROX Roblox Explorer](https://weppyai.com/en/install#explorer)
+👉 [Guía de instalación de WEPPY Roblox Explorer](https://weppyai.com/en/install#explorer)
 
 Instalación directa:
 - [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer)

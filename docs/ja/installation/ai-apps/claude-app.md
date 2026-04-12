@@ -46,7 +46,7 @@
 
 ## 接続テスト
 
-1. **Roblox Studio** を起動 → Pluginsタブ → **WROX** → **Connect**
+1. **Roblox Studio** を起動 → Pluginsタブ → **WEPPY** → **Connect**
 2. **Claude Desktop**で新しい会話を開始してテスト:
    ```
    Roblox Studioに青いパーツを作って

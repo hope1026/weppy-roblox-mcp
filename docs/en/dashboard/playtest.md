@@ -52,7 +52,7 @@ Check the timestamps and Status in Test History to track test result trends.
 
 ## Related Documents
 
-- [WROX Dashboard Overview](overview.md)
+- [WEPPY Dashboard Overview](overview.md)
 - [Changelog](changelog.md)
 - [Connection](connection.md)
 - [Sync](sync.md)

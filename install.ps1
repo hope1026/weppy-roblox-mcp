@@ -1,5 +1,5 @@
 #
-# WROX — One-line install script (Windows PowerShell)
+# WEPPY — One-line install script (Windows PowerShell)
 #
 # Usage:
 #   irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1 | iex
@@ -10,7 +10,7 @@
 #
 
 $ErrorActionPreference = "Stop"
-$script:InstallLogPath = Join-Path ([System.IO.Path]::GetTempPath()) ("wrox-install-{0:yyyyMMdd-HHmmss}.log" -f (Get-Date))
+$script:InstallLogPath = Join-Path ([System.IO.Path]::GetTempPath()) ("weppy-install-{0:yyyyMMdd-HHmmss}.log" -f (Get-Date))
 $script:TranscriptStarted = $false
 $script:NpmCommandPath = $null
 
@@ -118,7 +118,7 @@ function Add-AntigravityMcpConfig($configPath) {
     if (-not (Test-Path $parentDir)) { New-Item -ItemType Directory -Path $parentDir -Force | Out-Null }
     $env:MCP_CONFIG_PATH = $configPath
     try {
-        node -e @"
+        node --input-type=commonjs -e @"
 const fs = require('fs');
 const configPath = process.env.MCP_CONFIG_PATH;
 let config = {};
@@ -168,7 +168,7 @@ function Test-CodexConfigConfigured($configPath) {
 
     $env:MCP_CODEX_CONFIG_PATH = $configPath
     try {
-        node -e @'
+        node --input-type=commonjs -e @'
 const fs = require('fs');
 
 const configPath = process.env.MCP_CODEX_CONFIG_PATH;
@@ -589,7 +589,7 @@ function Add-McpToConfig($configPath) {
     if (-not (Test-Path $parentDir)) { New-Item -ItemType Directory -Path $parentDir -Force | Out-Null }
     $env:MCP_CONFIG_PATH = $configPath
     try {
-        node -e @"
+        node --input-type=commonjs -e @"
 const fs = require('fs');
 const configPath = process.env.MCP_CONFIG_PATH;
 let config = {};
@@ -605,7 +605,7 @@ fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + '\n');
 
 # ── Header ──
 Write-Host ""
-Write-Host "WROX Installer" -ForegroundColor White -BackgroundColor DarkCyan
+Write-Host "WEPPY Installer" -ForegroundColor White -BackgroundColor DarkCyan
 Write-Host "AI-powered Roblox Studio integration" -ForegroundColor DarkGray
 Write-Host ("=" * 40)
 
@@ -635,7 +635,7 @@ if (Confirm-Action "  Run npx -y @weppy/roblox-mcp --setup?") {
         if (-not (Test-Path $npxPath)) {
             $npxPath = "npx"
         }
-        & $npxPath -y "@weppy/roblox-mcp" --setup
+        & $npxPath -y --package=@weppy/roblox-mcp weppy-roblox-mcp --setup
         if ($LASTEXITCODE -ne 0) {
             Write-Warn "Setup encountered a warning (non-blocking)"
         } else {
@@ -874,7 +874,7 @@ Write-Host "Installation complete!" -ForegroundColor Green
 Write-Host ""
 Write-Host "  Next steps:"
 Write-Host "  1. Restart Roblox Studio"
-Write-Host "  2. Look for the WROX button in the Plugins tab"
+Write-Host "  2. Look for the WEPPY button in the Plugins tab"
 Write-Host "  3. Click Connect and start building with AI!"
 Write-Host ""
 Write-Host "  Auto registration: Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, Antigravity"

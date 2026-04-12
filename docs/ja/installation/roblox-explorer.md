@@ -1,19 +1,19 @@
-# WROX Roblox Explorer (VSCode拡張)
+# WEPPY Roblox Explorer (VSCode拡張)
 
 Roblox StudioのExplorerと同じインスタンスツリーをVSCodeで表示できる拡張機能です。同期済みインスタンスの探索、スクリプトの直接開封、Sync状態の確認をエディタ内で行えます。
-この拡張はWROX用のcompanion拡張であり、単体のRoblox連携ツールではありません。
+この拡張はWEPPY用のcompanion拡張であり、単体のRoblox連携ツールではありません。
 
-![WROX Roblox Explorer](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
+![WEPPY Roblox Explorer](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
 
 ## 要件
 
 - VSCode 1.85+
 - [Roblox MCP](../../../README.md) をインストールし、Syncを有効化 (BasicまたはPro)
-- プロジェクトルート配下に Sync により `wrox-project-sync/place_*/.sync-meta.json` が生成済みであること
+- プロジェクトルート配下に Sync により `weppy-project-sync/place_*/.sync-meta.json` が生成済みであること
 
 ## インストール方法
 
-VSCode Extensionsサイドバー（`Ctrl+Shift+X` / `Cmd+Shift+X`）で **WROX Roblox Explorer** を検索し、**Install** をクリックします。
+VSCode Extensionsサイドバー（`Ctrl+Shift+X` / `Cmd+Shift+X`）で **WEPPY Roblox Explorer** を検索し、**Install** をクリックします。
 
 または次のマーケットプレイスから直接インストールできます。
 
@@ -37,7 +37,7 @@ VSCode Extensionsサイドバー（`Ctrl+Shift+X` / `Cmd+Shift+X`）で **WROX R
 
 | 設定 | デフォルト | 説明 |
 |------|-----------|------|
-| `robloxExplorer.syncRoot` | `""` | `wrox-project-sync` ルートの絶対パス。空の場合は自動検出します。WROX は `{projectRoot}/wrox-project-sync` を使います。 |
+| `robloxExplorer.syncRoot` | `""` | `weppy-project-sync` ルートの絶対パス。空の場合は自動検出します。WEPPY は `{projectRoot}/weppy-project-sync` を使います。 |
 | `robloxExplorer.hidePropsFiles` | `false` | デフォルトのVSCodeエクスプローラーでSyncファイル（`.props.json`、`_tree.json`、`.value.json`）を非表示にする。 |
 | `robloxExplorer.autoRefresh` | `true` | Syncファイルの変更時にツリーを自動更新する。 |
 | `robloxExplorer.showSyncStatus` | `true` | ツリー項目にSync状態のデコレーションを表示する。 |
@@ -46,11 +46,11 @@ VSCode Extensionsサイドバー（`Ctrl+Shift+X` / `Cmd+Shift+X`）で **WROX R
 
 | コマンド | 説明 |
 |---------|------|
-| `WROX Explorer: Refresh` | インスタンスツリーを手動で更新 |
-| `WROX Explorer: Search Instances` | 全サービスでインスタンスを検索 |
-| `WROX Explorer: Open Backing File` | 選択したインスタンスのファイルを開く |
-| `WROX Explorer: Copy Instance Path` | 完全なインスタンスパスをコピー（例: `game.Workspace.Part`） |
-| `WROX Explorer: Reveal in Explorer` | デフォルトのVSCodeエクスプローラーでファイルを表示 |
+| `WEPPY Explorer: Refresh` | インスタンスツリーを手動で更新 |
+| `WEPPY Explorer: Search Instances` | 全サービスでインスタンスを検索 |
+| `WEPPY Explorer: Open Backing File` | 選択したインスタンスのファイルを開く |
+| `WEPPY Explorer: Copy Instance Path` | 完全なインスタンスパスをコピー（例: `game.Workspace.Part`） |
+| `WEPPY Explorer: Reveal in Explorer` | デフォルトのVSCodeエクスプローラーでファイルを表示 |
 
 ## 関連ドキュメント
 

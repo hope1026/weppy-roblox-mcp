@@ -25,9 +25,9 @@ Catatan:
 
 ## 3. Verifikasi Instalasi
 
-Setelah restart, tombol **WROX** muncul di tab Plugins.
+Setelah restart, tombol **WEPPY** muncul di tab Plugins.
 
-![Tombol WROX](../../assets/screenshots/plugin/installation/toolbar-button.png)
+![Tombol WEPPY](../../assets/screenshots/plugin/installation/toolbar-button.png)
 
 ## 4. Hubungkan AI Agent
 
@@ -48,7 +48,7 @@ MCP server harus sudah terinstal. Selesaikan dulu panduan app AI yang Anda pakai
 ### Menghubungkan
 
 1. Buka proyek apa saja di **Roblox Studio**
-2. Tab **Plugins** -> **WROX**
+2. Tab **Plugins** -> **WEPPY**
 3. Klik **Connect**
 4. Jika status **"Connected"** tampil, koneksi berhasil
 

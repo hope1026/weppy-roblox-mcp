@@ -46,7 +46,7 @@
 
 ## 연결 테스트
 
-1. **Roblox Studio** 실행 → Plugins 탭 → **WROX** → **Connect**
+1. **Roblox Studio** 실행 → Plugins 탭 → **WEPPY** → **Connect**
 2. **Claude Desktop**에서 새 대화 시작 후 테스트:
    ```
    Roblox Studio에 파란 파트 만들어줘

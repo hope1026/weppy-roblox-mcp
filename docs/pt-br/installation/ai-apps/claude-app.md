@@ -46,7 +46,7 @@ Como usar o Roblox MCP no [Claude Desktop App](https://claude.ai/download).
 
 ## Teste de Conexao
 
-1. Inicie o **Roblox Studio** → Aba Plugins → **WROX** → **Connect**
+1. Inicie o **Roblox Studio** → Aba Plugins → **WEPPY** → **Connect**
 2. Inicie uma nova conversa no **Claude Desktop** e teste:
    ```
    Crie uma parte azul no Roblox Studio

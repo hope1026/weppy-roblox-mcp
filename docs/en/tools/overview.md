@@ -227,7 +227,7 @@ Sync policy:
 
 | Action | Description | Tier |
 |--------|-------------|------|
-| `status` | Get sync status for a place | Pro |
+| `status_current_place` | Get sync status for the current connected place | Pro |
 | `history` | Get change history | Pro |
 | `directions` | Get per-type sync directions | Pro |
 | `read_file` | Read a synced file | Pro |

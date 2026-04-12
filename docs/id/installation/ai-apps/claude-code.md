@@ -64,7 +64,7 @@ Claude Code mengelola MCP server secara otomatis:
 
 ## Tes Koneksi
 
-1. Jalankan **Roblox Studio** → Tab Plugins → **WROX** → **Connect**
+1. Jalankan **Roblox Studio** → Tab Plugins → **WEPPY** → **Connect**
 2. Tes di **Claude Code**:
    ```
    Buatkan part biru di Roblox Studio

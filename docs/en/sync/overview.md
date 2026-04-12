@@ -18,16 +18,16 @@ Without Sync, AI only sees snippets pasted into chat. With Sync enabled, AI work
 2. Incremental Sync: continuous update of new changes
 3. History/Status tracking: inspect what changed, when, and in which direction
 
-Sync data is stored under `{projectRoot}/wrox-project-sync/place_{placeId}/explorer`.
-WROX also writes a place sourcemap to `{projectRoot}/wrox-project-sync/place_{placeId}/sourcemap.json` and keeps the recommended root representative file at `{projectRoot}/wrox-project-sync/sourcemap.json`.
-Use the root path for editor integrations such as `luau-lsp`. Setup steps are covered in [Use `luau-lsp` with WROX Sync](./luau-lsp.md).
+Sync data is stored under `{projectRoot}/weppy-project-sync/place_{placeId}/explorer`.
+WEPPY also writes a place sourcemap to `{projectRoot}/weppy-project-sync/place_{placeId}/sourcemap.json` and keeps the recommended root representative file at `{projectRoot}/weppy-project-sync/sourcemap.json`.
+Use the root path for editor integrations such as `luau-lsp`. Setup steps are covered in [Use `luau-lsp` with WEPPY Sync](./luau-lsp.md).
 
 ### Browse sync data in VSCode
 
-Install the [WROX Roblox Explorer](../installation/roblox-explorer.md) extension to browse the synced instance tree in VSCode, just like in Roblox Studio.
+Install the [WEPPY Roblox Explorer](../installation/roblox-explorer.md) extension to browse the synced instance tree in VSCode, just like in Roblox Studio.
 Explorer reads the sync files generated here, and it can show additional live sync state or direction details when the local MCP server is running.
 
-![WROX Roblox Explorer — browse synced instance tree in VSCode](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
+![WEPPY Roblox Explorer — browse synced instance tree in VSCode](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
 
 - Service/instance tree with Roblox class icons
 - Click a script to open it for editing
@@ -40,7 +40,7 @@ Explorer reads the sync files generated here, and it can show additional live sy
 | Sync direction | Studio -> Local | Bidirectional |
 | Per-type Direction | Not supported | Supported (Scripts / Values / Containers / Data / Services) |
 | Per-type Apply Mode | Not supported | Supported (Auto / Manual) |
-| Status/history APIs | Not supported | Supported (`status`, `history`, `progress`) |
+| Status/history APIs | Not supported | Supported (`status_current_place`, `history`, `progress`) |
 | `manage_sync` tool | Not supported | Supported |
 | Multi-place sync | Not supported | Supported (up to 3 places) |
 
@@ -87,7 +87,7 @@ In Pro, Direction and Apply Mode can be controlled per type.
 
 | Action | Description | Key params |
 |------|------|-----------|
-| `status` | Check current sync state for a place | `placeId` |
+| `status_current_place` | Check current sync state for the currently connected place | `-` |
 | `history` | Query change history | `placeId`, `query.limit`, `query.offset` |
 | `directions` | Get per-type direction settings | `placeId` |
 | `read_file` | Read a synced file | `placeId`, `instancePath` |
@@ -148,6 +148,6 @@ Names containing `~` are escaped to `~~` (e.g. `Part~2` becomes `Part~~2/`). The
 
 ## Related docs
 
-- [Use `luau-lsp` with WROX Sync](./luau-lsp.md)
+- [Use `luau-lsp` with WEPPY Sync](./luau-lsp.md)
 - [Tools Overview](../tools/overview.md)
 - [Pro Upgrade Guide](https://weppyai.com/en/plans)

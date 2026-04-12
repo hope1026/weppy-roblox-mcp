@@ -1,6 +1,6 @@
-# WROX — Full Documentation
+# WEPPY — Full Documentation
 
-> WROX is an MCP server that lets AI coding agents (Claude, Codex,
+> WEPPY is an MCP server that lets AI coding agents (Claude, Codex,
 > Cursor, Gemini) control a live Roblox Studio session — create and edit scripts,
 > instances, terrain, lighting, assets, audio, and animations via natural language.
 > Action-based MCP tools · Bidirectional sync · Multi-place support
@@ -69,12 +69,12 @@ Note: The same plugin package is used for all tiers.
 4. **Copy** the `WeppyRobloxMCP.rbxm` file into the opened Plugins folder
 5. **Restart Roblox Studio**
 
-After restarting, the **WROX** button will appear in the Plugins tab.
+After restarting, the **WEPPY** button will appear in the Plugins tab.
 
 ### Connect to AI Agent
 
 1. Open any project in **Roblox Studio**
-2. Go to **Plugins** tab -> **WROX**
+2. Go to **Plugins** tab -> **WEPPY**
 3. Click the **Connect** button in the plugin window
 4. Once **"Connected"** status is displayed, you're ready
 
@@ -213,7 +213,7 @@ In the agent pane, click ⋯ → MCP Servers → Manage MCP Servers → View raw
 
 Browse synced instance trees inside VSCode with Roblox class icons.
 
-Search for **WROX Explorer** in the VSCode Extensions sidebar and click Install, or install from [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer) or [Open VSX](https://open-vsx.org/extension/weppy/weppy-roblox-explorer).
+Search for **WEPPY Explorer** in the VSCode Extensions sidebar and click Install, or install from [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer) or [Open VSX](https://open-vsx.org/extension/weppy/weppy-roblox-explorer).
 
 Features:
 - Instance tree with Roblox class icons (dark/light theme)
@@ -224,7 +224,7 @@ Features:
 
 ## After Installation
 
-1. Open Roblox Studio, go to Plugins tab and click WROX → Connect
+1. Open Roblox Studio, go to Plugins tab and click WEPPY → Connect
 2. Test in your AI app: "Create a blue part in Roblox Studio"
 
 ---
@@ -506,7 +506,7 @@ Without Sync, AI only sees snippets pasted into chat. With Sync enabled, AI work
 2. Incremental Sync: continuous update of new changes
 3. History/Status tracking: inspect what changed, when, and in which direction
 
-Sync data is stored under `{projectRoot}/wrox-project-sync/place_{placeId}/explorer`.
+Sync data is stored under `{projectRoot}/weppy-project-sync/place_{placeId}/explorer`.
 
 ## Sync Capabilities
 
@@ -641,7 +641,7 @@ Claude Code, Claude Desktop, Cursor, Codex CLI, Codex Desktop, Gemini CLI, Antig
 ## Plugin not connecting
 
 1. Make sure the MCP server is running: `npx -y @weppy/roblox-mcp`
-2. In Roblox Studio: Plugins tab → WROX → Connect
+2. In Roblox Studio: Plugins tab → WEPPY → Connect
 3. Confirm nothing is blocking `localhost:3002` (firewall, antivirus, VPN)
 4. Try restarting both Roblox Studio and the MCP server
 

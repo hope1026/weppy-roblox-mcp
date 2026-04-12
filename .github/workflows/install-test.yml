@@ -14,7 +14,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
 
       - name: Install Claude Code CLI (app detection용)
         run: npm install -g @anthropic-ai/claude-code
@@ -23,15 +23,6 @@ jobs:
         env:
           CI: true
         run: bash install.sh
-
-      - name: Verify — npm global install
-        run: |
-          result=$(npm list -g @weppy/roblox-mcp --depth=0 2>&1)
-          if ! echo "$result" | grep -q '@weppy/roblox-mcp'; then
-            echo "❌ @weppy/roblox-mcp not installed globally"
-            exit 1
-          fi
-          echo "✓ @weppy/roblox-mcp installed"
 
       - name: Verify — plugin file exists
         run: |
@@ -60,7 +51,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
 
       - name: Install Claude Code CLI (app detection용)
         run: npm install -g @anthropic-ai/claude-code
@@ -70,16 +61,6 @@ jobs:
           CI: true
         shell: pwsh
         run: pwsh install.ps1
-
-      - name: Verify — npm global install
-        shell: pwsh
-        run: |
-          $result = npm list -g @weppy/roblox-mcp --depth=0 2>&1
-          if (-not ($result -match '@weppy/roblox-mcp')) {
-            Write-Error "❌ @weppy/roblox-mcp not installed globally"
-            exit 1
-          }
-          Write-Host "✓ @weppy/roblox-mcp installed"
 
       - name: Verify — plugin file exists
         shell: pwsh

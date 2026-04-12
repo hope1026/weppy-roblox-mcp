@@ -86,10 +86,10 @@ Edit --play--> Running --stop--> Edit
 
 ### 5. Write reports
 
-Reports and logs are written under `{projectRoot}/wrox-project-sync/place_XXXXX/tests/YYYYMMDD-HHmmss/`.
+Reports and logs are written under `{projectRoot}/weppy-project-sync/place_XXXXX/tests/YYYYMMDD-HHmmss/`.
 
 ```text
-{projectRoot}/wrox-project-sync/place_XXXXX/tests/YYYYMMDD-HHmmss/
+{projectRoot}/weppy-project-sync/place_XXXXX/tests/YYYYMMDD-HHmmss/
 ├── test-report.md
 └── test-log.txt
 ```
