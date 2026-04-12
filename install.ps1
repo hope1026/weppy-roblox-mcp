@@ -635,11 +635,22 @@ if (Confirm-Action "  Run npx -y @weppy/roblox-mcp --setup?") {
         if (-not (Test-Path $npxPath)) {
             $npxPath = "npx"
         }
-        & $npxPath -y --package=@weppy/roblox-mcp weppy-roblox-mcp --setup
-        if ($LASTEXITCODE -ne 0) {
-            Write-Warn "Setup encountered a warning (non-blocking)"
-        } else {
-            Write-Ok "Setup complete"
+        $setupWorkingDir = Join-Path ([System.IO.Path]::GetTempPath()) ("weppy-setup-" + [System.Guid]::NewGuid().ToString("N"))
+        $previousLocation = Get-Location
+
+        try {
+            New-Item -ItemType Directory -Path $setupWorkingDir -Force | Out-Null
+            Set-Location $setupWorkingDir
+            & $npxPath -y @weppy/roblox-mcp --setup
+            if ($LASTEXITCODE -ne 0) {
+                Write-Warn "Setup encountered a warning (non-blocking)"
+            } else {
+                Write-Ok "Setup complete"
+            }
+        }
+        finally {
+            Set-Location $previousLocation
+            Remove-Item $setupWorkingDir -Recurse -Force -ErrorAction SilentlyContinue
         }
     }
     catch {

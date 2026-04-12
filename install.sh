@@ -641,10 +641,23 @@ success "Node.js $(node -v) detected"
 step "1/2" "Setup Roblox Studio Plugin"
 
 if confirm "  Run npx -y @weppy/roblox-mcp --setup?"; then
-  if npx -y --package=@weppy/roblox-mcp weppy-roblox-mcp --setup; then
-    success "Setup complete"
+  setup_tmp_dir=""
+  if setup_tmp_dir=$(mktemp -d "${TMPDIR:-/tmp}/weppy-setup-XXXXXX" 2>/dev/null); then
+    :
+  elif setup_tmp_dir=$(mktemp -d 2>/dev/null); then
+    :
+  fi
+
+  if [ -n "${setup_tmp_dir:-}" ] && [ -d "$setup_tmp_dir" ]; then
+    if (cd "$setup_tmp_dir" && npx -y @weppy/roblox-mcp --setup); then
+      success "Setup complete"
+    else
+      warn "Setup encountered a warning (non-blocking)"
+    fi
+
+    rm -rf "$setup_tmp_dir"
   else
-    warn "Setup encountered a warning (non-blocking)"
+    warn "Setup encountered a warning (failed to create temp working directory)"
   fi
 else
   warn "Setup skipped"

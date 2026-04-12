@@ -24,7 +24,7 @@ WEPPY는 여기에 더해 place별 sourcemap을 `{projectRoot}/weppy-project-syn
 
 ### VSCode에서 Sync 데이터 탐색
 
-[WEPPY Roblox Explorer](../installation/roblox-explorer.md) 확장을 설치하면, 동기화된 인스턴스 트리를 Roblox Studio와 동일한 형태로 VSCode에서 탐색할 수 있습니다.
+[WEPPY Roblox Explorer](../explorer/overview.md) 확장을 설치하면, 동기화된 인스턴스 트리를 Roblox Studio와 동일한 형태로 VSCode에서 탐색할 수 있습니다.
 Explorer는 여기서 생성된 sync 파일을 읽고, 로컬 MCP 서버가 실행 중이면 추가로 실시간 sync 상태와 direction 정보를 표시할 수 있습니다.
 
 ![WEPPY Roblox Explorer — 동기화된 인스턴스 트리를 VSCode에서 탐색하는 모습](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)

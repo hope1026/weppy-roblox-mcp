@@ -149,7 +149,8 @@ Instal dari [VS Code Marketplace](https://marketplace.visualstudio.com/items?ite
 - [Daftar tool lengkap](tools/overview.md)
 - [Panduan detail Sync](sync/overview.md)
 - [Panduan dashboard](dashboard/overview.md)
-- [WEPPY Roblox Explorer (Ekstensi VSCode)](installation/roblox-explorer.md)
+- [Panduan lengkap WEPPY Roblox Explorer](explorer/overview.md)
+- [Instalasi WEPPY Roblox Explorer](installation/roblox-explorer.md)
 - [Kompatibilitas](../compatibility.md)
 - [Panduan pemecahan masalah](../troubleshooting.md)
 

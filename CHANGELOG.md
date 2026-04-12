@@ -10,6 +10,14 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.5.1] - 2026-04-12
+
+### Bug Fixes
+
+- **Fix installer failing when run from a directory with a local `@weppy/roblox-mcp` package** — If the install script was executed from a folder where `@weppy/roblox-mcp` was already present (for example inside the package itself or under a parent `node_modules`), `npx` could pick up the shadowed local copy instead of fetching the published release, causing setup to misbehave or fail. The installer now runs `npx` inside an isolated temporary working directory, so it always resolves and installs the latest published version regardless of where you run it from.
+
+
 ## [2.5.0] - 2026-04-12
 
 ### ⚠️ BREAKING CHANGES
