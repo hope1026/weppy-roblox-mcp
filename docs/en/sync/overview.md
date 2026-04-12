@@ -24,7 +24,7 @@ Use the root path for editor integrations such as `luau-lsp`. Setup steps are co
 
 ### Browse sync data in VSCode
 
-Install the [WEPPY Roblox Explorer](../installation/roblox-explorer.md) extension to browse the synced instance tree in VSCode, just like in Roblox Studio.
+Install the [WEPPY Roblox Explorer](../explorer/overview.md) extension to browse the synced instance tree in VSCode, just like in Roblox Studio.
 Explorer reads the sync files generated here, and it can show additional live sync state or direction details when the local MCP server is running.
 
 ![WEPPY Roblox Explorer — browse synced instance tree in VSCode](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)

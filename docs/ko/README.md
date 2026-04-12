@@ -147,7 +147,8 @@ WEPPY Roblox Explorer는 WEPPY가 생성한 sync 데이터를 위한 companion V
 - [Tool 전체 목록](tools/overview.md)
 - [Sync 기능 상세 가이드](sync/overview.md)
 - [WEPPY Dashboard 가이드](dashboard/overview.md)
-- [WEPPY Roblox Explorer (VSCode 확장)](installation/roblox-explorer.md)
+- [WEPPY Roblox Explorer 상세 가이드](explorer/overview.md)
+- [WEPPY Roblox Explorer 설치](installation/roblox-explorer.md)
 - [호환성](../compatibility.md)
 - [문제 해결 가이드](../troubleshooting.md)
 

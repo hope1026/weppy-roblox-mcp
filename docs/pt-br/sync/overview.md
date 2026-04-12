@@ -24,7 +24,7 @@ Para integracoes de editor como `luau-lsp`, o caminho da raiz e o recomendado. O
 
 ### Explorar dados sincronizados no VSCode
 
-Instale a extensao [WEPPY Roblox Explorer](../installation/roblox-explorer.md) para explorar a arvore de instancias sincronizada no VSCode, assim como no Roblox Studio.
+Instale a extensao [WEPPY Roblox Explorer](../explorer/overview.md) para explorar a arvore de instancias sincronizada no VSCode, assim como no Roblox Studio.
 O Explorer le os arquivos de sync gerados aqui e tambem pode mostrar status sync ao vivo e informacoes de direction quando o servidor MCP local estiver em execucao.
 
 ![WEPPY Roblox Explorer — explorar a arvore de instancias sincronizada no VSCode](../../assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
