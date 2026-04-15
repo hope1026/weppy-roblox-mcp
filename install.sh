@@ -891,4 +891,4 @@ printf "  2. Look for the ${BOLD}WEPPY${NC} button in the Plugins tab\n"
 printf "  3. Click Connect and start building with AI!\n\n"
 printf "  Auto registration: Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, Antigravity\n\n"
 # shellcheck disable=SC2059
-printf "  ${DIM}Docs: https://github.com/hope1026/weppy-roblox-mcp${NC}\n\n"
+printf "  ${DIM}Docs: https://weppyai.com/en/install${NC}\n\n"

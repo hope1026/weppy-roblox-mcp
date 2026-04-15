@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 
 
+## [2.6.0] - 2026-04-15
+
+### Features
+
+- **Edit-mode screen capture** — AI agents can now capture the Studio viewport directly in Edit mode, so they can see what you see and give feedback on layout, lighting, and placement without entering Playtest.
+- **German (Deutsch) language support** — The dashboard and plugin are now fully available in German. Switch to Deutsch from Settings → Language.
+
+### Stability
+
+- **Improved overall stability** — Tool execution, error messages, sync operations, and the dashboard "What's New" page have all been hardened for a smoother, more reliable experience.
+
+
+## [Unreleased]
+
+### ⚠️ BREAKING CHANGES
+
+- **Legacy sync folder names removed from spec and runtime** — `roblox-project-sync` (the pre-rebrand folder name) is no longer recognized by the MCP server, dashboard, Explorer extension, or playtest/test-report writers. Users who still had sync data under `roblox-project-sync/` must manually rename the folder to `weppy-project-sync/`. The `wrox-project-sync` → `weppy-project-sync` one-shot copy migration remains in place as transitional compat code for users upgrading from v2.5.x but is no longer part of the spec and will be removed in a future release.
 
 
 
