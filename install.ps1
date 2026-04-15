@@ -892,7 +892,7 @@ Write-Host "  3. Click Connect and start building with AI!"
 Write-Host ""
 Write-Host "  Auto registration: Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, Antigravity"
 Write-Host ""
-Write-Host "  Docs: https://github.com/hope1026/weppy-roblox-mcp" -ForegroundColor DarkGray
+Write-Host "  Docs: https://weppyai.com/en/install" -ForegroundColor DarkGray
 Write-Host ""
 
 Stop-InstallTranscript

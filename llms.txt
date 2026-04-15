@@ -23,7 +23,7 @@ terrain, and more — inside a live Studio session.
 
 **Web installer** (recommended one-click setup for Chrome, Edge, and Arc):
 
-https://hope1026.github.io/weppy-roblox-mcp/installer/
+https://weppyai.com/en/install
 
 **One-line install** (advanced fallback):
 
@@ -35,11 +35,7 @@ curl -fsSL https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/inst
 irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1 | iex
 ```
 
-Safari / Firefox users should follow the installer page guide or open the installation docs.
-
-Manual alternative:
-1. Install Roblox Studio plugin via the installation guide
-2. Register MCP server: `npx -y @weppy/roblox-mcp`
+Safari / Firefox users should open the web install page and follow the browser-specific guide there.
 
 ## Tiers
 
@@ -48,13 +44,7 @@ Manual alternative:
 
 ## Detailed docs
 
-- Full documentation: [llms-full.txt](https://github.com/hope1026/weppy-roblox-mcp/blob/main/llms-full.txt)
-- Installation: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/en/installation/README.md
-- Tools reference: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/en/tools/overview.md
-- Sync guide: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/en/sync/overview.md
-- WEPPY Dashboard guide: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/en/dashboard/overview.md
-- Troubleshooting: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/troubleshooting.md
-- Compatibility: https://github.com/hope1026/weppy-roblox-mcp/blob/main/docs/compatibility.md
+- Install and setup: https://weppyai.com/en/install
 - Pro upgrade: https://weppyai.com/en/plans
 
 ## Requirements

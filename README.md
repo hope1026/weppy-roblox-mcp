@@ -1,18 +1,18 @@
-# Roblox MCP — MCP Server for Roblox Studio | AI Game Development with Claude, Codex, Cursor & Gemini
+# Roblox MCP - MCP Server for Roblox Studio | AI Game Development with Claude, Codex, Cursor & Gemini
 
-> **WEPPY** is an MCP server that lets AI coding agents control a live Roblox Studio session — create and edit scripts, instances, terrain, lighting, assets, audio, and animations via natural language.
+> **WEPPY** is an MCP server that lets AI coding agents control a live Roblox Studio session - create and edit scripts, instances, terrain, lighting, assets, audio, and animations through natural language.
 
 **Action-based tool surface · Bidirectional sync · Automated playtest · Multi-place support**
 
-**English** | [한국어](docs/ko/README.md) | [日本語](docs/ja/README.md) | [Español](docs/es/README.md) | [Português](docs/pt-br/README.md) | [Bahasa Indonesia](docs/id/README.md)
+**English** | [한국어](https://weppyai.com/ko/docs) | [日本語](https://weppyai.com/ja/docs) | [Español](https://weppyai.com/es/docs) | [Português](https://weppyai.com/pt-br/docs) | [Bahasa Indonesia](https://weppyai.com/id/docs) | [Deutsch](https://weppyai.com/de/docs)
 
-[![Demo — AI building a Roblox game in real time](https://img.youtube.com/vi/puQB4u1VlMw/maxresdefault.jpg)](https://youtu.be/puQB4u1VlMw)
+[![Demo - AI building a Roblox game in real time](https://img.youtube.com/vi/puQB4u1VlMw/maxresdefault.jpg)](https://youtu.be/puQB4u1VlMw)
 
 ## Why WEPPY (Weppy Roblox MCP)?
 
-AI coding agents like Claude, Codex, and Gemini are powerful — but they cannot see or modify anything inside Roblox Studio. The DataModel, scripts, terrain, and lighting are all invisible to external tools. Without a bridge, AI can only generate code snippets that you must paste manually.
+AI coding agents like Claude, Codex, and Gemini are powerful, but they cannot see or modify anything inside Roblox Studio. The DataModel, scripts, terrain, and lighting are invisible to external tools. Without a bridge, AI can only generate code snippets that you must paste manually.
 
-**WEPPY** is a bridge between AI agents and Roblox Studio. AI directly creates and modifies instances, scripts, properties, terrain, and more inside Studio, and the changes are reflected immediately in Studio and the dashboard so you can **see exactly what changed**.
+**WEPPY** bridges AI agents and Roblox Studio. AI directly creates and modifies instances, scripts, properties, terrain, and more inside Studio, and the changes are reflected immediately in Studio and the dashboard so you can see exactly what changed.
 
 No copy-pasting code. AI does the work, you review the results.
 
@@ -40,30 +40,23 @@ irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1
 
 Then reopen your AI app and restart Roblox Studio.
 
-Automatic MCP registration supports **Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, and Antigravity**.
+Automatic MCP registration supports Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, and Antigravity.
 
 ### Manual Install
 
 If the one-line install does not work, or automatic installation is not available in your environment:
 
-**Step 1** — Install the Roblox Studio plugin:
-[Plugin Installation Guide](docs/en/installation/roblox-plugin.md)
+**Step 1** - Use the web install page for the Roblox Studio plugin and app-specific setup.
 
-**Step 2** — Register the MCP server with your AI app:
+👉 **[Web Install Docs](https://weppyai.com/ko/docs)**
+
+**Step 2** - Register the MCP server with your AI app:
 
 ```bash
 npx -y @weppy/roblox-mcp
 ```
 
-| AI App | Guide |
-|--------|-------|
-| Claude Code | [Setup](docs/en/installation/ai-apps/claude-code.md) |
-| Claude Desktop | [Setup](docs/en/installation/ai-apps/claude-app.md) |
-| Cursor | [Setup](docs/en/installation/ai-apps/cursor.md) |
-| Codex CLI | [Setup](docs/en/installation/ai-apps/codex-cli.md) |
-| Codex Desktop | [Setup](docs/en/installation/ai-apps/codex-app.md) |
-| Gemini CLI | [Setup](docs/en/installation/ai-apps/gemini-cli.md) |
-| Antigravity | [Setup](docs/en/installation/ai-apps/antigravity.md) |
+Supported AI apps are Claude Code, Claude Desktop, Cursor, Codex CLI, Codex App, Gemini CLI, and Antigravity.
 
 > Any MCP-compatible AI client works. The server command is `npx -y @weppy/roblox-mcp`.
 
@@ -94,7 +87,7 @@ AI works from a synchronized local mirror, so multi-file updates stay consistent
 - Basic: one-way sync (Studio -> Local)
 - Pro: bidirectional sync + per-type Direction/Apply Mode + history + multi-place
 
-![Sync workflow — Studio and local files synchronized in real time](docs/assets/screenshots/plugin/sync/sync-overview.png)
+![Sync workflow - Studio and local files synchronized in real time](docs/assets/screenshots/plugin/sync/sync-overview.png)
 
 ### 3) Playtest: Let AI run and verify tests automatically
 
@@ -104,7 +97,7 @@ AI can control Roblox Studio playtests directly. It can start and stop Play (F5)
 - "Write a test that verifies the SpawnLocation is above the ground and run it."
 - "Validate that the script I just changed runs without errors in playtest."
 
-![WEPPY Playtest Dashboard — Test history and detailed report](docs/assets/screenshots/dashboard/dashboard_playtest.png)
+![WEPPY Playtest Dashboard - Test history and detailed report](docs/assets/screenshots/dashboard/dashboard_playtest.png)
 
 ### 4) WEPPY Dashboard: Monitor AI work in real time
 
@@ -114,11 +107,11 @@ The MCP server provides a web dashboard where you can check connection status, t
 - Compare every change the AI made via Before & After in Changelog
 - Analyze workflow with tool execution history and statistics
 
-![WEPPY WEPPY Dashboard Overview — Server status, recent changes, and session summary](docs/assets/screenshots/dashboard/dashboard_overview.png)
+![WEPPY Dashboard Overview - Server status, recent changes, and session summary](docs/assets/screenshots/dashboard/dashboard_overview.png)
 
 ### 5) WEPPY Roblox Explorer: Browse Studio hierarchy in VSCode
 
-View the full instance tree of your Roblox Studio place directly inside VSCode. Navigate services, open synced scripts and property files, and track sync status — all without switching to Studio.
+View the full instance tree of your Roblox Studio place directly inside VSCode. Navigate services, open synced scripts and property files, and track sync status - all without switching to Studio.
 WEPPY Roblox Explorer is a companion VSCode extension for sync data generated by WEPPY. Tree browsing works from synced files, and live sync state or direction indicators are enhanced when the local MCP server is running.
 Install from [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer) or [Open VSX](https://open-vsx.org/extension/weppy/weppy-roblox-explorer).
 
@@ -126,13 +119,13 @@ Install from [VS Code Marketplace](https://marketplace.visualstudio.com/items?it
 - Click to open synced scripts and property files
 - Multi-place support with sync status indicators
 
-![WEPPY Roblox Explorer — Studio instance tree displayed in VSCode sidebar](docs/assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
+![WEPPY Roblox Explorer - Studio instance tree displayed in VSCode sidebar](docs/assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
 
 ## Use Cases
 
 - **Rapid prototyping**: Describe a game mechanic in natural language and watch AI build it in Studio
 - **Bulk refactoring**: Rename a module interface and update every dependent script in one request
-- **Terrain & environment**: Generate procedural terrain, set lighting/atmosphere, place assets — all from a single prompt
+- **Terrain & environment**: Generate procedural terrain, set lighting/atmosphere, place assets - all from a single prompt
 - **Multi-file consistency**: AI reads the full project via Sync and applies changes across related scripts together
 - **Asset integration**: Search the Creator Store, insert models, and configure properties without leaving your editor
 
@@ -145,40 +138,30 @@ Install from [VS Code Marketplace](https://marketplace.visualstudio.com/items?it
 
 ## Docs
 
-- [Installation Guide](docs/en/installation/README.md)
-- [Tools Reference](docs/en/tools/overview.md)
-- [Sync Deep Dive](docs/en/sync/overview.md)
-- [WEPPY Dashboard Guide](docs/en/dashboard/overview.md)
-- [WEPPY Roblox Explorer Guide](docs/en/explorer/overview.md)
-- [WEPPY Roblox Explorer Installation](docs/en/installation/roblox-explorer.md)
-- [Compatibility](docs/compatibility.md)
-- [Troubleshooting](docs/troubleshooting.md)
+Detailed guides and app-specific setup now live on the web.
 
-### Workflow Guides
+- [Web Docs Hub](https://weppyai.com/ko/docs)
+- [Install Guide](https://weppyai.com/en/install)
+- [Pro Upgrade](https://weppyai.com/en/plans)
 
-- [Instances & Properties](docs/en/tools/instances-and-properties.md) - search, creation, editing, tags
-- [Scripting & Code Execution](docs/en/tools/scripting.md) - script management and Luau execution
-- [World & Environment](docs/en/tools/world-and-environment.md) - lighting, terrain, camera
-- [Assets & Effects](docs/en/tools/assets-and-effects.md) - asset insertion, tweening, effects
-- [Playtest & Automated Tests](docs/en/tools/playtest.md) - playtest control and automated validation
-- [System & Debugging](docs/en/tools/system-and-debugging.md) - connection, logs, batch execution
+For app setup details, open the web docs hub and choose the relevant AI client guide.
 
 ## FAQ
 
 ### How do I connect Claude Code to Roblox Studio?
-Install the Roblox Studio plugin, then register the MCP server (`npx -y @weppy/roblox-mcp`) in Claude Code. Claude can then directly read and write scripts inside Studio. See [Claude Code Setup](docs/en/installation/ai-apps/claude-code.md).
+Install the Roblox Studio plugin, then register the MCP server (`npx -y @weppy/roblox-mcp`) in Claude Code. Claude can then directly read and write scripts inside Studio.
 
 ### How do I use Codex CLI with Roblox Studio?
-Install the plugin, then add the MCP server config to Codex CLI. See [Codex CLI Setup](docs/en/installation/ai-apps/codex-cli.md).
+Install the plugin, then add the MCP server config to Codex CLI.
 
 ### Does Roblox MCP work with Cursor?
-Yes. See [Cursor Setup](docs/en/installation/ai-apps/cursor.md). Any MCP-compatible AI client works.
+Yes. Any MCP-compatible AI client works.
 
 ### Can AI build Roblox games with this?
-Yes. AI can create instances, write scripts, generate terrain, set up lighting, insert assets, configure physics, and more — all inside a live Roblox Studio session. It goes beyond code generation to executable actions.
+Yes. AI can create instances, write scripts, generate terrain, set up lighting, insert assets, configure physics, and more - all inside a live Roblox Studio session. It goes beyond code generation to executable actions.
 
 ### What is the difference between Basic and Pro?
-Basic (Free) includes MCP tool execution and one-way sync (Studio -> Local). Pro adds bidirectional sync, bulk operations, terrain generation, spatial analysis, audio/animation control, and multi-place support. See the [Pro Upgrade Guide](https://weppyai.com/en/plans).
+Basic (Free) includes MCP tool execution and one-way sync (Studio -> Local). Pro adds bidirectional sync, bulk operations, terrain generation, spatial analysis, audio/animation control, and multi-place support. See the Pro upgrade page.
 
 ### How is Weppy different from other Roblox MCP servers?
 Weppy uses action-based dispatching instead of separate tools for each function. This reduces AI token consumption significantly. It also provides bidirectional project sync and multi-place support, which most alternatives lack.
@@ -188,7 +171,7 @@ The server runs on localhost only (127.0.0.1:3002). Forbidden paths (CoreGui, Co
 
 ## Pro Upgrade
 
-Bidirectional Sync, advanced build capabilities, and AI token efficiency — all in one upgrade.
+Bidirectional Sync, advanced build capabilities, and AI token efficiency - all in one upgrade.
 
 [Pro Upgrade Guide](https://weppyai.com/en/plans)
 

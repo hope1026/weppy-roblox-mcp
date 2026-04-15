@@ -2,12 +2,10 @@
 
 ## Documentation
 
-- [Installation Guide](docs/en/installation/README.md)
-- [Tools Reference](docs/en/tools/overview.md)
-- [Sync Deep Dive](docs/en/sync/overview.md)
-- [Roblox Explorer (VSCode Extension)](docs/en/installation/roblox-explorer.md)
-- [Compatibility](docs/en/compatibility.md)
-- [Troubleshooting](docs/en/troubleshooting.md)
+- [Web Docs Hub](https://weppyai.com/ko/docs)
+- [Install Page](https://weppyai.com/en/install)
+- [Pro Upgrade](https://weppyai.com/en/plans)
+- [Roblox Explorer (VSCode Extension)](https://weppyai.com/ko/docs)
 
 ## Community Help
 
