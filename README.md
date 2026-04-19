@@ -4,7 +4,7 @@
 
 **Action-based tool surface · Bidirectional sync · Automated playtest · Multi-place support**
 
-**English** | [한국어](https://weppyai.com/ko/docs) | [日本語](https://weppyai.com/ja/docs) | [Español](https://weppyai.com/es/docs) | [Português](https://weppyai.com/pt-br/docs) | [Bahasa Indonesia](https://weppyai.com/id/docs) | [Deutsch](https://weppyai.com/de/docs)
+**English** | [한국어](https://weppyai.com/ko) | [日本語](https://weppyai.com/ja) | [Español](https://weppyai.com/es) | [Português](https://weppyai.com/pt-br) | [Bahasa Indonesia](https://weppyai.com/id) | [Deutsch](https://weppyai.com/de)
 
 [![Demo - AI building a Roblox game in real time](https://img.youtube.com/vi/puQB4u1VlMw/maxresdefault.jpg)](https://youtu.be/puQB4u1VlMw)
 
