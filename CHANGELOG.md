@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 
 
+
+## [2.6.1] - 2026-04-19
+
+### Features
+
+- **Dashboard design refresh** — The dashboard now has a cleaner layout with a slimmer top header, an updated sidebar using Lucide icons, and a new Upgrade widget. It also supports light and dark themes and follows your system preference by default.
+- **Changelog shows before/after values** — The Changelog page now displays the previous value and the new value side by side for each property change, so you can see exactly what changed without digging through raw data. Added and removed items are highlighted more clearly too.
+- **What's New announcement for the 2026-04-19 release** — The dashboard What's New page includes a new entry covering the design refresh, light/dark mode, and Changelog before/after display.
+
+
 ## [2.6.0] - 2026-04-15
 
 ### Features
