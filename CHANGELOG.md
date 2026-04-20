@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.6.2] - 2026-04-20
+
+### Features
+
+- **Help & Feedback in the dashboard sidebar** — A new Help & Feedback group has been added to the bottom of the dashboard sidebar, giving you one-click access to report a bug, request a feature, join the community, or open the official troubleshooting guide. The bug report link automatically prefills your OS, AI client, and MCP/plugin version in the GitHub issue form so filing a report takes seconds instead of minutes, and the troubleshooting link opens the official guide on weppyai.com in your current dashboard language.
+
+### Stability
+
+- **Improved overall stability** — General stability has been hardened for a smoother, more reliable experience.
+
+
 ## [2.6.1] - 2026-04-19
 
 ### Features
