@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.6.3] - 2026-04-21
+
+### Bug Fixes
+
+- **Fix MCP tools failing to register on Claude Code 2.0.21+ and other strict MCP clients** — Starting a session with `@weppy/roblox-mcp` configured returned a `400 input_schema does not support oneOf, allOf, or anyOf at the top level` error, causing **no WEPPY tools to load at all**. The server now sanitizes `tools/list` responses so the schema passes Anthropic API validation. Users on Claude Code 2.1.x were unaffected (the client already worked around the issue), but users on older Claude Code, Cursor, Cline, or direct API integrations will now get a clean tool registration without any config change.
+
+
 ## [2.6.2] - 2026-04-20
 
 ### Features
