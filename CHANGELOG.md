@@ -6,6 +6,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+## [2.6.4] - 2026-04-22
+
+### Bug Fixes
+
+- **Fix MCP server crashing on startup** — The MCP server could crash immediately on startup, preventing any tools from loading. The server now starts cleanly without any config change.
+
+
 ## [2.6.3] - 2026-04-21
 
 ### Bug Fixes
