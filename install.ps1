@@ -675,8 +675,25 @@ $notDetected = @()
 
 $claudeProjectConfig = Join-Path (Get-Location).Path '.mcp.json'
 $claudeGlobalConfig = Join-Path $env:USERPROFILE '.claude\mcp.json'
-$claudeCodeConfigured = (Test-McpJsonConfigured $claudeProjectConfig) -or (Test-McpJsonConfigured $claudeGlobalConfig)
 $claudeCodeCliCommand = Resolve-OptionalCliCommand 'claude'
+
+# `claude mcp add` stores entries under ~/.claude.json or in local/user scope,
+# so prefer `claude mcp list` as the source of truth when the CLI is available
+# (the JSON path checks remain as a fallback).
+function Test-ClaudeCliConfigured($cliCommand) {
+    if (-not $cliCommand) { return $false }
+    try {
+        $listOutput = & $cliCommand mcp list 2>$null
+        if ($LASTEXITCODE -ne 0) { return $false }
+        return ($listOutput | Select-String -Pattern '^weppy-roblox-mcp[\s:]' -Quiet)
+    } catch {
+        return $false
+    }
+}
+
+$claudeCodeConfigured = (Test-ClaudeCliConfigured $claudeCodeCliCommand) `
+    -or (Test-McpJsonConfigured $claudeProjectConfig) `
+    -or (Test-McpJsonConfigured $claudeGlobalConfig)
 
 if ($claudeCodeConfigured) {
     $detectedNames += 'Claude Code (configured)'
@@ -816,12 +833,37 @@ else {
                         Write-Ok "Already configured: $appName"
                     }
                     elseif ($claudeCodeCliCommand) {
-                        & $claudeCodeCliCommand mcp add weppy-roblox-mcp -- npx -y "@weppy/roblox-mcp"
-                        if ($LASTEXITCODE -ne 0) {
-                            # CLI 실패 시 (Windows에서 -- 파싱 문제 등) JSON config에 직접 쓰기로 폴백
-                            Add-McpToConfig $claudeGlobalConfig
+                        $claudeStderrFile = Join-Path ([System.IO.Path]::GetTempPath()) ("weppy-claude-{0}.err" -f ([System.Guid]::NewGuid().ToString("N")))
+                        try {
+                            & $claudeCodeCliCommand mcp add weppy-roblox-mcp -- npx -y "@weppy/roblox-mcp" 2> $claudeStderrFile
+                            $claudeExit = $LASTEXITCODE
+                            if ($claudeExit -eq 0) {
+                                Write-Ok "Registered: $appName"
+                            }
+                            else {
+                                $stderrContent = if (Test-Path $claudeStderrFile) { Get-Content $claudeStderrFile -Raw } else { '' }
+                                if ($stderrContent -match '(?i)already exists') {
+                                    # Already registered in another scope — not a failure
+                                    Write-Ok "Already configured: $appName"
+                                }
+                                else {
+                                    Write-Fail "Failed: $appName (exit=$claudeExit)"
+                                    Write-Host "    CLI: $claudeCodeCliCommand" -ForegroundColor DarkGray
+                                    if ($stderrContent) {
+                                        Write-Host "    stderr:" -ForegroundColor DarkGray
+                                        $stderrContent.TrimEnd("`r","`n").Split("`n") | ForEach-Object {
+                                            Write-Host "      $($_.TrimEnd())" -ForegroundColor DarkGray
+                                        }
+                                    }
+                                    # Fall back to writing the JSON config directly when the CLI fails for other reasons
+                                    Add-McpToConfig $claudeGlobalConfig
+                                    Write-Ok "Registered via fallback JSON: $appName"
+                                }
+                            }
                         }
-                        Write-Ok "Registered: $appName"
+                        finally {
+                            Remove-Item $claudeStderrFile -ErrorAction SilentlyContinue
+                        }
                     }
                     else {
                         Write-Fail "Failed: $appName (CLI/config unavailable)"

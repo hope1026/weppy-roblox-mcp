@@ -19,14 +19,14 @@ jobs:
       - name: Install Claude Code CLI (app detection용)
         run: npm install -g @anthropic-ai/claude-code
 
-      - name: Pre-seed Codex config (force is_codex_config_configured node path)
+      - name: Stub codex CLI binary (force CLI detection path)
         run: |
-          mkdir -p "$HOME/.codex"
-          cat > "$HOME/.codex/config.toml" <<'EOF'
-          [mcp_servers.dummy-server]
-          command = "echo"
-          args = ["hello"]
+          sudo tee /usr/local/bin/codex > /dev/null <<'EOF'
+          #!/bin/bash
+          echo "codex stub"
           EOF
+          sudo chmod +x /usr/local/bin/codex
+          codex
 
       - name: Run install.sh (CI mode, pipe — simulates curl | bash)
         env:
@@ -66,6 +66,11 @@ jobs:
           fi
           echo "✓ weppy-roblox-mcp registered in Codex config"
 
+      - name: Verify — MCP server responds to initialize + tools/list
+        env:
+          MCP_TIMEOUT: '90000'
+        run: node .github/scripts/mcp-smoke.mjs
+
   test-powershell:
     name: E2E — install.ps1 (windows)
     runs-on: windows-latest
@@ -79,16 +84,13 @@ jobs:
       - name: Install Claude Code CLI (app detection용)
         run: npm install -g @anthropic-ai/claude-code
 
-      - name: Pre-seed Codex config (force Test-CodexConfigConfigured node path)
+      - name: Stub codex CLI binary (force CLI detection path)
         shell: pwsh
         run: |
-          $codexDir = Join-Path $env:USERPROFILE '.codex'
-          New-Item -ItemType Directory -Path $codexDir -Force | Out-Null
-          @'
-          [mcp_servers.dummy-server]
-          command = "echo"
-          args = ["hello"]
-          '@ | Set-Content -Path (Join-Path $codexDir 'config.toml') -Encoding UTF8
+          $stubDir = Join-Path $env:RUNNER_TEMP 'codex-stub'
+          New-Item -ItemType Directory -Path $stubDir -Force | Out-Null
+          Set-Content -Path (Join-Path $stubDir 'codex.cmd') -Value "@echo codex stub"
+          Add-Content -Path $env:GITHUB_PATH -Value $stubDir
 
       - name: Run install.ps1 (CI mode, pipe — simulates irm | iex)
         env:
@@ -138,3 +140,9 @@ jobs:
             exit 1
           }
           Write-Host "✓ weppy-roblox-mcp registered in Codex config"
+
+      - name: Verify — MCP server responds to initialize + tools/list
+        shell: pwsh
+        env:
+          MCP_TIMEOUT: '90000'
+        run: node .github/scripts/mcp-smoke.mjs
