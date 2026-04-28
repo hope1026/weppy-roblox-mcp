@@ -110,35 +110,35 @@ jobs:
       - name: Stub codex CLI binary (force CLI detection path)
         shell: pwsh
         run: |
-          # Stub `codex` so install.ps1 hits the CLI detection branch.
-          # Delegates to a PowerShell helper that appends a [mcp_servers.NAME]
-          # block to ~/.codex/config.toml when invoked with `mcp add ...`.
+          # Stub `codex` via a Node.js helper. Earlier attempts using a
+          # cmd → pwsh → param wrapper kept losing the `--` separator
+          # in install.ps1's `codex mcp add NAME -- CMD ARGS...` call;
+          # node receives argv verbatim, sidestepping that whole chain.
           $stubDir = Join-Path $env:RUNNER_TEMP 'codex-stub'
           New-Item -ItemType Directory -Path $stubDir -Force | Out-Null
 
-          # Use $StubArgs (not $Args) — $Args is an automatic PowerShell variable
-          # and binding it via param triggers a parameter-binding error on pwsh 7.
-          $stubPs1 = @'
-          param([Parameter(ValueFromRemainingArguments = $true)] [string[]] $StubArgs)
-          if ($null -ne $StubArgs -and $StubArgs.Count -ge 2 -and $StubArgs[0] -eq 'mcp' -and $StubArgs[1] -eq 'add') {
-            $rest = $StubArgs[2..($StubArgs.Count - 1)]
-            $name = $rest[0]
-            $idx = 1
-            if ($rest.Count -gt 1 -and $rest[1] -eq '--') { $idx = 2 }
-            $cmd = $rest[$idx]
-            $cmdArgs = if (($idx + 1) -lt $rest.Count) { $rest[($idx + 1)..($rest.Count - 1)] } else { @() }
-            $argsJson = ($cmdArgs | ForEach-Object { '"' + $_ + '"' }) -join ', '
-            $codexDir = Join-Path $env:USERPROFILE '.codex'
-            New-Item -ItemType Directory -Path $codexDir -Force | Out-Null
-            $configPath = Join-Path $codexDir 'config.toml'
-            $block = "`n[mcp_servers.$name]`ncommand = `"$cmd`"`nargs = [$argsJson]`n"
-            Add-Content -Path $configPath -Value $block
+          $stubJs = @'
+          const fs = require('fs');
+          const path = require('path');
+          const args = process.argv.slice(2);
+          if (args[0] === 'mcp' && args[1] === 'add') {
+            const rest = args.slice(2);
+            const name = rest[0];
+            const idx = rest[1] === '--' ? 2 : 1;
+            const cmd = rest[idx];
+            const cmdArgs = rest.slice(idx + 1);
+            const argsJson = cmdArgs.map((a) => '"' + a + '"').join(', ');
+            const home = process.env.USERPROFILE || process.env.HOME;
+            const codexDir = path.join(home, '.codex');
+            fs.mkdirSync(codexDir, { recursive: true });
+            const block = '\n[mcp_servers.' + name + ']\ncommand = "' + cmd + '"\nargs = [' + argsJson + ']\n';
+            fs.appendFileSync(path.join(codexDir, 'config.toml'), block);
           }
-          exit 0
+          process.exit(0);
           '@
-          Set-Content -Path (Join-Path $stubDir 'codex-stub.ps1') -Value $stubPs1 -Encoding UTF8
+          Set-Content -Path (Join-Path $stubDir 'codex-stub.js') -Value $stubJs -Encoding UTF8
 
-          $stubCmd = "@echo off`r`npwsh -NoProfile -ExecutionPolicy Bypass -File `"$stubDir\codex-stub.ps1`" %*"
+          $stubCmd = "@echo off`r`nnode `"$stubDir\codex-stub.js`" %*"
           Set-Content -Path (Join-Path $stubDir 'codex.cmd') -Value $stubCmd -Encoding ASCII
           Add-Content -Path $env:GITHUB_PATH -Value $stubDir
 
