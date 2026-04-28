@@ -112,13 +112,14 @@ function Test-McpJsonConfigured($configPath) {
     }
 }
 
-# Match the weppy package spec regardless of tag —
-# accepts `@weppy/roblox-mcp`, `@weppy/roblox-mcp@latest`, `@weppy/roblox-mcp@2.6.4`, etc.
+# Require an explicit `@<tag>` so the installer can upgrade legacy bare
+# entries (`@weppy/roblox-mcp`) — those reuse npx cache and trap users on
+# outdated versions. Tagged entries (`@latest`, `@2.6.4`, …) are preserved.
 function Test-WeppyPackageSpec($value) {
     if ([string]::IsNullOrWhiteSpace($value)) {
         return $false
     }
-    return $value -match '^@weppy/roblox-mcp(@.+)?$'
+    return $value -match '^@weppy/roblox-mcp@.+$'
 }
 
 # Add the MCP server under the canonical `mcpServers` wrapper in the Antigravity
@@ -185,8 +186,8 @@ const fs = require('fs');
 const configPath = process.env.MCP_CODEX_CONFIG_PATH;
 const serverName = 'weppy-roblox-mcp';
 const expectedCommand = 'npx';
-// The second arg may be `@weppy/roblox-mcp` or `@weppy/roblox-mcp@<tag>`; both are accepted.
-const packageSpecPattern = /^@weppy\/roblox-mcp(@.+)?$/;
+// Require an explicit `@<tag>` so the installer can upgrade legacy bare entries.
+const packageSpecPattern = /^@weppy\/roblox-mcp@.+$/;
 const headerPattern = new RegExp(
   '^\\s*\\[\\s*mcp_servers\\.' + serverName.replace(/[.*+?^${}()|[\]\\\\]/g, '\\$&') + '\\s*\\]\\s*(?:#.*)?$'
 );
@@ -695,13 +696,17 @@ $claudeCodeCliCommand = Resolve-OptionalCliCommand 'claude'
 
 # `claude mcp add` stores entries under ~/.claude.json or in local/user scope,
 # so prefer `claude mcp list` as the source of truth when the CLI is available
-# (the JSON path checks remain as a fallback).
+# (the JSON path checks remain as a fallback). The entry counts as configured
+# only when its args carry an explicit `@<tag>` — legacy bare entries fall
+# through and get re-registered with the canonical `@latest` form.
 function Test-ClaudeCliConfigured($cliCommand) {
     if (-not $cliCommand) { return $false }
     try {
         $listOutput = & $cliCommand mcp list 2>$null
         if ($LASTEXITCODE -ne 0) { return $false }
-        return ($listOutput | Select-String -Pattern '^weppy-roblox-mcp[\s:]' -Quiet)
+        $line = $listOutput | Select-String -Pattern '^weppy-roblox-mcp:' | Select-Object -First 1
+        if (-not $line) { return $false }
+        return ($line.Line -match '@weppy/roblox-mcp@')
     } catch {
         return $false
     }
@@ -851,6 +856,9 @@ else {
                     elseif ($claudeCodeCliCommand) {
                         $claudeStderrFile = Join-Path ([System.IO.Path]::GetTempPath()) ("weppy-claude-{0}.err" -f ([System.Guid]::NewGuid().ToString("N")))
                         try {
+                            # Best-effort remove any legacy bare entry so the subsequent add can
+                            # install the canonical `@latest` form.
+                            try { & $claudeCodeCliCommand mcp remove weppy-roblox-mcp *> $null } catch {}
                             & $claudeCodeCliCommand mcp add weppy-roblox-mcp -- npx -y "@weppy/roblox-mcp@latest" 2> $claudeStderrFile
                             $claudeExit = $LASTEXITCODE
                             if ($claudeExit -eq 0) {

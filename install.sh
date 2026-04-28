@@ -161,8 +161,9 @@ function isJsonObject(value) {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 function hasExpectedCommandShape(value) {
-  // Accept args[1] as the weppy package regardless of tag —
-  // `@weppy/roblox-mcp`, `@weppy/roblox-mcp@latest`, `@weppy/roblox-mcp@2.6.4` all match.
+  // Require an explicit `@<tag>` so the installer can upgrade legacy bare
+  // entries (`@weppy/roblox-mcp`) — those reuse npx cache and trap users on
+  // outdated versions. Tagged entries (`@latest`, `@2.6.4`, …) are preserved.
   return (
     isJsonObject(value) &&
     value.command === "npx" &&
@@ -170,7 +171,7 @@ function hasExpectedCommandShape(value) {
     value.args.length === 2 &&
     value.args[0] === "-y" &&
     typeof value.args[1] === "string" &&
-    /^@weppy\/roblox-mcp(@.+)?$/.test(value.args[1])
+    /^@weppy\/roblox-mcp@.+$/.test(value.args[1])
   );
 }
 try {
@@ -194,8 +195,8 @@ const fs = require("fs");
 const configPath = process.env.MCP_CODEX_CONFIG_PATH;
 const serverName = "weppy-roblox-mcp";
 const expectedCommand = "npx";
-// The second arg may be `@weppy/roblox-mcp` or `@weppy/roblox-mcp@<tag>`; both are accepted.
-const packageSpecPattern = /^@weppy\/roblox-mcp(@.+)?$/;
+// Require an explicit `@<tag>` so the installer can upgrade legacy bare entries.
+const packageSpecPattern = /^@weppy\/roblox-mcp@.+$/;
 const headerPattern = new RegExp(
   "^\\s*\\[\\s*mcp_servers\\." + serverName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\s*\\]\\s*(?:#.*)?$",
 );
@@ -696,7 +697,11 @@ CLAUDE_CLI_COMMAND="$(resolve_optional_cli_command claude 2>/dev/null || true)"
 
 is_claude_cli_configured() {
   [ -n "$CLAUDE_CLI_COMMAND" ] || return 1
-  "$CLAUDE_CLI_COMMAND" mcp list 2>/dev/null | grep -q "^weppy-roblox-mcp[[:space:]:]"
+  # The entry counts as configured only when its args carry an explicit `@tag`
+  # (e.g. `@latest`). Legacy bare entries fall through and get re-registered.
+  "$CLAUDE_CLI_COMMAND" mcp list 2>/dev/null \
+    | grep "^weppy-roblox-mcp:" \
+    | grep -q "@weppy/roblox-mcp@"
 }
 
 if is_claude_cli_configured \
@@ -840,6 +845,10 @@ else
           success "Already configured: $app_name"
         elif [ -n "$CLAUDE_CLI_COMMAND" ]; then
           claude_stderr_file=$(mktemp "${TMPDIR:-/tmp}/weppy-claude-XXXXXX.err" 2>/dev/null || echo "${HOME}/weppy-claude.err")
+          # Best-effort remove any legacy bare entry so the subsequent add can
+          # install the canonical `@latest` form. Ignore errors when nothing
+          # exists.
+          "$CLAUDE_CLI_COMMAND" mcp remove weppy-roblox-mcp >/dev/null 2>&1 || true
           # Capture the CLI exit code immediately so it isn't overwritten by the
           # subsequent grep check (which would otherwise leak its own exit code).
           claude_exit_code=0
