@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/hope1026-weppy-roblox-mcp-badge.png)](https://mseep.ai/app/hope1026-weppy-roblox-mcp)
+
 # Roblox MCP - MCP Server for Roblox Studio | AI Game Development with Claude, Codex, Cursor & Gemini
 
 > **WEPPY** is an MCP server that lets AI coding agents control a live Roblox Studio session - create and edit scripts, instances, terrain, lighting, assets, audio, and animations through natural language.
