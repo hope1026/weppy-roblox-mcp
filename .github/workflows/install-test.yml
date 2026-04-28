@@ -116,15 +116,17 @@ jobs:
           $stubDir = Join-Path $env:RUNNER_TEMP 'codex-stub'
           New-Item -ItemType Directory -Path $stubDir -Force | Out-Null
 
+          # Use $StubArgs (not $Args) — $Args is an automatic PowerShell variable
+          # and binding it via param triggers a parameter-binding error on pwsh 7.
           $stubPs1 = @'
-          param([Parameter(ValueFromRemainingArguments = $true)] [string[]] $Args)
-          if ($Args.Count -ge 2 -and $Args[0] -eq 'mcp' -and $Args[1] -eq 'add') {
-            $rest = $Args[2..($Args.Count - 1)]
+          param([Parameter(ValueFromRemainingArguments = $true)] [string[]] $StubArgs)
+          if ($null -ne $StubArgs -and $StubArgs.Count -ge 2 -and $StubArgs[0] -eq 'mcp' -and $StubArgs[1] -eq 'add') {
+            $rest = $StubArgs[2..($StubArgs.Count - 1)]
             $name = $rest[0]
             $idx = 1
             if ($rest.Count -gt 1 -and $rest[1] -eq '--') { $idx = 2 }
             $cmd = $rest[$idx]
-            $cmdArgs = $rest[($idx + 1)..($rest.Count - 1)]
+            $cmdArgs = if (($idx + 1) -lt $rest.Count) { $rest[($idx + 1)..($rest.Count - 1)] } else { @() }
             $argsJson = ($cmdArgs | ForEach-Object { '"' + $_ + '"' }) -join ', '
             $codexDir = Join-Path $env:USERPROFILE '.codex'
             New-Item -ItemType Directory -Path $codexDir -Force | Out-Null
