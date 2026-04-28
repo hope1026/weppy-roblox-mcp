@@ -30,9 +30,13 @@ const TIMEOUT_MS = Number(process.env.MCP_TIMEOUT || 60_000);
 
 console.log(`[smoke] launching: ${COMMAND} ${ARGS.join(' ')}`);
 
+// On Windows, `npx` resolves to `npx.cmd`, and Node's spawn() does not consult
+// PATHEXT — without shell:true it fails with ENOENT. Routing through a shell
+// works uniformly on every OS.
 const child = spawn(COMMAND, ARGS, {
   stdio: ['pipe', 'pipe', 'pipe'],
   env: { ...process.env, NODE_ENV: 'production' },
+  shell: true,
 });
 
 let exited = false;
