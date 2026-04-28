@@ -679,11 +679,21 @@ declare -a DETECTED_TYPES=()
 declare -a NOT_DETECTED=()
 
 # Claude Code
+# `claude mcp add` stores entries under ~/.claude.json or in local/user scope,
+# so prefer `claude mcp list` as the source of truth when the CLI is available
+# (the JSON path checks remain as a fallback).
 CLAUDE_PROJECT_MCP_CONFIG="$PWD/.mcp.json"
 CLAUDE_GLOBAL_MCP_CONFIG="$HOME/.claude/mcp.json"
 CLAUDE_CLI_COMMAND="$(resolve_optional_cli_command claude 2>/dev/null || true)"
 
-if is_json_mcp_configured "$CLAUDE_PROJECT_MCP_CONFIG" || is_json_mcp_configured "$CLAUDE_GLOBAL_MCP_CONFIG"; then
+is_claude_cli_configured() {
+  [ -n "$CLAUDE_CLI_COMMAND" ] || return 1
+  "$CLAUDE_CLI_COMMAND" mcp list 2>/dev/null | grep -q "^weppy-roblox-mcp[[:space:]:]"
+}
+
+if is_claude_cli_configured \
+   || is_json_mcp_configured "$CLAUDE_PROJECT_MCP_CONFIG" \
+   || is_json_mcp_configured "$CLAUDE_GLOBAL_MCP_CONFIG"; then
   DETECTED_NAMES+=("Claude Code (configured)")
   DETECTED_TYPES+=("claude-code")
 elif [ -n "$CLAUDE_CLI_COMMAND" ]; then
@@ -816,12 +826,30 @@ else
 
     case "$app_type" in
       claude-code)
-        if is_json_mcp_configured "$CLAUDE_PROJECT_MCP_CONFIG" || is_json_mcp_configured "$CLAUDE_GLOBAL_MCP_CONFIG"; then
+        if is_claude_cli_configured \
+           || is_json_mcp_configured "$CLAUDE_PROJECT_MCP_CONFIG" \
+           || is_json_mcp_configured "$CLAUDE_GLOBAL_MCP_CONFIG"; then
           success "Already configured: $app_name"
-        elif [ -n "$CLAUDE_CLI_COMMAND" ] && "$CLAUDE_CLI_COMMAND" mcp add weppy-roblox-mcp -- npx -y @weppy/roblox-mcp 2>/dev/null; then
-          success "Registered: $app_name"
+        elif [ -n "$CLAUDE_CLI_COMMAND" ]; then
+          claude_stderr_file=$(mktemp "${TMPDIR:-/tmp}/weppy-claude-XXXXXX.err" 2>/dev/null || echo "${HOME}/weppy-claude.err")
+          # Capture the CLI exit code immediately so it isn't overwritten by the
+          # subsequent grep check (which would otherwise leak its own exit code).
+          claude_exit_code=0
+          "$CLAUDE_CLI_COMMAND" mcp add weppy-roblox-mcp -- npx -y @weppy/roblox-mcp 2>"$claude_stderr_file" || claude_exit_code=$?
+          if [ "$claude_exit_code" -eq 0 ]; then
+            success "Registered: $app_name"
+          elif grep -qi "already exists" "$claude_stderr_file"; then
+            # Already registered in another scope — not a failure
+            success "Already configured: $app_name"
+          else
+            fail "Failed: $app_name (exit=$claude_exit_code)"
+            printf "    CLI: %s\n" "$CLAUDE_CLI_COMMAND"
+            printf "    stderr:\n"
+            sed 's/^/      /' "$claude_stderr_file" || true
+          fi
+          rm -f "$claude_stderr_file"
         else
-          fail "Failed: $app_name"
+          fail "Failed: $app_name (claude CLI not found)"
         fi
         ;;
       claude-desktop)
