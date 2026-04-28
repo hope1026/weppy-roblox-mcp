@@ -14,7 +14,7 @@
  *
  * Env:
  *   MCP_COMMAND   기본 "npx"
- *   MCP_ARGS      기본 "-y @weppy/roblox-mcp"  (공백 분리)
+ *   MCP_ARGS      기본 "-y @weppy/roblox-mcp@latest"  (공백 분리)
  *   MCP_TIMEOUT   기본 60000 (ms)
  */
 
@@ -22,7 +22,10 @@ import { spawn } from 'node:child_process';
 import { once } from 'node:events';
 
 const COMMAND = process.env.MCP_COMMAND || 'npx';
-const ARGS = (process.env.MCP_ARGS || '-y @weppy/roblox-mcp').split(/\s+/).filter(Boolean);
+// Default to `@latest` so npx is forced to resolve from the registry instead of
+// reusing whatever stale version sits in the runner's npm cache (the v2.0.8
+// regression that users hit when bare `@weppy/roblox-mcp` was published).
+const ARGS = (process.env.MCP_ARGS || '-y @weppy/roblox-mcp@latest').split(/\s+/).filter(Boolean);
 const TIMEOUT_MS = Number(process.env.MCP_TIMEOUT || 60_000);
 
 console.log(`[smoke] launching: ${COMMAND} ${ARGS.join(' ')}`);
