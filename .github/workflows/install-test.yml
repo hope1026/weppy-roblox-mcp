@@ -21,12 +21,35 @@ jobs:
 
       - name: Stub codex CLI binary (force CLI detection path)
         run: |
+          # Stub `codex` so install.sh hits the CLI detection branch.
+          # Implements `codex mcp add NAME -- CMD ARGS...` by appending a
+          # [mcp_servers.NAME] block to ~/.codex/config.toml so the post-install
+          # verification step (and is_codex_config_configured) can see it.
           sudo tee /usr/local/bin/codex > /dev/null <<'EOF'
-          #!/bin/bash
-          echo "codex stub"
+          #!/usr/bin/env bash
+          set -e
+          if [ "${1:-}" = "mcp" ] && [ "${2:-}" = "add" ]; then
+            shift 2
+            name="$1"; shift
+            [ "${1:-}" = "--" ] && shift
+            cmd="$1"; shift
+            args_json=""
+            for a in "$@"; do
+              args_json="${args_json}\"$a\", "
+            done
+            args_json="${args_json%, }"
+            mkdir -p "$HOME/.codex"
+            {
+              printf '\n[mcp_servers.%s]\n' "$name"
+              printf 'command = "%s"\n' "$cmd"
+              printf 'args = [%s]\n' "$args_json"
+            } >> "$HOME/.codex/config.toml"
+            exit 0
+          fi
+          # Other subcommands (list/remove) are no-ops for the CI stub.
+          exit 0
           EOF
           sudo chmod +x /usr/local/bin/codex
-          codex
 
       - name: Run install.sh (CI mode, pipe — simulates curl | bash)
         env:
@@ -87,9 +110,34 @@ jobs:
       - name: Stub codex CLI binary (force CLI detection path)
         shell: pwsh
         run: |
+          # Stub `codex` so install.ps1 hits the CLI detection branch.
+          # Delegates to a PowerShell helper that appends a [mcp_servers.NAME]
+          # block to ~/.codex/config.toml when invoked with `mcp add ...`.
           $stubDir = Join-Path $env:RUNNER_TEMP 'codex-stub'
           New-Item -ItemType Directory -Path $stubDir -Force | Out-Null
-          Set-Content -Path (Join-Path $stubDir 'codex.cmd') -Value "@echo codex stub"
+
+          $stubPs1 = @'
+          param([Parameter(ValueFromRemainingArguments = $true)] [string[]] $Args)
+          if ($Args.Count -ge 2 -and $Args[0] -eq 'mcp' -and $Args[1] -eq 'add') {
+            $rest = $Args[2..($Args.Count - 1)]
+            $name = $rest[0]
+            $idx = 1
+            if ($rest.Count -gt 1 -and $rest[1] -eq '--') { $idx = 2 }
+            $cmd = $rest[$idx]
+            $cmdArgs = $rest[($idx + 1)..($rest.Count - 1)]
+            $argsJson = ($cmdArgs | ForEach-Object { '"' + $_ + '"' }) -join ', '
+            $codexDir = Join-Path $env:USERPROFILE '.codex'
+            New-Item -ItemType Directory -Path $codexDir -Force | Out-Null
+            $configPath = Join-Path $codexDir 'config.toml'
+            $block = "`n[mcp_servers.$name]`ncommand = `"$cmd`"`nargs = [$argsJson]`n"
+            Add-Content -Path $configPath -Value $block
+          }
+          exit 0
+          '@
+          Set-Content -Path (Join-Path $stubDir 'codex-stub.ps1') -Value $stubPs1 -Encoding UTF8
+
+          $stubCmd = "@echo off`r`npwsh -NoProfile -ExecutionPolicy Bypass -File `"$stubDir\codex-stub.ps1`" %*"
+          Set-Content -Path (Join-Path $stubDir 'codex.cmd') -Value $stubCmd -Encoding ASCII
           Add-Content -Path $env:GITHUB_PATH -Value $stubDir
 
       - name: Run install.ps1 (CI mode, pipe — simulates irm | iex)

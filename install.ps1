@@ -112,7 +112,17 @@ function Test-McpJsonConfigured($configPath) {
     }
 }
 
-# Antigravity 설정에 canonical mcpServers 래퍼로 MCP 서버를 추가하고 legacy flat key를 정리
+# Match the weppy package spec regardless of tag —
+# accepts `@weppy/roblox-mcp`, `@weppy/roblox-mcp@latest`, `@weppy/roblox-mcp@2.6.4`, etc.
+function Test-WeppyPackageSpec($value) {
+    if ([string]::IsNullOrWhiteSpace($value)) {
+        return $false
+    }
+    return $value -match '^@weppy/roblox-mcp(@.+)?$'
+}
+
+# Add the MCP server under the canonical `mcpServers` wrapper in the Antigravity
+# config and strip any legacy flat key left over from earlier versions.
 function Add-AntigravityMcpConfig($configPath) {
     $parentDir = Split-Path $configPath -Parent
     if (-not (Test-Path $parentDir)) { New-Item -ItemType Directory -Path $parentDir -Force | Out-Null }
@@ -134,7 +144,7 @@ const next = { ...config };
 delete next['weppy-roblox-mcp'];
 next.mcpServers = {
   ...(mcpServers || {}),
-  'weppy-roblox-mcp': { command: 'npx', args: ['-y', '@weppy/roblox-mcp'] }
+  'weppy-roblox-mcp': { command: 'npx', args: ['-y', '@weppy/roblox-mcp@latest'] }
 };
 config = next;
 fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + '\n');
@@ -153,7 +163,8 @@ function Test-AntigravityMcpConfigured($configPath) {
         $config = Get-Content -Path $configPath -Raw | ConvertFrom-Json
         $hasLegacyFlatKey = $config.PSObject.Properties.Name -contains 'weppy-roblox-mcp'
         $server = $config.mcpServers.'weppy-roblox-mcp'
-        $hasCanonicalArgs = ($server.args -is [System.Array]) -and ($server.args.Count -eq 2) -and ($server.args[0] -eq '-y') -and ($server.args[1] -eq '@weppy/roblox-mcp')
+        # Accept args[1] as the weppy package regardless of whether a version tag is appended.
+        $hasCanonicalArgs = ($server.args -is [System.Array]) -and ($server.args.Count -eq 2) -and ($server.args[0] -eq '-y') -and (Test-WeppyPackageSpec $server.args[1])
         return ($server.command -eq 'npx') -and $hasCanonicalArgs -and (-not $hasLegacyFlatKey)
     }
     catch {
@@ -174,7 +185,8 @@ const fs = require('fs');
 const configPath = process.env.MCP_CODEX_CONFIG_PATH;
 const serverName = 'weppy-roblox-mcp';
 const expectedCommand = 'npx';
-const expectedArgs = ['-y', '@weppy/roblox-mcp'];
+// The second arg may be `@weppy/roblox-mcp` or `@weppy/roblox-mcp@<tag>`; both are accepted.
+const packageSpecPattern = /^@weppy\/roblox-mcp(@.+)?$/;
 const headerPattern = new RegExp(
   '^\\s*\\[\\s*mcp_servers\\.' + serverName.replace(/[.*+?^${}()|[\]\\\\]/g, '\\$&') + '\\s*\\]\\s*(?:#.*)?$'
 );
@@ -568,8 +580,10 @@ try {
     !parsed.hasConflict &&
     parsed.command === expectedCommand &&
     Array.isArray(parsed.args) &&
-    parsed.args.length === expectedArgs.length &&
-    parsed.args.every((entry, index) => entry === expectedArgs[index]);
+    parsed.args.length === 2 &&
+    parsed.args[0] === '-y' &&
+    typeof parsed.args[1] === 'string' &&
+    packageSpecPattern.test(parsed.args[1]);
 
   process.exit(isConfigured ? 0 : 1);
 } catch {
@@ -595,7 +609,7 @@ const configPath = process.env.MCP_CONFIG_PATH;
 let config = {};
 try { config = JSON.parse(fs.readFileSync(configPath, 'utf8')); } catch {}
 if (!config.mcpServers) config.mcpServers = {};
-config.mcpServers['weppy-roblox-mcp'] = { command: 'npx', args: ['-y', '@weppy/roblox-mcp'] };
+config.mcpServers['weppy-roblox-mcp'] = { command: 'npx', args: ['-y', '@weppy/roblox-mcp@latest'] };
 fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + '\n');
 "@
     } finally {
@@ -627,7 +641,7 @@ catch {
 # ═══════════════════════════════════
 Write-Step "1/2" "Setup Roblox Studio Plugin"
 
-if (Confirm-Action "  Run npx -y @weppy/roblox-mcp --setup?") {
+if (Confirm-Action "  Run npx -y @weppy/roblox-mcp@latest --setup?") {
     try {
         $npmCommandPath = Resolve-NpmCommand
         $npmDir = Split-Path $npmCommandPath -Parent
@@ -641,9 +655,11 @@ if (Confirm-Action "  Run npx -y @weppy/roblox-mcp --setup?") {
         try {
             New-Item -ItemType Directory -Path $setupWorkingDir -Force | Out-Null
             Set-Location $setupWorkingDir
-            # stdin을 빈 파이프로 격리: irm|iex 대화형 모드에서 stdio MCP 서버가
-            # pwsh의 터미널 stdin을 상속받아 hang되는 문제를 방지한다
-            $null | & $npxPath -y @weppy/roblox-mcp --setup
+            # Isolate stdin with an empty pipe so the stdio MCP server does not inherit
+            # the interactive pwsh terminal stdin (which would cause it to hang under irm|iex).
+            # The @latest tag forces npx to resolve from the registry instead of
+            # reusing an older version pinned in the npm cache.
+            $null | & $npxPath -y "@weppy/roblox-mcp@latest" --setup
             if ($LASTEXITCODE -ne 0) {
                 Write-Warn "Setup encountered a warning (non-blocking)"
             } else {
@@ -779,7 +795,7 @@ else {
 
 if ($detectedNames.Count -eq 0) {
     Write-Warn "No AI apps detected"
-    Write-Info "Register MCP server manually: npx -y @weppy/roblox-mcp"
+    Write-Info "Register MCP server manually: npx -y @weppy/roblox-mcp@latest"
 }
 else {
     Write-Host ""
@@ -835,7 +851,7 @@ else {
                     elseif ($claudeCodeCliCommand) {
                         $claudeStderrFile = Join-Path ([System.IO.Path]::GetTempPath()) ("weppy-claude-{0}.err" -f ([System.Guid]::NewGuid().ToString("N")))
                         try {
-                            & $claudeCodeCliCommand mcp add weppy-roblox-mcp -- npx -y "@weppy/roblox-mcp" 2> $claudeStderrFile
+                            & $claudeCodeCliCommand mcp add weppy-roblox-mcp -- npx -y "@weppy/roblox-mcp@latest" 2> $claudeStderrFile
                             $claudeExit = $LASTEXITCODE
                             if ($claudeExit -eq 0) {
                                 Write-Ok "Registered: $appName"
@@ -884,7 +900,7 @@ else {
                     }
                     elseif ($codexCliCommand) {
                         try { & $codexCliCommand mcp remove weppy-roblox-mcp *> $null } catch {}
-                        & $codexCliCommand mcp add weppy-roblox-mcp -- npx -y "@weppy/roblox-mcp"
+                        & $codexCliCommand mcp add weppy-roblox-mcp -- npx -y "@weppy/roblox-mcp@latest"
                         if ($LASTEXITCODE -ne 0) {
                             throw 'codex mcp add failed'
                         }

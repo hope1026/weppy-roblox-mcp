@@ -98,7 +98,7 @@ const configPath = process.env.MCP_CONFIG_PATH;
 let config = {};
 try { config = JSON.parse(fs.readFileSync(configPath, "utf8")); } catch {}
 if (!config.mcpServers) config.mcpServers = {};
-config.mcpServers["weppy-roblox-mcp"] = { command: "npx", args: ["-y", "@weppy/roblox-mcp"] };
+config.mcpServers["weppy-roblox-mcp"] = { command: "npx", args: ["-y", "@weppy/roblox-mcp@latest"] };
 fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + "\n");
 '
 }
@@ -142,7 +142,7 @@ const next = { ...config };
 delete next["weppy-roblox-mcp"];
 next.mcpServers = {
   ...(mcpServers || {}),
-  "weppy-roblox-mcp": { command: "npx", args: ["-y", "@weppy/roblox-mcp"] }
+  "weppy-roblox-mcp": { command: "npx", args: ["-y", "@weppy/roblox-mcp@latest"] }
 };
 config = next;
 fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + "\n");
@@ -161,13 +161,16 @@ function isJsonObject(value) {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 function hasExpectedCommandShape(value) {
+  // Accept args[1] as the weppy package regardless of tag —
+  // `@weppy/roblox-mcp`, `@weppy/roblox-mcp@latest`, `@weppy/roblox-mcp@2.6.4` all match.
   return (
     isJsonObject(value) &&
     value.command === "npx" &&
     Array.isArray(value.args) &&
     value.args.length === 2 &&
     value.args[0] === "-y" &&
-    value.args[1] === "@weppy/roblox-mcp"
+    typeof value.args[1] === "string" &&
+    /^@weppy\/roblox-mcp(@.+)?$/.test(value.args[1])
   );
 }
 try {
@@ -191,7 +194,8 @@ const fs = require("fs");
 const configPath = process.env.MCP_CODEX_CONFIG_PATH;
 const serverName = "weppy-roblox-mcp";
 const expectedCommand = "npx";
-const expectedArgs = ["-y", "@weppy/roblox-mcp"];
+// The second arg may be `@weppy/roblox-mcp` or `@weppy/roblox-mcp@<tag>`; both are accepted.
+const packageSpecPattern = /^@weppy\/roblox-mcp(@.+)?$/;
 const headerPattern = new RegExp(
   "^\\s*\\[\\s*mcp_servers\\." + serverName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\s*\\]\\s*(?:#.*)?$",
 );
@@ -585,8 +589,10 @@ try {
     !parsed.hasConflict &&
     parsed.command === expectedCommand &&
     Array.isArray(parsed.args) &&
-    parsed.args.length === expectedArgs.length &&
-    parsed.args.every((entry, index) => entry === expectedArgs[index]);
+    parsed.args.length === 2 &&
+    parsed.args[0] === "-y" &&
+    typeof parsed.args[1] === "string" &&
+    packageSpecPattern.test(parsed.args[1]);
 
   process.exit(isConfigured ? 0 : 1);
 } catch {
@@ -640,7 +646,7 @@ success "Node.js $(node -v) detected"
 # ═══════════════════════════════════
 step "1/2" "Setup Roblox Studio Plugin"
 
-if confirm "  Run npx -y @weppy/roblox-mcp --setup?"; then
+if confirm "  Run npx -y @weppy/roblox-mcp@latest --setup?"; then
   setup_tmp_dir=""
   if setup_tmp_dir=$(mktemp -d "${TMPDIR:-/tmp}/weppy-setup-XXXXXX" 2>/dev/null); then
     :
@@ -651,7 +657,9 @@ if confirm "  Run npx -y @weppy/roblox-mcp --setup?"; then
   if [ -n "${setup_tmp_dir:-}" ] && [ -d "$setup_tmp_dir" ]; then
     # stdin을 /dev/null로 격리: curl|bash 파이프 모드에서 stdio MCP 서버가
     # bash의 남은 스크립트 바이트를 소비해버리는 문제를 방지한다
-    if (cd "$setup_tmp_dir" && npx -y @weppy/roblox-mcp --setup </dev/null); then
+    # The @latest tag forces npx to resolve from the registry instead of
+    # reusing an older version pinned in the npm cache.
+    if (cd "$setup_tmp_dir" && npx -y "@weppy/roblox-mcp@latest" --setup </dev/null); then
       success "Setup complete"
     else
       warn "Setup encountered a warning (non-blocking)"
@@ -671,7 +679,7 @@ fi
 step "2/2" "Register MCP with AI apps"
 printf "  Automatic registration: Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, Antigravity\n"
 
-MCP_COMMAND='npx -y @weppy/roblox-mcp'
+MCP_COMMAND='npx -y @weppy/roblox-mcp@latest'
 
 # AI app detection
 declare -a DETECTED_NAMES=()
@@ -835,7 +843,7 @@ else
           # Capture the CLI exit code immediately so it isn't overwritten by the
           # subsequent grep check (which would otherwise leak its own exit code).
           claude_exit_code=0
-          "$CLAUDE_CLI_COMMAND" mcp add weppy-roblox-mcp -- npx -y @weppy/roblox-mcp 2>"$claude_stderr_file" || claude_exit_code=$?
+          "$CLAUDE_CLI_COMMAND" mcp add weppy-roblox-mcp -- npx -y "@weppy/roblox-mcp@latest" 2>"$claude_stderr_file" || claude_exit_code=$?
           if [ "$claude_exit_code" -eq 0 ]; then
             success "Registered: $app_name"
           elif grep -qi "already exists" "$claude_stderr_file"; then
@@ -874,7 +882,7 @@ else
         fi
         if is_codex_config_configured "$CODEX_CONFIG"; then
           :
-        elif [ -n "$CODEX_CLI_COMMAND" ] && "$CODEX_CLI_COMMAND" mcp add weppy-roblox-mcp -- npx -y @weppy/roblox-mcp 2>/dev/null; then
+        elif [ -n "$CODEX_CLI_COMMAND" ] && "$CODEX_CLI_COMMAND" mcp add weppy-roblox-mcp -- npx -y "@weppy/roblox-mcp@latest" 2>/dev/null; then
           success "Registered: $app_name"
         elif is_codex_config_configured "$CODEX_CONFIG"; then
           success "Already configured: $app_name"
