@@ -120,8 +120,7 @@ try {
 ' >/dev/null 2>&1
 }
 
-# Add the MCP server under the canonical `mcpServers` wrapper in the Antigravity
-# config and strip any legacy flat key left over from earlier versions.
+# Antigravity 설정에 canonical mcpServers 래퍼로 MCP 서버를 추가하고 legacy flat key를 정리
 add_antigravity_mcp_config() {
   local config_path="$1"
   local parent_dir
@@ -657,8 +656,8 @@ if confirm "  Run npx -y @weppy/roblox-mcp@latest --setup?"; then
   fi
 
   if [ -n "${setup_tmp_dir:-}" ] && [ -d "$setup_tmp_dir" ]; then
-    # Isolate stdin with /dev/null so the stdio MCP server does not swallow the
-    # remaining bytes of this script when installed via `curl | bash`.
+    # stdin을 /dev/null로 격리: curl|bash 파이프 모드에서 stdio MCP 서버가
+    # bash의 남은 스크립트 바이트를 소비해버리는 문제를 방지한다
     # The @latest tag forces npx to resolve from the registry instead of
     # reusing an older version pinned in the npm cache.
     if (cd "$setup_tmp_dir" && npx -y "@weppy/roblox-mcp@latest" --setup </dev/null); then

@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 
 
+## [2.7.1] - 2026-05-05
+
+### Improvements
+
+- **Stability hardening** — Internal reliability improvements across the MCP server and Roblox Studio plugin. No behavior changes for existing workflows.
+
+## [2.7.0] - 2026-05-05
+
+### Features
+
+- **UI Studio launch** — A new workflow for iterating on Roblox Studio UI design together with an AI agent. From the UI Studio page in the dashboard, you can now use:
+  - **History tab** — Compare before/after snapshots and design suggestions for each request, side by side.
+  - **Analysis tab** — Snapshot comparison modal with batch selection and deletion.
+  - **Design Check** — Reviews your UI against design quality criteria and surfaces concrete improvements.
+
+### Improvements
+
+- **More accurate property types when syncing local edits back to Studio** — When you edit synced files locally and push the changes back to Studio, the server now resolves property types via class-aware metadata instead of guessing from value shape. Edits to enum, color, or vector properties on specific instances are no longer silently saved as the wrong type.
+
+### Bug Fixes
+
+- **Claude Code detection on Windows** — On Windows, Claude Code could be mis-detected and even a fresh install would fail with a confusing "already exists" error. Detection is now correct, and an existing valid registration is treated as success.
+
+- **Dashboard tooltips no longer clipped** — Tooltips inside scrollable areas (Settings, UI Studio history) were being cut off. They now display in full regardless of the surrounding container.
 
 
 
