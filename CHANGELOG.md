@@ -3,33 +3,6 @@
 All notable changes to this project will be documented in this file.
 
 
-## [2.7.0] - 2026-05-05
-
-### Features
-
-- **UI Studio (Pro) — major upgrade** — `manage_ui` now supports a full design loop: open the dashboard's UI Studio page to see a per-request **History tab** (with before/after snapshots and design suggestions side-by-side), an **Analysis tab** with comparison modal, and a **Design Check** action that replaces the old `lint` action and reports issues against the quality bar. AI agents can also fetch a **partial design brief** scoped to the part of the tree they're editing, get **asset recommendations** (icons, ornaments, imagery) wired into the brief, and generate previews that respect a new isolated `UIVisibilityScope` so agent-driven UI work doesn't leak into your Studio session. Note: the old `manage_ui` action `lint` has been renamed to `design_check` — update any explicit calls. Stored UI Studio history from previous versions remains readable.
-
-- **UI Studio retention & storage controls** — A new **Storage** card on the dashboard lets you set a retention policy (max age + max size) for UI Studio request history. The retention runner cleans old runs in the background and supports dry-run preview before deletion. History entries can also be batch-selected and deleted from the Analysis tab.
-
-- **UI Studio dashboard redesign** — The UI Studio page is now split into **History** and **Analysis** tabs with a redesigned snapshot drawer (persistent toolbar, focus trap, drawer/dialog comparison view), tooltip help across UI Studio + Settings, a new connection guide for first-time users, and localized analysis detail strings. Thumbnails now use `object-fit: contain` so layouts aren't cropped.
-
-- **Reverse sync infers correct property types** — When you edit synced files locally and push them back to Studio, the server now resolves property types via class-aware metadata instead of guessing from value shape. This fixes cases where edits to enum, color, or vector properties on specific instance classes would silently land as the wrong type.
-
-- **GA4 telemetry: per-user attribution + better error diagnostics** — Telemetry events now include a stable `user_id` so the dashboard funnels reflect real users (with a documented DebugView verification path), and command failures emit structured error classification so you can tell config issues from runtime crashes from network failures at a glance. Telemetry is opt-in and unchanged for users who haven't enabled it.
-
-### Bug Fixes
-
-- **Installer: legacy `@weppy/roblox-mcp` entries auto-upgrade to `@latest`** — If you previously installed the MCP via an older one-liner that pinned a bare package name, the installer now rewrites that entry to `@latest` instead of leaving it on a stale version. Combined with `npx --ignore-existing` the next launch picks up the new release without manual config edits.
-
-- **Installer: Claude Code detection on Windows** — The installer mis-detected Claude Code on Windows and could fail with a confusing "already exists" error even on first install. Detection is now correct and an existing valid registration is treated as success.
-
-- **Dashboard tooltips no longer clipped** — Tooltips inside scrollable cards (Settings, UI Studio history) were clipped by `overflow:hidden` ancestors. They now render via a portal and display fully regardless of container.
-
-### Documentation
-
-- **UI Studio guide rewritten as a 3-layer English resource** — The design-system guide now reads top-down (intent → families → tokens), expands the palette/imagery/ornamentation/composition family menus, documents the quality-bar gate and slab-look anti-pattern, and clarifies multiline text encoding and transparent root defaults. Available via the `weppy://ui-studio/guide` MCP resource.
-
-- **Public docs: UI Studio added to README and llms files** — `deploy/publish/hope1026-roblox-mcp/README.md` and the `llms.txt` / `llms-full.txt` files now describe UI Studio capabilities so AI agents and human readers see it as a first-class feature.
 
 
 
