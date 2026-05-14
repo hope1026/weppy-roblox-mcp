@@ -1,7 +1,7 @@
 {
   "name": "weppy-roblox-mcp",
-  "description": "MCP server for Roblox Studio integration - AI-powered game development with specialized agents and skills",
-  "version": "2.7.5",
+  "description": "WEPPY Roblox MCP setup for Claude Code.",
+  "version": "2.7.6",
   "author": {
     "name": "hope1026"
   },
@@ -14,14 +14,14 @@
     "game-development",
     "ai",
     "claude",
-    "roblox-studio",
-    "skills"
+    "roblox-studio"
   ],
   "mcpServers": {
     "weppy-roblox-mcp": {
-      "command": "node",
+      "command": "npx",
       "args": [
-        "${CLAUDE_PLUGIN_ROOT}/dist/index.js"
+        "-y",
+        "@weppy/roblox-mcp@latest"
       ]
     }
   }

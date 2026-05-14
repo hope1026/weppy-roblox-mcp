@@ -6,6 +6,183 @@ on:
   workflow_dispatch:
 
 jobs:
+  test-distribution-layout:
+    name: Distribution layout
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Verify — public repo WEPPY AI Agent Plugin layout
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+
+          const root = process.cwd();
+          const expectedSkills = [
+            {
+              name: 'weppy-roblox-mcp-guide',
+              references: ['mcp-actions.md', 'ui-studio.md', 'playtest.md'],
+            },
+            {
+              name: 'weppy-roblox-sync-guide',
+              references: ['sync-workflow.md', 'sync-format.md', 'conflicts.md', 'roblox-explorer.md'],
+            },
+          ];
+          const required = [
+            'README.md',
+            'LICENSE',
+            'CHANGELOG.md',
+            'docs',
+            'glama.json',
+            'smithery.yaml',
+            'Dockerfile',
+            'install.sh',
+            'install.ps1',
+            '.claude-plugin/marketplace.json',
+            '.agents/plugins/marketplace.json',
+            'plugins/weppy-roblox-mcp/.claude-plugin/plugin.json',
+            'plugins/weppy-roblox-mcp/.codex-plugin/plugin.json',
+            'plugins/weppy-roblox-mcp/.mcp.json',
+            'plugins/weppy-roblox-mcp/skills/weppy-roblox-mcp-guide/SKILL.md',
+            'plugins/weppy-roblox-mcp/skills/weppy-roblox-sync-guide/SKILL.md',
+          ];
+          const forbidden = [
+            'package.json',
+            '.npmignore',
+            'plugins/weppy-roblox-mcp/dist',
+            'plugins/weppy-roblox-mcp/dashboard',
+            'plugins/weppy-roblox-mcp/roblox-plugin',
+          ];
+
+          for (const relativePath of required) {
+            if (!fs.existsSync(path.join(root, relativePath))) {
+              throw new Error(`Missing public repo file: ${relativePath}`);
+            }
+          }
+
+          for (const relativePath of forbidden) {
+            if (fs.existsSync(path.join(root, relativePath))) {
+              throw new Error(`Unexpected public repo runtime artifact: ${relativePath}`);
+            }
+          }
+
+          for (const jsonPath of [
+            '.claude-plugin/marketplace.json',
+            '.agents/plugins/marketplace.json',
+            'plugins/weppy-roblox-mcp/.claude-plugin/plugin.json',
+            'plugins/weppy-roblox-mcp/.codex-plugin/plugin.json',
+            'plugins/weppy-roblox-mcp/.mcp.json',
+          ]) {
+            JSON.parse(fs.readFileSync(path.join(root, jsonPath), 'utf8'));
+          }
+
+          const claudePlugin = JSON.parse(fs.readFileSync(path.join(root, 'plugins/weppy-roblox-mcp/.claude-plugin/plugin.json'), 'utf8'));
+          const codexPlugin = JSON.parse(fs.readFileSync(path.join(root, 'plugins/weppy-roblox-mcp/.codex-plugin/plugin.json'), 'utf8'));
+          const codexMcp = JSON.parse(fs.readFileSync(path.join(root, 'plugins/weppy-roblox-mcp/.mcp.json'), 'utf8'));
+          const expected = { command: 'npx', args: ['-y', '@weppy/roblox-mcp@latest'] };
+
+          if (JSON.stringify(claudePlugin.mcpServers?.['weppy-roblox-mcp']) !== JSON.stringify(expected)) {
+            throw new Error('Claude plugin MCP command is not @latest npm command');
+          }
+          if (codexPlugin.mcpServers !== './.mcp.json') {
+            throw new Error('Codex plugin mcpServers must point to ./.mcp.json');
+          }
+          if (codexPlugin.skills !== './skills/') {
+            throw new Error('Codex plugin skills must point to ./skills/');
+          }
+          if (claudePlugin.skills !== undefined) {
+            throw new Error('Claude plugin should use the plugin-root skills directory without a duplicate skills field');
+          }
+          if (JSON.stringify(codexMcp.mcp_servers?.['weppy-roblox-mcp']) !== JSON.stringify(expected)) {
+            throw new Error('Codex plugin MCP command is not @latest npm command');
+          }
+
+          const parseFrontmatter = (markdown) => {
+            const match = markdown.match(/^---\n([\s\S]*?)\n---\n/);
+            if (!match) throw new Error('SKILL.md missing YAML frontmatter');
+            const values = {};
+            for (const line of match[1].split('\n')) {
+              const entry = line.match(/^([A-Za-z0-9_-]+):\s*(.*)$/);
+              if (entry) values[entry[1]] = entry[2].replace(/^["']|["']$/g, '').trim();
+            }
+            return values;
+          };
+
+          for (const skill of expectedSkills) {
+            const skillRoot = path.join(root, 'plugins/weppy-roblox-mcp/skills', skill.name);
+            const skillMarkdown = fs.readFileSync(path.join(skillRoot, 'SKILL.md'), 'utf8');
+            const frontmatter = parseFrontmatter(skillMarkdown);
+            if (frontmatter.name !== skill.name) {
+              throw new Error(`Skill frontmatter name mismatch: ${skill.name}`);
+            }
+            if (!frontmatter.description) {
+              throw new Error(`Skill description is empty: ${skill.name}`);
+            }
+            if (!fs.existsSync(path.join(skillRoot, 'agents/openai.yaml'))) {
+              throw new Error(`Missing Codex skill metadata: ${skill.name}`);
+            }
+            for (const reference of skill.references) {
+              const referencePath = path.join(skillRoot, 'references', reference);
+              if (!fs.existsSync(referencePath)) {
+                throw new Error(`Missing skill reference: ${skill.name}/${reference}`);
+              }
+              if (!fs.readFileSync(referencePath, 'utf8').trim()) {
+                throw new Error(`Empty skill reference: ${skill.name}/${reference}`);
+              }
+            }
+          }
+
+          const generatedActions = fs.readFileSync(
+            path.join(root, 'plugins/weppy-roblox-mcp/skills/weppy-roblox-mcp-guide/references/mcp-actions.md'),
+            'utf8',
+          );
+          if (!generatedActions.includes('AUTO-GENERATED from tool-codegen/tools.yaml')) {
+            throw new Error('mcp-actions.md must be generated from tool-codegen');
+          }
+
+          console.log('✓ Public repo WEPPY AI Agent Plugin layout verified');
+          NODE
+
+      - name: Verify — npm package runtime tarball shape
+        run: |
+          npm pack --dry-run --json @weppy/roblox-mcp@latest > npm-pack.json
+          node <<'NODE'
+          const fs = require('fs');
+          const pack = JSON.parse(fs.readFileSync('npm-pack.json', 'utf8'))[0];
+          const paths = pack.files.map((file) => file.path);
+          const required = [
+            'dist/index.js',
+            'dashboard/dist/index.html',
+            'roblox-plugin/WeppyRobloxMCP.rbxm',
+          ];
+          const forbiddenPrefixes = [
+            'docs/',
+            '.agents/',
+            '.claude-plugin/',
+            '.codex-plugin/',
+            'plugins/weppy-roblox-mcp/',
+          ];
+
+          for (const relativePath of required) {
+            if (!paths.includes(relativePath)) {
+              throw new Error(`Missing npm runtime file: ${relativePath}`);
+            }
+          }
+
+          for (const relativePath of paths) {
+            if (forbiddenPrefixes.some((prefix) => relativePath.startsWith(prefix))) {
+              throw new Error(`Unexpected npm tarball file: ${relativePath}`);
+            }
+          }
+
+          console.log(`✓ npm package runtime tarball verified (${pack.entryCount} files)`);
+          NODE
+
   test-bash:
     name: E2E — install.sh (ubuntu)
     runs-on: ubuntu-latest
@@ -16,8 +193,37 @@ jobs:
         with:
           node-version: '24'
 
-      - name: Install Claude Code CLI (app detection용)
-        run: npm install -g @anthropic-ai/claude-code
+      - name: Stub Claude Code CLI binary (force plugin install path)
+        run: |
+          sudo tee /usr/local/bin/claude > /dev/null <<'EOF'
+          #!/usr/bin/env bash
+          set -e
+          mkdir -p "$HOME/.claude"
+          if [ "${1:-}" = "mcp" ] && [ "${2:-}" = "list" ]; then
+            if [ -f "$HOME/.claude/weppy-mcp-added" ]; then
+              printf 'weppy-roblox-mcp: npx -y @weppy/roblox-mcp@latest\n'
+            fi
+            exit 0
+          fi
+          if [ "${1:-}" = "mcp" ] && [ "${2:-}" = "remove" ]; then
+            rm -f "$HOME/.claude/weppy-mcp-added"
+            exit 0
+          fi
+          if [ "${1:-}" = "mcp" ] && [ "${2:-}" = "add" ]; then
+            printf '%s\n' "$*" > "$HOME/.claude/weppy-mcp-added"
+            exit 0
+          fi
+          if [ "${1:-}" = "plugin" ] && [ "${2:-}" = "marketplace" ] && [ "${3:-}" = "add" ]; then
+            printf '%s\n' "${4:-}" > "$HOME/.claude/weppy-marketplace-added"
+            exit 0
+          fi
+          if [ "${1:-}" = "plugin" ] && [ "${2:-}" = "install" ]; then
+            printf '%s\n' "${3:-}" > "$HOME/.claude/weppy-plugin-installed"
+            exit 0
+          fi
+          exit 0
+          EOF
+          sudo chmod +x /usr/local/bin/claude
 
       - name: Stub codex CLI binary (force CLI detection path)
         run: |
@@ -44,6 +250,11 @@ jobs:
               printf 'command = "%s"\n' "$cmd"
               printf 'args = [%s]\n' "$args_json"
             } >> "$HOME/.codex/config.toml"
+            exit 0
+          fi
+          if [ "${1:-}" = "plugin" ] && [ "${2:-}" = "marketplace" ] && [ "${3:-}" = "add" ]; then
+            mkdir -p "$HOME/.codex"
+            printf '%s\n' "${4:-}" > "$HOME/.codex/weppy-marketplace-added"
             exit 0
           fi
           # Other subcommands (list/remove) are no-ops for the CI stub.
@@ -78,7 +289,26 @@ jobs:
             echo "Output: $result"
             exit 1
           fi
-          echo "✓ weppy-roblox-mcp registered"
+          if ! echo "$result" | grep -q '@weppy/roblox-mcp@latest'; then
+            echo "❌ Claude Code entry does not use @weppy/roblox-mcp@latest"
+            echo "Output: $result"
+            exit 1
+          fi
+          echo "✓ weppy-roblox-mcp registered with @latest"
+
+      - name: Verify — Claude Code AI Agent Plugin installed
+        run: |
+          if ! grep -q 'hope1026/weppy-roblox-mcp' "$HOME/.claude/weppy-marketplace-added"; then
+            echo "❌ Claude Code marketplace add was not called"
+            ls -la "$HOME/.claude" || true
+            exit 1
+          fi
+          if ! grep -q 'weppy-roblox-mcp@hope1026-roblox-mcp' "$HOME/.claude/weppy-plugin-installed"; then
+            echo "❌ Claude Code plugin install was not called"
+            ls -la "$HOME/.claude" || true
+            exit 1
+          fi
+          echo "✓ Claude Code AI Agent Plugin install called"
 
       - name: Verify — Codex config registered
         run: |
@@ -87,7 +317,21 @@ jobs:
             cat "$HOME/.codex/config.toml"
             exit 1
           fi
-          echo "✓ weppy-roblox-mcp registered in Codex config"
+          if ! grep -q '@weppy/roblox-mcp@latest' "$HOME/.codex/config.toml"; then
+            echo "❌ Codex entry does not use @weppy/roblox-mcp@latest"
+            cat "$HOME/.codex/config.toml"
+            exit 1
+          fi
+          echo "✓ weppy-roblox-mcp registered in Codex config with @latest"
+
+      - name: Verify — Codex marketplace added
+        run: |
+          if ! grep -q 'hope1026/weppy-roblox-mcp' "$HOME/.codex/weppy-marketplace-added"; then
+            echo "❌ Codex marketplace add was not called"
+            ls -la "$HOME/.codex" || true
+            exit 1
+          fi
+          echo "✓ Codex marketplace add called"
 
       - name: Verify — MCP server responds to initialize + tools/list
         env:
@@ -104,8 +348,48 @@ jobs:
         with:
           node-version: '24'
 
-      - name: Install Claude Code CLI (app detection용)
-        run: npm install -g @anthropic-ai/claude-code
+      - name: Stub Claude Code CLI binary (force plugin install path)
+        shell: pwsh
+        run: |
+          $stubDir = Join-Path $env:RUNNER_TEMP 'claude-stub'
+          New-Item -ItemType Directory -Path $stubDir -Force | Out-Null
+
+          $stubJs = @'
+          const fs = require('fs');
+          const path = require('path');
+          const args = process.argv.slice(2);
+          const home = process.env.USERPROFILE || process.env.HOME;
+          const claudeDir = path.join(home, '.claude');
+          fs.mkdirSync(claudeDir, { recursive: true });
+          if (args[0] === 'mcp' && args[1] === 'list') {
+            const marker = path.join(claudeDir, 'weppy-mcp-added');
+            if (fs.existsSync(marker)) {
+              console.log('weppy-roblox-mcp: npx -y @weppy/roblox-mcp@latest');
+            }
+          } else if (args[0] === 'mcp' && args[1] === 'remove') {
+            fs.rmSync(path.join(claudeDir, 'weppy-mcp-added'), { force: true });
+          } else if (args[0] === 'mcp' && args[1] === 'add') {
+            fs.writeFileSync(path.join(claudeDir, 'weppy-mcp-added'), args.join(' '));
+            fs.writeFileSync(path.join(claudeDir, 'mcp.json'), JSON.stringify({
+              mcpServers: {
+                'weppy-roblox-mcp': {
+                  command: 'npx',
+                  args: ['-y', '@weppy/roblox-mcp@latest'],
+                },
+              },
+            }, null, 2));
+          } else if (args[0] === 'plugin' && args[1] === 'marketplace' && args[2] === 'add') {
+            fs.writeFileSync(path.join(claudeDir, 'weppy-marketplace-added'), args[3] || '');
+          } else if (args[0] === 'plugin' && args[1] === 'install') {
+            fs.writeFileSync(path.join(claudeDir, 'weppy-plugin-installed'), args[2] || '');
+          }
+          process.exit(0);
+          '@
+          Set-Content -Path (Join-Path $stubDir 'claude-stub.js') -Value $stubJs -Encoding UTF8
+
+          $stubCmd = "@echo off`r`nnode `"$stubDir\claude-stub.js`" %*"
+          Set-Content -Path (Join-Path $stubDir 'claude.cmd') -Value $stubCmd -Encoding ASCII
+          Add-Content -Path $env:GITHUB_PATH -Value $stubDir
 
       - name: Stub codex CLI binary (force CLI detection path)
         shell: pwsh
@@ -133,6 +417,11 @@ jobs:
             fs.mkdirSync(codexDir, { recursive: true });
             const block = '\n[mcp_servers.' + name + ']\ncommand = "' + cmd + '"\nargs = [' + argsJson + ']\n';
             fs.appendFileSync(path.join(codexDir, 'config.toml'), block);
+          } else if (args[0] === 'plugin' && args[1] === 'marketplace' && args[2] === 'add') {
+            const home = process.env.USERPROFILE || process.env.HOME;
+            const codexDir = path.join(home, '.codex');
+            fs.mkdirSync(codexDir, { recursive: true });
+            fs.writeFileSync(path.join(codexDir, 'weppy-marketplace-added'), args[3] || '');
           }
           process.exit(0);
           '@
@@ -169,27 +458,73 @@ jobs:
         run: |
           # claude mcp add는 ~/.claude.json에, 폴백은 ~/.claude/mcp.json에 씁니다
           $found = $false
+          $usesLatest = $false
           @("$env:USERPROFILE\.claude.json", "$env:USERPROFILE\.claude\mcp.json") | ForEach-Object {
-            if ((Test-Path $_) -and ((Get-Content $_ -Raw) -match 'weppy-roblox-mcp')) {
-              $found = $true
+            if (Test-Path $_) {
+              $content = Get-Content $_ -Raw
+              if ($content -match 'weppy-roblox-mcp') {
+                $found = $true
+              }
+              if ($content -match '@weppy/roblox-mcp@latest') {
+                $usesLatest = $true
+              }
             }
           }
           if (-not $found) {
             Write-Error "❌ weppy-roblox-mcp not found in claude config files"
             exit 1
           }
-          Write-Host "✓ weppy-roblox-mcp registered"
+          if (-not $usesLatest) {
+            Write-Error "❌ Claude Code entry does not use @weppy/roblox-mcp@latest"
+            exit 1
+          }
+          Write-Host "✓ weppy-roblox-mcp registered with @latest"
+
+      - name: Verify — Claude Code AI Agent Plugin installed
+        shell: pwsh
+        run: |
+          $claudeDir = Join-Path $env:USERPROFILE '.claude'
+          $marketplaceMarker = Join-Path $claudeDir 'weppy-marketplace-added'
+          $pluginMarker = Join-Path $claudeDir 'weppy-plugin-installed'
+          if (-not ((Get-Content $marketplaceMarker -Raw) -match 'hope1026/weppy-roblox-mcp')) {
+            Write-Error "❌ Claude Code marketplace add was not called"
+            Get-ChildItem $claudeDir -Force
+            exit 1
+          }
+          if (-not ((Get-Content $pluginMarker -Raw) -match 'weppy-roblox-mcp@hope1026-roblox-mcp')) {
+            Write-Error "❌ Claude Code plugin install was not called"
+            Get-ChildItem $claudeDir -Force
+            exit 1
+          }
+          Write-Host "✓ Claude Code AI Agent Plugin install called"
 
       - name: Verify — Codex config registered
         shell: pwsh
         run: |
           $codexConfig = Join-Path $env:USERPROFILE '.codex\config.toml'
-          if (-not ((Get-Content $codexConfig -Raw) -match '\[mcp_servers\.weppy-roblox-mcp\]')) {
+          $content = Get-Content $codexConfig -Raw
+          if (-not ($content -match '\[mcp_servers\.weppy-roblox-mcp\]')) {
             Write-Error "❌ weppy-roblox-mcp not found in ~/.codex/config.toml"
             Get-Content $codexConfig
             exit 1
           }
-          Write-Host "✓ weppy-roblox-mcp registered in Codex config"
+          if (-not ($content -match '@weppy/roblox-mcp@latest')) {
+            Write-Error "❌ Codex entry does not use @weppy/roblox-mcp@latest"
+            Get-Content $codexConfig
+            exit 1
+          }
+          Write-Host "✓ weppy-roblox-mcp registered in Codex config with @latest"
+
+      - name: Verify — Codex marketplace added
+        shell: pwsh
+        run: |
+          $marketplaceMarker = Join-Path $env:USERPROFILE '.codex\weppy-marketplace-added'
+          if (-not ((Get-Content $marketplaceMarker -Raw) -match 'hope1026/weppy-roblox-mcp')) {
+            Write-Error "❌ Codex marketplace add was not called"
+            Get-ChildItem (Join-Path $env:USERPROFILE '.codex') -Force
+            exit 1
+          }
+          Write-Host "✓ Codex marketplace add called"
 
       - name: Verify — MCP server responds to initialize + tools/list
         shell: pwsh

@@ -18,7 +18,7 @@ terrain, and more — inside a live Studio session.
 - Web dashboard: monitor AI actions, tool history, sync state, and changelog in real time at `http://localhost:3002`
 - Multi-place support (up to 3 places simultaneously)
 - Roblox Explorer VSCode extension for browsing Studio hierarchy
-- Works with Claude Code, Claude Desktop, Cursor, Codex CLI, Codex Desktop, Gemini CLI, Antigravity
+- Works with Claude Code, Claude Desktop, Cursor, Codex CLI, Codex App, Gemini CLI, Antigravity
 
 ## Installation
 
@@ -37,6 +37,25 @@ irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1
 ```
 
 Safari / Firefox users should open the web install page and follow the browser-specific guide there.
+
+## Optional WEPPY AI Agent Plugin
+
+Claude Code and Codex can also use the WEPPY AI Agent Plugin.
+
+Claude Code:
+
+```bash
+claude plugin marketplace add hope1026/weppy-roblox-mcp --scope user
+claude plugin install weppy-roblox-mcp@hope1026-roblox-mcp --scope user
+```
+
+Codex:
+
+```bash
+codex plugin marketplace add hope1026/weppy-roblox-mcp
+```
+
+After adding the Codex marketplace, restart Codex, open Plugin Directory, and install WEPPY Roblox MCP.
 
 ## Tiers
 

@@ -7,6 +7,18 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.7.6] - 2026-05-14
+
+### Features
+
+- **Skills for Claude Code and Codex** — The agent plugin distribution now ships ready-to-use skills for Claude Code and Codex CLI, so AI agents pick up Roblox-specific workflows (sync, game dev, UI) automatically when the plugin is installed. No extra setup needed beyond the standard install.
+
+### Stability
+
+- **Stricter validation for `batch_execute`** — Commands sent through `batch_execute` are now validated against each tool's schema before dispatch, so malformed batches fail fast with a clear error instead of partially executing.
+- **Better error reporting for `execute_luau`** — Luau runtime failures now surface with structured classification (origin, recoverability) in tool history and dashboard logs, making it easier to diagnose why a script call failed.
+
 ## [2.7.5] - 2026-05-12
 
 ### Stability

@@ -1,0 +1,4 @@
+interface:
+  display_name: "WEPPY Roblox Sync Guide"
+  short_description: "Studio-local sync and conflict guide"
+  default_prompt: "Use WEPPY Roblox Sync to inspect sync status, choose directions, and handle conflicts safely."

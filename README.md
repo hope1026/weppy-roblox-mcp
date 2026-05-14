@@ -41,6 +41,7 @@ irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1
 Then reopen your AI app and restart Roblox Studio.
 
 Automatic MCP registration supports Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, and Antigravity.
+For Claude Code, the installer also tries to add and install the WEPPY AI Agent Plugin. For Codex, it adds the WEPPY AI Agent Plugin marketplace and then asks you to install WEPPY Roblox MCP from Plugin Directory.
 
 ### Manual Install
 
@@ -48,17 +49,36 @@ If the one-line install does not work, or automatic installation is not availabl
 
 **Step 1** - Use the web install page for the Roblox Studio plugin and app-specific setup.
 
-👉 **[Web Install Docs](https://weppyai.com/ko/docs)**
+👉 **[Web Install Page](https://weppyai.com/en/install)**
 
 **Step 2** - Register the MCP server with your AI app:
 
 ```bash
-npx -y @weppy/roblox-mcp
+npx -y @weppy/roblox-mcp@latest
 ```
 
 Supported AI apps are Claude Code, Claude Desktop, Cursor, Codex CLI, Codex App, Gemini CLI, and Antigravity.
 
-> Any MCP-compatible AI client works. The server command is `npx -y @weppy/roblox-mcp`.
+> Any MCP-compatible AI client works. The server command is `npx -y @weppy/roblox-mcp@latest`.
+
+### Optional WEPPY AI Agent Plugin
+
+Claude Code and Codex can also use the WEPPY AI Agent Plugin. The MCP server command above is enough to use WEPPY; the plugin adds client-native setup and workflow guidance.
+
+**Claude Code**
+
+```bash
+claude plugin marketplace add hope1026/weppy-roblox-mcp --scope user
+claude plugin install weppy-roblox-mcp@hope1026-roblox-mcp --scope user
+```
+
+**Codex**
+
+```bash
+codex plugin marketplace add hope1026/weppy-roblox-mcp
+```
+
+After adding the Codex marketplace, restart Codex, open Plugin Directory, and install **WEPPY Roblox MCP**.
 
 ## Compatibility
 
@@ -160,10 +180,10 @@ For app setup details, open the web docs hub and choose the relevant AI client g
 ## FAQ
 
 ### How do I connect Claude Code to Roblox Studio?
-Install the Roblox Studio plugin, then register the MCP server (`npx -y @weppy/roblox-mcp`) in Claude Code. Claude can then directly read and write scripts inside Studio.
+Install from the web install page or add the WEPPY AI Agent Plugin for Claude Code with the commands above. The WEPPY AI Agent Plugin uses `npx -y @weppy/roblox-mcp@latest` as the MCP server command.
 
 ### How do I use Codex CLI with Roblox Studio?
-Install the plugin, then add the MCP server config to Codex CLI.
+Install the Roblox Studio plugin, then add the MCP server config to Codex CLI. You can also add the Codex plugin marketplace and install WEPPY Roblox MCP from Plugin Directory.
 
 ### Does Roblox MCP work with Cursor?
 Yes. Any MCP-compatible AI client works.

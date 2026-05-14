@@ -5,9 +5,10 @@
 # Usage:
 #   curl -fsSL https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.sh | bash
 #
-# Interactive 2 steps:
-#   [1/2] Setup — install Roblox Studio Plugin via npx
-#   [2/2] Register MCP with AI apps (user selection)
+# Interactive 3 steps:
+#   [1/3] Setup — install Roblox Studio Plugin via npx
+#   [2/3] Register MCP with AI apps (user selection)
+#   [3/3] Setup WEPPY AI Agent Plugin for Claude Code / Codex (best effort)
 #
 
 set -euo pipefail
@@ -620,6 +621,12 @@ resolve_optional_cli_command() {
   return 1
 }
 
+is_already_ai_agent_plugin_result() {
+  local stderr_file="$1"
+  [ -f "$stderr_file" ] || return 1
+  grep -Eqi "already|exists|installed|duplicate" "$stderr_file"
+}
+
 # ── Header ──
 # shellcheck disable=SC2059
 printf "\n${BOLD}WEPPY Installer${NC}\n"
@@ -643,9 +650,9 @@ fi
 success "Node.js $(node -v) detected"
 
 # ═══════════════════════════════════
-# [1/2] Setup — Roblox Studio Plugin
+# [1/3] Setup — Roblox Studio Plugin
 # ═══════════════════════════════════
-step "1/2" "Setup Roblox Studio Plugin"
+step "1/3" "Setup Roblox Studio Plugin"
 
 if confirm "  Run npx -y @weppy/roblox-mcp@latest --setup?"; then
   setup_tmp_dir=""
@@ -675,9 +682,9 @@ else
 fi
 
 # ═══════════════════════════════════
-# [2/2] Register MCP with AI apps
+# [2/3] Register MCP with AI apps
 # ═══════════════════════════════════
-step "2/2" "Register MCP with AI apps"
+step "2/3" "Register MCP with AI apps"
 printf "  Automatic registration: Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, Antigravity\n"
 
 MCP_COMMAND='npx -y @weppy/roblox-mcp@latest'
@@ -922,6 +929,65 @@ else
 fi
 
 # ═══════════════════════════════════
+# [3/3] Setup WEPPY AI Agent Plugin
+# ═══════════════════════════════════
+step "3/3" "Setup WEPPY AI Agent Plugin"
+
+if [ "${WEPPY_SKIP_AI_AGENT_PLUGIN:-}" = "1" ]; then
+  warn "WEPPY AI Agent Plugin setup skipped (WEPPY_SKIP_AI_AGENT_PLUGIN=1)"
+else
+  ai_agent_plugin_any=false
+
+  if [ -n "${CLAUDE_CLI_COMMAND:-}" ]; then
+    ai_agent_plugin_any=true
+    claude_marketplace_stderr=$(mktemp "${TMPDIR:-/tmp}/weppy-claude-plugin-marketplace-XXXXXX.err" 2>/dev/null || echo "${HOME}/weppy-claude-plugin-marketplace.err")
+    claude_marketplace_exit=0
+    "$CLAUDE_CLI_COMMAND" plugin marketplace add hope1026/weppy-roblox-mcp --scope user 2>"$claude_marketplace_stderr" || claude_marketplace_exit=$?
+    if [ "$claude_marketplace_exit" -eq 0 ] || is_already_ai_agent_plugin_result "$claude_marketplace_stderr"; then
+      success "Claude Code marketplace ready"
+
+      claude_plugin_stderr=$(mktemp "${TMPDIR:-/tmp}/weppy-claude-plugin-install-XXXXXX.err" 2>/dev/null || echo "${HOME}/weppy-claude-plugin-install.err")
+      claude_plugin_exit=0
+      "$CLAUDE_CLI_COMMAND" plugin install weppy-roblox-mcp@hope1026-roblox-mcp --scope user 2>"$claude_plugin_stderr" || claude_plugin_exit=$?
+      if [ "$claude_plugin_exit" -eq 0 ] || is_already_ai_agent_plugin_result "$claude_plugin_stderr"; then
+        success "WEPPY AI Agent Plugin for Claude Code ready"
+      else
+        warn "WEPPY AI Agent Plugin install for Claude Code skipped or failed (non-blocking)"
+        sed 's/^/    /' "$claude_plugin_stderr" || true
+      fi
+      rm -f "$claude_plugin_stderr"
+    else
+      warn "Claude Code marketplace setup skipped or failed (non-blocking)"
+      sed 's/^/    /' "$claude_marketplace_stderr" || true
+    fi
+    rm -f "$claude_marketplace_stderr"
+  else
+    warn "WEPPY AI Agent Plugin for Claude Code skipped (claude CLI not found)"
+  fi
+
+  if [ -n "${CODEX_CLI_COMMAND:-}" ]; then
+    ai_agent_plugin_any=true
+    codex_marketplace_stderr=$(mktemp "${TMPDIR:-/tmp}/weppy-codex-plugin-marketplace-XXXXXX.err" 2>/dev/null || echo "${HOME}/weppy-codex-plugin-marketplace.err")
+    codex_marketplace_exit=0
+    "$CODEX_CLI_COMMAND" plugin marketplace add hope1026/weppy-roblox-mcp 2>"$codex_marketplace_stderr" || codex_marketplace_exit=$?
+    if [ "$codex_marketplace_exit" -eq 0 ] || is_already_ai_agent_plugin_result "$codex_marketplace_stderr"; then
+      success "Codex marketplace ready"
+      printf "    Restart Codex, open Plugin Directory, then install WEPPY Roblox MCP.\n"
+    else
+      warn "Codex marketplace setup skipped or failed (non-blocking)"
+      sed 's/^/    /' "$codex_marketplace_stderr" || true
+    fi
+    rm -f "$codex_marketplace_stderr"
+  else
+    warn "WEPPY AI Agent Plugin for Codex skipped (codex CLI not found)"
+  fi
+
+  if [ "$ai_agent_plugin_any" = false ]; then
+    info "WEPPY AI Agent Plugin can be installed later from Claude Code or Codex plugin marketplace"
+  fi
+fi
+
+# ═══════════════════════════════════
 # Installation summary
 # ═══════════════════════════════════
 # shellcheck disable=SC2059
@@ -935,5 +1001,6 @@ printf "  1. Restart Roblox Studio\n"
 printf "  2. Look for the ${BOLD}WEPPY${NC} button in the Plugins tab\n"
 printf "  3. Click Connect and start building with AI!\n\n"
 printf "  Auto registration: Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, Antigravity\n\n"
+printf "  WEPPY AI Agent Plugin: Claude Code installs automatically when supported; Codex opens from Plugin Directory after marketplace add.\n\n"
 # shellcheck disable=SC2059
 printf "  ${DIM}Docs: https://weppyai.com/en/install${NC}\n\n"

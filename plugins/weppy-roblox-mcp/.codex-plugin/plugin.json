@@ -1,0 +1,21 @@
+{
+  "name": "weppy-roblox-mcp",
+  "version": "2.7.6",
+  "description": "WEPPY Roblox MCP setup for Codex.",
+  "author": {
+    "name": "hope1026"
+  },
+  "homepage": "https://github.com/hope1026/weppy-roblox-mcp#readme",
+  "repository": "https://github.com/hope1026/weppy-roblox-mcp",
+  "license": "AGPL-3.0",
+  "keywords": [
+    "mcp",
+    "roblox",
+    "roblox-studio",
+    "game-development",
+    "ai",
+    "codex"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json"
+}

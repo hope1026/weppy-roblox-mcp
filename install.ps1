@@ -4,9 +4,10 @@
 # Usage:
 #   irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1 | iex
 #
-# Interactive 2 steps:
-#   [1/2] Setup — install Roblox Studio Plugin via npx
-#   [2/2] Register MCP with AI apps (user selection)
+# Interactive 3 steps:
+#   [1/3] Setup — install Roblox Studio Plugin via npx
+#   [2/3] Register MCP with AI apps (user selection)
+#   [3/3] Setup WEPPY AI Agent Plugin for Claude Code / Codex (best effort)
 #
 
 $ErrorActionPreference = "Stop"
@@ -96,6 +97,36 @@ function Resolve-OptionalCliCommand($commandName) {
     }
 
     return $null
+}
+
+function Invoke-AiAgentPluginCommand($commandPath, [string[]]$arguments, $stderrPath) {
+    try {
+        & $commandPath @arguments 2> $stderrPath
+        return $LASTEXITCODE
+    }
+    catch {
+        Set-Content -Path $stderrPath -Value $_.ToString() -Encoding UTF8
+        return 1
+    }
+}
+
+function Test-AiAgentPluginAlreadyReady($stderrPath) {
+    if (-not (Test-Path $stderrPath)) {
+        return $false
+    }
+    $stderrContent = Get-Content $stderrPath -Raw
+    return $stderrContent -match '(?i)already|exists|installed|duplicate'
+}
+
+function Write-AiAgentPluginStderr($stderrPath) {
+    if (Test-Path $stderrPath) {
+        $stderrContent = Get-Content $stderrPath -Raw
+        if (-not [string]::IsNullOrWhiteSpace($stderrContent)) {
+            $stderrContent.TrimEnd("`r","`n").Split("`n") | ForEach-Object {
+                Write-Host "    $($_.TrimEnd())" -ForegroundColor DarkGray
+            }
+        }
+    }
 }
 
 function Test-McpJsonConfigured($configPath) {
@@ -638,9 +669,9 @@ catch {
 }
 
 # ═══════════════════════════════════
-# [1/2] Setup — Roblox Studio Plugin
+# [1/3] Setup — Roblox Studio Plugin
 # ═══════════════════════════════════
-Write-Step "1/2" "Setup Roblox Studio Plugin"
+Write-Step "1/3" "Setup Roblox Studio Plugin"
 
 if (Confirm-Action "  Run npx -y @weppy/roblox-mcp@latest --setup?") {
     try {
@@ -681,9 +712,9 @@ else {
 }
 
 # ═══════════════════════════════════
-# [2/2] Register MCP with AI apps
+# [2/3] Register MCP with AI apps
 # ═══════════════════════════════════
-Write-Step "2/2" "Register MCP with AI apps"
+Write-Step "2/3" "Register MCP with AI apps"
 Write-Host "  Automatic registration: Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, Antigravity"
 
 $detectedNames = @()
@@ -945,6 +976,71 @@ else {
 }
 
 # ═══════════════════════════════════
+# [3/3] Setup WEPPY AI Agent Plugin
+# ═══════════════════════════════════
+Write-Step "3/3" "Setup WEPPY AI Agent Plugin"
+
+if ($env:WEPPY_SKIP_AI_AGENT_PLUGIN -eq '1') {
+    Write-Warn "WEPPY AI Agent Plugin setup skipped (WEPPY_SKIP_AI_AGENT_PLUGIN=1)"
+}
+else {
+    $aiAgentPluginAny = $false
+
+    if ($claudeCodeCliCommand) {
+        $aiAgentPluginAny = $true
+        $claudeMarketplaceStderr = Join-Path ([System.IO.Path]::GetTempPath()) ("weppy-claude-plugin-marketplace-{0}.err" -f ([System.Guid]::NewGuid().ToString("N")))
+        $claudeMarketplaceExit = Invoke-AiAgentPluginCommand $claudeCodeCliCommand @('plugin', 'marketplace', 'add', 'hope1026/weppy-roblox-mcp', '--scope', 'user') $claudeMarketplaceStderr
+
+        if ($claudeMarketplaceExit -eq 0 -or (Test-AiAgentPluginAlreadyReady $claudeMarketplaceStderr)) {
+            Write-Ok "Claude Code marketplace ready"
+
+            $claudePluginStderr = Join-Path ([System.IO.Path]::GetTempPath()) ("weppy-claude-plugin-install-{0}.err" -f ([System.Guid]::NewGuid().ToString("N")))
+            $claudePluginExit = Invoke-AiAgentPluginCommand $claudeCodeCliCommand @('plugin', 'install', 'weppy-roblox-mcp@hope1026-roblox-mcp', '--scope', 'user') $claudePluginStderr
+
+            if ($claudePluginExit -eq 0 -or (Test-AiAgentPluginAlreadyReady $claudePluginStderr)) {
+                Write-Ok "WEPPY AI Agent Plugin for Claude Code ready"
+            }
+            else {
+                Write-Warn "WEPPY AI Agent Plugin install for Claude Code skipped or failed (non-blocking)"
+                Write-AiAgentPluginStderr $claudePluginStderr
+            }
+            Remove-Item $claudePluginStderr -ErrorAction SilentlyContinue
+        }
+        else {
+            Write-Warn "Claude Code marketplace setup skipped or failed (non-blocking)"
+            Write-AiAgentPluginStderr $claudeMarketplaceStderr
+        }
+        Remove-Item $claudeMarketplaceStderr -ErrorAction SilentlyContinue
+    }
+    else {
+        Write-Warn "WEPPY AI Agent Plugin for Claude Code skipped (claude CLI not found)"
+    }
+
+    if ($codexCliCommand) {
+        $aiAgentPluginAny = $true
+        $codexMarketplaceStderr = Join-Path ([System.IO.Path]::GetTempPath()) ("weppy-codex-plugin-marketplace-{0}.err" -f ([System.Guid]::NewGuid().ToString("N")))
+        $codexMarketplaceExit = Invoke-AiAgentPluginCommand $codexCliCommand @('plugin', 'marketplace', 'add', 'hope1026/weppy-roblox-mcp') $codexMarketplaceStderr
+
+        if ($codexMarketplaceExit -eq 0 -or (Test-AiAgentPluginAlreadyReady $codexMarketplaceStderr)) {
+            Write-Ok "Codex marketplace ready"
+            Write-Host "    Restart Codex, open Plugin Directory, then install WEPPY Roblox MCP."
+        }
+        else {
+            Write-Warn "Codex marketplace setup skipped or failed (non-blocking)"
+            Write-AiAgentPluginStderr $codexMarketplaceStderr
+        }
+        Remove-Item $codexMarketplaceStderr -ErrorAction SilentlyContinue
+    }
+    else {
+        Write-Warn "WEPPY AI Agent Plugin for Codex skipped (codex CLI not found)"
+    }
+
+    if (-not $aiAgentPluginAny) {
+        Write-Info "WEPPY AI Agent Plugin can be installed later from Claude Code or Codex plugin marketplace"
+    }
+}
+
+# ═══════════════════════════════════
 # Installation summary
 # ═══════════════════════════════════
 Write-Host ""
@@ -957,6 +1053,8 @@ Write-Host "  2. Look for the WEPPY button in the Plugins tab"
 Write-Host "  3. Click Connect and start building with AI!"
 Write-Host ""
 Write-Host "  Auto registration: Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, Antigravity"
+Write-Host ""
+Write-Host "  WEPPY AI Agent Plugin: Claude Code installs automatically when supported; Codex opens from Plugin Directory after marketplace add."
 Write-Host ""
 Write-Host "  Docs: https://weppyai.com/en/install" -ForegroundColor DarkGray
 Write-Host ""

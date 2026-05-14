@@ -1,0 +1,15 @@
+{
+  "name": "hope1026-roblox-mcp",
+  "metadata": {
+    "description": "WEPPY Roblox MCP — WEPPY AI Agent Plugin and MCP setup for live Roblox Studio workflows with direct Studio control, sync, playtest, UI Studio, and dashboard monitoring",
+    "version": "2.7.6"
+  },
+  "plugins": [
+    {
+      "name": "weppy-roblox-mcp",
+      "source": "./plugins/weppy-roblox-mcp",
+      "description": "WEPPY Roblox MCP setup for Codex.",
+      "version": "2.7.6"
+    }
+  ]
+}

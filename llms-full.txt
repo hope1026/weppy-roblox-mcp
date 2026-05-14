@@ -7,7 +7,24 @@ This package intentionally does not ship a standalone full documentation surface
 Canonical documentation lives on the web:
 
 - Install and setup: https://weppyai.com/en/install
-- Product documentation: https://weppyai.com/en/install
+- Product documentation: https://weppyai.com/en/docs
 - Pro plans: https://weppyai.com/en/plans
 
 For app-specific setup, open the web install page and choose the relevant AI client guide.
+
+Optional WEPPY AI Agent Plugin:
+
+- Claude Code:
+
+```bash
+claude plugin marketplace add hope1026/weppy-roblox-mcp --scope user
+claude plugin install weppy-roblox-mcp@hope1026-roblox-mcp --scope user
+```
+
+- Codex:
+
+```bash
+codex plugin marketplace add hope1026/weppy-roblox-mcp
+```
+
+After adding the Codex marketplace, restart Codex, open Plugin Directory, and install WEPPY Roblox MCP.

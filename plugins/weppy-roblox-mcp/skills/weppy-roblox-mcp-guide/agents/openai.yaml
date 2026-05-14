@@ -1,0 +1,4 @@
+interface:
+  display_name: "WEPPY Roblox MCP Guide"
+  short_description: "Studio actions, UI Studio, playtest guide"
+  default_prompt: "Use WEPPY Roblox MCP to inspect Studio state, choose the right action, and verify the result."
