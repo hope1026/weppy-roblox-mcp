@@ -9,6 +9,18 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.7.8] - 2026-05-16
+
+### Features
+
+- **French language support** — The WEPPY dashboard and Roblox Studio plugin now support French. Select **Français** from Settings to use the dashboard and plugin UI in French, and French systems are detected automatically when the language setting is set to Auto.
+
+### Stability
+
+- **More reliable localized setup guidance** — The dashboard What's New page now supports multiple localized setup links in a single announcement, so Claude Code, Codex CLI, and Codex App users can jump directly to the correct install guide for their language.
+- **Language selector consistency** — The plugin Settings language dropdown now uses the same supported locale list as the localization runtime, so every shipped language appears as an option.
+
 ## [2.7.7] - 2026-05-14
 
 ### Bug Fixes

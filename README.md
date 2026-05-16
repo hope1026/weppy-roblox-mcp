@@ -6,7 +6,7 @@
 
 **English** | [한국어](https://weppyai.com/ko) | [日本語](https://weppyai.com/ja) | [Español](https://weppyai.com/es) | [Português](https://weppyai.com/pt-br) | [Bahasa Indonesia](https://weppyai.com/id) | [Deutsch](https://weppyai.com/de)
 
-[![Demo - AI building a Roblox game in real time](https://img.youtube.com/vi/puQB4u1VlMw/maxresdefault.jpg)](https://youtu.be/puQB4u1VlMw)
+[![Demo - AI building a Roblox game in real time](https://img.youtube.com/vi/j14LZHYzLg8/maxresdefault.jpg)](https://www.youtube.com/watch?v=j14LZHYzLg8)
 
 ## Why WEPPY (Weppy Roblox MCP)?
 
