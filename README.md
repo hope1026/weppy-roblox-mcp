@@ -177,6 +177,14 @@ Detailed guides and app-specific setup now live on the web.
 
 For app setup details, open the web docs hub and choose the relevant AI client guide.
 
+## Privacy & Telemetry
+
+WEPPY uses Google Analytics 4 Measurement Protocol telemetry to understand product usage, reliability, platform coverage, and feature adoption. Telemetry can be disabled by setting `ENABLE_TELEMETRY=false` or `ENABLE_TELEMETRY=0` in the MCP server environment.
+
+WEPPY does not collect your name, email address, raw license key, local file paths, script source, or Roblox project contents through telemetry.
+
+See [PRIVACY.md](PRIVACY.md) for the full telemetry notice.
+
 ## FAQ
 
 ### How do I connect Claude Code to Roblox Studio?
@@ -217,7 +225,5 @@ Use of the Weppy name and logos is governed by [TRADEMARKS.md](TRADEMARKS.md).
 ---
 
 [![npm version](https://img.shields.io/npm/v/@weppy/roblox-mcp)](https://www.npmjs.com/package/@weppy/roblox-mcp) [![Node.js](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org/) [![Smithery](https://smithery.ai/badge/@hope1026/weppy-roblox-mcp)](https://smithery.ai/server/@hope1026/weppy-roblox-mcp)
-
-[![Roblox MCP on Glama](https://glama.ai/mcp/servers/hope1026/roblox-mcp/badges/card.svg)](https://glama.ai/mcp/servers/hope1026/roblox-mcp)
 
 [GitHub Issues](https://github.com/hope1026/weppy-roblox-mcp/issues) · [Discussions](https://github.com/hope1026/weppy-roblox-mcp/discussions) · [npm](https://www.npmjs.com/package/@weppy/roblox-mcp)

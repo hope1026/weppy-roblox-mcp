@@ -10,6 +10,14 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.7.9] - 2026-05-17
+
+### Stability
+
+- **Clearer failure diagnostics for AI tool calls** — WEPPY now records more precise low-cardinality diagnostics when Roblox Studio commands time out or fail inside workspace state sync and script editing. This helps support and future fixes identify whether failures came from queue delays, Studio connection state, script edit input, or a specific workspace sync stage, without exposing script source or raw Studio paths.
+- **More resilient workspace state sync reporting** — Workspace state sync now labels failures by stage, so a problem while reading scripts, viewport metadata, tree data, or change history no longer collapses into a generic runtime error. Existing workflows and tool behavior are unchanged.
+
 ## [2.7.8] - 2026-05-16
 
 ### Features
