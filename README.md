@@ -18,13 +18,13 @@ No copy-pasting code. AI does the work, you review the results.
 
 ## Quick Install
 
-Install with the guided web page.
+Start from the web install page. It shows the recommended one-line script for your platform first.
 
-👉 **[Install Page](https://weppyai.com/en/install)**
+👉 **[Web Install Page](https://weppyai.com/en/install)**
 
-### Terminal One-Line Install
+### Recommended One-Line Install
 
-If you're comfortable with the terminal, install everything in one line.
+On the install page, copy the one-line script and run it in Terminal or PowerShell.
 
 **macOS / Linux**
 
@@ -40,24 +40,24 @@ irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1
 
 Then reopen your AI app and restart Roblox Studio.
 
-Automatic MCP registration supports Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, and Antigravity.
+Automatic MCP registration supports Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, and Antigravity / Antigravity IDE / Antigravity CLI.
 For Claude Code, the installer also tries to add and install the WEPPY Roblox AI Toolkit. For Codex, it adds the WEPPY Roblox AI Toolkit marketplace and then asks you to install WEPPY Roblox AI Toolkit from Plugin Directory.
+
+### Browser Web Install
+
+If terminal or PowerShell is uncomfortable, use the terminal-free web installer on the same install page.
 
 ### Manual Install
 
-If the one-line install does not work, or automatic installation is not available in your environment:
+If the one-line install or terminal-free web installer does not work, register the MCP server manually with your AI app.
 
-**Step 1** - Use the web install page for the Roblox Studio plugin and app-specific setup.
-
-👉 **[Web Install Page](https://weppyai.com/en/install)**
-
-**Step 2** - Register the MCP server with your AI app:
+Use this server command:
 
 ```bash
 npx -y @weppy/roblox-mcp@latest
 ```
 
-Supported AI apps are Claude Code, Claude Desktop, Cursor, Codex CLI, Codex App, Gemini CLI, and Antigravity.
+Supported AI apps are Claude Code, Claude Desktop, Cursor, Codex CLI, Codex App, Gemini CLI, and Antigravity / Antigravity IDE / Antigravity CLI.
 
 > Any MCP-compatible AI client works. The server command is `npx -y @weppy/roblox-mcp@latest`.
 
@@ -82,8 +82,8 @@ After adding the Codex marketplace, restart Codex, open Plugin Directory, and in
 
 ## Compatibility
 
-| Claude Code | Claude Desktop | Cursor | Codex CLI | Gemini CLI | Antigravity |
-|:-----------:|:--------------:|:------:|:---------:|:----------:|:-----------:|
+| Claude Code | Claude Desktop | Cursor | Codex CLI | Gemini CLI | Antigravity / Antigravity IDE / Antigravity CLI |
+|:-----------:|:--------------:|:------:|:---------:|:----------:|:-----------------------------:|
 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 
 **Requirements:** Node.js 18+, Roblox Studio, Windows 10+ or macOS 12+

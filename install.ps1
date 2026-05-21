@@ -204,6 +204,52 @@ function Test-AntigravityMcpConfigured($configPath) {
     }
 }
 
+function Test-AntigravityMcpRegistrationComplete($configPaths) {
+    $foundExisting = $false
+
+    foreach ($configPath in $configPaths) {
+        if (Test-Path $configPath) {
+            $foundExisting = $true
+            if (-not (Test-AntigravityMcpConfigured $configPath)) {
+                return $false
+            }
+        }
+    }
+
+    return $foundExisting
+}
+
+function Test-AnyAntigravityConfigCandidate($configPaths, $dirPaths) {
+    foreach ($configPath in $configPaths) {
+        if (Test-Path $configPath) {
+            return $true
+        }
+    }
+
+    foreach ($dirPath in $dirPaths) {
+        if (Test-Path $dirPath) {
+            return $true
+        }
+    }
+
+    return $false
+}
+
+function Add-AntigravityMcpConfigs($configPaths) {
+    $wroteExisting = $false
+
+    foreach ($configPath in $configPaths) {
+        if (Test-Path $configPath) {
+            Add-AntigravityMcpConfig $configPath
+            $wroteExisting = $true
+        }
+    }
+
+    if (-not $wroteExisting) {
+        Add-AntigravityMcpConfig $configPaths[0]
+    }
+}
+
 function Test-CodexConfigConfigured($configPath) {
     if (-not (Test-Path $configPath)) {
         return $false
@@ -715,11 +761,23 @@ else {
 # [2/3] Register MCP with AI apps
 # ═══════════════════════════════════
 Write-Step "2/3" "Register MCP with AI apps"
-Write-Host "  Automatic registration: Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, Antigravity"
+Write-Host "  Automatic registration: Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, Antigravity / Antigravity IDE, Antigravity CLI"
 
 $detectedNames = @()
 $detectedTypes = @()
 $notDetected = @()
+$antigravityCliConfig = Join-Path $env:USERPROFILE '.gemini\antigravity-cli\mcp_config.json'
+$antigravityCliCommand = Resolve-OptionalCliCommand 'agy'
+$antigravityConfigCandidates = @(
+    (Join-Path $env:USERPROFILE '.gemini\config\mcp_config.json'),
+    (Join-Path $env:USERPROFILE '.gemini\antigravity-ide\mcp_config.json'),
+    (Join-Path $env:USERPROFILE '.gemini\antigravity\mcp_config.json')
+)
+$antigravityDirCandidates = @(
+    (Join-Path $env:USERPROFILE '.gemini\config'),
+    (Join-Path $env:USERPROFILE '.gemini\antigravity-ide'),
+    (Join-Path $env:USERPROFILE '.gemini\antigravity')
+)
 
 $claudeProjectConfig = Join-Path (Get-Location).Path '.mcp.json'
 $claudeGlobalConfig = Join-Path $env:USERPROFILE '.claude\mcp.json'
@@ -812,21 +870,33 @@ else {
     $notDetected += "Gemini CLI (not found)"
 }
 
-# Antigravity (unofficial path, auto-register if found)
-$antigravityConfig = Join-Path $env:USERPROFILE '.gemini\antigravity\mcp_config.json'
-$antigravityConfigured = Test-AntigravityMcpConfigured $antigravityConfig
-$antigravityDirExists = Test-Path (Join-Path $env:USERPROFILE '.gemini\antigravity')
+# Antigravity / Antigravity IDE
+$antigravityConfigured = Test-AntigravityMcpRegistrationComplete $antigravityConfigCandidates
+$antigravityDetected = Test-AnyAntigravityConfigCandidate $antigravityConfigCandidates $antigravityDirCandidates
 
 if ($antigravityConfigured) {
-    $detectedNames += 'Antigravity (configured)'
+    $detectedNames += 'Antigravity / Antigravity IDE (configured)'
     $detectedTypes += 'antigravity'
 }
-elseif ((Test-Path $antigravityConfig) -or $antigravityDirExists) {
-    $detectedNames += 'Antigravity'
+elseif ($antigravityDetected) {
+    $detectedNames += 'Antigravity / Antigravity IDE'
     $detectedTypes += 'antigravity'
 }
 else {
-    $notDetected += 'Antigravity (not found)'
+    $notDetected += 'Antigravity / Antigravity IDE (not found)'
+}
+
+# Antigravity CLI
+if (Test-AntigravityMcpConfigured $antigravityCliConfig) {
+    $detectedNames += 'Antigravity CLI (configured)'
+    $detectedTypes += 'antigravity-cli'
+}
+elseif ((Test-Path $antigravityCliConfig) -or (Test-Path (Join-Path $env:USERPROFILE '.gemini\antigravity-cli')) -or $antigravityCliCommand) {
+    $detectedNames += 'Antigravity CLI'
+    $detectedTypes += 'antigravity-cli'
+}
+else {
+    $notDetected += 'Antigravity CLI (not found)'
 }
 
 if ($detectedNames.Count -eq 0) {
@@ -963,7 +1033,16 @@ else {
                         Write-Ok "Already configured: $appName"
                     }
                     else {
-                        Add-AntigravityMcpConfig $antigravityConfig
+                        Add-AntigravityMcpConfigs $antigravityConfigCandidates
+                        Write-Ok "Registered: $appName"
+                    }
+                }
+                "antigravity-cli" {
+                    if (Test-AntigravityMcpConfigured $antigravityCliConfig) {
+                        Write-Ok "Already configured: $appName"
+                    }
+                    else {
+                        Add-AntigravityMcpConfig $antigravityCliConfig
                         Write-Ok "Registered: $appName"
                     }
                 }
@@ -1052,7 +1131,7 @@ Write-Host "  1. Restart Roblox Studio"
 Write-Host "  2. Look for the WEPPY button in the Plugins tab"
 Write-Host "  3. Click Connect and start building with AI!"
 Write-Host ""
-Write-Host "  Auto registration: Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, Antigravity"
+Write-Host "  Auto registration: Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, Antigravity / Antigravity IDE, Antigravity CLI"
 Write-Host ""
 Write-Host "  WEPPY Roblox AI Toolkit: Claude Code installs automatically when supported; Codex opens from Plugin Directory after marketplace add."
 Write-Host ""

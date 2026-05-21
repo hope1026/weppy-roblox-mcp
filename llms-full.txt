@@ -10,7 +10,7 @@ Canonical documentation lives on the web:
 - Product documentation: https://weppyai.com/en/docs
 - Pro plans: https://weppyai.com/en/plans
 
-For app-specific setup, open the web install page and choose the relevant AI client guide.
+For installation, start from the web install page and follow its recommended one-line installer first. If terminal or PowerShell is uncomfortable, use the terminal-free web installer on that same page. If automated install fails, use the relevant app-specific manual guide.
 
 Optional WEPPY Roblox AI Toolkit:
 

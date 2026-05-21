@@ -11,6 +11,17 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.7.10] - 2026-05-21
+
+### Features
+
+- **Antigravity IDE and Antigravity CLI setup support** — The one-line installers and packaged setup scripts now recognize the newer Antigravity configuration layout, including Antigravity IDE and Antigravity CLI. Antigravity CLI users get a dedicated global MCP config path at `~/.gemini/antigravity-cli/mcp_config.json`, while existing Antigravity and Antigravity IDE users continue to use their current config locations.
+
+### Stability
+
+- **More reliable MCP registration for Antigravity users** — Installers now check the current Antigravity config candidates separately, update existing files when present, and create the canonical `mcpServers` shape when needed. This reduces false "already configured" states and makes repair installs safer across macOS, Windows, and Linux.
+
 ## [2.7.9] - 2026-05-17
 
 ### Stability

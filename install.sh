@@ -186,6 +186,50 @@ try {
 ' >/dev/null 2>&1
 }
 
+is_antigravity_mcp_registration_complete() {
+  local config_path
+  local found_existing=0
+
+  for config_path in "${ANTIGRAVITY_CONFIG_CANDIDATES[@]}"; do
+    if [ -f "$config_path" ]; then
+      found_existing=1
+      is_antigravity_mcp_configured "$config_path" || return 1
+    fi
+  done
+
+  [ "$found_existing" -eq 1 ]
+}
+
+has_any_antigravity_config_candidate() {
+  local candidate_path
+
+  for candidate_path in "${ANTIGRAVITY_CONFIG_CANDIDATES[@]}"; do
+    [ -f "$candidate_path" ] && return 0
+  done
+
+  for candidate_path in "${ANTIGRAVITY_DIR_CANDIDATES[@]}"; do
+    [ -d "$candidate_path" ] && return 0
+  done
+
+  return 1
+}
+
+add_antigravity_mcp_configs() {
+  local config_path
+  local wrote_existing=0
+
+  for config_path in "${ANTIGRAVITY_CONFIG_CANDIDATES[@]}"; do
+    if [ -f "$config_path" ]; then
+      add_antigravity_mcp_config "$config_path"
+      wrote_existing=1
+    fi
+  done
+
+  if [ "$wrote_existing" -eq 0 ]; then
+    add_antigravity_mcp_config "${ANTIGRAVITY_CONFIG_CANDIDATES[0]}"
+  fi
+}
+
 is_codex_config_configured() {
   local config_path="$1"
 
@@ -685,9 +729,21 @@ fi
 # [2/3] Register MCP with AI apps
 # ═══════════════════════════════════
 step "2/3" "Register MCP with AI apps"
-printf "  Automatic registration: Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, Antigravity\n"
+printf "  Automatic registration: Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, Antigravity / Antigravity IDE, Antigravity CLI\n"
 
 MCP_COMMAND='npx -y @weppy/roblox-mcp@latest'
+ANTIGRAVITY_CLI_CONFIG="$HOME/.gemini/antigravity-cli/mcp_config.json"
+ANTIGRAVITY_CLI_COMMAND="$(resolve_optional_cli_command agy 2>/dev/null || true)"
+ANTIGRAVITY_CONFIG_CANDIDATES=(
+  "$HOME/.gemini/config/mcp_config.json"
+  "$HOME/.gemini/antigravity-ide/mcp_config.json"
+  "$HOME/.gemini/antigravity/mcp_config.json"
+)
+ANTIGRAVITY_DIR_CANDIDATES=(
+  "$HOME/.gemini/config"
+  "$HOME/.gemini/antigravity-ide"
+  "$HOME/.gemini/antigravity"
+)
 
 # AI app detection
 declare -a DETECTED_NAMES=()
@@ -755,7 +811,6 @@ else
 fi
 
 # Gemini CLI
-# Gemini CLI
 GEMINI_CONFIG="$HOME/.gemini/settings.json"
 GEMINI_CLI_COMMAND="$(resolve_optional_cli_command gemini 2>/dev/null || true)"
 if is_json_mcp_configured "$GEMINI_CONFIG"; then
@@ -768,19 +823,29 @@ else
   NOT_DETECTED+=("Gemini CLI (not found)")
 fi
 
-# Antigravity (unofficial path, auto-register if found)
-ANTIGRAVITY_CONFIG="$HOME/.gemini/antigravity/mcp_config.json"
-if is_antigravity_mcp_configured "$ANTIGRAVITY_CONFIG"; then
-  DETECTED_NAMES+=("Antigravity (configured)")
+# Antigravity / Antigravity IDE
+if is_antigravity_mcp_registration_complete; then
+  DETECTED_NAMES+=("Antigravity / Antigravity IDE (configured)")
   DETECTED_TYPES+=("antigravity")
-elif [ -f "$ANTIGRAVITY_CONFIG" ]; then
-  DETECTED_NAMES+=("Antigravity")
-  DETECTED_TYPES+=("antigravity")
-elif [ -d "$HOME/.gemini/antigravity" ]; then
-  DETECTED_NAMES+=("Antigravity")
+elif has_any_antigravity_config_candidate; then
+  DETECTED_NAMES+=("Antigravity / Antigravity IDE")
   DETECTED_TYPES+=("antigravity")
 else
-  NOT_DETECTED+=("Antigravity (not found)")
+  NOT_DETECTED+=("Antigravity / Antigravity IDE (not found)")
+fi
+
+# Antigravity CLI
+if is_antigravity_mcp_configured "$ANTIGRAVITY_CLI_CONFIG"; then
+  DETECTED_NAMES+=("Antigravity CLI (configured)")
+  DETECTED_TYPES+=("antigravity-cli")
+elif [ -f "$ANTIGRAVITY_CLI_CONFIG" ] || [ -d "$HOME/.gemini/antigravity-cli" ]; then
+  DETECTED_NAMES+=("Antigravity CLI")
+  DETECTED_TYPES+=("antigravity-cli")
+elif [ -n "$ANTIGRAVITY_CLI_COMMAND" ]; then
+  DETECTED_NAMES+=("Antigravity CLI")
+  DETECTED_TYPES+=("antigravity-cli")
+else
+  NOT_DETECTED+=("Antigravity CLI (not found)")
 fi
 
 if [ ${#DETECTED_NAMES[@]} -eq 0 ]; then
@@ -916,9 +981,18 @@ else
         fi
         ;;
       antigravity)
-        if is_antigravity_mcp_configured "$ANTIGRAVITY_CONFIG"; then
+        if is_antigravity_mcp_registration_complete; then
           success "Already configured: $app_name"
-        elif add_antigravity_mcp_config "$ANTIGRAVITY_CONFIG"; then
+        elif add_antigravity_mcp_configs; then
+          success "Registered: $app_name"
+        else
+          fail "Failed: $app_name"
+        fi
+        ;;
+      antigravity-cli)
+        if is_antigravity_mcp_configured "$ANTIGRAVITY_CLI_CONFIG"; then
+          success "Already configured: $app_name"
+        elif add_antigravity_mcp_config "$ANTIGRAVITY_CLI_CONFIG"; then
           success "Registered: $app_name"
         else
           fail "Failed: $app_name"
@@ -1000,7 +1074,7 @@ printf "  1. Restart Roblox Studio\n"
 # shellcheck disable=SC2059
 printf "  2. Look for the ${BOLD}WEPPY${NC} button in the Plugins tab\n"
 printf "  3. Click Connect and start building with AI!\n\n"
-printf "  Auto registration: Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, Antigravity\n\n"
+printf "  Auto registration: Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, Antigravity / Antigravity IDE, Antigravity CLI\n\n"
 printf "  WEPPY Roblox AI Toolkit: Claude Code installs automatically when supported; Codex opens from Plugin Directory after marketplace add.\n\n"
 # shellcheck disable=SC2059
 printf "  ${DIM}Docs: https://weppyai.com/en/install${NC}\n\n"
