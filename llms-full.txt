@@ -8,7 +8,7 @@ Canonical documentation lives on the web:
 
 - Install and setup: https://weppyai.com/en/install
 - Product documentation: https://weppyai.com/en/docs
-- Pro plans: https://weppyai.com/en/plans
+- Pro plans: https://weppyai.com/plans/
 
 For installation, start from the web install page and follow its recommended one-line installer first. If terminal or PowerShell is uncomfortable, use the terminal-free web installer on that same page. If automated install fails, use the relevant app-specific manual guide.
 

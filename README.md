@@ -173,7 +173,7 @@ Detailed guides and app-specific setup now live on the web.
 
 - [Web Docs Hub](https://weppyai.com/ko/docs)
 - [Install Guide](https://weppyai.com/en/install)
-- [Pro Upgrade](https://weppyai.com/en/plans)
+- [Pro Upgrade](https://weppyai.com/plans/)
 
 For app setup details, open the web docs hub and choose the relevant AI client guide.
 
@@ -212,7 +212,7 @@ The server runs on localhost only (127.0.0.1:3002). Forbidden paths (CoreGui, Co
 
 Bidirectional Sync, UI Studio, advanced build capabilities, and AI token efficiency - all in one upgrade.
 
-[Pro Upgrade Guide](https://weppyai.com/en/plans)
+[Pro Upgrade Guide](https://weppyai.com/plans/)
 
 ## License
 
@@ -226,4 +226,4 @@ Use of the Weppy name and logos is governed by [TRADEMARKS.md](TRADEMARKS.md).
 
 [![npm version](https://img.shields.io/npm/v/@weppy/roblox-mcp)](https://www.npmjs.com/package/@weppy/roblox-mcp) [![Node.js](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org/) [![Smithery](https://smithery.ai/badge/@hope1026/weppy-roblox-mcp)](https://smithery.ai/server/@hope1026/weppy-roblox-mcp)
 
-[GitHub Issues](https://github.com/hope1026/weppy-roblox-mcp/issues) · [Discussions](https://github.com/hope1026/weppy-roblox-mcp/discussions) · [npm](https://www.npmjs.com/package/@weppy/roblox-mcp)
+[GitHub Issues](https://github.com/hope1026/weppy-roblox-mcp/issues) · [npm](https://www.npmjs.com/package/@weppy/roblox-mcp)

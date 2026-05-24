@@ -9,9 +9,9 @@
 
 ## Reporting a Vulnerability
 
-Do **not** open a public GitHub issue for security vulnerabilities.
+Do **not** include exploit details, secrets, license keys, or private project data in public reports.
 
-Report security issues via [GitHub Issues](https://github.com/hope1026/weppy-roblox-mcp/issues/new) with the title prefixed `[SECURITY]`, or contact the maintainer via [GitHub Discussions](https://github.com/hope1026/weppy-roblox-mcp/discussions).
+Report security issues via [GitHub Issues](https://github.com/hope1026/weppy-roblox-mcp/issues/new) with the title prefixed `[SECURITY]` and only a high-level summary.
 
 We will respond within 72 hours and aim to release a fix within 14 days for confirmed vulnerabilities.
 

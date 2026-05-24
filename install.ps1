@@ -73,17 +73,14 @@ function Resolve-NpmCommand() {
 }
 
 function Resolve-OptionalCliCommand($commandName) {
-    $resolvedCommand = Get-Command $commandName -ErrorAction SilentlyContinue
-    if ($resolvedCommand) {
-        return $resolvedCommand.Source
-    }
-
+    $nativeCommandNames = @("$commandName.cmd", "$commandName.exe", "$commandName.bat", "$commandName.com")
     $candidatePaths = @()
 
     if ($env:APPDATA) {
         $appDataNpmDir = Join-Path $env:APPDATA 'npm'
-        $candidatePaths += (Join-Path $appDataNpmDir "$commandName.cmd")
-        $candidatePaths += (Join-Path $appDataNpmDir $commandName)
+        foreach ($nativeCommandName in $nativeCommandNames) {
+            $candidatePaths += (Join-Path $appDataNpmDir $nativeCommandName)
+        }
     }
 
     foreach ($candidatePath in $candidatePaths) {
@@ -94,6 +91,32 @@ function Resolve-OptionalCliCommand($commandName) {
         if (Test-Path $candidatePath) {
             return $candidatePath
         }
+    }
+
+    foreach ($nativeCommandName in $nativeCommandNames) {
+        $resolvedCommand = Get-Command $nativeCommandName -ErrorAction SilentlyContinue
+        if ($resolvedCommand -and $resolvedCommand.Source) {
+            return $resolvedCommand.Source
+        }
+    }
+
+    $resolvedCommands = @(Get-Command $commandName -All -ErrorAction SilentlyContinue)
+    foreach ($resolvedCommand in $resolvedCommands) {
+        if ($resolvedCommand.CommandType -ne 'Application') {
+            continue
+        }
+
+        $source = $resolvedCommand.Source
+        if ([string]::IsNullOrWhiteSpace($source)) {
+            continue
+        }
+
+        $extension = [System.IO.Path]::GetExtension($source)
+        if ($extension -ieq '.ps1') {
+            continue
+        }
+
+        return $source
     }
 
     return $null
@@ -675,6 +698,159 @@ try {
     }
 }
 
+function Set-CodexMcpConfig($configPath) {
+    $parentDir = Split-Path $configPath -Parent
+    if (-not (Test-Path $parentDir)) { New-Item -ItemType Directory -Path $parentDir -Force | Out-Null }
+    $env:MCP_CODEX_CONFIG_PATH = $configPath
+    try {
+        @'
+const fs = require('fs');
+const path = require('path');
+
+const configPath = process.env.MCP_CODEX_CONFIG_PATH;
+const headerPattern = /^\s*\[\s*mcp_servers\.weppy-roblox-mcp\s*\]\s*(?:#.*)?$/;
+
+function stripCommentOutsideStrings(line) {
+  let inSingle = false;
+  let inDouble = false;
+  let escaped = false;
+
+  for (let index = 0; index < line.length; index += 1) {
+    const char = line[index];
+
+    if (char === '"' && !inSingle && !escaped) {
+      inDouble = !inDouble;
+    } else if (char === "'" && !inDouble && !escaped) {
+      inSingle = !inSingle;
+    } else if (char === '#' && !inSingle && !inDouble) {
+      return line.slice(0, index).trimEnd();
+    }
+
+    escaped = char === '\\' && !escaped;
+    if (char !== '\\') {
+      escaped = false;
+    }
+  }
+
+  return line.trimEnd();
+}
+
+function countTripleQuoteToggles(line, quote) {
+  let count = 0;
+  let inSingle = false;
+  let inDouble = false;
+  let escaped = false;
+
+  for (let index = 0; index < line.length; index += 1) {
+    const char = line[index] ?? '';
+    const nextThree = line.slice(index, index + 3);
+    const isOutsideStrings = !inSingle && !inDouble;
+
+    if (isOutsideStrings && nextThree === quote.repeat(3)) {
+      count += 1;
+      index += 2;
+      escaped = false;
+      continue;
+    }
+
+    if (char === '"' && !inSingle && !escaped) {
+      inDouble = !inDouble;
+    } else if (char === "'" && !inDouble && !escaped) {
+      inSingle = !inSingle;
+    } else if (char === '#' && !inSingle && !inDouble) {
+      break;
+    }
+
+    escaped = char === '\\' && !escaped;
+    if (char !== '\\') {
+      escaped = false;
+    }
+  }
+
+  return count;
+}
+
+function advanceTripleQuoteState(line, state) {
+  const next = { ...state };
+  const tripleDoubleCount = countTripleQuoteToggles(line, '"');
+  const tripleSingleCount = countTripleQuoteToggles(line, "'");
+
+  if (!next.inTripleSingle && tripleDoubleCount % 2 === 1) {
+    next.inTripleDouble = !next.inTripleDouble;
+  }
+
+  if (!next.inTripleDouble && tripleSingleCount % 2 === 1) {
+    next.inTripleSingle = !next.inTripleSingle;
+  }
+
+  return next;
+}
+
+function isTomlTableHeaderLine(line) {
+  const normalized = stripCommentOutsideStrings(line).trim();
+
+  if (normalized.length === 0) {
+    return false;
+  }
+
+  return /^\[\[.*\]\]$/.test(normalized) || /^\[.*\]$/.test(normalized);
+}
+
+function removeCodexBlocks(source) {
+  const kept = [];
+  let skipping = false;
+  let state = {
+    inTripleDouble: false,
+    inTripleSingle: false,
+  };
+
+  for (const line of source.split('\n')) {
+    const isHeaderCandidate = !state.inTripleDouble && !state.inTripleSingle && isTomlTableHeaderLine(line);
+    const isCodexHeader = isHeaderCandidate && headerPattern.test(line);
+
+    if (isCodexHeader) {
+      skipping = true;
+      state = advanceTripleQuoteState(line, state);
+      continue;
+    }
+
+    if (skipping && isHeaderCandidate) {
+      skipping = false;
+    }
+
+    if (!skipping) {
+      kept.push(line);
+    }
+
+    state = advanceTripleQuoteState(line, state);
+  }
+
+  return kept.join('\n').trimEnd();
+}
+
+let source = '';
+try { source = fs.readFileSync(configPath, 'utf8'); } catch {}
+
+const withoutCodex = removeCodexBlocks(source);
+const canonicalBlock = [
+  '[mcp_servers.weppy-roblox-mcp]',
+  'command = "npx"',
+  'args = ["-y", "@weppy/roblox-mcp@latest"]',
+].join('\n');
+const separator = withoutCodex.trim().length > 0 ? '\n\n' : '';
+
+fs.mkdirSync(path.dirname(configPath), { recursive: true });
+fs.writeFileSync(configPath, `${withoutCodex}${separator}${canonicalBlock}\n`);
+'@ | node --input-type=commonjs
+        if ($LASTEXITCODE -ne 0) {
+            throw 'Codex config update failed'
+        }
+    }
+    finally {
+        Remove-Item Env:\MCP_CODEX_CONFIG_PATH -ErrorAction SilentlyContinue
+    }
+}
+
 # Add MCP server to JSON config file (PowerShell 5.1 compatible — edits JSON via node)
 function Add-McpToConfig($configPath) {
     $parentDir = Split-Path $configPath -Parent
@@ -849,6 +1025,10 @@ elseif ($codexCliCommand) {
     $detectedNames += 'Codex CLI/App'
     $detectedTypes += 'codex-cli'
 }
+elseif (Test-Path $codexConfig) {
+    $detectedNames += 'Codex CLI/App (config)'
+    $detectedTypes += 'codex-cli'
+}
 else {
     $notDetected += 'Codex CLI/App (not found)'
 }
@@ -951,10 +1131,8 @@ else {
         try {
             switch ($appType) {
                 "claude-code" {
-                    if ($claudeCodeConfigured) {
-                        Write-Ok "Already configured: $appName"
-                    }
-                    elseif ($claudeCodeCliCommand) {
+                    $claudeUpdated = $false
+                    if ($claudeCodeCliCommand) {
                         $claudeStderrFile = Join-Path ([System.IO.Path]::GetTempPath()) ("weppy-claude-{0}.err" -f ([System.Guid]::NewGuid().ToString("N")))
                         try {
                             # Best-effort remove any legacy bare entry so the subsequent add can
@@ -963,13 +1141,13 @@ else {
                             & $claudeCodeCliCommand mcp add weppy-roblox-mcp -- npx -y "@weppy/roblox-mcp@latest" 2> $claudeStderrFile
                             $claudeExit = $LASTEXITCODE
                             if ($claudeExit -eq 0) {
-                                Write-Ok "Registered: $appName"
+                                $claudeUpdated = $true
                             }
                             else {
                                 $stderrContent = if (Test-Path $claudeStderrFile) { Get-Content $claudeStderrFile -Raw } else { '' }
                                 if ($stderrContent -match '(?i)already exists') {
-                                    # Already registered in another scope — not a failure
-                                    Write-Ok "Already configured: $appName"
+                                    Add-McpToConfig $claudeGlobalConfig
+                                    $claudeUpdated = $true
                                 }
                                 else {
                                     Write-Fail "Failed: $appName (exit=$claudeExit)"
@@ -982,7 +1160,7 @@ else {
                                     }
                                     # Fall back to writing the JSON config directly when the CLI fails for other reasons
                                     Add-McpToConfig $claudeGlobalConfig
-                                    Write-Ok "Registered via fallback JSON: $appName"
+                                    $claudeUpdated = $true
                                 }
                             }
                         }
@@ -990,61 +1168,53 @@ else {
                             Remove-Item $claudeStderrFile -ErrorAction SilentlyContinue
                         }
                     }
-                    else {
-                        Write-Fail "Failed: $appName (CLI/config unavailable)"
+
+                    if (Test-McpJsonConfigured $claudeProjectConfig) {
+                        Add-McpToConfig $claudeProjectConfig
+                        $claudeUpdated = $true
                     }
+
+                    if (Test-McpJsonConfigured $claudeGlobalConfig) {
+                        Add-McpToConfig $claudeGlobalConfig
+                        $claudeUpdated = $true
+                    }
+
+                    if (-not $claudeUpdated) {
+                        Add-McpToConfig $claudeGlobalConfig
+                    }
+
+                    Write-Ok "Updated: $appName"
                 }
                 "claude-desktop" {
                     Add-McpToConfig $claudeDesktopConfig
-                    Write-Ok "Registered: $appName"
+                    Write-Ok "Updated: $appName"
                 }
                 "cursor" {
                     $cursorConfig = Join-Path $env:USERPROFILE ".cursor\mcp.json"
                     Add-McpToConfig $cursorConfig
-                    Write-Ok "Registered: $appName"
+                    Write-Ok "Updated: $appName"
                 }
                 "codex-cli" {
-                    if ($codexConfigured) {
-                        Write-Ok "Already configured: $appName"
-                    }
-                    elseif ($codexCliCommand) {
+                    if ($codexCliCommand) {
                         try { & $codexCliCommand mcp remove weppy-roblox-mcp *> $null } catch {}
-                        & $codexCliCommand mcp add weppy-roblox-mcp -- npx -y "@weppy/roblox-mcp@latest"
-                        if ($LASTEXITCODE -ne 0) {
-                            throw 'codex mcp add failed'
-                        }
-                        Write-Ok "Registered: $appName"
+                        try {
+                            & $codexCliCommand mcp add weppy-roblox-mcp -- npx -y "@weppy/roblox-mcp@latest"
+                        } catch {}
                     }
-                    else {
-                        Write-Fail "Failed: $appName (CLI/config unavailable)"
-                    }
+                    Set-CodexMcpConfig $codexConfig
+                    Write-Ok "Updated: $appName"
                 }
                 "gemini-cli" {
-                    if ($geminiConfigured) {
-                        Write-Ok "Already configured: $appName"
-                    }
-                    else {
-                        Add-McpToConfig $geminiConfig
-                        Write-Ok "Registered: $appName"
-                    }
+                    Add-McpToConfig $geminiConfig
+                    Write-Ok "Updated: $appName"
                 }
                 "antigravity" {
-                    if ($antigravityConfigured) {
-                        Write-Ok "Already configured: $appName"
-                    }
-                    else {
-                        Add-AntigravityMcpConfigs $antigravityConfigCandidates
-                        Write-Ok "Registered: $appName"
-                    }
+                    Add-AntigravityMcpConfigs $antigravityConfigCandidates
+                    Write-Ok "Updated: $appName"
                 }
                 "antigravity-cli" {
-                    if (Test-AntigravityMcpConfigured $antigravityCliConfig) {
-                        Write-Ok "Already configured: $appName"
-                    }
-                    else {
-                        Add-AntigravityMcpConfig $antigravityCliConfig
-                        Write-Ok "Registered: $appName"
-                    }
+                    Add-AntigravityMcpConfig $antigravityCliConfig
+                    Write-Ok "Updated: $appName"
                 }
             }
         }

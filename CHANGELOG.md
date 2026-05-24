@@ -12,6 +12,22 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.7.11] - 2026-05-24
+
+### Features
+
+- **Polar checkout for WEPPY Roblox AI Toolkit Pro** — New Pro purchases now use Polar as the default checkout path. Existing Gumroad purchases continue to work without migration, and users who cancel Gumroad and subscribe again will be guided to the new Polar payment link.
+
+### Bug Fixes
+
+- **More reliable installer upgrades** — The one-line installers and packaged setup scripts now handle Codex configuration updates more safely, including repair installs where an older WEPPY MCP block already exists. Windows installs also avoid PowerShell shim resolution issues when locating optional CLI tools.
+
+### Stability
+
+- **License provider stability hardening** — WEPPY now treats the license provider as a generic backend detail instead of assuming Gumroad everywhere. This makes Pro status checks and dashboard license display more resilient while keeping current Gumroad licenses usable.
+- **General reliability cleanup** — Internal dashboard, plugin, and release-package cleanup reduces stale artifacts and keeps setup guidance aligned across supported languages.
+
 ## [2.7.10] - 2026-05-21
 
 ### Features

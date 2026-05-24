@@ -647,6 +647,152 @@ try {
 NODE
 }
 
+set_codex_mcp_config() {
+  local config_path="$1"
+  local parent_dir
+  parent_dir=$(dirname "$config_path")
+  mkdir -p "$parent_dir"
+  MCP_CODEX_CONFIG_PATH="$config_path" node --input-type=commonjs <<'NODE'
+const fs = require("fs");
+const path = require("path");
+
+const configPath = process.env.MCP_CODEX_CONFIG_PATH;
+const headerPattern = /^\s*\[\s*mcp_servers\.weppy-roblox-mcp\s*\]\s*(?:#.*)?$/;
+
+function stripCommentOutsideStrings(line) {
+  let inSingle = false;
+  let inDouble = false;
+  let escaped = false;
+
+  for (let index = 0; index < line.length; index += 1) {
+    const char = line[index];
+
+    if (char === '"' && !inSingle && !escaped) {
+      inDouble = !inDouble;
+    } else if (char === "'" && !inDouble && !escaped) {
+      inSingle = !inSingle;
+    } else if (char === "#" && !inSingle && !inDouble) {
+      return line.slice(0, index).trimEnd();
+    }
+
+    escaped = char === "\\" && !escaped;
+    if (char !== "\\") {
+      escaped = false;
+    }
+  }
+
+  return line.trimEnd();
+}
+
+function countTripleQuoteToggles(line, quote) {
+  let count = 0;
+  let inSingle = false;
+  let inDouble = false;
+  let escaped = false;
+
+  for (let index = 0; index < line.length; index += 1) {
+    const char = line[index] ?? "";
+    const nextThree = line.slice(index, index + 3);
+    const isOutsideStrings = !inSingle && !inDouble;
+
+    if (isOutsideStrings && nextThree === quote.repeat(3)) {
+      count += 1;
+      index += 2;
+      escaped = false;
+      continue;
+    }
+
+    if (char === '"' && !inSingle && !escaped) {
+      inDouble = !inDouble;
+    } else if (char === "'" && !inDouble && !escaped) {
+      inSingle = !inSingle;
+    } else if (char === "#" && !inSingle && !inDouble) {
+      break;
+    }
+
+    escaped = char === "\\" && !escaped;
+    if (char !== "\\") {
+      escaped = false;
+    }
+  }
+
+  return count;
+}
+
+function advanceTripleQuoteState(line, state) {
+  const next = { ...state };
+  const tripleDoubleCount = countTripleQuoteToggles(line, '"');
+  const tripleSingleCount = countTripleQuoteToggles(line, "'");
+
+  if (!next.inTripleSingle && tripleDoubleCount % 2 === 1) {
+    next.inTripleDouble = !next.inTripleDouble;
+  }
+
+  if (!next.inTripleDouble && tripleSingleCount % 2 === 1) {
+    next.inTripleSingle = !next.inTripleSingle;
+  }
+
+  return next;
+}
+
+function isTomlTableHeaderLine(line) {
+  const normalized = stripCommentOutsideStrings(line).trim();
+
+  if (normalized.length === 0) {
+    return false;
+  }
+
+  return /^\[\[.*\]\]$/.test(normalized) || /^\[.*\]$/.test(normalized);
+}
+
+function removeCodexBlocks(source) {
+  const kept = [];
+  let skipping = false;
+  let state = {
+    inTripleDouble: false,
+    inTripleSingle: false,
+  };
+
+  for (const line of source.split("\n")) {
+    const isHeaderCandidate = !state.inTripleDouble && !state.inTripleSingle && isTomlTableHeaderLine(line);
+    const isCodexHeader = isHeaderCandidate && headerPattern.test(line);
+
+    if (isCodexHeader) {
+      skipping = true;
+      state = advanceTripleQuoteState(line, state);
+      continue;
+    }
+
+    if (skipping && isHeaderCandidate) {
+      skipping = false;
+    }
+
+    if (!skipping) {
+      kept.push(line);
+    }
+
+    state = advanceTripleQuoteState(line, state);
+  }
+
+  return kept.join("\n").trimEnd();
+}
+
+let source = "";
+try { source = fs.readFileSync(configPath, "utf8"); } catch {}
+
+const withoutCodex = removeCodexBlocks(source);
+const canonicalBlock = [
+  "[mcp_servers.weppy-roblox-mcp]",
+  "command = \"npx\"",
+  "args = [\"-y\", \"@weppy/roblox-mcp@latest\"]",
+].join("\n");
+const separator = withoutCodex.trim().length > 0 ? "\n\n" : "";
+
+fs.mkdirSync(path.dirname(configPath), { recursive: true });
+fs.writeFileSync(configPath, `${withoutCodex}${separator}${canonicalBlock}\n`);
+NODE
+}
+
 resolve_optional_cli_command() {
   local command_name="$1"
   local npm_prefix=""
@@ -806,6 +952,9 @@ if is_codex_config_configured "$CODEX_CONFIG"; then
 elif [ -n "$CODEX_CLI_COMMAND" ]; then
   DETECTED_NAMES+=("Codex CLI/App")
   DETECTED_TYPES+=("codex-cli")
+elif [ -f "$CODEX_CONFIG" ]; then
+  DETECTED_NAMES+=("Codex CLI/App (config)")
+  DETECTED_TYPES+=("codex-cli")
 else
   NOT_DETECTED+=("Codex CLI/App (not found)")
 fi
@@ -911,11 +1060,8 @@ else
 
     case "$app_type" in
       claude-code)
-        if is_claude_cli_configured \
-           || is_json_mcp_configured "$CLAUDE_PROJECT_MCP_CONFIG" \
-           || is_json_mcp_configured "$CLAUDE_GLOBAL_MCP_CONFIG"; then
-          success "Already configured: $app_name"
-        elif [ -n "$CLAUDE_CLI_COMMAND" ]; then
+        claude_updated=false
+        if [ -n "$CLAUDE_CLI_COMMAND" ]; then
           claude_stderr_file=$(mktemp "${TMPDIR:-/tmp}/weppy-claude-XXXXXX.err" 2>/dev/null || echo "${HOME}/weppy-claude.err")
           # Best-effort remove any legacy bare entry so the subsequent add can
           # install the canonical `@latest` form. Ignore errors when nothing
@@ -926,74 +1072,79 @@ else
           claude_exit_code=0
           "$CLAUDE_CLI_COMMAND" mcp add weppy-roblox-mcp -- npx -y "@weppy/roblox-mcp@latest" 2>"$claude_stderr_file" || claude_exit_code=$?
           if [ "$claude_exit_code" -eq 0 ]; then
-            success "Registered: $app_name"
+            claude_updated=true
           elif grep -qi "already exists" "$claude_stderr_file"; then
-            # Already registered in another scope — not a failure
-            success "Already configured: $app_name"
+            add_mcp_to_config "$CLAUDE_GLOBAL_MCP_CONFIG"
+            claude_updated=true
           else
             fail "Failed: $app_name (exit=$claude_exit_code)"
             printf "    CLI: %s\n" "$CLAUDE_CLI_COMMAND"
             printf "    stderr:\n"
             sed 's/^/      /' "$claude_stderr_file" || true
+            add_mcp_to_config "$CLAUDE_GLOBAL_MCP_CONFIG"
+            claude_updated=true
           fi
           rm -f "$claude_stderr_file"
-        else
-          fail "Failed: $app_name (claude CLI not found)"
         fi
+
+        if is_json_mcp_configured "$CLAUDE_PROJECT_MCP_CONFIG"; then
+          add_mcp_to_config "$CLAUDE_PROJECT_MCP_CONFIG"
+          claude_updated=true
+        fi
+
+        if is_json_mcp_configured "$CLAUDE_GLOBAL_MCP_CONFIG"; then
+          add_mcp_to_config "$CLAUDE_GLOBAL_MCP_CONFIG"
+          claude_updated=true
+        fi
+
+        if [ "$claude_updated" = false ]; then
+          add_mcp_to_config "$CLAUDE_GLOBAL_MCP_CONFIG"
+        fi
+
+        success "Updated: $app_name"
         ;;
       claude-desktop)
         if add_mcp_to_config "$CLAUDE_DESKTOP_CONFIG"; then
-          success "Registered: $app_name"
+          success "Updated: $app_name"
         else
           fail "Failed: $app_name"
         fi
         ;;
       cursor)
         if add_mcp_to_config "$HOME/.cursor/mcp.json"; then
-          success "Registered: $app_name"
+          success "Updated: $app_name"
         else
           fail "Failed: $app_name"
         fi
         ;;
       codex-cli)
-        if is_codex_config_configured "$CODEX_CONFIG"; then
-          success "Already configured: $app_name"
-        else
-          [ -n "$CODEX_CLI_COMMAND" ] && "$CODEX_CLI_COMMAND" mcp remove weppy-roblox-mcp >/dev/null 2>&1 || true
+        if [ -n "$CODEX_CLI_COMMAND" ]; then
+          "$CODEX_CLI_COMMAND" mcp remove weppy-roblox-mcp >/dev/null 2>&1 || true
+          "$CODEX_CLI_COMMAND" mcp add weppy-roblox-mcp -- npx -y "@weppy/roblox-mcp@latest" >/dev/null 2>&1 || true
         fi
-        if is_codex_config_configured "$CODEX_CONFIG"; then
-          :
-        elif [ -n "$CODEX_CLI_COMMAND" ] && "$CODEX_CLI_COMMAND" mcp add weppy-roblox-mcp -- npx -y "@weppy/roblox-mcp@latest" 2>/dev/null; then
-          success "Registered: $app_name"
-        elif is_codex_config_configured "$CODEX_CONFIG"; then
-          success "Already configured: $app_name"
+        if set_codex_mcp_config "$CODEX_CONFIG"; then
+          success "Updated: $app_name"
         else
           fail "Failed: $app_name"
         fi
         ;;
       gemini-cli)
-        if is_json_mcp_configured "$GEMINI_CONFIG"; then
-          success "Already configured: $app_name"
-        elif add_mcp_to_config "$GEMINI_CONFIG"; then
-          success "Registered: $app_name"
+        if add_mcp_to_config "$GEMINI_CONFIG"; then
+          success "Updated: $app_name"
         else
           fail "Failed: $app_name"
         fi
         ;;
       antigravity)
-        if is_antigravity_mcp_registration_complete; then
-          success "Already configured: $app_name"
-        elif add_antigravity_mcp_configs; then
-          success "Registered: $app_name"
+        if add_antigravity_mcp_configs; then
+          success "Updated: $app_name"
         else
           fail "Failed: $app_name"
         fi
         ;;
       antigravity-cli)
-        if is_antigravity_mcp_configured "$ANTIGRAVITY_CLI_CONFIG"; then
-          success "Already configured: $app_name"
-        elif add_antigravity_mcp_config "$ANTIGRAVITY_CLI_CONFIG"; then
-          success "Registered: $app_name"
+        if add_antigravity_mcp_config "$ANTIGRAVITY_CLI_CONFIG"; then
+          success "Updated: $app_name"
         else
           fail "Failed: $app_name"
         fi

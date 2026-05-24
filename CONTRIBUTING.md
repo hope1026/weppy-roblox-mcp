@@ -18,7 +18,7 @@ Use the [Feature Request template](https://github.com/hope1026/weppy-roblox-mcp/
 
 ## Questions & Install Help
 
-Use [GitHub Discussions](https://github.com/hope1026/weppy-roblox-mcp/discussions) — not Issues — for questions and install help.
+Use [GitHub Issues](https://github.com/hope1026/weppy-roblox-mcp/issues/new) for questions and install help. Do not post raw license keys, receipts, email addresses, or personal billing details in public issues.
 
 ## Pull Requests
 

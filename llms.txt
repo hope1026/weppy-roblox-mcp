@@ -67,7 +67,7 @@ After adding the Codex marketplace, restart Codex, open Plugin Directory, and in
 ## Detailed docs
 
 - Install and setup: https://weppyai.com/en/install
-- Pro upgrade: https://weppyai.com/en/plans
+- Pro upgrade: https://weppyai.com/plans/
 
 ## Requirements
 
@@ -87,4 +87,3 @@ After adding the Codex marketplace, restart Codex, open Plugin Directory, and in
 - Roblox Explorer (VS Code Marketplace): https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer
 - Roblox Explorer (Open VSX): https://open-vsx.org/extension/weppy/weppy-roblox-explorer
 - Issues: https://github.com/hope1026/weppy-roblox-mcp/issues
-- Discussions: https://github.com/hope1026/weppy-roblox-mcp/discussions
