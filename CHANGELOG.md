@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.7.14] - 2026-06-03
+
+### Bug Fixes
+
+- **More reliable sync for imported models and VFX assets** — Project sync no longer stops with `Can't convert to JSON` when a Roblox model contains non-UTF8 string data in values or attributes. WEPPY now preserves that data safely and continues syncing the rest of the place.
+
+### Stability
+
+- **Clearer chunk-sync troubleshooting in Studio** — When sync encounters unusual data, WEPPY now points to the affected Studio object, field, and byte length in the plugin logs without exposing the raw value. Generic `Internal error` responses from the server also surface the detailed message when one is available, making support logs easier to share from the WEPPY UI.
+
 ## [2.7.13] - 2026-06-02
 
 ### Stability
