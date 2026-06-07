@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "WEPPY Roblox AI Toolkit — WEPPY AI Agent Plugin and MCP setup for live Roblox Studio workflows with direct Studio control, sync, playtest, UI Studio, and dashboard monitoring",
-    "version": "2.7.16"
+    "version": "2.7.17"
   },
   "plugins": [
     {
       "name": "weppy-roblox-ai-toolkit",
       "source": "./plugins/weppy-roblox-mcp",
       "description": "WEPPY Roblox AI Toolkit — WEPPY AI Agent Plugin and MCP setup for live Roblox Studio workflows.",
-      "version": "2.7.16",
+      "version": "2.7.17",
       "author": {
         "name": "hope1026"
       },

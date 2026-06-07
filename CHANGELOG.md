@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.7.17] - 2026-06-07
+
+### Bug Fixes
+
+- **More reliable Codex Play testing controls** — Fixes an intermittent issue where starting or stopping Play tests from Codex could miss the active Roblox Studio play session, leaving `play` or `stop` commands stuck until retried.
+
 ## [2.7.16] - 2026-06-05
 
 ### Bug Fixes
