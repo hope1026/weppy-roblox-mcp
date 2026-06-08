@@ -6,6 +6,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.7.18] - 2026-06-08
+
+### Stability
+
+- **Clearer sync disk-error troubleshooting** — When Project Sync cannot start because the local sync folder cannot be written, WEPPY now keeps the underlying disk or permission message in the Studio error details and server logs instead of only showing `Disk error`. This makes support logs more actionable without changing the sync workflow.
+
 ## [2.7.17] - 2026-06-07
 
 ### Bug Fixes
