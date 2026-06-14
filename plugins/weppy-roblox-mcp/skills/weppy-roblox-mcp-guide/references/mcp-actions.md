@@ -1643,7 +1643,7 @@ AABB collision check.
 
 ## Tool: `manage_assets`
 
-[PRO] Asset management: insert models by ID, get asset info, search creator store, insert free models/packages, export selection.
+[PRO] Asset management: insert models by ID, get asset info, search creator store, insert free models/packages, export selection JSON, round-trip .rbxm files through Asset Library, and generate local thumbnails.
 
 ### `manage_assets.insert`
 
@@ -1685,7 +1685,7 @@ search Creator Store.
   - `query` - string - Search keyword. Used by: search (required), search_insert (required). E.g., "monster", "tree", "car".
 - Optional params:
   - `maxResults` - number - Maximum search results. Used by: search. Default: 10.
-  - `category` - string - Asset category filter. Used by: search.
+  - `category` - string - Asset category filter. Used by: search, export_selection_rbxm, export_path_rbxm, import_rbxm, generate_thumbnail.
   - `sortType` - string - Sort order for search results. Used by: search.
 
 ### `manage_assets.search_insert`
@@ -1731,20 +1731,200 @@ insert package.
   - `parent` - string - Parent path for inserted asset. Used by: insert, search_insert, insert_free, insert_package. Default: "game.Workspace".
   - `name` - string - Optional name for inserted instance.
 
-### `manage_assets.export`
+### `manage_assets.export_selection_json`
 
-export current selection.
+return a JSON snapshot of the current Studio selection.
 
 - Tier: `pro`
 - Route: `plugin`
-- Execution mode: `unspecified`
+- Execution mode: `readonly`
 - Param aliases: none
 - Required params: none
 - Optional params:
-  - `format` - string - Export format. Used by: export.
-  - `includeProperties` - boolean - Include all properties in export. Used by: export. Default: false.
-  - `includeChildren` - boolean - Include children in export. Used by: export. Default: false.
-  - `maxDepth` - number - Maximum depth for recursive child export. Used by: export. Default: 5.
+  - `format` - string - Export format. Used by: export_selection_json.
+  - `includeProperties` - boolean - Include all properties in export. Used by: export_selection_json. Default: false.
+  - `includeChildren` - boolean - Include children in export. Used by: export_selection_json. Default: false.
+  - `maxDepth` - number - Maximum depth for recursive child export. Used by: export_selection_json. Default: 5.
+
+### `manage_assets.export_selection_rbxm`
+
+serialize the current Studio selection to a local Asset Library .rbxm asset.
+
+- Tier: `pro`
+- Route: `plugin`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params:
+  - `category` - string - Asset category filter. Used by: search, export_selection_rbxm, export_path_rbxm, import_rbxm, generate_thumbnail.
+- Optional params:
+  - `contextId` - string - Optional execution context identifier. Used to continue an existing context for mutating actions.
+  - `contextSummary` - ExecutionContextSummary - Optional structured execution context attached to this tool call.
+  - `replayMetadata` - ExecutionReplayMetadata - Optional replay-ready metadata attached to this tool call.
+  - `scope` - "place" | "shared" - Asset Library scope. Used by: export_selection_rbxm, export_path_rbxm, import_rbxm, generate_thumbnail. Default: place.
+  - `placeId` - number - Place ID for place-scoped Asset Library operations. Used by: export_selection_rbxm, export_path_rbxm, import_rbxm, generate_thumbnail.
+  - `displayName` - string - Asset Library display name. Used by: export_selection_rbxm, export_path_rbxm.
+  - `description` - string - Asset Library description. Used by: export_selection_rbxm, export_path_rbxm.
+  - `thumbnailMode` - "none" | "auto" - Thumbnail capture mode. Used by: export_selection_rbxm, export_path_rbxm. Default: none.
+
+### `manage_assets.export_path_rbxm`
+
+serialize one Studio instance path to a local Asset Library .rbxm asset.
+
+- Tier: `pro`
+- Route: `plugin`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params:
+  - `category` - string - Asset category filter. Used by: search, export_selection_rbxm, export_path_rbxm, import_rbxm, generate_thumbnail.
+  - `sourcePath` - string - Studio instance path to export. Used by: export_path_rbxm.
+- Optional params:
+  - `contextId` - string - Optional execution context identifier. Used to continue an existing context for mutating actions.
+  - `contextSummary` - ExecutionContextSummary - Optional structured execution context attached to this tool call.
+  - `replayMetadata` - ExecutionReplayMetadata - Optional replay-ready metadata attached to this tool call.
+  - `scope` - "place" | "shared" - Asset Library scope. Used by: export_selection_rbxm, export_path_rbxm, import_rbxm, generate_thumbnail. Default: place.
+  - `placeId` - number - Place ID for place-scoped Asset Library operations. Used by: export_selection_rbxm, export_path_rbxm, import_rbxm, generate_thumbnail.
+  - `displayName` - string - Asset Library display name. Used by: export_selection_rbxm, export_path_rbxm.
+  - `description` - string - Asset Library description. Used by: export_selection_rbxm, export_path_rbxm.
+  - `thumbnailMode` - "none" | "auto" - Thumbnail capture mode. Used by: export_selection_rbxm, export_path_rbxm. Default: none.
+
+### `manage_assets.import_rbxm`
+
+import an Asset Library .rbxm asset into Studio under a target parent.
+
+- Tier: `pro`
+- Route: `plugin`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params:
+  - `category` - string - Asset category filter. Used by: search, export_selection_rbxm, export_path_rbxm, import_rbxm, generate_thumbnail.
+  - `assetLibraryAssetId` - string - Asset Library asset ID. Used by: import_rbxm, generate_thumbnail.
+- Optional params:
+  - `contextId` - string - Optional execution context identifier. Used to continue an existing context for mutating actions.
+  - `contextSummary` - ExecutionContextSummary - Optional structured execution context attached to this tool call.
+  - `replayMetadata` - ExecutionReplayMetadata - Optional replay-ready metadata attached to this tool call.
+  - `scope` - "place" | "shared" - Asset Library scope. Used by: export_selection_rbxm, export_path_rbxm, import_rbxm, generate_thumbnail. Default: place.
+  - `placeId` - number - Place ID for place-scoped Asset Library operations. Used by: export_selection_rbxm, export_path_rbxm, import_rbxm, generate_thumbnail.
+  - `targetParent` - string - Studio parent path for imported instances. Used by: import_rbxm. Default: game.Workspace.
+  - `name` - string - Optional name for inserted instance.
+
+### `manage_assets.generate_thumbnail`
+
+generate or replace thumbnail.png for an Asset Library .rbxm asset.
+
+- Tier: `pro`
+- Route: `plugin`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params:
+  - `category` - string - Asset category filter. Used by: search, export_selection_rbxm, export_path_rbxm, import_rbxm, generate_thumbnail.
+  - `assetLibraryAssetId` - string - Asset Library asset ID. Used by: import_rbxm, generate_thumbnail.
+- Optional params:
+  - `contextId` - string - Optional execution context identifier. Used to continue an existing context for mutating actions.
+  - `contextSummary` - ExecutionContextSummary - Optional structured execution context attached to this tool call.
+  - `replayMetadata` - ExecutionReplayMetadata - Optional replay-ready metadata attached to this tool call.
+  - `scope` - "place" | "shared" - Asset Library scope. Used by: export_selection_rbxm, export_path_rbxm, import_rbxm, generate_thumbnail. Default: place.
+  - `placeId` - number - Place ID for place-scoped Asset Library operations. Used by: export_selection_rbxm, export_path_rbxm, import_rbxm, generate_thumbnail.
+
+## Tool: `manage_open_cloud_assets`
+
+[PRO] Roblox Open Cloud asset upload: credential status, category capabilities, upload local files, update assets, read metadata, and poll operation status. Does not expose delete/archive/restore actions.
+
+### `manage_open_cloud_assets.credential_status`
+
+check local Open Cloud credential status without exposing the raw API key.
+
+- Tier: `pro`
+- Route: `internal`
+- Execution mode: `readonly`
+- Param aliases: none
+- Required params: none
+- Optional params: none
+
+### `manage_open_cloud_assets.capabilities`
+
+list supported upload categories, extensions, and update capabilities.
+
+- Tier: `pro`
+- Route: `internal`
+- Execution mode: `readonly`
+- Param aliases: none
+- Required params: none
+- Optional params: none
+
+### `manage_open_cloud_assets.upload`
+
+upload a local file as a new Roblox asset through Open Cloud.
+
+- Tier: `pro`
+- Route: `internal`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params:
+  - `filePath` - string - Local file path on the MCP server machine. Used by: upload, update.
+  - `category` - "image" | "decal" | "audio" | "mesh" | "model" | "video" | "animation" - WEPPY asset category. Used by: upload, update.
+  - `displayName` - string - Roblox asset display name. Used by: upload, update.
+- Optional params:
+  - `contextId` - string - Optional execution context identifier. Used to continue an existing context for mutating actions.
+  - `contextSummary` - ExecutionContextSummary - Optional structured execution context attached to this tool call.
+  - `replayMetadata` - ExecutionReplayMetadata - Optional replay-ready metadata attached to this tool call.
+  - `description` - string - Roblox asset description. Used by: upload, update.
+  - `creatorType` - "user" | "group" - Asset creator owner type. Used by: upload, update. Defaults to saved credential metadata when available.
+  - `creatorId` - string - User ID or group ID for the asset creator. Used by: upload, update. Defaults to saved credential metadata when available.
+  - `expectedPrice` - number - Expected upload fee in Robux. Used by: upload, update when Roblox requires an expected price.
+  - `waitForOperation` - boolean - When true, poll the returned Open Cloud operation until done or timeout. Used by: upload, update.
+  - `operationPollTimeoutMs` - number - Maximum operation polling time in milliseconds. Used by: upload, update when waitForOperation is true.
+  - `operationPollIntervalMs` - number - Operation polling interval in milliseconds. Used by: upload, update when waitForOperation is true.
+
+### `manage_open_cloud_assets.update`
+
+update an existing Roblox asset through Open Cloud.
+
+- Tier: `pro`
+- Route: `internal`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params:
+  - `assetId` - string - Roblox asset ID. Used by: update (required), info (required).
+  - `category` - "image" | "decal" | "audio" | "mesh" | "model" | "video" | "animation" - WEPPY asset category. Used by: upload, update.
+- Optional params:
+  - `contextId` - string - Optional execution context identifier. Used to continue an existing context for mutating actions.
+  - `contextSummary` - ExecutionContextSummary - Optional structured execution context attached to this tool call.
+  - `replayMetadata` - ExecutionReplayMetadata - Optional replay-ready metadata attached to this tool call.
+  - `filePath` - string - Local file path on the MCP server machine. Used by: upload, update.
+  - `displayName` - string - Roblox asset display name. Used by: upload, update.
+  - `description` - string - Roblox asset description. Used by: upload, update.
+  - `creatorType` - "user" | "group" - Asset creator owner type. Used by: upload, update. Defaults to saved credential metadata when available.
+  - `creatorId` - string - User ID or group ID for the asset creator. Used by: upload, update. Defaults to saved credential metadata when available.
+  - `expectedPrice` - number - Expected upload fee in Robux. Used by: upload, update when Roblox requires an expected price.
+  - `updateMask` - array<string> - Metadata fields to update. Used by: update.
+  - `waitForOperation` - boolean - When true, poll the returned Open Cloud operation until done or timeout. Used by: upload, update.
+  - `operationPollTimeoutMs` - number - Maximum operation polling time in milliseconds. Used by: upload, update when waitForOperation is true.
+  - `operationPollIntervalMs` - number - Operation polling interval in milliseconds. Used by: upload, update when waitForOperation is true.
+
+### `manage_open_cloud_assets.info`
+
+read Roblox asset metadata through Open Cloud.
+
+- Tier: `pro`
+- Route: `internal`
+- Execution mode: `readonly`
+- Param aliases: none
+- Required params:
+  - `assetId` - string - Roblox asset ID. Used by: update (required), info (required).
+- Optional params:
+  - `readMask` - array<string> - Asset metadata fields to retrieve. Used by: info.
+
+### `manage_open_cloud_assets.operation_status`
+
+read Open Cloud operation status for upload/update processing.
+
+- Tier: `pro`
+- Route: `internal`
+- Execution mode: `readonly`
+- Param aliases: none
+- Required params:
+  - `operationId` - string - Roblox Open Cloud operation ID or operations/{id} path. Used by: operation_status.
+- Optional params: none
 
 ## Tool: `manage_sync`
 

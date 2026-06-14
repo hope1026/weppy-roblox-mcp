@@ -7,6 +7,16 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.8.0] - 2026-06-14
+
+### Features
+
+- **Experimental Dashboard Assets page** — The WEPPY Dashboard now includes an experimental Assets page for local Images, Decals, and RBXM files, so you can review saved assets, upload supported files, and insert saved RBXM files into the connected Studio place.
+- **AI-generated image upload support** — When using image-capable AI agents such as Codex Desktop or Antigravity, you can generate an image, save it into the local Asset Library, upload it to Roblox with Open Cloud, and use the returned Roblox Asset ID or `rbxassetid://` URI in your game.
+- **RBXM export and insert from Studio** — You can export selected Roblox Studio objects as RBXM files from the WEPPY Plugin Assets tab, review the saved files in the Dashboard, and insert them back into the connected Studio place.
+- **Local Open Cloud credential storage** — Roblox uploads use API key and Creator ID profiles stored locally with encryption. WEPPY does not store API keys in an external service or send them to a separate WEPPY server; the local MCP server uses them only for Roblox Open Cloud upload requests.
+
 ## [2.7.18] - 2026-06-08
 
 ### Stability
