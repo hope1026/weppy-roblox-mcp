@@ -14,6 +14,23 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.10.0] - 2026-07-03
+
+### Features
+
+- **Use Roblox Studio model generation from AI agent requests** — WEPPY can now call Roblox Studio's model generation feature and create the generated model inside Studio. You can review the result in Studio, save it to the local Asset Library as RBXM, and upload the selected model when you need a Roblox asset ID.
+- **Save generated Studio content more safely as RBXM** — When a generated model contains mesh or texture data that does not yet have Roblox asset IDs, WEPPY asks before using Studio-local upload to preserve that embedded content before saving the RBXM. No manual migration is required.
+- **Safer Project Sync delete settings** — Sync now separates "local file deleted" from "delete the matching Studio instance." The default is to ask before deleting in Studio, and you can switch to Auto Delete from the Sync direction controls when local deletes should be treated as Studio delete intent.
+
+### Bug Fixes
+
+- **Undo local-to-Studio Sync changes in Roblox Studio** — Script edits, created instances, and local delete applies made by Sync are now recorded in Studio history. If a local delete removes a Studio instance, Roblox Studio Undo can restore it instead of leaving the action with no response.
+
+### Stability
+
+- **Cleaner Dashboard controls and danger actions** — Dashboard buttons, tabs, help actions, modals, and destructive controls now use a more consistent visual system across Assets, Sync, Connection, Playtest, Tools, Settings, UI Studio, and What's New. This makes repeated dashboard work easier to scan without changing existing setup.
+
 ## [2.9.3] - 2026-06-27
 
 ### Bug Fixes
