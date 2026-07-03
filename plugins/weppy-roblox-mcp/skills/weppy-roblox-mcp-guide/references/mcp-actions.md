@@ -2015,7 +2015,7 @@ AABB collision check.
 
 ## Tool: `manage_assets`
 
-[PRO] Asset management: insert models by ID, get asset info, search creator store, insert free models/packages, export selection JSON, round-trip .rbxm files through Asset Library, and generate local thumbnails.
+[PRO] Asset management: insert models by ID, get asset info, search creator store, insert free models/packages, export selection JSON, generate/review Roblox models, round-trip .rbxm files through Asset Library, and generate local thumbnails.
 
 ### `manage_assets.insert`
 
@@ -2063,7 +2063,7 @@ search Creator Store.
   - `query` - string - Search keyword. Used by: search (required), search_insert (required). E.g., "monster", "tree", "car".
 - Optional params:
   - `maxResults` - number - Maximum search results. Used by: search. Default: 10.
-  - `category` - string - Asset category filter. Used by: search, export_selection_rbxm, export_path_rbxm, import_rbxm, generate_thumbnail.
+  - `category` - string - Asset category filter. Used by: search, export_selection_rbxm, export_path_rbxm, review_model, generate_model, import_rbxm, generate_thumbnail. upload_asset may omit this and use assetType/selection auto-detection.
   - `sortType` - string - Sort order for search results. Used by: search.
   - `placeId` - number - Place ID for place-scoped Asset Library .rbxm round-trip operations. For other manage_assets Studio/plugin actions, this also acts as an optional Studio target selector.
   - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
@@ -2148,16 +2148,20 @@ serialize the current Studio selection to a local Asset Library .rbxm asset.
 - Execution mode: `mutating`
 - Param aliases: none
 - Required params:
-  - `category` - string - Asset category filter. Used by: search, export_selection_rbxm, export_path_rbxm, import_rbxm, generate_thumbnail.
+  - `category` - string - Asset category filter. Used by: search, export_selection_rbxm, export_path_rbxm, review_model, generate_model, import_rbxm, generate_thumbnail. upload_asset may omit this and use assetType/selection auto-detection.
 - Optional params:
   - `contextId` - string - Optional execution context identifier. Used to continue an existing context for mutating actions.
   - `contextSummary` - ExecutionContextSummary - Optional structured execution context attached to this tool call.
   - `replayMetadata` - ExecutionReplayMetadata - Optional replay-ready metadata attached to this tool call.
-  - `scope` - "place" | "shared" - Asset Library scope. Used by: export_selection_rbxm, export_path_rbxm, import_rbxm, generate_thumbnail. Default: place.
+  - `scope` - "place" | "shared" - Asset Library scope. Used by: export_selection_rbxm, export_path_rbxm, review_model, import_rbxm, generate_thumbnail. Default: place.
   - `placeId` - number - Place ID for place-scoped Asset Library .rbxm round-trip operations. For other manage_assets Studio/plugin actions, this also acts as an optional Studio target selector.
-  - `displayName` - string - Asset Library display name. Used by: export_selection_rbxm, export_path_rbxm.
-  - `description` - string - Asset Library description. Used by: export_selection_rbxm, export_path_rbxm.
-  - `thumbnailMode` - "none" | "auto" - Thumbnail capture mode. Used by: export_selection_rbxm, export_path_rbxm. Default: none.
+  - `displayName` - string - Asset Library display name or Studio upload display name. Used by: export_selection_rbxm, export_path_rbxm, review_model, generate_model, upload_asset.
+  - `description` - string - Asset Library description or Studio upload description. Used by: export_selection_rbxm, export_path_rbxm, review_model, upload_asset.
+  - `thumbnailMode` - "none" | "auto" - Thumbnail capture mode. Used by: export_selection_rbxm, export_path_rbxm, review_model. Default: none.
+  - `uploadMode` - "auto" | "model" | "embeddedResources" | "localOnly" - Studio-local upload behavior for .rbxm registration actions. auto uploads the selected object as a Roblox Model asset first, model requires that path, embeddedResources uploads only generated Mesh/Image resources, and localOnly skips Roblox upload. Used by: export_selection_rbxm, export_path_rbxm, review_model. Default: localOnly.
+  - `uploadTemporaryAssets` - boolean - Explicit user approval for Studio-local CreateAssetAsync uploads before .rbxm registration. Used by: export_selection_rbxm, export_path_rbxm, review_model. Default: false; set true only after user approval.
+  - `creatorType` - "user" | "group" - Optional Roblox creator type for Studio-local temporary asset upload. Used with uploadTemporaryAssets by .rbxm registration actions. Omit to use the logged-in Studio user.
+  - `creatorId` - string - Optional Roblox user or group ID for Studio-local temporary asset upload. Used with uploadTemporaryAssets by .rbxm registration actions.
   - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
   - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
 
@@ -2170,17 +2174,113 @@ serialize one Studio instance path to a local Asset Library .rbxm asset.
 - Execution mode: `mutating`
 - Param aliases: none
 - Required params:
-  - `category` - string - Asset category filter. Used by: search, export_selection_rbxm, export_path_rbxm, import_rbxm, generate_thumbnail.
-  - `sourcePath` - string - Studio instance path to export. Used by: export_path_rbxm.
+  - `category` - string - Asset category filter. Used by: search, export_selection_rbxm, export_path_rbxm, review_model, generate_model, import_rbxm, generate_thumbnail. upload_asset may omit this and use assetType/selection auto-detection.
+  - `sourcePath` - string - Studio instance path to export, review, or upload. Used by: export_path_rbxm, review_model, upload_asset.
 - Optional params:
   - `contextId` - string - Optional execution context identifier. Used to continue an existing context for mutating actions.
   - `contextSummary` - ExecutionContextSummary - Optional structured execution context attached to this tool call.
   - `replayMetadata` - ExecutionReplayMetadata - Optional replay-ready metadata attached to this tool call.
-  - `scope` - "place" | "shared" - Asset Library scope. Used by: export_selection_rbxm, export_path_rbxm, import_rbxm, generate_thumbnail. Default: place.
+  - `scope` - "place" | "shared" - Asset Library scope. Used by: export_selection_rbxm, export_path_rbxm, review_model, import_rbxm, generate_thumbnail. Default: place.
   - `placeId` - number - Place ID for place-scoped Asset Library .rbxm round-trip operations. For other manage_assets Studio/plugin actions, this also acts as an optional Studio target selector.
-  - `displayName` - string - Asset Library display name. Used by: export_selection_rbxm, export_path_rbxm.
-  - `description` - string - Asset Library description. Used by: export_selection_rbxm, export_path_rbxm.
-  - `thumbnailMode` - "none" | "auto" - Thumbnail capture mode. Used by: export_selection_rbxm, export_path_rbxm. Default: none.
+  - `displayName` - string - Asset Library display name or Studio upload display name. Used by: export_selection_rbxm, export_path_rbxm, review_model, generate_model, upload_asset.
+  - `description` - string - Asset Library description or Studio upload description. Used by: export_selection_rbxm, export_path_rbxm, review_model, upload_asset.
+  - `thumbnailMode` - "none" | "auto" - Thumbnail capture mode. Used by: export_selection_rbxm, export_path_rbxm, review_model. Default: none.
+  - `uploadMode` - "auto" | "model" | "embeddedResources" | "localOnly" - Studio-local upload behavior for .rbxm registration actions. auto uploads the selected object as a Roblox Model asset first, model requires that path, embeddedResources uploads only generated Mesh/Image resources, and localOnly skips Roblox upload. Used by: export_selection_rbxm, export_path_rbxm, review_model. Default: localOnly.
+  - `uploadTemporaryAssets` - boolean - Explicit user approval for Studio-local CreateAssetAsync uploads before .rbxm registration. Used by: export_selection_rbxm, export_path_rbxm, review_model. Default: false; set true only after user approval.
+  - `creatorType` - "user" | "group" - Optional Roblox creator type for Studio-local temporary asset upload. Used with uploadTemporaryAssets by .rbxm registration actions. Omit to use the logged-in Studio user.
+  - `creatorId` - string - Optional Roblox user or group ID for Studio-local temporary asset upload. Used with uploadTemporaryAssets by .rbxm registration actions.
+  - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
+  - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
+
+### `manage_assets.review_model`
+
+QA the current selection or a Studio path and optionally register it as a local Asset Library .rbxm asset.
+
+- Tier: `pro`
+- Route: `plugin`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params:
+  - `category` - string - Asset category filter. Used by: search, export_selection_rbxm, export_path_rbxm, review_model, generate_model, import_rbxm, generate_thumbnail. upload_asset may omit this and use assetType/selection auto-detection.
+- Optional params:
+  - `contextId` - string - Optional execution context identifier. Used to continue an existing context for mutating actions.
+  - `contextSummary` - ExecutionContextSummary - Optional structured execution context attached to this tool call.
+  - `replayMetadata` - ExecutionReplayMetadata - Optional replay-ready metadata attached to this tool call.
+  - `scope` - "place" | "shared" - Asset Library scope. Used by: export_selection_rbxm, export_path_rbxm, review_model, import_rbxm, generate_thumbnail. Default: place.
+  - `placeId` - number - Place ID for place-scoped Asset Library .rbxm round-trip operations. For other manage_assets Studio/plugin actions, this also acts as an optional Studio target selector.
+  - `sourcePath` - string - Studio instance path to export, review, or upload. Used by: export_path_rbxm, review_model, upload_asset.
+  - `displayName` - string - Asset Library display name or Studio upload display name. Used by: export_selection_rbxm, export_path_rbxm, review_model, generate_model, upload_asset.
+  - `description` - string - Asset Library description or Studio upload description. Used by: export_selection_rbxm, export_path_rbxm, review_model, upload_asset.
+  - `thumbnailMode` - "none" | "auto" - Thumbnail capture mode. Used by: export_selection_rbxm, export_path_rbxm, review_model. Default: none.
+  - `uploadMode` - "auto" | "model" | "embeddedResources" | "localOnly" - Studio-local upload behavior for .rbxm registration actions. auto uploads the selected object as a Roblox Model asset first, model requires that path, embeddedResources uploads only generated Mesh/Image resources, and localOnly skips Roblox upload. Used by: export_selection_rbxm, export_path_rbxm, review_model. Default: localOnly.
+  - `uploadTemporaryAssets` - boolean - Explicit user approval for Studio-local CreateAssetAsync uploads before .rbxm registration. Used by: export_selection_rbxm, export_path_rbxm, review_model. Default: false; set true only after user approval.
+  - `creatorType` - "user" | "group" - Optional Roblox creator type for Studio-local temporary asset upload. Used with uploadTemporaryAssets by .rbxm registration actions. Omit to use the logged-in Studio user.
+  - `creatorId` - string - Optional Roblox user or group ID for Studio-local temporary asset upload. Used with uploadTemporaryAssets by .rbxm registration actions.
+  - `exportToLibrary` - boolean - Whether to register the reviewed model as an Asset Library .rbxm asset. Used by: review_model. Default: false.
+  - `expectedUse` - "decorative" | "interactive" | "vehicle" | "character" | "unknown" - Expected model use for QA heuristics. Used by: review_model, generate_model. Default: unknown.
+  - `expectedGroups` - array<string> - Expected child/group names for generated or reviewed model QA. Used by: review_model, generate_model.
+  - `maxDescendants` - number - Maximum descendants to inspect during model QA. Used by: review_model, generate_model. Default: 500.
+  - `maxDepth` - number - Maximum depth for recursive child export. Used by: export_selection_json. Default: 5.
+  - `readiness` - "ready" | "review" | "blocked" - Optional readiness gate for Asset Library registration decisions. Used by: review_model, generate_model.
+  - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
+  - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
+
+### `manage_assets.generate_model`
+
+Generate a Roblox Model in Studio with GenerationService and return the Studio path/review metadata without saving or uploading.
+
+- Tier: `pro`
+- Route: `plugin`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params:
+  - `prompt` - string - Text prompt for Roblox GenerationService model generation. Used by: generate_model.
+- Optional params:
+  - `contextId` - string - Optional execution context identifier. Used to continue an existing context for mutating actions.
+  - `contextSummary` - ExecutionContextSummary - Optional structured execution context attached to this tool call.
+  - `replayMetadata` - ExecutionReplayMetadata - Optional replay-ready metadata attached to this tool call.
+  - `placeId` - number - Place ID for place-scoped Asset Library .rbxm round-trip operations. For other manage_assets Studio/plugin actions, this also acts as an optional Studio target selector.
+  - `category` - string - Asset category filter. Used by: search, export_selection_rbxm, export_path_rbxm, review_model, generate_model, import_rbxm, generate_thumbnail. upload_asset may omit this and use assetType/selection auto-detection.
+  - `schemaMode` - "predefined" | "custom" - Generation schema mode. Used by: generate_model. Default: predefined.
+  - `predefinedSchema` - "Body1" | "Car5" - Roblox predefined model schema. Used by: generate_model when schemaMode=predefined. Default: Body1.
+  - `schemaGroups` - array<string> - Custom schema group names for generated model segmentation. Used by: generate_model when schemaMode=custom.
+  - `size` - object - Requested approximate generated model bounds in studs. Used by: generate_model.
+  - `maxTriangles` - number - Maximum triangle budget requested from Roblox GenerationService. Used by: generate_model.
+  - `generateTextures` - boolean - Whether Roblox GenerationService should generate textures. Used by: generate_model. Default: true.
+  - `review` - boolean - Whether to run post-generation/review QA. Used by: generate_model. Default: true.
+  - `targetParent` - string - Studio parent path for imported/generated instances. Used by: import_rbxm, generate_model. Default: game.Workspace.
+  - `name` - string - Optional name for inserted instance.
+  - `displayName` - string - Asset Library display name or Studio upload display name. Used by: export_selection_rbxm, export_path_rbxm, review_model, generate_model, upload_asset.
+  - `expectedUse` - "decorative" | "interactive" | "vehicle" | "character" | "unknown" - Expected model use for QA heuristics. Used by: review_model, generate_model. Default: unknown.
+  - `expectedGroups` - array<string> - Expected child/group names for generated or reviewed model QA. Used by: review_model, generate_model.
+  - `maxDescendants` - number - Maximum descendants to inspect during model QA. Used by: review_model, generate_model. Default: 500.
+  - `maxDepth` - number - Maximum depth for recursive child export. Used by: export_selection_json. Default: 5.
+  - `readiness` - "ready" | "review" | "blocked" - Optional readiness gate for Asset Library registration decisions. Used by: review_model, generate_model.
+  - `anchorMode` - "none" | "all" - How to anchor generated BaseParts before review/export. Used by: generate_model. Default: all.
+  - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
+  - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
+
+### `manage_assets.upload_asset`
+
+Upload the current selection or sourcePath through Studio-local AssetService with automatic Model/Mesh/Image type selection, without saving a local .rbxm.
+
+- Tier: `pro`
+- Route: `plugin`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params: none
+- Optional params:
+  - `contextId` - string - Optional execution context identifier. Used to continue an existing context for mutating actions.
+  - `contextSummary` - ExecutionContextSummary - Optional structured execution context attached to this tool call.
+  - `replayMetadata` - ExecutionReplayMetadata - Optional replay-ready metadata attached to this tool call.
+  - `placeId` - number - Place ID for place-scoped Asset Library .rbxm round-trip operations. For other manage_assets Studio/plugin actions, this also acts as an optional Studio target selector.
+  - `category` - string - Asset category filter. Used by: search, export_selection_rbxm, export_path_rbxm, review_model, generate_model, import_rbxm, generate_thumbnail. upload_asset may omit this and use assetType/selection auto-detection.
+  - `assetType` - "auto" | "model" | "mesh" | "image" - Roblox Studio-local upload asset type. Used by: upload_asset. Default: auto, which selects Model/Mesh/Image from the selected Studio object.
+  - `sourcePath` - string - Studio instance path to export, review, or upload. Used by: export_path_rbxm, review_model, upload_asset.
+  - `displayName` - string - Asset Library display name or Studio upload display name. Used by: export_selection_rbxm, export_path_rbxm, review_model, generate_model, upload_asset.
+  - `description` - string - Asset Library description or Studio upload description. Used by: export_selection_rbxm, export_path_rbxm, review_model, upload_asset.
+  - `creatorType` - "user" | "group" - Optional Roblox creator type for Studio-local temporary asset upload. Used with uploadTemporaryAssets by .rbxm registration actions. Omit to use the logged-in Studio user.
+  - `creatorId` - string - Optional Roblox user or group ID for Studio-local temporary asset upload. Used with uploadTemporaryAssets by .rbxm registration actions.
   - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
   - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
 
@@ -2193,15 +2293,15 @@ import an Asset Library .rbxm asset into Studio under a target parent.
 - Execution mode: `mutating`
 - Param aliases: none
 - Required params:
-  - `category` - string - Asset category filter. Used by: search, export_selection_rbxm, export_path_rbxm, import_rbxm, generate_thumbnail.
+  - `category` - string - Asset category filter. Used by: search, export_selection_rbxm, export_path_rbxm, review_model, generate_model, import_rbxm, generate_thumbnail. upload_asset may omit this and use assetType/selection auto-detection.
   - `assetLibraryAssetId` - string - Asset Library asset ID. Used by: import_rbxm, generate_thumbnail.
 - Optional params:
   - `contextId` - string - Optional execution context identifier. Used to continue an existing context for mutating actions.
   - `contextSummary` - ExecutionContextSummary - Optional structured execution context attached to this tool call.
   - `replayMetadata` - ExecutionReplayMetadata - Optional replay-ready metadata attached to this tool call.
-  - `scope` - "place" | "shared" - Asset Library scope. Used by: export_selection_rbxm, export_path_rbxm, import_rbxm, generate_thumbnail. Default: place.
+  - `scope` - "place" | "shared" - Asset Library scope. Used by: export_selection_rbxm, export_path_rbxm, review_model, import_rbxm, generate_thumbnail. Default: place.
   - `placeId` - number - Place ID for place-scoped Asset Library .rbxm round-trip operations. For other manage_assets Studio/plugin actions, this also acts as an optional Studio target selector.
-  - `targetParent` - string - Studio parent path for imported instances. Used by: import_rbxm. Default: game.Workspace.
+  - `targetParent` - string - Studio parent path for imported/generated instances. Used by: import_rbxm, generate_model. Default: game.Workspace.
   - `name` - string - Optional name for inserted instance.
   - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
   - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
@@ -2215,13 +2315,13 @@ generate or replace thumbnail.png for an Asset Library .rbxm asset.
 - Execution mode: `mutating`
 - Param aliases: none
 - Required params:
-  - `category` - string - Asset category filter. Used by: search, export_selection_rbxm, export_path_rbxm, import_rbxm, generate_thumbnail.
+  - `category` - string - Asset category filter. Used by: search, export_selection_rbxm, export_path_rbxm, review_model, generate_model, import_rbxm, generate_thumbnail. upload_asset may omit this and use assetType/selection auto-detection.
   - `assetLibraryAssetId` - string - Asset Library asset ID. Used by: import_rbxm, generate_thumbnail.
 - Optional params:
   - `contextId` - string - Optional execution context identifier. Used to continue an existing context for mutating actions.
   - `contextSummary` - ExecutionContextSummary - Optional structured execution context attached to this tool call.
   - `replayMetadata` - ExecutionReplayMetadata - Optional replay-ready metadata attached to this tool call.
-  - `scope` - "place" | "shared" - Asset Library scope. Used by: export_selection_rbxm, export_path_rbxm, import_rbxm, generate_thumbnail. Default: place.
+  - `scope` - "place" | "shared" - Asset Library scope. Used by: export_selection_rbxm, export_path_rbxm, review_model, import_rbxm, generate_thumbnail. Default: place.
   - `placeId` - number - Place ID for place-scoped Asset Library .rbxm round-trip operations. For other manage_assets Studio/plugin actions, this also acts as an optional Studio target selector.
   - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
   - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
