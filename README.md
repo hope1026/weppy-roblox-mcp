@@ -1,6 +1,6 @@
-# Roblox MCP - MCP Server for Roblox Studio | AI Game Development with Claude, Codex, Cursor & Gemini
+# WEPPY Roblox AI Toolkit — AI Game Development for Roblox Studio
 
-> **WEPPY** is an MCP server that lets AI coding agents control a live Roblox Studio session - create and edit scripts, instances, terrain, lighting, assets, audio, and animations through natural language.
+> **WEPPY Roblox AI Toolkit** is a Roblox Studio AI development product. It includes the **WEPPY MCP Server** for AI app connections and the **WEPPY Roblox Studio Plugin** for live Studio control. Claude Code, Codex, and Antigravity can also install the optional **WEPPY AI Agent Plugin** for client-native setup and workflow guidance.
 
 **Multi-Place Studio work · Generated assets to Roblox · Bidirectional sync · Automated playtest · UI Studio**
 
@@ -8,11 +8,11 @@
 
 [![Demo - AI building a Roblox game in real time](https://img.youtube.com/vi/j14LZHYzLg8/maxresdefault.jpg)](https://www.youtube.com/watch?v=j14LZHYzLg8)
 
-## Why WEPPY (Weppy Roblox MCP)?
+## Why WEPPY Roblox AI Toolkit?
 
 AI coding agents like Claude, Codex, and Gemini are powerful, but they cannot see or modify anything inside Roblox Studio. The DataModel, scripts, terrain, and lighting are invisible to external tools. Without a bridge, AI can only generate code snippets that you must paste manually.
 
-**WEPPY** bridges AI agents and Roblox Studio. AI directly creates and modifies instances, scripts, properties, terrain, and more inside Studio, and the changes are reflected immediately in Studio and the dashboard so you can see exactly what changed.
+The **WEPPY MCP Server** connects AI agents to the **WEPPY Roblox Studio Plugin**. AI directly creates and modifies instances, scripts, properties, terrain, and more inside Studio, and the changes are reflected immediately in Studio and the dashboard so you can see exactly what changed.
 
 WEPPY is also built for Roblox experiences that are split across several Places. Open up to five Studio windows for Lobby, Game, Shop, Tutorial, or other Places, then tell the agent which Studio ID to use. One request can update several Places without re-explaining context or copying changes by hand.
 
@@ -44,8 +44,8 @@ irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1
 
 Then reopen your AI app and restart Roblox Studio.
 
-Automatic MCP registration supports Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, and Antigravity / Antigravity IDE / Antigravity CLI.
-For Claude Code, the installer also tries to add and install the WEPPY Roblox AI Toolkit. For Codex, it adds the WEPPY Roblox AI Toolkit marketplace and then asks you to install WEPPY Roblox AI Toolkit from Plugin Directory. For Antigravity, it installs `weppy-roblox-ai-toolkit` where native plugin discovery has been verified and keeps direct registration as the MCP fallback when plugin-scoped MCP is unavailable.
+Automatic **WEPPY MCP Server** registration supports Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, and Antigravity / Antigravity IDE / Antigravity CLI.
+For Claude Code, the installer also installs the **WEPPY AI Agent Plugin**. For Codex, it adds the plugin marketplace and then asks you to install **WEPPY AI Agent Plugin** from Plugin Directory. For Antigravity, the AI agent plugin is installed only when Antigravity CLI and `agy plugin` are available; otherwise the installer preserves the direct MCP connection.
 
 ### Browser Web Install
 
@@ -53,7 +53,7 @@ If terminal or PowerShell is uncomfortable, use the terminal-free web installer 
 
 ### Manual Install
 
-If the one-line install or terminal-free web installer does not work, register the MCP server manually with your AI app.
+If the one-line install or terminal-free web installer does not work, register the **WEPPY MCP Server** manually with your AI app.
 
 Use this server command:
 
@@ -65,9 +65,9 @@ Supported AI apps are Claude Code, Claude Desktop, Cursor, Codex CLI, Codex App,
 
 > Any MCP-compatible AI client works. The server command is `npx -y @weppy/roblox-mcp@latest`.
 
-### Optional WEPPY Roblox AI Toolkit
+### Optional WEPPY AI Agent Plugin
 
-Claude Code, Codex, and Antigravity can also use the WEPPY Roblox AI Toolkit. The MCP server command above is enough to use WEPPY; the plugin adds client-native setup and workflow guidance for Studio control, sync, and assets.
+The **WEPPY Roblox AI Toolkit** connects to every supported AI app through the **WEPPY MCP Server**. Claude Code, Codex, and Antigravity can additionally install the **WEPPY AI Agent Plugin** for client-native setup and workflow guidance for Studio control, sync, and assets.
 
 **Claude Code**
 
@@ -82,13 +82,15 @@ claude plugin install weppy-roblox-ai-toolkit@hope1026-roblox-mcp --scope user
 codex plugin marketplace add hope1026/weppy-roblox-mcp
 ```
 
-After adding the Codex marketplace, restart Codex, open Plugin Directory, and install **WEPPY Roblox AI Toolkit**.
+After adding the Codex marketplace, restart Codex, open Plugin Directory, and install **WEPPY AI Agent Plugin**.
 
 **Antigravity**
 
-The installer uses `~/.gemini/config/mcp_config.json` as the shared global MCP config. In a CLI-only profile, verified native plugin MCP replaces the shared direct WEPPY entry. When Antigravity IDE and CLI coexist, both plugin views stay skill-only and one shared direct `weppy-roblox-mcp` definition serves both. Outside the verified OS and version matrix, or when native discovery fails, the installer keeps that shared definition as the MCP fallback and asks you to restart and verify.
+Antigravity CLI is required to install the **WEPPY AI Agent Plugin**. The one-line installer uses `agy plugin install` with the latest public GitHub release, verifies it with `agy plugin list`, and publishes the verified skill-only payload to supported IDE surfaces. Existing installs are replaced on every run so they can converge on the latest release.
 
-GitHub URLs are not passed directly to `agy plugin install`; the installer downloads the repository archive and installs from a prepared local path.
+The installer reports results as installed, updated, reinstalled, repaired, fallback, failed, or skipped. A missing CLI keeps the shared MCP connection at `~/.gemini/config/mcp_config.json` working and reports fallback; an existing plugin is never treated as a skip. In a CLI-only profile, verified native plugin MCP replaces the shared direct WEPPY entry. When Antigravity IDE and CLI coexist, both plugin views stay skill-only and one shared direct `weppy-roblox-mcp` definition serves both. Outside the verified OS and version matrix, native discovery uses the MCP fallback.
+
+On Windows Antigravity, CLI installation has been verified to expose skills and MCP. Windows Antigravity IDE plugin discovery is unverified because the verified environment has no plugin or skills inspection UI, so the shared MCP fallback is preserved. GitHub URLs are not passed directly to `agy plugin install`; the installer downloads the latest public release and installs from a prepared local path.
 
 ## Compatibility
 
@@ -226,10 +228,10 @@ See [PRIVACY.md](PRIVACY.md) for the full telemetry notice.
 ## FAQ
 
 ### How do I connect Claude Code to Roblox Studio?
-Install from the web install page or add the WEPPY Roblox AI Toolkit for Claude Code with the commands above. The WEPPY Roblox AI Toolkit uses `npx -y @weppy/roblox-mcp@latest` as the MCP server command.
+Install from the web install page to register the **WEPPY MCP Server** and install the **WEPPY Roblox Studio Plugin**. You can also add the **WEPPY AI Agent Plugin** for Claude Code with the commands above. Its MCP command remains `npx -y @weppy/roblox-mcp@latest`.
 
 ### How do I use Codex CLI with Roblox Studio?
-Install the Roblox Studio plugin, then add the MCP server config to Codex CLI. You can also add the Codex plugin marketplace and install WEPPY Roblox AI Toolkit from Plugin Directory.
+Install the **WEPPY Roblox Studio Plugin**, then add the **WEPPY MCP Server** config to Codex CLI. You can also add the Codex plugin marketplace and install **WEPPY AI Agent Plugin** from Plugin Directory.
 
 ### Does Roblox MCP work with Cursor?
 Yes. Any MCP-compatible AI client works.

@@ -1,11 +1,11 @@
 {
   "name": "hope1026-roblox-mcp",
   "interface": {
-    "displayName": "WEPPY Roblox AI Toolkit"
+    "displayName": "WEPPY AI Agent Plugin"
   },
   "metadata": {
-    "description": "WEPPY Roblox AI Toolkit — AI Agent Plugin and MCP setup for live Roblox Studio workflows with direct Studio control, sync, playtest, UI Studio, and dashboard monitoring",
-    "version": "2.10.2"
+    "description": "WEPPY AI Agent Plugin marketplace for Codex — MCP setup and workflow guidance for the WEPPY Roblox AI Toolkit",
+    "version": "2.10.3"
   },
   "plugins": [
     {
@@ -19,8 +19,8 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Coding",
-      "description": "WEPPY Roblox AI Toolkit setup for Codex.",
-      "version": "2.10.2"
+      "description": "WEPPY AI Agent Plugin for Codex.",
+      "version": "2.10.3"
     }
   ]
 }

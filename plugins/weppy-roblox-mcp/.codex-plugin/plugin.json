@@ -1,7 +1,7 @@
 {
   "name": "weppy-roblox-ai-toolkit",
-  "version": "2.10.2",
-  "description": "WEPPY Roblox AI Toolkit setup for Codex.",
+  "version": "2.10.3",
+  "description": "WEPPY AI Agent Plugin for Codex.",
   "author": {
     "name": "hope1026"
   },
@@ -19,7 +19,7 @@
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
-    "displayName": "WEPPY Roblox AI Toolkit",
+    "displayName": "WEPPY AI Agent Plugin",
     "shortDescription": "Roblox Studio MCP, skills, and workflows",
     "longDescription": "Use WEPPY with Roblox Studio from Codex, including MCP tools, UI Studio guidance, playtest workflows, sync guidance, and Roblox Explorer context.",
     "developerName": "hope1026",

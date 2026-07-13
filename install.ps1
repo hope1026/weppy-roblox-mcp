@@ -5,9 +5,9 @@
 #   irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1 | iex
 #
 # Interactive 3 steps:
-#   [1/3] Setup — install Roblox Studio Plugin via npx
+#   [1/3] Setup — install WEPPY Roblox Studio Plugin via npx
 #   [2/3] Register MCP with AI apps (user selection)
-#   [3/3] Setup WEPPY Roblox AI Toolkit for Claude Code / Codex (best effort)
+#   [3/3] Setup WEPPY AI Agent Plugin for Claude Code / Codex / Antigravity (best effort)
 #
 
 $ErrorActionPreference = "Stop"
@@ -21,7 +21,7 @@ function Write-Ok($msg) { Write-Host "  ✓ $msg" -ForegroundColor Green }
 function Write-Warn($msg) { Write-Host "  ⚠ $msg" -ForegroundColor Yellow }
 function Write-Fail($msg) { Write-Host "  ✗ $msg" -ForegroundColor Red }
 function Write-Info($msg) { Write-Host "  [INFO] $msg" -ForegroundColor Blue }
-$script:AntigravityCliRequiredMessage = 'Antigravity CLI is required for native plugin installation'
+$script:AntigravityCliRequiredMessage = 'Antigravity CLI is required to install the WEPPY AI Agent Plugin'
 function Write-AntigravityStatus($Status, $Message) {
     switch ($Status) {
         { $_ -in @('installed', 'updated', 'reinstalled', 'repaired') } { Write-Ok "${Status}: $Message"; break }
@@ -997,7 +997,7 @@ function Get-AntigravityPluginSource {
         )
         foreach ($relativePath in $required) {
             if (-not (Test-Path (Join-Path $source $relativePath))) {
-                throw "Invalid Antigravity plugin source: missing $relativePath"
+                throw "Invalid WEPPY AI Agent Plugin source for Antigravity: missing $relativePath"
             }
         }
         return $source
@@ -1010,19 +1010,19 @@ function Get-AntigravityPluginSource {
         $release = Invoke-RestMethod 'https://api.github.com/repos/hope1026/weppy-roblox-mcp/releases/latest'
         $releaseTag = [string]$release.tag_name
         if ([string]::IsNullOrWhiteSpace($releaseTag)) {
-            throw 'Latest Antigravity plugin release tag is missing'
+            throw 'Latest WEPPY AI Agent Plugin release tag is missing for Antigravity'
         }
         $archiveUrl = "https://codeload.github.com/hope1026/weppy-roblox-mcp/tar.gz/refs/tags/$releaseTag"
         Invoke-WebRequest $archiveUrl -OutFile $archive
         & tar -xzf $archive -C $tempRoot
         if ($LASTEXITCODE -ne 0) {
-            throw 'Antigravity plugin release archive extraction failed'
+            throw 'WEPPY AI Agent Plugin release archive extraction failed for Antigravity'
         }
         $manifest = Get-ChildItem $tempRoot -Recurse -Filter plugin.json |
             Where-Object { $_.FullName -match 'plugins[\\/]weppy-roblox-mcp[\\/]plugin.json$' } |
             Select-Object -First 1
         if (-not $manifest) {
-            throw 'Antigravity plugin payload not found'
+            throw 'WEPPY AI Agent Plugin payload not found for Antigravity'
         }
         $script:AntigravityPluginSourceTemp = $tempRoot
         $script:AntigravityPluginReleaseTag = $releaseTag
@@ -1260,7 +1260,7 @@ function Enable-AntigravityFallback($configPath, $Message, [bool]$PreferRestored
         return $true
     }
     catch {
-        Write-AntigravityStatus 'failed' 'Antigravity plugin and shared MCP fallback are unavailable'
+        Write-AntigravityStatus 'failed' 'WEPPY AI Agent Plugin for Antigravity and the shared MCP fallback are unavailable'
         return $false
     }
 }
@@ -1292,7 +1292,7 @@ catch {
 # ═══════════════════════════════════
 # [1/3] Setup — Roblox Studio Plugin
 # ═══════════════════════════════════
-Write-Step "1/3" "Setup Roblox Studio Plugin"
+Write-Step "1/3" "Setup WEPPY Roblox Studio Plugin"
 
 if (Confirm-Action "  Run npx -y @weppy/roblox-mcp@latest --setup?") {
     try {
@@ -1625,12 +1625,12 @@ else {
 }
 
 # ═══════════════════════════════════
-# [3/3] Setup WEPPY Roblox AI Toolkit
+# [3/3] Setup WEPPY AI Agent Plugin
 # ═══════════════════════════════════
-Write-Step "3/3" "Setup WEPPY Roblox AI Toolkit"
+Write-Step "3/3" "Setup WEPPY AI Agent Plugin"
 
 if ($env:WEPPY_SKIP_AI_AGENT_PLUGIN -eq '1') {
-    Write-Warn "WEPPY Roblox AI Toolkit setup skipped (WEPPY_SKIP_AI_AGENT_PLUGIN=1)"
+    Write-Warn "WEPPY AI Agent Plugin setup skipped (WEPPY_SKIP_AI_AGENT_PLUGIN=1)"
 }
 else {
     $aiAgentPluginAny = $false
@@ -1647,10 +1647,10 @@ else {
             $claudePluginExit = Invoke-AiAgentPluginCommand $claudeCodeCliCommand @('plugin', 'install', 'weppy-roblox-ai-toolkit@hope1026-roblox-mcp', '--scope', 'user') $claudePluginStderr
 
             if ($claudePluginExit -eq 0 -or (Test-AiAgentPluginAlreadyReady $claudePluginStderr)) {
-                Write-Ok "WEPPY Roblox AI Toolkit for Claude Code ready"
+                Write-Ok "WEPPY AI Agent Plugin for Claude Code ready"
             }
             else {
-                Write-Warn "WEPPY Roblox AI Toolkit install for Claude Code skipped or failed (non-blocking)"
+                Write-Warn "WEPPY AI Agent Plugin install for Claude Code skipped or failed (non-blocking)"
                 Write-AiAgentPluginStderr $claudePluginStderr
             }
             Remove-Item $claudePluginStderr -ErrorAction SilentlyContinue
@@ -1662,7 +1662,7 @@ else {
         Remove-Item $claudeMarketplaceStderr -ErrorAction SilentlyContinue
     }
     else {
-        Write-Warn "WEPPY Roblox AI Toolkit for Claude Code skipped (claude CLI not found)"
+        Write-Warn "WEPPY AI Agent Plugin for Claude Code skipped (claude CLI not found)"
     }
 
     if ($codexCliCommand) {
@@ -1672,7 +1672,7 @@ else {
 
         if ($codexMarketplaceExit -eq 0 -or (Test-AiAgentPluginAlreadyReady $codexMarketplaceStderr)) {
             Write-Ok "Codex marketplace ready"
-            Write-Host "    Restart Codex, open Plugin Directory, then install WEPPY Roblox AI Toolkit."
+            Write-Host "    Restart Codex, open Plugin Directory, then install WEPPY AI Agent Plugin."
         }
         else {
             Write-Warn "Codex marketplace setup skipped or failed (non-blocking)"
@@ -1681,7 +1681,7 @@ else {
         Remove-Item $codexMarketplaceStderr -ErrorAction SilentlyContinue
     }
     else {
-        Write-Warn "WEPPY Roblox AI Toolkit for Codex skipped (codex CLI not found)"
+        Write-Warn "WEPPY AI Agent Plugin for Codex skipped (codex CLI not found)"
     }
 
     $antigravitySelected = $detectedTypes -contains 'antigravity'
@@ -1692,28 +1692,28 @@ else {
         try {
             Migrate-LegacyAntigravityEntry $antigravitySharedConfig $antigravityLegacyCliConfig
             if (-not $antigravityCliCommand) {
-                if (-not (Enable-AntigravityFallback $antigravitySharedConfig 'Antigravity CLI is required for native plugin installation. Install it from https://antigravity.google/docs/cli-install')) {
-                    Abort-Install 'Antigravity plugin and MCP setup failed'
+                if (-not (Enable-AntigravityFallback $antigravitySharedConfig 'Antigravity CLI is required to install the WEPPY AI Agent Plugin. Install it from https://antigravity.google/docs/cli-install')) {
+                    Abort-Install 'WEPPY AI Agent Plugin for Antigravity and MCP setup failed'
                 }
             }
             else {
                 $antigravityPluginSource = Get-AntigravityPluginSource
                 if (Install-AntigravityCliPlugin $antigravityPluginSource $antigravityCliCommand $antigravitySharedConfig $antigravityMode) {
-                    Write-AntigravityResult $script:AntigravityPluginPreState 'Windows Antigravity plugin installed; restart and verify skills and MCP'
+                    Write-AntigravityResult $script:AntigravityPluginPreState 'WEPPY AI Agent Plugin installed for Windows Antigravity; restart and verify skills and MCP'
                     if ($antigravitySelected) {
                         Add-AntigravityMcpConfig $antigravitySharedConfig
-                        Write-AntigravityStatus 'fallback' 'Windows Antigravity IDE plugin discovery is unverified; MCP fallback preserved'
+                        Write-AntigravityStatus 'fallback' 'WEPPY AI Agent Plugin discovery in Windows Antigravity IDE is unverified; MCP fallback preserved'
                     }
                 }
                 else {
-                    if (-not (Enable-AntigravityFallback $antigravitySharedConfig 'Antigravity CLI plugin replacement failed; previous plugin or MCP fallback preserved' $true)) {
-                        Abort-Install 'Antigravity plugin and MCP setup failed'
+                    if (-not (Enable-AntigravityFallback $antigravitySharedConfig 'WEPPY AI Agent Plugin replacement through Antigravity CLI failed; previous AI agent plugin or MCP fallback preserved' $true)) {
+                        Abort-Install 'WEPPY AI Agent Plugin for Antigravity and MCP setup failed'
                     }
                 }
             }
         }
         catch {
-            if (-not (Enable-AntigravityFallback $antigravitySharedConfig "Antigravity plugin source could not be prepared; MCP fallback preserved ($_)")) {
+            if (-not (Enable-AntigravityFallback $antigravitySharedConfig "WEPPY AI Agent Plugin source could not be prepared for Antigravity; MCP fallback preserved ($_)")) {
                 throw
             }
         }
@@ -1726,7 +1726,7 @@ else {
     }
 
     if (-not $aiAgentPluginAny) {
-        Write-Info "WEPPY Roblox AI Toolkit can be installed later from a supported AI app"
+        Write-Info "WEPPY AI Agent Plugin can be installed later from Claude Code, Codex, or Antigravity"
     }
 }
 
@@ -1744,7 +1744,7 @@ Write-Host "  3. Click Connect and start building with AI!"
 Write-Host ""
 Write-Host "  Auto registration: Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, Antigravity / Antigravity IDE, Antigravity CLI"
 Write-Host ""
-Write-Host "  WEPPY Roblox AI Toolkit: Claude Code and Antigravity install automatically when supported; Codex opens from Plugin Directory after marketplace add."
+Write-Host "  WEPPY AI Agent Plugin: Claude Code installs automatically; Antigravity installs only when Antigravity CLI is available; Codex installs from Plugin Directory after marketplace add."
 Write-Host ""
 Write-Host "  Docs: https://weppyai.com/en/install" -ForegroundColor DarkGray
 Write-Host ""

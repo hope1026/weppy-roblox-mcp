@@ -903,10 +903,7 @@ jobs:
               throw "$Name emitted an ambiguous Antigravity warning"
             }
             if ($Mode -eq 'unrecoverable') {
-              if ($fixtureExit -eq 0) {
-                Get-Content $log
-                throw "$Name unexpectedly succeeded"
-              }
+              if ($fixtureExit -eq 0) { throw "$Name unexpectedly succeeded" }
               Write-Host "✓ $Name"
               return
             }

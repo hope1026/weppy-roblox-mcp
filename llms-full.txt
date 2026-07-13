@@ -1,6 +1,6 @@
-# WEPPY — Canonical Web Docs
+# WEPPY Roblox AI Toolkit — Canonical Web Docs
 
-> WEPPY is an MCP server that lets AI coding agents control a live Roblox Studio session and interact with scripts, instances, terrain, lighting, assets, audio, animations, and UI Studio workflows.
+> WEPPY Roblox AI Toolkit is a Roblox Studio AI development product. It includes the WEPPY MCP Server for AI app connections and the WEPPY Roblox Studio Plugin for live Studio control. Claude Code, Codex, and Antigravity can also install the optional WEPPY AI Agent Plugin.
 
 The web dashboard includes a Connection topology for multiple AI agents, the MCP server, and multiple connected Studio Targets, with copyable Studio IDs and routing status for multi-Studio workflows.
 
@@ -14,9 +14,9 @@ Canonical documentation lives on the web:
 
 For installation, start from the web install page and follow its recommended one-line installer first. If terminal or PowerShell is uncomfortable, use the terminal-free web installer on that same page. If automated install fails, use the relevant app-specific manual guide.
 
-Optional WEPPY Roblox AI Toolkit:
+Optional WEPPY AI Agent Plugin:
 
-The shared plugin id is `weppy-roblox-ai-toolkit`. Claude Code, Codex, and Antigravity use the same Roblox workflow skill payload.
+The shared plugin id is `weppy-roblox-ai-toolkit`. Claude Code, Codex, and Antigravity use the same **WEPPY AI Agent Plugin** Roblox workflow skill payload. Other supported AI apps connect through the **WEPPY MCP Server**.
 
 - Claude Code:
 
@@ -31,8 +31,12 @@ claude plugin install weppy-roblox-ai-toolkit@hope1026-roblox-mcp --scope user
 codex plugin marketplace add hope1026/weppy-roblox-mcp
 ```
 
-After adding the Codex marketplace, restart Codex, open Plugin Directory, and install WEPPY Roblox AI Toolkit.
+After adding the Codex marketplace, restart Codex, open Plugin Directory, and install WEPPY AI Agent Plugin.
 
 - Antigravity:
 
-The installer uses `~/.gemini/config/mcp_config.json` as the shared global MCP config. In a CLI-only profile, verified native plugin MCP replaces the shared direct WEPPY entry. When Antigravity IDE and CLI coexist, both plugin views stay skill-only and one shared direct `weppy-roblox-mcp` definition serves both. Outside the verified OS and version matrix, or when native discovery fails, the installer keeps that shared definition as the MCP fallback and asks the user to restart and verify. Other MCP servers are preserved. Do not pass a GitHub URL directly to `agy plugin install`.
+Antigravity CLI is required to install the **WEPPY AI Agent Plugin**. The one-line installer uses `agy plugin install` with the latest public GitHub release, verifies it with `agy plugin list`, and replaces existing AI agent plugin payloads on every run. Results are installed, updated, reinstalled, repaired, fallback, failed, or skipped; an existing AI agent plugin is never treated as a skip.
+
+The shared MCP fallback is `~/.gemini/config/mcp_config.json`. In a CLI-only profile, verified native plugin MCP replaces the shared direct WEPPY entry. When Antigravity IDE and CLI coexist, both plugin views stay skill-only and one shared direct `weppy-roblox-mcp` definition serves both. Outside the verified OS and version matrix, native discovery uses the MCP fallback. Other MCP servers are preserved.
+
+On Windows Antigravity, CLI installation has been verified to expose skills and MCP. Windows Antigravity IDE plugin discovery is unverified because the verified environment has no plugin or skills inspection UI, so the shared MCP fallback is preserved. Do not pass a GitHub URL directly to `agy plugin install`; the installer downloads the latest public release and installs from a prepared local path.
