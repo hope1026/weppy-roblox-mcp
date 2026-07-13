@@ -1061,7 +1061,7 @@ function Get-AntigravityTreeDigest($Root) {
 }
 
 function Get-AntigravityPreState($StagedCli, $CliTarget, $StagedIde, $IdeTarget, $RequireIde) {
-    $pairs = @(@($StagedCli, $CliTarget))
+    $pairs = ,@($StagedCli, $CliTarget)
     if ($RequireIde) {
         $pairs += ,@($StagedIde, $IdeTarget)
     }
