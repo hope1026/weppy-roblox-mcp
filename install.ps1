@@ -21,6 +21,16 @@ function Write-Ok($msg) { Write-Host "  ✓ $msg" -ForegroundColor Green }
 function Write-Warn($msg) { Write-Host "  ⚠ $msg" -ForegroundColor Yellow }
 function Write-Fail($msg) { Write-Host "  ✗ $msg" -ForegroundColor Red }
 function Write-Info($msg) { Write-Host "  [INFO] $msg" -ForegroundColor Blue }
+$script:AntigravityCliRequiredMessage = 'Antigravity CLI is required for native plugin installation'
+function Write-AntigravityStatus($Status, $Message) {
+    switch ($Status) {
+        { $_ -in @('installed', 'updated', 'reinstalled', 'repaired') } { Write-Ok "${Status}: $Message"; break }
+        'fallback' { Write-Warn "${Status}: $Message"; break }
+        'failed' { Write-Fail "${Status}: $Message"; break }
+        'skipped' { Write-Info "${Status}: $Message"; break }
+        default { throw "Unknown Antigravity installer status: $Status" }
+    }
+}
 function Stop-InstallTranscript() {
     if ($script:TranscriptStarted) {
         try { Stop-Transcript | Out-Null } catch {}
@@ -260,6 +270,38 @@ function Test-AnyAntigravityConfigCandidate($configPaths, $dirPaths) {
 
     foreach ($dirPath in $dirPaths) {
         if (Test-Path $dirPath) {
+            return $true
+        }
+    }
+
+    return $false
+}
+
+function Test-AntigravityIdeSurface($cliCommand) {
+    if ($env:WEPPY_ANTIGRAVITY_IDE_PRESENT -eq '1') {
+        return $true
+    }
+    if ($env:WEPPY_ANTIGRAVITY_IDE_PRESENT -eq '0') {
+        return $false
+    }
+
+    $specificCandidates = @(
+        (Join-Path $env:USERPROFILE '.gemini\antigravity-ide\mcp_config.json'),
+        (Join-Path $env:USERPROFILE '.gemini\antigravity\mcp_config.json'),
+        (Join-Path $env:USERPROFILE '.gemini\antigravity-ide'),
+        (Join-Path $env:USERPROFILE '.gemini\antigravity')
+    )
+    foreach ($candidate in $specificCandidates) {
+        if (Test-Path $candidate) {
+            return $true
+        }
+    }
+
+    # CLI 전용 재실행에서 installer가 만든 공용 설정을 IDE 설치 흔적으로 오인하지 않는다.
+    if (-not $cliCommand) {
+        $sharedConfig = Join-Path $env:USERPROFILE '.gemini\config\mcp_config.json'
+        $sharedDir = Join-Path $env:USERPROFILE '.gemini\config'
+        if ((Test-Path $sharedConfig) -or (Test-Path $sharedDir)) {
             return $true
         }
     }
@@ -940,6 +982,8 @@ fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + '\n');
 }
 
 $script:AntigravityPluginSourceTemp = $null
+$script:AntigravityPluginReleaseTag = $null
+$script:AntigravityPluginPreState = 'absent'
 
 function Get-AntigravityPluginSource {
     if (-not [string]::IsNullOrWhiteSpace($env:WEPPY_ANTIGRAVITY_PLUGIN_SOURCE)) {
@@ -960,11 +1004,20 @@ function Get-AntigravityPluginSource {
     }
 
     $tempRoot = Join-Path ([System.IO.Path]::GetTempPath()) ("weppy-antigravity-plugin-{0}" -f [Guid]::NewGuid().ToString('N'))
-    $archive = Join-Path $tempRoot 'repo.zip'
+    $archive = Join-Path $tempRoot 'repo.tar.gz'
     New-Item -ItemType Directory -Path $tempRoot -Force | Out-Null
     try {
-        Invoke-WebRequest 'https://github.com/hope1026/weppy-roblox-mcp/archive/refs/heads/main.zip' -OutFile $archive
-        Expand-Archive -Path $archive -DestinationPath $tempRoot -Force
+        $release = Invoke-RestMethod 'https://api.github.com/repos/hope1026/weppy-roblox-mcp/releases/latest'
+        $releaseTag = [string]$release.tag_name
+        if ([string]::IsNullOrWhiteSpace($releaseTag)) {
+            throw 'Latest Antigravity plugin release tag is missing'
+        }
+        $archiveUrl = "https://codeload.github.com/hope1026/weppy-roblox-mcp/tar.gz/refs/tags/$releaseTag"
+        Invoke-WebRequest $archiveUrl -OutFile $archive
+        & tar -xzf $archive -C $tempRoot
+        if ($LASTEXITCODE -ne 0) {
+            throw 'Antigravity plugin release archive extraction failed'
+        }
         $manifest = Get-ChildItem $tempRoot -Recurse -Filter plugin.json |
             Where-Object { $_.FullName -match 'plugins[\\/]weppy-roblox-mcp[\\/]plugin.json$' } |
             Select-Object -First 1
@@ -972,12 +1025,70 @@ function Get-AntigravityPluginSource {
             throw 'Antigravity plugin payload not found'
         }
         $script:AntigravityPluginSourceTemp = $tempRoot
+        $script:AntigravityPluginReleaseTag = $releaseTag
         return $manifest.Directory.FullName
     }
     catch {
         Remove-Item $tempRoot -Recurse -Force -ErrorAction SilentlyContinue
         throw
     }
+}
+
+function Test-AntigravityViewHealthy($Root) {
+    $required = @(
+        'plugin.json',
+        'skills\weppy-roblox-mcp-guide\SKILL.md',
+        'skills\weppy-roblox-sync-guide\SKILL.md',
+        'skills\weppy-roblox-assets-guide\SKILL.md'
+    )
+    return @($required | Where-Object { -not (Test-Path (Join-Path $Root $_)) }).Count -eq 0
+}
+
+function Get-AntigravityTreeDigest($Root) {
+    $rootPath = (Resolve-Path $Root).Path.TrimEnd('\', '/')
+    $lines = Get-ChildItem $rootPath -Recurse -File | ForEach-Object {
+        $relative = $_.FullName.Substring($rootPath.Length).TrimStart('\', '/').Replace('\', '/')
+        '{0}  {1}' -f (Get-FileHash $_.FullName -Algorithm SHA256).Hash.ToLowerInvariant(), $relative
+    } | Sort-Object
+    $bytes = [Text.Encoding]::UTF8.GetBytes(($lines -join "`n"))
+    $sha256 = [Security.Cryptography.SHA256]::Create()
+    try {
+        return ([BitConverter]::ToString($sha256.ComputeHash($bytes))).Replace('-', '').ToLowerInvariant()
+    }
+    finally {
+        $sha256.Dispose()
+    }
+}
+
+function Get-AntigravityPreState($StagedCli, $CliTarget, $StagedIde, $IdeTarget, $RequireIde) {
+    $pairs = @(@($StagedCli, $CliTarget))
+    if ($RequireIde) {
+        $pairs += ,@($StagedIde, $IdeTarget)
+    }
+
+    $seen = $false
+    $missing = $false
+    $damaged = $false
+    $outdated = $false
+    foreach ($pair in $pairs) {
+        if (-not (Test-Path $pair[1])) {
+            $missing = $true
+            continue
+        }
+        $seen = $true
+        if (-not (Test-AntigravityViewHealthy $pair[1])) {
+            $damaged = $true
+            continue
+        }
+        if ((Get-AntigravityTreeDigest $pair[0]) -ne (Get-AntigravityTreeDigest $pair[1])) {
+            $outdated = $true
+        }
+    }
+
+    if ($damaged -or ($seen -and $missing)) { return 'damaged' }
+    if (-not $seen) { return 'absent' }
+    if ($outdated) { return 'outdated' }
+    return 'current'
 }
 
 function New-AntigravityNativeView($source) {
@@ -1056,6 +1167,8 @@ function Install-AntigravityCliPlugin($source, $agyCommand, $sharedConfigPath, $
     }
 
     $nativeView = $null
+    $cliTarget = Join-Path $env:USERPROFILE '.gemini\antigravity-cli\plugins\weppy-roblox-ai-toolkit'
+    $cliBackup = $null
     $stderrPath = Join-Path ([System.IO.Path]::GetTempPath()) ("weppy-agy-{0}.err" -f [Guid]::NewGuid().ToString('N'))
     try {
         if ($mode -eq 'hybrid') {
@@ -1064,33 +1177,91 @@ function Install-AntigravityCliPlugin($source, $agyCommand, $sharedConfigPath, $
         else {
             $nativeView = New-AntigravityNativeView $source
         }
-        $installExit = Invoke-AiAgentPluginCommand $agyCommand @('plugin', 'install', $nativeView) $stderrPath
-        if ($installExit -ne 0) {
-            $listOutput = & $agyCommand @('plugin', 'list') 2>$null | Out-String
-            if ($listOutput -notmatch 'weppy-roblox-ai-toolkit') {
-                return $false
-            }
+
+        $script:AntigravityPluginPreState = Get-AntigravityPreState $nativeView $cliTarget $null $null $false
+        if (Test-Path $cliTarget) {
+            $timestamp = Get-Date -Format 'yyyyMMddHHmmss'
+            $cliBackup = "$cliTarget.weppy-backup-$timestamp"
+            Move-Item $cliTarget $cliBackup -Force
         }
+
+        $null = Invoke-AiAgentPluginCommand $agyCommand @('plugin', 'uninstall', 'weppy-roblox-ai-toolkit') $stderrPath
+        $installExit = Invoke-AiAgentPluginCommand $agyCommand @('plugin', 'install', $nativeView) $stderrPath
         $listOutput = & $agyCommand @('plugin', 'list') 2>$null | Out-String
-        if ($listOutput -notmatch 'weppy-roblox-ai-toolkit') {
+        if ($installExit -ne 0 -or $listOutput -notmatch 'weppy-roblox-ai-toolkit') {
+            $null = Invoke-AiAgentPluginCommand $agyCommand @('plugin', 'uninstall', 'weppy-roblox-ai-toolkit') $stderrPath
+            Remove-Item $cliTarget -Recurse -Force -ErrorAction SilentlyContinue
+            if ($cliBackup) {
+                Move-Item $cliBackup $cliTarget -Force
+                $cliBackup = $null
+            }
             return $false
         }
         if ($mode -eq 'native-only') {
             if (-not (Remove-WeppyAntigravityMcpEntry $sharedConfigPath)) {
-                try { & $agyCommand plugin uninstall weppy-roblox-ai-toolkit 2>$null | Out-Null } catch {}
+                $null = Invoke-AiAgentPluginCommand $agyCommand @('plugin', 'uninstall', 'weppy-roblox-ai-toolkit') $stderrPath
+                Remove-Item $cliTarget -Recurse -Force -ErrorAction SilentlyContinue
+                if ($cliBackup) {
+                    Move-Item $cliBackup $cliTarget -Force
+                    $cliBackup = $null
+                }
                 return $false
             }
         }
         else {
             Add-AntigravityMcpConfig $sharedConfigPath
         }
+
+        if ($cliBackup) {
+            Remove-Item $cliBackup -Recurse -Force
+            $cliBackup = $null
+        }
         return $true
+    }
+    catch {
+        Remove-Item $cliTarget -Recurse -Force -ErrorAction SilentlyContinue
+        if ($cliBackup) {
+            Move-Item $cliBackup $cliTarget -Force
+            $cliBackup = $null
+        }
+        return $false
     }
     finally {
         if ($nativeView) {
             Remove-Item $nativeView -Recurse -Force -ErrorAction SilentlyContinue
         }
         Remove-Item $stderrPath -Force -ErrorAction SilentlyContinue
+    }
+}
+
+function Write-AntigravityResult($PreState, $Message) {
+    switch ($PreState) {
+        'absent' { Write-AntigravityStatus 'installed' $Message }
+        'current' { Write-AntigravityStatus 'reinstalled' $Message }
+        'outdated' { Write-AntigravityStatus 'updated' $Message }
+        'damaged' { Write-AntigravityStatus 'repaired' $Message }
+        default { throw "Unknown Antigravity pre-state: $PreState" }
+    }
+}
+
+function Enable-AntigravityFallback($configPath, $Message, [bool]$PreferRestoredPlugin = $false) {
+    $cliTarget = Join-Path $env:USERPROFILE '.gemini\antigravity-cli\plugins\weppy-roblox-ai-toolkit'
+    if ($PreferRestoredPlugin -and
+        (Test-AntigravityViewHealthy $cliTarget) -and
+        (Test-Path (Join-Path $cliTarget 'mcp_config.json')) -and
+        (Remove-WeppyAntigravityMcpEntry $configPath)) {
+        Write-AntigravityStatus 'fallback' $Message
+        return $true
+    }
+
+    try {
+        Add-AntigravityMcpConfig $configPath
+        Write-AntigravityStatus 'fallback' $Message
+        return $true
+    }
+    catch {
+        Write-AntigravityStatus 'failed' 'Antigravity plugin and shared MCP fallback are unavailable'
+        return $false
     }
 }
 
@@ -1280,8 +1451,8 @@ else {
 }
 
 # Antigravity / Antigravity IDE
-$antigravityConfigured = Test-AntigravityMcpRegistrationComplete $antigravityConfigCandidates
-$antigravityDetected = Test-AnyAntigravityConfigCandidate $antigravityConfigCandidates $antigravityDirCandidates
+$antigravityDetected = Test-AntigravityIdeSurface $antigravityCliCommand
+$antigravityConfigured = $antigravityDetected -and (Test-AntigravityMcpRegistrationComplete $antigravityConfigCandidates)
 
 if ($antigravityConfigured) {
     $detectedNames += 'Antigravity / Antigravity IDE (configured)'
@@ -1520,35 +1691,31 @@ else {
         $aiAgentPluginAny = $true
         try {
             Migrate-LegacyAntigravityEntry $antigravitySharedConfig $antigravityLegacyCliConfig
-            $antigravityPluginSource = Get-AntigravityPluginSource
-
-            if ($antigravitySelected) {
-                if (Install-AntigravityIdePlugin $antigravityPluginSource) {
-                    Write-Ok "WEPPY Roblox AI Toolkit for Antigravity ready"
-                }
-                else {
-                    Write-Ok "Antigravity IDE MCP fallback ready"
+            if (-not $antigravityCliCommand) {
+                if (-not (Enable-AntigravityFallback $antigravitySharedConfig 'Antigravity CLI is required for native plugin installation. Install it from https://antigravity.google/docs/cli-install')) {
+                    Abort-Install 'Antigravity plugin and MCP setup failed'
                 }
             }
-
-            if ($antigravityCliSelected) {
+            else {
+                $antigravityPluginSource = Get-AntigravityPluginSource
                 if (Install-AntigravityCliPlugin $antigravityPluginSource $antigravityCliCommand $antigravitySharedConfig $antigravityMode) {
-                    if ($antigravityMode -eq 'native-only') {
-                        Write-Ok "WEPPY Roblox AI Toolkit for Antigravity CLI ready"
-                    }
-                    else {
-                        Write-Ok "WEPPY Roblox AI Toolkit for Antigravity CLI skills installed; restart and verify"
+                    Write-AntigravityResult $script:AntigravityPluginPreState 'Windows Antigravity plugin installed; restart and verify skills and MCP'
+                    if ($antigravitySelected) {
+                        Add-AntigravityMcpConfig $antigravitySharedConfig
+                        Write-AntigravityStatus 'fallback' 'Windows Antigravity IDE plugin discovery is unverified; MCP fallback preserved'
                     }
                 }
                 else {
-                    Add-AntigravityMcpConfig $antigravitySharedConfig
-                    Write-Warn "Antigravity CLI plugin setup failed; MCP fallback preserved"
+                    if (-not (Enable-AntigravityFallback $antigravitySharedConfig 'Antigravity CLI plugin replacement failed; previous plugin or MCP fallback preserved' $true)) {
+                        Abort-Install 'Antigravity plugin and MCP setup failed'
+                    }
                 }
             }
         }
         catch {
-            Add-AntigravityMcpConfig $antigravitySharedConfig
-            Write-Warn "Antigravity plugin source could not be prepared; MCP fallback preserved ($_)"
+            if (-not (Enable-AntigravityFallback $antigravitySharedConfig "Antigravity plugin source could not be prepared; MCP fallback preserved ($_)")) {
+                throw
+            }
         }
         finally {
             if ($script:AntigravityPluginSourceTemp) {

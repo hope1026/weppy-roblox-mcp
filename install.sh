@@ -45,6 +45,21 @@ fail()    { printf "${RED}  ✗${NC} %s\n" "$1"; }
 # shellcheck disable=SC2059
 step()    { printf "\n${BOLD}${CYAN}[%s]${NC} ${BOLD}%s${NC}\n" "$1" "$2"; }
 
+ANTIGRAVITY_CLI_REQUIRED_MESSAGE='Antigravity CLI is required for native plugin installation'
+
+report_antigravity_status() {
+  local status="$1"
+  local message="$2"
+
+  case "$status" in
+    installed|updated|reinstalled|repaired) success "$status: $message" ;;
+    fallback) warn "$status: $message" ;;
+    failed) fail "$status: $message" ;;
+    skipped) info "$status: $message" ;;
+    *) fail "failed: unknown Antigravity installer status: $status"; return 1 ;;
+  esac
+}
+
 pause_on_failure_if_interactive() {
   if [ -t 1 ] && [ -r /dev/tty ]; then
     printf "\nPress Enter to exit..." >/dev/tty
@@ -219,6 +234,36 @@ has_any_antigravity_config_candidate() {
   for candidate_path in "${ANTIGRAVITY_DIR_CANDIDATES[@]}"; do
     [ -d "$candidate_path" ] && return 0
   done
+
+  return 1
+}
+
+has_antigravity_ide_surface() {
+  local candidate_path
+
+  if [ "${WEPPY_ANTIGRAVITY_IDE_PRESENT:-}" = "1" ]; then
+    return 0
+  fi
+  if [ "${WEPPY_ANTIGRAVITY_IDE_PRESENT:-}" = "0" ]; then
+    return 1
+  fi
+
+  if [ -d "/Applications/Antigravity.app" ] || [ -d "$HOME/Applications/Antigravity.app" ]; then
+    return 0
+  fi
+
+  for candidate_path in \
+    "$HOME/.gemini/antigravity-ide/mcp_config.json" \
+    "$HOME/.gemini/antigravity/mcp_config.json" \
+    "$HOME/.gemini/antigravity-ide" \
+    "$HOME/.gemini/antigravity"; do
+    [ -e "$candidate_path" ] && return 0
+  done
+
+  if [ -z "${ANTIGRAVITY_CLI_COMMAND:-}" ] \
+    && { [ -f "$HOME/.gemini/config/mcp_config.json" ] || [ -d "$HOME/.gemini/config" ]; }; then
+    return 0
+  fi
 
   return 1
 }
@@ -816,10 +861,13 @@ is_already_ai_agent_plugin_result() {
 
 ANTIGRAVITY_PLUGIN_SOURCE_PATH=""
 ANTIGRAVITY_PLUGIN_SOURCE_TEMP=""
+ANTIGRAVITY_PLUGIN_RELEASE_TAG=""
 ANTIGRAVITY_NATIVE_VIEW_PATH=""
+ANTIGRAVITY_IDE_VIEW_PATH=""
+ANTIGRAVITY_PLUGIN_PRE_STATE="absent"
 
 prepare_antigravity_plugin_source() {
-  local tmp archive marker
+  local tmp archive marker release_json release_tag
 
   if [ -n "${WEPPY_ANTIGRAVITY_PLUGIN_SOURCE:-}" ]; then
     [ -f "$WEPPY_ANTIGRAVITY_PLUGIN_SOURCE/plugin.json" ] || return 1
@@ -833,7 +881,15 @@ prepare_antigravity_plugin_source() {
 
   tmp=$(mktemp -d "${TMPDIR:-/tmp}/weppy-antigravity-plugin-XXXXXX") || return 1
   archive="$tmp/repo.tar.gz"
-  curl -fsSL "https://codeload.github.com/hope1026/weppy-roblox-mcp/tar.gz/refs/heads/main" -o "$archive" || {
+  release_json=$(curl -fsSL "https://api.github.com/repos/hope1026/weppy-roblox-mcp/releases/latest") || {
+    rm -rf "$tmp"
+    return 1
+  }
+  release_tag=$(printf '%s' "$release_json" | node -e "let source='';process.stdin.on('data',chunk=>source+=chunk).on('end',()=>{const tag=JSON.parse(source).tag_name;if(!tag)process.exit(1);process.stdout.write(tag)})") || {
+    rm -rf "$tmp"
+    return 1
+  }
+  curl -fsSL "https://codeload.github.com/hope1026/weppy-roblox-mcp/tar.gz/refs/tags/$release_tag" -o "$archive" || {
     rm -rf "$tmp"
     return 1
   }
@@ -848,6 +904,92 @@ prepare_antigravity_plugin_source() {
   }
   ANTIGRAVITY_PLUGIN_SOURCE_PATH=$(dirname "$marker")
   ANTIGRAVITY_PLUGIN_SOURCE_TEMP="$tmp"
+  ANTIGRAVITY_PLUGIN_RELEASE_TAG="$release_tag"
+}
+
+antigravity_view_healthy() {
+  local root="$1"
+  local skill
+
+  [ -f "$root/plugin.json" ] || return 1
+  for skill in weppy-roblox-mcp-guide weppy-roblox-sync-guide weppy-roblox-assets-guide; do
+    [ -f "$root/skills/$skill/SKILL.md" ] || return 1
+  done
+}
+
+antigravity_tree_digest() {
+  local root="$1"
+
+  ANTIGRAVITY_DIGEST_ROOT="$root" node --input-type=commonjs <<'NODE'
+const crypto = require('crypto');
+const fs = require('fs');
+const path = require('path');
+
+const root = process.env.ANTIGRAVITY_DIGEST_ROOT;
+const files = [];
+
+function visit(relativeDir) {
+  const absoluteDir = path.join(root, relativeDir);
+  for (const entry of fs.readdirSync(absoluteDir, { withFileTypes: true })) {
+    const relativePath = path.join(relativeDir, entry.name);
+    if (entry.isDirectory()) visit(relativePath);
+    if (entry.isFile()) files.push(relativePath.split(path.sep).join('/'));
+  }
+}
+
+visit('');
+const digest = crypto.createHash('sha256');
+for (const relativePath of files.sort()) {
+  digest.update(relativePath);
+  digest.update('\0');
+  digest.update(fs.readFileSync(path.join(root, relativePath)));
+  digest.update('\0');
+}
+process.stdout.write(digest.digest('hex'));
+NODE
+}
+
+classify_antigravity_pre_state() {
+  local staged_cli="$1"
+  local cli_target="$2"
+  local staged_ide="$3"
+  local ide_target="$4"
+  local require_ide="$5"
+  local seen=false missing=false damaged=false outdated=false
+
+  if [ -e "$cli_target" ]; then
+    seen=true
+    if ! antigravity_view_healthy "$cli_target"; then
+      damaged=true
+    elif [ "$(antigravity_tree_digest "$cli_target")" != "$(antigravity_tree_digest "$staged_cli")" ]; then
+      outdated=true
+    fi
+  else
+    missing=true
+  fi
+
+  if [ "$require_ide" = true ]; then
+    if [ -e "$ide_target" ]; then
+      seen=true
+      if ! antigravity_view_healthy "$ide_target"; then
+        damaged=true
+      elif [ "$(antigravity_tree_digest "$ide_target")" != "$(antigravity_tree_digest "$staged_ide")" ]; then
+        outdated=true
+      fi
+    else
+      missing=true
+    fi
+  fi
+
+  if [ "$damaged" = true ] || { [ "$seen" = true ] && [ "$missing" = true ]; }; then
+    printf 'damaged'
+  elif [ "$seen" = false ]; then
+    printf 'absent'
+  elif [ "$outdated" = true ]; then
+    printf 'outdated'
+  else
+    printf 'current'
+  fi
 }
 
 stage_antigravity_native_view() {
@@ -869,6 +1011,24 @@ stage_antigravity_native_view() {
 stage_antigravity_skill_only_view() {
   stage_antigravity_native_view "$1" || return 1
   rm -f "$ANTIGRAVITY_NATIVE_VIEW_PATH/mcp_config.json"
+}
+
+stage_antigravity_ide_view() {
+  local source="$1"
+  local staged
+
+  staged=$(mktemp -d "${TMPDIR:-/tmp}/weppy-antigravity-ide-XXXXXX") || return 1
+  cp -R "$source/." "$staged/" || {
+    rm -rf "$staged"
+    return 1
+  }
+  rm -rf "$staged/.claude-plugin" "$staged/.codex-plugin"
+  rm -f "$staged/.mcp.json" "$staged/mcp_config.json"
+  antigravity_view_healthy "$staged" || {
+    rm -rf "$staged"
+    return 1
+  }
+  ANTIGRAVITY_IDE_VIEW_PATH="$staged"
 }
 
 ensure_weppy_antigravity_mcp_entry() {
@@ -980,47 +1140,58 @@ NODE
 }
 
 install_antigravity_cli_plugin() {
-  local source="$1"
-  local mode="${2:-native-only}"
+  local mode="${1:-native-only}"
+  local cli_target="$HOME/.gemini/antigravity-cli/plugins/weppy-roblox-ai-toolkit"
+  local cli_backup=""
+
   [ -n "${ANTIGRAVITY_CLI_COMMAND:-}" ] || return 1
-  if [ "$mode" = "hybrid" ]; then
-    stage_antigravity_skill_only_view "$source" || return 1
-  else
-    stage_antigravity_native_view "$source" || return 1
+  [ -n "$ANTIGRAVITY_NATIVE_VIEW_PATH" ] || return 1
+
+  if [ -e "$cli_target" ]; then
+    cli_backup="${cli_target}.weppy-backup-$(date +%Y%m%d%H%M%S)"
+    mv "$cli_target" "$cli_backup" || return 1
   fi
-  "$ANTIGRAVITY_CLI_COMMAND" plugin install "$ANTIGRAVITY_NATIVE_VIEW_PATH" >/dev/null 2>&1 || {
-    "$ANTIGRAVITY_CLI_COMMAND" plugin list 2>/dev/null | grep -q 'weppy-roblox-ai-toolkit' || return 1
-  }
-  "$ANTIGRAVITY_CLI_COMMAND" plugin list 2>/dev/null | grep -q 'weppy-roblox-ai-toolkit' || return 1
+
+  "$ANTIGRAVITY_CLI_COMMAND" plugin uninstall weppy-roblox-ai-toolkit >/dev/null 2>&1 || true
+  if ! "$ANTIGRAVITY_CLI_COMMAND" plugin install "$ANTIGRAVITY_NATIVE_VIEW_PATH" >/dev/null 2>&1 \
+    || ! "$ANTIGRAVITY_CLI_COMMAND" plugin list 2>/dev/null | grep -q 'weppy-roblox-ai-toolkit'; then
+    "$ANTIGRAVITY_CLI_COMMAND" plugin uninstall weppy-roblox-ai-toolkit >/dev/null 2>&1 || true
+    rm -rf "$cli_target"
+    [ -n "$cli_backup" ] && mv "$cli_backup" "$cli_target"
+    return 1
+  fi
+
   if [ "$mode" = "native-only" ]; then
     remove_weppy_antigravity_mcp_entry "$ANTIGRAVITY_SHARED_CONFIG" || {
       "$ANTIGRAVITY_CLI_COMMAND" plugin uninstall weppy-roblox-ai-toolkit >/dev/null 2>&1 || true
+      rm -rf "$cli_target"
+      [ -n "$cli_backup" ] && mv "$cli_backup" "$cli_target"
       return 1
     }
   else
-    ensure_weppy_antigravity_mcp_entry "$ANTIGRAVITY_SHARED_CONFIG" || return 1
+    ensure_weppy_antigravity_mcp_entry "$ANTIGRAVITY_SHARED_CONFIG" || {
+      "$ANTIGRAVITY_CLI_COMMAND" plugin uninstall weppy-roblox-ai-toolkit >/dev/null 2>&1 || true
+      rm -rf "$cli_target"
+      [ -n "$cli_backup" ] && mv "$cli_backup" "$cli_target"
+      return 1
+    }
   fi
+
+  [ -n "$cli_backup" ] && rm -rf "$cli_backup"
   rm -rf "$ANTIGRAVITY_NATIVE_VIEW_PATH"
   ANTIGRAVITY_NATIVE_VIEW_PATH=""
+  return 0
 }
 
-install_antigravity_skill_plugin() {
-  local source="$1"
+publish_antigravity_ide_plugin() {
   local target="$HOME/.gemini/config/plugins/weppy-roblox-ai-toolkit"
-  local staged backup=""
+  local staged="$ANTIGRAVITY_IDE_VIEW_PATH"
+  local backup=""
 
-  staged=$(mktemp -d "${TMPDIR:-/tmp}/weppy-antigravity-skills-XXXXXX") || return 1
-  cp -R "$source/." "$staged/" || {
-    rm -rf "$staged"
-    return 1
-  }
-  # Antigravity 2.2.1에서는 plugin MCP가 비활성이므로 shared view를 skill-only로 고정한다.
-  rm -rf "$staged/.claude-plugin" "$staged/.codex-plugin"
-  rm -f "$staged/.mcp.json" "$staged/mcp_config.json"
-  [ -f "$staged/plugin.json" ] || return 1
-  [ -f "$staged/skills/weppy-roblox-assets-guide/SKILL.md" ] || return 1
+  [ -n "$staged" ] || return 1
+  antigravity_view_healthy "$staged" || return 1
 
-  mkdir -p "$(dirname "$target")"
+  mkdir -p "$(dirname "$target")" || return 1
   if [ -e "$target" ]; then
     backup="${target}.weppy-backup-$(date +%Y%m%d%H%M%S)"
     mv "$target" "$backup" || return 1
@@ -1029,12 +1200,47 @@ install_antigravity_skill_plugin() {
     [ -n "$backup" ] && mv "$backup" "$target" || true
     return 1
   fi
-  if ! ensure_weppy_antigravity_mcp_entry "$ANTIGRAVITY_SHARED_CONFIG"; then
-    rm -rf "$target"
-    [ -n "$backup" ] && mv "$backup" "$target" || true
-    return 1
-  fi
   [ -n "$backup" ] && rm -rf "$backup"
+  ANTIGRAVITY_IDE_VIEW_PATH=""
+  return 0
+}
+
+report_antigravity_result() {
+  local pre_state="$1"
+  local message="${2:-WEPPY Roblox AI Toolkit for Antigravity}"
+
+  case "$pre_state" in
+    absent) report_antigravity_status installed "$message" ;;
+    current) report_antigravity_status reinstalled "$message" ;;
+    outdated) report_antigravity_status updated "$message" ;;
+    damaged) report_antigravity_status repaired "$message" ;;
+    *) report_antigravity_status failed "unknown Antigravity pre-state: $pre_state"; return 1 ;;
+  esac
+}
+
+activate_antigravity_fallback() {
+  local message="$1"
+  local prefer_restored_plugin="${2:-false}"
+  local cli_target="$HOME/.gemini/antigravity-cli/plugins/weppy-roblox-ai-toolkit"
+
+  if [ "$prefer_restored_plugin" = true ]; then
+    if antigravity_view_healthy "$cli_target"; then
+      if [ -f "$cli_target/mcp_config.json" ]; then
+        if remove_weppy_antigravity_mcp_entry "$ANTIGRAVITY_SHARED_CONFIG"; then
+          report_antigravity_status fallback "$message"
+          return 0
+        fi
+      fi
+    fi
+  fi
+
+  if ensure_weppy_antigravity_mcp_entry "$ANTIGRAVITY_SHARED_CONFIG"; then
+    report_antigravity_status fallback "$message"
+    return 0
+  fi
+
+  report_antigravity_status failed "Antigravity plugin and shared MCP fallback are unavailable"
+  return 1
 }
 
 # ── Header ──
@@ -1194,11 +1400,12 @@ else
 fi
 
 # Antigravity / Antigravity IDE
-if is_antigravity_mcp_registration_complete; then
-  DETECTED_NAMES+=("Antigravity / Antigravity IDE (configured)")
-  DETECTED_TYPES+=("antigravity")
-elif has_any_antigravity_config_candidate; then
-  DETECTED_NAMES+=("Antigravity / Antigravity IDE")
+if has_antigravity_ide_surface; then
+  if is_antigravity_mcp_registration_complete; then
+    DETECTED_NAMES+=("Antigravity / Antigravity IDE (configured)")
+  else
+    DETECTED_NAMES+=("Antigravity / Antigravity IDE")
+  fi
   DETECTED_TYPES+=("antigravity")
 else
   NOT_DETECTED+=("Antigravity / Antigravity IDE (not found)")
@@ -1446,39 +1653,59 @@ else
 
   if [ "$antigravity_detected" = true ] || [ "$antigravity_cli_detected" = true ]; then
     ai_agent_plugin_any=true
-    if migrate_legacy_antigravity_entry "$ANTIGRAVITY_SHARED_CONFIG" "$ANTIGRAVITY_LEGACY_CLI_CONFIG" \
-       && prepare_antigravity_plugin_source; then
-      if [ "$ANTIGRAVITY_MODE" = "native-only" ]; then
-        if install_antigravity_cli_plugin "$ANTIGRAVITY_PLUGIN_SOURCE_PATH" "$ANTIGRAVITY_MODE"; then
-          success "WEPPY Roblox AI Toolkit for Antigravity CLI ready"
-        else
-          ensure_weppy_antigravity_mcp_entry "$ANTIGRAVITY_SHARED_CONFIG" || true
-          warn "Antigravity CLI plugin setup failed; MCP fallback preserved"
+    if ! migrate_legacy_antigravity_entry "$ANTIGRAVITY_SHARED_CONFIG" "$ANTIGRAVITY_LEGACY_CLI_CONFIG"; then
+      if ! activate_antigravity_fallback "Antigravity config migration failed; MCP fallback preserved"; then
+        exit 1
+      fi
+    elif [ -z "${ANTIGRAVITY_CLI_COMMAND:-}" ]; then
+      if ! activate_antigravity_fallback "Antigravity CLI is required for native plugin installation. Install it from https://antigravity.google/docs/cli-install"; then
+        exit 1
+      fi
+    elif prepare_antigravity_plugin_source; then
+      if [ "$ANTIGRAVITY_MODE" = "hybrid" ]; then
+        stage_antigravity_skill_only_view "$ANTIGRAVITY_PLUGIN_SOURCE_PATH" || ANTIGRAVITY_NATIVE_VIEW_PATH=""
+      else
+        stage_antigravity_native_view "$ANTIGRAVITY_PLUGIN_SOURCE_PATH" || ANTIGRAVITY_NATIVE_VIEW_PATH=""
+      fi
+
+      if [ "$antigravity_detected" = true ]; then
+        stage_antigravity_ide_view "$ANTIGRAVITY_PLUGIN_SOURCE_PATH" || ANTIGRAVITY_IDE_VIEW_PATH=""
+      fi
+
+      if [ -z "$ANTIGRAVITY_NATIVE_VIEW_PATH" ] \
+        || { [ "$antigravity_detected" = true ] && [ -z "$ANTIGRAVITY_IDE_VIEW_PATH" ]; }; then
+        if ! activate_antigravity_fallback "Antigravity plugin payload staging failed; MCP fallback preserved"; then
+          exit 1
         fi
       else
-        if [ "$antigravity_detected" = true ]; then
-          if install_antigravity_skill_plugin "$ANTIGRAVITY_PLUGIN_SOURCE_PATH"; then
-            success "WEPPY Roblox AI Toolkit for Antigravity skills installed; restart and verify"
+        ANTIGRAVITY_PLUGIN_PRE_STATE=$(classify_antigravity_pre_state \
+          "$ANTIGRAVITY_NATIVE_VIEW_PATH" \
+          "$HOME/.gemini/antigravity-cli/plugins/weppy-roblox-ai-toolkit" \
+          "$ANTIGRAVITY_IDE_VIEW_PATH" \
+          "$HOME/.gemini/config/plugins/weppy-roblox-ai-toolkit" \
+          "$antigravity_detected")
+
+        if install_antigravity_cli_plugin "$ANTIGRAVITY_MODE"; then
+          if [ "$antigravity_detected" = true ] && ! publish_antigravity_ide_plugin; then
+            if ! activate_antigravity_fallback "Antigravity IDE plugin replacement failed; MCP fallback preserved"; then
+              exit 1
+            fi
           else
-            warn "WEPPY Roblox AI Toolkit for Antigravity skipped or failed (MCP fallback preserved)"
+            report_antigravity_result "$ANTIGRAVITY_PLUGIN_PRE_STATE" "WEPPY Roblox AI Toolkit for Antigravity; restart and verify"
           fi
-        fi
-        if [ "$antigravity_cli_detected" = true ]; then
-          if install_antigravity_cli_plugin "$ANTIGRAVITY_PLUGIN_SOURCE_PATH" "$ANTIGRAVITY_MODE"; then
-            success "WEPPY Roblox AI Toolkit for Antigravity CLI skills installed; restart and verify"
-          else
-            ensure_weppy_antigravity_mcp_entry "$ANTIGRAVITY_SHARED_CONFIG" || true
-            warn "Antigravity CLI plugin setup failed; MCP fallback preserved"
-          fi
+        elif ! activate_antigravity_fallback "Antigravity CLI plugin replacement failed; previous plugin or MCP fallback preserved" true; then
+          exit 1
         fi
       fi
     else
-      ensure_weppy_antigravity_mcp_entry "$ANTIGRAVITY_SHARED_CONFIG" || true
-      warn "Antigravity plugin source could not be prepared; MCP fallback preserved"
+      if ! activate_antigravity_fallback "Antigravity plugin source could not be prepared; MCP fallback preserved"; then
+        exit 1
+      fi
     fi
   fi
 
   [ -n "$ANTIGRAVITY_NATIVE_VIEW_PATH" ] && rm -rf "$ANTIGRAVITY_NATIVE_VIEW_PATH"
+  [ -n "$ANTIGRAVITY_IDE_VIEW_PATH" ] && rm -rf "$ANTIGRAVITY_IDE_VIEW_PATH"
   [ -n "$ANTIGRAVITY_PLUGIN_SOURCE_TEMP" ] && rm -rf "$ANTIGRAVITY_PLUGIN_SOURCE_TEMP"
 
   if [ "$ai_agent_plugin_any" = false ]; then
