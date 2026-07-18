@@ -17,6 +17,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.10.4] - 2026-07-18
+
+### Features
+
+- **More natural and controllable environment generation** — Existing terrain generation now combines large landforms with finer surface detail, separates ground and cliff materials by slope, and shapes water and shorelines around the terrain. Pro users can adjust results with six biome presets, apply ten environment moods, and place tree or rock templates with slope, water, spacing, rotation, scale, and seed controls. Each operation is recorded as one Studio Undo step, and reusing a seed reproduces the same terrain or placement.
+
 ## [2.10.3] - 2026-07-14
 
 ### Bug Fixes

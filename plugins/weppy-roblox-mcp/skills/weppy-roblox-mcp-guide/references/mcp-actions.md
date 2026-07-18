@@ -225,7 +225,7 @@ Query Roblox instances: get, children, find child/descendant, wait for child, cl
 
 ## Tool: `mutate_instances`
 
-Create, delete, clone, move, rename, or pivot instances. [PRO] create_tree, mass_create, mass_delete, mass_duplicate, smart_duplicate.
+Create, delete, clone, move, rename, or pivot instances. [PRO] create_tree, mass_create, mass_delete, mass_duplicate, smart_duplicate, scatter.
 
 ### `mutate_instances.create`
 
@@ -411,7 +411,31 @@ Create, delete, clone, move, rename, or pivot instances. [PRO] create_tree, mass
   - `sessionDebugId` - string - Optional same Studio/plugin session debug identity for verifying a duplicate-named target. Used by: delete, clone, move, rename, pivot, smart_duplicate.
   - `siblingIndex` - number - Optional 1-based same-name sibling index fallback for verifying a duplicate-named target. Used by: delete, clone, move, rename, pivot, smart_duplicate.
   - `targetParent` - string - Target parent for cloned/duplicated instances. Used by: clone, mass_duplicate, smart_duplicate.
-  - `count` - number - [PRO] Number of copies to create. Used by: smart_duplicate.
+  - `count` - number - [PRO] Number of copies to create. Used by: smart_duplicate, scatter.
+  - `placeId` - number - Optional Studio target selector. When multiple Studio clients are connected, route this call to the active client for this Roblox placeId. If no matching active client exists, the call fails instead of falling back to another Place.
+  - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
+  - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
+
+### `mutate_instances.scatter`
+
+clone template instances onto natural ground positions in a region: ray-snapped to the surface, slope and water filters, yaw rotation and scale jitter, minimum spacing, deterministic seed, grouped under one Folder.
+
+- Tier: `pro`
+- Route: `plugin`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params:
+  - `templatePaths` - array<string> - Template instance paths to clone. Used by: scatter. Multiple templates are picked uniformly at random.
+  - `region` - object - Placement region {min, max} in world studs (XZ used for sampling, Y bounds the ground raycast). Used by: scatter.
+  - `count` - number - [PRO] Number of copies to create. Used by: smart_duplicate, scatter.
+- Optional params:
+  - `seed` - number - Deterministic placement seed. Used by: scatter.
+  - `maxSlope` - number - Maximum ground slope in degrees for placement. Used by: scatter. Default: 30.
+  - `avoidWater` - boolean - Skip points whose ground is Water. Used by: scatter. Default: true.
+  - `alignToNormal` - boolean - Align instances to the surface normal (yaw jitter always applies). Used by: scatter. Default: false.
+  - `scaleJitter` - object - Uniform scale jitter range. Used by: scatter. Default: {min: 0.85, max: 1.25}.
+  - `minSpacing` - number - Minimum distance between placements in studs. Used by: scatter.
+  - `parentName` - string - Folder name that groups the results. Used by: scatter. Default: WeppyScatter_<seed>.
   - `placeId` - number - Optional Studio target selector. When multiple Studio clients are connected, route this call to the active client for this Roblox placeId. If no matching active client exists, the call fails instead of falling back to another Place.
   - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
   - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
@@ -1011,6 +1035,22 @@ set time of day.
 - Optional params:
   - `time` - string - Time string in "HH:MM:SS" format (e.g., "14:30:00"). Used by: time. Provide this OR clockTime.
   - `clockTime` - number - Numeric time in 24-hour format (e.g., 14.5 for 2:30 PM). Used by: time. Provide this OR time.
+  - `placeId` - number - Optional Studio target selector. When multiple Studio clients are connected, route this call to the active client for this Roblox placeId. If no matching active client exists, the call fails instead of falling back to another Place.
+  - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
+  - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
+
+### `manage_lighting.mood`
+
+apply a complete environment mood preset (Lighting, Atmosphere, Sky, ColorCorrection/Bloom/SunRays, Terrain water appearance) with optional per-property overrides. Idempotent: existing instances are updated, never duplicated.
+
+- Tier: `pro`
+- Route: `plugin`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params:
+  - `preset` - "sunny_day" | "golden_hour" | "sunset" | "dawn" | "night" | "moonlit_night" | "overcast" | "foggy" | "stormy" | "eerie" - Environment mood preset. Used by: mood. Applies Lighting + Atmosphere + Sky + post effects + Terrain water appearance in one call.
+- Optional params:
+  - `overrides` - object - Per-section property overrides applied on top of the preset. Used by: mood. Sections: lighting, atmosphere, sky, effects, water. Values follow the same conversion rules as the properties param.
   - `placeId` - number - Optional Studio target selector. When multiple Studio clients are connected, route this call to the active client for this Roblox placeId. If no matching active client exists, the call fails instead of falling back to another Place.
   - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
   - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
@@ -1731,19 +1771,25 @@ bulk voxels.
 
 ### `manage_terrain.generate`
 
-procedural terrain.
+natural procedural terrain: multi-octave fBm, slope-based materials, smooth surface occupancy, optional water and edge blending. Presets: mountains, hills, plains, dunes, islands, canyon.
 
 - Tier: `pro`
 - Route: `plugin`
 - Execution mode: `unspecified`
 - Param aliases: none
-- Required params: none
-- Optional params:
+- Required params:
   - `region` - object - Rectangular region with min/max corners. Used by: clear_region, replace_material, read_voxels, write_voxels, generate, smooth.
+- Optional params:
+  - `preset` - "mountains" | "hills" | "plains" | "dunes" | "islands" | "canyon" - Biome preset for natural terrain. Used by: generate. Explicit parameters override preset values.
+  - `seed` - number - Random seed for terrain generation. Used by: generate.
   - `baseHeight` - number - Base terrain height in studs. Used by: generate. Default: 32.
   - `amplitude` - number - Height variation amplitude in studs. Used by: generate. Default: 24.
   - `frequency` - number - Noise frequency (0.001-0.1). Used by: generate. Default: 0.01.
-  - `seed` - number - Random seed for terrain generation. Used by: generate.
+  - `octaves` - number - fBm noise octave count (1-8). Used by: generate. Default: 4.
+  - `persistence` - number - Amplitude decay between octaves (0-1). Used by: generate. Default: 0.5.
+  - `waterLevel` - number - Absolute water surface height in studs. Used by: generate. Empty space below this level is filled with Water.
+  - `edgeBlend` - object - Blend generated heights into existing terrain at region borders. Used by: generate.
+  - `materialPalette` - object - Material palette override {surface, cliff, shore, underwater}. Used by: generate.
   - `layers` - array<object> - Material layers by height. Used by: generate. Each: {material, maxHeight}.
   - `placeId` - number - Optional Studio target selector. When multiple Studio clients are connected, route this call to the active client for this Roblox placeId. If no matching active client exists, the call fails instead of falling back to another Place.
   - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
