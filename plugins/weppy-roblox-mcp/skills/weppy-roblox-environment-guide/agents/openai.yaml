@@ -1,0 +1,4 @@
+interface:
+  display_name: "WEPPY Roblox Environment Guide"
+  short_description: "Natural terrain, mood, and prop scatter guide"
+  default_prompt: "Use $weppy-roblox-environment-guide to generate natural terrain with biome presets, apply environment mood presets, scatter props, and verify with screenshots."
