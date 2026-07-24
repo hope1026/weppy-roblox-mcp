@@ -723,6 +723,8 @@ Manage script source code: read, write, create, delete, edit lines, search. [PRO
 - Required params:
   - `path` - string - Path to the script instance. Used by: get_source, set_source, delete, edit_replace, edit_insert, edit_delete, search, get_dependencies, replace.
 - Optional params:
+  - `startLine` - number - Starting line number, 1-based inclusive. Used by: get_source (paired with endLine), edit_replace, edit_delete. get_source requires an integer.
+  - `endLine` - number - Ending line number, 1-based inclusive. Used by: get_source (paired with startLine), edit_replace, edit_delete. get_source requires an integer.
   - `placeId` - number - Optional Studio target selector. When multiple Studio clients are connected, route this call to the active client for this Roblox placeId. If no matching active client exists, the call fails instead of falling back to another Place.
   - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
   - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
@@ -779,8 +781,8 @@ Manage script source code: read, write, create, delete, edit lines, search. [PRO
   - `newLines` -> `newContent`
 - Required params:
   - `path` - string - Path to the script instance. Used by: get_source, set_source, delete, edit_replace, edit_insert, edit_delete, search, get_dependencies, replace.
-  - `startLine` - number - Starting line number, 1-based inclusive. Used by: edit_replace, edit_delete.
-  - `endLine` - number - Ending line number, 1-based inclusive. Used by: edit_replace, edit_delete.
+  - `startLine` - number - Starting line number, 1-based inclusive. Used by: get_source (paired with endLine), edit_replace, edit_delete. get_source requires an integer.
+  - `endLine` - number - Ending line number, 1-based inclusive. Used by: get_source (paired with startLine), edit_replace, edit_delete. get_source requires an integer.
   - `newLines` - string - New content to replace specified lines. Used by: edit_replace. Can be multi-line.
 - Optional params:
   - `placeId` - number - Optional Studio target selector. When multiple Studio clients are connected, route this call to the active client for this Roblox placeId. If no matching active client exists, the call fails instead of falling back to another Place.
@@ -812,8 +814,8 @@ Manage script source code: read, write, create, delete, edit lines, search. [PRO
 - Param aliases: none
 - Required params:
   - `path` - string - Path to the script instance. Used by: get_source, set_source, delete, edit_replace, edit_insert, edit_delete, search, get_dependencies, replace.
-  - `startLine` - number - Starting line number, 1-based inclusive. Used by: edit_replace, edit_delete.
-  - `endLine` - number - Ending line number, 1-based inclusive. Used by: edit_replace, edit_delete.
+  - `startLine` - number - Starting line number, 1-based inclusive. Used by: get_source (paired with endLine), edit_replace, edit_delete. get_source requires an integer.
+  - `endLine` - number - Ending line number, 1-based inclusive. Used by: get_source (paired with startLine), edit_replace, edit_delete. get_source requires an integer.
 - Optional params:
   - `placeId` - number - Optional Studio target selector. When multiple Studio clients are connected, route this call to the active client for this Roblox placeId. If no matching active client exists, the call fails instead of falling back to another Place.
   - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.

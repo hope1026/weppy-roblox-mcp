@@ -19,6 +19,18 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.11.1] - 2026-07-24
+
+### Features
+
+- **Read only the script lines you need** — AI agents can now request a specific line range from large scripts instead of loading the entire source every time. Range reads are available on Basic, preserve the original source text, and report the actual returned range when a request extends past the end of the script.
+- **See when a tool request includes unused options** — WEPPY now returns a non-blocking warning when an AI agent sends options that the selected operation does not use. The operation still runs, while the warning helps the agent correct the next request instead of silently assuming those options took effect.
+
+### Documentation
+
+- **Refreshed Dashboard What's New** — The Dashboard now highlights recent preflight, script-reading, request-warning, and Playtest report improvements in all supported languages. May announcements have been removed from the bundled feed.
+
 ## [2.11.0] - 2026-07-19
 
 ### Features
