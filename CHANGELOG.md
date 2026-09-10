@@ -46,6 +46,20 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.17.0] - 2026-09-10
+
+### Features
+
+- **Observe and adjust live game values during Playtest** — Start Play in Roblox Studio, then use Dashboard Test Values to watch server and client values from the running game. Basic includes profile creation and live observation. Pro adds manual or automatic value changes, saved defaults for the next Play session, rollback, and Reset all. Run mode also supports server-side values, while client values remain available in Play.
+- **Add Roblox values without writing test code** — Properties, Attributes, NumberValue, BoolValue, StringValue, and other values available through Studio selection can be added directly from the Dashboard. Search for properties such as WalkSpeed, Health, Position, Size, Color, CFrame, and Material in one picker. A Test Adapter is needed only for internal game state that cannot be selected directly.
+- **Reuse Place-specific test setups** — Save test values, defaults, application settings, groups, and display order in local profiles. Current values, saved defaults, and the original values from the start of Play remain distinct, and live changes are restored when you use Reset all or end the session.
+- **Keep testing work separate from publishing guidance** — The Playtest page focuses on Test Values and Automated Test Results, while Before publishing opens separately from the page header. It explains which test values and WEPPY records stay local, when custom test code needs review, and what to verify again after publishing. No settings migration is required.
+
+### Bug Fixes
+
+- **Avoid Sync conflicts when Script contents already match** — When local and Studio edits converge to the same Script content, Sync now updates its baseline and removes obsolete reverse changes instead of reporting a conflict.
+
 ## [2.16.2] - 2026-08-30
 
 ### Features

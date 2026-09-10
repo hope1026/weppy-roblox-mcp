@@ -78,6 +78,15 @@
         "manage_studio.test_session_start",
         "manage_studio.test_session_status",
         "manage_studio.test_session_stop",
+        "manage_studio.playtest_control_get",
+        "manage_studio.playtest_control_apply",
+        "manage_studio.playtest_control_reset",
+        "manage_studio.playtest_prepare",
+        "manage_studio.playtest_binding_candidates",
+        "manage_studio.playtest_profile_save",
+        "manage_studio.playtest_adapter_plan",
+        "manage_studio.playtest_adapter_apply",
+        "manage_studio.playtest_source_open",
         "manage_studio.run_test"
       ]
     },
