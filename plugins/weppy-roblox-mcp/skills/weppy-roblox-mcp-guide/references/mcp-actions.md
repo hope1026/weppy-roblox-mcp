@@ -2912,7 +2912,7 @@ diagnose Studio connection, identity, state, publish status, and security capabi
 
 ## Tool: `manage_studio`
 
-Control Roblox Studio state for playtest lifecycle, automated test runs, and editor view/rendering QA workflows. Use it for state-changing playtest controls and Studio session-level View settings such as UI preview; it does not edit game UI objects or their properties.
+Prepare Playtest values on Basic, and control Roblox Studio playtest lifecycle, automated test runs, runtime values, and editor view/rendering QA workflows on Pro.
 
 ### `manage_studio.toggle_ui_preview`
 
@@ -3000,6 +3000,7 @@ Control Roblox Studio state for playtest lifecycle, automated test runs, and edi
   - `mode` - "play" | "run" - Playtest mode. "play" = Play mode (F5, default), "run" = Run mode (F8). Used by: play_start, run_test.
   - `testProfile` - StudioTestProfile - Optional Player Emulator test profile patch. Used by: test_profile_set, play_start, test_session_start, run_test.
   - `restoreAfterTest` - boolean - Restore the profile snapshot after the play session or automated test finishes. Defaults to true when testProfile is provided. Used by: play_start, test_session_start, run_test.
+  - `controlProfileId` - string - Place-scoped Playtest Control Profile ID. Used by: play_start, test_session_start, playtest_prepare, playtest_profile_save, playtest_control_get.
   - `placeId` - number - Optional Studio target selector. When multiple Studio clients are connected, route this call to the active client for this Roblox placeId. If no matching active client exists, the call fails instead of falling back to another Place.
   - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
   - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
@@ -3066,12 +3067,177 @@ Start a structured Play-default test session after complete preflight validation
   - `idempotencyKey` - string - Optional idempotency key scoped to the pinned Studio target and normalized scenario. Used by: test_session_start.
   - `testProfile` - StudioTestProfile - Optional Player Emulator test profile patch. Used by: test_profile_set, play_start, test_session_start, run_test.
   - `restoreAfterTest` - boolean - Restore the profile snapshot after the play session or automated test finishes. Defaults to true when testProfile is provided. Used by: play_start, test_session_start, run_test.
+  - `controlProfileId` - string - Place-scoped Playtest Control Profile ID. Used by: play_start, test_session_start, playtest_prepare, playtest_profile_save, playtest_control_get.
   - `placeId` - number - Optional Studio target selector. When multiple Studio clients are connected, route this call to the active client for this Roblox placeId. If no matching active client exists, the call fails instead of falling back to another Place.
   - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
   - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
   - `contextId` - string - Optional execution context identifier. Used to continue an existing context for mutating actions.
   - `contextSummary` - ExecutionContextSummary - Optional structured execution context attached to this tool call.
   - `replayMetadata` - ExecutionReplayMetadata - Optional replay-ready metadata attached to this tool call.
+
+### `manage_studio.playtest_control_get`
+
+Read a Place-scoped Playtest Control Profile or active runtime lease status.
+
+- Tier: `pro`
+- Route: `internal`
+- Execution mode: `readonly`
+- Param aliases: none
+- Required params: none
+- Optional params:
+  - `controlProfileId` - string - Place-scoped Playtest Control Profile ID. Used by: play_start, test_session_start, playtest_prepare, playtest_profile_save, playtest_control_get.
+  - `leaseId` - string - Active runtime control lease ID. Used by: playtest_control_get, playtest_control_apply, playtest_control_reset.
+  - `placeId` - number - Optional Studio target selector. When multiple Studio clients are connected, route this call to the active client for this Roblox placeId. If no matching active client exists, the call fails instead of falling back to another Place.
+  - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
+  - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
+
+### `manage_studio.playtest_prepare`
+
+Read Place-scoped Playtest readiness, local profiles, and the last verified adapter catalog without opening a lease or applying values.
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `readonly`
+- Param aliases: none
+- Required params: none
+- Optional params:
+  - `controlProfileId` - string - Place-scoped Playtest Control Profile ID. Used by: play_start, test_session_start, playtest_prepare, playtest_profile_save, playtest_control_get.
+  - `placeId` - number - Optional Studio target selector. When multiple Studio clients are connected, route this call to the active client for this Roblox placeId. If no matching active client exists, the call fails instead of falling back to another Place.
+  - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
+  - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
+
+### `manage_studio.playtest_binding_candidates`
+
+Read actual supported fields from the current Edit selection or a bounded Play runtime path without creating test code.
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `readonly`
+- Param aliases: none
+- Required params:
+  - `candidateSource` - "selection" | "runtime" - Read candidates from the current Edit selection or a bounded Play runtime path. Used by: playtest_binding_candidates.
+- Optional params:
+  - `candidateTarget` - TestSessionTarget - Server or client runtime role for a Play-only candidate query. Used by: playtest_binding_candidates.
+  - `candidatePath` - StructuredPath - Bounded Play runtime path to inspect. Used by: playtest_binding_candidates.
+  - `maxResults` - integer - Maximum candidate fields to return. Used by: playtest_binding_candidates.
+  - `placeId` - number - Optional Studio target selector. When multiple Studio clients are connected, route this call to the active client for this Roblox placeId. If no matching active client exists, the call fails instead of falling back to another Place.
+  - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
+  - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
+
+### `manage_studio.playtest_profile_save`
+
+Create, update, delete, or explicitly copy a Place-scoped local Playtest value profile without changing the Roblox DataModel.
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `unspecified`
+- Param aliases: none
+- Required params:
+  - `profileOperation` - "create" | "update" | "delete" | "copy" - Local profile operation. create/update use controlProfile, delete uses controlProfileId, and copy uses source/destination fields. Used by: playtest_profile_save.
+- Optional params:
+  - `controlProfileId` - string - Place-scoped Playtest Control Profile ID. Used by: play_start, test_session_start, playtest_prepare, playtest_profile_save, playtest_control_get.
+  - `controlProfile` - PlaytestControlProfileDraft - Validated local Playtest value profile draft. New v3 controls use applyOnStart=false without a placeholder value until the user explicitly saves one. Used by: playtest_profile_save.
+  - `expectedRevision` - integer - Optimistic runtime lease revision. Used by: playtest_control_apply.
+  - `sourceProfileId` - string - Source profile ID for an explicit copy. Used by: playtest_profile_save.
+  - `sourceRevision` - integer - Expected source profile revision for an explicit copy. Used by: playtest_profile_save.
+  - `sourcePlaceId` - number - Published source Place ID for an explicit profile copy. Used by: playtest_profile_save.
+  - `sourcePlaceName` - string - Unpublished source Place name in the current project for an explicit profile copy. Used by: playtest_profile_save.
+  - `destinationProfileId` - string - New destination profile ID for an explicit copy. Used by: playtest_profile_save.
+  - `destinationProfileName` - string - New destination profile name for an explicit copy. Used by: playtest_profile_save.
+  - `placeId` - number - Optional Studio target selector. When multiple Studio clients are connected, route this call to the active client for this Roblox placeId. If no matching active client exists, the call fails instead of falling back to another Place.
+  - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
+  - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
+
+### `manage_studio.playtest_adapter_plan`
+
+Preview a managed Test Adapter create, update, entry removal, or adapter removal with a default Studio-only runtime guard, source hash, diff, usages, Luau validation, and optional production exclusion reference. adapterStudioOnly defaults to true and false is only for an explicit user request to omit the IsStudio check. Direct value candidates should use playtest_profile_save instead.
+
+- Tier: `pro`
+- Route: `internal`
+- Execution mode: `readonly`
+- Param aliases: none
+- Required params:
+  - `adapterOperation` - "create" | "update" | "remove_entry" | "remove_adapter" - Reviewed managed adapter operation. Used by: playtest_adapter_plan.
+  - `adapterId` - string - Stable managed Test Adapter ID and ModuleScript name. Used by: playtest_adapter_plan.
+- Optional params:
+  - `adapterRegistrationId` - string - Stable Dashboard entry ID. Used by create, update, and remove_entry adapter plans.
+  - `adapterRegistrationLabel` - string - User-facing adapter value label. Used by create and update adapter plans.
+  - `adapterRegistrationGroup` - string - Dashboard group for the adapter value. Used by create and update adapter plans.
+  - `adapterRegistrationKind` - "watch" | "control" - Observation or reversible control intent. Used by create and update adapter plans.
+  - `adapterValueType` - "string" | "number" | "boolean" | "enum" - JSON-compatible adapter value type. Used by create and update adapter plans.
+  - `adapterModulePath` - StructuredPath - Existing server-visible ModuleScript that owns the internal value. Used by create and update adapter plans.
+  - `adapterReadMethod` - string - Existing module getter name. Used by create and update adapter plans.
+  - `adapterWriteMethod` - string - Existing module setter name for a reversible control. Used by create and update adapter plans.
+  - `adapterMethodStyle` - "dot" | "colon" - Explicit dot or colon calling convention for the existing module API. Used by create and update adapter plans.
+  - `adapterStudioOnly` - boolean - Keep the managed Test Adapter unavailable outside Roblox Studio. Defaults to true and may be false only when the user explicitly asks to omit the RunService:IsStudio() check. Used by create and update adapter plans.
+  - `adapterConstraints` - object - Optional numeric editor constraints. Used by create and update adapter plans.
+  - `adapterEnumValues` - array<unknown> - Allowed enum values. Used by create and update adapter plans.
+  - `productionExclusionStrategy` - "rojo" | "private_test_place" - Optional artifact-hygiene strategy for excluding the adapter source even when studioOnly protection is enabled. Used by: playtest_adapter_plan.
+  - `productionExclusionReference` - string - Optional production project file or configured test Place reference for the exclusion strategy. Used by: playtest_adapter_plan.
+  - `placeId` - number - Optional Studio target selector. When multiple Studio clients are connected, route this call to the active client for this Roblox placeId. If no matching active client exists, the call fails instead of falling back to another Place.
+  - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
+  - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
+
+### `manage_studio.playtest_adapter_apply`
+
+Apply one unexpired reviewed managed Test Adapter plan only when the target, source hash, ownership, usages, active lease, and Luau validation still match.
+
+- Tier: `pro`
+- Route: `internal`
+- Execution mode: `unspecified`
+- Param aliases: none
+- Required params:
+  - `planToken` - string - Unexpired reviewed adapter plan token. Used by: playtest_adapter_apply.
+  - `expectedSourceHash` - string - Reviewed current source SHA-256 or absent sentinel. Used by: playtest_adapter_apply.
+- Optional params: none
+
+### `manage_studio.playtest_source_open`
+
+Open the current catalog-verified Test Adapter ModuleScript in Explorer and Script Editor without changing source or routing.
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `readonly`
+- Param aliases: none
+- Required params:
+  - `adapterId` - string - Stable managed Test Adapter ID and ModuleScript name. Used by: playtest_adapter_plan.
+  - `adapterRegistrationId` - string - Stable Dashboard entry ID. Used by create, update, and remove_entry adapter plans.
+- Optional params:
+  - `placeId` - number - Optional Studio target selector. When multiple Studio clients are connected, route this call to the active client for this Roblox placeId. If no matching active client exists, the call fails instead of falling back to another Place.
+  - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
+  - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
+
+### `manage_studio.playtest_control_apply`
+
+Apply typed Playtest Control values to an active target-pinned lease.
+
+- Tier: `pro`
+- Route: `internal`
+- Execution mode: `unspecified`
+- Param aliases: none
+- Required params:
+  - `leaseId` - string - Active runtime control lease ID. Used by: playtest_control_get, playtest_control_apply, playtest_control_reset.
+  - `expectedRevision` - integer - Optimistic runtime lease revision. Used by: playtest_control_apply.
+  - `controlValues` - object - Binding ID to JSON-compatible requested value. Used by: playtest_control_apply.
+- Optional params:
+  - `placeId` - number - Optional Studio target selector. When multiple Studio clients are connected, route this call to the active client for this Roblox placeId. If no matching active client exists, the call fails instead of falling back to another Place.
+  - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
+  - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
+
+### `manage_studio.playtest_control_reset`
+
+Restore all values owned by an active Playtest Control lease.
+
+- Tier: `pro`
+- Route: `internal`
+- Execution mode: `unspecified`
+- Param aliases: none
+- Required params:
+  - `leaseId` - string - Active runtime control lease ID. Used by: playtest_control_get, playtest_control_apply, playtest_control_reset.
+- Optional params:
+  - `placeId` - number - Optional Studio target selector. When multiple Studio clients are connected, route this call to the active client for this Roblox placeId. If no matching active client exists, the call fails instead of falling back to another Place.
+  - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
+  - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
 
 ### `manage_studio.test_session_status`
 
