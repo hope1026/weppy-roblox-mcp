@@ -3134,10 +3134,24 @@ Create, update, delete, or explicitly copy a Place-scoped local Playtest value p
 - Param aliases: none
 - Required params:
   - `profileOperation` - "create" | "update" | "delete" | "copy" - Local profile operation. create/update use controlProfile, delete uses controlProfileId, and copy uses source/destination fields. Used by: playtest_profile_save.
+- Conditional required params:
+  - When `profileOperation` is `"create"`:
+    - `controlProfile` - PlaytestControlProfileDraft - Validated local Playtest value profile draft. New v3 controls use applyOnStart=false without a placeholder value until the user explicitly saves one. Used by: playtest_profile_save.
+  - When `profileOperation` is `"update"`:
+    - `controlProfile` - PlaytestControlProfileDraft - Validated local Playtest value profile draft. New v3 controls use applyOnStart=false without a placeholder value until the user explicitly saves one. Used by: playtest_profile_save.
+    - `expectedRevision` - integer - Optimistic revision. For playtest_profile_save update/delete, pass the current stored profile revision. For playtest_control_apply, pass the active runtime lease revision.
+  - When `profileOperation` is `"delete"`:
+    - `controlProfileId` - string - Place-scoped Playtest Control Profile ID. Used by: play_start, test_session_start, playtest_prepare, playtest_profile_save, playtest_control_get.
+    - `expectedRevision` - integer - Optimistic revision. For playtest_profile_save update/delete, pass the current stored profile revision. For playtest_control_apply, pass the active runtime lease revision.
+  - When `profileOperation` is `"copy"`:
+    - `sourceProfileId` - string - Source profile ID for an explicit copy. Used by: playtest_profile_save.
+    - `sourceRevision` - integer - Expected source profile revision for an explicit copy. Used by: playtest_profile_save.
+    - `destinationProfileId` - string - New destination profile ID for an explicit copy. Used by: playtest_profile_save.
+    - `destinationProfileName` - string - New destination profile name for an explicit copy. Used by: playtest_profile_save.
 - Optional params:
   - `controlProfileId` - string - Place-scoped Playtest Control Profile ID. Used by: play_start, test_session_start, playtest_prepare, playtest_profile_save, playtest_control_get.
   - `controlProfile` - PlaytestControlProfileDraft - Validated local Playtest value profile draft. New v3 controls use applyOnStart=false without a placeholder value until the user explicitly saves one. Used by: playtest_profile_save.
-  - `expectedRevision` - integer - Optimistic runtime lease revision. Used by: playtest_control_apply.
+  - `expectedRevision` - integer - Optimistic revision. For playtest_profile_save update/delete, pass the current stored profile revision. For playtest_control_apply, pass the active runtime lease revision.
   - `sourceProfileId` - string - Source profile ID for an explicit copy. Used by: playtest_profile_save.
   - `sourceRevision` - integer - Expected source profile revision for an explicit copy. Used by: playtest_profile_save.
   - `sourcePlaceId` - number - Published source Place ID for an explicit profile copy. Used by: playtest_profile_save.
@@ -3217,7 +3231,7 @@ Apply typed Playtest Control values to an active target-pinned lease.
 - Param aliases: none
 - Required params:
   - `leaseId` - string - Active runtime control lease ID. Used by: playtest_control_get, playtest_control_apply, playtest_control_reset.
-  - `expectedRevision` - integer - Optimistic runtime lease revision. Used by: playtest_control_apply.
+  - `expectedRevision` - integer - Optimistic revision. For playtest_profile_save update/delete, pass the current stored profile revision. For playtest_control_apply, pass the active runtime lease revision.
   - `controlValues` - object - Binding ID to JSON-compatible requested value. Used by: playtest_control_apply.
 - Optional params:
   - `placeId` - number - Optional Studio target selector. When multiple Studio clients are connected, route this call to the active client for this Roblox placeId. If no matching active client exists, the call fails instead of falling back to another Place.

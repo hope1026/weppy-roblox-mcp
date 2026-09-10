@@ -47,6 +47,20 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.17.1] - 2026-09-10
+
+### Features
+
+- **Start Playtest from an empty Dashboard** — Empty Test Values and Automated Test Results now show copyable AI request examples. Test Values also explains how to select an object in Studio and add a supported property, Attribute, or Value directly.
+
+### Bug Fixes
+
+- **Fix missing Playtest profile deletion in the Dashboard** — Test profiles can now be deleted from the profile editor after reviewing what will be removed. Profiles currently in use remain protected until Play or Run stops, and deleting a profile does not remove game objects, scripts, test connection code, other profiles, or saved automated test results.
+- **Release Playtest profiles when a session ends** — Stopping a profile-started Play, returning Studio to Edit, or disconnecting Studio now closes the matching control session, releases the profile for editing or deletion, and marks its Watch values unavailable instead of leaving old values looking current.
+- **Keep profile revision requirements visible to AI clients** — Profile update and deletion requests now explain when the current revision is required, helping AI agents avoid stale changes and retry with the latest profile when another edit has already occurred.
+- **Close MCP Adapter sessions cleanly when input ends** — A normal AI client shutdown now finishes Adapter cleanup without forcing an immediate process exit, while the existing timeout fallback still handles leaked resources. This avoids abrupt shutdown behavior on Windows and keeps the shared Studio connection lifecycle separate.
+
 ## [2.17.0] - 2026-09-10
 
 ### Features
