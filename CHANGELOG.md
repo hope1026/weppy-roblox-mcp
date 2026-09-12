@@ -48,6 +48,14 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.17.2] - 2026-09-12
+
+### Features
+
+- **Start Assets and UI Studio from an empty Dashboard** — Empty Assets and UI Studio views now explain what to do next, provide copyable AI requests, and keep loading, connection, error, and filtered-empty states distinct from first-use guidance.
+- **Choose an image workflow that matches your AI** — Assets defaults to registering an existing image and clearly marks new image creation as requiring an AI that can create PNG or JPG files or use an image-generation tool. The same guide also explains inbox rescanning, saving Studio models, and uploading registered assets through Roblox Open Cloud on Pro.
+
 ## [2.17.1] - 2026-09-10
 
 ### Features
