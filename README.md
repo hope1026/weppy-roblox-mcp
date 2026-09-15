@@ -182,6 +182,8 @@ Run mode is reserved for an explicitly requested server-only check. Raw Luau rem
 
 UI Studio lets AI agents create in-game UI that matches your game's style, or analyze the UI you already have and suggest improvements.
 
+For UI created by LocalScripts, UI Studio distinguishes Edit `StarterGui` from a structured Play Client `PlayerGui` observation. If runtime UI has not been reviewed, it reports that missing evidence instead of assuming the game has no UI. Play-mode screenshots remain unsupported, so semantic runtime checks and visual screenshot review stay separate.
+
 - Clarify the UI goal with guided questions about purpose, screen, target devices, and visual direction
 - Create or refine game-style menus, HUDs, buttons, labels, image panels, and other Roblox UI elements directly in Studio
 - Capture the result, compare before/after changes, and follow dashboard suggestions for layout, readability, touch targets, and safe areas

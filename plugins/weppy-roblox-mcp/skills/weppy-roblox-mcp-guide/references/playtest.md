@@ -77,7 +77,7 @@ For ordinary runtime verification, use `test_session_start`. It defaults to Play
 
 Poll `test_session_status` with the returned `sessionId`. The default page contains at most 20 step entries; `stepLimit` cannot exceed 50. Use the opaque `stepCursor` for the next page. Call `test_session_stop` to cancel a non-terminal session.
 
-For UI interaction checks, wait for the target UI, capture semantic UI structure and geometry, then use VirtualInput. Keep input delivery and `GuiButton.Activated` observation as separate evidence, and verify server effects in a separate server step. Play-mode screenshot capture is not supported, so do not substitute screenshot evidence for semantic UI or interaction evidence.
+For UI interaction checks, wait for the target UI, capture semantic UI structure and geometry, then use VirtualInput. `snapshot_gui` may target `{root:"PlayerGui",segments:[]}` for a bounded UI Studio runtime review and records stable node identity, viewport, text fit, ScreenGui layer/inset, and truncation. Keep input delivery and `GuiButton.Activated` observation as separate evidence, and verify server effects in a separate server step. Play-mode screenshot capture is not supported, so do not substitute semantic UI or interaction evidence for screenshot evidence.
 
 ## Legacy Raw Luau Runner
 
