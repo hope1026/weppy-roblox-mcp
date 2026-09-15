@@ -49,6 +49,18 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.17.3] - 2026-09-15
+
+### Features
+
+- **Review LocalScript-created UI during Play** — UI Studio can now use a saved Play Client `PlayerGui` observation when reviewing HUDs and menus created at runtime. An empty `StarterGui` is reported as runtime UI not yet reviewed instead of being treated as proof that the game has no existing UI.
+- **Check more of the UI players actually see** — Design Check now evaluates visible text, images, and progress indicators even without WEPPY tags, including overlap across enabled `ScreenGui` roots, rendered text fit, safe-area placement, and painted content bounds.
+
+### Bug Fixes
+
+- **Keep uncertain UI checks visible** — Transparent UI over the game world and Roblox system UI regions are now marked as unverified when their real background or occupied area cannot be observed. Dashboard history also preserves the Play or Edit source, reviewed states, and missing evidence so incomplete checks are not presented as ready.
+
 ## [2.17.2] - 2026-09-12
 
 ### Features
