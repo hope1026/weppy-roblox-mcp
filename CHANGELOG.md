@@ -50,6 +50,14 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.17.4] - 2026-09-16
+
+### Features
+
+- **Run repeatable game actions during Playtest** — Test Values profiles can now store actions that increase numeric values, defeat a selected player or monster, or call reviewed Test Adapter operations such as granting experience and rewards. Each action validates its inputs, reports its result in the Dashboard, and avoids repeating the same request. Deaths, rewards, saved game data, and external requests are not restored by Reset all, so use test data and a test environment when an action can create lasting effects.
+- **Start Playtest with clearer guidance** — Empty Test Values views now explain how to prepare both values and actions, including a copyable AI request for creating an experience-grant action. The Dashboard also separates connected Studio places from places with stored data, presents Playtest apply settings as switches, and uses clearer detail controls.
+
 ## [2.17.3] - 2026-09-15
 
 ### Features

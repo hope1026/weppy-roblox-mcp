@@ -3256,6 +3256,27 @@ Restore all values owned by an active Playtest Control lease.
   - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
   - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
 
+### `manage_studio.playtest_action_execute`
+
+Execute one validated Action from an active Playtest profile without adding it to Reset all restoration.
+
+- Tier: `pro`
+- Route: `internal`
+- Execution mode: `unspecified`
+- Param aliases: none
+- Required params:
+  - `leaseId` - string - Active runtime control lease ID. Used by: playtest_control_get, playtest_control_apply, playtest_control_reset.
+  - `controlProfileId` - string - Place-scoped Playtest Control Profile ID. Used by: play_start, test_session_start, playtest_prepare, playtest_profile_save, playtest_control_get.
+  - `actionId` - string - Stable Action ID from the active Playtest profile. Used by: playtest_action_execute.
+  - `actionArguments` - object - Complete JSON-compatible arguments for this execution, including values from fixed Profile inputs. The Test Agent validates the actual method schema without injecting Profile defaults or comparing fixed values. Used by: playtest_action_execute.
+  - `expectedProfileRevision` - integer - Expected stored profile revision. Used by: playtest_action_execute.
+  - `expectedRevision` - integer - Optimistic revision. For playtest_profile_save update/delete, pass the current stored profile revision. For playtest_control_apply, pass the active runtime lease revision.
+  - `requestId` - string - Semantic idempotency identity for one Action click. Reusing it with the same input returns the same result; different input is rejected. Used by: playtest_action_execute.
+- Optional params:
+  - `placeId` - number - Optional Studio target selector. When multiple Studio clients are connected, route this call to the active client for this Roblox placeId. If no matching active client exists, the call fails instead of falling back to another Place.
+  - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
+  - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
+
 ### `manage_studio.test_session_status`
 
 Read a bounded page of structured test session status and step evidence.

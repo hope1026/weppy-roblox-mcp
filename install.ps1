@@ -1296,13 +1296,13 @@ Write-Host ("=" * 40)
 try {
     $nodeVersion = (node -v) -replace 'v', ''
     $majorVersion = [int]($nodeVersion.Split('.')[0])
-    if ($majorVersion -lt 18) {
-        Abort-Install "Node.js 18 or higher required (current: v$nodeVersion). Upgrade: https://nodejs.org"
+    if ($majorVersion -lt 22) {
+        Abort-Install "Node.js 22 or higher required (current: v$nodeVersion). Upgrade: https://nodejs.org"
     }
     Write-Ok "Node.js v$nodeVersion detected"
 }
 catch {
-    Abort-Install "Node.js is not installed. Install Node.js 18+: https://nodejs.org"
+    Abort-Install "Node.js is not installed. Install Node.js 22+: https://nodejs.org"
 }
 
 # ═══════════════════════════════════

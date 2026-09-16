@@ -1259,13 +1259,13 @@ printf "%s\n" "═════════════════════�
 # ── Node.js check ──
 if ! command -v node &>/dev/null; then
   fail "Node.js is not installed"
-  printf "  Install Node.js 18+: https://nodejs.org\n"
+  printf "  Install Node.js 22+: https://nodejs.org\n"
   exit 1
 fi
 
 NODE_VERSION=$(node -v | sed 's/v//' | cut -d. -f1)
-if [ "$NODE_VERSION" -lt 18 ]; then
-  fail "Node.js 18 or higher required (current: $(node -v))"
+if [ "$NODE_VERSION" -lt 22 ]; then
+  fail "Node.js 22 or higher required (current: $(node -v))"
   printf "  Upgrade: https://nodejs.org\n"
   exit 1
 fi
