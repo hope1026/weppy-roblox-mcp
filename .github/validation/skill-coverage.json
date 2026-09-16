@@ -81,6 +81,7 @@
         "manage_studio.playtest_control_get",
         "manage_studio.playtest_control_apply",
         "manage_studio.playtest_control_reset",
+        "manage_studio.playtest_action_execute",
         "manage_studio.playtest_prepare",
         "manage_studio.playtest_binding_candidates",
         "manage_studio.playtest_profile_save",

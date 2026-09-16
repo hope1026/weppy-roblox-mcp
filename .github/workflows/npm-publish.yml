@@ -9,7 +9,7 @@ on:
         required: true
         type: string
       source_run_id:
-        description: 'Private Publish Release workflow run id'
+        description: 'Private Publish Release workflow run and attempt correlation'
         required: true
         type: string
 
@@ -75,7 +75,7 @@ jobs:
           REGISTRY_JSON="$RUNNER_TEMP/npm-registry.json"
           REGISTRY_ERROR="$RUNNER_TEMP/npm-registry-error.log"
           if npm view "@weppy/roblox-mcp@${VERSION}" dist.integrity --json > "$REGISTRY_JSON" 2> "$REGISTRY_ERROR"; then
-            REGISTRY_INTEGRITY=$(node -e "const fs=require('fs'); const value=JSON.parse(fs.readFileSync(process.argv[1], 'utf8')); process.stdout.write(value ?? '')" "$REGISTRY_JSON")
+            REGISTRY_INTEGRITY=$(node -e "const fs=require('fs'); const value=JSON.parse(fs.readFileSync(process.argv[1], 'utf8')); if (typeof value !== 'string') throw new Error('Registry integrity response must be a string'); process.stdout.write(value)" "$REGISTRY_JSON")
             VALIDATION=$(node .github/scripts/validate-npm-release.mjs \
               --tarball "$TARBALL" \
               --version "$VERSION" \
@@ -107,14 +107,24 @@ jobs:
           EXPECTED_INTEGRITY: ${{ steps.validation.outputs.integrity }}
           VERSION: ${{ inputs.version }}
         run: |
-          for attempt in $(seq 1 10); do
-            echo "Registry integrity verification attempt $attempt/10"
-            ACTUAL_INTEGRITY=$(npm view "@weppy/roblox-mcp@${VERSION}" dist.integrity --json 2>/dev/null | node -e "let input=''; process.stdin.on('data', chunk => input += chunk); process.stdin.on('end', () => process.stdout.write(JSON.parse(input) ?? ''))" || true)
+          REGISTRY_JSON="$RUNNER_TEMP/npm-registry-verify.json"
+          REGISTRY_ERROR="$RUNNER_TEMP/npm-registry-verify-error.log"
+          for attempt in $(seq 1 60); do
+            echo "Registry integrity verification attempt $attempt/60"
+            ACTUAL_INTEGRITY=""
+            if npm view "@weppy/roblox-mcp@${VERSION}" dist.integrity --json > "$REGISTRY_JSON" 2> "$REGISTRY_ERROR"; then
+              ACTUAL_INTEGRITY=$(node -e "const fs=require('fs'); const value=JSON.parse(fs.readFileSync(process.argv[1], 'utf8')); if (typeof value === 'string') process.stdout.write(value)" "$REGISTRY_JSON")
+            elif ! grep -q 'E404' "$REGISTRY_ERROR"; then
+              cat "$REGISTRY_ERROR" >&2
+              exit 1
+            fi
             if [ "$ACTUAL_INTEGRITY" = "$EXPECTED_INTEGRITY" ]; then
               echo "Verified registry integrity for @weppy/roblox-mcp@${VERSION}"
               exit 0
             fi
-            sleep 6
+            if [ "$attempt" -lt 60 ]; then
+              sleep 10
+            fi
           done
           echo "Registry integrity did not converge to the published tarball" >&2
           exit 1

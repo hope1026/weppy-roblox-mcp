@@ -98,7 +98,7 @@ On Windows Antigravity, CLI installation has been verified to expose skills and 
 |:-----------:|:--------------:|:------:|:---------:|:----------:|:-----------------------------:|
 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 
-**Requirements:** Node.js 18+, Roblox Studio, Windows 10+ or macOS 12+
+**Requirements:** Node.js 22+, Roblox Studio, Windows 10+ or macOS 12+
 
 ## What It Does
 
@@ -292,6 +292,6 @@ Use of the Weppy name and logos is governed by [TRADEMARKS.md](TRADEMARKS.md).
 
 ---
 
-[![npm version](https://img.shields.io/npm/v/@weppy/roblox-mcp)](https://www.npmjs.com/package/@weppy/roblox-mcp) [![Node.js](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org/) [![Smithery](https://smithery.ai/badge/@hope1026/weppy-roblox-mcp)](https://smithery.ai/server/@hope1026/weppy-roblox-mcp)
+[![npm version](https://img.shields.io/npm/v/@weppy/roblox-mcp)](https://www.npmjs.com/package/@weppy/roblox-mcp) [![Node.js](https://img.shields.io/badge/node-%3E%3D22-brightgreen)](https://nodejs.org/) [![Smithery](https://smithery.ai/badge/@hope1026/weppy-roblox-mcp)](https://smithery.ai/server/@hope1026/weppy-roblox-mcp)
 
 [GitHub Issues](https://github.com/hope1026/weppy-roblox-mcp/issues) · [npm](https://www.npmjs.com/package/@weppy/roblox-mcp)
