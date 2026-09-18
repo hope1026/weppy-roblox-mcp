@@ -51,6 +51,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.17.5] - 2026-09-18
+
+### Bug Fixes
+
+- **Playtest status now follows Studio after pause and resume** — The Dashboard no longer remains stuck on Paused when Studio is running after a missed Pause request or a manual Resume. Test Actions become available again when Studio reports the newer running state, while delayed status messages cannot undo a pause that is still starting.
+
 ## [2.17.4] - 2026-09-16
 
 ### Features
