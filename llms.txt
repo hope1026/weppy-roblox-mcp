@@ -64,10 +64,12 @@ profiles per Place, and the Dashboard restores the last profile and the last
 selected Test Values or Automated Test Results workspace. Its shared session bar keeps
 the Studio state visible without starting or stopping Play. Users start Play in
 Studio Editor, and the Dashboard attaches the selected profile to that active
-session. Profile editing can add controls and read-only Watch Values from a
+session. They can switch, create, edit, or delete profiles while Play or Run
+continues; switching keeps current game values and replaces the controls, Watch
+Values, and Actions shown for the same session. Profile editing can add controls and read-only Watch Values from a
 runtime path or current Studio selection. Controls support number, min/max
 range, string, and boolean checkbox inputs. Basic includes profile creation and Watch Values. Pro adds typed value
-changes, rollback, Reset all, and actual saved Automated Test Results. Watch Values shows
+changes, rollback, Reset all across reversible changes made through every profile in the session, and actual saved Automated Test Results. Watch Values shows
 fresh server or client state and moves disconnected or
 out-of-sequence data to a separate last-observed state. Project Test Adapters
 are reviewed development code with bounded calls and required cleanup.

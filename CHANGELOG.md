@@ -52,6 +52,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.17.6] - 2026-09-19
+
+### Features
+
+- **Switch Test Values profiles without restarting Playtest** — While Play or Run remains active, you can switch, create, edit, or delete profiles. Switching keeps the current game values and updates the controls, Watch Values, and Actions available for the same session. Reset all and session cleanup restore every reversible change made through any profile to its original pre-session value. Saved defaults and Actions do not run automatically when you switch profiles.
+
 ## [2.17.5] - 2026-09-18
 
 ### Bug Fixes
