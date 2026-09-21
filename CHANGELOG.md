@@ -54,6 +54,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.17.8] - 2026-09-21
+
+### Bug Fixes
+
+- **Show published Place names for connected Studio targets** — The Dashboard and Place information now use the published Roblox name instead of internal DataModel names such as `Place1`. Connected published Places refresh their display name without changing routing or Sync folders, temporary Roblox lookup failures keep the last confirmed name, and unpublished local Places continue to use their Studio name. Update both WEPPY components and restart Roblox Studio to load the patched Plugin.
+
 ## [2.17.7] - 2026-09-21
 
 ### Features
