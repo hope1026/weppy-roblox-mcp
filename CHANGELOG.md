@@ -55,6 +55,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.17.9] - 2026-09-21
+
+### Bug Fixes
+
+- **Show confirmed Place names in Dashboard selectors** — Tools, Changelog, Playtest, and Assets now keep the connected or last-active Place name visible when multiple folders share the same Place ID and the representative folder is not yet confirmed. The Dashboard still shows the representative-folder warning and folder details without replacing the known Place name with a generic ID label. No manual cleanup is required.
+
 ## [2.17.8] - 2026-09-21
 
 ### Bug Fixes
