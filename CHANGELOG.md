@@ -53,6 +53,18 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.17.7] - 2026-09-21
+
+### Features
+
+- **Open published Places from the Dashboard** — The Place scope now includes a Quick links menu for opening Place settings, Experience management, and the Roblox page in a new tab. Links remain available after Studio disconnects or the WEPPY Bridge restarts. Previously saved Places may need one Studio reconnect before Experience-level links appear.
+- **Use Place folders before the first Sync** — The Dashboard now discovers valid Place project folders even when they do not have Sync metadata yet, so you can select them in Tools, Playtest, Changelog, and Assets. Duplicate folders are clearly identified and protected from accidental use without changing Studio routing or Sync data.
+
+### Bug Fixes
+
+- **Keep renamed Studio Places up to date** — Renaming an open Place in Studio now refreshes its name in WEPPY without reconnecting. The Place identity, selected target, routing, and Sync folder remain unchanged.
+
 ## [2.17.6] - 2026-09-19
 
 ### Features
