@@ -33,6 +33,21 @@ jobs:
           PUBLIC_RUN_ID: ${{ github.event.workflow_run.id }}
           RUN_TITLE: ${{ github.event.workflow_run.display_title }}
         run: |
+          if WORKFLOW_STATE=$(gh api \
+            repos/hope1026/weppy-roblox-mcp-private/actions/workflows/npm-publish-result.yml \
+            --jq .state 2> "$RUNNER_TEMP/private-workflow-error"); then
+            if [ "$WORKFLOW_STATE" != 'active' ]; then
+              echo "Private npm result workflow is not active" >&2
+              exit 1
+            fi
+          elif grep -q 'HTTP 404' "$RUNNER_TEMP/private-workflow-error"; then
+            echo "Private npm result workflow is not on main yet; ignoring a pre-activation publisher run."
+            exit 0
+          else
+            cat "$RUNNER_TEMP/private-workflow-error" >&2
+            exit 1
+          fi
+
           if [[ "$RUN_TITLE" =~ ^Publish\ npm\ v([0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?)\ \(source\ ([0-9]+-[1-9][0-9]*)\)$ ]]; then
             VERSION="${BASH_REMATCH[1]}"
             SOURCE_CORRELATION="${BASH_REMATCH[3]}"
