@@ -1,0 +1,48 @@
+name: Report npm Publish Result
+
+on:
+  workflow_run:
+    workflows: ['Publish npm Package']
+    types: [completed]
+
+permissions: {}
+
+jobs:
+  report:
+    if: >-
+      github.repository == 'hope1026/weppy-roblox-mcp' &&
+      github.event.workflow_run.event == 'workflow_dispatch' &&
+      github.event.workflow_run.head_branch == 'main' &&
+      github.event.workflow_run.head_repository.full_name == 'hope1026/weppy-roblox-mcp'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Create private Actions dispatch token
+        id: app-token
+        uses: actions/create-github-app-token@v3
+        with:
+          client-id: ${{ vars.WEPPY_RELEASE_APP_CLIENT_ID }}
+          private-key: ${{ secrets.WEPPY_RELEASE_APP_PRIVATE_KEY }}
+          owner: hope1026
+          repositories: weppy-roblox-mcp-private
+          permission-actions: write
+
+      - name: Dispatch private result verification
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          PUBLIC_RUN_ID: ${{ github.event.workflow_run.id }}
+          RUN_TITLE: ${{ github.event.workflow_run.display_title }}
+        run: |
+          if [[ "$RUN_TITLE" =~ ^Publish\ npm\ v([0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?)\ \(source\ ([0-9]+-[1-9][0-9]*)\)$ ]]; then
+            VERSION="${BASH_REMATCH[1]}"
+            SOURCE_CORRELATION="${BASH_REMATCH[3]}"
+          else
+            echo "Unexpected npm publisher run title" >&2
+            exit 1
+          fi
+          gh workflow run npm-publish-result.yml \
+            --repo hope1026/weppy-roblox-mcp-private \
+            --ref develop \
+            -f public_run_id="$PUBLIC_RUN_ID" \
+            -f source_correlation="$SOURCE_CORRELATION" \
+            -f version="$VERSION"
