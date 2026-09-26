@@ -57,7 +57,7 @@ jobs:
           fi
           gh workflow run npm-publish-result.yml \
             --repo hope1026/weppy-roblox-mcp-private \
-            --ref develop \
+            --ref main \
             -f public_run_id="$PUBLIC_RUN_ID" \
             -f source_correlation="$SOURCE_CORRELATION" \
             -f version="$VERSION"
