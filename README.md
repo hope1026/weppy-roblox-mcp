@@ -61,9 +61,11 @@ Use this server command:
 npx -y @weppy/roblox-mcp@latest
 ```
 
-Supported AI apps are Claude Code, Claude Desktop, Cursor, Codex CLI, Codex App, Gemini CLI, and Antigravity / Antigravity IDE / Antigravity CLI.
+Automatic registration supports Claude Code, Claude Desktop, Cursor, Codex CLI, Codex App, Gemini CLI, and Antigravity / Antigravity IDE / Antigravity CLI.
 
 > Any MCP-compatible AI client works. The server command is `npx -y @weppy/roblox-mcp@latest`.
+
+**Dola Desktop** connects through a local STDIO Custom Connector. It requires Dola's Pro mode and Local computer. Follow the [Dola manual setup guide](https://weppyai.com/en/docs/agents/dola/); the one-line installer and GitHub marketplace plugin do not configure Dola.
 
 ### Optional WEPPY AI Agent Plugin
 
@@ -94,9 +96,9 @@ On Windows Antigravity, CLI installation has been verified to expose skills and 
 
 ## Compatibility
 
-| Claude Code | Claude Desktop | Cursor | Codex CLI | Gemini CLI | Antigravity / Antigravity IDE / Antigravity CLI |
-|:-----------:|:--------------:|:------:|:---------:|:----------:|:-----------------------------:|
-| ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Claude Code | Claude Desktop | Cursor | Codex CLI | Gemini CLI | Antigravity / Antigravity IDE / Antigravity CLI | Dola Desktop |
+|:-----------:|:--------------:|:------:|:---------:|:----------:|:-----------------------------:|:------------:|
+| ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | [Manual setup](https://weppyai.com/en/docs/agents/dola/) |
 
 **Requirements:** Node.js 22+, Roblox Studio, Windows 10+ or macOS 12+
 
@@ -125,6 +127,8 @@ Many Roblox experiences are not a single Place. WEPPY lets you keep up to five S
 
 ### 3) Assets: Generate, upload, and apply images in Studio
 
+If your AI app can create PNG or JPG files, it can make a new image for this workflow. Otherwise, start with an image you already have and register it in Asset Library before uploading it.
+
 WEPPY Assets turns a natural-language asset request into a Studio-ready result.
 
 - "Create a gem icon for the shop button, upload it to Roblox, then apply it to the ShopButton image in the Lobby Place."
@@ -136,11 +140,12 @@ WEPPY Assets turns a natural-language asset request into a Studio-ready result.
 
 ### 4) Sync: Keep full project context stable for AI
 
-AI works from a synchronized local mirror, so multi-file updates stay consistent.
+AI reads a local mirror of your Studio project. Review pending local changes before applying them to Studio.
 
 - Sync starts Off on first use. Start on connection is also Off. Saved settings always take precedence, including a saved Off value. The first-use workflow is Studio First, so the first synchronization treats Studio as the source.
 - Choose Studio First, Bidirectional Review, Local Code, Studio World, or Custom. Custom groups changes into four semantic scopes: Script Source, Properties, Structure, and Service Properties.
 - Content Changes and Structure Changes application modes are shown separately from scope direction. Local file deletion does not delete a Studio instance by default; applying a deletion to Studio requires an additional opt-in and is separate from UI Studio history cleanup.
+- **Review Changes** lists local edits waiting for manual application. **Review Conflicts** lists files changed differently in Studio and locally; compare both versions before choosing one.
 - Basic uses Studio-to-local Sync. Pro adds the richer workflow directions, history, and support for up to five Places.
 - The WEPPY MCP Server and WEPPY Roblox Studio Plugin must come from the same release. Update both together, then restart Roblox Studio before reconnecting if their versions do not match.
 
@@ -163,6 +168,8 @@ The first validation that needs the companion parser downloads the exact `luau-p
 Ordinary runtime checks use a structured Play session. AI can wait for game UI, inspect its semantic structure and geometry, deliver virtual input, observe the UI response, and verify the resulting server state in separate evidence steps. The local Dashboard groups the saved result by server, client UI, interaction, and visual evidence so you can review what passed and why.
 
 The same Playtest page also includes a **Test Values** workspace for development-only values. Create multiple Place-scoped profiles for different test setups; the Dashboard remembers the last profile selected for each Place. While Play or Run remains active, you can switch, create, edit, or delete profiles without restarting the game. Switching keeps the current game values and changes the controls, Watch Values, and Actions shown for the same session. Controls and read-only observations appear in one searchable, paginated list, so large profiles remain easy to scan. Use **Manage values** to add entries discovered from Project Test Adapters, or use a runtime path and the current Studio selection for direct values. A stale or disconnected observation is shown as the last observed value instead of being presented as current.
+
+On Pro, profile **Actions** can run a prepared game operation during Play, such as changing a value or calling a reviewed Test Adapter. Actions report their result separately from value changes. **Reset all** restores reversible value changes; it cannot undo saved game data, deaths, rewards, or external requests caused by an Action.
 
 Basic includes profile creation and live runtime observation. Pro adds typed value changes during Play, rollback, **Reset all**, and actual saved **Automated Test Results**. The Playtest page explains the Pro additions and links directly to available plans and purchase options.
 
@@ -196,6 +203,8 @@ The MCP server provides a web dashboard where you can check connection status, t
 
 - Connection topology for AI agents, the MCP server, and connected Roblox Studio windows
 - Studio Targets with copyable Studio IDs, Priority/Pinned badges, and a link to routing controls
+- Published Place names and quick links to Place settings, Experience management, and the Roblox page
+- Place folders available in Tools, Playtest, Changelog, and Assets before the first Sync; duplicate folders are identified for review
 - Multi-agent and multi-Studio workflows: keep several agents and up to five Studio windows visible, then tell the agent which Studio ID to use
 - Assets page for local library items, shared assets, and Roblox upload status
 - Controls page for enforcing post-write Luau syntax validation, including clear On and Off behavior

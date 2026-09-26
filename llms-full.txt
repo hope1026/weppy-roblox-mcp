@@ -2,7 +2,9 @@
 
 > WEPPY Roblox AI Toolkit is a Roblox Studio AI development product. It includes the WEPPY MCP Server for AI app connections and the WEPPY Roblox Studio Plugin for live Studio control. Claude Code, Codex, and Antigravity can also install the optional WEPPY AI Agent Plugin.
 
-The web dashboard includes a Connection topology for multiple AI agents, the MCP server, and multiple connected Studio Targets, with copyable Studio IDs and routing status for multi-Studio workflows.
+The web dashboard includes a Connection topology for multiple AI agents, the MCP server, and multiple connected Studio Targets, with copyable Studio IDs and routing status for multi-Studio workflows. Published Places show their Roblox names and quick links to Place settings, Experience management, and the Roblox page. Valid Place folders can be selected in Tools, Playtest, Changelog, and Assets before the first Sync; duplicate folders are identified for review.
+
+For an image asset, start with an existing PNG or JPG file or use an AI app that can create one. WEPPY registers the file in Asset Library and can upload it through Roblox Open Cloud; the MCP server alone does not generate a new image.
 
 Sync starts Off on first use. Start on connection is also Off. Saved settings always take precedence, including explicitly saved Off and false values. The default first-use workflow is Studio First, so Studio is the source for the initial synchronization. The Studio plugin owns Sync start, stop, and policy editing; the MCP server and Dashboard expose the effective policy read-only.
 
@@ -18,6 +20,8 @@ Ordinary runtime verification uses a structured Play session. The AI can wait fo
 
 The Dashboard Playtest page also includes Test Values. Users can save multiple profiles per Place, and the Dashboard restores the last profile and the last selected Test Values or Automated Test Results workspace. While Play or Run remains active, users can switch, create, edit, or delete profiles without restarting the game; switching keeps current game values and replaces the controls, Watch Values, and Actions shown for the same session. Profile editing adds mutable controls and read-only Watch Values from a runtime path or the current Studio selection. Controls support number, min/max range, string, and boolean checkbox inputs. Start and stop Play in Studio Editor; the Dashboard session bar only displays Edit, Running, Paused, or Disconnected and attaches the selected profile to the active Play DataModel. Basic can create profiles and observe Watch Values. Pro can change typed values, roll back a partial failure, reset every reversible change made through any profile in the session, and review actual saved Automated Test Results. Watch Values uses runtime change signals for direct bindings and separates fresh current values from stale or unavailable last observations. Reviewed Project Test Adapters cover startup-cached values and domain operations; mutation methods require cleanup, read-only watches are bounded, and adapter source is never sent through the profile or protocol.
 
+Pro can execute a prepared Test Action from the active profile during Play. Its result is reported separately from reversible value changes. Reset all does not undo deaths, rewards, saved game data, or external requests caused by an Action.
+
 Before publishing is available from the Playtest page header on Basic and Pro as a plain-language, read-only reference. It explains what returns to its original value after a Studio test, what WEPPY keeps only on the user's computer, and what to check before and after publishing. Common checks are separated from items for games with test-only features or saved player data. Test connection code created with default settings does not run in the public game. If a local WEPPY record shows that Studio-only protection was explicitly removed, the Dashboard adds a note only for that Place. Rojo remains optional for omitting test source from a production project. Currency or progress saved by game code can remain after a test, and Places in the same Experience can share that data. WEPPY does not scan or certify deployment files, remove test code, build deployment copies, or publish through this reference.
 
 This package intentionally does not ship a standalone full documentation surface.
@@ -26,7 +30,10 @@ Canonical documentation lives on the web:
 
 - Install and setup: https://weppyai.com/en/install
 - Product documentation: https://weppyai.com/en/docs
+- Dola manual setup: https://weppyai.com/en/docs/agents/dola/
 - Pro plans: https://weppyai.com/plans/
+
+Dola Desktop uses a local STDIO Custom Connector in Dola's Pro mode with Local computer. The one-line installer and GitHub marketplace plugin do not configure Dola.
 
 For installation, start from the web install page and follow its recommended one-line installer first. If terminal or PowerShell is uncomfortable, use the terminal-free web installer on that same page. If automated install fails, use the relevant app-specific manual guide.
 

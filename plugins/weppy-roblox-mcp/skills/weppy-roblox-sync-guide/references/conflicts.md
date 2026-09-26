@@ -2,6 +2,8 @@
 
 Sync conflict handling follows direction policy. Do not resolve by guessing which side is newer without checking the direction and conflict payload.
 
+In the Studio plugin, `Review Changes` counts local edits awaiting manual application. `Review Conflicts` counts divergent Studio/local edits. Open a conflict's comparison before choosing a side. Repeated reports of unchanged conflict content stay in the review list instead of opening new dialogs.
+
 ## Enforcement
 
 Studio to file:
@@ -20,10 +22,11 @@ Post-play reconciliation:
 ## Resolution Semantics
 
 `apply-studio` must overwrite disk content with the last Studio payload, not only update hashes. Script conflicts need source text. Props conflicts need the full serialized props payload.
+`apply-file` first prepares the current local content. The sync baseline advances only after the plugin applies that content to Studio and confirms success. A failed or stale apply remains unresolved.
 
 ## Destructive Deletes
 
-Local `instanceRemoved` changes are destructive and enter the manual queue even when the category apply mode is `auto`. Enable `autoApplyDeletes` only after explicit user opt-in. When the plugin applies a delete, it uses `Parent = nil` so ChangeHistoryService can restore the instance with Undo; it must not call `Destroy()` for this path.
+Local `instanceRemoved` changes are destructive and enter the manual queue even when structure apply is `auto`. Enable `autoApplyLocalDeletesToStudio` only after explicit user opt-in. When the plugin applies a delete, it uses `Parent = nil` so ChangeHistoryService can restore the instance with Undo; it must not call `Destroy()` for this path.
 
 ## Temporary Instances
 

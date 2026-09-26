@@ -1,0 +1,4 @@
+interface:
+  display_name: "WEPPY Roblox Game Feel Guide"
+  short_description: "Optional game feel ideas that fit your game's intent"
+  default_prompt: "Use $weppy-roblox-game-feel-guide to suggest optional feedback improvements that fit my game's concept and intended feel."
