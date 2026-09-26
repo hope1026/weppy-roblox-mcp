@@ -18,9 +18,11 @@ terrain, and more — inside a live Studio session.
 - Structured Playtest: ordinary checks use Play and record UI, input, and server evidence locally
 - UI Studio: AI creates in-game UI or analyzes existing Edit and Play Client UI; an unreviewed runtime is reported as missing evidence, and Play semantic checks remain separate from unsupported Play screenshots
 - Web dashboard: monitor AI actions, tool history, sync state, changelog, and multi-agent / multi-Studio Connection topology with Studio Targets at `http://localhost:3002`
+- Dashboard Place scope: published Place names and quick links; valid Place folders are available before the first Sync, with duplicates identified for review
 - Multi-place support (up to 5 places simultaneously)
 - Roblox Explorer VSCode extension for browsing Studio hierarchy
-- Works with Claude Code, Claude Desktop, Cursor, Codex CLI, Codex App, Gemini CLI, Antigravity / Antigravity IDE / Antigravity CLI
+- Image assets: register an existing PNG or JPG, or use an AI app that can create one, before Roblox Open Cloud upload
+- Works with Claude Code, Claude Desktop, Cursor, Codex CLI, Codex App, Gemini CLI, Antigravity / Antigravity IDE / Antigravity CLI; Dola Desktop uses manual local STDIO Custom Connector setup
 
 ## Sync policy and safety
 
@@ -74,6 +76,8 @@ fresh server or client state and moves disconnected or
 out-of-sequence data to a separate last-observed state. Project Test Adapters
 are reviewed development code with bounded calls and required cleanup.
 
+Pro Test Actions can run a prepared game operation during Play. Reset all restores reversible value changes, but does not undo deaths, rewards, saved game data, or external requests caused by Actions.
+
 Before publishing is available from the Playtest page header on Basic and Pro as a plain-language, read-only
 reference. It explains what returns to its original value after a Studio test,
 what WEPPY keeps only on the user's computer, and what to check before and after
@@ -112,6 +116,8 @@ irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1
 Use the terminal-free web installer on the same page if terminal or PowerShell is uncomfortable.
 
 If automated install fails, use the app-specific manual guides from the docs.
+
+Dola Desktop uses manual setup with Dola's Pro mode and Local computer. Follow the [Dola setup guide](https://weppyai.com/en/docs/agents/dola/). The one-line installer and GitHub marketplace plugin do not configure it.
 
 ## Optional WEPPY AI Agent Plugin
 
@@ -153,7 +159,7 @@ Antigravity:
 
 ## Requirements
 
-- Node.js >= 18
+- Node.js >= 22
 - Roblox Studio (Windows 10+ or macOS 12+)
 - Any MCP-compatible AI client
 

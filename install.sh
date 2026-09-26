@@ -878,6 +878,8 @@ prepare_antigravity_plugin_source() {
     [ -f "$WEPPY_ANTIGRAVITY_PLUGIN_SOURCE/skills/weppy-roblox-mcp-guide/SKILL.md" ] || return 1
     [ -f "$WEPPY_ANTIGRAVITY_PLUGIN_SOURCE/skills/weppy-roblox-sync-guide/SKILL.md" ] || return 1
     [ -f "$WEPPY_ANTIGRAVITY_PLUGIN_SOURCE/skills/weppy-roblox-assets-guide/SKILL.md" ] || return 1
+    [ -f "$WEPPY_ANTIGRAVITY_PLUGIN_SOURCE/skills/weppy-roblox-environment-guide/SKILL.md" ] || return 1
+    [ -f "$WEPPY_ANTIGRAVITY_PLUGIN_SOURCE/skills/weppy-roblox-game-feel-guide/SKILL.md" ] || return 1
     ANTIGRAVITY_PLUGIN_SOURCE_PATH="$WEPPY_ANTIGRAVITY_PLUGIN_SOURCE"
     return 0
   fi
@@ -915,7 +917,7 @@ antigravity_view_healthy() {
   local skill
 
   [ -f "$root/plugin.json" ] || return 1
-  for skill in weppy-roblox-mcp-guide weppy-roblox-sync-guide weppy-roblox-assets-guide; do
+  for skill in weppy-roblox-mcp-guide weppy-roblox-sync-guide weppy-roblox-assets-guide weppy-roblox-environment-guide weppy-roblox-game-feel-guide; do
     [ -f "$root/skills/$skill/SKILL.md" ] || return 1
   done
 }

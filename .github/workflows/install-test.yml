@@ -34,7 +34,15 @@ jobs:
             },
             {
               name: 'weppy-roblox-assets-guide',
-              references: ['asset-library.md', 'generated-assets.md', 'studio-upload.md', 'open-cloud-upload.md'],
+              references: ['asset-library.md', 'creator-store.md', 'generated-assets.md', 'studio-upload.md', 'open-cloud-upload.md'],
+            },
+            {
+              name: 'weppy-roblox-environment-guide',
+              references: ['environment-workflow.md', 'preset-catalog.md'],
+            },
+            {
+              name: 'weppy-roblox-game-feel-guide',
+              references: ['game-feel-patterns.md'],
             },
           ];
           const required = [
@@ -58,6 +66,8 @@ jobs:
             'plugins/weppy-roblox-mcp/skills/weppy-roblox-mcp-guide/SKILL.md',
             'plugins/weppy-roblox-mcp/skills/weppy-roblox-sync-guide/SKILL.md',
             'plugins/weppy-roblox-mcp/skills/weppy-roblox-assets-guide/SKILL.md',
+            'plugins/weppy-roblox-mcp/skills/weppy-roblox-environment-guide/SKILL.md',
+            'plugins/weppy-roblox-mcp/skills/weppy-roblox-game-feel-guide/SKILL.md',
           ];
           const forbidden = [
             'package.json',
@@ -418,7 +428,7 @@ jobs:
                 ;;
               damaged)
                 seed_native_plugin "$target"
-                rm -f "$target/skills/weppy-roblox-assets-guide/SKILL.md"
+                rm -f "$target/skills/weppy-roblox-game-feel-guide/SKILL.md"
                 ;;
               install-failure)
                 seed_native_plugin "$target"
@@ -480,7 +490,7 @@ jobs:
           if (mode.startsWith('cli-missing')) {
             if (fs.existsSync(cli)) throw new Error('CLI-missing fixture unexpectedly installed a plugin');
           } else {
-            for (const skill of ['weppy-roblox-mcp-guide', 'weppy-roblox-sync-guide', 'weppy-roblox-assets-guide']) {
+            for (const skill of ['weppy-roblox-mcp-guide', 'weppy-roblox-sync-guide', 'weppy-roblox-assets-guide', 'weppy-roblox-environment-guide', 'weppy-roblox-game-feel-guide']) {
               if (!fs.existsSync(path.join(cli, 'skills', skill, 'SKILL.md'))) throw new Error(`CLI skill missing: ${skill}`);
             }
           }
@@ -534,6 +544,8 @@ jobs:
           test -f "$target/skills/weppy-roblox-mcp-guide/SKILL.md"
           test -f "$target/skills/weppy-roblox-sync-guide/SKILL.md"
           test -f "$target/skills/weppy-roblox-assets-guide/SKILL.md"
+          test -f "$target/skills/weppy-roblox-environment-guide/SKILL.md"
+          test -f "$target/skills/weppy-roblox-game-feel-guide/SKILL.md"
           test ! -f "$target/mcp_config.json"
           node <<'NODE'
           const fs = require('fs');
@@ -561,6 +573,8 @@ jobs:
           test -f "$target/skills/weppy-roblox-mcp-guide/SKILL.md"
           test -f "$target/skills/weppy-roblox-sync-guide/SKILL.md"
           test -f "$target/skills/weppy-roblox-assets-guide/SKILL.md"
+          test -f "$target/skills/weppy-roblox-environment-guide/SKILL.md"
+          test -f "$target/skills/weppy-roblox-game-feel-guide/SKILL.md"
           test ! -e "$target/.claude-plugin"
           printf '✓ Antigravity CLI hybrid skill-only plugin verified\n'
 
@@ -864,7 +878,7 @@ jobs:
               }
               'damaged' {
                 Copy-NativePlugin $target
-                Remove-Item (Join-Path $target 'skills\weppy-roblox-assets-guide\SKILL.md') -Force
+                Remove-Item (Join-Path $target 'skills\weppy-roblox-game-feel-guide\SKILL.md') -Force
               }
               'install-failure' {
                 Copy-NativePlugin $target
@@ -953,7 +967,9 @@ jobs:
               @(
                 'skills\weppy-roblox-mcp-guide\SKILL.md',
                 'skills\weppy-roblox-sync-guide\SKILL.md',
-                'skills\weppy-roblox-assets-guide\SKILL.md'
+                'skills\weppy-roblox-assets-guide\SKILL.md',
+                'skills\weppy-roblox-environment-guide\SKILL.md',
+                'skills\weppy-roblox-game-feel-guide\SKILL.md'
               ) | ForEach-Object {
                 if (-not (Test-Path (Join-Path $target $_))) { throw "$Name missing CLI skill: $_" }
               }
@@ -1031,7 +1047,9 @@ jobs:
             'plugin.json',
             'skills\weppy-roblox-mcp-guide\SKILL.md',
             'skills\weppy-roblox-sync-guide\SKILL.md',
-            'skills\weppy-roblox-assets-guide\SKILL.md'
+            'skills\weppy-roblox-assets-guide\SKILL.md',
+            'skills\weppy-roblox-environment-guide\SKILL.md',
+            'skills\weppy-roblox-game-feel-guide\SKILL.md'
           ) | ForEach-Object {
             if (-not (Test-Path (Join-Path $target $_))) { throw "Missing hybrid plugin file: $_" }
           }

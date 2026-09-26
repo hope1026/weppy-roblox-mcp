@@ -56,6 +56,26 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.17.10] - 2026-09-26
+
+### Features
+
+- **See Sync status for each connected Studio** — The Dashboard shows each Studio's Place and Sync state separately. Selecting a Studio to inspect its policy or logs does not change where AI commands are sent.
+- **Review local changes and conflicts in Studio** — The Plugin gives pending changes a clearer review screen and lists bidirectional conflicts with Local and Studio previews before you choose which version to keep.
+- **Restart an unresponsive Bridge from the Dashboard** — When an AI agent is connected, the Connection page can request a Bridge restart and show when Dashboard and Studio reconnect. Active Playtest controls are cleaned up during the restart.
+- **Optional game feel guidance for AI agents** — The WEPPY agent plugin includes guidance for choosing feedback on hits, rewards, movement, and interactions to fit the game being built.
+
+### Bug Fixes
+
+- **Avoid duplicate Studio objects during reverse Sync** — Local script and properties files arriving together now create one Studio instance. Conflict resolution confirms a local change only after Studio applies it, so a failed apply remains available for review.
+- **Show agent connection times accurately** — The Connection page separates the last confirmed contact from the most recent command instead of presenting one time as both.
+- **Identify occupied Bridge ports correctly** — When a listener stops responding while holding the Bridge port, WEPPY reports a port ownership conflict instead of a generic startup timeout.
+
+### Documentation
+
+- **Clarify setup and current features** — Public setup guidance now covers Dola's manual MCP configuration, the Node.js 22 requirement, and current Playtest and Place shortcuts.
+
 ## [2.17.9] - 2026-09-21
 
 ### Bug Fixes
