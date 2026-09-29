@@ -57,6 +57,20 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.17.11] - 2026-09-29
+
+### Features
+
+- **Review Roblox UI guidance with its evidence** — UI Studio now separates observed layout issues from official Roblox guidance and shows the source and conditions behind recommendations. Guidance remains advisory, so you can decide whether to change your UI.
+
+### Bug Fixes
+
+- **Keep the current Pro license when Studio reconnects** — Activating or resetting a license in the Dashboard no longer lets an older Studio session or a delayed refresh replace the newer license state. The Studio Plugin also keeps its saved license state and session together when credentials change, so Pro access follows the current license without reactivation.
+- **Restore desktop and console UI previews after phone checks** — Switching back from a portrait Phone preview now restores Desktop and Console settings without treating a mobile-only orientation setting as a failed restore.
+
+Update the WEPPY MCP Server and Roblox Studio Plugin together, then restart Studio to load this patch.
+
 ## [2.17.10] - 2026-09-26
 
 ### Features
