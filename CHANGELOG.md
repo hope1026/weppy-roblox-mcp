@@ -58,6 +58,17 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.17.12] - 2026-10-01
+
+### Bug Fixes
+- **Sync persistent edits after Play** — Changes that remain in Studio's Edit mode after a playtest now reach your local files according to your Sync policy, including script edits, properties, attributes, tags, values, and created or deleted objects. Temporary Play objects stay out of the mirror, and ending a playtest without changes avoids unnecessary file writes.
+- **Restore local scripts after Play** — With Local Code, Studio World, local script contents are restored after Play while Studio property changes are sent to local files. Turning Sync off during Play and starting it again in Edit mode now applies pending local script edits.
+- **Show when Sync is sending changes** — The Dashboard and Studio plugin now distinguish an active connection from change delivery, showing when sending is paused for Play, recovering after Play, or waiting for review or error recovery.
+
+### Stability
+- **Recover interrupted Sync updates** — Sync retries interrupted updates and tracks which changes were saved, reducing missed or repeated changes after a lost response or a partially completed update.
+
 ## [2.17.11] - 2026-09-29
 
 ### Features

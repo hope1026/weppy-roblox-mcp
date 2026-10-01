@@ -12,6 +12,14 @@ WEPPY sync mirrors Roblox Studio content into local files under `weppy-project-s
 6. Use Sync history, progress, and read/write actions for inspection and targeted edits.
 7. Stop Sync in the Studio plugin before changing project root or when Studio disconnects.
 
+## Play And Edit Changes
+
+Ordinary edit tools change the Edit DataModel. The Test Agent works in the temporary Play runtime. Runtime-only changes are not promoted to Edit files or sync history.
+
+During Play, Sync pauses change sending. When the last test connection exits, Sync compares the final Edit state with changes it previously confirmed as sent. It then follows the effective direction and apply policy before normal sending resumes. Forward changes use Edit as the source, reverse scopes preserve the authorized local source, and bidirectional conflicts still require the existing review choice. Play does not grant permission to auto-apply local deletions to Studio.
+
+Check `manage_sync.status_current_place` or the Plugin and Dashboard Sync details for the separate change-sending status: `inactive`, `active`, `paused_play`, `reconciling`, `blocked`, or `unknown`. `blocked` includes a reason to investigate. `active` means sending is enabled, not that every mirrored file is current. A missing report or ended connection is `unknown`; inspect the current Studio session before relying on local files.
+
 ## Safe Defaults
 
 Sync starts Off on first use. Start on connection is also Off, and the first-use workflow is Studio First. Saved settings always take precedence after the user saves a value, including explicit Off and false values. Basic resolves to the Studio-to-local capability; Pro can use additional directions without silently changing the stored policy.
