@@ -92,4 +92,8 @@ The runner wraps the user script, emits `[WEPPY_TEST]` log signals, collects `ma
 
 ## Sync Interaction
 
-Play mode suppresses sync updates. Do not start full sync during play mode. After play exits, sync performs post-play reconciliation before normal incremental sync resumes.
+Ordinary edit tools target the Edit DataModel. The Test Agent observes and changes the temporary Play runtime. Runtime-only objects and values are discarded when Play ends; they are not copied into the Edit place or sync mirror.
+
+Play pauses change sending from Edit. Do not start full sync during Play. After the last test connection exits, Sync checks the final Edit state against its last confirmed sent state, applies the existing direction and review policy, and then resumes normal change sending. A Play session with no lasting Edit changes should produce no mirror writes. If a conflict or error prevents completion, resolve the reported reason in the Studio Plugin before treating local files as current.
+
+`manage_sync.status_current_place`, the Studio Plugin Sync tab, and the Dashboard Sync details report change sending separately: off, enabled, paused for Play, checking Edit changes, needs attention, or unknown. “Enabled” means normal sending is available; it does not prove every local file is current. A disconnected or unreported session has unknown status.
