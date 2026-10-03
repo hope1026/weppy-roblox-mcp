@@ -59,6 +59,16 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.17.13] - 2026-10-03
+
+### Bug Fixes
+- **Sync folder restoration** — Restoring local folders now keeps existing Studio objects at their original paths, preventing duplicate `~N` folders and repeated sync attempts that leave edits missing.
+- **Missing and changed files** — Script, property, and Value files are restored correctly even when the Studio content has not changed. Folder attributes and tags are preserved during restoration.
+- **Play transitions** — Pending restore requests respect Play pauses and use the correct objects when editing resumes.
+- **Sync change detection** — Sync recognizes its own saved files during slow project scans, reducing repeated restore requests while keeping local edits detectable.
+- **Folder names that resemble files** — Folders with names such as `Example.props.json` are restored as folders using their registered paths.
+
 ## [2.17.12] - 2026-10-01
 
 ### Bug Fixes
