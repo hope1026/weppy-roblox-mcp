@@ -5,7 +5,9 @@ description: Use when building natural Roblox backgrounds through WEPPY Roblox M
 
 # WEPPY Roblox Environment Guide
 
-## Workflow
+For camera, space, character, and UI relationships, consider the available `weppy-roblox-game-presentation-guide`. The natural-landscape workflow below is useful when it fits the request; interiors, cities, and obstacle courses need not begin with terrain. Preserve the user's chosen style and scope.
+
+## Suggested Workflow
 
 1. Identify the requested background: biome (terrain shape), mood (time of day and weather), and props.
 2. Read `references/environment-workflow.md` for the full generate -> mood -> scatter -> verify loop.

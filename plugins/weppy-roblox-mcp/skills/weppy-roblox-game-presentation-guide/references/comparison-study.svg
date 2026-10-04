@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1260" height="710" viewBox="0 0 1260 710">
+<rect width="1260" height="710" fill="#edf0f0"/>
+<g font-family="Arial,sans-serif">
+<text x="36" y="44" font-size="25" fill="#182a32" font-weight="normal">One decision, different compositions</text>
+<text x="36" y="71" font-size="14" fill="#344850" font-weight="normal">Original schematic examples. Optional treatments, not templates or Roblox screenshots.</text>
+<text x="36" y="113" font-size="14" fill="#344850" font-weight="bold">RESTRAINED · COMPARISON FIRST</text>
+<text x="443" y="113" font-size="14" fill="#344850" font-weight="bold">PLAYFUL · ITEM FIRST</text>
+<text x="850" y="113" font-size="14" fill="#344850" font-weight="bold">ATMOSPHERIC · WORLD FIRST</text>
+<rect x="36" y="134" width="376" height="435" fill="#fafcfc" rx="0" stroke="none"/>
+<circle cx="84" cy="188" r="28" fill="none" stroke="#26795f" stroke-width="2"/><path d="M84 165.6L91.0 196.4L78.4 203.4Z" fill="#26795f"/>
+<text x="131" y="181" font-size="21" fill="#182a32" font-weight="bold">Field compass</text>
+<text x="131" y="208" font-size="12" fill="#26795f" font-weight="normal">RARE  ·  EQUIPPED</text>
+<rect x="59" y="233" width="330" height="2" fill="#b8c9c7" rx="0" stroke="none"/>
+<text x="59" y="269" font-size="13" fill="#344850" font-weight="normal">Stat</text>
+<text x="190" y="269" font-size="13" fill="#344850" font-weight="normal">Current</text>
+<text x="293" y="269" font-size="13" fill="#344850" font-weight="normal">Preview</text>
+<text x="59" y="314" font-size="16" fill="#344850" font-weight="normal">Range</text>
+<text x="190" y="314" font-size="16" fill="#344850" font-weight="normal">24m</text>
+<text x="293" y="314" font-size="16" fill="#26795f" font-weight="normal">30m</text>
+<rect x="59" y="329" width="330" height="1" fill="#d9e1df" rx="0" stroke="none"/>
+<text x="59" y="359" font-size="16" fill="#344850" font-weight="normal">Cooldown</text>
+<text x="190" y="359" font-size="16" fill="#344850" font-weight="normal">3.0s</text>
+<text x="293" y="359" font-size="16" fill="#26795f" font-weight="normal">2.4s</text>
+<rect x="59" y="374" width="330" height="1" fill="#d9e1df" rx="0" stroke="none"/>
+<text x="59" y="414" font-size="14" fill="#26795f" font-weight="normal">−0.6s · faster reuse</text>
+<text x="59" y="451" font-size="12" fill="#344850" font-weight="normal">Selection stays explicit in the title.</text>
+<rect x="59" y="499" width="330" height="45" fill="#26795f" rx="0" stroke="none"/>
+<text x="170" y="528" font-size="15" fill="#fff" font-weight="bold">Keep equipped</text>
+<rect x="443" y="134" width="376" height="435" fill="#176b99" rx="18" stroke="none"/>
+<rect x="463" y="151" width="205" height="37" fill="#ffee83" rx="9" stroke="none"/>
+<text x="478" y="177" font-size="21" fill="#263428" font-weight="bold">Field compass</text>
+<rect x="463" y="210" width="204" height="211" fill="#a8dce4" rx="14" stroke="#ffee83"/>
+<circle cx="565" cy="293" r="60" fill="none" stroke="#165774" stroke-width="2"/><path d="M565 245.0L580.0 311.0L553.0 326.0Z" fill="#165774"/>
+<text x="485" y="397" font-size="13" fill="#163d53" font-weight="bold">RARE · SELECTED</text>
+<rect x="682" y="215" width="116" height="30" fill="#ffee83" rx="10" stroke="none"/>
+<text x="691" y="235" font-size="12" fill="#183b46" font-weight="bold">EQUIPPED</text>
+<text x="683" y="285" font-size="13" fill="#fff" font-weight="normal">Range</text>
+<text x="683" y="312" font-size="16" fill="#fff" font-weight="normal">24m → 30m</text>
+<text x="683" y="353" font-size="13" fill="#fff" font-weight="normal">Cooldown</text>
+<text x="683" y="380" font-size="16" fill="#ffee83" font-weight="normal">3s → 2.4s</text>
+<text x="463" y="454" font-size="15" fill="#fff" font-weight="normal">−0.6s · faster reuse</text>
+<rect x="463" y="492" width="334" height="53" fill="#ffee83" rx="12" stroke="none"/>
+<text x="561" y="525" font-size="16" fill="#174b66" font-weight="bold">Keep equipped</text>
+<rect x="850" y="134" width="376" height="435" fill="#172127" rx="0" stroke="none"/>
+<path d="M850 296L913 180L990 302L1085 204L1226 301V569H850Z" fill="#294240"/><path d="M850 364L955 274L1073 389L1226 244V569H850Z" fill="#38514b"/>
+<circle cx="1179" cy="197" r="22" fill="none" stroke="#bfd299" stroke-width="2"/><path d="M1179 179.4L1184.5 203.6L1174.6 209.1Z" fill="#bfd299"/>
+<text x="873" y="177" font-size="13" fill="#ecede1" font-weight="normal">FIELD KIT</text>
+<rect x="866" y="371" width="344" height="181" fill="#172127" rx="0" stroke="none"/>
+<text x="883" y="401" font-size="20" fill="#eee9d9" font-weight="bold">Field compass</text>
+<text x="883" y="425" font-size="12" fill="#bfd299" font-weight="normal">Rare · equipped · selected</text>
+<text x="883" y="456" font-size="15" fill="#eee9d9" font-weight="normal">Range  24m → 30m</text>
+<text x="883" y="482" font-size="15" fill="#bfd299" font-weight="normal">Cooldown  3.0s → 2.4s</text>
+<text x="883" y="513" font-size="12" fill="#eee9d9" font-weight="normal">−0.6s · faster reuse</text>
+<text x="1081" y="537" font-size="13" fill="#bfd299" font-weight="normal">Keep equipped</text>
+<text x="36" y="603" font-size="13" fill="#344850" font-weight="normal">Paired columns emphasize the tradeoff.</text>
+<text x="36" y="626" font-size="13" fill="#344850" font-weight="normal">Labels carry grade and equipped state.</text>
+<text x="36" y="649" font-size="13" fill="#344850" font-weight="normal">Minimal ornament is a valid choice.</text>
+<text x="443" y="603" font-size="13" fill="#344850" font-weight="normal">The large subject establishes identity.</text>
+<text x="443" y="626" font-size="13" fill="#344850" font-weight="normal">Grade surface and status badge coexist.</text>
+<text x="443" y="649" font-size="13" fill="#344850" font-weight="normal">Soft edges and depth are optional.</text>
+<text x="850" y="603" font-size="13" fill="#344850" font-weight="normal">The world retains most visual attention.</text>
+<text x="850" y="626" font-size="13" fill="#344850" font-weight="normal">A local surface supports focused reading.</text>
+<text x="850" y="649" font-size="13" fill="#344850" font-weight="normal">A benefit need not mean a larger number.</text>
+</g></svg>

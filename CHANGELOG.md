@@ -60,6 +60,18 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.17.14] - 2026-10-04
+
+### Features
+- **Game presentation guidance** — The AI agent plugin now offers contextual guidance for composing Roblox worlds, characters, and game interfaces. It covers icon alignment, HUD readability, item and button states, stat comparisons, and reusable image parts while preserving your chosen style and layout.
+
+### Bug Fixes
+- **Create and refine UI without a mandatory design brief** — AI agents can make scoped UI changes without completing a design questionnaire or repeating visual approval steps. Briefs and visual reviews remain optional aids, and invalid saved references are reported before changes are applied.
+
+### Documentation
+- **Optional design recommendations** — UI Studio and agent guides now distinguish design suggestions from execution requirements, reuse permissions you have already granted, and explain how to adapt or skip recommendations. Installer checks also recover the new guidance skill when it is missing.
+
 ## [2.17.13] - 2026-10-03
 
 ### Bug Fixes

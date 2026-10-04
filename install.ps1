@@ -1010,7 +1010,8 @@ function Get-AntigravityPluginSource {
             'skills\weppy-roblox-sync-guide\SKILL.md',
             'skills\weppy-roblox-assets-guide\SKILL.md',
             'skills\weppy-roblox-environment-guide\SKILL.md',
-            'skills\weppy-roblox-game-feel-guide\SKILL.md'
+            'skills\weppy-roblox-game-feel-guide\SKILL.md',
+            'skills\weppy-roblox-game-presentation-guide\SKILL.md'
         )
         foreach ($relativePath in $required) {
             if (-not (Test-Path (Join-Path $source $relativePath))) {
@@ -1058,7 +1059,8 @@ function Test-AntigravityViewHealthy($Root) {
         'skills\weppy-roblox-sync-guide\SKILL.md',
         'skills\weppy-roblox-assets-guide\SKILL.md',
         'skills\weppy-roblox-environment-guide\SKILL.md',
-        'skills\weppy-roblox-game-feel-guide\SKILL.md'
+        'skills\weppy-roblox-game-feel-guide\SKILL.md',
+        'skills\weppy-roblox-game-presentation-guide\SKILL.md'
     )
     return @($required | Where-Object { -not (Test-Path (Join-Path $Root $_)) }).Count -eq 0
 }

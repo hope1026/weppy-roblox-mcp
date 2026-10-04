@@ -1,0 +1,4 @@
+interface:
+  display_name: "WEPPY Roblox Game Presentation Guide"
+  short_description: "Contextual world, character, and game UI design advice"
+  default_prompt: "Use $weppy-roblox-game-presentation-guide to build or refine my Roblox game's presentation with choices that fit its play and visual intent."

@@ -187,15 +187,17 @@ Run mode is reserved for an explicitly requested server-only check. Raw Luau rem
 
 ### 7) UI Studio: Build and inspect in-game UI
 
-UI Studio lets AI agents create in-game UI that matches your game's style, or analyze the UI you already have and suggest improvements.
+UI Studio lets AI agents create in-game UI that matches your game's style, or analyze the UI you already have and suggest improvements. Design briefs and visual reviews are optional; unreviewed results stay marked as unreviewed.
+
+The WEPPY AI Agent Plugin also provides game presentation guidance for worlds, characters, and UI. It helps agents choose a direction from a short game request, with suggestions for icon alignment, HUD readability, item tiers, stat comparisons, button states, and image parts. These are adaptable choices, including image-free designs, rather than fixed layouts or mandatory styles.
 
 UI reviews distinguish observed overlap, Roblox guidance, and AI suggestions. Unavailable control geometry stays unverified. Recommendations respect your chosen design; changes follow the scope you requested.
 
 For UI created by LocalScripts, UI Studio distinguishes Edit `StarterGui` from a structured Play Client `PlayerGui` observation. If runtime UI has not been reviewed, it reports that missing evidence instead of assuming the game has no UI. Play-mode screenshots remain unsupported, so semantic runtime checks and visual screenshot review stay separate.
 
-- Clarify the UI goal with guided questions about purpose, screen, target devices, and visual direction
+- Start from your request and existing game, with optional guidance for purpose, target devices, and visual direction
 - Create or refine game-style menus, HUDs, buttons, labels, image panels, and other Roblox UI elements directly in Studio
-- Capture the result, compare before/after changes, and follow dashboard suggestions for layout, readability, touch targets, and safe areas
+- Optionally capture the result, compare changes, and use dashboard suggestions for layout, readability, touch targets, and safe areas
 
 ![WEPPY UI Studio - Roblox Studio showing AI-generated in-game UI](https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/docs/assets/screenshots/dashboard/dashboard_ui_roblox_studio.png)
 
