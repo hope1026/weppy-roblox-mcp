@@ -61,6 +61,17 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.17.15] - 2026-10-06
+
+### Bug Fixes
+- **Large Full Sync memory use** — Full Sync uses less memory and spends less time processing accumulated history, reducing server crashes on large projects. Completion also avoids holding duplicate project indexes in memory.
+- **Accurate project change history** — Full Sync records one final summary with the correct file count. Tool and Sync changes are combined without duplicate entries, and clearing history prevents older queued changes from reappearing.
+- **Sync status in the Dashboard** — Full Sync logs distinguish start, progress, completion, and failure. Overview refreshes handle bursts of updates and ignore outdated responses after a connection change.
+
+### Documentation
+- **Adaptive game UI guidance** — AI agents consider readable text, usable controls, player text-size settings, and layouts suited to each screen orientation. Design recommendations remain optional and preserve your chosen UI structure.
+
 ## [2.17.14] - 2026-10-04
 
 ### Features
