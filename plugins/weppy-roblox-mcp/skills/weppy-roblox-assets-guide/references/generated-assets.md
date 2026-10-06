@@ -4,7 +4,9 @@ For AI-generated image files, first confirm that the calling agent has both a ca
 
 Local image generation and Roblox upload have separate approval scopes. Reuse authorization already granted for the relevant operation instead of asking again because this guide was loaded. Present local outputs when useful; before remote mutation, run upload preflight and obtain only missing authorization covering selected files, asset count, and target Creator. Generation authorization alone does not grant upload authority. Imagery itself is an optional design choice unless the user requested it.
 
-After approval, save a supported local image, then choose Studio-local or Open Cloud upload according to the requested owner and workflow. `manage_open_cloud_assets.upload` registers its stable local copy in the selected Asset Library scope. Use `manage_open_cloud_assets.link` instead when the image already has a Roblox asset ID.
+For optional UI concept exploration, an ordinary UI creation request or available generation tool is not permission to generate a concept. First establish interest and the selected method unless the user already requested it; follow the [visual reference workflow](../../weppy-roblox-game-presentation-guide/references/visual-reference-workflow.md). Do not repeat declined offers or treat an unanswered offer as consent. Supplied references and project assets remain usable within the request. Keep a generated concept distinct from a functioning Studio interface, production art parts, and verification evidence.
+
+After generation is authorized, save a supported local image. Upload only with authorization covering that upload, using Studio-local or Open Cloud according to the requested owner and workflow. Concept-generation consent alone does not authorize this step. `manage_open_cloud_assets.upload` registers its stable local copy in the selected Asset Library scope. Use `manage_open_cloud_assets.link` instead when the image already has a Roblox asset ID.
 
 For Roblox model generation:
 

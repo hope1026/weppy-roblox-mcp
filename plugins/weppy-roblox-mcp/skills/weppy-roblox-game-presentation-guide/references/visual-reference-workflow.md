@@ -2,13 +2,27 @@
 
 Visual references can supply proportions, grouping, and state language that a phrase such as "game UI" leaves ambiguous. They are optional evidence, not templates or an approval gate.
 
-## Find and interpret fitting evidence
+## Choose exploration with the user
 
-Start with user references, the existing game, and project-owned assets. When useful and available, search for actual gameplay views with comparable camera, interaction, or screen purpose. A matching genre name alone is weak evidence. Open the images you rely on; a search title or an inaccessible image cannot establish what it looks like.
+Start with user references, the existing game, and project-owned assets within the requested scope; these do not need another approval. If a generated UI concept or external gameplay screenshot search would help, ask whether the user wants it before doing either unless the session already authorizes it. A general UI creation request and tool availability are not consent to that exploration. A small repair can proceed without offering it.
+
+An explicit request to generate a concept, search for references, or use both is sufficient; do not ask again. Use only the method the user selected. Do not repeat a declined offer, and do not treat an unanswered offer as consent. Proceed with suitable ordinary creation using available project evidence when exploration is declined or unanswered. These boundaries apply to optional exploration, not to every UI placement or design decision.
+
+When the user wants to choose the style, show the authorized results and ask for their choice before implementing the corresponding direction. When they delegate the choice, select a fitting direction, briefly explain it, and proceed within the requested scope. Do not impose a fixed style menu, game recommendation, or number of images or references.
+
+## Interpret fitting evidence
+
+For authorized search, look for actual gameplay views with comparable camera, interaction, or screen purpose. A matching genre name alone is weak evidence. Open the images you rely on; a search title or an inaccessible image cannot establish what it looks like. Identify the inspected source and the traits that make it useful rather than presenting a particular game as the default reference.
 
 Describe what transfers: reading order, subject scale, relation to the world, surface treatment, and state separation. Also note what does not fit. A shop screenshot's density may be inappropriate for a moving player's HUD. Existing rights and asset permissions still apply; observing a game's interface does not make its imagery an asset for upload.
 
 Search, reference count, image generation, and visual inspection are not prerequisites for every task. If a tool is unavailable, use current project evidence or choose a reasonable supported direction and disclose only material limitations. Avoid turning missing references into repeated requests for the user to supply them.
+
+## Keep concepts, implemented UI, and assets distinct
+
+Present a generated concept as a visual direction, not a Studio screenshot, functioning interface, production asset, or verification evidence. An external gameplay screenshot shows that source game's interface; it does not prove the target project works. Use actual target Studio observations for claims about the implementation and preserve missing runtime, interaction, and device coverage.
+
+Rebuild readable text, changing values, actions, and input behavior in native UI. If a concept suggests useful art parts, resolve production assets separately through the [generated assets reference](../../weppy-roblox-assets-guide/references/generated-assets.md). Permission to generate a concept does not grant permission to upload files to Roblox. Keep generation and remote upload authorization separate, reusing permission already given for each operation.
 
 ## Original comparison examples
 

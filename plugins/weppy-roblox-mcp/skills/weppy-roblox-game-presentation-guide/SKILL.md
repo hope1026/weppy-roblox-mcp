@@ -15,9 +15,13 @@ An existing game's visual language and explicit choices take priority over these
 
 For a new game, a useful starting point is one small scene seen through the intended camera: a character or existing avatar, a meaningful interaction, and the UI that supports it. Review these together before expanding when that helps. This is not a prerequisite for a small edit. Avoid inventing currencies, combat, rarity, inventories, or quests just to demonstrate a pattern.
 
+For UI, favor readable content and reachable controls on the intended device and input setup. Preserve a suitable layout through modest changes within the same orientation, but consider regrouping or relocation when sizing and spacing cannot solve a real problem. Choose suitable portrait and landscape layouts independently; sharing their structure or positions is not a priority. Disclosure can reduce clutter when it keeps frequent actions, comparison context, and decision costs accessible.
+
+If a generated UI concept or external gameplay screenshot search would help choose a direction, first ask whether the user wants that exploration unless it is already authorized. An ordinary UI creation request or an available image tool does not supply that consent. Follow only the chosen method, reuse explicit requests, and do not repeat a declined offer. An unanswered offer does not authorize exploration; continue suitable creation using the supplied references and project. Small edits may need no offer. See the [visual reference workflow](references/visual-reference-workflow.md) for presenting choices and distinguishing concepts from observed Studio results and production assets.
+
 ## Read only what the task needs
 
-- [Game UI patterns](references/game-ui-patterns.md): hierarchy, optical icon alignment, HUD surfaces, item grades, stat comparisons, and overlapping control states.
+- [Game UI patterns](references/game-ui-patterns.md): adaptive size and placement, disclosure, hierarchy, distinguishing tabs, choices, and actions, optical icon alignment, HUD surfaces, item grades, stat comparisons, and overlapping control states.
 - [World and character presentation](references/world-and-character-presentation.md): camera, scale, movement space, wayfinding, silhouettes, and coherent presentation.
 - [Visual reference workflow](references/visual-reference-workflow.md): learning from actual images, optional original annotated examples, and retaining project-specific decisions.
 
