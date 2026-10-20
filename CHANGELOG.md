@@ -62,6 +62,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.17.16] - 2026-10-20
+
+### Stability
+- **License reliability** — Improved license checks and recovery after connection interruptions. Saved licenses and account sessions are preserved across restarts.
+- **Clearer Sync migration progress** — The Dashboard shows migration progress and keeps large change reviews manageable. Duplicate migration requests are prevented while work is in progress.
+
 ## [2.17.15] - 2026-10-06
 
 ### Bug Fixes
