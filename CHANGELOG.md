@@ -63,6 +63,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.17.17] - 2026-10-22
+
+### Bug Fixes
+- **Clearer license errors** — License checks now distinguish timeouts, connection failures, service outages, and activation denials. Existing licenses are preserved when a new activation fails.
+- **More time for license checks** — Slower first-time activations can wait up to 25 seconds instead of 8 seconds. A follow-up check for missing device information shares the original time limit.
+
 ## [2.17.16] - 2026-10-20
 
 ### Stability
