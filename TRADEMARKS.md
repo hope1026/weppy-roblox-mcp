@@ -2,7 +2,7 @@
 
 `Weppy`, `WEPPY`, `Weppy Roblox MCP`, and related logos, product names, and branding are trademarks or brand identifiers of the maintainer.
 
-The open-source software license for this repository does not grant trademark rights.
+The [WEPPY Software License](LICENSE) does not grant trademark rights.
 
 You may:
 

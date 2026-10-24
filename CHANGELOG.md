@@ -2,68 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.17.19] - 2026-10-24
 
+### Bug Fixes
 
+- **License management** — Clearer Dashboard status, activation feedback and support diagnostics, with improved automatic rechecks during temporary access.
 
+### Documentation
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- **Commercial license** — Basic is free for personal and commercial projects; Pro features require a valid license.
+- **License notices** — Compact notices are included with the software and available from Settings.
 
 ## [2.17.18] - 2026-10-24
 

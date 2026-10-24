@@ -297,14 +297,16 @@ Multi-Place work, generated assets to Roblox, bidirectional Sync, UI Studio, Pla
 
 ## License
 
-This repository is licensed under `AGPL-3.0`.
+WEPPY-owned software is provided under the [WEPPY Software License](LICENSE). Basic is free for personal and commercial project use; Pro features require a valid license. Your games and project outputs can be used and sold without WEPPY royalties.
 
-Commercial licensing is available separately. See [COMMERCIAL-LICENSE.md](COMMERCIAL-LICENSE.md).
+The npm package includes `THIRD_PARTY_NOTICES.txt` for bundled JavaScript libraries and `WEPPY_SDK_NOTICES.txt` for the included WEPPY SDKs. Those notices preserve the applicable component licenses.
+
+For a short summary or additional permissions, see [COMMERCIAL-LICENSE.md](COMMERCIAL-LICENSE.md).
 
 Use of the Weppy name and logos is governed by [TRADEMARKS.md](TRADEMARKS.md).
 
 ---
 
-[![npm version](https://img.shields.io/npm/v/@weppy/roblox-mcp)](https://www.npmjs.com/package/@weppy/roblox-mcp) [![Node.js](https://img.shields.io/badge/node-%3E%3D22-brightgreen)](https://nodejs.org/) [![Smithery](https://smithery.ai/badge/@hope1026/weppy-roblox-mcp)](https://smithery.ai/server/@hope1026/weppy-roblox-mcp)
+[![npm version](https://img.shields.io/npm/v/@weppy/roblox-mcp)](https://www.npmjs.com/package/@weppy/roblox-mcp) [![Node.js](https://img.shields.io/badge/node-%3E%3D22-brightgreen)](https://nodejs.org/)
 
 [GitHub Issues](https://github.com/hope1026/weppy-roblox-mcp/issues) · [npm](https://www.npmjs.com/package/@weppy/roblox-mcp)
