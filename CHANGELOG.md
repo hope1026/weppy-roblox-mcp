@@ -64,6 +64,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.17.18] - 2026-10-24
+
+### Stability
+
+- **Stability improvements** — Improved reliability across the MCP server and Roblox Studio plugin.
+
 ## [2.17.17] - 2026-10-22
 
 ### Bug Fixes
