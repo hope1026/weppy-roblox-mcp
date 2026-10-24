@@ -1,13 +1,13 @@
 {
   "name": "weppy-roblox-ai-toolkit",
-  "version": "2.17.18",
+  "version": "2.17.19",
   "description": "WEPPY AI Agent Plugin for Codex.",
   "author": {
     "name": "hope1026"
   },
   "homepage": "https://github.com/hope1026/weppy-roblox-mcp#readme",
   "repository": "https://github.com/hope1026/weppy-roblox-mcp",
-  "license": "AGPL-3.0",
+  "license": "SEE LICENSE IN LICENSE",
   "keywords": [
     "mcp",
     "roblox",

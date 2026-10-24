@@ -11,6 +11,9 @@ const requiredPaths = [
   'package/dist/index.js',
   'package/dashboard/dist/index.html',
   'package/roblox-plugin/WeppyRobloxMCP.rbxm',
+  'package/LICENSE',
+  'package/THIRD_PARTY_NOTICES.txt',
+  'package/WEPPY_SDK_NOTICES.txt',
 ];
 const forbiddenPrefixes = [
   'package/docs/',
@@ -83,6 +86,11 @@ try {
 if (manifest.name !== expectedPackageName) fail(`Unexpected package name: ${manifest.name ?? ''}`);
 if (manifest.version !== version) {
   fail(`Unexpected package version: expected ${version}, received ${manifest.version ?? ''}`);
+}
+
+if (typeof manifest.license !== 'string' || !manifest.license.trim()) fail('Missing package license metadata');
+for (const file of ['LICENSE', 'THIRD_PARTY_NOTICES.txt', 'WEPPY_SDK_NOTICES.txt']) {
+  if (!inspectTarball(['-xOzf', tarball, `package/${file}`]).trim()) fail(`Empty license notice: ${file}`);
 }
 
 const integrity = `sha512-${createHash('sha512').update(readFileSync(tarball)).digest('base64')}`;

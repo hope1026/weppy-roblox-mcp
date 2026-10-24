@@ -1,12 +1,10 @@
-# Commercial Licensing
+# WEPPY licensing
 
-WEPPY is available under the GNU Affero General Public License v3.0 in this repository.
+See [LICENSE](LICENSE) for the complete terms.
 
-If you need commercial terms that differ from AGPL-3.0, including closed-source distribution or custom contractual support, contact the maintainer to discuss a separate commercial license.
+- Basic is free, including commercial project development.
+- Pro features require a valid license within the purchased scope.
+- You may use and sell your games and project outputs without WEPPY royalties.
+- Third-party licenses and notices remain applicable.
 
-Contact:
-
-- Email: <support@weppyai.com>
-- GitHub Issues: <https://github.com/hope1026/weppy-roblox-mcp/issues/new>
-
-No commercial rights are granted unless a separate written agreement is executed.
+For redistribution or other additional permissions, contact support@weppyai.com.
