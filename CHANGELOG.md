@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+
+## [2.17.21] - 2026-11-01
+
+### Features
+
+- **Important Dashboard notices** — Unread important notices now appear below the Dashboard header, with a link to the full announcement and a read state shared across tabs.
+
+### Stability
+
+- **More accurate usage reporting** — When usage reporting is enabled, WEPPY now distinguishes connection checks from project work and records Studio plugin screen views and selected button clicks. Dashboard reporting also separates automatic opening from navigation. Project content and entered values are excluded, and the existing telemetry opt-out still applies.
+
 ## [2.17.20] - 2026-11-01
 
 ### Bug Fixes
