@@ -28,6 +28,10 @@ Telemetry can include:
 
 - Event names
 - Command categories
+- Whether a command is a diagnostic, project inspection, or project action
+- Whether a Studio plugin is connected when an event is recorded
+- Plugin and Dashboard screen categories and explicitly tracked button categories
+- Whether a Dashboard visit came from automatic opening, an unmarked entry, or navigation
 - AI client
 - Platform
 - Locale and timezone
@@ -40,6 +44,8 @@ Telemetry can include:
 - A SHA-256-derived device observation key for server-side aggregate counting
 
 Command categories describe which WEPPY feature was used. They do not include your prompt text, script source, file path, or Roblox object path. License tier labels do not include the raw license key.
+
+Screen views and button clicks describe interface usage. They do not include entered settings, selected instance names, project identifiers, or button input values. A click does not indicate that an operation completed or a purchase occurred.
 
 Sync telemetry records a semantic scope only when that scope's effective direction changes. Sync workflow preset and delete-safety settings are not collected.
 
