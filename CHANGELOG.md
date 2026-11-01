@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.17.20] - 2026-11-01
+
+### Bug Fixes
+
+- **Recover saved-license checks** — Saved licenses can be checked again after temporary access expires, without re-entering the key. Automatic retries continue after temporary service failures, while confirmed expiry, revocation, and device restrictions remain enforced.
+
+### Stability
+
+- **Node.js security update guidance** — WEPPY startup and installers recommend Node.js versions containing the eMudhra certificate security fixes. The Dashboard explains the issue and guides existing users through updating Node.js, checking the active version, and restarting WEPPY MCP and their AI app. Updating WEPPY alone does not update Node.js.
+
 ## [2.17.19] - 2026-10-24
 
 ### Bug Fixes

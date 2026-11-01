@@ -1274,6 +1274,25 @@ if [ "$NODE_VERSION" -lt 22 ]; then
 fi
 success "Node.js $(node -v) detected"
 
+# 호환 최소 버전과 별도로 보안 업데이트를 권장하며 설치는 계속한다.
+node <<'WEPPY_NODE_SECURITY_ADVISORY'
+const match = /^v?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/.exec(process.version);
+const minimums = { 22: [23, 4], 24: [22, 1], 26: [12, 1] };
+let patched = false;
+if (match) {
+  const major = Number(match[1]);
+  const minor = Number(match[2]);
+  const patch = Number(match[3]);
+  const minimum = minimums[major];
+  if (minimum && [major, minor, patch].every(Number.isSafeInteger)) {
+    patched = minor > minimum[0] || (minor === minimum[0] && patch >= minimum[1]);
+  }
+}
+if (patched === false) {
+  console.error('[WEPPY] Node.js ' + process.version + ' needs a security update or is not a verified supported release. For the October 2026 eMudhra certificate incident, use a patched supported Node.js release: 22.23.4+ (22.x), 24.22.1+ (24.x), or 26.12.1+ (26.x). Updating WEPPY MCP does not update Node.js. Update Node.js manually, then restart running WEPPY MCP processes and your AI app. Download: https://nodejs.org/en/download Security notice: https://nodejs.org/en/blog/vulnerability/october-2026-security-releases');
+}
+WEPPY_NODE_SECURITY_ADVISORY
+
 # ═══════════════════════════════════
 # [1/3] Setup — Roblox Studio Plugin
 # ═══════════════════════════════════
