@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.17.22] - 2026-11-07
+
+### Features
+
+- **Save and reuse UI designs** — Save a reviewed design as a visual reference for new UI in the same Roblox place. For focused edits, UI Studio can check that the target and its current values still match what was reviewed. The Dashboard shows what changed and records any recovery.
+- **Better guidance for editing existing UI** — UI Studio uses your instructions and the state of the current UI to recommend a rebuild or a focused edit. Temporary drafts are excluded from suggested visual references by default.
 
 ## [2.17.21] - 2026-11-01
 

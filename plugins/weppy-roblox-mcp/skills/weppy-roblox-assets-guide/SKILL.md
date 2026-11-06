@@ -13,7 +13,7 @@ description: Use when creating, importing, reviewing, uploading, updating, or re
 4. Read `references/generated-assets.md` when an AI image file or Roblox GenerationService model is involved.
 5. Read `references/studio-upload.md` before any Studio-local upload or temporary embedded-resource upload.
 6. Read `references/open-cloud-upload.md` before credential checks, Open Cloud upload, existing asset linking, update, and operation polling.
-7. Ask for explicit approval whenever the workflow can create billable or temporary Roblox assets.
+7. Confirm explicit approval covers billable or temporary Roblox assets; reuse approval already granted for the same operation.
 8. Verify the returned local asset ID, Roblox asset ID or URI, operation status, and intended Creator before using the result.
 
 Read `../weppy-roblox-mcp-guide/references/mcp-actions.md` for exact action schemas and parameters.

@@ -1,31 +1,51 @@
 # Generated Assets Reference
 
-For AI-generated image files, first confirm that the calling agent has both a callable image generation tool and a local image output channel. Do not infer this capability from a model or client name. If either capability is unavailable or remains unknown, use a user reference, reviewed project asset, Creator Store candidate, or assetless fallback.
+When a finished set's visual direction is unresolved or a user reports that native blockout surfaces still look unlike their intended game UI, inspect candidate panel/button/slot parts as well as icons. Consider reviewed project skins, [free Creator Store assets](creator-store.md), and external free packs with confirmed usage terms. Inspect the actual visual fit for the role. Show real inspected examples with a recommendation if the user wants to choose. When the user delegates direction, choose a suitable candidate within existing authorization. Distinguish a functioning blockout from the requested visual result and report an unresolved gap honestly. Explicit native/text-only requests remain valid.
 
-Local image generation and Roblox upload have separate approval scopes. Reuse authorization already granted for the relevant operation instead of asking again because this guide was loaded. Present local outputs when useful; before remote mutation, run upload preflight and obtain only missing authorization covering selected files, asset count, and target Creator. Generation authorization alone does not grant upload authority. Imagery itself is an optional design choice unless the user requested it.
+Choose generation only for the part that benefits from it. Existing project assets, reviewed shared parts and native UI are valid alternatives. For local AI images, confirm a callable image tool and a local output channel; do not infer capability from a model or client name. Missing capability uses a supported alternative rather than an invented asset ID.
 
-For optional UI concept exploration, an ordinary UI creation request or available generation tool is not permission to generate a concept. First establish interest and the selected method unless the user already requested it; follow the [visual reference workflow](../../weppy-roblox-game-presentation-guide/references/visual-reference-workflow.md). Do not repeat declined offers or treat an unanswered offer as consent. Supplied references and project assets remain usable within the request. Keep a generated concept distinct from a functioning Studio interface, production art parts, and verification evidence.
+## Source and authorization
 
-After generation is authorized, save a supported local image. Upload only with authorization covering that upload, using Studio-local or Open Cloud according to the requested owner and workflow. Concept-generation consent alone does not authorize this step. `manage_open_cloud_assets.upload` registers its stable local copy in the selected Asset Library scope. Use `manage_open_cloud_assets.link` instead when the image already has a Roblox asset ID.
+Local image generation and Roblox upload have separate approval scopes. Reuse authorization already granted for the relevant operation. Before remote mutation, run the relevant preflight and obtain only missing authorization covering the actual files, count and Creator. Generation authorization alone does not grant upload authority. Use the [Studio upload](studio-upload.md) or [Open Cloud reference](open-cloud-upload.md) for the selected path; never ask for a raw credential in chat.
 
-For Roblox model generation:
+A whole-screen concept is not a production part or a working Studio interface. For optional UI concepts, use the [visual reference workflow](../../weppy-roblox-game-presentation-guide/references/visual-reference-workflow.md); a general UI request does not authorize concept generation. Honor an existing explicit request and do not repeat declined offers.
 
-1. Call `manage_assets.generate_model` with a prompt, schema mode, target parent, and review policy.
-2. Treat the result as a Studio model path, not an Asset Library item or remote Roblox asset.
-3. Run `manage_assets.review_model` when the model must be checked or registered locally.
-4. Ask before any temporary embedded-resource upload or remote upload.
-5. Verify the model path, bounds or review result, generated textures, and any returned Roblox asset IDs.
+Save supported local outputs and preserve the input/source when useful. `manage_open_cloud_assets.upload` registers a stable local copy in the selected Asset Library scope; `manage_open_cloud_assets.link` reuses an existing Roblox ID. Do not upload again merely to use the same approved part in another UI.
 
-Do not invent image, mesh, texture, or model asset IDs.
+## Choose a UI part before generating
 
-## Optional game UI art parts
+A control may combine one input target with a native or stretchable image face, a separate icon, editable label, state cues and optional effects. Choose only useful layers; one fixed image or a simple native control can be enough. Keep changing names, values, state and behavior in editable native UI. A simple face, outline, gauge or state marker can be native; item imagery, a project-specific emblem or distinctive framing may benefit from an image. Do not replace every existing surface with the same generated border.
 
-When imagery helps identity or recognition, consider reusable icon subjects, button surfaces, frames, decorations, and backdrops. Keep changing names, values, states, and input behavior in native UI. A whole-screen picture is a concept image, not a functioning interface. Existing imagery and intentional native shape/text designs are equally valid; generation and slicing are not prerequisites.
+| Part | Composition and delivery |
+| --- | --- |
+| Fixed icon or portrait | Design for the smallest real use. Favor a clear silhouette, meaningful large features and sufficient line weight; added detail or upscale does not repair poor small-size recognition. |
+| Stretchable frame | Keep distinctive ornament in fixed corners; use plain or even edge bands and center. Keep a non-stretching emblem separate and leave dynamic labels to the engine. |
+| Existing approved set | Extend with the actual approved image as an editing reference when supported. Match perspective, lighting, material, edge treatment and visual weight; a style name alone does not establish that match. |
 
-For an expandable frame, 9-slice can preserve corners while stretching suitable edges and the center. Inspect the actual source image to choose `SliceCenter`; `ScaleType = Slice` and `SliceScale` serve the selected geometry, not a universal preset. Atlas cropping (`ImageRectOffset`/`ImageRectSize`) selects an image region and is a separate decision from slicing. Coordinate choices should match the actual texture and crop. Check small and large display sizes when practical rather than copying source-pixel assumptions.
+Use the image tool's real alpha support when available. A contrasting flat background plus removal is an alternative only when that removal path exists and its output can be inspected; it is not a universal provider rule. Do not ship a painted checkerboard as transparency.
 
-A useful assembly separates stretchable framing from a non-stretching emblem, icon, or illustrated backdrop. Preserve icon/portrait aspect ratio; select fit versus intentional crop from what must remain visible. Compare painted bounds and transparent padding for optical alignment. Frame art can overlay a full background when cropping would remove important details.
+## Inspect the delivered file and assembly
 
-Related parts can share line weight, lighting direction, material treatment, and state language without being identical. Compose rarity, selection, equipped, unavailable, and pending states so one does not erase the others. Reusing a native tint or overlay may work better than generating a separate image for every state. Record reusable crop/slice choices in existing asset metadata if useful; no new manifest is required.
+For an authorized generated frame that must resize, include the slice behavior in the production prompt. A full illustration with edge-to-edge motifs will distort when stretched. Ask for a single frame part whose corner ornaments remain outside the stretch zone. For example:
 
-See the available [game presentation guide](../../weppy-roblox-game-presentation-guide/SKILL.md) for contextual UI and world relationships. Respect authorization already present; do not repeat an approval merely because this reference was loaded. Local generation and remote upload remain distinct scopes.
+> Make one transparent game UI frame in the project's material and silhouette. Leave clean alpha around its outside. Fit each corner ornament entirely inside a fixed corner block. Between corners, use straight top and bottom bands that extend horizontally and straight side bands that extend vertically. Use an even, quiet center that can resize on both axes. Supply only the frame artwork. Put any large emblem on a separate part and leave all text, icons and dynamic states to native UI.
+
+Before applying it, compare the same source as a full stretch and as a slice at the narrowest and widest relevant sizes. Use the output pixels to place slice lines, and adjust or reject art if a line cuts an ornament or produces seams. [Roblox 9-slice guide](https://create.roblox.com/docs/ui/9-slice)
+
+The requested canvas size is not evidence of the actual file dimensions. Check the output's real size, painted bounds, transparent margin, subject aspect and optical alignment. Fit or intentional crop should preserve what the player needs to recognize. Normalize a set's apparent weight without stretching its subjects.
+
+Inspect alpha boundaries on light/dark backgrounds and at real display size when practical: halo, color spill, residual pixels, inner contamination and broken contours are asset issues. Intentional wear belongs to the chosen surface treatment; it does not excuse unrelated pixels outside the silhouette. Preserve the original when producing a cleanup variant.
+
+For 9-slice, choose `SliceCenter` and `SliceScale` from the actual usable image and target geometry after upload. Preserve fixed corners and verify all four edges at small and large uses. The imported source can differ from the generation output; do not copy source-pixel assumptions or another frame's coordinates. Tile repetition and stretching are different rendering choices. Atlas crop (`ImageRectOffset`/`ImageRectSize`) selects a region and is separate from slicing.
+
+Check the composed native background, existing `UIStroke`, new image and state overlays together. An uncovered square background or doubled outline can remain outside a cut-corner frame. Decide which layer draws each boundary while preserving meaningful selection, equipment, grade and availability. Reuse a native tint/badge when it serves the state; do not generate one image for every state by default.
+
+Upload completion and `IsLoaded` establish delivery/loading, not clean borders, readability or visual quality. Inspect relevant rendering separately and report what was not checked. Keep reusable approved IDs and known crop/slice choices in existing project/asset records where supported; no new manifest or compulsory review gate is needed. See [game UI patterns](../../weppy-roblox-game-presentation-guide/references/game-ui-patterns.md) for composition rather than asset-only fixes.
+
+## Roblox model generation
+
+1. Call `manage_assets.generate_model` with the requested prompt, schema mode, parent and review policy.
+2. Treat the result as a Studio model path, not a remote Roblox asset or Asset Library item.
+3. Use `manage_assets.review_model` when inspection or local registration is needed.
+4. Confirm authorization covers temporary embedded-resource or remote upload before executing it.
+5. Verify the model path, review/bounds, textures and returned Roblox IDs; never invent them.

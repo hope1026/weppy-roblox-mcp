@@ -96,6 +96,10 @@
       "reference": "references/ui-studio.md",
       "actions": [
         "manage_ui.design_brief",
+        "manage_ui.design_list",
+        "manage_ui.design_get",
+        "manage_ui.design_save",
+        "manage_ui.design_delete",
         "manage_ui.create_tree",
         "manage_ui.update",
         "manage_ui.delete",

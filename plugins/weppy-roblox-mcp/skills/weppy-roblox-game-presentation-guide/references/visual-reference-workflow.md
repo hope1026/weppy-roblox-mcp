@@ -36,6 +36,19 @@ All three distinguish a lower cooldown as a potential benefit and expose the com
 
 For reusable art parts and 9-slice options, see [generated assets](../../weppy-roblox-assets-guide/references/generated-assets.md). Native text, shapes, imagery, and model previews can be combined according to the requested result.
 
+## Compare visual treatments at use size
+
+The original [visual polish study](visual-polish-study.png) compares four choices without changing the action or information. It is an annotated illustration with an editable [SVG source](visual-polish-study.svg). Use the parts that address the observed problem, and keep the game's own look.
+
+| Problem | Before | Try instead |
+| --- | --- | --- |
+| Icon and name fight for the same space | Small icon and full name inside a HUD button | Give the icon the face and move the short name below or over the lower edge. A corner badge suits a key cue or count. Keep a single input target, and test clipping, overlap and the smallest useful size. For dense slots, move the full name to selected-item details. |
+| All type has the same emphasis | Name, number and supporting text read equally | Give the next decision its own role, such as a stronger current amount or price. Distinguish secondary information with weight, size or contrast. Preserve native, editable text and check long localized strings and preferred text size. |
+| An input changes state with little feedback | The same button face during rest, press and selection | Tween the painted face or its scale briefly while keeping the input target stable. Show selected or completed state when the action actually succeeds. Cancel superseded motion during rapid changes and support reduced motion. A still illustration cannot verify timing. |
+| A wider surface stretches its details | One frame image stretches as a whole | Preserve its four corners with 9-slice, stretch straight bands on their own axis, and keep a quiet center. Separate large ornaments, icons and labels. For generation instructions and file validation, use the [asset reference](../../weppy-roblox-assets-guide/references/generated-assets.md). |
+
+Reference the visible reading order and state change in the player's actual view. Roblox's [UI and UX examples](https://create.roblox.com/docs/production/game-design/ui-ux-design), [tween guide](https://create.roblox.com/docs/ui/animation), [accessibility guide](https://create.roblox.com/docs/production/publishing/accessibility), and [9-slice guide](https://create.roblox.com/docs/ui/9-slice) supply the platform examples and mechanics.
+
 ## Retain local decisions and learn from corrections
 
 A useful correction record is brief: observed issue, chosen adjustment, and scope. For example, "combat HUD backplates obscured incoming enemies; reduce only their background paint; combat screens". Store it in existing project notes or style code when helpful, rather than requiring a new manifest.
