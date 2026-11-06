@@ -892,7 +892,7 @@ validate raw Luau source or an existing Script path without starting a playtest.
 
 ## Tool: `manage_ui`
 
-Create / update / verify Roblox in-game UI (ScreenGui / Frame / TextLabel / …). `design_brief` is optional design guidance; create_tree and update may omit briefId. An explicitly supplied empty, unknown, expired, or unreadable briefId fails before mutation; resolve it or explicitly omit it rather than silently discarding the reference. For ambiguous input, it inspects Studio context and returns candidate brief patches; Do not dump enum lists at the user. An empty StarterGui does not prove runtime UI absence: for an existing-UI review, follow `runtime_review_required`, collect a structured Play Client PlayerGui snapshot, and pass its saved `runtimeEvidenceRef`. Pass relevant repository evidence in `projectContext`; explicit screen job, visual thesis, forbidden defaults, tokens, and approved assets determine the direction without a built-in subject preset. `design_brief` returns a primary-view-first Design Contract and an advisory Layout Plan with neutral regions, AnchorPoint strategy, and responsive behavior; it is not a hard tree preset or style quota. Favor device-appropriate readability and interaction size, preserve suitable placement during modest same-orientation resize, and allow independent portrait/landscape layouts. Role defaults for reflow or collapse are optional; keep frequent actions and simultaneous decision information accessible. A calling agent may declare provider-neutral image generation capability through `agentCapabilities`; missing or unavailable capability must use the explicit existing, user-provided, Creator Store, or assetless fallback. Capability and a general UI request do not authorize concept image generation or external gameplay screenshot search: first offer the relevant option when useful, execute only the user-selected method after opt-in, reuse explicit requests, and do not repeat declined offers. Concepts are not Studio verification or upload authorization. When using a saved brief, keep its `brief_id`, `design_contract`, and `layout_plan` as context through relevant operations. Partial brief questions are optional; the calling agent can adopt or adapt recommendations within the authorized request and proceed without a saved brief. The asset recommendation considers user references, project assets, existing UI, and user-approved `manage_assets.search` intent; use recommendations within existing authorization without repeated design approval. When helpful, preview a representative primary view and submit a calling-agent critic verdict (`recompose`, `refine`, or `approved`) with `visualReview`. Brief completion, images, preview, critic approval, and repeated review are not prerequisites for mutation or delivery. Read `primary_visual_verdict`, `functional_safe`, `responsive_requirement`, `responsive_ready`, `required_dimensions`, and `readiness` separately from mutation success. Readiness describes observed evidence, not permission to mutate or deliver. Do not claim visual verification for skipped review. Responsive evidence affects readiness only when the Design Contract marks it required. Read `weppy://ui-studio/guide` for the authoring workflow, `weppy://ui-studio/tokens` for optional visual examples, and `weppy://ui-studio/functional-rules` for machine-readable advisory evidence rules. Keep observed `platform_ui` evidence, source-owned `platform_guidance`, and AI interpretations distinct. Follow applicable Roblox recommendations as conditional guidance, not mandatory remedies. Review-only requests authorize inspection and recommendations; create or repair only within existing user authorization, without repeating permission for the same scope. Findings do not authorize disabling default controls or overriding requested placements. Missing platform observations stay unavailable; enabled state or rectangle overlap alone does not establish blocked input. Do not require unrelated Play sessions or new device states. Design Check permits `priority_high` only for observed functional visual failures such as meaningful overlap, unreadable content, invalid geometry, or primary-view occlusion; style-only findings remain medium or low.
+Create, refine, inspect and verify editable Roblox in-game UI. Read `weppy://ui-studio/guide` for the self-contained workflow and supported evidence; `weppy://ui-studio/tokens` offers optional visual examples and `weppy://ui-studio/functional-rules` defines advisory checks and official platform guidance. Distinguish first creation, quality improvement, narrow editing and review-only, then choose presentation independently from screen job. Compose around player decisions: meaningful values, objects, states and actions should lead the hierarchy. A missing game concept does not select an app skin or a default genre. In improvement, preserve behavior/data and explicit layout choices, but allow justified changes to size and allocation rather than adding a skin to a faulty hierarchy. Use native UI for editable content and simple surfaces; reuse reviewed parts or generate authorized parts where useful, checking actual small-size readability, alpha boundaries and crop/slice assembly. These are design recommendations, not style quotas or new prerequisites. `design_brief` optionally inspects Studio context and returns candidate brief patches; create_tree/update may omit briefId. Do not dump enum lists or require every brief field. An explicitly supplied empty, unknown, expired or unreadable briefId fails before mutation: resolve it or explicitly omit it instead of silently discarding it. Keep accepted brief_id, design_contract and advisory Layout Plan context through related calls; explicit user/projectContext evidence wins. Existing-UI review cannot infer runtime absence from empty StarterGui: follow runtime_review_required with a structured Play Client PlayerGui snapshot and saved runtimeEvidenceRef. Saved Designs are Place-scoped appearance evidence, not complete screens or verified readiness. Optional editGuard protects property-only identity/value expectations; inspect actual edit_outcome and changed_properties. agentCapabilities declares provider-neutral image generation capability, review and local output, not authorization. Always present an early asset recommendation for new UI or visual improvement, including the role, reason and source or production route. Let the user decide whether to apply it, honor an existing choice or delegation, and use the available evidence even if there are no candidates or no brief. Proceed within existing authorization. manage_assets.search requires approved intent. External screenshot search, concept/part generation and Roblox upload follow their actual user-authorized scopes; reuse granted permission and keep a supported assetless fallback. Preview and calling-agent visualReview (`recompose`, `refine`, `approved`) are optional. Mutation success, visual judgment, functional_safe and readiness are distinct; disclose skipped coverage, with responsive evidence required only when responsive_requirement says required. Keep observed platform_ui, official platform_guidance and AI interpretation separate. Review-only does not authorize mutation; findings do not authorize overriding user placement or disabling camera/default controls. Modal focus does not authorize pausing the simulation. Missing platform geometry remains unavailable; rectangle overlap alone does not prove blocked input. priority_high is reserved for observed functional visual failures; style-only findings stay medium/low.
 
 ### `manage_ui.design_brief`
 
@@ -906,6 +906,7 @@ Create / update / verify Roblox in-game UI (ScreenGui / Frame / TextLabel / …)
   - `projectContext` - object - Optional project-specific design evidence used by design_brief. Explicit user and experience evidence determines recommendations; WEPPY does not infer a subject preset.
   - `agentCapabilities` - object - Optional provider-neutral capability declaration from the calling agent after it inspects callable tools and output channels. Do not infer these values from a model or client name. Used by: design_brief.
   - `runtimeEvidenceRef` - object - Reference to one saved structured Playtest snapshot_gui step. The Bridge validates its Place, Studio target, client, and observation identity before use. Used by: design_brief, check.
+  - `designRef` - object - Optional saved appearance reference for design_brief. Reads this exact current revision without saving; explicit projectContext fields override it. Preserve the returned materialized saved_design for this task.
   - `placeId` - number - Optional Studio target selector. When multiple Studio clients are connected, route this call to the active client for this Roblox placeId. If no matching active client exists, the call fails instead of falling back to another Place.
   - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
   - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
@@ -917,7 +918,7 @@ Create / update / verify Roblox in-game UI (ScreenGui / Frame / TextLabel / …)
 - Execution mode: `unspecified`
 - Param aliases: none
 - Required params:
-  - `tree` - object - Declarative UI tree JSON. The root must be ScreenGui. Schema: {className: string, name?: string, parent?: string, properties?: {...}, layoutMetadata?: {...}, children?: Tree[]} Omit parent to use StarterGui. className is limited to supported Roblox GUI classes: ScreenGui/Frame/TextLabel/TextButton/ImageLabel/ImageButton/ScrollingFrame/TextBox/UIListLayout/UIGridLayout/UIPadding/UICorner/UIStroke/UIAspectRatioConstraint/UIGradient/UITextSizeConstraint/UISizeConstraint/UIScale/UIFlexItem/UIShadow/UIPageLayout/UITableLayout/CanvasGroup/UIDragDetector. Default in-game structure for HUD, button, toast, card, and most menu surfaces: ScreenGui > Frame(BackgroundTransparency=1) > visible UI elements. Reserve a direct full-screen opaque Frame under ScreenGui for modal presentation. layoutMetadata is optional semantic evidence. When surfaceRole / placementBand / surfaceMode / decisionSource are provided, the plugin preserves them as WeppySurfaceRole / WeppyPlacementBand / WeppySurfaceMode / WeppyDecisionSource attributes. Property value encoding: Use {xScale, xOffset, yScale, yOffset} for UDim2, {scale, offset} for UDim, {r, g, b} for Color3, {x,y}/{x,y,z} for Vector2/Vector3, and the item name string for Enum values.
+  - `tree` - object - Declarative UI tree JSON. The root must be ScreenGui. Schema: {className: string, name?: string, parent?: string, properties?: {...}, layoutMetadata?: {...}, viewportPreview?: {sourcePath: string, minAspectRatio?: number}, children?: Tree[]} Omit parent to use StarterGui. className is limited to supported Roblox GUI classes: ScreenGui/Frame/TextLabel/TextButton/ImageLabel/ImageButton/ScrollingFrame/TextBox/UIListLayout/UIGridLayout/UIPadding/UICorner/UIStroke/UIAspectRatioConstraint/UIGradient/UITextSizeConstraint/UISizeConstraint/UIScale/UIFlexItem/UIShadow/UIPageLayout/UITableLayout/CanvasGroup/UIDragDetector/ViewportFrame. In Edit mode, use ViewportFrame below a ScreenGui in StarterGui. Its viewportPreview clones one existing static Model or supported BasePart from Workspace, ReplicatedStorage, or ServerStorage. Omit viewportPreview for an empty frame. minAspectRatio is the narrowest planned width/height (default 1, range 0.25–4). UI Studio owns the camera and world; declare only UI decorations or constraints as ViewportFrame children. Default in-game structure for HUD, button, toast, card, and most menu surfaces: ScreenGui > Frame(BackgroundTransparency=1) > visible UI elements. Reserve a direct full-screen opaque Frame under ScreenGui for modal presentation. layoutMetadata is optional semantic evidence. When surfaceRole / placementBand / surfaceMode / decisionSource are provided, the plugin preserves them as WeppySurfaceRole / WeppyPlacementBand / WeppySurfaceMode / WeppyDecisionSource attributes. Existing allowed values: surfaceRole uses the neutral roles listed in weppy://ui-studio/guide; placementBand is top_left | top_right | top_center | side_left | side_right | bottom_center | lower_center | edge_contextual | center | target_relative | custom; surfaceMode is transparent_group | individual_chrome | bounded_group | shared_surface | backdrop; decisionSource is explicit_user | project_evidence | existing_ui | weppy_fallback. Omit optional metadata when its value is unknown instead of inventing enum names. placementBand=custom describes a project-specific placement; metadata does not set Position or force a layout. Property value encoding: Use {xScale, xOffset, yScale, yOffset} for UDim2, {scale, offset} for UDim, {r, g, b} for Color3, {x,y}/{x,y,z} for Vector2/Vector3, and the item name string for Enum values.
 - Optional params:
   - `briefId` - string - Optional saved brief identifier returned by design_brief. Used by: create_tree/update/preview/check. Omit when unnecessary. For create_tree/update, an explicitly supplied invalid or expired reference fails before mutation; resolve it or explicitly omit it.
   - `placeId` - number - Optional Studio target selector. When multiple Studio clients are connected, route this call to the active client for this Roblox placeId. If no matching active client exists, the call fails instead of falling back to another Place.
@@ -932,9 +933,10 @@ Create / update / verify Roblox in-game UI (ScreenGui / Frame / TextLabel / …)
 - Param aliases: none
 - Required params:
   - `targetPath` - string - Path to existing UI instance. Both `StarterGui.MyGui` and `game.StarterGui.MyGui` are accepted. Used by: update, delete (required).
-  - `changes` - object - Partial update specification: {properties?: {...}, addChildren?: Tree[], removeChildren?: [string]} properties contains key/value pairs compatible with Instance property assignment. Values follow the Property value encoding documented by tree.
+  - `changes` - object - Partial update specification: {properties?: {...}, addChildren?: Tree[], removeChildren?: [string], viewportPreview?: {...}} properties contains key/value pairs compatible with Instance property assignment. Values follow the Property value encoding documented by tree. For a managed ViewportFrame, set or clear viewportPreview separately from the other update fields.
 - Optional params:
   - `briefId` - string - Optional saved brief identifier returned by design_brief. Used by: create_tree/update/preview/check. Omit when unnecessary. For create_tree/update, an explicitly supplied invalid or expired reference fails before mutation; resolve it or explicitly omit it.
+  - `editGuard` - object - Optional properties-only update guard. Read current target identity and values first. expectedProperties must include every changed property and each explicitly preserved property. Rejects stale identity/values, Name/Parent/Source and structural changes. Reports actual residual changed_properties and edit_outcome; does not guarantee whole-request or script-side-effect rollback.
   - `placeId` - number - Optional Studio target selector. When multiple Studio clients are connected, route this call to the active client for this Roblox placeId. If no matching active client exists, the call fails instead of falling back to another Place.
   - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
   - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
@@ -964,6 +966,64 @@ Create / update / verify Roblox in-game UI (ScreenGui / Frame / TextLabel / …)
   - `briefId` - string - Optional saved brief identifier returned by design_brief. Used by: create_tree/update/preview/check. Omit when unnecessary. For create_tree/update, an explicitly supplied invalid or expired reference fails before mutation; resolve it or explicitly omit it.
   - `viewportMode` - "current" | "selected_profiles" - Viewport review mode. selected_profiles uses profileIds from the accepted Design Contract. Used by: preview, check.
   - `profileIds` - array<string> - Selected Design Contract target profile IDs. Used by: preview, check.
+  - `placeId` - number - Optional Studio target selector. When multiple Studio clients are connected, route this call to the active client for this Roblox placeId. If no matching active client exists, the call fails instead of falling back to another Place.
+  - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
+  - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
+
+### `manage_ui.design_list`
+
+- Tier: `pro`
+- Route: `internal`
+- Execution mode: `readonly`
+- Param aliases: none
+- Required params: none
+- Optional params:
+  - `limit` - number - design_list page size, 1–100 (default 50).
+  - `offset` - number - design_list non-negative page offset (default 0).
+  - `placeId` - number - Optional Studio target selector. When multiple Studio clients are connected, route this call to the active client for this Roblox placeId. If no matching active client exists, the call fails instead of falling back to another Place.
+  - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
+  - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
+
+### `manage_ui.design_get`
+
+- Tier: `pro`
+- Route: `internal`
+- Execution mode: `readonly`
+- Param aliases: none
+- Required params:
+  - `designId` - string - Saved design ID in this Place. Required by design_get/design_delete; optional by design_save for an explicit revision update.
+- Optional params:
+  - `expectedRevision` - number - Positive expected current revision. Required for updating/deleting an existing saved design; optional for design_get. Older revisions are not archived for retrieval.
+  - `placeId` - number - Optional Studio target selector. When multiple Studio clients are connected, route this call to the active client for this Roblox placeId. If no matching active client exists, the call fails instead of falling back to another Place.
+  - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
+  - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
+
+### `manage_ui.design_save`
+
+- Tier: `pro`
+- Route: `internal`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params:
+  - `design` - object - Reusable appearance evidence to save only when the user requests remembering a design or updating the shared design. Do not copy screen_job, primary_action, exact layout, required_states, readiness or critic verdict. Current UI and historical screenshot sources must remain distinct; label inferred/missing fields.
+  - `saveRequestId` - string - Stable unique request ID for one design_save intent. Reuse only when retrying the same content; do not generate a new ID for an uncertain retry.
+- Optional params:
+  - `designId` - string - Saved design ID in this Place. Required by design_get/design_delete; optional by design_save for an explicit revision update.
+  - `expectedRevision` - number - Positive expected current revision. Required for updating/deleting an existing saved design; optional for design_get. Older revisions are not archived for retrieval.
+  - `placeId` - number - Optional Studio target selector. When multiple Studio clients are connected, route this call to the active client for this Roblox placeId. If no matching active client exists, the call fails instead of falling back to another Place.
+  - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
+  - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
+
+### `manage_ui.design_delete`
+
+- Tier: `pro`
+- Route: `internal`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params:
+  - `designId` - string - Saved design ID in this Place. Required by design_get/design_delete; optional by design_save for an explicit revision update.
+  - `expectedRevision` - number - Positive expected current revision. Required for updating/deleting an existing saved design; optional for design_get. Older revisions are not archived for retrieval.
+- Optional params:
   - `placeId` - number - Optional Studio target selector. When multiple Studio clients are connected, route this call to the active client for this Roblox placeId. If no matching active client exists, the call fails instead of falling back to another Place.
   - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
   - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
@@ -2132,7 +2192,7 @@ get asset metadata.
 
 ### `manage_assets.search`
 
-search Creator Store.
+Search free models in Studio, or query public Creator Store decals and their backing images through the Bridge. Use the returned imageUri for UI and verify it in Studio. isFree can be null.
 
 - Tier: `pro`
 - Route: `plugin`
@@ -2142,9 +2202,9 @@ search Creator Store.
 - Required params:
   - `query` - string - Search keyword. Used by: search (required), search_insert (required). E.g., "monster", "tree", "car".
 - Optional params:
-  - `maxResults` - number - Maximum search results. Used by: search. Default: 10.
-  - `category` - string - Asset category filter. Used by: search, export_selection_rbxm, export_path_rbxm, review_model, generate_model, import_rbxm, generate_thumbnail. upload_asset may omit this and use assetType/selection auto-detection.
-  - `sortType` - string - Sort order for search results. Used by: search.
+  - `maxResults` - number - Maximum search results for search. Default: 10. Image/decal searches require a positive integer and return at most 50 results.
+  - `category` - string - For search, use model (default), decal (Creator Store listing), or image (the backing image of a matching decal). Also used by export_selection_rbxm, export_path_rbxm, review_model, generate_model, import_rbxm, and generate_thumbnail. upload_asset may omit this and use assetType/selection auto-detection.
+  - `sortType` - string - Custom sorting is unsupported for search. Omit sortType to use the source order.
   - `placeId` - number - Place ID for place-scoped Asset Library .rbxm round-trip operations. For other manage_assets Studio/plugin actions, this also acts as an optional Studio target selector.
   - `clientId` - string - Optional Studio target selector. Routes this call to the exact connected WEPPY Plugin client. Takes precedence over targetAlias and placeId.
   - `targetAlias` - string - Optional Studio target selector. Routes this call to the connected WEPPY Studio target alias shown in Dashboard/Plugin, such as studio-1. Takes precedence over placeId.
@@ -2228,7 +2288,7 @@ serialize the current Studio selection to a local Asset Library .rbxm asset.
 - Execution mode: `mutating`
 - Param aliases: none
 - Required params:
-  - `category` - string - Asset category filter. Used by: search, export_selection_rbxm, export_path_rbxm, review_model, generate_model, import_rbxm, generate_thumbnail. upload_asset may omit this and use assetType/selection auto-detection.
+  - `category` - string - For search, use model (default), decal (Creator Store listing), or image (the backing image of a matching decal). Also used by export_selection_rbxm, export_path_rbxm, review_model, generate_model, import_rbxm, and generate_thumbnail. upload_asset may omit this and use assetType/selection auto-detection.
 - Optional params:
   - `contextId` - string - Optional execution context identifier. Used to continue an existing context for mutating actions.
   - `contextSummary` - ExecutionContextSummary - Optional structured execution context attached to this tool call.
@@ -2254,7 +2314,7 @@ serialize one Studio instance path to a local Asset Library .rbxm asset.
 - Execution mode: `mutating`
 - Param aliases: none
 - Required params:
-  - `category` - string - Asset category filter. Used by: search, export_selection_rbxm, export_path_rbxm, review_model, generate_model, import_rbxm, generate_thumbnail. upload_asset may omit this and use assetType/selection auto-detection.
+  - `category` - string - For search, use model (default), decal (Creator Store listing), or image (the backing image of a matching decal). Also used by export_selection_rbxm, export_path_rbxm, review_model, generate_model, import_rbxm, and generate_thumbnail. upload_asset may omit this and use assetType/selection auto-detection.
   - `sourcePath` - string - Studio instance path to export, review, or upload. Used by: export_path_rbxm, review_model, upload_asset.
 - Optional params:
   - `contextId` - string - Optional execution context identifier. Used to continue an existing context for mutating actions.
@@ -2281,7 +2341,7 @@ QA the current selection or a Studio path and optionally register it as a local 
 - Execution mode: `mutating`
 - Param aliases: none
 - Required params:
-  - `category` - string - Asset category filter. Used by: search, export_selection_rbxm, export_path_rbxm, review_model, generate_model, import_rbxm, generate_thumbnail. upload_asset may omit this and use assetType/selection auto-detection.
+  - `category` - string - For search, use model (default), decal (Creator Store listing), or image (the backing image of a matching decal). Also used by export_selection_rbxm, export_path_rbxm, review_model, generate_model, import_rbxm, and generate_thumbnail. upload_asset may omit this and use assetType/selection auto-detection.
 - Optional params:
   - `contextId` - string - Optional execution context identifier. Used to continue an existing context for mutating actions.
   - `contextSummary` - ExecutionContextSummary - Optional structured execution context attached to this tool call.
@@ -2320,7 +2380,7 @@ Generate a Roblox Model in Studio with GenerationService and return the Studio p
   - `contextSummary` - ExecutionContextSummary - Optional structured execution context attached to this tool call.
   - `replayMetadata` - ExecutionReplayMetadata - Optional replay-ready metadata attached to this tool call.
   - `placeId` - number - Place ID for place-scoped Asset Library .rbxm round-trip operations. For other manage_assets Studio/plugin actions, this also acts as an optional Studio target selector.
-  - `category` - string - Asset category filter. Used by: search, export_selection_rbxm, export_path_rbxm, review_model, generate_model, import_rbxm, generate_thumbnail. upload_asset may omit this and use assetType/selection auto-detection.
+  - `category` - string - For search, use model (default), decal (Creator Store listing), or image (the backing image of a matching decal). Also used by export_selection_rbxm, export_path_rbxm, review_model, generate_model, import_rbxm, and generate_thumbnail. upload_asset may omit this and use assetType/selection auto-detection.
   - `schemaMode` - "predefined" | "custom" - Generation schema mode. Used by: generate_model. Default: predefined.
   - `predefinedSchema` - "Body1" | "Car5" - Roblox predefined model schema. Used by: generate_model when schemaMode=predefined. Default: Body1.
   - `schemaGroups` - array<string> - Custom schema group names for generated model segmentation. Used by: generate_model when schemaMode=custom.
@@ -2354,7 +2414,7 @@ Upload the current selection or sourcePath through Studio-local AssetService wit
   - `contextSummary` - ExecutionContextSummary - Optional structured execution context attached to this tool call.
   - `replayMetadata` - ExecutionReplayMetadata - Optional replay-ready metadata attached to this tool call.
   - `placeId` - number - Place ID for place-scoped Asset Library .rbxm round-trip operations. For other manage_assets Studio/plugin actions, this also acts as an optional Studio target selector.
-  - `category` - string - Asset category filter. Used by: search, export_selection_rbxm, export_path_rbxm, review_model, generate_model, import_rbxm, generate_thumbnail. upload_asset may omit this and use assetType/selection auto-detection.
+  - `category` - string - For search, use model (default), decal (Creator Store listing), or image (the backing image of a matching decal). Also used by export_selection_rbxm, export_path_rbxm, review_model, generate_model, import_rbxm, and generate_thumbnail. upload_asset may omit this and use assetType/selection auto-detection.
   - `assetType` - "auto" | "model" | "mesh" | "image" - Roblox Studio-local upload asset type. Used by: upload_asset. Default: auto, which selects Model/Mesh/Image from the selected Studio object.
   - `sourcePath` - string - Studio instance path to export, review, or upload. Used by: export_path_rbxm, review_model, upload_asset.
   - `displayName` - string - Asset Library display name or Studio upload display name. Used by: export_selection_rbxm, export_path_rbxm, review_model, generate_model, upload_asset.
@@ -2373,7 +2433,7 @@ import an Asset Library .rbxm asset into Studio under a target parent.
 - Execution mode: `mutating`
 - Param aliases: none
 - Required params:
-  - `category` - string - Asset category filter. Used by: search, export_selection_rbxm, export_path_rbxm, review_model, generate_model, import_rbxm, generate_thumbnail. upload_asset may omit this and use assetType/selection auto-detection.
+  - `category` - string - For search, use model (default), decal (Creator Store listing), or image (the backing image of a matching decal). Also used by export_selection_rbxm, export_path_rbxm, review_model, generate_model, import_rbxm, and generate_thumbnail. upload_asset may omit this and use assetType/selection auto-detection.
   - `assetLibraryAssetId` - string - Asset Library asset ID. Used by: import_rbxm, generate_thumbnail.
 - Optional params:
   - `contextId` - string - Optional execution context identifier. Used to continue an existing context for mutating actions.
@@ -2395,7 +2455,7 @@ generate or replace thumbnail.png for an Asset Library .rbxm asset.
 - Execution mode: `mutating`
 - Param aliases: none
 - Required params:
-  - `category` - string - Asset category filter. Used by: search, export_selection_rbxm, export_path_rbxm, review_model, generate_model, import_rbxm, generate_thumbnail. upload_asset may omit this and use assetType/selection auto-detection.
+  - `category` - string - For search, use model (default), decal (Creator Store listing), or image (the backing image of a matching decal). Also used by export_selection_rbxm, export_path_rbxm, review_model, generate_model, import_rbxm, and generate_thumbnail. upload_asset may omit this and use assetType/selection auto-detection.
   - `assetLibraryAssetId` - string - Asset Library asset ID. Used by: import_rbxm, generate_thumbnail.
 - Optional params:
   - `contextId` - string - Optional execution context identifier. Used to continue an existing context for mutating actions.

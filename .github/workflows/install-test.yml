@@ -46,7 +46,7 @@ jobs:
             },
             {
               name: 'weppy-roblox-game-presentation-guide',
-              references: ['game-ui-patterns.md', 'world-and-character-presentation.md', 'visual-reference-workflow.md', 'comparison-study.svg', 'comparison-study.png'],
+              references: ['game-ui-patterns.md', 'world-and-character-presentation.md', 'visual-reference-workflow.md', 'comparison-study.svg', 'comparison-study.png', 'visual-polish-study.svg', 'visual-polish-study.png'],
             },
           ];
           const required = [

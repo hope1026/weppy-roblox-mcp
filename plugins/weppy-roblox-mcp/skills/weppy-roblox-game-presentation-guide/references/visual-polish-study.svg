@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="780" viewBox="0 0 1000 780" role="img" aria-label="Four before and after studies for game UI">
+  <defs>
+    <g id="bag" fill="currentColor">
+      <path d="M-10-11v-5a10 10 0 0 1 20 0v5H5v-5a5 5 0 0 0-10 0v5z"/>
+      <rect x="-18" y="-12" width="36" height="30" rx="6"/>
+      <rect x="-7" y="0" width="14" height="7" rx="2" fill="#423c79"/>
+    </g>
+    <path id="corner" d="M0 16V0h16l-4 5H5v7z" fill="#ffe3a2"/>
+  </defs>
+  <rect width="1000" height="780" fill="#191b27"/>
+  <g font-family="Helvetica, Arial, sans-serif" fill="#f6f4ff">
+    <text x="40" y="52" font-size="31" font-weight="bold">Four ways to refine a game UI</text>
+    <text x="40" y="80" font-size="16" fill="#c5c2d5">Illustrative comparisons at the same role and screen state.</text>
+    <text x="277" y="119" font-size="16" font-weight="bold" fill="#c5c2d5">BEFORE</text>
+    <text x="612" y="119" font-size="16" font-weight="bold" fill="#a7e8d0">AFTER TO TRY</text>
+    <g fill="#242738">
+      <rect x="35" y="134" width="930" height="143" rx="12"/>
+      <rect x="35" y="288" width="930" height="143" rx="12"/>
+      <rect x="35" y="442" width="930" height="143" rx="12"/>
+      <rect x="35" y="596" width="930" height="143" rx="12"/>
+    </g>
+    <path d="M245 143v125m0 29v125m0 29v125m0 29v125M580 143v125m0 29v125m0 29v125m0 29v125" stroke="#3e4258"/>
+    <g font-weight="bold" font-size="18">
+      <text x="55" y="166">01  Badge placement</text>
+      <text x="55" y="320">02  Type hierarchy</text>
+      <text x="55" y="474">03  Tween feedback</text>
+      <text x="55" y="628">04  Resizable frame</text>
+    </g>
+    <g font-size="14" fill="#c5c2d5">
+      <text x="55" y="190">Make room for the icon.</text>
+      <text x="55" y="344">Lead the next decision.</text>
+      <text x="55" y="498">Show what changed.</text>
+      <text x="55" y="652">Keep corners intact.</text>
+    </g>
+    <g text-anchor="middle" font-size="14">
+      <rect x="367" y="153" width="88" height="82" rx="14" fill="#423c79" stroke="#9384ea" stroke-width="2"/>
+      <use href="#bag" transform="translate(411 179) scale(.55)" color="#fff1b7"/>
+      <text x="411" y="221">Satchel</text>
+      <rect x="715" y="153" width="88" height="82" rx="14" fill="#423c79" stroke="#9384ea" stroke-width="2"/>
+      <use href="#bag" transform="translate(759 187) scale(.98)" color="#fff1b7"/>
+      <rect x="723" y="222" width="72" height="23" rx="8" fill="#6853a4" stroke="#bcb2ec"/>
+      <text x="759" y="238" font-weight="bold">Satchel</text>
+      <text x="411" y="260" fill="#c5c2d5">Both compete for the face</text>
+      <text x="759" y="260" fill="#a7e8d0">One action, distinct visual layers</text>
+    </g>
+    <g font-size="16">
+      <rect x="280" y="313" width="265" height="91" rx="9" fill="#30364e"/>
+      <text x="298" y="339">Speed Upgrade</text>
+      <text x="298" y="362">350 coins</text>
+      <text x="298" y="385">+2 movement</text>
+      <rect x="614" y="313" width="322" height="91" rx="9" fill="#30364e"/>
+      <text x="632" y="340" font-weight="bold">Speed Upgrade</text>
+      <text x="632" y="382" font-size="14" fill="#c5c2d5">+2 movement</text>
+      <text x="866" y="376" font-size="30" fill="#fff1b7" font-weight="bold" text-anchor="end">350</text>
+      <text x="873" y="376" font-size="13" fill="#fff1b7">coins</text>
+    </g>
+    <g text-anchor="middle" font-size="13">
+      <rect x="360" y="484" width="103" height="40" rx="8" fill="#423c79"/>
+      <text x="411" y="509">Equip</text>
+      <text x="411" y="551" fill="#c5c2d5">Unchanged face</text>
+      <g fill="none" stroke="#59607c" stroke-dasharray="4 3">
+        <rect x="618" y="482" width="89" height="45" rx="8"/>
+        <rect x="721" y="482" width="89" height="45" rx="8"/>
+        <rect x="824" y="482" width="101" height="45" rx="8"/>
+      </g>
+      <rect x="623" y="487" width="79" height="35" rx="7" fill="#423c79"/>
+      <rect x="729" y="491" width="73" height="28" rx="6" fill="#61529a"/>
+      <rect x="829" y="487" width="91" height="35" rx="7" fill="#237357"/>
+      <text x="662" y="509">Equip</text>
+      <text x="765" y="509">Equip</text>
+      <text x="874" y="509">Equipped</text>
+      <text x="662" y="551" fill="#c5c2d5">Rest</text>
+      <text x="765" y="551" fill="#c5c2d5">Press</text>
+      <text x="874" y="551" fill="#a7e8d0">Confirmed</text>
+      <text x="716" y="509" fill="#c5c2d5">→</text>
+      <text x="818" y="509" fill="#c5c2d5">→</text>
+    </g>
+    <g font-size="14" text-anchor="middle">
+      <rect x="280" y="640" width="265" height="52" rx="14" ry="6" fill="#3a2b37" stroke="#c9955e" stroke-width="2"/>
+      <use href="#corner" transform="translate(280 640) scale(2.65 1)"/>
+      <use href="#corner" transform="translate(545 640) scale(-2.65 1)"/>
+      <use href="#corner" transform="translate(280 692) scale(2.65 -1)"/>
+      <use href="#corner" transform="translate(545 692) scale(-2.65 -1)"/>
+      <rect x="642" y="640" width="265" height="52" rx="6" fill="#3a2b37" stroke="#c9955e" stroke-width="2"/>
+      <use href="#corner" transform="translate(642 640)"/>
+      <use href="#corner" transform="translate(907 640) scale(-1 1)"/>
+      <use href="#corner" transform="translate(642 692) scale(1 -1)"/>
+      <use href="#corner" transform="translate(907 692) scale(-1 -1)"/>
+      <path d="M661 640v52m227-52v52m-246-34h265m-265 16h265" stroke="#dfb380" stroke-dasharray="3 3" opacity=".6"/>
+      <text x="412" y="718" fill="#c5c2d5">Full stretch distorts the ornaments</text>
+      <text x="775" y="718" fill="#a7e8d0">Fixed corners, stretchable bands and center</text>
+    </g>
+    <text x="40" y="761" fill="#aaa9c0" font-size="13">WEPPY game presentation reference · Original schematic, no gameplay or timing evidence</text>
+  </g>
+</svg>

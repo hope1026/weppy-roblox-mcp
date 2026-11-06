@@ -1,76 +1,79 @@
 # UI Studio Reference
 
-Use UI Studio for Roblox `StarterGui` work instead of hand-rolling many GUI mutations.
+Use `manage_ui` for Roblox UI authoring. This reference owns tool execution and evidence handoff. The runtime guide owns the common workflow and current platform guidance; the [game presentation reference](../../weppy-roblox-game-presentation-guide/references/game-ui-patterns.md) explains visual decisions, and the [asset reference](../../weppy-roblox-assets-guide/references/generated-assets.md) covers production image parts.
 
-## Runtime Resources
+## Load the relevant context
 
-Before creating or redesigning UI, read `weppy://ui-studio/guide`. Read `weppy://ui-studio/tokens` for optional palette, spacing, typography, motion, imagery, and composition examples. Read `weppy://ui-studio/functional-rules` when interpreting deterministic findings, evidence fields, profile context, and non-finding boundaries. Treat these runtime resources as the current guidance; use this reference for optional authoring steps and technical execution boundaries. For role-specific UX and optical alignment, see the available [game presentation guide](../../weppy-roblox-game-presentation-guide/SKILL.md).
+Read `weppy://ui-studio/guide` before creating or redesigning UI. Use `weppy://ui-studio/tokens` for optional vocabulary and `weppy://ui-studio/functional-rules` to interpret deterministic findings and platform evidence. These are design aids, not prerequisites for a narrow valid mutation or delivery.
 
-## Scope and Platform Guidance
+Determine whether the request is first creation, quality improvement, a narrow edit, or review only. Infer presentation from the actual screen job, camera, inputs and user choices. For improvement, inspect the UI/controller and distinguish preserved behavior from editable composition. For review only, stop at observations and recommendations. Reuse existing scoped creation or repair authority unless the current request narrows it or explicitly prohibits changes.
 
-First identify whether the user wants a review, creation, or repair. A review-only request authorizes inspection and recommendations, not GUI mutations. Existing authorization to create or fix the relevant UI is sufficient for scoped changes and revalidation; do not ask for the same permission again. A finding does not authorize changing unrelated UI, disabling default controls, or overriding a requested placement.
+Assess existing screens before selecting a method. Use the user's description and observed UI/controller to distinguish temporary, established and unknown screens. Separate behavior/data reuse from layout/style/image reuse. Do not infer completion from visual polish, enabled state or names alone. Briefly explain the recommended approach, with a choice only when an unresolved preference changes the outcome. Clear instructions and delegated decisions can proceed immediately. For `design_brief`, record root-specific evidence in optional `projectContext.work_assessment` and read its returned assessment. See the runtime guide for its fields and treatment of unreviewed images.
 
-Infer supported devices, input modes, default or custom controls, and relevant UI states from the request and project before asking for missing information. Read runtime guidance and the current observation; do not copy fixed coordinates, margins, or a separate Roblox guidance catalog into this skill.
+Infer unclear scope from project evidence first. For a new screen or set with no review preference, briefly explain the layout-and-parts workflow and offer a draft review or delegated completion. Give a recommendation based on the likely rework. Honor an explicit workflow choice. A requested layout review ends at the draft, and delegated completion continues through implementation, visual refinement and available verification within existing authorization. See the runtime guide for reference and consent handling.
 
-Use the runtime guide for adaptive sizing and text preferences. Aim for readable content and usable effective hit areas within the available UI and safe areas. A suitable layout can retain its grouping and control order through a modest resize in the same orientation; consider reflow or relocation if size and spacing cannot resolve an observed problem. Choose portrait and landscape arrangements for their own reading and input needs without prioritizing shared structure or positions. Preserve action meaning and relevant selection, scroll, and input state. Edit-clone or static-image evidence does not establish runtime-script adaptation, and neither alone establishes physical-device comfort. Preserve the actual observation source and state coverage when reporting runtime behavior.
+For new UI and visual improvements, always present a short asset recommendation before settling the layout. Give the role, the reason and the source or production route. The user chooses whether to apply it. If the choice is open, include a native UI option. Honor an existing choice or delegation. An empty candidate list or skipped brief still calls for a recommendation from the available evidence. See the runtime guide for authorization boundaries.
 
-Generated UI concepts and external gameplay screenshot searches require the user's interest and selected-method consent unless already authorized. A general UI creation request or callable image tool is not that permission. Follow the [visual reference workflow](../../weppy-roblox-game-presentation-guide/references/visual-reference-workflow.md): reuse explicit requests, respect declines, do not treat silence as consent, and keep optional exploration separate from ordinary creation. Supplied references and existing project evidence can be used within the request. If the user wants to choose a direction, present the authorized results and ask; if they delegate, choose and proceed. Concepts are not Studio screenshots, production assets, or verification evidence.
+For public Roblox assets, use the [Creator Store reference](../../weppy-roblox-assets-guide/references/creator-store.md) to confirm the free listing, asset ID and Studio fit. External free files follow their own usage terms.
 
-When platform UI or safe-area evidence matters, separate:
+Pass game and project evidence through `projectContext`: screen job, content hierarchy, presentation, relevant layout preferences, design tokens, approved assets, and actual target profiles. Explicit user choices take priority. Do not ask the user to fill a new manifest or questionnaire.
 
-- **Observed facts:** what `platform_ui` and finding `evidence` actually measured, including profile/state and unavailable observations. Enabled, visible/open, and occupied bounds are different facts. Geometry overlap alone does not prove blocked input.
-- **Official guidance:** applicable `platform_guidance`, its `constraint | recommendation` kind, source section, checked date, and the finding's `guidance_refs`. Recommendations do not become hard requirements, and WEPPY defaults are not Roblox rules.
-- **AI interpretation:** explain likely implications and suitable options conditionally, preserving the requested design and scope. Describe tradeoffs when useful; do not prescribe one remedy, a fixed adjustment, or a mandatory number of alternatives.
+Use the [play-pattern examples](../../weppy-roblox-game-presentation-guide/references/game-ui-patterns.md#start-from-the-way-the-game-plays) as starting points. Pass the actual user request in `contextSummary.intent`. In `layout_preferences`, match entries to `surface_roles` using `role` and use `row`, `column`, `radial`, `single` or `free` for `flow_axis`. Explain the actual task, camera or input reason in `rationale` and set `visibility_mode` when a role should be shown only in context or on demand. The Layout Plan returns these choices for the matching role. An example alone is `weppy_fallback`. An observed or requested choice keeps its actual source.
 
-For example, observed rectangles may overlap while input interference is still untested. Report those separately, explain the applicable official guidance, and offer a context-dependent option if it helps. If the user requested only a review, stop there. If the same user already requested repairs, make suitable scoped changes and recheck the affected states. If the user wants the placement retained, respect that choice and disclose the observed risk.
+An empty StarterGui does not establish runtime UI absence. When an existing-UI review returns `runtime_review_required`, use a structured Play client `snapshot_gui` from PlayerGui and pass its saved `{recordId,stepId}` as `runtimeEvidenceRef`. For runtime checks, use `observationMode="runtime"`; do not substitute an Edit tree, a copied tree or another Place's evidence.
 
-Use relevant observations for the declared targets; do not automatically require Play or additional device states for every task. Before runtime observation is available, guidance can inform an authorized creation as conditional design context. Preserve estimated/unavailable geometry and missing required-state evidence. If an official source cannot be refreshed, disclose the stored check date and limitations instead of inventing current guidance. A web lookup on every request is not required.
+## Author and refine
 
-## Suggested Workflow
+1. Consider `manage_ui.design_brief` when context planning helps. It accepts partial context and may be omitted. An explicitly supplied empty, unknown, expired or unreadable `briefId` must be resolved or explicitly omitted; do not silently discard it after an error.
+2. Keep an accepted `brief_id`, `design_contract` and `layout_plan` with the operation. `primary_view_first` identifies the representative primary target; the plan is advisory structure, not a fixed style or tree. A partial brief can be adopted or adapted within the request without a new permission gate.
+3. Inspect actual callable image tools and the local output channel before declaring `agentCapabilities`; do not infer them from a model or client name. Missing capability uses approved existing assets or an assetless fallback. Concept generation, external reference search and upload follow the runtime guide's separate authorization scopes.
+4. Use `manage_ui.create_tree` or `manage_ui.update` within the request. For relevant region roots, optional `layoutMetadata` preserves surface role and placement evidence. A narrow property change can use `editGuard`; source-owned labels, visibility and state require controller inspection.
+5. Consider suitable parts while planning the first layout. Use the existing Saved Designs and Asset Library paths for reuse. Check how the actual panel, slot and button surfaces fit the new screen and its states. For a delegated finished set, use preview and scoped updates to address gaps between the working layout and requested look. See the asset reference for image preparation and reuse.
+6. Where the task requests or delegates polish, layer controls only as needed and add fitting UI transitions or feedback after basic behavior. Verify rapid interruption, latest state and reduced motion where applicable; use approved audio only. Existing basic state feedback should not be postponed until polish.
+7. Preserve the first render before corrections when evaluating creation. For quality improvement, compare the same viewport, camera, content and state. Prefer a focused update over recreating the tree when only one part is wrong.
 
-1. Read the governing UI/game spec, project UI manifest, token source, and approved asset manifest. Build visual direction from explicit user intent plus game and project evidence. Pass relevant evidence in `projectContext`; do not ask the Studio plugin to guess repository facts.
-2. Consider `manage_ui.design_brief` when context planning helps. It accepts no brief, a partial brief, or a complete brief. Creation and update can omit `briefId`; a supplied invalid reference is an error, not permission to silently discard context.
-   Keep the accepted `brief_id`, `design_contract`, and advisory `layout_plan` through create, update, preview, and check. The contract uses `quality_priority=primary_view_first`, identifies the primary profile, and records whether responsive review is recommended or required. Treat role, placement, flow, surface, avoid-region, wrap, region anchors, and responsive behaviors as evidence-backed guidance, not a hard tree preset. An explicit user layout choice outranks project evidence, existing UI, and WEPPY fallback. For an existing target, follow the analysis-first redesign or targeted-update scope returned by `design_brief`.
-   An empty `StarterGui` does not prove that the game has no UI. For an existing-UI review, follow `runtime_review_required`: run a structured Play client observation, save a `PlayerGui` `snapshot_gui` step, and pass its `{recordId,stepId}` as `runtimeEvidenceRef`. Do not move into palette or style questions until the existing runtime surface is identified.
-3. Inspect callable image tools and the local output channel, then pass provider-neutral `agentCapabilities`. Do not infer support from a model or client name, and never include provider credentials in evidence.
-4. If the response is `brief_incomplete`, adopt or adapt a useful recommendation within the request, or proceed without a brief. Questions are optional; ask only when the missing choice materially changes the outcome. Do not dump enum lists at the user. The recommendation is non-blocking and can be accepted, edited, skipped, or replaced.
-5. For asset recommendations with status `recommended`, follow the applicable asset authorization and any approval already given; do not invent another design-approval step. A `project_asset` candidate outranks an existing UI asset and Creator Store search. If `imagery_strategy.intent=required`, a placeholder keeps primary visual approval ineligible until a concrete role asset is resolved. If `asset_generation_proposal` is unavailable or unknown, continue with its existing-asset or assetless fallback and report required imagery as unresolved.
-6. When generated imagery fits the request, use the existing authorization for local generation or ask only for missing permission. Roblox upload is a separate scope: check authorization for the actual files, count, and target Creator. A recommendation itself does not require another approval or obligate image use.
-7. For authorized creation or repair, create new UI with `manage_ui.create_tree` or update existing UI with `manage_ui.update`.
-   For meaningful region roots, pass optional `layoutMetadata` with the `surfaceRole`, `placementBand`, `surfaceMode`, and `decisionSource` returned by the Layout Plan.
-8. When useful and available, use `manage_ui.preview` after creation or meaningful changes. Inspect the representative primary-view screenshot against the reference evidence and Design Contract.
-9. For an optional review, use `manage_ui.check`. The calling agent submits `visualReview` with the exact saved `snapshotId`, a non-empty critic summary, and one verdict: `recompose | refine | approved`. The verdict recommends recomposition or refinement, or records an observed approval; it does not require the user to accept a restyle. Claim approval only for reviewed evidence and resolve required imagery only when it is part of the user's requested outcome. Repeat create/update → preview → critic only within the authorized creation or repair scope. End when the requested outcome is met, the user chooses to retain the design, or an unresolved dependency prevents verification; preserve remaining findings. A review-only request ends with the critic explanation and recommendations.
-   Set `reviewContext.interactionStatesReviewed=true` when the reviewed evidence covers the required hover, focus, pressed, and disclosure states. Set `reviewContext.gameplayContextReviewed=true` only when the evidence includes representative gameplay or a reviewable gameplay focal region from the Design Contract. Leave either value false when that evidence is missing and report the matching `skipped_reasons`.
-   For a runtime structural review, use `observationMode=runtime` with the validated `runtimeEvidenceRef`. A semantic PlayerGui snapshot does not count as a Play screenshot. Preserve `play_screenshot_unsupported`, `background_unverified`, truncated tree, and missing required-state evidence.
-10. Read `primary_visual_verdict`, `functional_safe`, `responsive_requirement`, `responsive_ready`, `required_dimensions`, and `readiness` separately from mutation success. Primary visual and functional safety evidence are required for a full quality approval; this does not authorize changes or block valid mutations. Responsive evidence blocks readiness only when `responsive_requirement=required`; recommended responsive work remains visible without blocking an otherwise approved primary UI.
-    `structural_only` means visual hierarchy and identity were not fully reviewed; do not call zero findings a complete visual pass when `visual_status` is `not_requested` or `skipped`.
-    Preserve the preview sidecar's AnchorPoint, UDim2, constraints, target profile, simulator result, and Design Check context when reviewing responsive evidence.
-11. Treat every UI quality finding as advisory. `priority_high` is reserved for observed functional failures such as unreadable content, meaningful overlap, invalid visual geometry, or primary-view occlusion. Style-only hierarchy and identity findings stay medium or low. Technical schema and safety gates can fail a request, but quality findings do not block UI creation or updates.
+For a semantic `slot_action`, a single-row layout is an option when it fits real slot semantics, not a requirement. A transparent group root can contain local readable chrome. Keep the painted visual surface distinct from the input target. Placement, responsive sizing and disclosure choices come from the runtime guide rather than a second hardcoded catalog here.
 
-Briefs, layout suggestions, previews, and critic verdicts are optional design aids. A user may retain a design or skip review without blocking valid mutations or delivery. Preserve unreviewed coverage and unresolved user requirements rather than changing them to approved.
+## Observe and report
 
-## Tree Encoding
+Use `manage_ui.preview` in Edit mode for a representative primary view when useful. Its sidecar preserves the target, profile and geometry evidence. A still image supports composition review; actual input and state transitions need their own observations. Do not call Edit capture during a Play session.
 
-- Root should be `ScreenGui`.
-- Omit `parent` to place under `StarterGui`.
-- `targetPath` accepts both `StarterGui.MyGui` and `game.StarterGui.MyGui`.
-- `UDim2`: `{xScale, xOffset, yScale, yOffset}`
-- `UDim`: `{scale, offset}`
-- `Color3`: `{r, g, b}`
-- Enum values: item name string.
-- Modern tree classes include `UIScale`, `UIFlexItem`, `UIShadow`, `UIPageLayout`, `UITableLayout`, `CanvasGroup`, and `UIDragDetector`.
+For optional visual review, the calling agent submits `manage_ui.check` with `visualReview`, the exact saved `snapshotId`, a non-empty summary and `recompose | refine | approved`. The verdict is advisory and cannot expand a review-only or narrow-edit request. Required imagery that is still a placeholder remains an unmet requested outcome. User-selected no-imagery and intentional flat control directions are valid.
 
-## Contextual Recommendations
+Review the reading order, cohesion of icons/type/panels/buttons, finish at actual display size and fit with the world or play situation. Compare with matching camera, viewport, content and state where possible. Record the observed change in the existing summary or findings and keep visual judgment separate from asset provenance, load status and input results.
 
-- Keep primary text readable and primary controls touchable.
-- A transparent interaction target can contain a smaller painted visual surface. Measure effective hit areas and spacing after scaling, keep the visible affordance recognizable, and choose sizing, reflow, or disclosure according to readability and action frequency.
-- A readable, localized word embedded in an icon asset can serve as its visible label; do not duplicate embedded action text with adjacent text. Otherwise give ambiguous controls a touch-visible, focus-visible, or contextual explanation path.
-- Distinguish action controls from status and data surfaces through role, affordance, and state feedback. Use coherent interaction language that fits the brief; different roles can use different treatments without a fixed family count. Intentional flat controls are valid when their action role and input states remain clear.
-- Keep bounded non-modal surfaces away from the gameplay focal region with edge placement, condensation, or contextual hiding. Do not enforce one screen-occupancy percentage.
-- Progressive disclosure can expose important information and common actions first with a clear path to secondary detail. Preserve frequent controls, simultaneous comparison information, and costs or consequences needed before acting. A single recommended goal is an option only for a game that has such guidance; it is not a universal display-count rule or a reason to add goal selection or pinning.
-- Consider a transparent group root for non-modal HUD regions and keep opaque chrome within the local bounds of readable controls or information. Contract-backed modal, fullscreen, and diegetic presentations may use a backdrop.
-- One possible arrangement maps `persistent_status` and `resource_display` to compact top-edge regions, `navigation` to a side rail or top edge, `slot_action` to a bottom-center single-row flow only for real slot semantics, `contextual_action` to a transient lower-center or target-relative control, and `objective_tracker` to a collapsible side-edge group.
-- For touch profiles, interpret reserved-region advice through the runtime platform guidance and available evidence. Preserve explicit user placement or surface choices; label estimated risks and report confirmed functional failures only when observed.
-- Use the runtime guide's current sizing and safe-area guidance, including the selected profile and observed Roblox controls; do not copy a separate property or margin catalog here.
-- Do not enforce one visual style. Minimal, ornate, retro, cute, horror, simulator-like, flat, immersive, or no-imagery UI can all be valid when coherent with the brief.
-- Do not invent asset IDs. Use user-provided references or accepted asset search results.
+For concrete before-and-after treatments of badges, text, motion and slice-ready frames, use the runtime guide or the [visual polish study](../../weppy-roblox-game-presentation-guide/references/visual-reference-workflow.md#compare-visual-treatments-at-use-size). Reuse the existing preview and Play paths to check the selected change.
+
+If an asset swap has little visible effect, identify whether the requested change concerns the asset, the panel's silhouette and material, or the screen's hierarchy. Target that scope with `manage_ui.update` and compare the affected surface in the same view. For a panel-only request, verify the established art and input paths against the previous state.
+
+Keep input disabled on decorative layers without disabling containers that host actual buttons. When a visible control fails to activate in Play, check the control, its ancestors' `Interactable` state and overlapping surfaces before rerunning input.
+
+Set `reviewContext` from actual evidence. `interactionStatesReviewed` covers only reviewed hover, focus, pressed, and disclosure states; `gameplayContextReviewed` needs representative gameplay or a reviewable gameplay focal region. Leave unreviewed coverage false. Play semantic snapshots are not Play screenshots; preserve `play_screenshot_unsupported`, partial trees and unavailable backgrounds.
+
+Read these results separately:
+
+- mutation success describes the change;
+- `structural_only` means deterministic checks without completed visual review;
+- `primary_visual_verdict` and `functional_safe` describe different evidence;
+- `responsive_requirement` decides whether missing responsive evidence affects readiness;
+- `responsive_ready`, `required_dimensions` and `readiness` preserve observed limits.
+
+Zero findings and image loading do not prove visual quality. `priority_high` applies to observed functional visual failures such as blocked information, unreadable content, invalid geometry or primary-view occlusion. Style-only findings remain medium or low; valid creation or delivery does not depend on a visual approval loop.
+
+Keep observed `platform_ui`, official `platform_guidance`, and AI interpretation distinct. Enabled state or intersecting rectangles alone do not prove blocked input. Unavailable geometry stays unavailable. Do not disable default controls, change a requested placement, add device requirements or prescribe a fixed remedy to clear an advisory finding.
+
+## Encoding and action lookup
+
+Read [the generated action reference](mcp-actions.md) for exact supported parameters and classes.
+
+- A UI root is `ScreenGui`; omitted `parent` means StarterGui. Both `StarterGui.MyGui` and `game.StarterGui.MyGui` are accepted paths.
+- `UDim2`: `{xScale,xOffset,yScale,yOffset}`; `UDim`: `{scale,offset}`; Color3: `{r,g,b}`; Vector2: `{x,y}`; enums use item-name strings.
+- `AnchorPoint` is the positional pivot. Use layout/constraint classes supported by the current schema, not invented method-based behavior.
+- An already readable embedded action text need not be duplicated. Unknown symbols need a touch-visible or focus-visible explanation for the supported inputs.
+- Never invent Roblox asset IDs. Use only actual approved IDs and preserve the separate generation/upload scope.
+
+## Static 3D Item Previews
+
+Author a `ViewportFrame` in Edit mode below a `ScreenGui` in `StarterGui`. Add `viewportPreview: {"sourcePath":"ReplicatedStorage.Items.Sword","minAspectRatio":0.8}` to its tree node to show an existing static model. UI Studio owns the camera and model copy. Keep item text and controls as separate native UI. For replacement, pass the new source in `changes.viewportPreview` as the only field in `changes`. Use `{"clear":true}` to empty it. Existing project selection logic can switch between authored frames using `Visible`.
+
+Check the structure and inspect a Studio screenshot at a representative size to confirm rendering. If reopen or reverse Sync leaves an incomplete scene, use the saved source path and fit settings to rebuild it with `update`. See `weppy://ui-studio/guide` for source, hierarchy, fit, and Sync details.
