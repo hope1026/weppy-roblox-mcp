@@ -65,3 +65,11 @@ Antigravity CLI is required to install the **WEPPY AI Agent Plugin**. The one-li
 The shared MCP fallback is `~/.gemini/config/mcp_config.json`. In a CLI-only profile, verified native plugin MCP replaces the shared direct WEPPY entry. When Antigravity IDE and CLI coexist, both plugin views stay skill-only and one shared direct `weppy-roblox-mcp` definition serves both. Outside the verified OS and version matrix, native discovery uses the MCP fallback. Other MCP servers are preserved.
 
 On Windows Antigravity, CLI installation has been verified to expose skills and MCP. Windows Antigravity IDE plugin discovery is unverified because the verified environment has no plugin or skills inspection UI, so the shared MCP fallback is preserved. Do not pass a GitHub URL directly to `agy plugin install`; the installer downloads the latest public release and installs from a prepared local path.
+
+## Community development source
+
+`manage_community` adds WEPPY community posts, comments, and Play participation in the development source. It requires a compatible native community backend and a signed-in, enrolled account. The server confirms costs and rewards. This source update does not mean the backend or an installed release has been deployed.
+
+The development feedback flow supports separate bug, feature, and installation or usage forms, editable environment details, and reviewed PNG, JPEG, or ZIP attachments. Dashboard community menus explain how to ask the connected AI or register directly on the website; preparing a diagnostic file does not upload it.
+
+The AI request flow uses the existing conversation to classify an issue and prepares a local diagnostics file only when needed. Uploading an attachment requires review, and publishing still requires an explicit request. Dashboard community guidance opens as full pages; manual diagnostics guidance is part of the web-writing option.

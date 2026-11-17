@@ -2897,6 +2897,465 @@ enable or disable Dashboard auto-open from the next MCP Server start.
   - `enabled` - boolean - Whether Dashboard should open automatically when WEPPY MCP Server starts. Used by: set_dashboard_auto_open.
 - Optional params: none
 
+## Tool: `manage_community`
+
+WEPPY community account, posts, comments and requested play participation.
+
+### `manage_community.auth_status`
+
+Check the current WEPPY session without creating a guest. If profile or enrollment is required, the user completes it in Dashboard Settings > Community account; the AI cannot submit consent.
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `readonly`
+- Param aliases: none
+- Required params: none
+- Optional params: none
+
+### `manage_community.login_start`
+
+Start sign-in without choosing a provider and open the verified URL once in the default browser. The user chooses Google or Roblox on the existing WEPPY login screen in MCP connection mode. browser_opened only confirms the launch request. Keep checking login_finish until completed or expired; do not ask the user to report completion or paste tokens. Manual URL fallback is returned if launch fails.
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params: none
+- Optional params:
+  - `provider` - "google" | "roblox" - Optional compatibility hint. Omit for login_start so the user chooses Google or Roblox on the WEPPY website.
+  - `locale` - string - locale
+  - `openBrowser` - boolean - For login_start only: open the verified sign-in URL in the default browser (default true). Set false for manual or headless use.
+
+### `manage_community.login_finish`
+
+Check the current sign-in attempt. While pending, wait at least two seconds and check again until completion or expiry, then resume the user-authorized task.
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params: none
+- Optional params: none
+
+### `manage_community.login_cancel`
+
+login cancel
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params: none
+- Optional params: none
+
+### `manage_community.sign_out`
+
+sign out
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params: none
+- Optional params: none
+
+### `manage_community.list`
+
+list
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `readonly`
+- Param aliases: none
+- Required params:
+  - `board` - "game" | "tips" | "feedback" | "notices" | "benefit" - board
+- Optional params:
+  - `page` - integer - page
+  - `query` - string - query
+  - `category` - string - category
+  - `state` - string - state
+  - `sort` - string - sort
+  - `language` - string - language
+
+### `manage_community.detail`
+
+detail
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `readonly`
+- Param aliases: none
+- Required params:
+  - `board` - "game" | "tips" | "feedback" | "notices" | "benefit" - board
+  - `postId` - string - postId
+- Optional params:
+  - `language` - string - language
+
+### `manage_community.own_posts`
+
+List owned post summaries. Use get_draft to read full content and current revision before editing.
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `readonly`
+- Param aliases: none
+- Required params:
+  - `board` - "game" | "tips" | "feedback" | "notices" | "benefit" - board
+- Optional params: none
+
+### `manage_community.get_draft`
+
+get draft
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `readonly`
+- Param aliases: none
+- Required params:
+  - `board` - "game" | "tips" | "feedback" | "notices" | "benefit" - board
+  - `postId` - string - postId
+- Optional params: none
+
+### `manage_community.game_preview`
+
+Verify a candidate public Roblox game URL and retrieve game details and image candidates. Infer the target from conversation or the explicitly selected Studio first (Basic manage_properties.get can read game.PlaceId). Do not require a URL template or Pro-only execution. Never use GameId/Universe ID as Place ID, choose an ambiguous Studio automatically, or assume a positive PlaceId proves public access. If the game or public link cannot be confirmed, ask the user about Roblox publication/public access and the correct URL; ask before any Roblox publication and guide manual publishing when unavailable. Temporary lookup failures do not prove the game is unpublished.
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params:
+  - `gameUrl` - string - Public Roblox /games/{PlaceId} URL, inferred from known conversation or read-only Studio context when possible. Ask the user only if the target or public link cannot be confirmed. A positive PlaceId alone does not prove public access.
+- Optional params: none
+
+### `manage_community.image_import`
+
+image import
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params:
+  - `commandId` - string - commandId
+  - `candidateId` - string - candidateId
+- Optional params: none
+
+### `manage_community.image_upload`
+
+image upload
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params:
+  - `commandId` - string - commandId
+  - `filePath` - string - filePath
+- Optional params: none
+
+### `manage_community.draft_create`
+
+Save a private draft and return its command reference. Use get_draft with target_id to read the current revision before publishing.
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params:
+  - `board` - "game" | "tips" | "feedback" | "notices" | "benefit" - board
+  - `commandId` - string - commandId
+  - `title` - string - title
+  - `body` - string - body
+- Optional params:
+  - `gameUrl` - string - Public Roblox /games/{PlaceId} URL, inferred from known conversation or read-only Studio context when possible. Ask the user only if the target or public link cannot be confirmed. A positive PlaceId alone does not prove public access.
+  - `imageIds` - array<string> - Image IDs
+  - `sourceLanguage` - string - sourceLanguage
+  - `category` - string - category
+  - `support` - object - Reviewed issue fields matching category: bug uses steps/expected/actual; feature problem/desired; question install_method/blocked_step/attempted. Never guess unknown environment.
+  - `attachmentIds` - array<string> - Reviewed issue attachment IDs. Omit to preserve existing links; [] removes links. Feedback posts only.
+  - `clearSupport` - boolean - Explicitly remove structured issue metadata. Feedback only; cannot combine with support. Omit to preserve metadata.
+
+### `manage_community.draft_update`
+
+draft update
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params:
+  - `board` - "game" | "tips" | "feedback" | "notices" | "benefit" - board
+  - `commandId` - string - commandId
+  - `postId` - string - postId
+  - `revision` - integer - revision
+  - `title` - string - title
+  - `body` - string - body
+- Optional params:
+  - `imageIds` - array<string> - Image IDs
+  - `sourceLanguage` - string - sourceLanguage
+  - `category` - string - category
+  - `support` - object - Reviewed issue fields matching category: bug uses steps/expected/actual; feature problem/desired; question install_method/blocked_step/attempted. Never guess unknown environment.
+  - `attachmentIds` - array<string> - Reviewed issue attachment IDs. Omit to preserve existing links; [] removes links. Feedback posts only.
+  - `clearSupport` - boolean - Explicitly remove structured issue metadata. Feedback only; cannot combine with support. Omit to preserve metadata.
+
+### `manage_community.publish`
+
+Publish the reviewed draft on explicit user request. For games, quote first and confirm a nonzero Spark spend with the user; pass the matching revision, expected cost, and event. Do not approve changed costs automatically.
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params:
+  - `board` - "game" | "tips" | "feedback" | "notices" | "benefit" - board
+  - `commandId` - string - commandId
+  - `postId` - string - postId
+  - `revision` - integer - revision
+- Optional params:
+  - `title` - string - title
+  - `body` - string - body
+  - `category` - string - category
+  - `expectedCost` - integer - expectedCost
+  - `expectedEvent` - object - Event ID and revision from the current quote. Omit when the quote has no event; the server receives explicit null.
+  - `support` - object - Reviewed issue fields matching category: bug uses steps/expected/actual; feature problem/desired; question install_method/blocked_step/attempted. Never guess unknown environment.
+  - `attachmentIds` - array<string> - Reviewed issue attachment IDs. Omit to preserve existing links; [] removes links. Feedback posts only.
+  - `clearSupport` - boolean - Explicitly remove structured issue metadata. Feedback only; cannot combine with support. Omit to preserve metadata.
+
+### `manage_community.quote`
+
+quote
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params:
+  - `postId` - string - postId
+  - `quoteAction` - "publish" | "promote" - quoteAction
+- Optional params: none
+
+### `manage_community.promote`
+
+Bump a game post using the current quote and revision after confirming any Spark spend with the user. The server enforces the cooldown and current eligibility.
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params:
+  - `commandId` - string - commandId
+  - `postId` - string - postId
+  - `revision` - integer - revision
+  - `expectedCost` - integer - expectedCost
+- Optional params:
+  - `expectedEvent` - object - Event ID and revision from the current quote. Omit when the quote has no event; the server receives explicit null.
+
+### `manage_community.delete`
+
+delete
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params:
+  - `board` - "game" | "tips" | "feedback" | "notices" | "benefit" - board
+  - `commandId` - string - commandId
+  - `postId` - string - postId
+  - `revision` - integer - revision
+- Optional params: none
+
+### `manage_community.comments`
+
+comments
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `readonly`
+- Param aliases: none
+- Required params:
+  - `board` - "game" | "tips" | "feedback" | "notices" | "benefit" - board
+  - `postId` - string - postId
+- Optional params:
+  - `cursor` - integer - cursor
+  - `limit` - integer - limit
+
+### `manage_community.comment_create`
+
+Post the user-reviewed comment or reply using their actual experience and current comment permission. Do not invent gameplay experience. The server determines any reward.
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params:
+  - `board` - "game" | "tips" | "feedback" | "notices" | "benefit" - board
+  - `commandId` - string - commandId
+  - `postId` - string - postId
+  - `body` - string - body
+- Optional params: none
+
+### `manage_community.comment_reply`
+
+Post the user-reviewed comment or reply using their actual experience and current comment permission. Do not invent gameplay experience. The server determines any reward.
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params:
+  - `board` - "game" | "tips" | "feedback" | "notices" | "benefit" - board
+  - `commandId` - string - commandId
+  - `postId` - string - postId
+  - `body` - string - body
+  - `parentId` - string - parentId
+- Optional params:
+  - `replyToId` - string - replyToId
+
+### `manage_community.comment_edit`
+
+comment edit
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params:
+  - `board` - "game" | "tips" | "feedback" | "notices" | "benefit" - board
+  - `commandId` - string - commandId
+  - `commentId` - string - commentId
+  - `revision` - integer - revision
+  - `body` - string - body
+- Optional params: none
+
+### `manage_community.comment_delete`
+
+comment delete
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params:
+  - `board` - "game" | "tips" | "feedback" | "notices" | "benefit" - board
+  - `commandId` - string - commandId
+  - `commentId` - string - commentId
+  - `revision` - integer - revision
+- Optional params: none
+
+### `manage_community.play`
+
+Start explicitly requested Play participation and return the validated game URL with separate visit, metrics, and reward-pending results. The user plays the game; this action does not verify game execution or completion.
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params:
+  - `postId` - string - postId
+  - `commandId` - string - commandId
+- Optional params: none
+
+### `manage_community.reward_eligibility`
+
+reward eligibility
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `readonly`
+- Param aliases: none
+- Required params:
+  - `postId` - string - postId
+- Optional params: none
+
+### `manage_community.activity`
+
+activity
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params:
+  - `activityKind` - "me" | "ledger" - activityKind
+- Optional params: none
+
+### `manage_community.receipt`
+
+receipt
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `readonly`
+- Param aliases: none
+- Required params:
+  - `board` - "game" | "tips" | "feedback" | "notices" | "benefit" - board
+  - `commandId` - string - commandId
+- Optional params: none
+
+### `manage_community.support_context`
+
+Read observed local environment and AI/Studio candidates without remote login or creating diagnostics. Never pick an affected client from multiple candidates without confirmation.
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `readonly`
+- Param aliases: none
+- Required params: none
+- Optional params: none
+
+### `manage_community.attachment_upload`
+
+Upload user-reviewed issue PNG/JPG (4MiB) or ZIP (10MiB). Private until linked to a visible published post.
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params:
+  - `commandId` - string - commandId
+  - `filePath` - string - filePath
+- Optional params: none
+
+### `manage_community.attachment_list`
+
+Read permitted attachment metadata for a feedback post.
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `readonly`
+- Param aliases: none
+- Required params:
+  - `board` - "game" | "tips" | "feedback" | "notices" | "benefit" - board
+  - `postId` - string - postId
+- Optional params: none
+
+### `manage_community.attachment_delete`
+
+Delete owned unlinked attachment. Remove linked files with post revision and attachmentIds.
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params:
+  - `attachmentId` - string - Issue attachment ID returned by attachment_upload.
+  - `commandId` - string - commandId
+- Optional params: none
+
+### `manage_community.diagnostics_prepare`
+
+Prepare a local diagnostics ZIP only when needed to investigate a product issue. No remote sign-in, upload or publication. Review logs/project context before sharing; upload permission alone does not authorize publication. Optional locale only; collection paths are fixed.
+
+- Tier: `basic`
+- Route: `internal`
+- Execution mode: `mutating`
+- Param aliases: none
+- Required params: none
+- Optional params:
+  - `locale` - string - locale
+
 ## Tool: `system_info`
 
 System info: ping, connection status, usage tier, and read-only Studio preflight diagnostics. [PRO] place info and services list.
