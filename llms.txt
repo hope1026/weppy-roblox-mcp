@@ -176,3 +176,11 @@ Antigravity:
 - Roblox Explorer (VS Code Marketplace): https://marketplace.visualstudio.com/items?itemName=weppy.weppy-roblox-explorer
 - Roblox Explorer (Open VSX): https://open-vsx.org/extension/weppy/weppy-roblox-explorer
 - Issues: https://github.com/hope1026/weppy-roblox-mcp/issues
+
+## Community development source
+
+`manage_community` adds WEPPY community posts, comments, and Play participation in the development source. It requires a compatible native community backend and a signed-in, enrolled account. The server confirms costs and rewards. This source update does not mean the backend or an installed release has been deployed.
+
+The development feedback flow supports separate bug, feature, and installation or usage forms, editable environment details, and reviewed PNG, JPEG, or ZIP attachments. Dashboard community menus explain how to ask the connected AI or register directly on the website; preparing a diagnostic file does not upload it.
+
+The AI request flow uses the existing conversation to classify an issue and prepares a local diagnostics file only when needed. Uploading an attachment requires review, and publishing still requires an explicit request. Dashboard community guidance opens as full pages; manual diagnostics guidance is part of the web-writing option.

@@ -106,6 +106,12 @@ On Windows Antigravity, CLI installation has been verified to expose skills and 
 
 ### 1) MCP Tools: Direct execution in Studio from natural language
 
+The development source also includes `manage_community` for WEPPY community posts, comments, and Play participation. It requires a compatible community backend with native access enabled and a signed-in, enrolled WEPPY account. It does not require Studio to be connected. Game publication costs and participation rewards are confirmed by the server; opening a game link does not verify gameplay completion. This addition is not evidence that the backend or an installed release has been deployed.
+
+The development feedback flow supports separate bug, feature, and installation or usage forms, editable environment details, and reviewed PNG, JPEG, or ZIP attachments. Dashboard community menus explain how to ask the connected AI or register directly on the website; preparing a diagnostic file does not upload it.
+
+The AI request flow uses the existing conversation to classify an issue and prepares a local diagnostics file only when needed. Uploading an attachment requires review, and publishing still requires an explicit request. Dashboard community guidance opens as full pages; manual diagnostics guidance is part of the web-writing option.
+
 AI can directly handle scripts, instances, properties, terrain, lighting, assets, audio, and animation inside Studio.
 
 - "Add particles + sound + cooldown when the player jumps."

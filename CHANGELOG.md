@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+
+## [2.18.0] - 2026-11-17
+
+### Features
+
+- **Share your Roblox game through your AI conversation** — Ask your AI agent to prepare a WEPPY game post using the game you are discussing or the selected Studio project. It checks the published Roblox link and helps prepare the title, description and images. Review the content and any posting cost before asking it to publish.
+- **Report problems and request features without leaving your AI conversation** — Ask your agent to describe a bug, suggest a feature or get help with setup. It can prepare relevant environment details and optional screenshots or diagnostic files for your review, then submit the request to WEPPY so you can follow replies and progress in one place.
+- **Sign in with Google or Roblox** — Start sign-in from your AI agent or Dashboard, choose your provider in the browser, and return to your existing WEPPY account. Dashboard Settings shows your account and sign-in status separately from your Pro license.
+- **Manage posts and join community discussions** — Your agent can help you review your posts, edit drafts, reply to comments and open other developers' games. Sparks and posting eligibility follow the current community rules; opening a game link does not claim that a playtest was completed.
+- **Find community actions in the Dashboard** — The Community menu introduces game promotion, tips and examples, and issue reporting, with example requests you can give your AI agent and links to the WEPPY website.
+
+### Stability
+
+- **Keep community work with the correct account** — Signing in, signing out or changing accounts prevents earlier private results from being reused for the new account. If a posting response is interrupted, WEPPY checks the saved result before treating the post as complete.
+- **Review diagnostics before sharing** — Private drafts, sign-in information and diagnostic contents are excluded from routine tool history. You choose which prepared files to attach to a public request.
+
+Update both the WEPPY MCP Server and Roblox Studio Plugin, then restart your AI app and Roblox Studio to use this release.
+
 ## [2.17.22] - 2026-11-07
 
 ### Features
