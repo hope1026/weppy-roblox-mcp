@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 
 
+
+## [2.18.1] - 2026-11-18
+
+- **In-game UI layout** — UI Studio now guides the first layout around your game's camera and viewport. It keeps play controls clear of the action and gives shop items, prices and purchase states room to read.
+- **Recognizable items** — When building a shop or inventory, your agent can use existing game models, approved images or distinctive shapes for individual items. Labels and controls stay editable, and the guidance follows the language used in your game.
+
 ## [2.18.0] - 2026-11-17
 
 ### Features
