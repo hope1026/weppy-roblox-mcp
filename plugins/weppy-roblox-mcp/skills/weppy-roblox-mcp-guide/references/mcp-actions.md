@@ -2334,7 +2334,7 @@ serialize one Studio instance path to a local Asset Library .rbxm asset.
 
 ### `manage_assets.review_model`
 
-QA the current selection or a Studio path and optionally register it as a local Asset Library .rbxm asset.
+Inspect the model, project named parts in the current Studio view for a focused visual revision, and optionally register it as a local Asset Library .rbxm asset.
 
 - Tier: `pro`
 - Route: `plugin`
@@ -2358,6 +2358,8 @@ QA the current selection or a Studio path and optionally register it as a local 
   - `creatorId` - string - Optional Roblox user or group ID for Studio-local temporary asset upload. Used with uploadTemporaryAssets by .rbxm registration actions.
   - `exportToLibrary` - boolean - Whether to register the reviewed model as an Asset Library .rbxm asset. Used by: review_model. Default: false.
   - `expectedUse` - "decorative" | "interactive" | "vehicle" | "character" | "unknown" - Expected model use for QA heuristics. Used by: review_model, generate_model. Default: unknown.
+  - `modelExpectations` - object - Optional checks for review_model. An empty object requests observed appearance only. Supply target values from the user, source asset, or measured scene requirements.
+  - `visualReview` - object - Plan one revision from the current Studio view. Supply a visible goal, any observation from the actual capture, exact part names in revision priority order to project on screen, and features to preserve. Repeat from the same view after editing.
   - `expectedGroups` - array<string> - Expected child/group names for generated or reviewed model QA. Used by: review_model, generate_model.
   - `maxDescendants` - number - Maximum descendants to inspect during model QA. Used by: review_model, generate_model. Default: 500.
   - `maxDepth` - number - Maximum depth for recursive child export. Used by: export_selection_json. Default: 5.
@@ -2367,7 +2369,7 @@ QA the current selection or a Studio path and optionally register it as a local 
 
 ### `manage_assets.generate_model`
 
-Generate a Roblox Model in Studio with GenerationService and return the Studio path/review metadata without saving or uploading.
+Generate a Roblox Model in Studio with GenerationService from a prompt and optional reference image. Return the Studio path/review metadata without saving or uploading.
 
 - Tier: `pro`
 - Route: `plugin`
@@ -2381,6 +2383,7 @@ Generate a Roblox Model in Studio with GenerationService and return the Studio p
   - `replayMetadata` - ExecutionReplayMetadata - Optional replay-ready metadata attached to this tool call.
   - `placeId` - number - Place ID for place-scoped Asset Library .rbxm round-trip operations. For other manage_assets Studio/plugin actions, this also acts as an optional Studio target selector.
   - `category` - string - For search, use model (default), decal (Creator Store listing), or image (the backing image of a matching decal). Also used by export_selection_rbxm, export_path_rbxm, review_model, generate_model, import_rbxm, and generate_thumbnail. upload_asset may omit this and use assetType/selection auto-detection.
+  - `referenceImageAssetId` - string - Optional Roblox Image asset ID for generate_model, as a positive decimal string. Use an image accessible to this Studio session. For a Creator Store decal, use its backing image ID (imageAssetId from search). Local files, URLs, and decal listing IDs are unsupported.
   - `schemaMode` - "predefined" | "custom" - Generation schema mode. Used by: generate_model. Default: predefined.
   - `predefinedSchema` - "Body1" | "Car5" - Roblox predefined model schema. Used by: generate_model when schemaMode=predefined. Default: Body1.
   - `schemaGroups` - array<string> - Custom schema group names for generated model segmentation. Used by: generate_model when schemaMode=custom.

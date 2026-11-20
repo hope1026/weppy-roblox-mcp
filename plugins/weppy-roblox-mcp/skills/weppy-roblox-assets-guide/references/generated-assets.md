@@ -42,9 +42,35 @@ Check the composed native background, existing `UIStroke`, new image and state o
 
 Upload completion and `IsLoaded` establish delivery/loading, not clean borders, readability or visual quality. Inspect relevant rendering separately and report what was not checked. Keep reusable approved IDs and known crop/slice choices in existing project/asset records where supported; no new manifest or compulsory review gate is needed. See [game UI patterns](../../weppy-roblox-game-presentation-guide/references/game-ui-patterns.md) for composition rather than asset-only fixes.
 
+## Review a model after creation or import
+
+Use `manage_assets.review_model` with its actual `sourcePath`. Supply `modelExpectations` for measured requirements such as height, an exact part base color or spacing between uniquely named parts. An empty expectations object requests observed appearance. Separate missing or ambiguous measurements from measured mismatches.
+
+For visible design issues, pass `visualReview.goal` and the real names of the affected parts. After inspecting the screenshot, name the part to edit exactly as it appears in Studio in your `observation`. This example assumes a screenshot showed the stated issue and the installation calls for 3.2 studs between the mount centers.
+
+```json
+{
+  "action": "review_model",
+  "category": "model",
+  "sourcePath": "Workspace.Console",
+  "expectedUse": "interactive",
+  "modelExpectations": {
+    "distances": [{ "from": "LeftMount", "to": "RightMount", "axis": "x", "distance": 3.2 }]
+  },
+  "visualReview": {
+    "goal": "Make the lever tip recognizable from the player's approach.",
+    "focusParts": ["LeverTip", "Faceplate"],
+    "observation": "From the approach, the top edge of Faceplate overlaps the lever tip and hides its outline.",
+    "preserve": ["Keep the two mount centers 3.2 studs apart along world X.", "Keep the lever pivot in place."]
+  }
+}
+```
+
+`data.visualReview` reports the current view and projected bounds of the named parts, or why a projection is unavailable. Inspect the screenshot for overlap, texture appearance and readability. If a repair is within scope, change the geometry implicated by that observation, such as lowering the faceplate edge directly behind the tip. Use the same part instances for both photos. If working on a copy, create it before the first capture and edit it in place. Keep other parts and their material patterns fixed. Capture the revised model from the recorded view, check the fit again, and describe the observed result. When no image has been inspected, omit `observation` and leave the visual result unverified.
+
 ## Roblox model generation
 
-1. Call `manage_assets.generate_model` with the requested prompt, schema mode, parent and review policy.
+1. Call `manage_assets.generate_model` with the requested prompt, schema mode, parent and review policy. To condition the generation on a reference image, also pass `referenceImageAssetId` as the decimal string ID of a Roblox Image that Studio can access. For a local image, use the existing authorized image-upload workflow first and pass the returned backing Image ID. Preserve any image-conditioned error for the user.
 2. Treat the result as a Studio model path, not a remote Roblox asset or Asset Library item.
 3. Use `manage_assets.review_model` when inspection or local registration is needed.
 4. Confirm authorization covers temporary embedded-resource or remote upload before executing it.

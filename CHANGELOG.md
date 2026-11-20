@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.18.2] - 2026-11-20
+
+### Features
+
+- **Find the UI element that needs attention** — Select a screen in UI Studio, inspect its elements, and see a recorded overlap highlighted on the capture. You can ask your AI to adjust that specific part without tracing the full Studio path.
+- **Review what changed in your UI** — History brings together before-and-after captures, recorded property values and checks from earlier work. Repeated captures taken under the same conditions share one row, and each original remains accessible.
+- **Review Studio models and generate from a reference image** — Check a model’s dimensions, colors and spacing against your expectations, or supply an accessible Roblox image asset as a reference when asking AI to generate a model.
+
+### Bug Fixes
+
+- **More accurate UI comparisons** — Captures of individual elements now use Studio’s layout coordinates, so the comparison shows the text or control you changed. Older captures with uncertain positioning are marked for review.
+- **Recover interrupted guest sessions** — The Dashboard can retry guest setup once when the previous session is unusable, helping you reconnect without repeated retries.
+
 ## [2.18.1] - 2026-11-18
 
 - **In-game UI layout** — UI Studio now guides the first layout around your game's camera and viewport. It keeps play controls clear of the action and gives shop items, prices and purchase states room to read.
