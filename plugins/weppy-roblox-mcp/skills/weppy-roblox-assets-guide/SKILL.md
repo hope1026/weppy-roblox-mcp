@@ -10,7 +10,7 @@ description: Use when creating, importing, reviewing, uploading, updating, or re
 1. Identify whether the source is a Studio selection or path, an Asset Library item, a generated local file, a Creator Store result, or an existing Roblox asset.
 2. Read `references/asset-library.md` for local round-trip, import, review, and thumbnail work.
 3. Read `references/creator-store.md` before searching, inspecting, or inserting a Creator Store asset.
-4. Read `references/generated-assets.md` when an AI image file or Roblox GenerationService model is involved.
+4. Read `references/generated-assets.md` for scene-guided 3D modeling, reviewing an imported model, and generating images or models. For a visual revision, assign reference roles, compare two blockouts at gameplay distance, and use the observed difference to guide one edit.
 5. Read `references/studio-upload.md` before any Studio-local upload or temporary embedded-resource upload.
 6. Read `references/open-cloud-upload.md` before credential checks, Open Cloud upload, existing asset linking, update, and operation polling.
 7. Confirm explicit approval covers billable or temporary Roblox assets; reuse approval already granted for the same operation.
